@@ -103,8 +103,7 @@ var S = {
     position: 'absolute',
     top: '8px',
     right: '0px'
-  },
-  IMG: {}
+  }
 };
 
 var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Component) {

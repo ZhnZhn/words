@@ -59,9 +59,7 @@ const S = {
     position: 'absolute',
     top: '8px',
     right: '0px'
-  },
-  IMG: {
-  }
+  }  
 }
 
 

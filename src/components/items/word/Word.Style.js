@@ -10,7 +10,8 @@ const styleConfig = {
         ...R.ITEM_HEADER
       },
        DESCR: {
-         lineHeight: 2.2
+         lineHeight: 2.2,
+         paddingRight: '8px'
        }
     };
   }
