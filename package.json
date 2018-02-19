@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
+    "lint": "eslint src", 
     "gulp": "gulp",
     "build": "webpack --colors --progress",
     "build:dll": "webpack --colors --progress --config webpack.dll.js",

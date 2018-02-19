@@ -19,8 +19,7 @@ const R = {
 };
 
 const RouterPane = {
-  getElement: (type) => {
-    //console.log(type)
+  getElement: (type) => {    
     return R[type] || R.DF;
   }
 };

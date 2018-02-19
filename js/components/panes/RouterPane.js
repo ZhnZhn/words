@@ -37,7 +37,6 @@ var R = {
 
 var RouterPane = {
   getElement: function getElement(type) {
-    //console.log(type)
     return R[type] || R.DF;
   }
 };

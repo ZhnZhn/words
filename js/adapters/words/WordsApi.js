@@ -24,7 +24,6 @@ var WordsApi = {
         itemConf = _option$itemConf === undefined ? {} : _option$itemConf,
         loadType = itemConf.loadType;
 
-    console.log(option);
     if (loadType === 'R') {
       return C.URL + '/?random=true';
     }

@@ -28,7 +28,6 @@ var _Logic2 = _interopRequireDefault(_Logic);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import { BrowserActionTypes } from '../actions/BrowserActions';
 var STORAGE_KEY = 'WATCH_LIST_WORDS',
     DIALOG_CAPTION = 'Watch List:';
 

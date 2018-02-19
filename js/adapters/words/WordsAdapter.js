@@ -28,7 +28,6 @@ var WordsAdapter = {
     var json = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var option = arguments[1];
 
-    console.log(json);
     return _crConfig(json);
   }
 };

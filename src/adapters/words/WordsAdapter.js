@@ -20,8 +20,7 @@ const _crConfig = (json) => {
 }
 
 const WordsAdapter = {
-  toConfig(json={}, option){
-    console.log(json);
+  toConfig(json={}, option){    
     return _crConfig(json);
   }
 }

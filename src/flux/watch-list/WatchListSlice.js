@@ -1,6 +1,5 @@
 import LocalForage from 'localforage';
 
-//import { BrowserActionTypes } from '../actions/BrowserActions';
 import { T as CAT } from '../actions/ComponentActions';
 
 import { WatchActionTypes as WAT } from '../actions/WatchActions';
@@ -101,7 +100,7 @@ const WatchListSlice = {
     }
   },
 
-  _onEditWatch(result, forActionType){        
+  _onEditWatch(result, forActionType){
     if (result.isDone){
       this.isWatchEdited = true;
       this.trigger(CAT.UPDATE_WATCH_BROWSER, this.watchList);

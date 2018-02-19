@@ -13,8 +13,7 @@ const WordsApi = {
   },
   getRequestUrl(option){
     const { word='example', itemConf={} } = option
-        , { loadType } = itemConf
-    console.log(option)
+        , { loadType } = itemConf    
     if (loadType === 'R') {
       return `${C.URL}/?random=true`;
     }
