@@ -112,7 +112,9 @@ var WatchListSlice = {
           descr: WATCH_SAVED
         });
       }).catch(function (error) {
-        console.log(error);
+        /*eslint-disable no-console*/
+        console.warn(error);
+        /*eslint-enable no-console*/
       });
     } else {
       this.onShowModalDialog(_Type.ModalDialog.MSG, {

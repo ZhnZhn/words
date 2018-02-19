@@ -90,7 +90,9 @@ const WatchListSlice = {
              })
           })
           .catch((error) => {
-             console.log(error);
+             /*eslint-disable no-console*/
+             console.warn(error);
+             /*eslint-enable no-console*/
           })
     } else {
        this.onShowModalDialog(MD.MSG, {

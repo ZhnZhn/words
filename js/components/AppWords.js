@@ -74,7 +74,9 @@ var AppWords = function (_Component) {
   (0, _createClass3.default)(AppWords, [{
     key: 'componentDidCatch',
     value: function componentDidCatch(error, info) {
-      console.log(error, info);
+      /*eslint-disable no-console*/
+      console.warn(error, info);
+      /*eslint-enable no-console*/
     }
   }, {
     key: 'componentDidMount',

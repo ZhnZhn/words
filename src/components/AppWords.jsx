@@ -17,7 +17,9 @@ class AppWords extends Component {
   }
 
   componentDidCatch(error, info){
-    console.log(error, info)
+    /*eslint-disable no-console*/
+    console.warn(error, info)
+    /*eslint-enable no-console*/
   }
 
   componentDidMount(){
