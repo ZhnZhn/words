@@ -1,0 +1,24 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\watch-browser\\decorators\\fnDnD.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\watch-browser\\decorators\\fnDnD.js",
+ "sourceRoot": "",
+ "names": [
+  "fnDnD",
+  "setTransferTo",
+  "event",
+  "dragId",
+  "xType",
+  "_data",
+  "Object",
+  "assign",
+  "dataTransfer",
+  "effectAllowed",
+  "dropEffect",
+  "setData",
+  "JSON",
+  "stringify"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,QAAQ;AACZC,iBAAe,6BAA8B;AAAA,QAA3BC,KAA2B,QAA3BA,KAA2B;AAAA,QAApBC,MAAoB,QAApBA,MAAoB;AAAA,QAAZC,KAAY,QAAZA,KAAY;;AAC3C,QAAMC,QAAQ,EAAEF,cAAF,EAAUC,YAAV,EAAd;AACAE,WAAOC,MAAP,CAAcL,MAAMM,YAApB,EAAkC;AAChCC,qBAAe,MADiB;AAEhCC,kBAAY;AAFoB,KAAlC,EAGGC,OAHH,CAIE,MAJF,EAIUC,KAAKC,SAAL,CAAeR,KAAf,CAJV;AAMD;AATW,CAAd;;kBAYeL,K"
+}

@@ -1,0 +1,13 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\adapters\\words\\Words.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\adapters\\words\\Words.js",
+ "sourceRoot": "",
+ "names": [
+  "Words",
+  "api",
+  "adapter"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,QAAQ;AACZC,yBADY,EACPC;AADO,CAAd;;kBAIeF,K"
+}

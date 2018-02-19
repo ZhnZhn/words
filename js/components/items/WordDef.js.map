@@ -1,0 +1,24 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\items\\WordDef.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\items\\WordDef.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "DER_ROOT",
+  "display",
+  "DER_CAPTION",
+  "color",
+  "paddingRight",
+  "fontWeight",
+  "SYN_CAPTION",
+  "WordSyn",
+  "result",
+  "derivation",
+  "examples",
+  "synonyms",
+  "similarTo"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,YAAU;AACRC,aAAS;AADD,GADF;AAIRC,eAAa;AACXC,WAAO,SADI;AAEXC,kBAAc,KAFH;AAGXC,gBAAY;AAHD,GAJL;AASRC,eAAa;AACXH,WAAO,OADI;AAEXC,kBAAc,KAFH;AAGXC,gBAAY;AAHD;AATL,CAAV;;AAgBA,IAAME,UAAU,SAAVA,OAAU,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;AAAA,MAEtBC,UAFsB,GAMpBD,MANoB,CAEtBC,UAFsB;AAAA,MAGtBC,QAHsB,GAMpBF,MANoB,CAGtBE,QAHsB;AAAA,MAItBC,QAJsB,GAMpBH,MANoB,CAItBG,QAJsB;AAAA,MAKtBC,SALsB,GAMpBJ,MANoB,CAKtBI,SALsB;;AAO9B,SACE;AAAA;AAAA;AACE,kDAAG,QAAH;AACE,eAAQ,aADV;AAEE,iBAAWb,EAAEC,QAFf;AAGE,oBAAcD,EAAEG,WAHlB;AAIE,aAAOO;AAJT,MADF;AAOE,kDAAG,OAAH;AACE,aAAOC;AADT,MAPF;AAUE,kDAAG,QAAH;AACE,eAAQ,WADV;AAEE,oBAAcX,EAAEO,WAFlB;AAGE,aAAOK;AAHT,MAVF;AAeE,kDAAG,QAAH;AACE,eAAQ,YADV;AAEE,oBAAcZ,EAAEO,WAFlB;AAGE,aAAOM;AAHT;AAfF,GADF;AAuBD,CA9BD;;kBAgCeL,O"
+}

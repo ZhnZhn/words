@@ -1,0 +1,34 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\zhn-atoms\\BrowserCaption.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\zhn-atoms\\BrowserCaption.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "ROOT",
+  "backgroundColor",
+  "color",
+  "lineHeight",
+  "paddingTop",
+  "paddingLeft",
+  "marginBottom",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "CAPTION",
+  "fontSize",
+  "fontWeight",
+  "SVG_CLOSE",
+  "position",
+  "top",
+  "width",
+  "height",
+  "BrowserCaption",
+  "rootStyle",
+  "svgStyle",
+  "caption",
+  "children",
+  "onClose"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAM;AACJC,qBAAiB,SADb;AAEJC,WAAO,SAFH;AAGJC,gBAAY,KAHR;AAIJC,gBAAY,KAJR;AAKJC,iBAAa,MALT;AAMJC,kBAAc,MANV;AAOJC,yBAAqB,KAPjB;AAQJC,0BAAsB;AARlB,GADE;AAWRC,WAAS;AACPP,WAAO,SADA;AAEPQ,cAAU,MAFH;AAGPC,gBAAY;AAHL,GAXD;AAgBRC,aAAW;AACTC,cAAU,UADD;AAETC,SAAK,KAFI;AAGTC,WAAO,MAHE;AAITC,YAAQ;AAJC;AAhBH,CAAV;;AAwBA,IAAMC,iBAAiB,SAAjBA,cAAiB;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,QAAd,QAAcA,QAAd;AAAA,MAAwBC,OAAxB,QAAwBA,OAAxB;AAAA,MAAiCC,QAAjC,QAAiCA,QAAjC;AAAA,MAA2CC,OAA3C,QAA2CA,OAA3C;AAAA,SACrB;AAAA;AAAA,MAAK,kCAAWvB,EAAEC,IAAb,EAAsBkB,SAAtB,CAAL;AACE;AAAA;AAAA;AACG,mBAAU,cADb;AAEG,eAAOnB,EAAEU;AAFZ;AAIIW;AAJJ,KADF;AAOGC,YAPH;AAQE;AACE,aAAOtB,EAAEa,SADX;AAEE,eAASU;AAFX;AARF,GADqB;AAAA,CAAvB;;kBAgBeL,c"
+}

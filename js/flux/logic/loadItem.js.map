@@ -1,0 +1,32 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\logic\\loadItem.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\logic\\loadItem.js",
+ "sourceRoot": "",
+ "names": [
+  "_fnCatch",
+  "error",
+  "onFailed",
+  "_fFetch",
+  "adapter",
+  "json",
+  "option",
+  "onCompleted",
+  "config",
+  "toConfig",
+  "itemConf",
+  "loadItem",
+  "api",
+  "getRequestUrl",
+  "crOptions",
+  "checkResponse",
+  "fetchOptions",
+  "undefined",
+  "uri",
+  "onCheckResponse",
+  "onFetch",
+  "onCatch"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,WAAW,SAAXA,QAAW,OAAyB;AAAA,MAAtBC,KAAsB,QAAtBA,KAAsB;AAAA,MAAfC,QAAe,QAAfA,QAAe;;AACxCA,WAASD,KAAT;AACD,CAFD;;AAIA,IAAME,UAAU,SAAVA,OAAU,CAACC,OAAD;AAAA,SAAa,iBAAuC;AAAA,QAA5BC,IAA4B,SAA5BA,IAA4B;AAAA,QAAtBC,MAAsB,SAAtBA,MAAsB;AAAA,QAAdC,WAAc,SAAdA,WAAc;;AAClE,QAAMC,SAASJ,QAAQK,QAAR,CAAiBJ,IAAjB,EAAuBC,MAAvB,CAAf;AACA,QAAMI,WAAWJ,OAAOI,QAAxB;AACAH,gBAAY,EAAEC,cAAF,EAAUE,kBAAV,EAAZ,EAAkCJ,MAAlC;AACD,GAJe;AAAA,CAAhB;;AAMA,IAAMK,WAAW,SAAXA,QAAW,CAASL,MAAT,EAAiBC,WAAjB,EAA8BL,QAA9B,EAAuC;AAAA,MAC9CU,GAD8C,GAC7BN,MAD6B,CAC9CM,GAD8C;AAAA,MACzCR,OADyC,GAC7BE,MAD6B,CACzCF,OADyC;AAAA,MAE9CS,aAF8C,GAEFD,GAFE,CAE9CC,aAF8C;AAAA,MAE/BC,SAF+B,GAEFF,GAFE,CAE/BE,SAF+B;AAAA,MAEpBC,aAFoB,GAEFH,GAFE,CAEpBG,aAFoB;AAAA,MAGhDC,YAHgD,GAGhC,OAAOF,SAAP,KAAqB,UAAtB,GACXA,UAAUR,MAAV,CADW,GAEXW,SAL4C;;AAMtD,oBAAQ;AACNC,SAAKL,cAAcP,MAAd,CADC;AAENA,YAAQA,MAFF;AAGNU,kBAAcA,YAHR;AAING,qBAAiBJ,aAJX;AAKNK,aAASjB,QAAQC,OAAR,CALH;AAMNG,iBAAaA,WANP;AAONc,aAASrB,QAPH;AAQNE,cAAUA;AARJ,GAAR;AAUD,CAhBD;;kBAkBeS,Q"
+}

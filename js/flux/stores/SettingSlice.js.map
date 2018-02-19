@@ -1,0 +1,18 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\stores\\SettingSlice.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\stores\\SettingSlice.js",
+ "sourceRoot": "",
+ "names": [
+  "SettingSlice",
+  "settings",
+  "wordsKey",
+  "exportSettingsFn",
+  "setWordsKey",
+  "bind",
+  "value",
+  "getWordsKey"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,eAAe;AACnBC,YAAU;AACRC,cAAU;AADF,GADS;;AAKnBC,kBALmB,8BAKD;AAChB,WAAO;AACLC,mBAAa,KAAKA,WAAL,CAAiBC,IAAjB,CAAsB,IAAtB;AADR,KAAP;AAGD,GATkB;AAWnBD,aAXmB,uBAWPE,KAXO,EAWD;AAChB,SAAKL,QAAL,CAAcC,QAAd,GAAyBI,KAAzB;AACD,GAbkB;AAcnBC,aAdmB,yBAcN;AACX,WAAO,KAAKN,QAAL,CAAcC,QAArB;AACD;AAhBkB,CAArB;;kBAoBeF,Y"
+}

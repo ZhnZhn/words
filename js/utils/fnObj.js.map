@@ -1,0 +1,18 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\utils\\fnObj.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\utils\\fnObj.js",
+ "sourceRoot": "",
+ "names": [
+  "fnObj",
+  "findInPropArrayByProp",
+  "propArrName",
+  "propName",
+  "obj",
+  "propValue",
+  "find",
+  "item"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,QAAQ;;AAEZC,yBAAuB,+BAACC,WAAD,EAAcC,QAAd;AAAA,WAA2B,UAACC,GAAD,EAAMC,SAAN,EAAoB;AACpE,aAAOD,IAAIF,WAAJ,EACJI,IADI,CACC;AAAA,eAAQC,KAAKJ,QAAL,MAAmBE,SAA3B;AAAA,OADD,CAAP;AAED,KAHsB;AAAA;;AAFX,CAAd;;kBASeL,K"
+}

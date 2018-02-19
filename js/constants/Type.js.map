@@ -1,0 +1,18 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\constants\\Type.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\constants\\Type.js",
+ "sourceRoot": "",
+ "names": [
+  "ModalDialog",
+  "SETTINGS",
+  "ALERT_DIALOG",
+  "EXCEPTION",
+  "MSG",
+  "EDIT_WATCH_GROUP",
+  "EDIT_WATCH_LIST",
+  "ADD_TO_WATCH"
+ ],
+ "mappings": ";;;;;AACO,IAAMA,oCAAc;AACzBC,YAAU,UADe;AAEzBC,gBAAc,cAFW;AAGzBC,aAAW,WAHc;AAIzBC,OAAK,KAJoB;;AAMzBC,oBAAkB,KANO;AAOzBC,mBAAiB,KAPQ;AAQzBC,gBAAc;AARW,CAApB"
+}

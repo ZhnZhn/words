@@ -1,0 +1,32 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\actions\\AppActions.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\actions\\AppActions.js",
+ "sourceRoot": "",
+ "names": [
+  "WORDS_BROWSER_ID",
+  "WATCH_BROWSER_ID",
+  "showBrowser",
+  "showPane",
+  "showModalDialog",
+  "showAbout",
+  "changeTheme",
+  "_fShowBrowser",
+  "bind",
+  "id",
+  "AppActions",
+  "onDefinition",
+  "paneCaption",
+  "type",
+  "paneId",
+  "onSources",
+  "onWatch",
+  "onSettings",
+  "settingFn",
+  "onAbout",
+  "onChangeTheme",
+  "onShowPane"
+ ],
+ "mappings": ";;;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,mBAAmB,kBAAzB;AACA,IAAMC,mBAAmB,UAAzB;;IAGEC,W,8BAAAA,W;IACAC,Q,8BAAAA,Q;IACAC,e,8BAAAA,e;IACAC,S,8BAAAA,S;IACAC,W,8BAAAA,W;;;AAGF,IAAMC,gBAAgB,SAAhBA,aAAgB;AAAA,SAAML,YAAYM,IAAZ,CAAiB,IAAjB,EAAuBC,EAAvB,CAAN;AAAA,CAAtB;;AAEA,IAAMC,aAAa;AACjBC,gBAAcR,SAASK,IAAT,CAAc,IAAd,EAAoB;AAChCI,iBAAa,iBADmB;AAEhCC,UAAM,MAF0B;AAGhCC,YAAQ;AAHwB,GAApB,CADG;AAMjBC,aAAWR,cAAcP,gBAAd,CANM;AAOjBgB,WAAUT,cAAcN,gBAAd,CAPO;AAQjBgB,cAAYb,gBAAgBI,IAAhB,CACV,IADU,EACJ,UADI,EACQ,mBAASU,SAAT,EADR,CARK;AAWjBC,WAASd,SAXQ;AAYjBe,iBAAed,WAZE;AAajBe,cAAYlB;AAbK,CAAnB;;kBAgBeO,U"
+}

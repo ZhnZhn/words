@@ -1,0 +1,27 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\styles\\MenuBrowserStyle.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\styles\\MenuBrowserStyle.js",
+ "sourceRoot": "",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "R",
+  "CL_SCROLL_PANE",
+  "CL_ROW",
+  "CL_ROW_NEWS",
+  "BROWSER",
+  "BG",
+  "OPEN_CLOSE",
+  "BROWSER_CAPTION",
+  "BG_HEADER",
+  "ITEM",
+  "borderBottom",
+  "BADGE"
+ ],
+ "mappings": ";;;;;;;;;;;;AAEA,IAAMA,cAAc;AAClBC,aAAWC,SADO;AAElBC,SAAOD,SAFW;AAGlBE,eAAa,qBAACC,CAAD,EAAO;AAClB,WAAO;AACLC,sBAAgBD,EAAEC,cADb;AAELC,cAAQF,EAAEG,WAFL;;AAILC,0CACKJ,EAAEK,EADP,CAJK;AAOLC,6CACKN,EAAEK,EADP,CAPK;AAULE,kDACKP,EAAEQ,SADP,CAVK;AAaLC,YAAM;AACJC,sBAAc;AADV,OAbD;AAgBLC,wCACKX,EAAEQ,SADP;AAhBK,KAAP;AAoBD;AAxBiB,CAApB;;kBA2Beb,W"
+}

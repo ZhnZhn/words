@@ -1,0 +1,16 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\dialogs\\RouterDialog.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\dialogs\\RouterDialog.js",
+ "sourceRoot": "",
+ "names": [
+  "R",
+  "DF",
+  "DialogType1",
+  "RouterDialog",
+  "getElement",
+  "type"
+ ],
+ "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,0BADQ;AAERC;AAFQ,CAAV;;AAKA,IAAMC,eAAe;AACnBC,cAAY,oBAACC,IAAD;AAAA,WAAUL,EAAEK,IAAF,KAAWL,EAAEC,EAAvB;AAAA;AADO,CAArB;;kBAIeE,Y"
+}

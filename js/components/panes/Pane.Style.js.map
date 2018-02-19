@@ -1,0 +1,33 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\panes\\Pane.Style.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\panes\\Pane.Style.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "INPUT_ROOT",
+  "width",
+  "marginLeft",
+  "BT_RAISED_ROOT",
+  "position",
+  "top",
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "R",
+  "CL_SCROLL_PANE",
+  "PANE_CAPTION",
+  "BG_HEADER",
+  "SVG_RESIZE",
+  "PANE_ROOT",
+  "BG",
+  "BT",
+  "CL_RAISED_DIV",
+  "CL_BT_RAISED_DIV",
+  "RAISED_ROOT"
+ ],
+ "mappings": ";;;;;;;;;;;;AAAA,IAAMA,IAAI;AACRC,cAAY;AACVC,WAAO,OADG;AAEVC,gBAAY;AACZ;AAHU,GADJ;AAMRC,kBAAgB;AACdC,cAAU,UADI;AAEdC,SAAK,MAFS;AAGdH,gBAAY;AAHE;AANR,CAAV;;AAaA,IAAMI,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAc,qBAACC,CAAD,EAAIJ,SAAJ,EAAkB;AAC9B,WAAO;AACLK,sBAAgBD,EAAEC,cADb;AAELC,+CACKF,EAAEG,SADP,CAFK;AAKLC,6CACKJ,EAAEI,UADP,CALK;AAQLC,4CACKL,EAAEM,EADP,CARK;AAWLjB,6CACKD,EAAEC,UADP,CAXK;AAcLkB,UAAI;AACFC,uBAAeR,EAAES,gBADf;AAEFC,gDACKtB,EAAEI,cADP,EAEKQ,EAAEG,SAFP;AAFE;AAdC,KAAP;AAsBD;AA1BiB,CAApB;;kBA6BeR,W"
+}

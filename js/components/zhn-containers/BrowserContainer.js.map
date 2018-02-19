@@ -1,0 +1,19 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\zhn-containers\\BrowserContainer.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\zhn-containers\\BrowserContainer.js",
+ "sourceRoot": "",
+ "names": [
+  "CL_ROOT",
+  "BrowserContainer",
+  "props",
+  "store",
+  "browserId",
+  "showBrowserAction",
+  "showDialogAction",
+  "onClickItem",
+  "updateWatchAction"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,UAAU,eAAhB;;IAEMC,gB;;;;;;;;;;6BACI;AAAA,mBAOK,KAAKC,KAPV;AAAA,UAEGC,KAFH,UAEGA,KAFH;AAAA,UAGGC,SAHH,UAGGA,SAHH;AAAA,UAIGC,iBAJH,UAIGA,iBAJH;AAAA,UAIsBC,gBAJtB,UAIsBA,gBAJtB;AAAA,UAKGC,WALH,UAKGA,WALH;AAAA,UAMGC,iBANH,UAMGA,iBANH;;AAQN,aACE;AAAA;AAAA,UAAK,WAAWR,OAAhB;AACE;AACE,iBAAOG,KADT;AAEE,qBAAWC,SAFb;AAGE,sBAAYC,iBAHd;AAIE,uBAAaE;AAJf,UADF;AAOE;AACE,mBAAQ,aADV;AAEE,iBAAOJ,KAFT;AAGE,sBAAY,KAHd;AAIE,uBAAY,UAJd;AAKE,sBAAYE,iBALd;AAME,wBAAcG;AANhB,UAPF;AAeE;AACE,qBAAW,CADb;AAEE,iBAAOL,KAFT;AAGE,sBAAYG;AAHd;AAfF,OADF;AAuBD;;;;;kBAGYL,gB"
+}

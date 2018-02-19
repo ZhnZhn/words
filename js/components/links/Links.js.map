@@ -1,0 +1,14 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\links\\Links.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\links\\Links.js",
+ "sourceRoot": "",
+ "names": [
+  "WordsApi",
+  "title",
+  "href",
+  "Link"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,WAAW,yBAAU;AACzBC,SAAO,UADkB;AAEzBC,QAAM;AAFmB,CAAV,iBAAjB;;AAKA,IAAMC,OAAO;AACXH;AADW,CAAb;;kBAIeG,I"
+}

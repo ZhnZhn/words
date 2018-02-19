@@ -1,0 +1,28 @@
+
+.component-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.hrz-container {
+  display : flex;
+  flex-direction : row;
+  flex-shrink: 0;
+}
+
+.modal-root {
+  z-index: 1050;
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  opacity: 1;
+  background: rgba(0,0,0, 0.35) none repeat scroll 0% 0%;
+  outline: 0px none;
+}

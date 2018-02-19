@@ -1,0 +1,20 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\items\\word\\Word.Style.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\items\\word\\Word.Style.js",
+ "sourceRoot": "",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "R",
+  "HEADER",
+  "ITEM_HEADER",
+  "DESCR",
+  "lineHeight"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA;;AAEA,IAAMA,cAAc;AAClBC,aAAWC,SADO;AAElBC,SAAOD,SAFW;AAGlBE,eAAa,qBAACC,CAAD,EAAIJ,SAAJ,EAAkB;AAC7B,WAAO;AACLK,yCACKD,EAAEE,WADP,CADK;AAIJC,aAAO;AACLC,oBAAY;AADP;AAJH,KAAP;AAQD;AAZiB,CAApB;;kBAeeT,W"
+}

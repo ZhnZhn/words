@@ -1,0 +1,34 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\zhn-atoms\\Tab.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\zhn-atoms\\Tab.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "LI",
+  "float",
+  "display",
+  "backgroundColor",
+  "color",
+  "paddingLeft",
+  "paddingRight",
+  "paddingTop",
+  "paddingBottom",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "cursor",
+  "fontWeight",
+  "border",
+  "borderBottom",
+  "SELECTED",
+  "borderColor",
+  "Tab",
+  "title",
+  "style",
+  "isSelected",
+  "onClick",
+  "_selectedStyle"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;;;AACA;;AAEA,IAAMA,IAAI;AACRC,MAAK;AACHC,WAAQ,MADL;AAEHC,aAAU,cAFP;AAGHC,qBAAkB,SAHf;AAIHC,WAAQ,MAJL;AAKHC,iBAAc,MALX;AAMHC,kBAAe,MANZ;AAOHC,gBAAa,KAPV;AAQHC,mBAAgB,KARb;AASHC,yBAAsB,KATnB;AAUHC,0BAAuB,KAVpB;AAWHC,YAAS,SAXN;;AAaHC,gBAAa,MAbV;AAcH;AACAC,YAAQ,mBAfL;AAgBHC,kBAAe;;AAhBZ,GADG;AAoBRC,YAAW;AACT;AACA;AACAX,WAAO,SAHE;AAITY,iBAAa;AAJJ;AApBH,CAAV;;AA6BA,IAAMC,MAAM,SAANA,GAAM,OAA2C;AAAA,MAAxCC,KAAwC,QAAxCA,KAAwC;AAAA,MAAjCC,KAAiC,QAAjCA,KAAiC;AAAA,MAA1BC,UAA0B,QAA1BA,UAA0B;AAAA,MAAdC,OAAc,QAAdA,OAAc;;AACnD,MAAMC,iBAAkBF,UAAD,GACXrB,EAAEgB,QADS,GAEX,IAFZ;AAGA,SACG;AAAA;AAAA;AACG,wCAAYhB,EAAEC,EAAd,EAAqBmB,KAArB,EAA+BG,cAA/B,CADH;AAEG,eAASD;AAFZ;AAIG;AAAA;AAAA;AAAOH;AAAP;AAJH,GADH;AAQH,CAZD;;AAcA;;;;;;;;kBAQeD,G"
+}

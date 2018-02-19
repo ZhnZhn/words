@@ -1,0 +1,30 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\watch-list\\WithLogicItem.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\watch-list\\WithLogicItem.js",
+ "sourceRoot": "",
+ "names": [
+  "crMsgItemExisted",
+  "findGroup",
+  "findList",
+  "isInArraySameCaption",
+  "filter",
+  "WithLogicItem",
+  "addItem",
+  "watchList",
+  "item",
+  "caption",
+  "groupCaption",
+  "listCaption",
+  "toGroup",
+  "toList",
+  "items",
+  "push",
+  "isDone",
+  "removeItem",
+  "groupFrom",
+  "listFrom"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;IAGEA,gB,qBAAAA,gB;IAEAC,S,qBAAAA,S;IACAC,Q,qBAAAA,Q;IACAC,oB,qBAAAA,oB;IACAC,M,qBAAAA,M;;;AAGF,IAAMC,gBAAgB;AAEpBC,SAFoB,mBAEZC,SAFY,EAEDC,IAFC,EAEI;AAAA,QAEfC,OAFe,GAGZD,IAHY,CAEfC,OAFe;AAAA,QAENC,YAFM,GAGZF,IAHY,CAENE,YAFM;AAAA,QAEQC,WAFR,GAGZH,IAHY,CAEQG,WAFR;AAAA,QAIhBC,OAJgB,GAINX,UAAUM,SAAV,EAAqBG,YAArB,CAJM;AAAA,QAKhBG,MALgB,GAKPX,SAASU,OAAT,EAAkBD,WAAlB,CALO;AAAA,QAMhBG,KANgB,GAMRD,OAAOC,KANC;;;AAQtB,QAAKX,qBAAqBW,KAArB,EAA4BL,OAA5B,CAAL,EAA2C;AACzC,aAAOT,iBAAiBS,OAAjB,EAA0BE,WAA1B,CAAP;AACD;AACD,QAAIG,KAAJ,EAAU;AACRD,aAAOC,KAAP,CAAaC,IAAb,CAAkB,EAAEN,gBAAF,EAAlB;AACD,KAFD,MAEO;AACLI,aAAOC,KAAP,GAAe,CAAC,EAAEL,gBAAF,EAAD,CAAf;AACD;AACD,WAAO,EAAEO,QAAQ,IAAV,EAAP;AACD,GAnBmB;AAqBpBC,YArBoB,sBAqBTV,SArBS,QAqBuC;AAAA,QAApCG,YAAoC,QAApCA,YAAoC;AAAA,QAAtBC,WAAsB,QAAtBA,WAAsB;AAAA,QAATF,OAAS,QAATA,OAAS;;AACzD,QAAMS,YAAYjB,UAAUM,SAAV,EAAqBG,YAArB,CAAlB;AAAA,QACMS,WAAWjB,SAASgB,SAAT,EAAoBP,WAApB,CADjB;;AAGAQ,aAASL,KAAT,GAAiBV,OAAOe,SAASL,KAAhB,EAAuBL,OAAvB,CAAjB;AACD;AA1BmB,CAAtB;;kBA8BeJ,a"
+}

@@ -1,0 +1,29 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\watch-list\\WithLogicGroup.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\watch-list\\WithLogicGroup.js",
+ "sourceRoot": "",
+ "names": [
+  "crMsgGroupExisted",
+  "crMsgNotFound",
+  "isInArraySameCaption",
+  "getArrayWithObj",
+  "findIndex",
+  "getArrayWithRename",
+  "filter",
+  "WithLogicGroup",
+  "addGroup",
+  "watchList",
+  "caption",
+  "groups",
+  "_captionObj",
+  "isDone",
+  "renameGroup",
+  "captionFrom",
+  "captionTo",
+  "groupIndex",
+  "deleteGroup"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;IAGEA,iB,qBAAAA,iB;IACAC,a,qBAAAA,a;IAEAC,oB,qBAAAA,oB;IACAC,e,qBAAAA,e;IACAC,S,qBAAAA,S;IACAC,kB,qBAAAA,kB;IACAC,M,qBAAAA,M;;;AAGF,IAAMC,iBAAiB;AAErBC,UAFqB,oBAEZC,SAFY,QAEW;AAAA,QAAVC,OAAU,QAAVA,OAAU;;AAC9B,QAAMC,SAASF,UAAUE,MAAzB;;AAEA,QAAKT,qBAAqBS,MAArB,EAA6BD,OAA7B,CAAL,EAA2C;AACzC,aAAOV,kBAAkBU,OAAlB,CAAP;AACD;;AAED,QAAME,cAAeF,OAAD,GACT,EAAEA,gBAAF,EADS,GAET,EAAEA,SAAS,SAAX,EAFX;;AAIAD,cAAUE,MAAV,GAAmBR,gBAAgBQ,MAAhB,EAAwBC,WAAxB,CAAnB;AACA,WAAO,EAAEC,QAAQ,IAAV,EAAP;AACD,GAfoB;AAiBrBC,aAjBqB,uBAiBTL,SAjBS,SAiB2B;AAAA,QAAxBM,WAAwB,SAAxBA,WAAwB;AAAA,QAAXC,SAAW,SAAXA,SAAW;;AAC9C,QAAML,SAASF,UAAUE,MAAzB;AAAA,QACMM,aAAab,UAAUO,MAAV,EAAkBI,WAAlB,CADnB;;AAGA,QAAIE,eAAe,CAAC,CAApB,EAAsB;AACpB,aAAOhB,cAAc,OAAd,EAAuBc,WAAvB,CAAP;AACD;AACD,QAAKb,qBAAqBS,MAArB,EAA6BK,SAA7B,CAAL,EAA8C;AAC5C,aAAOhB,kBAAkBgB,SAAlB,CAAP;AACD;;AAEDP,cAAUE,MAAV,GAAmBN,mBAAmBM,MAAnB,EAA2BM,UAA3B,EAAuCD,SAAvC,CAAnB;AACA,WAAO,EAAEH,QAAQ,IAAV,EAAP;AACD,GA9BoB;AAgCrBK,aAhCqB,uBAgCTT,SAhCS,SAgCc;AAAA,QAAVC,OAAU,SAAVA,OAAU;;AACjCD,cAAUE,MAAV,GAAmBL,OAAOG,UAAUE,MAAjB,EAAyBD,OAAzB,CAAnB;AACA,WAAO,EAAEG,QAAQ,IAAV,EAAP;AACD;AAnCoB,CAAvB;;kBAuCeN,c"
+}

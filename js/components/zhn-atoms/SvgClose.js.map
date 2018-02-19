@@ -1,0 +1,20 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\zhn-atoms\\SvgClose.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\zhn-atoms\\SvgClose.js",
+ "sourceRoot": "",
+ "names": [
+  "CL_ROOT",
+  "S",
+  "COLOR",
+  "SVG",
+  "padding",
+  "SvgClose",
+  "style",
+  "tabIndex",
+  "onClose",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AACA;;AAEA,IAAMA,UAAU,WAAhB;AACA,IAAMC,IAAI;AACR;AACAC,SAAO,SAFC;AAGRC,OAAK;AACHC,aAAS;AADN;AAHG,CAAV;;AAQA,IAAMC,WAAW,SAAXA,QAAW;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,QAAV,QAAUA,QAAV;AAAA,MAAoBC,OAApB,QAAoBA,OAApB;AAAA,SACd;AAAA;AAAA;AACG,gBAAUD,QADb;AAEG,iBAAWP,OAFd;AAGG,aAAOM,KAHV;AAIG,eAASE;AAJZ;AAME;AAAA;AAAA;AACG,iBAAQ,WADX,EACuB,OAAM,MAD7B,EACoC,QAAO,MAD3C;AAEG,eAAOP,EAAEE,GAFZ,EAEiB,qBAAoB,MAFrC,EAE4C,OAAM,4BAFlD;AAGG,qBAAY,GAHf;AAIG,gBAAQF,EAAEC,KAJb;AAKG,uBAAc;AALjB;AAOG,8CAAM,GAAE,eAAR,GAPH;AAQG,8CAAM,GAAE,eAAR;AARH;AANF,GADc;AAAA,CAAjB;;AAoBA;;;;;;AAMAG,SAASI,YAAT,GAAwB;AACtBD,WAAS,mBAAM,CAAE;AADK,CAAxB;;kBAKeH,Q"
+}

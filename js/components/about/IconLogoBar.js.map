@@ -1,0 +1,17 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\about\\IconLogoBar.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\about\\IconLogoBar.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "ROOT",
+  "textAlign",
+  "paddingTop",
+  "IconLogoBar",
+  "iconStyle",
+  "iconGitHubStyle"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAO;AACLC,eAAY,QADP;AAELC,gBAAY;AAFP;AADC,CAAV;;AAOA,IAAMC,cAAc,SAAdA,WAAc;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,eAAd,QAAcA,eAAd;AAAA,SAClB;AAAA;AAAA,MAAK,OAAON,EAAEC,IAAd;AACG;AACG,aAAOK,eADV;AAEG,aAAM,eAFT;AAGG,YAAK;AAHR,MADH;AAMG;AACE,aAAOD;AADT,MANH;AASG;AACE,aAAOA;AADT;AATH,GADkB;AAAA,CAApB;;kBAgBeD,W"
+}

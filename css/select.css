@@ -1,0 +1,13 @@
+.option-row:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.option-row:hover {
+  border-bottom: solid 2px #1b75bb;
+  font-weight: bolder;
+}
+
+.option-row__active {
+  border-bottom: solid 2px #1b75bb;
+  font-weight: bolder;
+}

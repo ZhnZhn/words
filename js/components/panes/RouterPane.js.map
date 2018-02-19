@@ -1,0 +1,18 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\panes\\RouterPane.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\panes\\RouterPane.js",
+ "sourceRoot": "",
+ "names": [
+  "R",
+  "DF",
+  "Pane",
+  "Input",
+  "Item",
+  "RouterPane",
+  "getElement",
+  "type"
+ ],
+ "mappings": ";;;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,MAAI;AACFC,4BADE;AAEFC,8BAFE;AAGFC;AAHE,GADI;AAMRJ,KAAG;AACDE,4BADC;AAEDC,gCAFC;AAGDC;AAHC;AANK,CAAV;;AAaA,IAAMC,aAAa;AACjBC,cAAY,oBAACC,IAAD,EAAU;AACpB;AACA,WAAOP,EAAEO,IAAF,KAAWP,EAAEC,EAApB;AACD;AAJgB,CAAnB;;kBAOeI,U"
+}

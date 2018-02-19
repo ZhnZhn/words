@@ -1,0 +1,24 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\adapters\\words\\WordsApi.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\adapters\\words\\WordsApi.js",
+ "sourceRoot": "",
+ "names": [
+  "C",
+  "URL",
+  "WordsApi",
+  "crOptions",
+  "option",
+  "apiKey",
+  "headers",
+  "getRequestUrl",
+  "word",
+  "itemConf",
+  "loadType",
+  "console",
+  "log",
+  "checkResponse"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,IAAI;AACRC,OAAK;AADG,CAAV;;AAIA,IAAMC,WAAW;AACfC,WADe,qBACLC,MADK,EACE;AAAA,QACPC,MADO,GACID,MADJ,CACPC,MADO;;AAEf,WAAO;AACLC,eAAS;AACP,yBAAiBD;AADV;AADJ,KAAP;AAKD,GARc;AASfE,eATe,yBASDH,MATC,EASM;AAAA,uBACqBA,MADrB,CACXI,IADW;AAAA,QACXA,IADW,gCACN,SADM;AAAA,2BACqBJ,MADrB,CACKK,QADL;AAAA,QACKA,QADL,oCACc,EADd;AAAA,QAEXC,QAFW,GAEED,QAFF,CAEXC,QAFW;;AAGnBC,YAAQC,GAAR,CAAYR,MAAZ;AACA,QAAIM,aAAa,GAAjB,EAAsB;AACpB,aAAUV,EAAEC,GAAZ;AACD;AACD,WAAUD,EAAEC,GAAZ,SAAmBO,IAAnB;AACD,GAjBc;AAkBfK,eAlBe,2BAkBA;AACb,WAAO,IAAP;AACD;AApBc,CAAjB;;kBAuBeX,Q"
+}

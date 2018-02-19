@@ -1,0 +1,23 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\dialogs\\RouterModal.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\dialogs\\RouterModal.js",
+ "sourceRoot": "",
+ "names": [
+  "_r",
+  "SETTINGS",
+  "ALERT_DIALOG",
+  "EXCEPTION",
+  "MSG",
+  "EDIT_WATCH_GROUP",
+  "EDIT_WATCH_LIST",
+  "ADD_TO_WATCH",
+  "RouterModal",
+  "getDialog",
+  "type",
+  "Promise",
+  "resolve"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,mDACH,kBAAEC,QADC,gEAEH,kBAAEC,YAFC,6DAGH,kBAAEC,SAHC,6DAIH,kBAAEC,GAJC,2DAMH,kBAAEC,gBANC,iEAOH,kBAAEC,eAPC,gEAQH,kBAAEC,YARC,mCAAN;;AAWA,IAAMC,cAAc;AAClBC,WADkB,qBACRC,IADQ,EACH;AACb,WAAOC,QAAQC,OAAR,CAAgBZ,GAAGU,IAAH,CAAhB,CAAP;AACD;AAHiB,CAApB;;kBAMeF,W"
+}

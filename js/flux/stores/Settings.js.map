@@ -1,0 +1,21 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\stores\\Settings.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\stores\\Settings.js",
+ "sourceRoot": "",
+ "names": [
+  "_settings",
+  "wordsApi",
+  "undefined",
+  "Settings",
+  "settingFn",
+  "key1",
+  "fSetKey",
+  "propName",
+  "value",
+  "getKey",
+  "id"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,YAAY;AAChBC,YAAUC;AADM,CAAlB;;AAIA,IAAMC,WAAW;AAEfC,WAFe,uBAEJ;AACT,WAAO;AACLC,YAAM,KAAKC,OAAL,CAAa,UAAb;AADD,KAAP;AAGD,GANc;;;AAQfA,WAAS,iBAACC,QAAD;AAAA,WAAc,UAACC,KAAD,EAAW;AAChCR,gBAAUO,QAAV,IAAsBC,KAAtB;AACD,KAFQ;AAAA,GARM;AAWfC,QAXe,kBAWRC,EAXQ,EAWL;AACR,WAAOV,UAAUU,EAAV,CAAP;AACD;AAbc,CAAjB;;kBAiBeP,Q"
+}

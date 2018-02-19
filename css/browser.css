@@ -1,0 +1,30 @@
+.open-close:focus {
+  border-bottom: 1px solid #80c040 !important;
+}
+
+.row__news-source {
+  width: 100%;
+  text-align: left;
+  line-height: 2;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 16px;
+  cursor: pointer;
+}
+.row__news-source:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.row__news-source:hover{
+  border-bottom: 1px solid #1b75bb;
+}
+.row__news-source:focus{
+  border-bottom: 1px solid #80c040;
+ /*outline: none;*/
+}
+
+.row__type2-topic:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.15);
+}

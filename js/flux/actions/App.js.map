@@ -1,0 +1,27 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\actions\\App.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\actions\\App.js",
+ "sourceRoot": "",
+ "names": [
+  "WORDS_BROWSER_ID",
+  "WATCH_BROWSER_ID",
+  "_fShowBrowser",
+  "showBrowser",
+  "bind",
+  "id",
+  "AppActions",
+  "showPaneDefinition",
+  "showPane",
+  "paneCaption",
+  "type",
+  "paneId",
+  "showWordsBrowser",
+  "showWatch",
+  "showSettings",
+  "showModalDialog",
+  "settingFn"
+ ],
+ "mappings": ";;;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,mBAAmB,kBAAzB;AACA,IAAMC,mBAAmB,UAAzB;;AAEA,IAAMC,gBAAgB,SAAhBA,aAAgB;AAAA,SAAM,2BAAOC,WAAP,CAAmBC,IAAnB,6BAAgCC,EAAhC,CAAN;AAAA,CAAtB;;AAEA,IAAMC,aAAa;AACjBC,sBAAoB,2BAAOC,QAAP,CAAgBJ,IAAhB,CAAqB,IAArB,EAA2B;AAC7CK,iBAAa,iBADgC;AAE7CC,UAAM,MAFuC;AAG7CC,YAAQ;AAHqC,GAA3B,CADH;AAMjBC,oBAAkBV,cAAcF,gBAAd,CAND;AAOjBa,aAAYX,cAAcD,gBAAd,CAPK;AAQjBa,gBAAc,2BAAOC,eAAP,CAAuBX,IAAvB,CACZ,IADY,EACN,UADM,EACM,mBAASY,SAAT,EADN;AARG,CAAnB;;kBAaeV,U"
+}

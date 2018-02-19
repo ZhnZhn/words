@@ -1,0 +1,16 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\zhn-atoms\\ScrollPane.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\zhn-atoms\\ScrollPane.js",
+ "sourceRoot": "",
+ "names": [
+  "CL",
+  "ScrollPane",
+  "style",
+  "className",
+  "children",
+  "_className"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,KAAK,aAAX;;AAEA,IAAMC,aAAa,SAAbA,UAAa,OAAuC;AAAA,OAApCC,KAAoC,QAApCA,KAAoC;AAAA,6BAA7BC,SAA6B;AAAA,OAA7BA,SAA6B,kCAAnB,EAAmB;AAAA,OAAfC,QAAe,QAAfA,QAAe;;AACvD,OAAMC,aAAaF,aAAaA,cAAcH,EAA3B,GACPG,SADO,GAEPH,EAFZ;AAGA,UACE;AAAA;AAAA,QAAK,WAAWK,UAAhB,EAA4B,OAAOH,KAAnC;AACIE;AADJ,IADF;AAKF,CATD;;kBAWeH,U"
+}

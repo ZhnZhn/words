@@ -1,0 +1,18 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\watch-browser\\RowInputSelect.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\watch-browser\\RowInputSelect.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "CAPTION",
+  "width",
+  "RowInputSelect",
+  "caption",
+  "rest",
+  "rowDiv",
+  "labelSpan"
+ ],
+ "mappings": ";;;;;;;;;;;;;;AAAA;;;;AAGA;;;;AACA;;;;;;AAHA;;AAKA,IAAMA,IAAI;AACRC,WAAU;AACRC,WAAO;AADC;AADF,CAAV;;AAMA,IAAMC,iBAAiB,SAAjBA,cAAiB;AAAA,MAAGC,OAAH,QAAGA,OAAH;AAAA,MAAeC,IAAf;AAAA,SACrB;AAAA;AAAA,MAAK,OAAO,uBAAMC,MAAlB;AACG;AAAA;AAAA,QAAM,kCAAW,uBAAMC,SAAjB,EAA+BP,EAAEC,OAAjC,CAAN;AACGG;AADH,KADH;AAIG;AACG,aAAM;AADT,OAEOC,IAFP;AAJH,GADqB;AAAA,CAAvB;;AAYA;;;;;;;;;kBASeF,c"
+}

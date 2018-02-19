@@ -1,0 +1,30 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\header\\ProgressLoading.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\header\\ProgressLoading.js",
+ "sourceRoot": "",
+ "names": [
+  "C",
+  "LOADING",
+  "FAILED",
+  "ProgressLoading",
+  "state",
+  "completed",
+  "color",
+  "_onStore",
+  "actionType",
+  "ACTIONS",
+  "props",
+  "setState",
+  "LOADING_COMPLETE",
+  "LOADING_FAILED",
+  "unsubscribe",
+  "store",
+  "listenLoading",
+  "nextProps",
+  "nextState",
+  "complete"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,WAAU,SADF;AAERC,UAAS;AAFD,CAAV;;IAKMC,e;;;;;;;;;;;;;;sNACJC,K,GAAQ;AACNC,iBAAW,CADL;AAENC,aAAON,EAAEC;AAFH,K,QAoBRM,Q,GAAW,UAACC,UAAD,EAAgB;AAAA,UAEfC,OAFe,GAEH,MAAKC,KAFF,CAEfD,OAFe;;AAGvB,UAAID,eAAeC,QAAQR,OAA3B,EAAmC;AACjC,cAAKU,QAAL,CAAc,EAAEN,WAAW,EAAb,EAAiBC,OAAON,EAAEC,OAA1B,EAAd;AACD,OAFD,MAEO,IAAIO,eAAeC,QAAQG,gBAA3B,EAA4C;AACjD,cAAKD,QAAL,CAAc,EAAEN,WAAW,GAAb,EAAkBC,OAAON,EAAEC,OAA3B,EAAd;AACD,OAFM,MAEA,IAAIO,eAAeC,QAAQI,cAA3B,EAA0C;AAC/C,cAAKF,QAAL,CAAc,EAAEN,WAAW,GAAb,EAAkBC,OAAON,EAAEE,MAA3B,EAAd;AACD;AACJ,K;;;;;wCAzBkB;AACjB,WAAKY,WAAL,GAAmB,KAAKJ,KAAL,CAAWK,KAAX,CAChBC,aADgB,CACF,KAAKT,QADH,CAAnB;AAED;;;2CACqB;AACpB,WAAKO,WAAL;AACD;;;0CAEqBG,S,EAAWC,S,EAAU;AACzC,UAAI,KAAKd,KAAL,CAAWC,SAAX,KAAyBa,UAAUC,QAAvC,EAAiD;AAC/C,eAAO,KAAP;AACD;AACD,aAAO,IAAP;AACD;;;6BAcO;AAAA,mBACuB,KAAKf,KAD5B;AAAA,UACEC,SADF,UACEA,SADF;AAAA,UACaC,KADb,UACaA,KADb;;AAEN,aACE;AACG,gBAAQ,CADX;AAEG,eAAOA,KAFV;AAGG,mBAAWD;AAHd,QADF;AAOD;;;;;kBAGYF,e"
+}

@@ -1,0 +1,28 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\adapters\\words\\WordsAdapter.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\adapters\\words\\WordsAdapter.js",
+ "sourceRoot": "",
+ "names": [
+  "EMPTY",
+  "_crConfig",
+  "json",
+  "word",
+  "frequency",
+  "pronunciation",
+  "all",
+  "_pron",
+  "Object",
+  "assign",
+  "caption",
+  "id",
+  "title",
+  "WordsAdapter",
+  "toConfig",
+  "option",
+  "console",
+  "log"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,QAAQ,EAAd;;AAEA,IAAMC,YAAY,SAAZA,SAAY,CAACC,IAAD,EAAU;AAAA,MAElBC,IAFkB,GAIhBD,IAJgB,CAElBC,IAFkB;AAAA,wBAIhBD,IAJgB,CAGlBE,SAHkB;AAAA,MAGlBA,SAHkB,mCAGRJ,KAHQ;AAAA,4BAIhBE,IAJgB,CAGDG,aAHC;AAAA,MAGDA,aAHC,uCAGa,EAHb;AAAA,2BAKJA,aALI,CAKlBC,GALkB;AAAA,MAKlBA,GALkB,sCAKdN,KALc;AAAA,MAMpBO,KANoB,GAMZD,YACAA,GADA,SAEJN,KARgB;;AAU1B,SAAOQ,OAAOC,MAAP,CAAcP,IAAd,EAAoB;AACzBQ,aAASP,IADgB;AAEzBQ,QAAIR,QAAQ,IAFa;AAGzBS,WAAUT,IAAV,UAAmBC,SAAnB,SAAgCG;AAHP,GAApB,CAAP;AAMD,CAhBD;;AAkBA,IAAMM,eAAe;AACnBC,UADmB,sBACM;AAAA,QAAhBZ,IAAgB,uEAAX,EAAW;AAAA,QAAPa,MAAO;;AACvBC,YAAQC,GAAR,CAAYf,IAAZ;AACA,WAAOD,UAAUC,IAAV,CAAP;AACD;AAJkB,CAArB;;kBAOeW,Y"
+}

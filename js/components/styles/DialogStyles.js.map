@@ -1,0 +1,37 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\styles\\DialogStyles.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\styles\\DialogStyles.js",
+ "sourceRoot": "",
+ "names": [
+  "DialogStyles",
+  "rowDiv",
+  "display",
+  "alignItems",
+  "marginRight",
+  "marginTop",
+  "marginLeft",
+  "marginBottom",
+  "labelSpan",
+  "color",
+  "textAlign",
+  "width",
+  "paddingRight",
+  "fontSize",
+  "fontWeight",
+  "userSelect",
+  "validationContainer",
+  "paddingLeft",
+  "paddingTop",
+  "validationMessageNumber",
+  "height",
+  "border",
+  "borderRadius",
+  "crRowLabelStyle",
+  "isShowLabels",
+  "rowStyle",
+  "labelStyle"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,eAAe;AACnB;AACAC,UAAQ;AACN;AACA;AACAC,aAAS,MAHH;AAINC,gBAAY,QAJN;AAKNC,iBAAa,KALP;AAMNC,eAAW,KANL;AAONC,gBAAY,KAPN;AAQNC,kBAAc;AARR,GAFW;AAYnBC,aAAY;AACV;AACA;AACAC,WAAO,OAHG;AAIVP,aAAS,cAJC;AAKV;AACAQ,eAAW,OAND;AAOVC,WAAO,OAPG;AAQVC,kBAAc,KARJ;AASVC,cAAU,MATA;AAUVC,gBAAY,MAVF;AAWVC,gBAAY;AAXF,GAZO;;AA0BnB;AACAC,uBAAqB;AACnBC,iBAAa,MADM;AAEnBC,gBAAY,KAFO;AAGnBT,WAAO;AAHY,GA3BF;AAgCnBU,2BAA0B;AACxBjB,aAAS,cADe;AAExBS,WAAO,MAFiB;AAGxBS,YAAQ,MAHgB;AAIxBC,YAAQ,mBAJgB;AAKxBC,kBAAc,KALU;AAMxBZ,eAAW,QANa;AAOxBN,iBAAa;AAPW,GAhCP;;AA0CnBmB,mBAAiB,2BAAuB;AAAA,QAAtBC,YAAsB,uEAAT,IAAS;;AACtC;;;;;;;;;AASA,WAAO;AACLC,gBAAUzB,aAAaC,MADlB;AAELyB,kBAAY1B,aAAaQ;AAFpB,KAAP;AAID;;AAxDkB,CAArB;;kBA4DeR,Y"
+}

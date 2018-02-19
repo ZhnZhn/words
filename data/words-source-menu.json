@@ -1,0 +1,38 @@
+{
+ "menu": [
+   {
+      "caption": "Words API",
+      "items": [
+        { "id": "WD_W" },
+        { "id": "WD_R" }
+      ]
+    }
+  ],
+  "items": {
+    "WD_W": {
+      "type": "WD_W",
+      "menuTitle": "Word Definition",
+      "dialogType": "DialogType1",
+      "paneCaption": "Word Definition",
+      "paneId": "P_WD_W",
+      "dialogProps": {
+        "caption": "Word Definition",
+        "source": "words-api"
+      }
+    },
+    "WD_R": {
+      "type": "WD_R",
+      "menuTitle": "Random Word",
+      "dialogType": "DialogType1",
+      "paneCaption": "Random Word ",
+      "paneId": "P_WD_R",
+      "paneType": "R",
+      "loadType": "R",
+      "dialogProps": {
+        "caption": "Random Word",
+        "source": "words-api"
+      }
+    }
+
+  }
+}

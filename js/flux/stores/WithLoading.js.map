@@ -1,0 +1,21 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\stores\\WithLoading.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\stores\\WithLoading.js",
+ "sourceRoot": "",
+ "names": [
+  "CHANNEL",
+  "WithLoading",
+  "listenLoading",
+  "fnHandler",
+  "emitter",
+  "addListener",
+  "removeListener",
+  "triggerLoading",
+  "actionType",
+  "value",
+  "emit"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,UAAU,kBAAhB;;AAEA,IAAMC,cAAc;AACjBC,eADiB,yBACHC,SADG,EACO;AAAA;;AACtB,SAAKC,OAAL,CAAaC,WAAb,CAAyBL,OAAzB,EAAkCG,SAAlC;AACA,WAAO,YAAM;AACX,YAAKC,OAAL,CAAaE,cAAb,CAA4BH,SAA5B;AACD,KAFD;AAGD,GANgB;AAQjBI,gBARiB,0BAQFC,UARE,EAQUC,KARV,EAQgB;AAC/B,SAAKL,OAAL,CAAaM,IAAb,CAAkBV,OAAlB,EAA2BQ,UAA3B,EAAuCC,KAAvC;AACD;AAVgB,CAApB;;kBAaeR,W"
+}

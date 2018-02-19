@@ -1,0 +1,14 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\actions\\LoadingActions.js",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\actions\\LoadingActions.js",
+ "sourceRoot": "",
+ "names": [
+  "T",
+  "LOADING",
+  "LOADING_COMPLETE",
+  "LOADING_FAILED"
+ ],
+ "mappings": ";;;;;AACO,IAAMA,gBAAI;AACfC,WAAS,SADM;AAEfC,oBAAkB,iBAFH;AAGfC,kBAAgB;AAHD,CAAV"
+}

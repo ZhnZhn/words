@@ -1,0 +1,17 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\index.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\index.js",
+ "sourceRoot": "",
+ "names": [
+  "appProps",
+  "store",
+  "action",
+  "CAT",
+  "LPT",
+  "document",
+  "getElementById"
+ ],
+ "mappings": ";;AAAA;;;;AACA;;AAEA;;;;AACA;;;;AAEA;;AACA;;AAEA;;;;;;AAEA,IAAMA,WAAW;AACfC,wBADe,EACRC,4BADQ,EACAC,wBADA,EACKC;AADL,CAAjB;;AAIA,sBACE,kDAASJ,QAAT,CADF,EAEEK,SAASC,cAAT,CAAwB,KAAxB,CAFF"
+}

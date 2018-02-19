@@ -1,0 +1,19 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\zhn-browsers\\MenuBrowser.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\zhn-browsers\\MenuBrowser.js",
+ "sourceRoot": "",
+ "names": [
+  "MenuBrowser",
+  "props",
+  "theme",
+  "store",
+  "showAction",
+  "browserId",
+  "onClickItem",
+  "TS",
+  "createStyle"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AAEA;;;;;;IAEMA,W;;;;;;;;;;6BACI;AAAA,mBAMI,KAAKC,KANT;AAAA,UAEEC,KAFF,UAEEA,KAFF;AAAA,UAGEC,KAHF,UAGEA,KAHF;AAAA,UAIEC,UAJF,UAIEA,UAJF;AAAA,UAIcC,SAJd,UAIcA,SAJd;AAAA,UAKEC,WALF,UAKEA,WALF;AAAA,UAOAC,EAPA,GAOKL,MAAMM,WAAN,4BAPL;;;AASN,aACE;AACG,qBAAaD,EADhB;AAEG,eAAOJ,KAFV;AAGG,oBAAYC,UAHf;AAIG,mBAAWC,SAJd;AAKG,iBAAQ,eALX;AAMG,aAAI,6BANP;AAOG,qBAAaC;AAPhB,QADF;AAWD;;;;;kBAGY,yBAAUN,WAAV,C"
+}

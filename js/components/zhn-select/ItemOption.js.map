@@ -1,0 +1,19 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\zhn-select\\ItemOption.jsx",
+ "file": "D:\\_Dev\\_React\\_Words\\js\\components\\zhn-select\\ItemOption.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "CAPTION",
+  "width",
+  "whiteSpace",
+  "overflow",
+  "textOverflow",
+  "ItemOption",
+  "item",
+  "propCaption"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC,WAAU;AACRC,WAAO,MADC;AAERC,gBAAY,QAFJ;AAGRC,cAAU,QAHF;AAIRC,kBAAc;AAJN;AADF,CAAV;;AASA,IAAMC,aAAa,SAAbA,UAAa;AAAA,uBAAGC,IAAH;AAAA,MAAGA,IAAH,6BAAQ,EAAR;AAAA,MAAYC,WAAZ,QAAYA,WAAZ;AAAA,SACjB;AAAA;AAAA,MAAK,OAAOR,EAAEC,OAAd;AACGM,SAAKC,WAAL;AADH,GADiB;AAAA,CAAnB;;kBAMeF,U"
+}
