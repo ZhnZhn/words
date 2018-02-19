@@ -23,7 +23,7 @@
     "rules" : {
 
     "no-mixed-spaces-and-tabs" : [2, "smart-tabs"],
-    "no-console" : 0,
+    "no-console" : 1,
 
     "default-case": 2,
     "jsx-quotes": [2, "prefer-double"],
