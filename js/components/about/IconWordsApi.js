@@ -22,7 +22,7 @@ var IconWordsApi = function IconWordsApi(_ref) {
     },
     _react2.default.createElement("img", {
       alt: "Logo WordsApi",
-      src: "/css/wordsapilogo.png"
+      src: "css/wordsapilogo.png"
     })
   );
 };
