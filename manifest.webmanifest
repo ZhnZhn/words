@@ -4,6 +4,7 @@
   "start_url": "/words/index.html",
   "display": "standalone",
   "background_color": "#808080",
+  "theme_color": "#808080",
   "description": "The web app that helps to view definitions for English words according WordsApi data provider.",
   "icons": [{
      "src": "/css/favicon.png",
