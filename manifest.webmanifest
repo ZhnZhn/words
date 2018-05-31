@@ -1,0 +1,13 @@
+{
+  "name": "Words",
+  "short_name": "Words",
+  "start_url": "/words/index.html",
+  "display": "standalone",
+  "background_color": "#808080",
+  "description": "The web app that helps to view definitions for English words according WordsApi data provider.",
+  "icons": [{
+     "src": "/css/favicon.png",
+     "sizes": "32x32 48x48 72x72 96x96 128x128 256x258",
+     "type": "image/png"
+  }]
+}
