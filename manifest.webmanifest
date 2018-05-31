@@ -8,7 +8,19 @@
   "description": "The web app that helps to view definitions for English words according WordsApi data provider.",
   "icons": [{
     "src": "/css/favicon.png",
-    "sizes": "32x32 48x48 72x72 96x96",
+    "sizes": "32x32",
+    "type": "image/png"
+  },{
+    "src": "/css/logo-48.png",
+    "sizes": "48x48",
+    "type": "image/png"
+  },{
+    "src": "/css/logo-72.png",
+    "sizes": "72x72",
+    "type": "image/png"
+  },{
+    "src": "/css/logo-96.png",
+    "sizes": "96x96",
     "type": "image/png"
   },{
     "src": "/css/logo-128.png",
