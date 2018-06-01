@@ -60,9 +60,9 @@ const fnFetch = function({
           throw {
             msg: `Not Found ${status}`
           };
-       } else if (status>=500 && status<600){
+       } else {
           throw {
-            msg : `Response Error ${status} : ${statusText}`
+            msg : `Response Error ${status}: ${statusText}`
           };
        }
       })

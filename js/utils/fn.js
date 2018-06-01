@@ -78,9 +78,9 @@ var fnFetch = function fnFetch(_ref) {
         throw {
           msg: 'Not Found ' + status
         };
-      } else if (status >= 500 && status < 600) {
+      } else {
         throw {
-          msg: 'Response Error ' + status + ' : ' + statusText
+          msg: 'Response Error ' + status + ': ' + statusText
         };
       }
     }).then(function (_ref2) {
@@ -99,4 +99,4 @@ var fnFetch = function fnFetch(_ref) {
 };
 
 exports.default = fnFetch;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\utils\fn.js.map
+//# sourceMappingURL=fn.js.map

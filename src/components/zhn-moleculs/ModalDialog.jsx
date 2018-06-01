@@ -136,7 +136,10 @@ class ModalDialog extends Component {
     return (
          <div
             className={_className}
-            style={{ ...S.ROOT_DIV, ...S.ROOT_DIV_MODAL, ...style, ..._style}}
+            style={{
+              ...S.ROOT_DIV, ...S.ROOT_DIV_MODAL,
+              ...style, ..._style
+            }}
             onClick={this._handleClickDialog}
          >
             <BrowserCaption

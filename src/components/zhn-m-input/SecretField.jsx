@@ -93,11 +93,25 @@ class TextField extends Component {
      this.props.onEnter(event.target.value)
    }
  }
+ _isValue = (isAllowRemember) => {
+    return isAllowRemember
+      ? this._input
+          ? !!this._input.value
+          : false
+      : !!this.state.value;
+ }
+
+ _refInput = c => this._input = c
 
   render(){
-    const { rootStyle, caption, maxLength, errorMsg='' } = this.props
+    const {
+            rootStyle, caption,
+            isAllowRemember, name,
+            maxLength, errorMsg=''
+          } = this.props
         , { value, isPassTest } = this.state
-        , _labelStyle = (value || this.isFocus)
+        //, _labelStyle = (value || this.isFocus)
+          , _labelStyle = (this._isValue(isAllowRemember) || this.isFocus)
             ? undefined
             : S.LABEL_TO_INPUT
         , _labelErrStyle = (isPassTest)
@@ -105,7 +119,20 @@ class TextField extends Component {
             : S.LABEL_ON_ERROR
         , _lineStyle = (isPassTest)
             ? undefined
-            : S.LINE_ERROR;
+            : S.LINE_ERROR
+        , _inputProps = isAllowRemember
+             ? {
+                 autoComplete: "current-password",
+                 name: `${name}[password]`,
+               }
+             : {
+                 autoComplete: "off",
+                 name: `${name}[password]`,
+                 value: value,
+                 defaultValue: value,
+                 onChange: this._handleInputChange,
+                 onKeyDown: this._handleKeyDown
+               };
 
     return (
       <div
@@ -119,21 +146,19 @@ class TextField extends Component {
           {caption}
         </label>
         <div className={CL.DIV}>
+          <input hidden={true} name={`${name}[username]`} value={name} />
           <input
+            ref = {this._refInput}
             type="password"
             className={CL.INPUT}
-            value={value}
-            autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck={false}
             translate={false}
             maxLength={maxLength}
-            defaultValue={value}
             onFocus={this._handleFocusInput}
             onBlur={this._handleBlurInput}
-            onChange={this._handleInputChange}
-            onKeyDown={this._handleKeyDown}
+            {..._inputProps}
           />
           <div className={CL.INPUT_LINE} style={_lineStyle} />
           { _lineStyle && <div className={CL.INPUT_MSG_ERR}>{errorMsg}</div>}
@@ -142,8 +167,23 @@ class TextField extends Component {
     );
   }
 
+  componentDidUpdate(prevProps){
+    if (this.props !== prevProps){
+      if (this.props.isAllowRemember !== prevProps.isAllowRemember){
+        this._input.value = ''
+        if (this.props.isAllowRemember){
+          this._value = ''
+          this.setState({ value: '' })
+        }
+      }
+    }
+  }
+
   getValue(){
-    return String(this._value).trim();
+    const { isAllowRemember } = this.props;
+    return isAllowRemember && this._input
+      ? this._input.value
+      : String(this._value).trim();
   }
 }
 

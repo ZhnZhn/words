@@ -125,6 +125,14 @@ var TextField = (_temp = _class = function (_Component) {
       }
     };
 
+    _this._isValue = function (isAllowRemember) {
+      return isAllowRemember ? _this._input ? !!_this._input.value : false : !!_this.state.value;
+    };
+
+    _this._refInput = function (c) {
+      return _this._input = c;
+    };
+
     _this.isFocus = false;
     var onTest = props.onTest,
         onEnter = props.onEnter;
@@ -144,15 +152,28 @@ var TextField = (_temp = _class = function (_Component) {
       var _props = this.props,
           rootStyle = _props.rootStyle,
           caption = _props.caption,
+          isAllowRemember = _props.isAllowRemember,
+          name = _props.name,
           maxLength = _props.maxLength,
           _props$errorMsg = _props.errorMsg,
           errorMsg = _props$errorMsg === undefined ? '' : _props$errorMsg,
           _state = this.state,
           value = _state.value,
           isPassTest = _state.isPassTest,
-          _labelStyle = value || this.isFocus ? undefined : S.LABEL_TO_INPUT,
+          _labelStyle = this._isValue(isAllowRemember) || this.isFocus ? undefined : S.LABEL_TO_INPUT,
           _labelErrStyle = isPassTest ? undefined : S.LABEL_ON_ERROR,
-          _lineStyle = isPassTest ? undefined : S.LINE_ERROR;
+          _lineStyle = isPassTest ? undefined : S.LINE_ERROR,
+          _inputProps = isAllowRemember ? {
+        autoComplete: "current-password",
+        name: name + '[password]'
+      } : {
+        autoComplete: "off",
+        name: name + '[password]',
+        value: value,
+        defaultValue: value,
+        onChange: this._handleInputChange,
+        onKeyDown: this._handleKeyDown
+      };
 
       return _react2.default.createElement(
         'div',
@@ -171,22 +192,19 @@ var TextField = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: CL.DIV },
-          _react2.default.createElement('input', {
+          _react2.default.createElement('input', { hidden: true, name: name + '[username]', value: name }),
+          _react2.default.createElement('input', (0, _extends3.default)({
+            ref: this._refInput,
             type: 'password',
             className: CL.INPUT,
-            value: value,
-            autoComplete: 'off',
             autoCorrect: 'off',
             autoCapitalize: 'off',
             spellCheck: false,
             translate: false,
             maxLength: maxLength,
-            defaultValue: value,
             onFocus: this._handleFocusInput,
-            onBlur: this._handleBlurInput,
-            onChange: this._handleInputChange,
-            onKeyDown: this._handleKeyDown
-          }),
+            onBlur: this._handleBlurInput
+          }, _inputProps)),
           _react2.default.createElement('div', { className: CL.INPUT_LINE, style: _lineStyle }),
           _lineStyle && _react2.default.createElement(
             'div',
@@ -197,9 +215,24 @@ var TextField = (_temp = _class = function (_Component) {
       );
     }
   }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (this.props !== prevProps) {
+        if (this.props.isAllowRemember !== prevProps.isAllowRemember) {
+          this._input.value = '';
+          if (this.props.isAllowRemember) {
+            this._value = '';
+            this.setState({ value: '' });
+          }
+        }
+      }
+    }
+  }, {
     key: 'getValue',
     value: function getValue() {
-      return String(this._value).trim();
+      var isAllowRemember = this.props.isAllowRemember;
+
+      return isAllowRemember && this._input ? this._input.value : String(this._value).trim();
     }
   }]);
   return TextField;
@@ -207,4 +240,4 @@ var TextField = (_temp = _class = function (_Component) {
   maxLength: "32"
 }, _temp);
 exports.default = TextField;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-m-input\SecretField.js.map
+//# sourceMappingURL=SecretField.js.map

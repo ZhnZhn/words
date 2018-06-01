@@ -6,24 +6,28 @@ import styleConfig from './Dialog.Style'
 import Actions from '../../flux/actions/ComponentActions'
 
 import ModalDialog from '../zhn-moleculs/ModalDialog'
-import RaisedButton from '../zhn-atoms/RaisedButton'
-import SecretField from '../zhn-m-input/SecretField'
-import InputSelect from '../zhn-m-input/InputSelect'
+import TabPane from '../zhn-atoms/TabPane'
+import Tab from '../zhn-atoms/Tab'
 
-
-const THEME_OPTIONS = [
-  { caption: "Dark", value: "GREY" },
-  { caption: "White", value: "WHITE" },
-  { caption: "Sand", value: "SAND" }
-];
-const DF_THEME = THEME_OPTIONS[0];
+import CardApiKey from './CardApiKey'
+import CardUi from './CardUi'
 
 const S = {
   MODAL: {
     position : 'static',
-    width: '315px',
-    height: '230px',
+    width: '350px',
+    height: '290px',
     margin: '70px auto 0px'
+  },
+  CARD_ROOT: {
+    position: 'relative',
+    height: '200px'
+  },
+  CARD_BUTTONS: {
+    position: 'absolute',
+    right: '4px',
+    bottom: 0,
+    cursor: 'default'
   }
 };
 
@@ -43,7 +47,6 @@ class SettingsDialog extends Component {
     ) {
       theme.setThemeName(item.value)
       Actions.changeTheme()
-      //this.forceUpdate()
     }
   }
 
@@ -53,16 +56,6 @@ class SettingsDialog extends Component {
      onClose()
   }
 
-  _crCommandButtons = (S) => {
-    return [
-      <RaisedButton
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="SET & CLOSE"
-        onClick={this._hSetAndClose}
-      />
-    ];
-  }
 
   _ref1 = (n) => this.iComp1 = n
 
@@ -73,8 +66,7 @@ class SettingsDialog extends Component {
             //data,
             onClose
           } = this.props
-        , TS = theme.createStyle(styleConfig)
-        , _commandButtons = this._crCommandButtons(TS.BT);
+        , TS = theme.createStyle(styleConfig);
 
     return (
       <ModalDialog
@@ -83,22 +75,30 @@ class SettingsDialog extends Component {
          caption="User Settings"
          captionStyle={TS.BROWSER_CAPTION}
          isShow={isShow}
-         commandButtons={_commandButtons}
+         isWithButton={false}
          onClose={onClose}
       >
-        <SecretField
-           rootStyle={TS.INPUT_ROOT}
-           ref={this._ref1}
-           caption="Words API Key *"
-           maxLength="50"
-        />
-        <InputSelect
-           styleConfig={TS.SELECT}
-           caption="Theme (Default: Dark)"
-           initItem={DF_THEME}
-           options={THEME_OPTIONS}
-           onSelect={this._hSelectTheme}
-        />
+        <TabPane width="100%">
+          <Tab title="API Key" style={TS.TAB}>
+             <CardApiKey
+               ref={this._ref1}
+               style={S.CARD_ROOT}
+               buttonsStyle={S.CARD_BUTTONS}
+               btStyle={TS.BT.FLAT_ROOT}
+               onSet={this._hSetAndClose}
+               onClose={onClose}
+             />
+          </Tab>
+          <Tab title="UI Theme" style={TS.TAB}>
+             <CardUi
+               style={S.CARD_ROOT}
+               buttonsStyle={S.CARD_BUTTONS}
+               btStyle={TS.BT.FLAT_ROOT}
+               onSetTheme={this._hSelectTheme}
+               onClose={onClose}
+             />
+          </Tab>
+        </TabPane>
       </ModalDialog>
     );
   }

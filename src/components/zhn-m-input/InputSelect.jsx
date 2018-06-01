@@ -9,7 +9,8 @@ const CL = {
   DIV: 'm-select__div',
   DIV_VALUE: 'm-select__div__value',
   DIV_BT: 'm-select__div__bt',
-  INPUT_LINE: 'm-select__line'
+  INPUT_LINE: 'm-select__line',
+  ITEM: 'm-select__item'
 };
 
 class InputSelect extends Component {
@@ -59,7 +60,7 @@ class InputSelect extends Component {
            isShow={isShow}
            item={item}
            options={options}
-           clItem={TS.CL_ITEM}
+           clItem={TS.CL_ITEM || CL.ITEM}
            itemStyle={TS.ITEM}
            onSelect={this._handleSelect}
            onClose={this._handleClose}

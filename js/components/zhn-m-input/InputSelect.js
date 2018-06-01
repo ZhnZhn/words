@@ -42,7 +42,8 @@ var CL = {
   DIV: 'm-select__div',
   DIV_VALUE: 'm-select__div__value',
   DIV_BT: 'm-select__div__bt',
-  INPUT_LINE: 'm-select__line'
+  INPUT_LINE: 'm-select__line',
+  ITEM: 'm-select__item'
 };
 
 var InputSelect = (_temp = _class = function (_Component) {
@@ -101,7 +102,7 @@ var InputSelect = (_temp = _class = function (_Component) {
           isShow: isShow,
           item: item,
           options: options,
-          clItem: TS.CL_ITEM,
+          clItem: TS.CL_ITEM || CL.ITEM,
           itemStyle: TS.ITEM,
           onSelect: this._handleSelect,
           onClose: this._handleClose
@@ -141,4 +142,4 @@ var InputSelect = (_temp = _class = function (_Component) {
   }
 }, _temp);
 exports.default = InputSelect;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-m-input\InputSelect.js.map
+//# sourceMappingURL=InputSelect.js.map

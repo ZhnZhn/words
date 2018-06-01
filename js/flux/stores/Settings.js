@@ -27,4 +27,4 @@ var Settings = {
 };
 
 exports.default = Settings;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\stores\Settings.js.map
+//# sourceMappingURL=Settings.js.map

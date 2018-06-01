@@ -44,29 +44,40 @@ var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
+var _TabPane = require('../zhn-atoms/TabPane');
 
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+var _TabPane2 = _interopRequireDefault(_TabPane);
 
-var _SecretField = require('../zhn-m-input/SecretField');
+var _Tab = require('../zhn-atoms/Tab');
 
-var _SecretField2 = _interopRequireDefault(_SecretField);
+var _Tab2 = _interopRequireDefault(_Tab);
 
-var _InputSelect = require('../zhn-m-input/InputSelect');
+var _CardApiKey = require('./CardApiKey');
 
-var _InputSelect2 = _interopRequireDefault(_InputSelect);
+var _CardApiKey2 = _interopRequireDefault(_CardApiKey);
+
+var _CardUi = require('./CardUi');
+
+var _CardUi2 = _interopRequireDefault(_CardUi);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var THEME_OPTIONS = [{ caption: "Dark", value: "GREY" }, { caption: "White", value: "WHITE" }, { caption: "Sand", value: "SAND" }];
-var DF_THEME = THEME_OPTIONS[0];
 
 var S = {
   MODAL: {
     position: 'static',
-    width: '315px',
-    height: '230px',
+    width: '350px',
+    height: '290px',
     margin: '70px auto 0px'
+  },
+  CARD_ROOT: {
+    position: 'relative',
+    height: '200px'
+  },
+  CARD_BUTTONS: {
+    position: 'absolute',
+    right: '4px',
+    bottom: 0,
+    cursor: 'default'
   }
 };
 
@@ -84,7 +95,6 @@ var SettingsDialog = function (_Component) {
       if (item && theme.getThemeName() !== item.value) {
         theme.setThemeName(item.value);
         _ComponentActions2.default.changeTheme();
-        //this.forceUpdate()
       }
     };
 
@@ -93,15 +103,6 @@ var SettingsDialog = function (_Component) {
 
       _this._setKey1(_this.iComp1.getValue());
       onClose();
-    };
-
-    _this._crCommandButtons = function (S) {
-      return [_react2.default.createElement(_RaisedButton2.default, {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: 'SET & CLOSE',
-        onClick: _this._hSetAndClose
-      })];
     };
 
     _this._ref1 = function (n) {
@@ -121,8 +122,8 @@ var SettingsDialog = function (_Component) {
           theme = _props.theme,
           isShow = _props.isShow,
           onClose = _props.onClose,
-          TS = theme.createStyle(_Dialog2.default),
-          _commandButtons = this._crCommandButtons(TS.BT);
+          TS = theme.createStyle(_Dialog2.default);
+
 
       return _react2.default.createElement(
         _ModalDialog2.default,
@@ -132,22 +133,36 @@ var SettingsDialog = function (_Component) {
           caption: 'User Settings',
           captionStyle: TS.BROWSER_CAPTION,
           isShow: isShow,
-          commandButtons: _commandButtons,
+          isWithButton: false,
           onClose: onClose
         },
-        _react2.default.createElement(_SecretField2.default, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: this._ref1,
-          caption: 'Words API Key *',
-          maxLength: '50'
-        }),
-        _react2.default.createElement(_InputSelect2.default, {
-          styleConfig: TS.SELECT,
-          caption: 'Theme (Default: Dark)',
-          initItem: DF_THEME,
-          options: THEME_OPTIONS,
-          onSelect: this._hSelectTheme
-        })
+        _react2.default.createElement(
+          _TabPane2.default,
+          { width: '100%' },
+          _react2.default.createElement(
+            _Tab2.default,
+            { title: 'API Key', style: TS.TAB },
+            _react2.default.createElement(_CardApiKey2.default, {
+              ref: this._ref1,
+              style: S.CARD_ROOT,
+              buttonsStyle: S.CARD_BUTTONS,
+              btStyle: TS.BT.FLAT_ROOT,
+              onSet: this._hSetAndClose,
+              onClose: onClose
+            })
+          ),
+          _react2.default.createElement(
+            _Tab2.default,
+            { title: 'UI Theme', style: TS.TAB },
+            _react2.default.createElement(_CardUi2.default, {
+              style: S.CARD_ROOT,
+              buttonsStyle: S.CARD_BUTTONS,
+              btStyle: TS.BT.FLAT_ROOT,
+              onSetTheme: this._hSelectTheme,
+              onClose: onClose
+            })
+          )
+        )
       );
     }
   }]);
@@ -155,4 +170,4 @@ var SettingsDialog = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(SettingsDialog);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\dialogs\SettingsDialog.js.map
+//# sourceMappingURL=SettingsDialog.js.map
