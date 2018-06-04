@@ -14,6 +14,8 @@ var _Type = require('../../constants/Type');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var DF_WATCH_PANE_ID = 'P_WD_W';
+
 var DialogLogic = {
   showDialog: function showDialog(slice, itemConf) {
     var type = itemConf.type;
@@ -40,11 +42,6 @@ var PaneLogic = {
       slice[type] = true;
       return { Comp: Comp };
     }
-  },
-  togglePane: function togglePane(itemConf) {
-    return {
-      id: itemConf.paneId
-    };
   }
 };
 
@@ -82,18 +79,25 @@ var ComponentSlice = {
     var pane = PaneLogic.showPane(this.paneInit, itemConf, this);
     //const browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
     this.trigger(_ComponentActions.T.SHOW_PANE, pane);
+    this.trigger(_ComponentActions.T.CLOSE_ABOUT);
     //this.trigger(TYPES.UPDATE_BROWSER, browser)
   },
-  onTogglePane: function onTogglePane(itemConf) {
+
+  /*
+  onTogglePane(itemConf){
     //const browser = BrowserLogic.toggleBadge(this.hmBrowser, itemConf);
-    var pane = PaneLogic.togglePane(itemConf);
-    this.trigger(_ComponentActions.T.TOGGLE_PANE, pane);
+    const pane = PaneLogic.togglePane(itemConf);
+    this.trigger(T.TOGGLE_PANE, pane)
     //this.trigger(TYPES.UPDATE_BROWSER, browser)
   },
-  onClosePane: function onClosePane(itemConf) {
+  */
+  /*
+  onClosePane(itemConf){
     //const r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {isOpen:false});
     //this.trigger(TYPES.UPDATE_BROWSER, r)
   },
+  */
+
   onShowAbout: function onShowAbout() {
     if (!this._initAbout) {
       var pane = CompLogic.crAbout(this);
@@ -105,8 +109,12 @@ var ComponentSlice = {
   },
   onChangeTheme: function onChangeTheme() {
     this.trigger(_ComponentActions.T.CHANGE_THEME);
+  },
+  onClickWatchItem: function onClickWatchItem(item) {
+    item.id = item.id || DF_WATCH_PANE_ID;
+    this.trigger(_ComponentActions.T.CLICK_WATCH_ITEM, item);
   }
 };
 
 exports.default = ComponentSlice;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\stores\ComponentSlice.js.map
+//# sourceMappingURL=ComponentSlice.js.map

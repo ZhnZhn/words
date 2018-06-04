@@ -83,6 +83,7 @@ class NewsPane extends Component {
     this.childMargin = CHILD_MARGIN;
     this.state = {
       isShow: true,
+      word: 'example',
       configs: []
     };
   }
@@ -99,29 +100,33 @@ class NewsPane extends Component {
    _onStore = (actionType, option={}) => {
       const {
               id,
-              addAction, showAction, toggleAction
+              updateAction, showAction, toggleAction,
+              watchAction
             } = this.props;
 
       if (option.id === id){
         switch(actionType){
-          case addAction:
+          case updateAction:
             this.setState({
               isShow: true,
               configs: option.configs
             })
             break;
           case showAction:
-            if (!this.state.isShow) {
-              this.setState({
-                isShow: true
-              })
-            }
+            this.setState(prevState => {
+              return prevState.isShow
+                ? null
+                : { isShow: true };
+            })
             break;
           case toggleAction:
-            this.setState(prevState => {
-              return {
-                isShow: !prevState.isShow
-              };
+            this.setState(prevState => ({
+              isShow: !prevState.isShow
+            }))
+            break;
+          case watchAction:
+            this.setState({
+              word: option.caption
             })
             break;
           default:
@@ -153,7 +158,7 @@ class NewsPane extends Component {
   _renderConfigs(configs=[]){
      const {
              Item,
-             onCloseItem,
+             onCloseItem,             
              onRemoveUnder,
              onAddToWatch
            } = this.props;
@@ -181,7 +186,7 @@ class NewsPane extends Component {
               Input,
               onRemoveItems
             } = this.props
-          , { isShow, configs } = this.state
+          , { isShow, word, configs } = this.state
           , TS = theme.createStyle(styleConfig)
           , _showStyle = isShow
                ? S.INLINE_BLOCK
@@ -215,6 +220,7 @@ class NewsPane extends Component {
           <Input
             ref={this._refIWord}
             TS={TS}
+            initValue={word}
             onEnter={this._hLoadItem}
           />
           <A.ScrollPane

@@ -19,7 +19,8 @@ const STYLE = {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     paddingLeft: '8px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    cursor: 'pointer'
   },
 
   SVG_CLOSE : {
@@ -41,10 +42,10 @@ const WatchItem = (props) => {
           ? (
              <SvgClose
                style={STYLE.SVG_CLOSE}
-               onClose={onClose.bind(null, option)}
+               onClose={onClose.bind(null, option)}                                                  
              />
             )
-          : undefined;
+          : null;
 return (
      <div
        className={className}

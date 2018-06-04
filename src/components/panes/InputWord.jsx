@@ -14,6 +14,10 @@ const S = {
 
 class InputWord extends Component {
 
+  static defaultProps = {
+    initValue: 'example'
+  }
+
   componentDidMount(){
     if (this.iWord) {
       this.iWord.focus()
@@ -23,7 +27,11 @@ class InputWord extends Component {
   _ref = n => this.iWord = n
 
   render(){
-    const { TS, onEnter } = this.props;
+    const {
+            TS,
+            initValue,
+            onEnter
+          } = this.props;
     return (
       <Fragment>
         <TextField
@@ -34,7 +42,7 @@ class InputWord extends Component {
           caption="Word"
           accessKey="W"
           spellCheck={true}
-          initValue="example"
+          initValue={initValue}
           onEnter={onEnter}
         />
         <A.RaisedButton

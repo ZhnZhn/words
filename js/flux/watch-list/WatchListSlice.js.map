@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\watch-list\\WatchListSlice.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\watch-list\\WatchListSlice.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/flux/watch-list/WatchListSlice.js"
+ ],
+ "file": "../../../src/flux/watch-list/WatchListSlice.js",
  "names": [
   "STORAGE_KEY",
   "DIALOG_CAPTION",

@@ -22,7 +22,7 @@ const CL = {
   BT_ABOUT: "header__bt-about"
 };
 
-const TITLE = 'Words v0.1.0';
+const TITLE = 'Words v0.2.0';
 const LABEL_TITLE = 'Click to change app UI theme';
 
 class HeaderBar extends Component {

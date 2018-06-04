@@ -61,6 +61,12 @@ var Logic = {
       slice[paneId].configs = paneSlice.configs.filter(function (c) {
         return c.id !== id;
       });
+      return {
+        configs: slice[paneId].configs,
+        id: paneId
+      };
+    } else {
+      return undefined;
     }
   },
   removeItems: function removeItems(slice, paneId) {
@@ -117,7 +123,10 @@ var ItemSlice = {
     this.triggerLoading(_LoadingActions.T.LOADING_FAILED);
   },
   onRemoveItem: function onRemoveItem(config) {
-    Logic.removeItem(this.items, config);
+    var _options = Logic.removeItem(this.items, config);
+    if (_options) {
+      this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, _options);
+    }
   },
   onRemoveItems: function onRemoveItems(paneId) {
     Logic.removeItems(this.items, paneId);
@@ -134,4 +143,4 @@ var ItemSlice = {
 };
 
 exports.default = ItemSlice;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\stores\ItemSlice.js.map
+//# sourceMappingURL=ItemSlice.js.map

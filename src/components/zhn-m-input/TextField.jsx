@@ -79,7 +79,18 @@ class TextField extends Component {
     const _value = initValue || ''
     this.state = {
       value: _value,
-      isPassTest: (this.isOnTest) ? onTest(_value) : true
+      isPassTest: this.isOnTest
+         ? onTest(_value) : true
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    /* update new initValue from parent component */
+    if (this.props !== nextProps
+      && this.props.initValue !== nextProps.initValue ) {
+        this.setState({
+          value: nextProps.initValue || ''
+        })
     }
   }
 
@@ -177,7 +188,7 @@ class TextField extends Component {
   focus(){
     if (this.inputNode) {
       this.inputNode.focus()
-      if (typeof this.inputNode.setSelectionRange === 'function') {        
+      if (typeof this.inputNode.setSelectionRange === 'function') {
         const len = this.state.value.length
         this.inputNode.setSelectionRange(len, len)
       }

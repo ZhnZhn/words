@@ -38,7 +38,7 @@ const WatchActions = Reflux.createActions({
   [A.DELETE_LIST] : {},
 
   [A.EDIT_WATCH_COMPLETED] : {},
-  [A.EDIT_WATCH_FAILED] : {}
+  [A.EDIT_WATCH_FAILED] : {}  
 })
 
 export default WatchActions

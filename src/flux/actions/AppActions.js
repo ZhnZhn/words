@@ -10,25 +10,34 @@ const {
   showPane,
   showModalDialog,
   showAbout,
-  changeTheme
+  changeTheme,
+  clickWatchItem
 } = Action;
 
 const _fShowBrowser = id => showBrowser.bind(null, id);
 
 const AppActions = {
-  onDefinition: showPane.bind(null, {
-    paneCaption: "Word Definition",
-    type: "WD_W",
-    paneId: "P_WD_W"
-  }),
-  onSources: _fShowBrowser(WORDS_BROWSER_ID),
-  onWatch:  _fShowBrowser(WATCH_BROWSER_ID),
-  onSettings: showModalDialog.bind(
-    null, "SETTINGS", Settings.settingFn()
-  ),
-  onAbout: showAbout,
-  onChangeTheme: changeTheme,
-  onShowPane: showPane
+  showAbout: showAbout,
+
+  headerActions: {
+    onDefinition: showPane.bind(null, {
+      paneCaption: "Word Definition",
+      type: "WD_W",
+      paneId: "P_WD_W"
+    }),
+    onSources: _fShowBrowser(WORDS_BROWSER_ID),
+    onWatch:  _fShowBrowser(WATCH_BROWSER_ID),
+    onSettings: showModalDialog.bind(
+      null, "SETTINGS", Settings.settingFn()
+    ),
+    onAbout: showAbout,
+    onChangeTheme: changeTheme
+  },
+
+  browserActions: {
+    onClickItem: showPane,
+    onClickWatchItem: clickWatchItem
+  }
 };
 
 export default AppActions

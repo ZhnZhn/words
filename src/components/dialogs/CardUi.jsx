@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+//import PropTypes from "prop-types";
 
 import InputSelect from '../zhn-m-input/InputSelect'
 import FlatButton from '../zhn-atoms/FlatButton'
@@ -24,6 +25,17 @@ const _themeOptions = [
 ];
 
 class CardUi extends Component {
+
+  /*
+  static propTypes = {
+    style: PropTypes.object,
+    buttonsStyle: PropTypes.object,
+    btStyle: PropTypes.object,
+    onSetTheme: PropTypes.func,
+    onClose: PropTypes.func
+  }
+  */
+
   render(){
     const {
              style,

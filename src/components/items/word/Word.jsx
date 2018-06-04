@@ -59,7 +59,7 @@ const S = {
     position: 'absolute',
     top: '8px',
     right: '0px'
-  }  
+  }
 }
 
 
@@ -73,14 +73,7 @@ class Word extends Component {
   constructor(props){
     super()
     this.state = {
-      isClosed: false,
       isShow: false
-    }
-  }
-
-  componentWillReceiveProps(nextProps){
-    if (this.props !== nextProps && this.state.isClosed){
-      this.setState({ isClosed: false, isShow: false })
     }
   }
 
@@ -116,9 +109,11 @@ class Word extends Component {
   }
 
   _handleClose = () => {
-    const { onCloseItem, config } = this.props;
+    const {
+            onCloseItem,
+            config
+          } = this.props;
     onCloseItem(config)
-    this.setState({ isClosed: true })
   }
 
   _handleHide = () => {
@@ -134,19 +129,17 @@ class Word extends Component {
     const {config, theme, onAddToWatch } = this.props
         , { title, caption } = config
         , TS = theme.createStyle(styleConfig)
-        , { isClosed, isShow } = this.state
-        , _headerStyle = (isShow)
-             ? Object.assign({}, S.HEADER, S.HEADER_OPEN)
+        , { isShow } = this.state
+        , _headerStyle = isShow
+             ? { ...S.HEADER, ...S.HEADER_OPEN }
              : S.HEADER
-        , _captionStyle = (isShow)
-             ? Object.assign({}, S.CAPTION, S.CAPTION_OPEN)
-             : S.CAPTION
-        , _rootStyle = (isClosed)
-             ? { display: 'none' }
-             : undefined;
+        , _captionStyle = isShow
+             ? { ...S.CAPTION, ...S.CAPTION_OPEN }
+             : S.CAPTION;
+        
     return (
         <div
-          style={{...S.ROOT, ..._rootStyle}}
+          style={S.ROOT}
           draggable={true}
           onDragStart={this._dragStart}
           onDragEnd={this._dragEnd}

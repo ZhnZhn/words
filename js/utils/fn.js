@@ -53,44 +53,62 @@ var fnFetch = function fnFetch(_ref) {
   if (_msDiff < FREQUENCY_RESTRICTION) {
     if (_lastUri !== uri) {
       onFailed({ msg: _crMsgFrequency(_msDiff) });
-    } else {
-      onFailed({ msg: _crMsgFrequency(_msDiff) });
-      //onFailed({ msg: MSG_LOAD_RESTRICTION })
-      //onCompleted({ json: {}, option })
     }
   } else {
     _lastUri = uri;
     _msLastFetch = _msNow;
-    fetch(uri, fetchOptions).then(function (response) {
-      var status = response.status,
-          statusText = response.statusText,
-          _response$headers = response.headers,
-          headers = _response$headers === undefined ? {} : _response$headers,
-          ok = response.ok;
+    fetch(uri, fetchOptions).then(function (res) {
+      var status = res.status,
+          statusText = res.statusText,
+          _res$headers = res.headers,
+          headers = _res$headers === undefined ? {} : _res$headers;
 
-      if (status >= 200 && status < 400 || ok) {
-        if (_isFn(headers.get)) {
-          return Promise.all([Promise.resolve(headers.get(LIMIT_REMAINING)), response.json()]);
+      return Promise.all([Promise.resolve(status), Promise.resolve(statusText), _isFn(headers.get) ? Promise.resolve(headers.get(LIMIT_REMAINING)) : Promise.resolve(undefined), _isFn(res.json) ? res.json() : Promise.resolve(undefined)]);
+      /*
+      if ((status>=200 && status<400) || ok) {
+        if (_isFn(headers.get)){
+          return Promise.all([
+             Promise.resolve(headers.get(LIMIT_REMAINING)),
+             res.json()
+          ]);
         } else {
-          return Promise.all([Promise.resolve(undefined), response.json()]);
+          return Promise.all([
+             Promise.resolve(status),
+             Promise.resolve(statusText),
+             Promise.resolve(undefined),
+             res.json()
+          ]);
         }
       } else if (status === 404) {
         throw {
-          msg: 'Not Found ' + status
+          msg: `Not Found ${status}`
         };
       } else {
         throw {
-          msg: 'Response Error ' + status + ': ' + statusText
+          msg : `Response Error ${status}: ${statusText}`
         };
       }
+      */
     }).then(function (_ref2) {
-      var _ref3 = (0, _slicedToArray3.default)(_ref2, 2),
-          limitRemaining = _ref3[0],
-          json = _ref3[1];
+      var _ref3 = (0, _slicedToArray3.default)(_ref2, 4),
+          status = _ref3[0],
+          statusText = _ref3[1],
+          limitRemaining = _ref3[2],
+          json = _ref3[3];
 
-      if (onCheckResponse(json, option)) {
-        option.limitRemaining = limitRemaining;
-        onFetch({ json: json, option: option, onCompleted: onCompleted });
+      if (status >= 200 && status < 400) {
+        if (onCheckResponse(json, option)) {
+          option.limitRemaining = limitRemaining;
+          onFetch({ json: json, option: option, onCompleted: onCompleted });
+        }
+      } else if (status === 404) {
+        throw {
+          msg: status + ': Not Found'
+        };
+      } else {
+        throw {
+          msg: status + ': ' + statusText + '. ' + (json.message || '')
+        };
       }
     }).catch(function (error) {
       onCatch({ error: error, option: option, onFailed: onFailed });

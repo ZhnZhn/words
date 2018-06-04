@@ -11,8 +11,6 @@ var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
 var _Reflux$createActions;
 
-//import throttle from '../../utils/throttle'
-
 var _reflux = require('reflux');
 
 var _reflux2 = _interopRequireDefault(_reflux);
@@ -45,18 +43,11 @@ var Actions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _d
   children: ['completed', 'failed']
 }), (0, _defineProperty3.default)(_Reflux$createActions, T.REMOVE_ITEM, {}), (0, _defineProperty3.default)(_Reflux$createActions, T.REMOVE_ITEMS, {}), (0, _defineProperty3.default)(_Reflux$createActions, T.REMOVE_ITEMS_UNDER, {}), _Reflux$createActions));
 
-/*
-Actions.loadItem = throttle(
-  Actions.loadItem,
-  2500, {
-    trailing: false
-  }
-);
-*/
-
 var _crDbLoadMsg = function _crDbLoadMsg(word) {
-  return 'Item \'' + word + '\' has been already loaded';
+  return 'Item \'' + word + '\' has been already loaded.';
 };
+
+var MSG_KEY_NOT_ALLOWED = "It looks like you try to use not valid saved api key by Password Manager not allowed before. Please, reenter api key, check let check box before.";
 
 Actions[T.LOAD_ITEM].listen(function () {
   var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -75,17 +66,22 @@ Actions[T.LOAD_ITEM].listen(function () {
       loadId = _option$loadId === undefined ? 'WD' : _option$loadId,
       _RouterApiConf$getApi = _RouterApiConf2.default.getApiConf(loadId),
       apiKey = _RouterApiConf$getApi.apiKey,
+      isApiKeyAllow = _RouterApiConf$getApi.isApiKeyAllow,
       adapter = _RouterApiConf$getApi.adapter,
       api = _RouterApiConf$getApi.api,
       msgErr = _RouterApiConf$getApi.msgErr;
 
   if (apiKey) {
-    Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
-    (0, _loadItem2.default)(option, this.completed, this.failed);
+    if (isApiKeyAllow(apiKey)) {
+      Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
+      (0, _loadItem2.default)(option, this.completed, this.failed);
+    } else {
+      this.failed({ msg: MSG_KEY_NOT_ALLOWED });
+    }
   } else {
     this.failed({ msg: msgErr });
   }
 });
 
 exports.default = Actions;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\actions\ItemActions.js.map
+//# sourceMappingURL=ItemActions.js.map

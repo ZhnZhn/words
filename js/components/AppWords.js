@@ -8,10 +8,6 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -51,6 +47,7 @@ var _Container2 = _interopRequireDefault(_Container);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_COMP = "component-container";
+var CL_ITEMS = "items-container";
 var WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 
 var AppWords = function (_Component) {
@@ -81,7 +78,12 @@ var AppWords = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
+      var _props = this.props,
+          store = _props.store,
+          action = _props.action;
+
+      this.unsubscribe = store.listen(this._onStore);
+      action.showAbout();
     }
   }, {
     key: 'componentWillUnmount',
@@ -91,13 +93,14 @@ var AppWords = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _props = this.props,
-          store = _props.store,
-          action = _props.action,
-          CAT = _props.CAT,
-          LPT = _props.LPT,
-          onShowPane = action.onShowPane,
-          headerAction = (0, _objectWithoutProperties3.default)(action, ['onShowPane']);
+      var _props2 = this.props,
+          store = _props2.store,
+          CAT = _props2.CAT,
+          LPT = _props2.LPT,
+          action = _props2.action,
+          headerActions = action.headerActions,
+          browserActions = action.browserActions;
+
 
       return _react2.default.createElement(
         _ThemeProvider2.default,
@@ -108,19 +111,19 @@ var AppWords = function (_Component) {
           _react2.default.createElement(_HeaderBar2.default, (0, _extends3.default)({
             store: store,
             LPT: LPT
-          }, headerAction)),
+          }, headerActions)),
           _react2.default.createElement(
             'div',
             { className: CL_COMP },
-            _react2.default.createElement(_Container2.default.Browser, {
+            _react2.default.createElement(_Container2.default.Browser, (0, _extends3.default)({
               store: store,
               showBrowserAction: CAT.SHOW_BROWSER,
               showDialogAction: CAT.SHOW_DIALOG,
               browserId: WORDS_BROWSER_ID,
-              updateWatchAction: CAT.UPDATE_WATCH_BROWSER,
-              onClickItem: onShowPane
-            }),
+              updateWatchAction: CAT.UPDATE_WATCH_BROWSER
+            }, browserActions)),
             _react2.default.createElement(_Container2.default.Hrz, {
+              className: CL_ITEMS,
               store: store,
               addAction: CAT.SHOW_PANE
             })
@@ -137,4 +140,4 @@ var AppWords = function (_Component) {
 }(_react.Component);
 
 exports.default = AppWords;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\AppWords.js.map
+//# sourceMappingURL=AppWords.js.map

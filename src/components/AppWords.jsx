@@ -7,6 +7,7 @@ import HeaderBar from './header/HeaderBar'
 import Container from './zhn-containers/Container'
 
 const CL_COMP = "component-container";
+const CL_ITEMS = "items-container";
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 
 class AppWords extends Component {
@@ -23,8 +24,9 @@ class AppWords extends Component {
   }
 
   componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listen(this._onStore)
+    const { store, action } = this.props
+    this.unsubscribe = store.listen(this._onStore)
+    action.showAbout()
   }
   componentWillUnmount(){
     this.unsubscribe()
@@ -36,15 +38,23 @@ class AppWords extends Component {
   }
 
   render(){
-    const { store, action, CAT, LPT } = this.props
-        , { onShowPane, ...headerAction } = action;
+    const {
+            store,
+            CAT, LPT,
+            action,
+          } = this.props
+        , {
+            headerActions,
+            browserActions
+          } = action;
+
     return (
       <ThemeProvider theme={theme}>
         <div>
           <HeaderBar
             store={store}
             LPT={LPT}
-            {...headerAction}
+            {...headerActions}
           />
           <div className={CL_COMP}>
              <Container.Browser
@@ -53,9 +63,10 @@ class AppWords extends Component {
                showDialogAction={CAT.SHOW_DIALOG}
                browserId={WORDS_BROWSER_ID}
                updateWatchAction={CAT.UPDATE_WATCH_BROWSER}
-               onClickItem={onShowPane}
+               {...browserActions}
              />
              <Container.Hrz
+               className={CL_ITEMS}
                store={store}
                addAction={CAT.SHOW_PANE}
              />

@@ -156,4 +156,4 @@ var WatchListSlice = {
 };
 
 exports.default = WatchListSlice;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\watch-list\WatchListSlice.js.map
+//# sourceMappingURL=WatchListSlice.js.map

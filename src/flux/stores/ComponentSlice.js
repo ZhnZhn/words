@@ -3,6 +3,8 @@ import { T } from '../actions/ComponentActions'
 import Factory from '../logic/Factory'
 import { ModalDialog as MD } from '../../constants/Type'
 
+const DF_WATCH_PANE_ID = 'P_WD_W';
+
 const DialogLogic = {
   showDialog(slice, itemConf){
     const { type } = itemConf;
@@ -28,11 +30,13 @@ const PaneLogic = {
     }
   },
 
+  /*
   togglePane(itemConf){
     return {
       id: itemConf.paneId
     };
   }
+  */
 
 }
 
@@ -61,7 +65,7 @@ const ComponentSlice = {
     this.trigger(T.SHOW_DIALOG, r)
   },
 
-  onShowModalDialog(modalDialogType, option={}){    
+  onShowModalDialog(modalDialogType, option={}){
     option.modalDialogType = modalDialogType
     this.trigger(T.SHOW_MODAL_DIALOG, option)
   },
@@ -70,18 +74,23 @@ const ComponentSlice = {
     const pane = PaneLogic.showPane(this.paneInit, itemConf, this);
     //const browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
     this.trigger(T.SHOW_PANE, pane)
+    this.trigger(T.CLOSE_ABOUT)
     //this.trigger(TYPES.UPDATE_BROWSER, browser)
   },
+  /*
   onTogglePane(itemConf){
     //const browser = BrowserLogic.toggleBadge(this.hmBrowser, itemConf);
     const pane = PaneLogic.togglePane(itemConf);
     this.trigger(T.TOGGLE_PANE, pane)
     //this.trigger(TYPES.UPDATE_BROWSER, browser)
   },
+  */
+  /*
   onClosePane(itemConf){
     //const r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {isOpen:false});
     //this.trigger(TYPES.UPDATE_BROWSER, r)
   },
+  */
 
   onShowAbout(){
     if (!this._initAbout) {
@@ -95,6 +104,11 @@ const ComponentSlice = {
 
   onChangeTheme(){
     this.trigger(T.CHANGE_THEME)
+  },
+
+  onClickWatchItem(item){
+    item.id = item.id || DF_WATCH_PANE_ID;
+    this.trigger(T.CLICK_WATCH_ITEM, item)
   }
 
 }

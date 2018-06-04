@@ -152,7 +152,6 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
           config = _this$props2.config;
 
       onCloseItem(config);
-      _this.setState({ isClosed: true });
     };
 
     _this._handleHide = function () {
@@ -165,20 +164,12 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
     };
 
     _this.state = {
-      isClosed: false,
       isShow: false
     };
     return _this;
   }
 
   (0, _createClass3.default)(Word, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (this.props !== nextProps && this.state.isClosed) {
-        this.setState({ isClosed: false, isShow: false });
-      }
-    }
-  }, {
     key: '_preventDefault',
     value: function _preventDefault(ev) {
       ev.preventDefault();
@@ -193,17 +184,14 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
           title = config.title,
           caption = config.caption,
           TS = theme.createStyle(_Word2.default),
-          _state = this.state,
-          isClosed = _state.isClosed,
-          isShow = _state.isShow,
-          _headerStyle = isShow ? Object.assign({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
-          _captionStyle = isShow ? Object.assign({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION,
-          _rootStyle = isClosed ? { display: 'none' } : undefined;
+          isShow = this.state.isShow,
+          _headerStyle = isShow ? (0, _extends3.default)({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
+          _captionStyle = isShow ? (0, _extends3.default)({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION;
 
       return _react2.default.createElement(
         'div',
         {
-          style: (0, _extends3.default)({}, S.ROOT, _rootStyle),
+          style: S.ROOT,
           draggable: true,
           onDragStart: this._dragStart,
           onDragEnd: this._dragEnd,
@@ -239,4 +227,4 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
 }, _temp)) || _class;
 
 exports.default = (0, _withTheme2.default)(Word);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\items\word\Word.js.map
+//# sourceMappingURL=Word.js.map

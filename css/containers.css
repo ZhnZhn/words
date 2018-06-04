@@ -26,3 +26,9 @@
   background: rgba(0,0,0, 0.35) none repeat scroll 0% 0%;
   outline: 0px none;
 }
+
+@media only screen and (max-width: 550px){
+  .items-container {
+    width: 98%;
+  }
+}

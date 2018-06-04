@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+//import PropTypes from "prop-types";
 
 import SecretField from '../zhn-m-input/SecretField'
 import RowCheckBox from './RowCheckBox'
@@ -32,9 +33,22 @@ const S  = {
   BT_ROOT: {
     color: 'rgb(35, 47, 59)'
   }
-}
+};
+
+const CAPTION_ALLOW = "Allow Remember Enter of API Key by Browser Password Manager";
 
 class CardApiKey extends Component {
+
+  /*
+  static propTypes = {
+    style: PropTypes.object,
+    buttonsStyle: PropTypes.object,
+    btStyle: PropTypes.object,
+    onClose: PropTypes.func,
+    onSet: PropTypes.func
+  }
+  */
+
   constructor(props){
     super(props)
     this.state = {
@@ -71,7 +85,7 @@ class CardApiKey extends Component {
         <RowCheckBox
           rootStyle={S.CHECK_BOX}
           initValue={false}
-          caption="Let Remember Enter of API Key by Browser Password Manager"
+          caption={CAPTION_ALLOW}
           captionStyle={S.CHECK_CAPTION}
           onCheck={this._checkAllow}
           onUnCheck={this._uncheckAllow}

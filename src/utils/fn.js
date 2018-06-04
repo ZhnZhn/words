@@ -33,27 +33,39 @@ const fnFetch = function({
   if ( _msDiff < FREQUENCY_RESTRICTION ) {
     if ( _lastUri !== uri ) {
       onFailed({ msg: _crMsgFrequency(_msDiff) })
-    } else {
-      onFailed({ msg: _crMsgFrequency(_msDiff) })
-      //onFailed({ msg: MSG_LOAD_RESTRICTION })
-      //onCompleted({ json: {}, option })
     }
   } else {
     _lastUri = uri;
     _msLastFetch = _msNow;
     fetch(uri, fetchOptions)
-      .then((response) => {
-        const { status, statusText, headers={}, ok } = response;
+      .then((res) => {
+        const {
+                status, statusText,
+                headers={}
+              } = res;
+        return Promise.all([
+          Promise.resolve(status),
+          Promise.resolve(statusText),
+          _isFn(headers.get)
+             ? Promise.resolve(headers.get(LIMIT_REMAINING))
+             : Promise.resolve(undefined),
+          _isFn(res.json)
+             ? res.json()
+             : Promise.resolve(undefined),
+        ]);
+        /*
         if ((status>=200 && status<400) || ok) {
           if (_isFn(headers.get)){
             return Promise.all([
                Promise.resolve(headers.get(LIMIT_REMAINING)),
-               response.json()
+               res.json()
             ]);
           } else {
             return Promise.all([
+               Promise.resolve(status),
+               Promise.resolve(statusText),
                Promise.resolve(undefined),
-               response.json()
+               res.json()
             ]);
           }
        } else if (status === 404) {
@@ -65,11 +77,22 @@ const fnFetch = function({
             msg : `Response Error ${status}: ${statusText}`
           };
        }
+       */
       })
-      .then(([limitRemaining, json ]) => {
-         if (onCheckResponse(json, option)){
-           option.limitRemaining = limitRemaining;
-           onFetch({ json, option, onCompleted });
+      .then(([status, statusText, limitRemaining, json ]) => {
+         if ( status>=200 && status<400 ) {
+           if (onCheckResponse(json, option)){
+             option.limitRemaining = limitRemaining;
+             onFetch({ json, option, onCompleted });
+           }
+         } else if (status === 404) {
+           throw {
+             msg: `${status}: Not Found`
+           };
+         } else {
+           throw {
+             msg: `${status}: ${statusText}. ${json.message || ''}`
+           };
          }
       })
       .catch((error) => {

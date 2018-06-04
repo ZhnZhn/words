@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\actions\\AppActions.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\actions\\AppActions.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/flux/actions/AppActions.js"
+ ],
+ "file": "../../../src/flux/actions/AppActions.js",
  "names": [
   "WORDS_BROWSER_ID",
   "WATCH_BROWSER_ID",
@@ -12,10 +12,12 @@
   "showModalDialog",
   "showAbout",
   "changeTheme",
+  "clickWatchItem",
   "_fShowBrowser",
   "bind",
   "id",
   "AppActions",
+  "headerActions",
   "onDefinition",
   "paneCaption",
   "type",
@@ -26,7 +28,9 @@
   "settingFn",
   "onAbout",
   "onChangeTheme",
-  "onShowPane"
+  "browserActions",
+  "onClickItem",
+  "onClickWatchItem"
  ],
- "mappings": ";;;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,mBAAmB,kBAAzB;AACA,IAAMC,mBAAmB,UAAzB;;IAGEC,W,8BAAAA,W;IACAC,Q,8BAAAA,Q;IACAC,e,8BAAAA,e;IACAC,S,8BAAAA,S;IACAC,W,8BAAAA,W;;;AAGF,IAAMC,gBAAgB,SAAhBA,aAAgB;AAAA,SAAML,YAAYM,IAAZ,CAAiB,IAAjB,EAAuBC,EAAvB,CAAN;AAAA,CAAtB;;AAEA,IAAMC,aAAa;AACjBC,gBAAcR,SAASK,IAAT,CAAc,IAAd,EAAoB;AAChCI,iBAAa,iBADmB;AAEhCC,UAAM,MAF0B;AAGhCC,YAAQ;AAHwB,GAApB,CADG;AAMjBC,aAAWR,cAAcP,gBAAd,CANM;AAOjBgB,WAAUT,cAAcN,gBAAd,CAPO;AAQjBgB,cAAYb,gBAAgBI,IAAhB,CACV,IADU,EACJ,UADI,EACQ,mBAASU,SAAT,EADR,CARK;AAWjBC,WAASd,SAXQ;AAYjBe,iBAAed,WAZE;AAajBe,cAAYlB;AAbK,CAAnB;;kBAgBeO,U"
+ "mappings": ";;;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,mBAAmB,kBAAzB;AACA,IAAMC,mBAAmB,UAAzB;;IAGEC,W,8BAAAA,W;IACAC,Q,8BAAAA,Q;IACAC,e,8BAAAA,e;IACAC,S,8BAAAA,S;IACAC,W,8BAAAA,W;IACAC,c,8BAAAA,c;;;AAGF,IAAMC,gBAAgB,SAAhBA,aAAgB;AAAA,SAAMN,YAAYO,IAAZ,CAAiB,IAAjB,EAAuBC,EAAvB,CAAN;AAAA,CAAtB;;AAEA,IAAMC,aAAa;AACjBN,aAAWA,SADM;;AAGjBO,iBAAe;AACbC,kBAAcV,SAASM,IAAT,CAAc,IAAd,EAAoB;AAChCK,mBAAa,iBADmB;AAEhCC,YAAM,MAF0B;AAGhCC,cAAQ;AAHwB,KAApB,CADD;AAMbC,eAAWT,cAAcR,gBAAd,CANE;AAObkB,aAAUV,cAAcP,gBAAd,CAPG;AAQbkB,gBAAYf,gBAAgBK,IAAhB,CACV,IADU,EACJ,UADI,EACQ,mBAASW,SAAT,EADR,CARC;AAWbC,aAAShB,SAXI;AAYbiB,mBAAehB;AAZF,GAHE;;AAkBjBiB,kBAAgB;AACdC,iBAAarB,QADC;AAEdsB,sBAAkBlB;AAFJ;AAlBC,CAAnB;;kBAwBeI,U"
 }

@@ -74,7 +74,7 @@ var CL = {
   BT_ABOUT: "header__bt-about"
 };
 
-var TITLE = 'Words v0.1.0';
+var TITLE = 'Words v0.2.0';
 var LABEL_TITLE = 'Click to change app UI theme';
 
 var HeaderBar = function (_Component) {
@@ -213,4 +213,4 @@ var HeaderBar = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(HeaderBar);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\header\HeaderBar.js.map
+//# sourceMappingURL=HeaderBar.js.map

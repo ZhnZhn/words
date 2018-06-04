@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\logic\\RouterApiConf.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\logic\\RouterApiConf.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/flux/logic/RouterApiConf.js"
+ ],
+ "file": "../../../src/flux/logic/RouterApiConf.js",
  "names": [
   "MSG_ERR_TAIL",
   "MSG_ERR_DF",
@@ -12,10 +12,11 @@
   "id",
   "apiKey",
   "getKey",
+  "isApiKeyAllow",
   "api",
   "Words",
   "adapter",
   "msgErr"
  ],
- "mappings": ";;;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,eAAe,0EAArB;AACA,IAAMC,aAAa,0BAAnB;;AAEA,IAAMC,gBAAgB;AACpBC,cAAY,oBAACC,EAAD,EAAQ;AAClB,YAAOA,EAAP;AACE,WAAK,IAAL;AACE,eAAO;AACLC,kBAAQ,mBAASC,MAAT,CAAgB,UAAhB,CADH;AAELC,eAAK,kBAAQC,KAAR,CAAcD,GAFd;AAGLE,mBAAS,kBAAQD,KAAR,CAAcC,OAHlB;AAILC,gCAAoBV;AAJf,SAAP;AAMF;AAAS,eAAO;AACdU,kBAAQT;AADM,SAAP;AARX;AAYD;AAdmB,CAAtB;;kBAiBeC,a"
+ "mappings": ";;;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,eAAe,0EAArB;AACA,IAAMC,aAAa,0BAAnB;;AAEA,IAAMC,gBAAgB;AACpBC,cAAY,oBAACC,EAAD,EAAQ;AAClB,YAAOA,EAAP;AACE,WAAK,IAAL;AACE,eAAO;AACLC,kBAAQ,mBAASC,MAAT,CAAgB,UAAhB,CADH;AAELC,yBAAe,mBAASA,aAFnB;AAGLC,eAAK,kBAAQC,KAAR,CAAcD,GAHd;AAILE,mBAAS,kBAAQD,KAAR,CAAcC,OAJlB;AAKLC,gCAAoBX;AALf,SAAP;AAOF;AAAS,eAAO;AACdW,kBAAQV;AADM,SAAP;AATX;AAaD;AAfmB,CAAtB;;kBAkBeC,a"
 }

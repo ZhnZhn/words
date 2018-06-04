@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\header\\HeaderBar.jsx",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\header\\HeaderBar.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/header/HeaderBar.js"
+ ],
+ "file": "../../../src/components/header/HeaderBar.js",
  "names": [
   "CL",
   "HEADER",

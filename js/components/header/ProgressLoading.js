@@ -31,8 +31,8 @@ var _ProgressLine2 = _interopRequireDefault(_ProgressLine);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var C = {
-  LOADING: '#2F7ED8',
-  FAILED: 'rgb(237, 88, 19)'
+  LOADING: '#2f7ed8',
+  FAILED: '#ed5813'
 };
 
 var ProgressLoading = function (_Component) {
@@ -78,7 +78,7 @@ var ProgressLoading = function (_Component) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-      if (this.state.completed === nextState.complete) {
+      if (this.state.completed === nextState.completed) {
         return false;
       }
       return true;
@@ -101,4 +101,4 @@ var ProgressLoading = function (_Component) {
 }(_react.Component);
 
 exports.default = ProgressLoading;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\header\ProgressLoading.js.map
+//# sourceMappingURL=ProgressLoading.js.map

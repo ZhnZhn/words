@@ -39,10 +39,11 @@ var _About2 = _interopRequireDefault(_About);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var showPane = _ComponentActions2.default.showPane,
-    closePane = _ComponentActions2.default.closePane;
+    closePane = _ComponentActions2.default.closePane,
+    showModalDialog = _ComponentActions2.default.showModalDialog;
 
 
-var _addToWatch = _ComponentActions2.default.showModalDialog.bind(null, 'AW');
+var _addToWatch = showModalDialog.bind(null, 'AW');
 
 var _loadItem = (0, _throttle2.default)(_ItemActions2.default.loadItem, 2500, {
   trailing: false
@@ -84,9 +85,10 @@ var Factory = {
       store: store,
       Input: Input,
       Item: Item,
-      addAction: _ItemActions.T.LOAD_ITEM_COMPLETED,
+      updateAction: _ItemActions.T.LOAD_ITEM_COMPLETED,
       showAction: _ComponentActions.T.SHOW_PANE,
       toggleAction: _ComponentActions.T.TOGGLE_PANE,
+      watchAction: _ComponentActions.T.CLICK_WATCH_ITEM,
       onRemoveItems: _ItemActions2.default.removeItems.bind(null, paneId),
       onRemoveUnder: _ItemActions2.default.removeItemsUnder,
       onCloseItem: _ItemActions2.default.removeItem,
@@ -100,11 +102,12 @@ var Factory = {
   crAbout: function crAbout(store) {
     return _react2.default.createElement(_About2.default, {
       key: 'About', id: 'About',
-      showAction: 'showAbout',
+      showAction: _ComponentActions.T.SHOW_ABOUT,
+      closeAction: _ComponentActions.T.CLOSE_ABOUT,
       store: store
     });
   }
 };
 
 exports.default = Factory;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\logic\Factory.js.map
+//# sourceMappingURL=Factory.js.map

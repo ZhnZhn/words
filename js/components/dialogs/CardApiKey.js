@@ -43,6 +43,7 @@ var _FlatButton2 = _interopRequireDefault(_FlatButton);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_DIV = 'bt-flat__div';
+//import PropTypes from "prop-types";
 
 var S = {
   ROOT: {
@@ -72,8 +73,20 @@ var S = {
   }
 };
 
+var CAPTION_ALLOW = "Allow Remember Enter of API Key by Browser Password Manager";
+
 var CardApiKey = function (_Component) {
   (0, _inherits3.default)(CardApiKey, _Component);
+
+  /*
+  static propTypes = {
+    style: PropTypes.object,
+    buttonsStyle: PropTypes.object,
+    btStyle: PropTypes.object,
+    onClose: PropTypes.func,
+    onSet: PropTypes.func
+  }
+  */
 
   function CardApiKey(props) {
     (0, _classCallCheck3.default)(this, CardApiKey);
@@ -123,7 +136,7 @@ var CardApiKey = function (_Component) {
         _react2.default.createElement(_RowCheckBox2.default, {
           rootStyle: S.CHECK_BOX,
           initValue: false,
-          caption: 'Let Remember Enter of API Key by Browser Password Manager',
+          caption: CAPTION_ALLOW,
           captionStyle: S.CHECK_CAPTION,
           onCheck: this._checkAllow,
           onUnCheck: this._uncheckAllow

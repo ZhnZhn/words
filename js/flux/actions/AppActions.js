@@ -21,7 +21,8 @@ var showBrowser = _ComponentActions2.default.showBrowser,
     showPane = _ComponentActions2.default.showPane,
     showModalDialog = _ComponentActions2.default.showModalDialog,
     showAbout = _ComponentActions2.default.showAbout,
-    changeTheme = _ComponentActions2.default.changeTheme;
+    changeTheme = _ComponentActions2.default.changeTheme,
+    clickWatchItem = _ComponentActions2.default.clickWatchItem;
 
 
 var _fShowBrowser = function _fShowBrowser(id) {
@@ -29,18 +30,26 @@ var _fShowBrowser = function _fShowBrowser(id) {
 };
 
 var AppActions = {
-  onDefinition: showPane.bind(null, {
-    paneCaption: "Word Definition",
-    type: "WD_W",
-    paneId: "P_WD_W"
-  }),
-  onSources: _fShowBrowser(WORDS_BROWSER_ID),
-  onWatch: _fShowBrowser(WATCH_BROWSER_ID),
-  onSettings: showModalDialog.bind(null, "SETTINGS", _Settings2.default.settingFn()),
-  onAbout: showAbout,
-  onChangeTheme: changeTheme,
-  onShowPane: showPane
+  showAbout: showAbout,
+
+  headerActions: {
+    onDefinition: showPane.bind(null, {
+      paneCaption: "Word Definition",
+      type: "WD_W",
+      paneId: "P_WD_W"
+    }),
+    onSources: _fShowBrowser(WORDS_BROWSER_ID),
+    onWatch: _fShowBrowser(WATCH_BROWSER_ID),
+    onSettings: showModalDialog.bind(null, "SETTINGS", _Settings2.default.settingFn()),
+    onAbout: showAbout,
+    onChangeTheme: changeTheme
+  },
+
+  browserActions: {
+    onClickItem: showPane,
+    onClickWatchItem: clickWatchItem
+  }
 };
 
 exports.default = AppActions;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\actions\AppActions.js.map
+//# sourceMappingURL=AppActions.js.map

@@ -23,6 +23,7 @@ var RouterApiConf = {
       case 'WD':
         return {
           apiKey: _Settings2.default.getKey('wordsApi'),
+          isApiKeyAllow: _Settings2.default.isApiKeyAllow,
           api: _Adapter2.default.Words.api,
           adapter: _Adapter2.default.Words.adapter,
           msgErr: 'WordsApi ' + MSG_ERR_TAIL
@@ -36,4 +37,4 @@ var RouterApiConf = {
 };
 
 exports.default = RouterApiConf;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\logic\RouterApiConf.js.map
+//# sourceMappingURL=RouterApiConf.js.map

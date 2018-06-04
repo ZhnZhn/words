@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
 
+const CL_DIV = "hrz-container";
+
 class HrzContainer extends Component {
   /*
   static propTypes = {
@@ -10,6 +12,9 @@ class HrzContainer extends Component {
     addAction: PropTypes.string
   }
   */
+  static defaultProps = {
+    className: ''
+  }
 
   constructor(props){
     super()
@@ -18,7 +23,7 @@ class HrzContainer extends Component {
     }
   }
 
-  componentDidMount(){    
+  componentDidMount(){
     this.unsubscribe = this.props.store
       .listen(this._onStore)
   }
@@ -42,9 +47,10 @@ class HrzContainer extends Component {
   }
 
   render(){
-    const { containers } = this.state;
+    const { className } = this.props
+        , { containers } = this.state;
     return (
-       <div className="hrz-container">
+       <div className={`${CL_DIV} ${className}`}>
           {this._renderContainers(containers)}
        </div>
     )

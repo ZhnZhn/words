@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/stores/__tests__/Settings.test.js"
+ ],
+ "file": "../../../../src/flux/stores/__tests__/Settings.test.js",
+ "names": [
+  "isApiKeyAllow",
+  "describe",
+  "fn",
+  "test",
+  "expect",
+  "toBe"
+ ],
+ "mappings": ";;AAAA;;;;;;IAEQA,a,sBAAAA,a;;;AAERC,SAAS,eAAT,EAA0B,YAAI;AAC5B,MAAMC,KAAKF,aAAX;AACAG,OAAK,+BAAL,EAAsC,YAAI;AACxCC,WAAOF,GAAG,KAAH,CAAP,EAAkBG,IAAlB,CAAuB,KAAvB;AACAD,WAAOF,GAAG,UAAH,CAAP,EAAuBG,IAAvB,CAA4B,KAA5B;AACAD,WAAOF,GAAG,GAAH,CAAP,EAAgBG,IAAhB,CAAqB,KAArB;AACD,GAJD;;AAMAF,OAAK,kCAAL,EAAyC,YAAI;AAC3CC,WAAOF,GAAG,MAAH,CAAP,EAAmBG,IAAnB,CAAwB,IAAxB;AACAD,WAAOF,GAAG,WAAH,CAAP,EAAwBG,IAAxB,CAA6B,IAA7B;AACAD,WAAOF,GAAG,MAAH,CAAP,EAAmBG,IAAnB,CAAwB,IAAxB;AACD,GAJD;AAKD,CAbD"
+}

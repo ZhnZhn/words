@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
-const styles = {
-  ulStyle : {
+const CL_UL = "tabpane__tabs";
+
+const S = {
+  UL: {
     listStyle : 'outside none none',
     marginTop: '10px',
     marginLeft: '10px',
     marginRight: '5px',
-    //borderBottom : '2px solid rgba(164, 135, 212, 1)'
     borderBottom : '2px solid #80c040'
+  },
+  DIV: {
+    width: "100%",
+    height : "100%"
+  },
+  BLOCK: {
+    display: 'block',
+    width: "100%",
+    height : "100%"
+  },
+  NONE: {
+    display: 'none'
   }
 };
 
@@ -53,8 +66,13 @@ class TabPane extends Component {
   _renderTabs = (children) => {
        const {selectedTabIndex} = this.state;
        return children.map((tab, index) => {
-          const isSelected = (index === selectedTabIndex) ? true : false;
-          return React.cloneElement(tab, { key : index, onClick : this._handleClickTab.bind(null, index), isSelected })
+          const isSelected = (index === selectedTabIndex)
+             ? true : false;
+          return React.cloneElement(tab, {
+            key: index,
+            onClick: this._handleClickTab.bind(null, index),
+            isSelected
+          })
        })
   }
 
@@ -62,8 +80,8 @@ class TabPane extends Component {
       const {selectedTabIndex, components} = this.state;
       return components.map((comp, index) => {
          const divStyle = (index === selectedTabIndex)
-                    ? {display: 'block', width: "100%", height : "100%"}
-                    : {display : 'none'};
+                    ? S.BLOCK
+                    : S.NONE;
           return (
              <div style={divStyle} key={'a'+index}>
                 {comp}
@@ -77,10 +95,10 @@ class TabPane extends Component {
 
     return (
       <div style={{ width, height }}>
-        <ul className="tabpane__tabs" style={styles.ulStyle}>
+        <ul className={CL_UL} style={S.UL}>
            {this._renderTabs(children)}
         </ul>
-        <div style={ {width: "100%", height : "100%"}}>
+        <div style={S.DIV}>
            {this._renderComponents()}
         </div>
       </div>

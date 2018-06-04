@@ -70,9 +70,13 @@ class WatchBrowser extends Component {
     store: PropTypes.object,
     browserType: PropTypes.string,
     showAction: PropTypes.string,
-    updateAction: PropTypes.string
+    updateAction: PropTypes.string,
+    onClickItem: PropTypes.func
   }
   */
+  static defaultProps = {
+    onClickItem: () => {}
+  }
 
   constructor(props){
     super()
@@ -91,6 +95,8 @@ class WatchBrowser extends Component {
     this._handlerDropItem = this._handlerDropItem.bind(this)
     this._handlerDragEnterItem = this._handlerDragEnterItem.bind(this)
     this._handlerDragLeaveItem = this._handlerDragLeaveItem.bind(this)
+
+    this._handlerClickItem = this._handlerClickItem.bind(this)
 
     const { isInitShow, store } = props;
     this.state = {
@@ -193,8 +199,9 @@ class WatchBrowser extends Component {
     });
   }
 
-  _handlerClickItem(item) {
-    ComponentActions.showModalDialog(ModalDialog.LOAD_ITEM, item)
+  _handlerClickItem(item) {    
+    this.props.onClickItem(item)
+    //ComponentActions.showModalDialog(ModalDialog.LOAD_ITEM, item)
   }
   _handlerRemoveItem(option, event) {
     event.stopPropagation()

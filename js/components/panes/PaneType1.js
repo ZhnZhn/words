@@ -99,31 +99,35 @@ var NewsPane = (_temp = _class = function (_Component) {
       var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var _this$props = _this.props,
           id = _this$props.id,
-          addAction = _this$props.addAction,
+          updateAction = _this$props.updateAction,
           showAction = _this$props.showAction,
-          toggleAction = _this$props.toggleAction;
+          toggleAction = _this$props.toggleAction,
+          watchAction = _this$props.watchAction;
 
 
       if (option.id === id) {
         switch (actionType) {
-          case addAction:
+          case updateAction:
             _this.setState({
               isShow: true,
               configs: option.configs
             });
             break;
           case showAction:
-            if (!_this.state.isShow) {
-              _this.setState({
-                isShow: true
-              });
-            }
+            _this.setState(function (prevState) {
+              return prevState.isShow ? null : { isShow: true };
+            });
             break;
           case toggleAction:
             _this.setState(function (prevState) {
               return {
                 isShow: !prevState.isShow
               };
+            });
+            break;
+          case watchAction:
+            _this.setState({
+              word: option.caption
             });
             break;
           default:
@@ -164,6 +168,7 @@ var NewsPane = (_temp = _class = function (_Component) {
     _this.childMargin = CHILD_MARGIN;
     _this.state = {
       isShow: true,
+      word: 'example',
       configs: []
     };
     return _this;
@@ -229,6 +234,7 @@ var NewsPane = (_temp = _class = function (_Component) {
           onRemoveItems = _props2.onRemoveItems,
           _state = this.state,
           isShow = _state.isShow,
+          word = _state.word,
           configs = _state.configs,
           TS = theme.createStyle(_Pane2.default),
           _showStyle = isShow ? S.INLINE_BLOCK : S.NONE,
@@ -263,6 +269,7 @@ var NewsPane = (_temp = _class = function (_Component) {
         _react2.default.createElement(Input, {
           ref: this._refIWord,
           TS: TS,
+          initValue: word,
           onEnter: this._hLoadItem
         }),
         _react2.default.createElement(
@@ -282,4 +289,4 @@ var NewsPane = (_temp = _class = function (_Component) {
   onClose: _fnNoop
 }, _temp);
 exports.default = (0, _withTheme2.default)(NewsPane);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\panes\PaneType1.js.map
+//# sourceMappingURL=PaneType1.js.map

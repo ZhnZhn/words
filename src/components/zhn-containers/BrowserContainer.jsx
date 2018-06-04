@@ -13,8 +13,9 @@ class BrowserContainer extends Component {
              browserId,
              showBrowserAction, showDialogAction,
              onClickItem,
-             updateWatchAction
-           } = this.props;
+             updateWatchAction,
+             onClickWatchItem
+           } = this.props;    
     return (
       <div className={CL_ROOT}>
         <MenuBrowser
@@ -30,6 +31,7 @@ class BrowserContainer extends Component {
           browserType="WATCH_ID"
           showAction={showBrowserAction}
           updateAction={updateWatchAction}
+          onClickItem={onClickWatchItem}
         />
         <DialogContainer
           maxDialog={3}

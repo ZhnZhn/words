@@ -151,7 +151,7 @@ const WatchListSlice = {
       WAT.DELETE_LIST
     );
   }
-
+    
 }
 
 export default WatchListSlice

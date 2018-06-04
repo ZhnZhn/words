@@ -30,14 +30,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import PropTypes from "prop-types";
 
-var styles = {
-  ulStyle: {
+var CL_UL = "tabpane__tabs";
+
+var S = {
+  UL: {
     listStyle: 'outside none none',
     marginTop: '10px',
     marginLeft: '10px',
     marginRight: '5px',
-    //borderBottom : '2px solid rgba(164, 135, 212, 1)'
     borderBottom: '2px solid #80c040'
+  },
+  DIV: {
+    width: "100%",
+    height: "100%"
+  },
+  BLOCK: {
+    display: 'block',
+    width: "100%",
+    height: "100%"
+  },
+  NONE: {
+    display: 'none'
   }
 };
 
@@ -96,12 +109,12 @@ var TabPane = (_temp = _class = function (_Component) {
         { style: { width: width, height: height } },
         _react2.default.createElement(
           'ul',
-          { className: 'tabpane__tabs', style: styles.ulStyle },
+          { className: CL_UL, style: S.UL },
           this._renderTabs(children)
         ),
         _react2.default.createElement(
           'div',
-          { style: { width: "100%", height: "100%" } },
+          { style: S.DIV },
           this._renderComponents()
         )
       );
@@ -120,7 +133,11 @@ var TabPane = (_temp = _class = function (_Component) {
 
     return children.map(function (tab, index) {
       var isSelected = index === selectedTabIndex ? true : false;
-      return _react2.default.cloneElement(tab, { key: index, onClick: _this2._handleClickTab.bind(null, index), isSelected: isSelected });
+      return _react2.default.cloneElement(tab, {
+        key: index,
+        onClick: _this2._handleClickTab.bind(null, index),
+        isSelected: isSelected
+      });
     });
   };
 
@@ -130,7 +147,7 @@ var TabPane = (_temp = _class = function (_Component) {
         components = _state.components;
 
     return components.map(function (comp, index) {
-      var divStyle = index === selectedTabIndex ? { display: 'block', width: "100%", height: "100%" } : { display: 'none' };
+      var divStyle = index === selectedTabIndex ? S.BLOCK : S.NONE;
       return _react2.default.createElement(
         'div',
         { style: divStyle, key: 'a' + index },
@@ -144,4 +161,4 @@ var TabPane = (_temp = _class = function (_Component) {
   };
 }, _temp);
 exports.default = TabPane;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\TabPane.js.map
+//# sourceMappingURL=TabPane.js.map

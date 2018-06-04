@@ -20,6 +20,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp2;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -43,7 +45,7 @@ var S = {
   }
 };
 
-var InputWord = function (_Component) {
+var InputWord = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(InputWord, _Component);
 
   function InputWord() {
@@ -74,6 +76,7 @@ var InputWord = function (_Component) {
     value: function render() {
       var _props = this.props,
           TS = _props.TS,
+          initValue = _props.initValue,
           onEnter = _props.onEnter;
 
       return _react2.default.createElement(
@@ -87,7 +90,7 @@ var InputWord = function (_Component) {
           caption: 'Word',
           accessKey: 'W',
           spellCheck: true,
-          initValue: 'example',
+          initValue: initValue,
           onEnter: onEnter
         }),
         _react2.default.createElement(_Atoms2.default.RaisedButton, {
@@ -108,7 +111,8 @@ var InputWord = function (_Component) {
     }
   }]);
   return InputWord;
-}(_react.Component);
-
+}(_react.Component), _class.defaultProps = {
+  initValue: 'example'
+}, _temp2);
 exports.default = InputWord;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\panes\InputWord.js.map
+//# sourceMappingURL=InputWord.js.map

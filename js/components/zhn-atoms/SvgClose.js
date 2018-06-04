@@ -59,4 +59,4 @@ SvgClose.defaultProps = {
 };
 
 exports.default = SvgClose;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\SvgClose.js.map
+//# sourceMappingURL=SvgClose.js.map

@@ -30,7 +30,8 @@ var STYLE = {
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     paddingLeft: '8px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    cursor: 'pointer'
   },
 
   SVG_CLOSE: {
@@ -56,7 +57,7 @@ var WatchItem = function WatchItem(props) {
       _btClose = isModeEdit ? _react2.default.createElement(_SvgClose2.default, {
     style: STYLE.SVG_CLOSE,
     onClose: onClose.bind(null, option)
-  }) : undefined;
+  }) : null;
 
   return _react2.default.createElement(
     'div',
@@ -82,4 +83,4 @@ var WatchItem = function WatchItem(props) {
 };
 
 exports.default = WatchItem;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\WatchItem.js.map
+//# sourceMappingURL=WatchItem.js.map

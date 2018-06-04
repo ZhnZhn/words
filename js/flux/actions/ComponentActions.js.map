@@ -1,22 +1,23 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\actions\\ComponentActions.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\actions\\ComponentActions.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/flux/actions/ComponentActions.js"
+ ],
+ "file": "../../../src/flux/actions/ComponentActions.js",
  "names": [
   "T",
   "SHOW_BROWSER",
   "SHOW_DIALOG",
   "SHOW_MODAL_DIALOG",
   "SHOW_PANE",
-  "TOGGLE_PANE",
   "CLOSE_PANE",
   "CHANGE_THEME",
   "SHOW_ABOUT",
+  "CLOSE_ABOUT",
   "UPDATE_WATCH_BROWSER",
+  "CLICK_WATCH_ITEM",
   "Actions",
   "createActions"
  ],
- "mappings": ";;;;;;;;;;;;;AAAA;;;;;;AAEO,IAAMA,gBAAI;AACfC,gBAAc,aADC;;AAGfC,eAAa,YAHE;;AAKfC,qBAAmB,iBALJ;;AAOfC,aAAW,UAPI;AAQfC,eAAa,YARE;AASfC,cAAY,WATG;;AAWfC,gBAAc,aAXC;;AAafC,cAAY,WAbG;;AAefC,wBAAsB;AAfP,CAAV;;AAkBP,IAAMC,UAAU,iBAAOC,aAAP,mFACbX,EAAEC,YADW,EACI,EADJ,wDAEbD,EAAEE,WAFW,EAEG,EAFH,wDAGbF,EAAEG,iBAHW,EAGS,EAHT,wDAIbH,EAAEI,SAJW,EAIC,EAJD,wDAKbJ,EAAEK,WALW,EAKG,EALH,wDAMbL,EAAEM,UANW,EAME,EANF,wDAObN,EAAEO,YAPW,EAOI,EAPJ,wDAQbP,EAAEQ,UARW,EAQE,EARF,0BAAhB;;kBAWeE,O"
+ "mappings": ";;;;;;;;;;;;;AAAA;;;;;;AAEO,IAAMA,gBAAI;AACfC,gBAAc,aADC;;AAGfC,eAAa,YAHE;;AAKfC,qBAAmB,iBALJ;;AAOfC,aAAW,UAPI;AAQf;AACAC,cAAY,WATG;;AAWfC,gBAAc,aAXC;;AAafC,cAAY,WAbG;AAcfC,eAAa,YAdE;;AAgBfC,wBAAsB,oBAhBP;AAiBfC,oBAAkB;AAjBH,CAAV;;AAoBP,IAAMC,UAAU,iBAAOC,aAAP,mFACbZ,EAAEC,YADW,EACI,EADJ,wDAEbD,EAAEE,WAFW,EAEG,EAFH,wDAGbF,EAAEG,iBAHW,EAGS,EAHT,wDAIbH,EAAEI,SAJW,EAIC,EAJD,wDAMbJ,EAAEK,UANW,EAME,EANF,wDAObL,EAAEM,YAPW,EAOI,EAPJ,wDAQbN,EAAEO,UARW,EAQE,EARF,wDASbP,EAAEU,gBATW,EASQ,EATR,0BAAhB;;kBAYeC,O"
 }

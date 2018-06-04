@@ -19,7 +19,7 @@ const Logic = {
       slice[paneId] = {
         configs: [ config ]
       };
-    }       
+    }
     return {
       configs: slice[paneId].configs,
       id: paneId
@@ -50,6 +50,12 @@ const Logic = {
     if ( this._isConfigs(paneSlice) ) {
       slice[paneId].configs = paneSlice.configs
         .filter(c => c.id !== id )
+      return {
+        configs: slice[paneId].configs,
+        id: paneId
+      }
+    } else {
+      return undefined;
     }
   },
 
@@ -105,7 +111,10 @@ const ItemSlice = {
   },
 
   onRemoveItem(config){
-    Logic.removeItem(this.items, config)
+    const _options = Logic.removeItem(this.items, config)
+    if (_options) {
+      this.trigger(T.LOAD_ITEM_COMPLETED, _options)
+    }  
   },
   onRemoveItems(paneId){
     Logic.removeItems(this.items, paneId)

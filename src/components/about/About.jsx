@@ -26,11 +26,22 @@ class About extends Component {
     this.unsubscribe();
   }
   _onStore = (actionType, data) => {
-    const { showAction } = this.props;
+    const { showAction, closeAction } = this.props;
     switch(actionType){
       case showAction:
-         this.setState({ isShow : true })
+         this.setState(prevState => {
+           return prevState.isShow
+              ? null
+              : { isShow: true };
+         })
          break;
+      case closeAction:
+        this.setState(prevState => {
+          return prevState.isShow
+            ? { isShow: false }
+            : null;
+        })
+        break;
       default: return undefined;
     }
   }
@@ -48,7 +59,7 @@ class About extends Component {
               : null
          , _rootStyle = isShow
               ? TS.BLOCK
-              : TS.NONE;
+              : TS.NONE;    
     return (
       <div
         className={_rootClass}

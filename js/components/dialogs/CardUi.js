@@ -38,6 +38,8 @@ var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from "prop-types";
+
 var CL_DIV = 'bt-flat__div';
 
 var S = {
@@ -64,6 +66,18 @@ var CardUi = function (_Component) {
 
   (0, _createClass3.default)(CardUi, [{
     key: 'render',
+
+
+    /*
+    static propTypes = {
+      style: PropTypes.object,
+      buttonsStyle: PropTypes.object,
+      btStyle: PropTypes.object,
+      onSetTheme: PropTypes.func,
+      onClose: PropTypes.func
+    }
+    */
+
     value: function render() {
       var _props = this.props,
           style = _props.style,

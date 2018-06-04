@@ -9,9 +9,12 @@ import RouterDialog from '../../components/dialogs/RouterDialog'
 import RouterPane from '../../components/panes/RouterPane'
 import About from '../../components/about/About'
 
-const { showPane, closePane } = ComponentActions;
+const {
+  showPane, closePane,
+  showModalDialog
+} = ComponentActions;
 
-const _addToWatch = ComponentActions.showModalDialog.bind(null, 'AW')
+const _addToWatch = showModalDialog.bind(null, 'AW')
 
 const _loadItem = throttle(
   ItemActions.loadItem,
@@ -47,9 +50,10 @@ const Factory = {
       store,
       Input,
       Item,
-      addAction: IAT.LOAD_ITEM_COMPLETED,
+      updateAction: IAT.LOAD_ITEM_COMPLETED,
       showAction: CAT.SHOW_PANE,
       toggleAction: CAT.TOGGLE_PANE,
+      watchAction: CAT.CLICK_WATCH_ITEM,
       onRemoveItems: ItemActions.removeItems.bind(null, paneId),
       onRemoveUnder: ItemActions.removeItemsUnder,
       onCloseItem: ItemActions.removeItem,
@@ -63,7 +67,8 @@ const Factory = {
   crAbout: (store) => {
     return React.createElement(About, {
       key: 'About', id: 'About',
-      showAction: 'showAbout',
+      showAction: CAT.SHOW_ABOUT,
+      closeAction: CAT.CLOSE_ABOUT,
       store
     })
   }

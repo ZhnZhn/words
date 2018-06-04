@@ -122,6 +122,16 @@ var TextField = (_temp = _class = function (_Component) {
   */
 
   (0, _createClass3.default)(TextField, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      /* update new initValue from parent component */
+      if (this.props !== nextProps && this.props.initValue !== nextProps.initValue) {
+        this.setState({
+          value: nextProps.initValue || ''
+        });
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -256,4 +266,4 @@ var TextField = (_temp = _class = function (_Component) {
   };
 }, _temp);
 exports.default = TextField;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-m-input\TextField.js.map
+//# sourceMappingURL=TextField.js.map

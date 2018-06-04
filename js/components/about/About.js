@@ -65,11 +65,20 @@ var About = function (_Component) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this));
 
     _this._onStore = function (actionType, data) {
-      var showAction = _this.props.showAction;
+      var _this$props = _this.props,
+          showAction = _this$props.showAction,
+          closeAction = _this$props.closeAction;
 
       switch (actionType) {
         case showAction:
-          _this.setState({ isShow: true });
+          _this.setState(function (prevState) {
+            return prevState.isShow ? null : { isShow: true };
+          });
+          break;
+        case closeAction:
+          _this.setState(function (prevState) {
+            return prevState.isShow ? { isShow: false } : null;
+          });
           break;
         default:
           return undefined;
@@ -185,4 +194,4 @@ var About = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(About);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\about\About.js.map
+//# sourceMappingURL=About.js.map

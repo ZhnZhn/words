@@ -57,7 +57,8 @@ var BrowserContainer = function (_Component) {
           showBrowserAction = _props.showBrowserAction,
           showDialogAction = _props.showDialogAction,
           onClickItem = _props.onClickItem,
-          updateWatchAction = _props.updateWatchAction;
+          updateWatchAction = _props.updateWatchAction,
+          onClickWatchItem = _props.onClickWatchItem;
 
       return _react2.default.createElement(
         'div',
@@ -74,7 +75,8 @@ var BrowserContainer = function (_Component) {
           isInitShow: false,
           browserType: 'WATCH_ID',
           showAction: showBrowserAction,
-          updateAction: updateWatchAction
+          updateAction: updateWatchAction,
+          onClickItem: onClickWatchItem
         }),
         _react2.default.createElement(_DialogContainer2.default, {
           maxDialog: 3,
@@ -88,4 +90,4 @@ var BrowserContainer = function (_Component) {
 }(_react.Component);
 
 exports.default = BrowserContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-containers\BrowserContainer.js.map
+//# sourceMappingURL=BrowserContainer.js.map

@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
 const C = {
-  LOADING : '#2F7ED8',
-  FAILED : 'rgb(237, 88, 19)'
+  LOADING : '#2f7ed8',
+  FAILED : '#ed5813'
 };
 
 class ProgressLoading extends Component {
@@ -21,15 +21,14 @@ class ProgressLoading extends Component {
     this.unsubscribe()
   }
 
-  shouldComponentUpdate(nextProps, nextState){    
-    if (this.state.completed === nextState.complete) {
+  shouldComponentUpdate(nextProps, nextState){
+    if (this.state.completed === nextState.completed) {
       return false;
     }
     return true;
   }
 
   _onStore = (actionType) => {
-
       const { ACTIONS } = this.props;
       if (actionType === ACTIONS.LOADING){
         this.setState({ completed: 35, color: C.LOADING })

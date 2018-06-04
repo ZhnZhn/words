@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _dec, _dec2, _dec3, _dec4, _class;
+var _dec, _dec2, _dec3, _dec4, _class, _class2, _temp;
 //import PropTypes from 'prop-types'
 
 var _react = require('react');
@@ -110,19 +110,8 @@ var S = {
 
 var saveWatch = _WatchActions2.default.saveWatch,
     removeWatchItem = _WatchActions2.default.removeWatchItem;
-var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorators2.default.withDnDGroup(DRAG, _WatchActions2.default), _dec3 = _Decorators2.default.withDnDList(DRAG, _WatchActions2.default), _dec4 = _Decorators2.default.withDnDItem(DRAG, _WatchActions2.default), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = function (_Component) {
+var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorators2.default.withDnDGroup(DRAG, _WatchActions2.default), _dec3 = _Decorators2.default.withDnDList(DRAG, _WatchActions2.default), _dec4 = _Decorators2.default.withDnDItem(DRAG, _WatchActions2.default), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_temp = _class2 = function (_Component) {
   (0, _inherits3.default)(WatchBrowser, _Component);
-
-  /*
-  static propTypes = {
-    caption: PropTypes.string,
-    isInitShow: PropTypes.bool,
-    store: PropTypes.object,
-    browserType: PropTypes.string,
-    showAction: PropTypes.string,
-    updateAction: PropTypes.string
-  }
-  */
 
   function WatchBrowser(props) {
     (0, _classCallCheck3.default)(this, WatchBrowser);
@@ -249,6 +238,8 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
     _this._handlerDragEnterItem = _this._handlerDragEnterItem.bind(_this);
     _this._handlerDragLeaveItem = _this._handlerDragLeaveItem.bind(_this);
 
+    _this._handlerClickItem = _this._handlerClickItem.bind(_this);
+
     var isInitShow = props.isInitShow,
         store = props.store;
 
@@ -259,6 +250,18 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
     };
     return _this;
   }
+  /*
+  static propTypes = {
+    caption: PropTypes.string,
+    isInitShow: PropTypes.bool,
+    store: PropTypes.object,
+    browserType: PropTypes.string,
+    showAction: PropTypes.string,
+    updateAction: PropTypes.string,
+    onClickItem: PropTypes.func
+  }
+  */
+
 
   (0, _createClass3.default)(WatchBrowser, [{
     key: 'componentDidMount',
@@ -288,7 +291,8 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
   }, {
     key: '_handlerClickItem',
     value: function _handlerClickItem(item) {
-      _ComponentActions2.default.showModalDialog(_Type.ModalDialog.LOAD_ITEM, item);
+      this.props.onClickItem(item);
+      //ComponentActions.showModalDialog(ModalDialog.LOAD_ITEM, item)
     }
   }, {
     key: '_handlerRemoveItem',
@@ -353,6 +357,8 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
     }
   }]);
   return WatchBrowser;
-}(_react.Component)) || _class) || _class) || _class) || _class);
+}(_react.Component), _class2.defaultProps = {
+  onClickItem: function onClickItem() {}
+}, _temp)) || _class) || _class) || _class) || _class);
 exports.default = (0, _withTheme2.default)(WatchBrowser);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\WatchBrowser.js.map
+//# sourceMappingURL=WatchBrowser.js.map
