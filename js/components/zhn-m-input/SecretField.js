@@ -145,6 +145,14 @@ var TextField = (_temp = _class = function (_Component) {
     };
     return _this;
   }
+  /*
+  static propTypes = {
+    isAllowRemember: PropTypes.bool,
+    maxLength: PropTypes.string,
+    onTest: PropTypes.func,
+    onEnter: PropTypes.func
+  }
+  */
 
   (0, _createClass3.default)(TextField, [{
     key: 'render',
@@ -192,7 +200,11 @@ var TextField = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: CL.DIV },
-          _react2.default.createElement('input', { hidden: true, name: name + '[username]', value: name }),
+          _react2.default.createElement('input', {
+            hidden: true,
+            name: name + '[username]',
+            value: name
+          }),
           _react2.default.createElement('input', (0, _extends3.default)({
             ref: this._refInput,
             type: 'password',

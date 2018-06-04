@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react'
 import A from '../zhn-atoms/Atoms'
 import TextField from '../zhn-m-input/TextField'
 
+const CL_BT = 'bt-input-word';
+
 const S = {
   TF_LABEL: {
     top: '28px'
@@ -46,6 +48,7 @@ class InputWord extends Component {
           onEnter={onEnter}
         />
         <A.RaisedButton
+          className={CL_BT}
           rootStyle={TS.BT.RAISED_ROOT}
           clDiv={TS.BT.CL_RAISED_DIV}
           caption="Load"

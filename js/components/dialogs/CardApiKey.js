@@ -131,7 +131,8 @@ var CardApiKey = function (_Component) {
           isAllowRemember: isAllow,
           caption: 'Words API Key',
           name: 'wordsapi',
-          maxLength: '50'
+          maxLength: '50',
+          onEnter: onSet
         }),
         _react2.default.createElement(_RowCheckBox2.default, {
           rootStyle: S.CHECK_BOX,

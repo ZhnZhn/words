@@ -13,6 +13,7 @@ const S = {
 class RaisedButton extends Component {
   /*
   static propTypes = {
+    className: PropTypes.string,
     rootStyle: PropTypes.object,
     clDiv: PropTypes.string,
     caption: PropTypes.string,
@@ -23,6 +24,7 @@ class RaisedButton extends Component {
   */
 
   static defaultProps = {
+    className: '',
     tabIndex: 0,
     onClick: () => {}
   }
@@ -31,11 +33,13 @@ class RaisedButton extends Component {
 
   render(){
     const {
+            className,
             rootStyle, clDiv,
             caption, tabIndex,
             isPrimary,
             onClick
           } = this.props
+        , _btCl = `${CL_BT} ${className}`
         , _spanStyle = (isPrimary)
              ? S.PRIMARY_SPAN
              : undefined;
@@ -43,7 +47,7 @@ class RaisedButton extends Component {
       <button
         ref = {this._refNode}
         tabIndex={tabIndex}
-        className={CL_BT}
+        className={_btCl}
         style={rootStyle}
         onClick={onClick}
       >

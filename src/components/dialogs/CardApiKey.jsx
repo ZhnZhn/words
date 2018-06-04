@@ -81,6 +81,7 @@ class CardApiKey extends Component {
           caption="Words API Key"
           name="wordsapi"
           maxLength="50"
+          onEnter={onSet}
         />
         <RowCheckBox
           rootStyle={S.CHECK_BOX}

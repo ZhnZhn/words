@@ -36,6 +36,8 @@ var _TextField2 = _interopRequireDefault(_TextField);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_BT = 'bt-input-word';
+
 var S = {
   TF_LABEL: {
     top: '28px'
@@ -94,6 +96,7 @@ var InputWord = (_temp2 = _class = function (_Component) {
           onEnter: onEnter
         }),
         _react2.default.createElement(_Atoms2.default.RaisedButton, {
+          className: CL_BT,
           rootStyle: TS.BT.RAISED_ROOT,
           clDiv: TS.BT.CL_RAISED_DIV,
           caption: 'Load',

@@ -27,8 +27,11 @@
   outline: 0px none;
 }
 
-@media only screen and (max-width: 550px){
+@media only screen and (max-width: 400px) {
   .items-container {
     width: 98%;
+  }
+  .bt-input-word {
+    display: none;
   }
 }

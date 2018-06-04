@@ -59,6 +59,7 @@ var RaisedButton = (_temp2 = _class = function (_Component) {
   }
   /*
   static propTypes = {
+    className: PropTypes.string,
     rootStyle: PropTypes.object,
     clDiv: PropTypes.string,
     caption: PropTypes.string,
@@ -72,12 +73,14 @@ var RaisedButton = (_temp2 = _class = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          className = _props.className,
           rootStyle = _props.rootStyle,
           clDiv = _props.clDiv,
           caption = _props.caption,
           tabIndex = _props.tabIndex,
           isPrimary = _props.isPrimary,
           onClick = _props.onClick,
+          _btCl = CL_BT + ' ' + className,
           _spanStyle = isPrimary ? S.PRIMARY_SPAN : undefined;
 
       return _react2.default.createElement(
@@ -85,7 +88,7 @@ var RaisedButton = (_temp2 = _class = function (_Component) {
         {
           ref: this._refNode,
           tabIndex: tabIndex,
-          className: CL_BT,
+          className: _btCl,
           style: rootStyle,
           onClick: onClick
         },
@@ -111,8 +114,9 @@ var RaisedButton = (_temp2 = _class = function (_Component) {
   }]);
   return RaisedButton;
 }(_react.Component), _class.defaultProps = {
+  className: '',
   tabIndex: 0,
   onClick: function onClick() {}
 }, _temp2);
 exports.default = RaisedButton;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\RaisedButton.js.map
+//# sourceMappingURL=RaisedButton.js.map

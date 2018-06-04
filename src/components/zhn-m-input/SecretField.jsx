@@ -47,6 +47,15 @@ const _maskValue = (len=0) => {
 };
 
 class TextField extends Component {
+  /*
+  static propTypes = {
+    isAllowRemember: PropTypes.bool,
+    maxLength: PropTypes.string,
+    onTest: PropTypes.func,
+    onEnter: PropTypes.func
+  }
+  */
+
   static defaultProps = {
     maxLength: "32"
   }
@@ -146,7 +155,11 @@ class TextField extends Component {
           {caption}
         </label>
         <div className={CL.DIV}>
-          <input hidden={true} name={`${name}[username]`} value={name} />
+          <input
+            hidden={true}
+            name={`${name}[username]`}
+            value={name}
+          />
           <input
             ref = {this._refInput}
             type="password"
