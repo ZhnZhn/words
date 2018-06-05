@@ -25,17 +25,18 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp, _initialiseProps;
-//import PropsTypes from 'prop-types'
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _CaptionInput = require('../zhn-atoms/CaptionInput');
-
-var _CaptionInput2 = _interopRequireDefault(_CaptionInput);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropsTypes from 'prop-types'
+
+//import CaptionInput from '../zhn-atoms/CaptionInput'
+
+var DB_TOUCH_PERIOD = 500;
 
 var CL = {
   SELECT: 'm-select',
@@ -99,6 +100,9 @@ var TextField = (_temp = _class = function (_Component) {
     _this.isFocus = false;
     _this.isOnTest = _isFn(onTest);
     _this.isOnEnter = _isFn(onEnter);
+
+    _this._firstTouch = 0;
+
     var _value = initValue || '';
     _this.state = {
       value: _value,
@@ -159,6 +163,8 @@ var TextField = (_temp = _class = function (_Component) {
         {
           className: CL.SELECT,
           style: rootStyle
+          //onDoubleClick={this._handleClearInput}
+          , onTouchStart: this._handleDbTouch
         },
         _react2.default.createElement(
           'label',
@@ -227,6 +233,24 @@ var TextField = (_temp = _class = function (_Component) {
   spellCheck: false
 }, _initialiseProps = function _initialiseProps() {
   var _this2 = this;
+
+  this._handleClearInput = function () {
+    _this2.setState({ value: '' });
+  };
+
+  this._handleDbTouch = function (ev) {
+    var _ms = Date.now();
+    if (_this2._firstTouch) {
+      if (_ms - _this2._firstTouch < DB_TOUCH_PERIOD) {
+        _this2._firstTouch = 0;
+        _this2._handleClearInput();
+      } else {
+        _this2._firstTouch = _ms;
+      }
+    } else {
+      _this2._firstTouch = _ms;
+    }
+  };
 
   this._handleFocusInput = function () {
     _this2.isFocus = true;

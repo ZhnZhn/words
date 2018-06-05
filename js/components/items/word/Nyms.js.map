@@ -1,11 +1,13 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\items\\word\\Nyms.jsx",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\items\\word\\Nyms.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../../src/components/items/word/Nyms.js"
+ ],
+ "file": "../../../../src/components/items/word/Nyms.js",
  "names": [
   "S",
+  "LIST",
+  "lineHeight",
   "CAPTION",
   "color",
   "paddingRight",
@@ -15,5 +17,5 @@
   "items",
   "length"
  ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,WAAS;AACPC,WAAO,SADA;AAEPC,kBAAc,KAFP;AAGPC,gBAAY;AAHL;AADD,CAAV;;AAQA,IAAMC,OAAO,SAAPA,IAAO,OAAwB;AAAA,MAArBC,OAAqB,QAArBA,OAAqB;AAAA,MAAZC,KAAY,QAAZA,KAAY;;AACnC,MAAK,EAAEA,SAASA,MAAMC,MAAN,KAAiB,CAA5B,CAAL,EAAqC;AACnC,WAAO,IAAP;AACD;;AAED,SACE,8CAAG,QAAH;AACE,aAASF,OADX;AAEE,kBAAcN,EAAEC,OAFlB;AAGE,WAAOM;AAHT,IADF;AAOD,CAZD;;kBAceF,I"
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAM;AACJC,gBAAY;AADR,GADE;AAIRC,WAAS;AACPC,WAAO,SADA;AAEPC,kBAAc,KAFP;AAGPC,gBAAY;AAHL;AAJD,CAAV;;AAWA,IAAMC,OAAO,SAAPA,IAAO,OAAwB;AAAA,MAArBC,OAAqB,QAArBA,OAAqB;AAAA,MAAZC,KAAY,QAAZA,KAAY;;AACnC,MAAK,EAAEA,SAASA,MAAMC,MAAN,KAAiB,CAA5B,CAAL,EAAqC;AACnC,WAAO,IAAP;AACD;;AAED,SACE,8CAAG,QAAH;AACE,aAASF,OADX;AAEE,eAAWR,EAAEC,IAFf;AAGE,kBAAcD,EAAEG,OAHlB;AAIE,WAAOM;AAJT,IADF;AAQD,CAbD;;kBAeeF,I"
 }

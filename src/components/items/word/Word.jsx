@@ -62,6 +62,15 @@ const S = {
   }
 }
 
+const _getClientX = (ev) => {
+  const { targetTouches, changedTouches } = ev;
+  return (targetTouches && targetTouches[0])
+    ? targetTouches[0].clientX
+    : (changedTouches && changedTouches[0])
+        ? changedTouches[0].clientX
+        : 0;
+};
+
 
 @withDnDStyle
 class Word extends Component {
@@ -72,6 +81,7 @@ class Word extends Component {
 
   constructor(props){
     super()
+    this.clientX = 0
     this.state = {
       isShow: false
     }
@@ -96,6 +106,39 @@ class Word extends Component {
       this._handleClose()
     }
   }
+
+  _dragTouchMove = (ev) => {
+    ev.persist()
+    const _clientX = _getClientX(ev);
+    if (_clientX) {
+      if (!this._isMoveStart){
+        this.clientX = this._startMoveX = _clientX
+        this.dragStartWithDnDStyle(ev)
+      } else {
+        const _dX = this._startMoveX - _clientX;
+        ev.currentTarget.style.right = _dX + 'px'
+      }
+      this._isMoveStart = true
+    }
+  }
+  _dragTouchEnd = (ev) => {
+    if (this._isMoveStart) {
+      if (ev.preventDefault) {
+        ev.preventDefault()
+      }
+      ev.persist()
+      this.dragEndWithDnDStyle()
+      const _clientX = _getClientX(ev)
+          , _dX = Math.abs(this.clientX - _clientX);
+      if (_dX > D_REMOVE_UNDER) {
+        this._handleClose()
+      } else {
+        ev.currentTarget.style.right = '0px'
+      }
+      this._isMoveStart = false
+    }
+  }
+  
   _preventDefault(ev){
     ev.preventDefault()
   }
@@ -136,13 +179,17 @@ class Word extends Component {
         , _captionStyle = isShow
              ? { ...S.CAPTION, ...S.CAPTION_OPEN }
              : S.CAPTION;
-        
+
     return (
         <div
           style={S.ROOT}
           draggable={true}
+
           onDragStart={this._dragStart}
+          onTouchMove={this._dragTouchMove}
           onDragEnd={this._dragEnd}
+          onTouchEnd={this._dragTouchEnd}
+
           onDrop={this._preventDefault}
           onDragOver={this._preventDefault}
           onDragEnter={this._preventDefault}

@@ -47,7 +47,7 @@ var S = {
   },
   OC_AFTER: {
     color: '#0c7abf',
-    fontWeight: 'bold'
+    fontWeight: 800
   },
   OC_CHILDREN: {
     paddingLeft: '16px',
@@ -138,4 +138,4 @@ var WordDef = (_temp2 = _class = function (_Component) {
   config: {}
 }, _temp2);
 exports.default = WordDef;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\items\word\WordDef.js.map
+//# sourceMappingURL=WordDef.js.map

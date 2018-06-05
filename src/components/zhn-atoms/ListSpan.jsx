@@ -1,5 +1,11 @@
 import React from 'react'
 
+const S = {
+  ITEM: {
+    fontWeight: 400
+  }
+};
+
 const ListSpan = ({
   rootStyle,
   caption, captionStyle,
@@ -8,13 +14,13 @@ const ListSpan = ({
   if (items.length === 0) {
     return null;
   }
-  
+
   return (
     <div style={rootStyle}>
        <span style={captionStyle}>
          {caption}
        </span>
-       <span>
+       <span style={{ ...S.ITEM, ...itemStyle }}>
          {items.join(', ')}
        </span>
     </div>

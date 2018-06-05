@@ -15,18 +15,24 @@ var _Atoms2 = _interopRequireDefault(_Atoms);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
+  ROOT: {
+    lineHeight: 1.7
+  },
   DER_ROOT: {
     display: 'inline-block'
   },
   DER_CAPTION: {
     color: '#0c7abf',
     paddingRight: '8px',
-    fontWeight: 'bold'
+    fontWeight: 800
   },
   SYN_CAPTION: {
     color: 'green',
     paddingRight: '8px',
-    fontWeight: 'bold'
+    fontWeight: 800
+  },
+  ITEM: {
+    fontWeight: 400
   }
 };
 
@@ -38,8 +44,8 @@ var WordSyn = function WordSyn(_ref) {
       similarTo = result.similarTo;
 
   return _react2.default.createElement(
-    _react.Fragment,
-    null,
+    'div',
+    { style: S.ROOT },
     _react2.default.createElement(_Atoms2.default.ListSpan, {
       caption: 'derivation:',
       rootStyle: S.DER_ROOT,
@@ -47,6 +53,7 @@ var WordSyn = function WordSyn(_ref) {
       items: derivation
     }),
     _react2.default.createElement(_Atoms2.default.ListDiv, {
+      itemStyle: S.ITEM,
       items: examples
     }),
     _react2.default.createElement(_Atoms2.default.ListSpan, {
@@ -63,4 +70,4 @@ var WordSyn = function WordSyn(_ref) {
 };
 
 exports.default = WordSyn;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\items\word\WordSyn.js.map
+//# sourceMappingURL=WordSyn.js.map

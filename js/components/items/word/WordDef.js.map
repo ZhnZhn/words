@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\items\\word\\WordDef.jsx",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\items\\word\\WordDef.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../../src/components/items/word/WordDef.js"
+ ],
+ "file": "../../../../src/components/items/word/WordDef.js",
  "names": [
   "S",
   "FILL_OPEN",

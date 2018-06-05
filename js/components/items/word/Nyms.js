@@ -15,10 +15,13 @@ var _Atoms2 = _interopRequireDefault(_Atoms);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
+  LIST: {
+    lineHeight: 1.5
+  },
   CAPTION: {
     color: '#0c7abf',
     paddingRight: '8px',
-    fontWeight: 'bold'
+    fontWeight: 800
   }
 };
 
@@ -32,10 +35,11 @@ var Nyms = function Nyms(_ref) {
 
   return _react2.default.createElement(_Atoms2.default.ListSpan, {
     caption: caption,
+    rootStyle: S.LIST,
     captionStyle: S.CAPTION,
     items: items
   });
 };
 
 exports.default = Nyms;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\items\word\Nyms.js.map
+//# sourceMappingURL=Nyms.js.map

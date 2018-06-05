@@ -1,20 +1,26 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import A from '../../zhn-atoms/Atoms'
 
 const S = {
+  ROOT: {
+    lineHeight: 1.7
+  },
   DER_ROOT: {
     display: 'inline-block'
   },
   DER_CAPTION: {
     color: '#0c7abf',
     paddingRight: '8px',
-    fontWeight: 'bold'
+    fontWeight: 800
   },
   SYN_CAPTION: {
     color: 'green',
     paddingRight: '8px',
-    fontWeight: 'bold'
+    fontWeight: 800
+  },
+  ITEM: {
+    fontWeight: 400
   }
 };
 
@@ -26,7 +32,7 @@ const WordSyn = ({ result }) => {
           similarTo
         } = result;
   return (
-    <Fragment>
+    <div style={S.ROOT}>
       <A.ListSpan
         caption="derivation:"
         rootStyle={S.DER_ROOT}
@@ -34,6 +40,7 @@ const WordSyn = ({ result }) => {
         items={derivation}
       />
       <A.ListDiv
+        itemStyle={S.ITEM}
         items={examples}
       />
       <A.ListSpan
@@ -46,7 +53,7 @@ const WordSyn = ({ result }) => {
         captionStyle={S.SYN_CAPTION}
         items={similarTo}
       />
-    </Fragment>
+    </div>
   );
 }
 

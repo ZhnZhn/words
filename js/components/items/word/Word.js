@@ -106,6 +106,13 @@ var S = {
   }
 };
 
+var _getClientX = function _getClientX(ev) {
+  var targetTouches = ev.targetTouches,
+      changedTouches = ev.changedTouches;
+
+  return targetTouches && targetTouches[0] ? targetTouches[0].clientX : changedTouches && changedTouches[0] ? changedTouches[0].clientX : 0;
+};
+
 var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Component) {
   (0, _inherits3.default)(Word, _Component);
 
@@ -138,6 +145,39 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
       }
     };
 
+    _this._dragTouchMove = function (ev) {
+      ev.persist();
+      var _clientX = _getClientX(ev);
+      if (_clientX) {
+        if (!_this._isMoveStart) {
+          _this.clientX = _this._startMoveX = _clientX;
+          _this.dragStartWithDnDStyle(ev);
+        } else {
+          var _dX = _this._startMoveX - _clientX;
+          ev.currentTarget.style.right = _dX + 'px';
+        }
+        _this._isMoveStart = true;
+      }
+    };
+
+    _this._dragTouchEnd = function (ev) {
+      if (_this._isMoveStart) {
+        if (ev.preventDefault) {
+          ev.preventDefault();
+        }
+        ev.persist();
+        _this.dragEndWithDnDStyle();
+        var _clientX = _getClientX(ev),
+            _dX = Math.abs(_this.clientX - _clientX);
+        if (_dX > D_REMOVE_UNDER) {
+          _this._handleClose();
+        } else {
+          ev.currentTarget.style.right = '0px';
+        }
+        _this._isMoveStart = false;
+      }
+    };
+
     _this._handleToggle = function () {
       _this.setState(function (prevState) {
         return {
@@ -163,6 +203,7 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
       _this.headerComp = comp;
     };
 
+    _this.clientX = 0;
     _this.state = {
       isShow: false
     };
@@ -193,8 +234,12 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
         {
           style: S.ROOT,
           draggable: true,
+
           onDragStart: this._dragStart,
+          onTouchMove: this._dragTouchMove,
           onDragEnd: this._dragEnd,
+          onTouchEnd: this._dragTouchEnd,
+
           onDrop: this._preventDefault,
           onDragOver: this._preventDefault,
           onDragEnter: this._preventDefault,

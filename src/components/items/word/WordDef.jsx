@@ -11,7 +11,7 @@ const S = {
   },
   OC_AFTER: {
     color: '#0c7abf',
-    fontWeight: 'bold'
+    fontWeight: 800
   },
   OC_CHILDREN: {
     paddingLeft: '16px',

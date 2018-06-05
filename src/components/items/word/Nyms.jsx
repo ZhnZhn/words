@@ -3,10 +3,13 @@ import React from 'react'
 import A from '../../zhn-atoms/Atoms'
 
 const S = {
+  LIST: {
+    lineHeight: 1.5
+  },
   CAPTION: {
     color: '#0c7abf',
     paddingRight: '8px',
-    fontWeight: 'bold'
+    fontWeight: 800    
   }
 };
 
@@ -18,6 +21,7 @@ const Nyms = ({ caption, items }) => {
   return (
     <A.ListSpan
       caption={caption}
+      rootStyle={S.LIST}
       captionStyle={S.CAPTION}
       items={items}
     />
