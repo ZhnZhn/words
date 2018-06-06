@@ -52,6 +52,8 @@ var _withDnDStyle2 = _interopRequireDefault(_withDnDStyle);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var LONG_TOUCH = 1000;
+
 var D_REMOVE_UNDER = 60;
 var D_REMOVE_ITEM = 35;
 
@@ -113,6 +115,9 @@ var _getClientX = function _getClientX(ev) {
   return targetTouches && targetTouches[0] ? targetTouches[0].clientX : changedTouches && changedTouches[0] ? changedTouches[0].clientX : 0;
 };
 
+//const BORDER_LEFT = 'border-left';
+//const DRAG_START_BORDER_LEFT = "4px solid #D64336";
+
 var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Component) {
   (0, _inherits3.default)(Word, _Component);
 
@@ -145,36 +150,53 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
       }
     };
 
+    _this._startDragTouch = function (node) {
+      _this._isDragTouch = true;
+      _this.dragTouchStartWithDnDStyle(node);
+    };
+
+    _this._dragTouchStart = function (ev) {
+      var node = ev.currentTarget;
+      _this._dragTouchId = setTimeout(function () {
+        return _this._startDragTouch(node);
+      }, LONG_TOUCH);
+    };
+
     _this._dragTouchMove = function (ev) {
-      ev.persist();
-      var _clientX = _getClientX(ev);
-      if (_clientX) {
-        if (!_this._isMoveStart) {
-          _this.clientX = _this._startMoveX = _clientX;
-          _this.dragStartWithDnDStyle(ev);
-        } else {
-          var _dX = _this._startMoveX - _clientX;
-          ev.currentTarget.style.right = _dX + 'px';
+      if (_this._isDragTouch) {
+        ev.persist();
+        var _clientX = _getClientX(ev);
+        if (_clientX) {
+          if (!_this._isMoveStart) {
+            _this.clientX = _this._startMoveX = _clientX;
+            _this._isMoveStart = true;
+          } else {
+            var _dX = _this._startMoveX - _clientX;
+            _this.dragTouchMoveWithDnDStyle(ev.currentTarget, _dX);
+          }
         }
-        _this._isMoveStart = true;
       }
     };
 
     _this._dragTouchEnd = function (ev) {
-      if (_this._isMoveStart) {
-        if (ev.preventDefault) {
+      if (_this._isDragTouch) {
+        if (_this._isMoveStart) {
           ev.preventDefault();
-        }
-        ev.persist();
-        _this.dragEndWithDnDStyle();
-        var _clientX = _getClientX(ev),
-            _dX = Math.abs(_this.clientX - _clientX);
-        if (_dX > D_REMOVE_UNDER) {
-          _this._handleClose();
+          ev.persist();
+          var _clientX = _getClientX(ev),
+              _dX = Math.abs(_this.clientX - _clientX);
+          if (_dX > D_REMOVE_UNDER) {
+            _this._handleClose();
+          } else {
+            _this.dragTouchEndWithDnDStyle(ev.currentTarget, true);
+          }
+          _this._isMoveStart = false;
         } else {
-          ev.currentTarget.style.right = '0px';
+          _this.dragTouchEndWithDnDStyle(ev.currentTarget);
         }
-        _this._isMoveStart = false;
+        _this._isDragTouch = false;
+      } else {
+        clearTimeout(_this._dragTouchId);
       }
     };
 
@@ -204,6 +226,7 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
     };
 
     _this.clientX = 0;
+    _this._isDragTouch = false;
     _this.state = {
       isShow: false
     };
@@ -234,6 +257,8 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
         {
           style: S.ROOT,
           draggable: true,
+
+          onTouchStart: this._dragTouchStart,
 
           onDragStart: this._dragStart,
           onTouchMove: this._dragTouchMove,

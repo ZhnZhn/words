@@ -8,6 +8,8 @@ import WordDef from './WordDef'
 
 import withDnDStyle from '../decorators/withDnDStyle'
 
+const LONG_TOUCH = 1000;
+
 const D_REMOVE_UNDER = 60;
 const D_REMOVE_ITEM = 35;
 
@@ -71,6 +73,8 @@ const _getClientX = (ev) => {
         : 0;
 };
 
+//const BORDER_LEFT = 'border-left';
+//const DRAG_START_BORDER_LEFT = "4px solid #D64336";
 
 @withDnDStyle
 class Word extends Component {
@@ -82,6 +86,7 @@ class Word extends Component {
   constructor(props){
     super()
     this.clientX = 0
+    this._isDragTouch = false
     this.state = {
       isShow: false
     }
@@ -107,48 +112,64 @@ class Word extends Component {
     }
   }
 
+ _startDragTouch = (node) => {
+   this._isDragTouch = true
+   this.dragTouchStartWithDnDStyle(node)
+ }
+
+  _dragTouchStart = (ev) => {
+    const node = ev.currentTarget;
+    this._dragTouchId = setTimeout(
+      () => this._startDragTouch(node),
+      LONG_TOUCH
+    )
+  }
+
   _dragTouchMove = (ev) => {
-    ev.persist()
-    const _clientX = _getClientX(ev);
-    if (_clientX) {
-      if (!this._isMoveStart){
-        this.clientX = this._startMoveX = _clientX
-        this.dragStartWithDnDStyle(ev)
-      } else {
-        const _dX = this._startMoveX - _clientX;
-        ev.currentTarget.style.right = _dX + 'px'
+    if (this._isDragTouch) {
+      ev.persist()
+      const _clientX = _getClientX(ev);
+      if (_clientX) {
+        if (!this._isMoveStart){
+          this.clientX = this._startMoveX = _clientX
+          this._isMoveStart = true
+        } else {
+          const _dX = this._startMoveX - _clientX;
+          this.dragTouchMoveWithDnDStyle(ev.currentTarget, _dX)
+        }
       }
-      this._isMoveStart = true
     }
   }
   _dragTouchEnd = (ev) => {
-    if (this._isMoveStart) {
-      if (ev.preventDefault) {
+    if (this._isDragTouch) {
+      if (this._isMoveStart) {
         ev.preventDefault()
-      }
-      ev.persist()
-      this.dragEndWithDnDStyle()
-      const _clientX = _getClientX(ev)
-          , _dX = Math.abs(this.clientX - _clientX);
-      if (_dX > D_REMOVE_UNDER) {
-        this._handleClose()
+        ev.persist()
+        const _clientX = _getClientX(ev)
+            , _dX = Math.abs(this.clientX - _clientX);
+        if (_dX > D_REMOVE_UNDER) {
+          this._handleClose()
+        } else {
+          this.dragTouchEndWithDnDStyle(ev.currentTarget, true)
+        }
+        this._isMoveStart = false
       } else {
-        ev.currentTarget.style.right = '0px'
+        this.dragTouchEndWithDnDStyle(ev.currentTarget)
       }
-      this._isMoveStart = false
+      this._isDragTouch = false
+    } else {
+      clearTimeout(this._dragTouchId)
     }
   }
-  
+
   _preventDefault(ev){
     ev.preventDefault()
   }
 
   _handleToggle = () => {
-    this.setState(prevState => {
-      return {
-        isShow: !prevState.isShow
-      };
-    })
+    this.setState(prevState => ({
+      isShow: !prevState.isShow
+    }))
   }
 
   _handleClose = () => {
@@ -179,11 +200,12 @@ class Word extends Component {
         , _captionStyle = isShow
              ? { ...S.CAPTION, ...S.CAPTION_OPEN }
              : S.CAPTION;
-
     return (
         <div
           style={S.ROOT}
           draggable={true}
+
+          onTouchStart={this._dragTouchStart}
 
           onDragStart={this._dragStart}
           onTouchMove={this._dragTouchMove}
