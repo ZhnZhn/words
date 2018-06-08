@@ -3,12 +3,11 @@ import React, { Component } from 'react'
 import withTheme from '../../hoc/withTheme'
 import styleConfig from './Word.Style'
 
+import DndOnlyX from '../../zhn-dnd/DndOnlyX'
+
 import ItemHeader from '../ItemHeader'
 import WordDef from './WordDef'
 
-import withDnDStyle from '../decorators/withDnDStyle'
-
-const LONG_TOUCH = 1000;
 
 const D_REMOVE_UNDER = 60;
 const D_REMOVE_ITEM = 35;
@@ -64,19 +63,6 @@ const S = {
   }
 }
 
-const _getClientX = (ev) => {
-  const { targetTouches, changedTouches } = ev;
-  return (targetTouches && targetTouches[0])
-    ? targetTouches[0].clientX
-    : (changedTouches && changedTouches[0])
-        ? changedTouches[0].clientX
-        : 0;
-};
-
-//const BORDER_LEFT = 'border-left';
-//const DRAG_START_BORDER_LEFT = "4px solid #D64336";
-
-@withDnDStyle
 class Word extends Component {
 
   static defaultProps = {
@@ -85,85 +71,9 @@ class Word extends Component {
 
   constructor(props){
     super()
-    this.clientX = 0
-    this._isDragTouch = false
     this.state = {
       isShow: false
     }
-  }
-
-  _dragStart = (ev) => {
-    ev.persist()
-    this.clientX = ev.clientX
-    this.dragStartWithDnDStyle(ev)
-    ev.dataTransfer.effectAllowed="move"
-    ev.dataTransfer.dropEffect="move"
-  }
-  _dragEnd = (ev) => {
-    ev.preventDefault()
-    ev.persist()
-    this.dragEndWithDnDStyle()
-    const _deltaX = Math.abs(this.clientX - ev.clientX)
-        , { config, onRemoveUnder } = this.props;
-    if (_deltaX > D_REMOVE_UNDER) {
-      onRemoveUnder(config)
-    } else if (_deltaX > D_REMOVE_ITEM){
-      this._handleClose()
-    }
-  }
-
- _startDragTouch = (node) => {
-   this._isDragTouch = true
-   this.dragTouchStartWithDnDStyle(node)
- }
-
-  _dragTouchStart = (ev) => {
-    const node = ev.currentTarget;
-    this._dragTouchId = setTimeout(
-      () => this._startDragTouch(node),
-      LONG_TOUCH
-    )
-  }
-
-  _dragTouchMove = (ev) => {
-    if (this._isDragTouch) {
-      ev.persist()
-      const _clientX = _getClientX(ev);
-      if (_clientX) {
-        if (!this._isMoveStart){
-          this.clientX = this._startMoveX = _clientX
-          this._isMoveStart = true
-        } else {
-          const _dX = this._startMoveX - _clientX;
-          this.dragTouchMoveWithDnDStyle(ev.currentTarget, _dX)
-        }
-      }
-    }
-  }
-  _dragTouchEnd = (ev) => {
-    if (this._isDragTouch) {
-      if (this._isMoveStart) {
-        ev.preventDefault()
-        ev.persist()
-        const _clientX = _getClientX(ev)
-            , _dX = Math.abs(this.clientX - _clientX);
-        if (_dX > D_REMOVE_UNDER) {
-          this._handleClose()
-        } else {
-          this.dragTouchEndWithDnDStyle(ev.currentTarget, true)
-        }
-        this._isMoveStart = false
-      } else {
-        this.dragTouchEndWithDnDStyle(ev.currentTarget)
-      }
-      this._isDragTouch = false
-    } else {
-      clearTimeout(this._dragTouchId)
-    }
-  }
-
-  _preventDefault(ev){
-    ev.preventDefault()
   }
 
   _handleToggle = () => {
@@ -185,6 +95,24 @@ class Word extends Component {
     this.setState({ isShow: false })
   }
 
+  _onDragEnd = (dX) => {
+    const { onRemoveUnder, config } = this.props;
+    if (dX > D_REMOVE_UNDER) {
+      onRemoveUnder(config)
+    } else if (dX > D_REMOVE_ITEM){
+      this._handleClose()
+    }
+  }
+
+  _onDragTouchEnd = (dX) => {
+    if (dX > D_REMOVE_UNDER) {
+      this._handleClose()
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   _refItemHeader = (comp) => {
     this.headerComp = comp
   }
@@ -201,21 +129,10 @@ class Word extends Component {
              ? { ...S.CAPTION, ...S.CAPTION_OPEN }
              : S.CAPTION;
     return (
-        <div
+        <DndOnlyX
           style={S.ROOT}
-          draggable={true}
-
-          onTouchStart={this._dragTouchStart}
-
-          onDragStart={this._dragStart}
-          onTouchMove={this._dragTouchMove}
-          onDragEnd={this._dragEnd}
-          onTouchEnd={this._dragTouchEnd}
-
-          onDrop={this._preventDefault}
-          onDragOver={this._preventDefault}
-          onDragEnter={this._preventDefault}
-          onDragLeave={this._preventDefault}
+          onDragEnd={this._onDragEnd}
+          onDragTouchEnd={this._onDragTouchEnd}
         >
           <ItemHeader
              ref={this._refItemHeader}
@@ -235,7 +152,7 @@ class Word extends Component {
             isShow={isShow}
             config={config}
           />
-        </div>
+        </DndOnlyX>
       );
     }
 }

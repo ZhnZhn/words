@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _class2, _temp;
+var _class, _temp;
 
 var _react = require('react');
 
@@ -38,6 +38,10 @@ var _Word = require('./Word.Style');
 
 var _Word2 = _interopRequireDefault(_Word);
 
+var _DndOnlyX = require('../../zhn-dnd/DndOnlyX');
+
+var _DndOnlyX2 = _interopRequireDefault(_DndOnlyX);
+
 var _ItemHeader = require('../ItemHeader');
 
 var _ItemHeader2 = _interopRequireDefault(_ItemHeader);
@@ -46,13 +50,7 @@ var _WordDef = require('./WordDef');
 
 var _WordDef2 = _interopRequireDefault(_WordDef);
 
-var _withDnDStyle = require('../decorators/withDnDStyle');
-
-var _withDnDStyle2 = _interopRequireDefault(_withDnDStyle);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var LONG_TOUCH = 1000;
 
 var D_REMOVE_UNDER = 60;
 var D_REMOVE_ITEM = 35;
@@ -108,97 +106,13 @@ var S = {
   }
 };
 
-var _getClientX = function _getClientX(ev) {
-  var targetTouches = ev.targetTouches,
-      changedTouches = ev.changedTouches;
-
-  return targetTouches && targetTouches[0] ? targetTouches[0].clientX : changedTouches && changedTouches[0] ? changedTouches[0].clientX : 0;
-};
-
-//const BORDER_LEFT = 'border-left';
-//const DRAG_START_BORDER_LEFT = "4px solid #D64336";
-
-var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Component) {
+var Word = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(Word, _Component);
 
   function Word(props) {
     (0, _classCallCheck3.default)(this, Word);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (Word.__proto__ || Object.getPrototypeOf(Word)).call(this));
-
-    _this._dragStart = function (ev) {
-      ev.persist();
-      _this.clientX = ev.clientX;
-      _this.dragStartWithDnDStyle(ev);
-      ev.dataTransfer.effectAllowed = "move";
-      ev.dataTransfer.dropEffect = "move";
-    };
-
-    _this._dragEnd = function (ev) {
-      ev.preventDefault();
-      ev.persist();
-      _this.dragEndWithDnDStyle();
-      var _deltaX = Math.abs(_this.clientX - ev.clientX),
-          _this$props = _this.props,
-          config = _this$props.config,
-          onRemoveUnder = _this$props.onRemoveUnder;
-
-      if (_deltaX > D_REMOVE_UNDER) {
-        onRemoveUnder(config);
-      } else if (_deltaX > D_REMOVE_ITEM) {
-        _this._handleClose();
-      }
-    };
-
-    _this._startDragTouch = function (node) {
-      _this._isDragTouch = true;
-      _this.dragTouchStartWithDnDStyle(node);
-    };
-
-    _this._dragTouchStart = function (ev) {
-      var node = ev.currentTarget;
-      _this._dragTouchId = setTimeout(function () {
-        return _this._startDragTouch(node);
-      }, LONG_TOUCH);
-    };
-
-    _this._dragTouchMove = function (ev) {
-      if (_this._isDragTouch) {
-        ev.persist();
-        var _clientX = _getClientX(ev);
-        if (_clientX) {
-          if (!_this._isMoveStart) {
-            _this.clientX = _this._startMoveX = _clientX;
-            _this._isMoveStart = true;
-          } else {
-            var _dX = _this._startMoveX - _clientX;
-            _this.dragTouchMoveWithDnDStyle(ev.currentTarget, _dX);
-          }
-        }
-      }
-    };
-
-    _this._dragTouchEnd = function (ev) {
-      if (_this._isDragTouch) {
-        if (_this._isMoveStart) {
-          ev.preventDefault();
-          ev.persist();
-          var _clientX = _getClientX(ev),
-              _dX = Math.abs(_this.clientX - _clientX);
-          if (_dX > D_REMOVE_UNDER) {
-            _this._handleClose();
-          } else {
-            _this.dragTouchEndWithDnDStyle(ev.currentTarget, true);
-          }
-          _this._isMoveStart = false;
-        } else {
-          _this.dragTouchEndWithDnDStyle(ev.currentTarget);
-        }
-        _this._isDragTouch = false;
-      } else {
-        clearTimeout(_this._dragTouchId);
-      }
-    };
 
     _this._handleToggle = function () {
       _this.setState(function (prevState) {
@@ -209,9 +123,9 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
     };
 
     _this._handleClose = function () {
-      var _this$props2 = _this.props,
-          onCloseItem = _this$props2.onCloseItem,
-          config = _this$props2.config;
+      var _this$props = _this.props,
+          onCloseItem = _this$props.onCloseItem,
+          config = _this$props.config;
 
       onCloseItem(config);
     };
@@ -221,12 +135,31 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
       _this.setState({ isShow: false });
     };
 
+    _this._onDragEnd = function (dX) {
+      var _this$props2 = _this.props,
+          onRemoveUnder = _this$props2.onRemoveUnder,
+          config = _this$props2.config;
+
+      if (dX > D_REMOVE_UNDER) {
+        onRemoveUnder(config);
+      } else if (dX > D_REMOVE_ITEM) {
+        _this._handleClose();
+      }
+    };
+
+    _this._onDragTouchEnd = function (dX) {
+      if (dX > D_REMOVE_UNDER) {
+        _this._handleClose();
+        return false;
+      } else {
+        return true;
+      }
+    };
+
     _this._refItemHeader = function (comp) {
       _this.headerComp = comp;
     };
 
-    _this.clientX = 0;
-    _this._isDragTouch = false;
     _this.state = {
       isShow: false
     };
@@ -234,11 +167,6 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
   }
 
   (0, _createClass3.default)(Word, [{
-    key: '_preventDefault',
-    value: function _preventDefault(ev) {
-      ev.preventDefault();
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -253,22 +181,11 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
           _captionStyle = isShow ? (0, _extends3.default)({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION;
 
       return _react2.default.createElement(
-        'div',
+        _DndOnlyX2.default,
         {
           style: S.ROOT,
-          draggable: true,
-
-          onTouchStart: this._dragTouchStart,
-
-          onDragStart: this._dragStart,
-          onTouchMove: this._dragTouchMove,
-          onDragEnd: this._dragEnd,
-          onTouchEnd: this._dragTouchEnd,
-
-          onDrop: this._preventDefault,
-          onDragOver: this._preventDefault,
-          onDragEnter: this._preventDefault,
-          onDragLeave: this._preventDefault
+          onDragEnd: this._onDragEnd,
+          onDragTouchEnd: this._onDragTouchEnd
         },
         _react2.default.createElement(_ItemHeader2.default, {
           ref: this._refItemHeader,
@@ -292,9 +209,8 @@ var Word = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Co
     }
   }]);
   return Word;
-}(_react.Component), _class2.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   config: {}
-}, _temp)) || _class;
-
+}, _temp);
 exports.default = (0, _withTheme2.default)(Word);
 //# sourceMappingURL=Word.js.map

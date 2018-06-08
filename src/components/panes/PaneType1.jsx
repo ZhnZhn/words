@@ -34,6 +34,7 @@ const S = {
   },
   SCROLL_PANE : {
     overflowY: 'auto',
+    overflowX: 'hidden',
     //height: '92%',
     height: 'calc(100% - 120px)',
     paddingRight: '10px'
@@ -158,7 +159,7 @@ class NewsPane extends Component {
   _renderConfigs(configs=[]){
      const {
              Item,
-             onCloseItem,             
+             onCloseItem,
              onRemoveUnder,
              onAddToWatch
            } = this.props;
