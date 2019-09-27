@@ -74,6 +74,18 @@ var CL = {
   BT_ABOUT: "header__bt-about"
 };
 
+var STYLE = {
+  DIV_STYLE: {
+    paddingLeft: 6,
+    paddingRight: 6
+  },
+  SETTINGS: {
+    verticalAlign: 'middle',
+    position: 'relative',
+    top: -1
+  }
+};
+
 var TITLE = 'Words v0.2.0';
 var LABEL_TITLE = 'Click to change app UI theme';
 
@@ -182,24 +194,32 @@ var HeaderBar = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: CL.BTS },
-          _react2.default.createElement(_Atoms2.default.FlatButton, {
-            className: CL.SETTINGS,
-            rootStyle: (0, _extends3.default)({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
-            clDiv: S.BT.CL_FLAT_DIV,
-            caption: 'Settings',
-            title: 'User Settings Dialog',
-            accessKey: 's',
-            onClick: onSettings
-          }),
-          _react2.default.createElement(_Atoms2.default.FlatButton, {
-            className: CL.BT_ABOUT,
-            rootStyle: S.BT.FLAT_ROOT,
-            clDiv: S.BT.CL_FLAT_DIV,
-            caption: 'About',
-            title: 'About',
-            accessKey: 'a',
-            onClick: onAbout
-          })
+          _react2.default.createElement(
+            _Atoms2.default.FlatButton,
+            {
+              className: CL.SETTINGS,
+              rootStyle: (0, _extends3.default)({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
+              clDiv: S.BT.CL_FLAT_DIV,
+              divStyle: STYLE.DIV_STYLE,
+              title: 'User Settings Dialog',
+              accessKey: 's',
+              onClick: onSettings
+            },
+            _react2.default.createElement(_Atoms2.default.SvgSettings, { style: STYLE.SETTINGS })
+          ),
+          _react2.default.createElement(
+            _Atoms2.default.FlatButton,
+            {
+              className: CL.BT_ABOUT,
+              rootStyle: S.BT.FLAT_ROOT,
+              clDiv: S.BT.CL_FLAT_DIV,
+              divStyle: STYLE.DIV_STYLE,
+              title: 'About Words',
+              accessKey: 'a',
+              onClick: onAbout
+            },
+            _react2.default.createElement(_Atoms2.default.SvgInfo, { style: STYLE.SETTINGS })
+          )
         ),
         _react2.default.createElement(_LimitLabel2.default, {
           store: store,

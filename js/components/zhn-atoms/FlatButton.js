@@ -24,6 +24,7 @@ var FlatButton = function FlatButton(_ref) {
       className = _ref$className === undefined ? '' : _ref$className,
       rootStyle = _ref.rootStyle,
       clDiv = _ref.clDiv,
+      divStyle = _ref.divStyle,
       _ref$title = _ref.title,
       title = _ref$title === undefined ? '' : _ref$title,
       caption = _ref.caption,
@@ -42,16 +43,16 @@ var FlatButton = function FlatButton(_ref) {
     },
     _react2.default.createElement(
       'div',
-      { className: clDiv },
-      _react2.default.createElement(_CaptionInput2.default, {
+      { className: clDiv, style: divStyle },
+      caption ? _react2.default.createElement(_CaptionInput2.default, {
         className: CL.BT_SPAN,
         caption: caption,
         accessKey: accessKey
-      }),
+      }) : null,
       children
     )
   );
 };
 
 exports.default = FlatButton;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\FlatButton.js.map
+//# sourceMappingURL=FlatButton.js.map

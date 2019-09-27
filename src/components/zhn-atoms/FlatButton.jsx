@@ -7,9 +7,11 @@ const CL = {
   BT_SPAN: 'bt-flat__span'
 };
 
+
 const FlatButton = ({
-  className='',
-  rootStyle, clDiv, title='', caption,
+  className='', rootStyle,
+  clDiv, divStyle,
+  title='', caption,
   accessKey,
   children,
   onClick
@@ -22,13 +24,16 @@ const FlatButton = ({
   accessKey={accessKey}
   onClick={onClick}
 >
-  <div className={clDiv}>
-    <CaptionInput
-      className={CL.BT_SPAN}
-      caption={caption}
-      accessKey={accessKey}
-    />
-    {children}
+  <div className={clDiv} style={divStyle}>
+    { caption
+       ? <CaptionInput
+            className={CL.BT_SPAN}
+            caption={caption}
+            accessKey={accessKey}
+          />
+       : null
+    }
+    {children}    
   </div>
 </button>
 

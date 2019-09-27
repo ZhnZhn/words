@@ -4,6 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _SvgIcons = require('./svg/SvgIcons');
+
+var _SvgIcons2 = _interopRequireDefault(_SvgIcons);
+
 var _Browser = require('./Browser');
 
 var _Browser2 = _interopRequireDefault(_Browser);
@@ -98,7 +106,7 @@ var _ValidationMessages2 = _interopRequireDefault(_ValidationMessages);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Atoms = {
+var Atoms = (0, _extends3.default)({}, _SvgIcons2.default, {
   Browser: _Browser2.default,
   BrowserCaption: _BrowserCaption2.default,
   CaptionInput: _CaptionInput2.default,
@@ -122,7 +130,7 @@ var Atoms = {
   Tab: _Tab2.default,
   TabPane: _TabPane2.default,
   ValidationMessages: _ValidationMessages2.default
-};
+});
 
 exports.default = Atoms;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\Atoms.js.map
+//# sourceMappingURL=Atoms.js.map

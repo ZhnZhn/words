@@ -73,7 +73,7 @@
  }
 }
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 270px){
  .header__bt-about {
    display: none !important;
  }

@@ -22,6 +22,18 @@ const CL = {
   BT_ABOUT: "header__bt-about"
 };
 
+const STYLE = {
+  DIV_STYLE : {
+    paddingLeft: 6,
+    paddingRight: 6
+  },
+  SETTINGS: {
+    verticalAlign: 'middle',
+    position: 'relative',
+    top: -1
+  }
+};
+
 const TITLE = 'Words v0.2.0';
 const LABEL_TITLE = 'Click to change app UI theme';
 
@@ -116,20 +128,24 @@ class HeaderBar extends Component {
                className={CL.SETTINGS}
                rootStyle={{ ...S.BT.FLAT_ROOT, ...S.BT_SETTINGS }}
                clDiv={S.BT.CL_FLAT_DIV}
-               caption="Settings"
+               divStyle={STYLE.DIV_STYLE}
                title="User Settings Dialog"
                accessKey="s"
                onClick={onSettings}
-            />
+            >
+              <A.SvgSettings style={STYLE.SETTINGS} />
+            </A.FlatButton>
             <A.FlatButton
                 className={CL.BT_ABOUT}
                 rootStyle={S.BT.FLAT_ROOT}
                 clDiv={S.BT.CL_FLAT_DIV}
-                caption="About"
-                title="About"
+                divStyle={STYLE.DIV_STYLE}
+                title="About Words"
                 accessKey="a"
                 onClick={onAbout}
-            />
+            >
+              <A.SvgInfo style={STYLE.SETTINGS}/>
+            </A.FlatButton>
          </div>
          <LimitLabel
            store={store}

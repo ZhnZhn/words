@@ -33,7 +33,7 @@ const CaptionInput = ({
   const {
           captionIn,
           after, key, before
-        } = _toCaptionIn(caption, accessKey)
+        } = _toCaptionIn(caption, accessKey);  
   if (typeof captionIn !== 'undefined') {
     return (
       <span className={className} style={rootStyle}>

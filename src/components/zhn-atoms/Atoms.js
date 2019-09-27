@@ -1,4 +1,6 @@
 
+import SvgIcons from './svg/SvgIcons'
+
 import Browser from './Browser'
 import BrowserCaption from './BrowserCaption'
 import CaptionInput from './CaptionInput'
@@ -24,6 +26,7 @@ import TabPane from './TabPane'
 import ValidationMessages from './ValidationMessages'
 
 const Atoms = {
+  ...SvgIcons,
   Browser,
   BrowserCaption,
   CaptionInput,
