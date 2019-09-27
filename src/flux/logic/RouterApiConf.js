@@ -15,7 +15,7 @@ const RouterApiConf = {
           isApiKeyAllow: Settings.isApiKeyAllow,
           api: Adapter.Words.api,
           adapter: Adapter.Words.adapter,
-          msgErr: `WordsApi ${MSG_ERR_TAIL}`
+          msgErr: `WordsApi's ${MSG_ERR_TAIL}`
         };
       default: return {
         msgErr: MSG_ERR_DF

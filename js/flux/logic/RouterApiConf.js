@@ -26,7 +26,7 @@ var RouterApiConf = {
           isApiKeyAllow: _Settings2.default.isApiKeyAllow,
           api: _Adapter2.default.Words.api,
           adapter: _Adapter2.default.Words.adapter,
-          msgErr: 'WordsApi ' + MSG_ERR_TAIL
+          msgErr: 'WordsApi\'s ' + MSG_ERR_TAIL
         };
       default:
         return {

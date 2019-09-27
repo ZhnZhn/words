@@ -56,7 +56,7 @@
   margin-right: 16px;
 }
 
-.header__bt-settins {  
+.header__bt-settins {
 }
 .header__bt-about {
 }
@@ -70,7 +70,7 @@
  }
  .header__label-app {
    display: none;
- } 
+ }
 }
 
 @media only screen and (max-width: 400px){
@@ -89,14 +89,20 @@
   padding-bottom: 1px;
   padding-left: 16px;
   padding-right: 16px;
+  border-bottom: 1px solid transparent;
   cursor: pointer;
 }
-.row__topic:nth-child(odd){  
+/*
+.row__topic:nth-child(odd){
   background-color: rgba(0, 0, 0, 0.15);
 }
-.row__topic:hover {
+*/
+.row__topic:hover,
+.row__topic:focus {
   border-bottom: 1px solid #1b75bb;
 }
+/*
 .row__topic:focus {
   border-bottom: 1px solid #80c040;
 }
+*/

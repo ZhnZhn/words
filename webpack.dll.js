@@ -9,7 +9,7 @@ module.exports = {
      lib: [
             "react", "react-dom", "prop-types",
             "reflux",            
-            "interact.js", "localforage", 
+            "interactjs", "localforage", 
             "babel-runtime/helpers/classCallCheck",
             "babel-runtime/helpers/createClass",
             "babel-runtime/helpers/possibleConstructorReturn",

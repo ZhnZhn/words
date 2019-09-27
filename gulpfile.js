@@ -15,30 +15,30 @@ gulp.task('clean', function(){
   return del(['./css/*.min.css']);
 })
 
-gulp.task('styles', ['clean'], function(){
+gulp.task('styles', gulp.series(['clean'], function(){
   return gulp.src(['./css/*.css', '!./css/*.min.css'])
-       .pipe(concat('app.min.css'))
-       .pipe(cleanCss())
-       .pipe(rev())
-       .pipe(gulp.dest('./css'))
-});
+    .pipe(concat('app.min.css'))
+    .pipe(cleanCss())
+    .pipe(rev())
+    .pipe(gulp.dest('./css'));
+}));
 
-gulp.task('inject-css', ['styles'], function(){
+gulp.task('inject-css', gulp.series(['styles'], function(){
    var target = gulp.src('./template/gulp.ejs')
-     , source = gulp.src(['./css/*.min.css'], { read:false })
+     , source = gulp.src(['./css/*.min.css'], { read:false });
 
    return target.pipe(inject(source))
-                .pipe(gulp.dest('./template'))
-});
+     .pipe(gulp.dest('./template'));
+}));
 
-gulp.task('template', ['inject-css'], function(){
+gulp.task('template', gulp.series(['inject-css'], function(){
   return gulp.src('./template/gulp.ejs')
-             .pipe(replace('<!-- inject:css -->',''))
-             .pipe(replace('<!-- endinject  -->', '')) 
-             .pipe(rename('index.ejs'))
-             .pipe(gulp.dest('./template'))
-})
+    .pipe(replace('<!-- inject:css -->',''))
+    .pipe(replace('<!-- endinject  -->', '')) 
+    .pipe(rename('index.ejs'))
+    .pipe(gulp.dest('./template'));
+}));
 
 
 
-gulp.task('default', ['template']);
+gulp.task('default', gulp.series(['template']));

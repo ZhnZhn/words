@@ -8,7 +8,7 @@ module.exports = {
   entry: {
      lib: [
             "react", "react-dom", 
-            "interact.js",         
+            "interactjs",         
             "reflux", 
             "localforage",
             //"shortid",                            
