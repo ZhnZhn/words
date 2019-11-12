@@ -48,7 +48,7 @@ var FragmentSelectGroupList = function (_Component) {
   function FragmentSelectGroupList(props) {
     (0, _classCallCheck3.default)(this, FragmentSelectGroupList);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (FragmentSelectGroupList.__proto__ || Object.getPrototypeOf(FragmentSelectGroupList)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (FragmentSelectGroupList.__proto__ || Object.getPrototypeOf(FragmentSelectGroupList)).call(this, props));
 
     _this._handleSelectGroup = function (item) {
       if (item && item.caption) {
@@ -77,8 +77,8 @@ var FragmentSelectGroupList = function (_Component) {
   }
 
   (0, _createClass3.default)(FragmentSelectGroupList, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       if (nextProps !== this.props) {
         if (nextProps.groupOptions !== this.props.groupOptions) {
           this.groupCaption = null;
@@ -140,4 +140,4 @@ var FragmentSelectGroupList = function (_Component) {
 //import PropTypes from "prop-types";
 
 exports.default = FragmentSelectGroupList;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\FragmentSelectGroupList.js.map
+//# sourceMappingURL=FragmentSelectGroupList.js.map

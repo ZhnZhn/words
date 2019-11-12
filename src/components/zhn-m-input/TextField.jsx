@@ -72,7 +72,7 @@ class TextField extends Component {
   }
 
   constructor(props){
-    super()
+    super(props)
     const { onTest, onEnter, initValue } = props;
 
     this.isFocus = false;
@@ -89,7 +89,7 @@ class TextField extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     /* update new initValue from parent component */
     if (this.props !== nextProps
       && this.props.initValue !== nextProps.initValue ) {
@@ -104,7 +104,7 @@ class TextField extends Component {
     this.setState({ value: '' })
   }
 
-  _handleDbTouch = (ev) => {    
+  _handleDbTouch = (ev) => {
     const _ms = Date.now();
     if (this._firstTouch) {
       if (_ms - this._firstTouch<DB_TOUCH_PERIOD) {
@@ -195,7 +195,7 @@ class TextField extends Component {
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck={spellCheck}
-            translate={false}
+            translate="false"
             onFocus={this._handleFocusInput}
             onBlur={this._handleBlurInput}
             onChange={this._handleInputChange}

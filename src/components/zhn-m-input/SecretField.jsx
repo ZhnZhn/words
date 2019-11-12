@@ -14,7 +14,7 @@ const S = {
      transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
@@ -59,9 +59,9 @@ class TextField extends Component {
   static defaultProps = {
     maxLength: "32"
   }
-
+  
   constructor(props){
-    super()
+    super(props)
     this.isFocus = false;
     const { onTest, onEnter } = props;
     this.isOnTest = _isFn(onTest)
@@ -138,7 +138,7 @@ class TextField extends Component {
                  autoComplete: "off",
                  name: `${name}[password]`,
                  value: value,
-                 defaultValue: value,
+                 //defaultValue: value,
                  onChange: this._handleInputChange,
                  onKeyDown: this._handleKeyDown
                };
@@ -158,7 +158,7 @@ class TextField extends Component {
           <input
             hidden={true}
             name={`${name}[username]`}
-            value={name}
+            defaultValue={name}
           />
           <input
             ref = {this._refInput}
@@ -166,8 +166,8 @@ class TextField extends Component {
             className={CL.INPUT}
             autoCorrect="off"
             autoCapitalize="off"
-            spellCheck={false}
-            translate={false}
+            spellCheck="false"
+            translate="false"
             maxLength={maxLength}
             onFocus={this._handleFocusInput}
             onBlur={this._handleBlurInput}

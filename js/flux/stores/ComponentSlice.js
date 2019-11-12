@@ -107,8 +107,8 @@ var ComponentSlice = {
       this.trigger(_ComponentActions.T.SHOW_ABOUT);
     }
   },
-  onChangeTheme: function onChangeTheme() {
-    this.trigger(_ComponentActions.T.CHANGE_THEME);
+  onChangeTheme: function onChangeTheme(themeName) {
+    this.trigger(_ComponentActions.T.CHANGE_THEME, themeName);
   },
   onClickWatchItem: function onClickWatchItem(item) {
     item.id = item.id || DF_WATCH_PANE_ID;

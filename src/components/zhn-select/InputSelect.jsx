@@ -217,7 +217,7 @@ class InputSelect extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (this.props !== nextProps){
       if (this.props.options !== nextProps.options
           || nextProps.isUpdateOptions){

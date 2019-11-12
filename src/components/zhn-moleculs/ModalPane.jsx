@@ -5,7 +5,7 @@ class ModalPane extends Component {
     onClose: () => {}
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (this.props !== nextProps ){
       if (nextProps.isShow){
         document.addEventListener('click', this._handleClickOutside, true)

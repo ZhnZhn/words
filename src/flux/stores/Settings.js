@@ -1,6 +1,6 @@
 
 const _settings = {
-  wordsApi: undefined
+  wordsApi: void 0
 };
 
 const CHAR_X = 'X';

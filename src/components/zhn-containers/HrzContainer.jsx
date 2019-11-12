@@ -3,6 +3,17 @@ import React, { Component } from 'react'
 
 const CL_DIV = "hrz-container";
 
+const _isInCont = (arrComps, comp) => {
+  const { key } = comp, _max = arrComps.length;
+  let i = 0;
+  for(i;i<_max;i++) {
+    if (arrComps[i].key === key) {
+      return true;
+    }
+  }
+  return false;
+};
+
 class HrzContainer extends Component {
   /*
   static propTypes = {
@@ -16,11 +27,8 @@ class HrzContainer extends Component {
     className: ''
   }
 
-  constructor(props){
-    super()
-    this.state = {
-      containers: []
-    }
+  state = {
+    containers: []
   }
 
   componentDidMount(){
@@ -32,18 +40,15 @@ class HrzContainer extends Component {
   }
 
   _onStore = (actionType, option) => {
-     if (actionType === this.props.addAction && option.Comp){
+     if (actionType === this.props.addAction && option && option.Comp){
        this.setState(prevState => {
-         prevState.containers.unshift(option.Comp)
+         const comp = option.Comp;
+         if (!_isInCont(prevState.containers, comp)) {
+           prevState.containers.unshift(comp)
+         }
          return prevState;
        })
      }
-  }
-
-  _renderContainers(containers){
-    return containers.map(container => {
-      return container;
-    });
   }
 
   render(){
@@ -51,9 +56,9 @@ class HrzContainer extends Component {
         , { containers } = this.state;
     return (
        <div className={`${CL_DIV} ${className}`}>
-          {this._renderContainers(containers)}
+         {containers}
        </div>
-    )
+    );
   }
 }
 

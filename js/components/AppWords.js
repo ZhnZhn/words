@@ -28,9 +28,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ThemeProvider = require('./hoc/ThemeProvider');
+var _ThemeContext = require('./hoc/ThemeContext');
 
-var _ThemeProvider2 = _interopRequireDefault(_ThemeProvider);
+var _ThemeContext2 = _interopRequireDefault(_ThemeContext);
 
 var _theme = require('./styles/theme');
 
@@ -53,19 +53,31 @@ var WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 var AppWords = function (_Component) {
   (0, _inherits3.default)(AppWords, _Component);
 
-  function AppWords(props) {
+  function AppWords() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, AppWords);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (AppWords.__proto__ || Object.getPrototypeOf(AppWords)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType) {
-      if (actionType === _this._changeTheme) {
-        _this.forceUpdate();
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AppWords.__proto__ || Object.getPrototypeOf(AppWords)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      theme: _theme2.default
+    }, _this._onStore = function (actionType, themeName) {
+      if (actionType === "changeTheme") {
+        _this.setState(function (_ref2) {
+          var theme = _ref2.theme;
+
+          theme.setThemeName(themeName);
+          return {
+            theme: (0, _extends3.default)({}, theme)
+          };
+        });
       }
-    };
-
-    _this._changeTheme = props.CAT.CHANGE_THEME;
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(AppWords, [{
@@ -99,39 +111,44 @@ var AppWords = function (_Component) {
           LPT = _props2.LPT,
           action = _props2.action,
           headerActions = action.headerActions,
-          browserActions = action.browserActions;
+          browserActions = action.browserActions,
+          theme = this.state.theme;
 
 
       return _react2.default.createElement(
-        _ThemeProvider2.default,
-        { theme: _theme2.default },
+        _react2.default.StrictMode,
+        null,
         _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_HeaderBar2.default, (0, _extends3.default)({
-            store: store,
-            LPT: LPT
-          }, headerActions)),
+          _ThemeContext2.default.Provider,
+          { value: theme },
           _react2.default.createElement(
             'div',
-            { className: CL_COMP },
-            _react2.default.createElement(_Container2.default.Browser, (0, _extends3.default)({
+            null,
+            _react2.default.createElement(_HeaderBar2.default, (0, _extends3.default)({
               store: store,
-              showBrowserAction: CAT.SHOW_BROWSER,
-              showDialogAction: CAT.SHOW_DIALOG,
-              browserId: WORDS_BROWSER_ID,
-              updateWatchAction: CAT.UPDATE_WATCH_BROWSER
-            }, browserActions)),
-            _react2.default.createElement(_Container2.default.Hrz, {
-              className: CL_ITEMS,
+              LPT: LPT
+            }, headerActions)),
+            _react2.default.createElement(
+              'div',
+              { className: CL_COMP },
+              _react2.default.createElement(_Container2.default.Browser, (0, _extends3.default)({
+                store: store,
+                showBrowserAction: CAT.SHOW_BROWSER,
+                showDialogAction: CAT.SHOW_DIALOG,
+                browserId: WORDS_BROWSER_ID,
+                updateWatchAction: CAT.UPDATE_WATCH_BROWSER
+              }, browserActions)),
+              _react2.default.createElement(_Container2.default.Hrz, {
+                className: CL_ITEMS,
+                store: store,
+                addAction: CAT.SHOW_PANE
+              })
+            ),
+            _react2.default.createElement(_Container2.default.Wrapper, {
               store: store,
-              addAction: CAT.SHOW_PANE
+              SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
             })
-          ),
-          _react2.default.createElement(_Container2.default.Wrapper, {
-            store: store,
-            SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
-          })
+          )
         )
       );
     }

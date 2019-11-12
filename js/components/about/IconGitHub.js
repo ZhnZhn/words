@@ -26,7 +26,7 @@ var IconGitHub = function IconGitHub(_ref) {
     },
     _react2.default.createElement(
       "svg",
-      { viewBox: "0 0 16 16", xmlns: "http://www.w3.org/2000/svg", "fill-rule": "evenodd", "clip-rule": "evenodd", "stroke-linejoin": "round", "stroke-miterlimit": "1.414" },
+      { viewBox: "0 0 16 16", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: "1.414" },
       _react2.default.createElement(
         "title",
         null,
@@ -38,4 +38,4 @@ var IconGitHub = function IconGitHub(_ref) {
 };
 
 exports.default = IconGitHub;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\about\IconGitHub.js.map
+//# sourceMappingURL=IconGitHub.js.map

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _settings = {
-  wordsApi: undefined
+  wordsApi: void 0
 };
 
 var CHAR_X = 'X';

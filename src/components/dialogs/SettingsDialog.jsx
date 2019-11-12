@@ -15,17 +15,17 @@ import CardUi from './CardUi'
 const S = {
   MODAL: {
     position : 'static',
-    width: '350px',
-    height: '290px',
+    width: 350,
+    height: 290,
     margin: '70px auto 0px'
   },
   CARD_ROOT: {
     position: 'relative',
-    height: '200px'
+    height: 200
   },
   CARD_BUTTONS: {
     position: 'absolute',
-    right: '4px',
+    right: 4,
     bottom: 0,
     cursor: 'default'
   }
@@ -34,7 +34,7 @@ const S = {
 class SettingsDialog extends Component {
 
   constructor(props){
-    super()
+    super(props)
     const { data } = props;
     this._setKey1 = data.key1
   }
@@ -45,8 +45,7 @@ class SettingsDialog extends Component {
         item &&
         theme.getThemeName() !== item.value
     ) {
-      theme.setThemeName(item.value)
-      Actions.changeTheme()
+      Actions.changeTheme(item.value)
     }
   }
 

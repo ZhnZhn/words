@@ -46,7 +46,7 @@ var S = {
     transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
@@ -90,7 +90,7 @@ var TextField = (_temp = _class = function (_Component) {
   function TextField(props) {
     (0, _classCallCheck3.default)(this, TextField);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
     _this._handleFocusInput = function () {
       _this.isFocus = true;
@@ -178,7 +178,7 @@ var TextField = (_temp = _class = function (_Component) {
         autoComplete: "off",
         name: name + '[password]',
         value: value,
-        defaultValue: value,
+        //defaultValue: value,
         onChange: this._handleInputChange,
         onKeyDown: this._handleKeyDown
       };
@@ -203,7 +203,7 @@ var TextField = (_temp = _class = function (_Component) {
           _react2.default.createElement('input', {
             hidden: true,
             name: name + '[username]',
-            value: name
+            defaultValue: name
           }),
           _react2.default.createElement('input', (0, _extends3.default)({
             ref: this._refInput,
@@ -211,8 +211,8 @@ var TextField = (_temp = _class = function (_Component) {
             className: CL.INPUT,
             autoCorrect: 'off',
             autoCapitalize: 'off',
-            spellCheck: false,
-            translate: false,
+            spellCheck: 'false',
+            translate: 'false',
             maxLength: maxLength,
             onFocus: this._handleFocusInput,
             onBlur: this._handleBlurInput

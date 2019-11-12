@@ -30,13 +30,13 @@ var S = {
   },
   PANE: {
     position: 'absolute',
-    top: '12px',
+    top: 12,
     zIndex: '20',
     width: '100%',
-    paddingTop: '12px',
-    paddingBottom: '12px',
+    paddingTop: 12,
+    paddingBottom: 12,
     backgroundColor: 'rgb(77, 77, 77)',
-    borderRadius: '2px',
+    borderRadius: 2,
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
   },
   ITEM: {
@@ -46,10 +46,11 @@ var S = {
 
 var _renderOptions = function _renderOptions(options, currentItem, clItem, itemStyle, onSelect, isShow) {
   return options.map(function (item) {
-    var _style = item.value === currentItem.value ? S.ITEM : undefined;
+    var _style = item.value === currentItem.value ? S.ITEM : void 0;
     return _react2.default.createElement(
       'button',
       {
+        key: item.caption,
         className: clItem,
         style: (0, _extends3.default)({}, S.BT, itemStyle, _style),
         onClick: onSelect.bind(null, item)
@@ -87,4 +88,4 @@ var OptionsPane = function OptionsPane(_ref) {
 };
 
 exports.default = OptionsPane;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-m-input\OptionsPane.js.map
+//# sourceMappingURL=OptionsPane.js.map

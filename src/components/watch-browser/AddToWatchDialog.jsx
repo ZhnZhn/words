@@ -35,7 +35,7 @@ class AddToWatchDialog extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.groupCaption = null
     this.listCaption = null
     this.state = {
@@ -62,7 +62,7 @@ class AddToWatchDialog extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
       const groups = nextProps.store.getWatchGroups();
       if (groups !== this.state.groupOptions){

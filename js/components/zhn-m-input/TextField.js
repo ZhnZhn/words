@@ -88,7 +88,7 @@ var TextField = (_temp = _class = function (_Component) {
   function TextField(props) {
     (0, _classCallCheck3.default)(this, TextField);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
     _initialiseProps.call(_this);
 
@@ -126,8 +126,8 @@ var TextField = (_temp = _class = function (_Component) {
   */
 
   (0, _createClass3.default)(TextField, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       /* update new initValue from parent component */
       if (this.props !== nextProps && this.props.initValue !== nextProps.initValue) {
         this.setState({
@@ -194,7 +194,7 @@ var TextField = (_temp = _class = function (_Component) {
             autoCorrect: 'off',
             autoCapitalize: 'off',
             spellCheck: spellCheck,
-            translate: false,
+            translate: 'false',
             onFocus: this._handleFocusInput,
             onBlur: this._handleBlurInput,
             onChange: this._handleInputChange,

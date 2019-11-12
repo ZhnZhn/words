@@ -90,7 +90,7 @@ var AddToWatchDialog = (0, _withValidationLoad2.default)(_class = function (_Com
   function AddToWatchDialog(props) {
     (0, _classCallCheck3.default)(this, AddToWatchDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (AddToWatchDialog.__proto__ || Object.getPrototypeOf(AddToWatchDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (AddToWatchDialog.__proto__ || Object.getPrototypeOf(AddToWatchDialog)).call(this, props));
 
     _this._onStore = function (actionType, data) {
       if (actionType === actionCompleted && data.forActionType === forActionType) {
@@ -190,8 +190,8 @@ var AddToWatchDialog = (0, _withValidationLoad2.default)(_class = function (_Com
       this.unsubscribe();
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
         var groups = nextProps.store.getWatchGroups();
         if (groups !== this.state.groupOptions) {
@@ -267,4 +267,4 @@ var AddToWatchDialog = (0, _withValidationLoad2.default)(_class = function (_Com
 }(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(AddToWatchDialog);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\AddToWatchDialog.js.map
+//# sourceMappingURL=AddToWatchDialog.js.map

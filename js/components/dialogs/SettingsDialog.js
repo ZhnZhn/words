@@ -65,17 +65,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var S = {
   MODAL: {
     position: 'static',
-    width: '350px',
-    height: '290px',
+    width: 350,
+    height: 290,
     margin: '70px auto 0px'
   },
   CARD_ROOT: {
     position: 'relative',
-    height: '200px'
+    height: 200
   },
   CARD_BUTTONS: {
     position: 'absolute',
-    right: '4px',
+    right: 4,
     bottom: 0,
     cursor: 'default'
   }
@@ -87,14 +87,13 @@ var SettingsDialog = function (_Component) {
   function SettingsDialog(props) {
     (0, _classCallCheck3.default)(this, SettingsDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call(this, props));
 
     _this._hSelectTheme = function (item) {
       var theme = _this.props.theme;
 
       if (item && theme.getThemeName() !== item.value) {
-        theme.setThemeName(item.value);
-        _ComponentActions2.default.changeTheme();
+        _ComponentActions2.default.changeTheme(item.value);
       }
     };
 

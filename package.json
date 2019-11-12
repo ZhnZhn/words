@@ -9,9 +9,10 @@
     "css:min": "gulp",
     "build": "webpack --colors --progress",
     "build:dll": "webpack --colors --progress --config webpack.dll.js",
-    "build:dll-jsx": "webpack --colors --progress --config webpack.config-dll-jsx.js",
+    "build:dll-jsx": "webpack --colors --progress --config webpack.dll-jsx.js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:bundle": "gulp jspm"
   },
   "author": "Yevhenii Molodyi",
   "license": "BSD-3-Clause",
@@ -45,7 +46,7 @@
     "gulp-rev": "^9.0.0",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-processing-plugin": "^0.1.2",
-    "jest": "file:node_modules_b7/node_modules/jest@24.9.0",
+    "jest": "file:node_modules_b7/node_modules/jest",
     "jspm": "^0.16.55",
     "webpack": "^3.12.0"
   },
@@ -54,8 +55,8 @@
       "interactjs": "npm:interactjs@1.3.4",
       "localforage": "npm:localforage@^1.5.6",
       "prop-types": "npm:prop-types@^15.7.2",
-      "react": "npm:react@^16.9.0",
-      "react-dom": "npm:react-dom@^16.9.0",
+      "react": "npm:react@^16.11.0",
+      "react-dom": "npm:react-dom@^16.11.0",
       "reflux": "npm:reflux@5.0.4"
     },
     "devDependencies": {
@@ -68,8 +69,8 @@
     "interactjs": "^1.3.4",
     "localforage": "^1.5.6",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "reflux": "^5.0.4"
   },
   "jest": {

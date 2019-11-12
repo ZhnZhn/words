@@ -59,12 +59,20 @@ var CL_SHOW = "show-popup";
 var About = function (_Component) {
   (0, _inherits3.default)(About, _Component);
 
-  function About(props) {
+  function About() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, About);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType, data) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = About.__proto__ || Object.getPrototypeOf(About)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      isShow: true
+    }, _this._onStore = function (actionType, data) {
       var _this$props = _this.props,
           showAction = _this$props.showAction,
           closeAction = _this$props.closeAction;
@@ -81,18 +89,11 @@ var About = function (_Component) {
           });
           break;
         default:
-          return undefined;
+          return void 0;
       }
-    };
-
-    _this._handleClose = function () {
+    }, _this._handleClose = function () {
       _this.setState({ isShow: false });
-    };
-
-    _this.state = {
-      isShow: true
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(About, [{
@@ -153,13 +154,9 @@ var About = function (_Component) {
                 'Words data provider:'
               ),
               _react2.default.createElement(
-                'p',
+                'div',
                 null,
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Links2.default.WordsApi, null)
-                )
+                _react2.default.createElement(_Links2.default.WordsApi, null)
               ),
               _react2.default.createElement(
                 'p',
@@ -178,12 +175,8 @@ var About = function (_Component) {
             }),
             _react2.default.createElement(
               'p',
-              null,
-              _react2.default.createElement(
-                'span',
-                { style: TS.BLACK },
-                '*Logos Fair Use.'
-              )
+              { style: TS.BLACK },
+              '*Logos Fair Use.'
             )
           )
         )

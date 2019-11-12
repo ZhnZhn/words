@@ -35,9 +35,9 @@ var CL_UL = "tabpane__tabs";
 var S = {
   UL: {
     listStyle: 'outside none none',
-    marginTop: '10px',
-    marginLeft: '10px',
-    marginRight: '5px',
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 5,
     borderBottom: '2px solid #80c040'
   },
   DIV: {
@@ -69,7 +69,7 @@ var TabPane = (_temp = _class = function (_Component) {
   function TabPane(props) {
     (0, _classCallCheck3.default)(this, TabPane);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (TabPane.__proto__ || Object.getPrototypeOf(TabPane)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (TabPane.__proto__ || Object.getPrototypeOf(TabPane)).call(this, props));
 
     _initialiseProps.call(_this);
 
@@ -86,8 +86,8 @@ var TabPane = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(TabPane, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       if (this.isUpdateInit && this.props !== nextProps) {
         var components = nextProps.children.map(function (tab, index) {
           return _react2.default.cloneElement(tab.props.children, { key: 'comp' + index });

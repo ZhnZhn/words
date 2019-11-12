@@ -102,8 +102,8 @@ const ComponentSlice = {
     }
   },
 
-  onChangeTheme(){
-    this.trigger(T.CHANGE_THEME)
+  onChangeTheme(themeName){
+    this.trigger(T.CHANGE_THEME, themeName)
   },
 
   onClickWatchItem(item){

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import ThemeProvider from './hoc/ThemeProvider'
-import theme  from './styles/theme'
+import ThemeContext from './hoc/ThemeContext'
+import initTheme  from './styles/theme'
 
 import HeaderBar from './header/HeaderBar'
 import Container from './zhn-containers/Container'
@@ -12,9 +12,8 @@ const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 
 class AppWords extends Component {
 
-  constructor(props){
-    super()
-    this._changeTheme = props.CAT.CHANGE_THEME
+  state = {
+    theme: initTheme
   }
 
   componentDidCatch(error, info){
@@ -31,25 +30,34 @@ class AppWords extends Component {
   componentWillUnmount(){
     this.unsubscribe()
   }
-  _onStore = (actionType) => {
-    if (actionType === this._changeTheme){
-      this.forceUpdate()
+
+  _onStore = (actionType, themeName) => {
+    if (actionType === "changeTheme"){
+      this.setState(({ theme }) => {
+          theme.setThemeName(themeName)
+          return {
+            theme: {...theme}
+          };
+      })
     }
   }
 
+
   render(){
     const {
-            store,
-            CAT, LPT,
-            action,
-          } = this.props
-        , {
-            headerActions,
-            browserActions
-          } = action;
+      store,
+      CAT, LPT,
+      action,
+    } = this.props
+  , {
+      headerActions,
+      browserActions
+    } = action
+  , { theme } = this.state;
 
     return (
-      <ThemeProvider theme={theme}>
+      <React.StrictMode>
+      <ThemeContext.Provider value={theme}>
         <div>
           <HeaderBar
             store={store}
@@ -76,7 +84,8 @@ class AppWords extends Component {
              SHOW_ACTION={CAT.SHOW_MODAL_DIALOG}
           />
         </div>
-      </ThemeProvider>
+      </ThemeContext.Provider>
+      </React.StrictMode>
     );
   }
 }

@@ -1,17 +1,13 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\hoc\\withTheme.jsx",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\hoc\\withTheme.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/hoc/withTheme.js"
+ ],
+ "file": "../../../src/components/hoc/withTheme.js",
  "names": [
   "withTheme",
-  "Comp",
   "props",
-  "context",
-  "theme",
-  "contextTypes",
-  "object"
+  "theme"
  ],
- "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,CAACC,IAAD;AAAA;;AAAA;AAAA;;AAKhB,oBAAYC,KAAZ,EAAmBC,OAAnB,EAA2B;AAAA;AAAA,2HACnBD,KADmB,EACZC,OADY;AAE1B;;AAPe;AAAA;AAAA,+BASR;AAAA,YACEC,KADF,GACY,KAAKD,OADjB,CACEC,KADF;;AAEN,eACE,8BAAC,IAAD,6BACO,KAAKF,KADZ;AAEG,iBAAOE;AAFV,WADF;AAMD;AAjBe;AAAA;AAAA,8BACTC,YADS,GACM;AACpBD,WAAO,oBAAUE;AADG,GADN;AAAA,CAAlB;;kBAoBeN,S"
+ "mappings": ";;;;;;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY;AAAA,SAAW;AAAA,WAC3B;AAAA,6BAAc,QAAd;AAAA;AACI;AAAA,eAAS,8BAAC,OAAD,6BAAaC,KAAb,IAAoB,OAAOC,KAA3B,IAAT;AAAA;AADJ,KAD2B;AAAA,GAAX;AAAA,CAAlB;;kBAMeF,S"
 }

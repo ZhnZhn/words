@@ -12,11 +12,9 @@ import STYLE from '../styles/ContainerStyle'
 const CL_SHOW = "show-popup";
 
 class About extends Component {
-  constructor(props){
-    super();
-    this.state = {
-      isShow: true
-    }
+
+  state = {
+    isShow: true
   }
 
   componentDidMount(){
@@ -42,7 +40,7 @@ class About extends Component {
             : null;
         })
         break;
-      default: return undefined;
+      default: return void 0;
     }
   }
 
@@ -59,7 +57,7 @@ class About extends Component {
               : null
          , _rootStyle = isShow
               ? TS.BLOCK
-              : TS.NONE;    
+              : TS.NONE;
     return (
       <div
         className={_rootClass}
@@ -83,11 +81,9 @@ class About extends Component {
                  <p>
                    Words data provider:
                  </p>
-                 <p>
-                   <div>
-                     <Link.WordsApi/>
-                   </div>
-                 </p>
+                 <div>
+                    <Link.WordsApi/>
+                 </div>
                  <p style={TS.MARGIN_TOP}>
                    Provider's API Key is required for using app.
                  </p>
@@ -99,11 +95,9 @@ class About extends Component {
                 iconStyle={TS.ICON}
                 iconGitHubStyle={TS.ICON_GITHUB}
              />
-             <p>
-               <span style={TS.BLACK}>
-                 *Logos Fair Use.
-               </span>
-            </p>
+             <p style={TS.BLACK}>
+               *Logos Fair Use.
+              </p>
            </div>
         </A.ScrollPane>
       </div>

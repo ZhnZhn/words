@@ -40,15 +40,15 @@ var S = {
     background: 'transparent none repeat scroll 0 0',
     border: 'medium none',
     outline: 'medium none',
-    height: '26px',
-    paddingLeft: '5px',
+    height: 26,
+    paddingLeft: 5,
     color: 'green',
-    width: '40px',
+    width: 40,
     fontSize: '16px',
     fontWeight: 'bold',
     backgroundColor: '#e1e1cb',
-    marginLeft: '5px',
-    marginRight: '5px'
+    marginLeft: 5,
+    marginRight: 5
   }
 };
 
@@ -60,13 +60,17 @@ var C = {
   OFF: 'off'
 };
 
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+
 var InputText = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(InputText, _Component);
 
   function InputText(props) {
     (0, _classCallCheck3.default)(this, InputText);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (InputText.__proto__ || Object.getPrototypeOf(InputText)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (InputText.__proto__ || Object.getPrototypeOf(InputText)).call(this, props));
 
     _this._handleInputChange = function (event) {
       _this.setState({ value: event.target.value });
@@ -91,7 +95,7 @@ var InputText = (_temp = _class = function (_Component) {
     var initValue = props.initValue,
         onEnter = props.onEnter;
 
-    _this.isOnEnter = typeof onEnter === "function" ? true : false;
+    _this.isOnEnter = _isFn(onEnter);
     _this.state = {
       value: initValue
     };
@@ -112,13 +116,13 @@ var InputText = (_temp = _class = function (_Component) {
     value: function componentDidMount() {
       var onReg = this.props.onReg;
 
-      if (typeof onReg === 'function') {
+      if (_isFn(onReg)) {
         onReg(this);
       }
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       if (nextProps !== this.props) {
         this.setState({
           value: nextProps.initValue != null ? nextProps.initValue : C.BLANK
@@ -134,7 +138,7 @@ var InputText = (_temp = _class = function (_Component) {
           placeholder = _props.placeholder,
           value = this.state.value,
           _autoCorrect = spellCheck ? C.ON : C.OFF,
-          _spellCheck = spellCheck ? true : false;
+          _spellCheck = spellCheck ? "true" : "false";
 
       return _react2.default.createElement('input', {
         style: (0, _extends3.default)({}, S.INPUT_TEXT, style),
@@ -144,7 +148,7 @@ var InputText = (_temp = _class = function (_Component) {
         autoComplete: C.OFF,
         autoCorrect: _autoCorrect,
         spellCheck: _spellCheck,
-        translate: false,
+        translate: 'false',
         value: value,
         placeholder: placeholder,
         onChange: this._handleInputChange,
@@ -167,4 +171,4 @@ var InputText = (_temp = _class = function (_Component) {
   initValue: C.BLANK
 }, _temp);
 exports.default = InputText;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\InputText.js.map
+//# sourceMappingURL=InputText.js.map

@@ -7,15 +7,15 @@ const S = {
     background: 'transparent none repeat scroll 0 0',
     border: 'medium none',
     outline: 'medium none',
-    height: '26px',
-    paddingLeft: '5px',
+    height: 26,
+    paddingLeft: 5,
     color: 'green',
-    width: '40px',
+    width: 40,
     fontSize: '16px',
     fontWeight: 'bold',
     backgroundColor : '#e1e1cb',
-    marginLeft : '5px',
-    marginRight : '5px',
+    marginLeft : 5,
+    marginRight : 5,
   }
 };
 
@@ -27,6 +27,7 @@ const C = {
   OFF: 'off'
 }
 
+const _isFn = fn => typeof fn === 'function';
 
 class InputText extends Component {
   /*
@@ -43,10 +44,9 @@ class InputText extends Component {
 
 
   constructor(props){
-    super()
+    super(props)
     const { initValue, onEnter } = props;
-    this.isOnEnter = (typeof onEnter === "function" )
-            ? true : false
+    this.isOnEnter = _isFn(onEnter)
     this.state = {
       value: initValue
     }
@@ -54,12 +54,12 @@ class InputText extends Component {
 
   componentDidMount(){
     const { onReg } = this.props;
-    if (typeof onReg === 'function'){
+    if (_isFn(onReg)){
       onReg(this)
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (nextProps !== this.props){
       this.setState({
         value: nextProps.initValue != null
@@ -94,8 +94,8 @@ class InputText extends Component {
              ? C.ON
              : C.OFF
         , _spellCheck = spellCheck
-             ? true
-             : false;
+             ? "true"
+             : "false";
     return (
       <input
         style={{ ...S.INPUT_TEXT, ...style }}
@@ -105,7 +105,7 @@ class InputText extends Component {
         autoComplete={C.OFF}
         autoCorrect={_autoCorrect}
         spellCheck={_spellCheck}
-        translate={false}
+        translate="false"
         value={value}
         placeholder={placeholder}
         onChange={this._handleInputChange}

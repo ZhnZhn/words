@@ -20,7 +20,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _temp;
+var _class, _temp2;
 
 var _react = require('react');
 
@@ -32,27 +32,45 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var CL_DIV = "hrz-container";
 
-var HrzContainer = (_temp = _class = function (_Component) {
+var _isInCont = function _isInCont(arrComps, comp) {
+  var key = comp.key,
+      _max = arrComps.length;
+  var i = 0;
+  for (i; i < _max; i++) {
+    if (arrComps[i].key === key) {
+      return true;
+    }
+  }
+  return false;
+};
+
+var HrzContainer = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(HrzContainer, _Component);
 
-  function HrzContainer(props) {
+  function HrzContainer() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, HrzContainer);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (HrzContainer.__proto__ || Object.getPrototypeOf(HrzContainer)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType, option) {
-      if (actionType === _this.props.addAction && option.Comp) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = HrzContainer.__proto__ || Object.getPrototypeOf(HrzContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      containers: []
+    }, _this._onStore = function (actionType, option) {
+      if (actionType === _this.props.addAction && option && option.Comp) {
         _this.setState(function (prevState) {
-          prevState.containers.unshift(option.Comp);
+          var comp = option.Comp;
+          if (!_isInCont(prevState.containers, comp)) {
+            prevState.containers.unshift(comp);
+          }
           return prevState;
         });
       }
-    };
-
-    _this.state = {
-      containers: []
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
   /*
   static propTypes = {
@@ -75,13 +93,6 @@ var HrzContainer = (_temp = _class = function (_Component) {
       this.unsubscribe();
     }
   }, {
-    key: '_renderContainers',
-    value: function _renderContainers(containers) {
-      return containers.map(function (container) {
-        return container;
-      });
-    }
-  }, {
     key: 'render',
     value: function render() {
       var className = this.props.className,
@@ -90,13 +101,13 @@ var HrzContainer = (_temp = _class = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: CL_DIV + ' ' + className },
-        this._renderContainers(containers)
+        containers
       );
     }
   }]);
   return HrzContainer;
 }(_react.Component), _class.defaultProps = {
   className: ''
-}, _temp);
+}, _temp2);
 exports.default = HrzContainer;
 //# sourceMappingURL=HrzContainer.js.map

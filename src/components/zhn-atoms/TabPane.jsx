@@ -6,9 +6,9 @@ const CL_UL = "tabpane__tabs";
 const S = {
   UL: {
     listStyle : 'outside none none',
-    marginTop: '10px',
-    marginLeft: '10px',
-    marginRight: '5px',
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 5,
     borderBottom : '2px solid #80c040'
   },
   DIV: {
@@ -37,7 +37,7 @@ class TabPane extends Component {
 
 
   constructor(props){
-    super();
+    super(props);
 
     this.isUpdateInit = props.isUpdateInit
 
@@ -50,7 +50,7 @@ class TabPane extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     if (this.isUpdateInit && this.props !== nextProps){
       const components = nextProps.children.map((tab, index) => {
          return  React.cloneElement(tab.props.children, { key : 'comp' + index });

@@ -52,8 +52,8 @@ var ModalPane = (_temp2 = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(ModalPane, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       if (this.props !== nextProps) {
         if (nextProps.isShow) {
           document.addEventListener('click', this._handleClickOutside, true);
@@ -88,4 +88,4 @@ var ModalPane = (_temp2 = _class = function (_Component) {
   onClose: function onClose() {}
 }, _temp2);
 exports.default = ModalPane;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-moleculs\ModalPane.js.map
+//# sourceMappingURL=ModalPane.js.map

@@ -48,23 +48,23 @@ var CL_DIV = 'bt-flat__div';
 var S = {
   ROOT: {
     position: 'relative',
-    height: '200px'
+    height: 200
   },
   SECRET: {
-    width: '320px',
-    marginLeft: '12px'
+    width: 320,
+    marginLeft: 12
   },
   CHECK_BOX: {
-    paddingLeft: '24px',
-    paddingTop: '16px',
-    paddingRight: '24px'
+    paddingLeft: 24,
+    paddingTop: 16,
+    paddingRight: 24
   },
   CHECK_CAPTION: {
     display: 'inline'
   },
   BUTTONS: {
     position: 'absolute',
-    right: '4px',
+    right: 4,
     bottom: 0,
     cursor: 'default'
   },
@@ -78,6 +78,28 @@ var CAPTION_ALLOW = "Allow Remember Enter of API Key by Browser Password Manager
 var CardApiKey = function (_Component) {
   (0, _inherits3.default)(CardApiKey, _Component);
 
+  function CardApiKey() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, CardApiKey);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = CardApiKey.__proto__ || Object.getPrototypeOf(CardApiKey)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      isAllow: false
+    }, _this._checkAllow = function () {
+      _this.setState({ isAllow: true });
+    }, _this._uncheckAllow = function () {
+      _this.setState({ isAllow: false });
+    }, _this._refInput = function (c) {
+      return _this._input = c;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
+
   /*
   static propTypes = {
     style: PropTypes.object,
@@ -87,29 +109,6 @@ var CardApiKey = function (_Component) {
     onSet: PropTypes.func
   }
   */
-
-  function CardApiKey(props) {
-    (0, _classCallCheck3.default)(this, CardApiKey);
-
-    var _this = (0, _possibleConstructorReturn3.default)(this, (CardApiKey.__proto__ || Object.getPrototypeOf(CardApiKey)).call(this, props));
-
-    _this._checkAllow = function () {
-      _this.setState({ isAllow: true });
-    };
-
-    _this._uncheckAllow = function () {
-      _this.setState({ isAllow: false });
-    };
-
-    _this._refInput = function (c) {
-      return _this._input = c;
-    };
-
-    _this.state = {
-      isAllow: false
-    };
-    return _this;
-  }
 
   (0, _createClass3.default)(CardApiKey, [{
     key: 'render',
@@ -125,15 +124,19 @@ var CardApiKey = function (_Component) {
       return _react2.default.createElement(
         'div',
         { style: style },
-        _react2.default.createElement(_SecretField2.default, {
-          ref: this._refInput,
-          rootStyle: S.SECRET,
-          isAllowRemember: isAllow,
-          caption: 'Words API Key',
-          name: 'wordsapi',
-          maxLength: '50',
-          onEnter: onSet
-        }),
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement(_SecretField2.default, {
+            ref: this._refInput,
+            rootStyle: S.SECRET,
+            isAllowRemember: isAllow,
+            caption: 'Words API Key',
+            name: 'wordsapi',
+            maxLength: '50',
+            onEnter: onSet
+          })
+        ),
         _react2.default.createElement(_RowCheckBox2.default, {
           rootStyle: S.CHECK_BOX,
           initValue: false,

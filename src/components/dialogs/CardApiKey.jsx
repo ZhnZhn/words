@@ -10,23 +10,23 @@ const CL_DIV = 'bt-flat__div';
 const S  = {
   ROOT: {
     position: 'relative',
-    height: '200px'
+    height: 200
   },
   SECRET: {
-    width: '320px',
-    marginLeft: '12px'
+    width: 320,
+    marginLeft: 12
   },
   CHECK_BOX: {
-    paddingLeft: '24px',
-    paddingTop: '16px',
-    paddingRight: '24px'
+    paddingLeft: 24,
+    paddingTop: 16,
+    paddingRight: 24
   },
   CHECK_CAPTION: {
     display: 'inline'
   },
   BUTTONS: {
     position: 'absolute',
-    right: '4px',
+    right: 4,
     bottom: 0,
     cursor: 'default'
   },
@@ -49,11 +49,8 @@ class CardApiKey extends Component {
   }
   */
 
-  constructor(props){
-    super(props)
-    this.state = {
-      isAllow: false
-    }
+  state = {
+    isAllow: false
   }
 
   _checkAllow = () => {
@@ -74,15 +71,17 @@ class CardApiKey extends Component {
     const { isAllow } = this.state;
     return(
       <div style={style}>
-        <SecretField
-          ref={this._refInput}
-          rootStyle={S.SECRET}
-          isAllowRemember={isAllow}
-          caption="Words API Key"
-          name="wordsapi"
-          maxLength="50"
-          onEnter={onSet}
-        />
+        <form>
+          <SecretField
+            ref={this._refInput}
+            rootStyle={S.SECRET}
+            isAllowRemember={isAllow}
+            caption="Words API Key"
+            name="wordsapi"
+            maxLength="50"
+            onEnter={onSet}
+          />
+        </form>
         <RowCheckBox
           rootStyle={S.CHECK_BOX}
           initValue={false}

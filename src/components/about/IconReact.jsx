@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconReact = ({ style }) =>
+const IconReact = ({ style }) => (
    <a
       className="icon__react"
       style={style}
@@ -8,7 +8,7 @@ const IconReact = ({ style }) =>
       href="https://facebook.github.io/react/"
       tabIndex="-1"
    >
-    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round">
         <title>React Logo</title>
         <circle cx="299.529" cy="299.628" r="50.167"/>
         <path fill="none" d="M299.529,197.628
@@ -27,6 +27,7 @@ const IconReact = ({ style }) =>
   C285.567,460.886,244.898,410.344,210.821,351.482z"/>
     </svg>
   </a>
+);
 
 
 export default IconReact

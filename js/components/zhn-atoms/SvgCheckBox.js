@@ -40,8 +40,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var S = {
   DIV: {
     display: 'inline-block',
-    width: '16px',
-    height: '16px',
+    width: 16,
+    height: 16,
     cursor: 'pointer'
   },
   SVG: {
@@ -74,7 +74,7 @@ var SvgCheckBox = (_temp = _class = function (_Component) {
   function SvgCheckBox(props) {
     (0, _classCallCheck3.default)(this, SvgCheckBox);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (SvgCheckBox.__proto__ || Object.getPrototypeOf(SvgCheckBox)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (SvgCheckBox.__proto__ || Object.getPrototypeOf(SvgCheckBox)).call(this, props));
 
     _initialiseProps.call(_this);
 
@@ -92,8 +92,8 @@ var SvgCheckBox = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(SvgCheckBox, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       if (this.props !== nextProps && typeof nextProps.value !== 'undefined') {
         this.setState({ isChecked: !!nextProps.value });
       }

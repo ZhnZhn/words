@@ -55,28 +55,28 @@ var S = {
     backgroundColor: '#4D4D4D',
     padding: '0px 0px 3px 0px',
     position: 'relative',
-    borderRadius: '4px',
-    width: '635px',
+    borderRadius: 4,
+    width: 635,
     height: 'calc(100vh - 71px)',
-    minHeight: '500px',
-    marginLeft: '16px',
+    minHeight: 500,
+    marginLeft: 16,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     overflowY: 'hidden',
     overflowX: 'hidden'
   },
   BR_CAPTION: {
-    marginRight: '-2px'
+    marginRight: -2
   },
   BT_CIRCLE: {
-    marginLeft: '16px',
-    marginRight: '6px'
+    marginLeft: 16,
+    marginRight: 6
   },
   SCROLL_PANE: {
     overflowY: 'auto',
     overflowX: 'hidden',
     //height: '92%',
     height: 'calc(100% - 120px)',
-    paddingRight: '10px'
+    paddingRight: 10
   },
   INLINE_BLOCK: {
     display: 'inline-block'
@@ -94,7 +94,7 @@ var NewsPane = (_temp = _class = function (_Component) {
   function NewsPane(props) {
     (0, _classCallCheck3.default)(this, NewsPane);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NewsPane.__proto__ || Object.getPrototypeOf(NewsPane)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (NewsPane.__proto__ || Object.getPrototypeOf(NewsPane)).call(this, props));
 
     _this._onStore = function (actionType) {
       var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -132,7 +132,7 @@ var NewsPane = (_temp = _class = function (_Component) {
             });
             break;
           default:
-            return undefined;
+            return void 0;
         }
       }
     };
