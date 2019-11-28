@@ -200,4 +200,4 @@ var SvgHrzResize = (_temp = _class = function (_Component) {
   getDomNode: function getDomNode() {}
 }, _temp);
 exports.default = SvgHrzResize;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\SvgHrzResize.js.map
+//# sourceMappingURL=SvgHrzResize.js.map

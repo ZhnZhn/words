@@ -1,16 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\header\\AppLabel.jsx",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\header\\AppLabel.js",
- "sourceRoot": "",
- "names": [
-  "AppLabel",
-  "className",
-  "style",
-  "title",
-  "caption",
-  "onClick"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,WAAW,SAAXA,QAAW;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,KAAd,QAAcA,KAAd;AAAA,MAAqBC,KAArB,QAAqBA,KAArB;AAAA,MAA4BC,OAA5B,QAA4BA,OAA5B;AAAA,MAAqCC,OAArC,QAAqCA,OAArC;AAAA,SACjB;AAAA;AAAA;AACE,iBAAWJ,SADb;AAEE,aAAOC,KAFT;AAGE,aAAOC,KAHT;AAIE,eAASE;AAJX;AAMGD;AANH,GADiB;AAAA,CAAjB;;kBAUeJ,Q"
-}
+{"version":3,"sources":["../../../src/components/header/AppLabel.jsx"],"names":["AppLabel","className","style","title","caption","onClick"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,WAAW,SAAXA,QAAW;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,KAAd,QAAcA,KAAd;AAAA,MAAqBC,KAArB,QAAqBA,KAArB;AAAA,MAA4BC,OAA5B,QAA4BA,OAA5B;AAAA,MAAqCC,OAArC,QAAqCA,OAArC;AAAA,SACjB;AAAA;AAAA;AACE,iBAAWJ,SADb;AAEE,aAAOC,KAFT;AAGE,aAAOC,KAHT;AAIE,eAASE;AAJX;AAMGD;AANH,GADiB;AAAA,CAAjB;;kBAUeJ,Q","file":"AppLabel.js","sourcesContent":["import React from 'react'\r\n\r\nconst AppLabel = ({ className, style, title, caption, onClick }) =>\r\n<button\r\n  className={className}\r\n  style={style}\r\n  title={title}\r\n  onClick={onClick}\r\n>\r\n  {caption}\r\n</button>\r\n\r\nexport default AppLabel\r\n"]}

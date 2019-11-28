@@ -50,4 +50,4 @@ var WithLogicItem = {
 };
 
 exports.default = WithLogicItem;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\watch-list\WithLogicItem.js.map
+//# sourceMappingURL=WithLogicItem.js.map

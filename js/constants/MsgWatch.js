@@ -39,4 +39,4 @@ var MsgWatch = {
 };
 
 exports.default = MsgWatch;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\constants\MsgWatch.js.map
+//# sourceMappingURL=MsgWatch.js.map

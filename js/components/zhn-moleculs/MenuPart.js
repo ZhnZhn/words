@@ -87,4 +87,4 @@ MenuPart.propTypes = {
 */
 
 exports.default = MenuPart;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-moleculs\MenuPart.js.map
+//# sourceMappingURL=MenuPart.js.map

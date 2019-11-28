@@ -49,39 +49,11 @@ var S = {
     color: '#f44336'
   },
   LINE_ERROR: {
-    borderBottom: '2px solid #F44336'
+    borderBottom: '2px solid #f44336'
+  },
+  LINE_AFTER_ENTER: {
+    borderBottom: '2px solid greenyellow'
   }
-};
-
-var _isFn = function _isFn(fn) {
-  return typeof fn === 'function';
-};
-
-var _crValue = function _crValue(_v, v) {
-  var value = void 0;
-  if (!_v) {
-    value = v;
-  } else {
-    var _vL = _v.length,
-        vL = v.length;
-    if (vL > _vL) {
-      value = _v + v.substr(_vL);
-    } else {
-      value = _v.substr(0, vL);
-    }
-  }
-  return value.trim();
-};
-
-var _maskValue = function _maskValue() {
-  var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
-  var i = 0,
-      str = '';
-  for (i; i < len; i++) {
-    str = str + 'X';
-  }
-  return str;
 };
 
 var TextField = (_temp = _class = function (_Component) {
@@ -92,67 +64,55 @@ var TextField = (_temp = _class = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
-    _this._handleFocusInput = function () {
+    _this._hFocusInput = function () {
       _this.isFocus = true;
       _this.forceUpdate();
     };
 
-    _this._handleBlurInput = function () {
+    _this._hBlurInput = function () {
       _this.isFocus = false;
       _this.forceUpdate();
     };
 
-    _this._handleInputChange = function (event) {
-      var value = event.target.value;
-      _this._value = _crValue(_this._value, value);
-      var _v = _maskValue(_this._value.length);
-      if (_this.isOnTest) {
-        _this.setState({
-          value: _v,
-          isPassTest: _this.props.onTest(_this._value)
-        });
-      } else {
-        _this.setState({ value: _v });
-      }
+    _this._hInputChange = function (event) {
+      _this.setState({
+        value: event.target.value.trim()
+      });
     };
 
-    _this._handleKeyDown = function (event) {
-      if (event.keyCode === 27) {
-        _this._value = '';
+    _this._clearWasEnter = function () {
+      _this._wasEnter = false;
+    };
+
+    _this._hKeyDown = function (event) {
+      if (event.keyCode === 46) {
         _this.setState({ value: '' });
-      } else if (event.keyCode === 13 && _this.isOnEnter) {
+      } else if (event.keyCode === 13) {
+        event.preventDefault();
         _this.props.onEnter(event.target.value);
+        _this._wasEnter = true;
+        _this.forceUpdate(_this._clearWasEnter);
       }
     };
 
-    _this._isValue = function (isAllowRemember) {
-      return isAllowRemember ? _this._input ? !!_this._input.value : false : !!_this.state.value;
+    _this._isValue = function () {
+      return _this._input ? !!_this._input.value : false;
     };
 
-    _this._refInput = function (c) {
-      return _this._input = c;
+    _this._refInput = function (node) {
+      return _this._input = node;
     };
 
+    _this._wasEnter = false;
     _this.isFocus = false;
-    var onTest = props.onTest,
-        onEnter = props.onEnter;
+    var name = props.name;
 
-    _this.isOnTest = _isFn(onTest);
-    _this.isOnEnter = _isFn(onEnter);
+    _this._id = name + '_sf';
     _this.state = {
-      value: '',
-      isPassTest: true
+      value: ''
     };
     return _this;
   }
-  /*
-  static propTypes = {
-    isAllowRemember: PropTypes.bool,
-    maxLength: PropTypes.string,
-    onTest: PropTypes.func,
-    onEnter: PropTypes.func
-  }
-  */
 
   (0, _createClass3.default)(TextField, [{
     key: 'render',
@@ -160,28 +120,16 @@ var TextField = (_temp = _class = function (_Component) {
       var _props = this.props,
           rootStyle = _props.rootStyle,
           caption = _props.caption,
-          isAllowRemember = _props.isAllowRemember,
           name = _props.name,
           maxLength = _props.maxLength,
           _props$errorMsg = _props.errorMsg,
           errorMsg = _props$errorMsg === undefined ? '' : _props$errorMsg,
-          _state = this.state,
-          value = _state.value,
-          isPassTest = _state.isPassTest,
-          _labelStyle = this._isValue(isAllowRemember) || this.isFocus ? undefined : S.LABEL_TO_INPUT,
-          _labelErrStyle = isPassTest ? undefined : S.LABEL_ON_ERROR,
-          _lineStyle = isPassTest ? undefined : S.LINE_ERROR,
-          _inputProps = isAllowRemember ? {
-        autoComplete: "current-password",
-        name: name + '[password]'
-      } : {
-        autoComplete: "off",
-        name: name + '[password]',
-        value: value,
-        //defaultValue: value,
-        onChange: this._handleInputChange,
-        onKeyDown: this._handleKeyDown
-      };
+          onTest = _props.onTest,
+          value = this.state.value,
+          isPassTest = onTest(value),
+          _labelStyle = this._isValue() || this.isFocus ? null : S.LABEL_TO_INPUT,
+          _labelErrStyle = isPassTest ? null : S.LABEL_ON_ERROR,
+          _lineStyle = isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
 
       return _react2.default.createElement(
         'div',
@@ -193,7 +141,8 @@ var TextField = (_temp = _class = function (_Component) {
           'label',
           {
             className: CL.LABEL,
-            style: (0, _extends3.default)({}, _labelStyle, _labelErrStyle)
+            style: (0, _extends3.default)({}, _labelStyle, _labelErrStyle),
+            htmlFor: this._id
           },
           caption
         ),
@@ -202,23 +151,25 @@ var TextField = (_temp = _class = function (_Component) {
           { className: CL.DIV },
           _react2.default.createElement('input', {
             hidden: true,
-            name: name + '[username]',
-            defaultValue: name
+            autoComplete: 'username',
+            value: name,
+            readOnly: true
           }),
-          _react2.default.createElement('input', (0, _extends3.default)({
+          _react2.default.createElement('input', {
             ref: this._refInput,
+            id: this._id,
             type: 'password',
+            autoComplete: 'current-password',
             className: CL.INPUT,
-            autoCorrect: 'off',
-            autoCapitalize: 'off',
-            spellCheck: 'false',
-            translate: 'false',
             maxLength: maxLength,
-            onFocus: this._handleFocusInput,
-            onBlur: this._handleBlurInput
-          }, _inputProps)),
+            value: value,
+            onChange: this._hInputChange,
+            onKeyDown: this._hKeyDown,
+            onFocus: this._hFocusInput,
+            onBlur: this._hBlurInput
+          }),
           _react2.default.createElement('div', { className: CL.INPUT_LINE, style: _lineStyle }),
-          _lineStyle && _react2.default.createElement(
+          !isPassTest && _react2.default.createElement(
             'div',
             { className: CL.INPUT_MSG_ERR },
             errorMsg
@@ -227,29 +178,19 @@ var TextField = (_temp = _class = function (_Component) {
       );
     }
   }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps) {
-      if (this.props !== prevProps) {
-        if (this.props.isAllowRemember !== prevProps.isAllowRemember) {
-          this._input.value = '';
-          if (this.props.isAllowRemember) {
-            this._value = '';
-            this.setState({ value: '' });
-          }
-        }
-      }
-    }
-  }, {
     key: 'getValue',
     value: function getValue() {
-      var isAllowRemember = this.props.isAllowRemember;
-
-      return isAllowRemember && this._input ? this._input.value : String(this._value).trim();
+      return this._input && this._input.value;
     }
   }]);
   return TextField;
 }(_react.Component), _class.defaultProps = {
-  maxLength: "32"
+  name: 'pwd',
+  maxLength: "32",
+  onTest: function onTest() {
+    return true;
+  },
+  onEnter: function onEnter() {}
 }, _temp);
 exports.default = TextField;
 //# sourceMappingURL=SecretField.js.map

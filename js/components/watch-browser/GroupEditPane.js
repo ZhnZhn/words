@@ -182,4 +182,4 @@ var GroupEditPane = function (_Component) {
 //import PropTypes from "prop-types";
 
 exports.default = GroupEditPane;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\GroupEditPane.js.map
+//# sourceMappingURL=GroupEditPane.js.map

@@ -11,4 +11,4 @@ var Msg = {
 };
 
 exports.default = Msg;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\constants\Msg.js.map
+//# sourceMappingURL=Msg.js.map

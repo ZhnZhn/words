@@ -122,4 +122,4 @@ var PaneTopics = function (_Component) {
 }(_react.Component);
 
 exports.default = PaneTopics;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\header\PaneTopics.js.map
+//# sourceMappingURL=PaneTopics.js.map

@@ -60,4 +60,4 @@ var styleConfig = {
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\dialogs\Dialog.Style.js.map
+//# sourceMappingURL=Dialog.Style.js.map

@@ -58,4 +58,4 @@ var throttle = function throttle(func, wait, options) {
 };
 
 exports.default = throttle;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\utils\throttle.js.map
+//# sourceMappingURL=throttle.js.map

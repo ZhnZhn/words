@@ -76,4 +76,4 @@ exports.default = {
   Flat: _FlatButton2.default,
   Raised: _RaisedButton2.default
 };
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\Button.js.map
+//# sourceMappingURL=Button.js.map

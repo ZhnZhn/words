@@ -60,4 +60,4 @@ var WithLogicGroup = {
 };
 
 exports.default = WithLogicGroup;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\watch-list\WithLogicGroup.js.map
+//# sourceMappingURL=WithLogicGroup.js.map

@@ -17,132 +17,89 @@ const S = {
     color: '#f44336'
   },
   LINE_ERROR: {
-    borderBottom: '2px solid #F44336'
+    borderBottom: '2px solid #f44336'
+  },
+  LINE_AFTER_ENTER: {
+    borderBottom: '2px solid greenyellow'
   }
-};
-
-const _isFn = fn => typeof fn === 'function';
-
-const _crValue = (_v, v) => {
-  let value;
-  if (!_v) { value = v }
-  else {
-    const _vL = _v.length
-         , vL = v.length;
-    if (vL > _vL) {
-      value = _v + v.substr(_vL)
-    } else {
-      value = _v.substr(0, vL)
-    }
-  }
-  return value.trim();
-}
-
-const _maskValue = (len=0) => {
-  let i=0, str = '';
-  for (i; i<len; i++){
-    str = str + 'X'
-  }
-  return str;
 };
 
 class TextField extends Component {
-  /*
-  static propTypes = {
-    isAllowRemember: PropTypes.bool,
-    maxLength: PropTypes.string,
-    onTest: PropTypes.func,
-    onEnter: PropTypes.func
-  }
-  */
-
   static defaultProps = {
-    maxLength: "32"
+    name: 'pwd',
+    maxLength: "32",
+    onTest: () => true,
+    onEnter: () => {}
   }
-  
+
   constructor(props){
     super(props)
+    this._wasEnter = false
     this.isFocus = false;
-    const { onTest, onEnter } = props;
-    this.isOnTest = _isFn(onTest)
-    this.isOnEnter = _isFn(onEnter)
+    const { name } = props;
+    this._id = name + '_sf'
     this.state = {
-      value: '',
-      isPassTest: true
+      value: ''
     }
   }
 
-  _handleFocusInput = () => {
+  _hFocusInput = () => {
     this.isFocus = true
     this.forceUpdate()
   }
-  _handleBlurInput = () => {
+  _hBlurInput = () => {
     this.isFocus = false
     this.forceUpdate()
   }
 
-  _handleInputChange = (event) => {
-    const value = event.target.value;
-    this._value = _crValue(this._value, value)
-    const _v = _maskValue(this._value.length);
-    if (this.isOnTest) {
-      this.setState({
-        value: _v,
-        isPassTest: this.props.onTest(this._value)
-      })
-    } else {
-      this.setState({ value : _v })
-    }
+  _hInputChange = (event) => {
+    this.setState({
+      value: event.target.value.trim(),
+    })
   }
- _handleKeyDown = (event) => {
-   if (event.keyCode === 27){
-     this._value = ''
+
+  _clearWasEnter = () => {
+    this._wasEnter = false
+  }
+
+ _hKeyDown = (event) => {
+   if (event.keyCode === 46){
      this.setState({ value: '' })
-   } else if (event.keyCode === 13 && this.isOnEnter) {
+   } else if (event.keyCode === 13) {
+     event.preventDefault()
      this.props.onEnter(event.target.value)
+     this._wasEnter = true
+     this.forceUpdate(this._clearWasEnter)
    }
  }
- _isValue = (isAllowRemember) => {
-    return isAllowRemember
-      ? this._input
-          ? !!this._input.value
-          : false
-      : !!this.state.value;
+ _isValue = () => {
+    return this._input
+       ? !!this._input.value
+       : false;
  }
 
- _refInput = c => this._input = c
+ _refInput = node => this._input = node
 
   render(){
     const {
-            rootStyle, caption,
-            isAllowRemember, name,
-            maxLength, errorMsg=''
-          } = this.props
-        , { value, isPassTest } = this.state
-        //, _labelStyle = (value || this.isFocus)
-          , _labelStyle = (this._isValue(isAllowRemember) || this.isFocus)
-            ? undefined
-            : S.LABEL_TO_INPUT
-        , _labelErrStyle = (isPassTest)
-            ? undefined
-            : S.LABEL_ON_ERROR
-        , _lineStyle = (isPassTest)
-            ? undefined
-            : S.LINE_ERROR
-        , _inputProps = isAllowRemember
-             ? {
-                 autoComplete: "current-password",
-                 name: `${name}[password]`,
-               }
-             : {
-                 autoComplete: "off",
-                 name: `${name}[password]`,
-                 value: value,
-                 //defaultValue: value,
-                 onChange: this._handleInputChange,
-                 onKeyDown: this._handleKeyDown
-               };
-
+        rootStyle, caption,
+        name,
+        maxLength, errorMsg='',
+        onTest
+      } = this.props
+    , { value } = this.state
+    , isPassTest = onTest(value)
+    , _labelStyle = (this._isValue() || this.isFocus)
+        ? null
+        : S.LABEL_TO_INPUT
+    , _labelErrStyle = isPassTest
+        ? null
+        : S.LABEL_ON_ERROR
+    , _lineStyle = isPassTest
+        ? this._wasEnter
+             ? S.LINE_AFTER_ENTER
+             : void 0
+        : S.LINE_ERROR;
     return (
       <div
         className={CL.SELECT}
@@ -151,52 +108,43 @@ class TextField extends Component {
         <label
           className={CL.LABEL}
           style={{..._labelStyle, ..._labelErrStyle}}
+          htmlFor={this._id}
          >
           {caption}
         </label>
         <div className={CL.DIV}>
           <input
             hidden={true}
-            name={`${name}[username]`}
-            defaultValue={name}
+            autoComplete="username"
+            value={name}
+            readOnly={true}
           />
           <input
             ref = {this._refInput}
+            id={this._id}
             type="password"
+            autoComplete="current-password"
             className={CL.INPUT}
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck="false"
-            translate="false"
             maxLength={maxLength}
-            onFocus={this._handleFocusInput}
-            onBlur={this._handleBlurInput}
-            {..._inputProps}
+            value={value}
+            onChange={this._hInputChange}
+            onKeyDown={this._hKeyDown}
+            onFocus={this._hFocusInput}
+            onBlur={this._hBlurInput}
           />
           <div className={CL.INPUT_LINE} style={_lineStyle} />
-          { _lineStyle && <div className={CL.INPUT_MSG_ERR}>{errorMsg}</div>}
+          {
+             !isPassTest && <div className={CL.INPUT_MSG_ERR}>
+                 {errorMsg}
+               </div>
+          }
         </div>
       </div>
     );
   }
 
-  componentDidUpdate(prevProps){
-    if (this.props !== prevProps){
-      if (this.props.isAllowRemember !== prevProps.isAllowRemember){
-        this._input.value = ''
-        if (this.props.isAllowRemember){
-          this._value = ''
-          this.setState({ value: '' })
-        }
-      }
-    }
-  }
-
   getValue(){
-    const { isAllowRemember } = this.props;
-    return isAllowRemember && this._input
-      ? this._input.value
-      : String(this._value).trim();
+    return this._input && this._input.value;
   }
 }
 

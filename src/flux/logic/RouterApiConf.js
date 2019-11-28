@@ -12,7 +12,6 @@ const RouterApiConf = {
       case 'WD':
         return {
           apiKey: Settings.getKey('wordsApi'),
-          isApiKeyAllow: Settings.isApiKeyAllow,
           api: Adapter.Words.api,
           adapter: Adapter.Words.adapter,
           msgErr: `WordsApi's ${MSG_ERR_TAIL}`

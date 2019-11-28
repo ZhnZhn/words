@@ -68,4 +68,4 @@ var BrowserCaption = function BrowserCaption(_ref) {
 };
 
 exports.default = BrowserCaption;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\BrowserCaption.js.map
+//# sourceMappingURL=BrowserCaption.js.map

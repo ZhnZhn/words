@@ -40,4 +40,4 @@ var RowButtons = function RowButtons(_ref) {
 };
 
 exports.default = RowButtons;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\RowButtons.js.map
+//# sourceMappingURL=RowButtons.js.map

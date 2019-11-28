@@ -42,4 +42,4 @@ var styleConfig = {
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\panes\Pane.Style.js.map
+//# sourceMappingURL=Pane.Style.js.map

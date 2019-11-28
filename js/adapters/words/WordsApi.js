@@ -35,4 +35,4 @@ var WordsApi = {
 };
 
 exports.default = WordsApi;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\adapters\words\WordsApi.js.map
+//# sourceMappingURL=WordsApi.js.map

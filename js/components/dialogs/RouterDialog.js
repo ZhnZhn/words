@@ -22,4 +22,4 @@ var RouterDialog = {
 };
 
 exports.default = RouterDialog;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\dialogs\RouterDialog.js.map
+//# sourceMappingURL=RouterDialog.js.map

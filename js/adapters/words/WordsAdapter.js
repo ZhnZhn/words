@@ -33,4 +33,4 @@ var WordsAdapter = {
 };
 
 exports.default = WordsAdapter;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\adapters\words\WordsAdapter.js.map
+//# sourceMappingURL=WordsAdapter.js.map

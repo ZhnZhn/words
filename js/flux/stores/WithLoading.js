@@ -20,4 +20,4 @@ var WithLoading = {
 };
 
 exports.default = WithLoading;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\stores\WithLoading.js.map
+//# sourceMappingURL=WithLoading.js.map

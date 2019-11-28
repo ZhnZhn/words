@@ -162,4 +162,4 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
 
 exports.default = (0, _withTheme2.default)(DialogType1);
 //export default withTheme(IexNewsDialog)
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\dialogs\DialogType1.js.map
+//# sourceMappingURL=DialogType1.js.map

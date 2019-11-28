@@ -159,4 +159,4 @@ var WrapperContainer = function (_Component) {
 }(_react.Component);
 
 exports.default = WrapperContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-containers\WrapperContainer.js.map
+//# sourceMappingURL=WrapperContainer.js.map

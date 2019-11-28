@@ -30,4 +30,4 @@ var styleConfig = {
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\styles\MenuBrowserStyle.js.map
+//# sourceMappingURL=MenuBrowserStyle.js.map

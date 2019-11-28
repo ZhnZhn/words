@@ -90,4 +90,4 @@ var MenuItem = (_temp2 = _class = function (_Component) {
   onClose: _fnNoop
 }, _temp2);
 exports.default = MenuItem;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\MenuItem.js.map
+//# sourceMappingURL=MenuItem.js.map

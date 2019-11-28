@@ -76,4 +76,4 @@ var WithLogicList = {
 };
 
 exports.default = WithLogicList;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\watch-list\WithLogicList.js.map
+//# sourceMappingURL=WithLogicList.js.map

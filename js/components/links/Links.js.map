@@ -1,14 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\links\\Links.jsx",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\links\\Links.js",
- "sourceRoot": "",
- "names": [
-  "WordsApi",
-  "title",
-  "href",
-  "Link"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,WAAW,yBAAU;AACzBC,SAAO,UADkB;AAEzBC,QAAM;AAFmB,CAAV,iBAAjB;;AAKA,IAAMC,OAAO;AACXH;AADW,CAAb;;kBAIeG,I"
-}
+{"version":3,"sources":["../../../src/components/links/Links.jsx"],"names":["WordsApi","title","href","Link"],"mappings":";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,WAAW,yBAAU;AACzBC,SAAO,UADkB;AAEzBC,QAAM;AAFmB,CAAV,iBAAjB;;AAKA,IAAMC,OAAO;AACXH;AADW,CAAb;;kBAIeG,I","file":"Links.js","sourcesContent":["import withProps from '../hoc/withProps'\r\n\r\nimport BaseComp from '../zhn-atoms/Link'\r\n\r\nconst WordsApi = withProps({\r\n  title: \"WordsApi\",\r\n  href: \"https://www.wordsapi.com/\",\r\n})(BaseComp)\r\n\r\nconst Link = {\r\n  WordsApi\r\n};\r\n\r\nexport default Link\r\n"]}

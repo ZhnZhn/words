@@ -74,4 +74,4 @@ Tab.propTypes = {
 */
 
 exports.default = Tab;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\Tab.js.map
+//# sourceMappingURL=Tab.js.map

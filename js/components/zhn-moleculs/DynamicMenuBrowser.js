@@ -207,4 +207,4 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
   onError: function onError() {}
 }, _temp);
 exports.default = DynamicMenuBrowser;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-moleculs\DynamicMenuBrowser.js.map
+//# sourceMappingURL=DynamicMenuBrowser.js.map

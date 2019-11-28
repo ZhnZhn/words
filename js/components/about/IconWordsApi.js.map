@@ -1,13 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\about\\IconWordsApi.jsx",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\about\\IconWordsApi.js",
- "sourceRoot": "",
- "names": [
-  "IconWordsApi",
-  "className",
-  "style"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,eAAe,SAAfA,YAAe;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,KAAd,QAAcA,KAAd;AAAA,SACpB;AAAA;AAAA;AACE,iBAAU,aADZ;AAEE,aAAOA,KAFT;AAGE,YAAK;AAHP;AAKE;AACG,WAAI,eADP;AAEG,WAAI;AAFP;AALF,GADoB;AAAA,CAArB;;kBAYgBF,Y"
-}
+{"version":3,"sources":["../../../src/components/about/IconWordsApi.jsx"],"names":["IconWordsApi","className","style"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,eAAe,SAAfA,YAAe;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,KAAd,QAAcA,KAAd;AAAA,SACpB;AAAA;AAAA;AACE,iBAAU,aADZ;AAEE,aAAOA,KAFT;AAGE,YAAK;AAHP;AAKE;AACG,WAAI,eADP;AAEG,WAAI;AAFP;AALF,GADoB;AAAA,CAArB;;kBAYgBF,Y","file":"IconWordsApi.js","sourcesContent":["import React from 'react'\r\n\r\nconst IconWordsApi = ({ className, style }) =>\r\n <a\r\n   className=\"icon__words\"\r\n   style={style}\r\n   href=\"https://www.wordsapi.com/\"\r\n >\r\n   <img\r\n      alt=\"Logo WordsApi\"\r\n      src=\"css/wordsapilogo.png\"\r\n    />\r\n </a>\r\n\r\n export default IconWordsApi\r\n"]}

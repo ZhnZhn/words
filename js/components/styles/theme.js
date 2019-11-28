@@ -183,4 +183,4 @@ var theme = {
 theme._init();
 
 exports.default = theme;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\styles\theme.js.map
+//# sourceMappingURL=theme.js.map

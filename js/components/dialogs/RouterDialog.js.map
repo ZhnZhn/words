@@ -1,16 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\dialogs\\RouterDialog.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\dialogs\\RouterDialog.js",
- "sourceRoot": "",
- "names": [
-  "R",
-  "DF",
-  "DialogType1",
-  "RouterDialog",
-  "getElement",
-  "type"
- ],
- "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,0BADQ;AAERC;AAFQ,CAAV;;AAKA,IAAMC,eAAe;AACnBC,cAAY,oBAACC,IAAD;AAAA,WAAUL,EAAEK,IAAF,KAAWL,EAAEC,EAAvB;AAAA;AADO,CAArB;;kBAIeE,Y"
-}
+{"version":3,"sources":["../../../src/components/dialogs/RouterDialog.js"],"names":["R","DF","DialogType1","RouterDialog","getElement","type"],"mappings":";;;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,0BADQ;AAERC;AAFQ,CAAV;;AAKA,IAAMC,eAAe;AACnBC,cAAY,oBAACC,IAAD;AAAA,WAAUL,EAAEK,IAAF,KAAWL,EAAEC,EAAvB;AAAA;AADO,CAArB;;kBAIeE,Y","file":"RouterDialog.js","sourcesContent":["\r\nimport DialogType1 from './DialogType1'\r\n\r\nconst R = {\r\n  DF: DialogType1,\r\n  DialogType1\r\n};\r\n\r\nconst RouterDialog = {\r\n  getElement: (type) => R[type] || R.DF\r\n};\r\n\r\nexport default RouterDialog\r\n"]}

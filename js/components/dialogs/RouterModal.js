@@ -51,4 +51,4 @@ var RouterModal = {
 };
 
 exports.default = RouterModal;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\dialogs\RouterModal.js.map
+//# sourceMappingURL=RouterModal.js.map

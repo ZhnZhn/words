@@ -40,4 +40,4 @@ var Atoms = {
 };
 
 exports.default = Atoms;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\Atoms.js.map
+//# sourceMappingURL=Atoms.js.map

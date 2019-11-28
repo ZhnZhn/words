@@ -35,4 +35,4 @@ var fnArr = {
 };
 
 exports.default = fnArr;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\utils\fnArr.js.map
+//# sourceMappingURL=fnArr.js.map

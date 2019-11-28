@@ -161,4 +161,4 @@ var AlertDialog = (_temp2 = _class = function (_Component) {
   data: {}
 }, _temp2);
 exports.default = (0, _withTheme2.default)(AlertDialog);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\dialogs\AlertDialog.js.map
+//# sourceMappingURL=AlertDialog.js.map

@@ -55,4 +55,4 @@ Browser.propTypes = {
 */
 
 exports.default = Browser;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\Browser.js.map
+//# sourceMappingURL=Browser.js.map

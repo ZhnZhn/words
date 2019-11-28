@@ -29,4 +29,4 @@ var appProps = {
 };
 
 (0, _reactDom.render)(_react2.default.createElement(_AppWords2.default, appProps), document.getElementById('app'));
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\index.js.map
+//# sourceMappingURL=index.js.map

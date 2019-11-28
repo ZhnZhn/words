@@ -19,4 +19,4 @@ var Words = {
 };
 
 exports.default = Words;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\adapters\words\Words.js.map
+//# sourceMappingURL=Words.js.map

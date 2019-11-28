@@ -17,4 +17,4 @@ var fnObj = {
 };
 
 exports.default = fnObj;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\utils\fnObj.js.map
+//# sourceMappingURL=fnObj.js.map

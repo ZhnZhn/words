@@ -1,12 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\adapters\\Adapter.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\adapters\\Adapter.js",
- "sourceRoot": "",
- "names": [
-  "Adapter",
-  "Words"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU;AACdC;AADc,CAAhB;;kBAIeD,O"
-}
+{"version":3,"sources":["../../src/adapters/Adapter.js"],"names":["Adapter","Words"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU;AACdC;AADc,CAAhB;;kBAIeD,O","file":"Adapter.js","sourcesContent":["import Words from './words/Words'\r\n\r\nconst Adapter = {\r\n  Words\r\n};\r\n\r\nexport default Adapter\r\n"]}

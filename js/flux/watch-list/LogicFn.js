@@ -91,4 +91,4 @@ var LogicFn = {
 };
 
 exports.default = LogicFn;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\watch-list\LogicFn.js.map
+//# sourceMappingURL=LogicFn.js.map

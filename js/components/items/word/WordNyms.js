@@ -69,4 +69,4 @@ var WordNyms = function WordNyms(_ref) {
 };
 
 exports.default = WordNyms;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\items\word\WordNyms.js.map
+//# sourceMappingURL=WordNyms.js.map

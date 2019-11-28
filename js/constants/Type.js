@@ -13,4 +13,4 @@ var ModalDialog = exports.ModalDialog = {
   EDIT_WATCH_LIST: 'EWL',
   ADD_TO_WATCH: 'AW'
 };
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\constants\Type.js.map
+//# sourceMappingURL=Type.js.map

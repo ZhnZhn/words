@@ -27,4 +27,4 @@ var ScrollPane = function ScrollPane(_ref) {
 };
 
 exports.default = ScrollPane;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-atoms\ScrollPane.js.map
+//# sourceMappingURL=ScrollPane.js.map

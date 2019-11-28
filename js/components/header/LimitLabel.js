@@ -99,4 +99,4 @@ var LimitLabel = function (_Component) {
 }(_react.Component);
 
 exports.default = LimitLabel;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\header\LimitLabel.js.map
+//# sourceMappingURL=LimitLabel.js.map

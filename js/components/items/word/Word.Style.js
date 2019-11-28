@@ -27,4 +27,4 @@ var styleConfig = {
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\items\word\Word.Style.js.map
+//# sourceMappingURL=Word.Style.js.map

@@ -23,7 +23,6 @@ var RouterApiConf = {
       case 'WD':
         return {
           apiKey: _Settings2.default.getKey('wordsApi'),
-          isApiKeyAllow: _Settings2.default.isApiKeyAllow,
           api: _Adapter2.default.Words.api,
           adapter: _Adapter2.default.Words.adapter,
           msgErr: 'WordsApi\'s ' + MSG_ERR_TAIL

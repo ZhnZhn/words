@@ -51,4 +51,4 @@ var Store = _reflux2.default.createStore((0, _extends3.default)({
 }, _ComponentSlice2.default, _ItemSlice2.default, _WatchListSlice2.default, _WithLoading2.default));
 
 exports.default = Store;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\stores\Store.js.map
+//# sourceMappingURL=Store.js.map

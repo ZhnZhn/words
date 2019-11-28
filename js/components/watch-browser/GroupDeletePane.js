@@ -159,4 +159,4 @@ var GroupDeletePane = function (_Component) {
 //import PropTypes from "prop-types";
 
 exports.default = GroupDeletePane;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\GroupDeletePane.js.map
+//# sourceMappingURL=GroupDeletePane.js.map

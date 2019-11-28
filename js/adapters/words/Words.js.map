@@ -1,13 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\adapters\\words\\Words.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\adapters\\words\\Words.js",
- "sourceRoot": "",
- "names": [
-  "Words",
-  "api",
-  "adapter"
- ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,QAAQ;AACZC,yBADY,EACPC;AADO,CAAd;;kBAIeF,K"
-}
+{"version":3,"sources":["../../../src/adapters/words/Words.js"],"names":["Words","api","adapter"],"mappings":";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,QAAQ;AACZC,yBADY,EACPC;AADO,CAAd;;kBAIeF,K","file":"Words.js","sourcesContent":["import adapter from './WordsAdapter'\r\nimport api from './WordsApi'\r\n\r\nconst Words = {\r\n  api, adapter\r\n};\r\n\r\nexport default Words\r\n"]}

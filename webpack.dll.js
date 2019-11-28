@@ -7,7 +7,7 @@ const path = require('path')
 module.exports = {
   entry: {
      lib: [
-            "react", "react-dom", "prop-types",
+            "react", "react-dom",
             "reflux",            
             "interactjs", "localforage", 
             "babel-runtime/helpers/classCallCheck",

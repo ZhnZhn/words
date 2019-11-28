@@ -19,4 +19,4 @@ var fnDnD = {
 };
 
 exports.default = fnDnD;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\decorators\fnDnD.js.map
+//# sourceMappingURL=fnDnD.js.map

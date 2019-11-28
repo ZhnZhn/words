@@ -15,4 +15,4 @@ var Adapter = {
 };
 
 exports.default = Adapter;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\adapters\Adapter.js.map
+//# sourceMappingURL=Adapter.js.map

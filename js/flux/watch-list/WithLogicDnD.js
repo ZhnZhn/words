@@ -108,4 +108,4 @@ var WithLogicDnD = {
 };
 
 exports.default = WithLogicDnD;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\watch-list\WithLogicDnD.js.map
+//# sourceMappingURL=WithLogicDnD.js.map

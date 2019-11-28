@@ -53,4 +53,4 @@ var EditBar = function EditBar(_ref) {
 };
 
 exports.default = EditBar;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\EditBar.js.map
+//# sourceMappingURL=EditBar.js.map

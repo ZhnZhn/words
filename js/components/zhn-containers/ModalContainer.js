@@ -117,4 +117,4 @@ var ModalContainer = (_temp = _class = function (_Component) {
   timeout: 450
 }, _temp);
 exports.default = ModalContainer;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-containers\ModalContainer.js.map
+//# sourceMappingURL=ModalContainer.js.map

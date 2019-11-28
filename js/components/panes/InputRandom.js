@@ -49,4 +49,4 @@ var InputRandom = function InputRandom(_ref) {
 };
 
 exports.default = InputRandom;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\panes\InputRandom.js.map
+//# sourceMappingURL=InputRandom.js.map

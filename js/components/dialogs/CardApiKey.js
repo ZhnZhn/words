@@ -32,18 +32,15 @@ var _SecretField = require('../zhn-m-input/SecretField');
 
 var _SecretField2 = _interopRequireDefault(_SecretField);
 
-var _RowCheckBox = require('./RowCheckBox');
-
-var _RowCheckBox2 = _interopRequireDefault(_RowCheckBox);
-
 var _FlatButton = require('../zhn-atoms/FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL_DIV = 'bt-flat__div';
 //import PropTypes from "prop-types";
+
+var CL_DIV = 'bt-flat__div';
 
 var S = {
   ROOT: {
@@ -53,14 +50,6 @@ var S = {
   SECRET: {
     width: 320,
     marginLeft: 12
-  },
-  CHECK_BOX: {
-    paddingLeft: 24,
-    paddingTop: 16,
-    paddingRight: 24
-  },
-  CHECK_CAPTION: {
-    display: 'inline'
   },
   BUTTONS: {
     position: 'absolute',
@@ -72,8 +61,6 @@ var S = {
     color: 'rgb(35, 47, 59)'
   }
 };
-
-var CAPTION_ALLOW = "Allow Remember Enter of API Key by Browser Password Manager";
 
 var CardApiKey = function (_Component) {
   (0, _inherits3.default)(CardApiKey, _Component);
@@ -89,13 +76,7 @@ var CardApiKey = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = CardApiKey.__proto__ || Object.getPrototypeOf(CardApiKey)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      isAllow: false
-    }, _this._checkAllow = function () {
-      _this.setState({ isAllow: true });
-    }, _this._uncheckAllow = function () {
-      _this.setState({ isAllow: false });
-    }, _this._refInput = function (c) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = CardApiKey.__proto__ || Object.getPrototypeOf(CardApiKey)).call.apply(_ref, [this].concat(args))), _this), _this._refInput = function (c) {
       return _this._input = c;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
@@ -119,7 +100,6 @@ var CardApiKey = function (_Component) {
           btStyle = _props.btStyle,
           onClose = _props.onClose,
           onSet = _props.onSet;
-      var isAllow = this.state.isAllow;
 
       return _react2.default.createElement(
         'div',
@@ -130,21 +110,12 @@ var CardApiKey = function (_Component) {
           _react2.default.createElement(_SecretField2.default, {
             ref: this._refInput,
             rootStyle: S.SECRET,
-            isAllowRemember: isAllow,
             caption: 'Words API Key',
             name: 'wordsapi',
             maxLength: '50',
             onEnter: onSet
           })
         ),
-        _react2.default.createElement(_RowCheckBox2.default, {
-          rootStyle: S.CHECK_BOX,
-          initValue: false,
-          caption: CAPTION_ALLOW,
-          captionStyle: S.CHECK_CAPTION,
-          onCheck: this._checkAllow,
-          onUnCheck: this._uncheckAllow
-        }),
         _react2.default.createElement(
           'div',
           { style: buttonsStyle },

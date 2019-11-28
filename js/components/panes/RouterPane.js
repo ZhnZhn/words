@@ -42,4 +42,4 @@ var RouterPane = {
 };
 
 exports.default = RouterPane;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\panes\RouterPane.js.map
+//# sourceMappingURL=RouterPane.js.map

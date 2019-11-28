@@ -190,4 +190,4 @@ var EditGroupDialog = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(EditGroupDialog);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\watch-browser\EditGroupDialog.js.map
+//# sourceMappingURL=EditGroupDialog.js.map

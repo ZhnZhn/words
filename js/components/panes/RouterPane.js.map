@@ -1,18 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\components\\panes\\RouterPane.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\components\\panes\\RouterPane.js",
- "sourceRoot": "",
- "names": [
-  "R",
-  "DF",
-  "Pane",
-  "Input",
-  "Item",
-  "RouterPane",
-  "getElement",
-  "type"
- ],
- "mappings": ";;;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,MAAI;AACFC,4BADE;AAEFC,8BAFE;AAGFC;AAHE,GADI;AAMRJ,KAAG;AACDE,4BADC;AAEDC,gCAFC;AAGDC;AAHC;AANK,CAAV;;AAaA,IAAMC,aAAa;AACjBC,cAAY,oBAACC,IAAD,EAAU;AACpB,WAAOP,EAAEO,IAAF,KAAWP,EAAEC,EAApB;AACD;AAHgB,CAAnB;;kBAMeI,U"
-}
+{"version":3,"sources":["../../../src/components/panes/RouterPane.js"],"names":["R","DF","Pane","Input","Item","RouterPane","getElement","type"],"mappings":";;;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,MAAI;AACFC,4BADE;AAEFC,8BAFE;AAGFC;AAHE,GADI;AAMRJ,KAAG;AACDE,4BADC;AAEDC,gCAFC;AAGDC;AAHC;AANK,CAAV;;AAaA,IAAMC,aAAa;AACjBC,cAAY,oBAACC,IAAD,EAAU;AACpB,WAAOP,EAAEO,IAAF,KAAWP,EAAEC,EAApB;AACD;AAHgB,CAAnB;;kBAMeI,U","file":"RouterPane.js","sourcesContent":["\r\nimport PaneType1 from './PaneType1'\r\n\r\nimport Word from '../items/word/Word'\r\nimport InputWord from './InputWord'\r\nimport InputRandom from './InputRandom'\r\n\r\nconst R = {\r\n  DF: {\r\n    Pane: PaneType1,\r\n    Input: InputWord,\r\n    Item: Word\r\n  },\r\n  R: {\r\n    Pane: PaneType1,\r\n    Input: InputRandom,\r\n    Item: Word\r\n  }\r\n};\r\n\r\nconst RouterPane = {\r\n  getElement: (type) => {    \r\n    return R[type] || R.DF;\r\n  }\r\n};\r\n\r\nexport default RouterPane\r\n"]}

@@ -50,4 +50,4 @@ var loadItem = function loadItem(option, onCompleted, onFailed) {
 };
 
 exports.default = loadItem;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\flux\logic\loadItem.js.map
+//# sourceMappingURL=loadItem.js.map

@@ -28,4 +28,4 @@ var IconWordsApi = function IconWordsApi(_ref) {
 };
 
 exports.default = IconWordsApi;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\about\IconWordsApi.js.map
+//# sourceMappingURL=IconWordsApi.js.map

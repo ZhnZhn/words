@@ -40,4 +40,4 @@ var ContainerStyle = {
 };
 
 exports.default = ContainerStyle;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\styles\ContainerStyle.js.map
+//# sourceMappingURL=ContainerStyle.js.map

@@ -1,14 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\flux\\actions\\LoadingActions.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\flux\\actions\\LoadingActions.js",
- "sourceRoot": "",
- "names": [
-  "T",
-  "LOADING",
-  "LOADING_COMPLETE",
-  "LOADING_FAILED"
- ],
- "mappings": ";;;;;AACO,IAAMA,gBAAI;AACfC,WAAS,SADM;AAEfC,oBAAkB,iBAFH;AAGfC,kBAAgB;AAHD,CAAV"
-}
+{"version":3,"sources":["../../../src/flux/actions/LoadingActions.js"],"names":["T","LOADING","LOADING_COMPLETE","LOADING_FAILED"],"mappings":";;;;;AACO,IAAMA,gBAAI;AACfC,WAAS,SADM;AAEfC,oBAAkB,iBAFH;AAGfC,kBAAgB;AAHD,CAAV","file":"LoadingActions.js","sourcesContent":["\r\nexport const T = {\r\n  LOADING: 'loading',\r\n  LOADING_COMPLETE: 'loadingComplete',\r\n  LOADING_FAILED: 'loadingFailed'\r\n};\r\n"]}

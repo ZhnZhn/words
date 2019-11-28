@@ -47,8 +47,6 @@ var _crDbLoadMsg = function _crDbLoadMsg(word) {
   return 'Item \'' + word + '\' has been already loaded.';
 };
 
-var MSG_KEY_NOT_ALLOWED = "It looks like you try to use not valid saved api key by Password Manager not allowed before. Please, reenter api key, check let check box before.";
-
 Actions[T.LOAD_ITEM].listen(function () {
   var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var _option$itemConf = option.itemConf,
@@ -59,25 +57,20 @@ Actions[T.LOAD_ITEM].listen(function () {
 
   if (_Store2.default.isItem(paneId, word)) {
     this.failed({ msg: _crDbLoadMsg(word) });
-    return undefined;
+    return;
   }
 
   var _option$loadId = option.loadId,
       loadId = _option$loadId === undefined ? 'WD' : _option$loadId,
       _RouterApiConf$getApi = _RouterApiConf2.default.getApiConf(loadId),
       apiKey = _RouterApiConf$getApi.apiKey,
-      isApiKeyAllow = _RouterApiConf$getApi.isApiKeyAllow,
       adapter = _RouterApiConf$getApi.adapter,
       api = _RouterApiConf$getApi.api,
       msgErr = _RouterApiConf$getApi.msgErr;
 
   if (apiKey) {
-    if (isApiKeyAllow(apiKey)) {
-      Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
-      (0, _loadItem2.default)(option, this.completed, this.failed);
-    } else {
-      this.failed({ msg: MSG_KEY_NOT_ALLOWED });
-    }
+    Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
+    (0, _loadItem2.default)(option, this.completed, this.failed);
   } else {
     this.failed({ msg: msgErr });
   }

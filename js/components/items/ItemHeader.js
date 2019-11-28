@@ -151,4 +151,4 @@ var ItemHeader = (_temp2 = _class = function (_Component) {
   onAddToWatch: _fnNoop
 }, _temp2);
 exports.default = ItemHeader;
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\items\ItemHeader.js.map
+//# sourceMappingURL=ItemHeader.js.map

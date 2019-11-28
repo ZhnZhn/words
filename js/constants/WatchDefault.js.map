@@ -1,14 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_Words\\src\\constants\\WatchDefault.js",
- "file": "D:\\_Dev\\_React\\_Words\\js\\constants\\WatchDefault.js",
- "sourceRoot": "",
- "names": [
-  "WatchDefault",
-  "groups",
-  "caption",
-  "lists"
- ],
- "mappings": ";;;;;;AACA,IAAMA,eAAe;AACjBC,UAAS,CACP;AACGC,aAAU,QADb;AAEGC,WAAQ,CACN,EAAED,SAAU,OAAZ,EADM,EAEN,EAAEA,SAAU,OAAZ,EAFM,EAGN,EAAEA,SAAU,OAAZ,EAHM;AAFX,GADO,EAQL;AACAA,aAAU,QADV;AAEAC,WAAQ,CACN,EAAED,SAAU,OAAZ,EADM,EAEN,EAAEA,SAAU,OAAZ,EAFM,EAGN,EAAEA,SAAU,OAAZ,EAHM;AAFR,GARK,EAeL;AACAA,aAAU,QADV;AAEAC,WAAQ,CACN,EAAED,SAAU,OAAZ,EADM,EAEN,EAAEA,SAAU,OAAZ,EAFM,EAGN,EAAEA,SAAU,OAAZ,EAHM;AAFR,GAfK;AADQ,CAArB;;kBA2BeF,Y"
-}
+{"version":3,"sources":["../../src/constants/WatchDefault.js"],"names":["WatchDefault","groups","caption","lists"],"mappings":";;;;;;AACA,IAAMA,eAAe;AACjBC,UAAS,CACP;AACGC,aAAU,QADb;AAEGC,WAAQ,CACN,EAAED,SAAU,OAAZ,EADM,EAEN,EAAEA,SAAU,OAAZ,EAFM,EAGN,EAAEA,SAAU,OAAZ,EAHM;AAFX,GADO,EAQL;AACAA,aAAU,QADV;AAEAC,WAAQ,CACN,EAAED,SAAU,OAAZ,EADM,EAEN,EAAEA,SAAU,OAAZ,EAFM,EAGN,EAAEA,SAAU,OAAZ,EAHM;AAFR,GARK,EAeL;AACAA,aAAU,QADV;AAEAC,WAAQ,CACN,EAAED,SAAU,OAAZ,EADM,EAEN,EAAEA,SAAU,OAAZ,EAFM,EAGN,EAAEA,SAAU,OAAZ,EAHM;AAFR,GAfK;AADQ,CAArB;;kBA2BeF,Y","file":"WatchDefault.js","sourcesContent":["\r\nconst WatchDefault = {\r\n    groups : [\r\n      {\r\n         caption : 'Group1',\r\n         lists : [\r\n           { caption : 'List1' },\r\n           { caption : 'List2' },\r\n           { caption : 'List3' }\r\n         ]\r\n      },{\r\n        caption : 'Group2' ,\r\n        lists : [\r\n          { caption : 'List1' },\r\n          { caption : 'List2' },\r\n          { caption : 'List3' }\r\n        ]\r\n      },{\r\n        caption : 'Group3',\r\n        lists : [\r\n          { caption : 'List1' },\r\n          { caption : 'List2' },\r\n          { caption : 'List3' }\r\n        ]\r\n      }\r\n    ]\r\n}\r\n\r\nexport default WatchDefault\r\n"]}

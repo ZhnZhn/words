@@ -73,4 +73,4 @@ var MenuBrowser = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(MenuBrowser);
-//# sourceMappingURL=D:\_Dev\_React\_Words\js\components\zhn-browsers\MenuBrowser.js.map
+//# sourceMappingURL=MenuBrowser.js.map
