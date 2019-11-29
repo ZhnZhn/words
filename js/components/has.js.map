@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/has.js"
+ ],
+ "file": "../../src/components/has.js",
+ "names": [
+  "_isTouchable",
+  "document",
+  "documentElement",
+  "has",
+  "HAS_TOUCH"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,eAAe,SAAfA,YAAe;AAAA,SAAMC,YACtB,kBAAkBA,SAASC,eADX;AAAA,CAArB;;AAGA,IAAMC,MAAM;AACVC,aAAWJ;AADD,CAAZ;;kBAIeG,G"
+}

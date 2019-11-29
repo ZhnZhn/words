@@ -3,17 +3,23 @@ import React, { Component } from 'react'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Pane.Style'
+import crModelMore from './crModelMore'
 
-import A from '../zhn-atoms/Atoms'
+import A from '../Comp'
 
-const SHOW_POPUP = "show-popup"
-    , CHILD_MARGIN = 36
-    , RESIZE_MIN_WIDTH = 375
-    , RESIZE_MAX_WIDTH = 1200;
+const CHILD_MARGIN = 36
+, RESIZE_INIT_WIDTH = 635
+, RESIZE_MIN_WIDTH = 375
+, RESIZE_MAX_WIDTH = 1200
+, RESIZE_DELTA = 10
+, CL = {
+   SHOW_POPUP: "show-popup",
+   MENU_MORE: "popup-menu items__menu-more"
+};
 
 const S = {
   ROOT_DIV : {
-    backgroundColor: '#4D4D4D',
+    backgroundColor: '#4d4d4d',
     padding : '0px 0px 3px 0px',
     position: 'relative',
     borderRadius: 4,
@@ -29,6 +35,8 @@ const S = {
     marginRight: -2
   },
   BT_CIRCLE: {
+    position: 'relative',
+    top: -3,
     marginLeft: 16,
     marginRight: 6
   },
@@ -48,6 +56,10 @@ const S = {
 };
 
 const _fnNoop = () => {};
+
+const _getWidth = style => parseInt(style.width, 10)
+  || RESIZE_INIT_WIDTH;
+const _toStyleWidth = width => width + 'px';
 
 class NewsPane extends Component {
   /*
@@ -82,8 +94,18 @@ class NewsPane extends Component {
   constructor(props){
     super(props);
     this.childMargin = CHILD_MARGIN;
+
+    this._MODEL = crModelMore({
+      onMinWidth: this._resizeTo.bind(this, RESIZE_MIN_WIDTH),
+      onInitWidth: this._resizeTo.bind(this, RESIZE_INIT_WIDTH),
+      onPlusWidth: this._plusToWidth,
+      onMinusWidth: this._minusToWidth,
+      onRemoveItems: props.onRemoveItems
+    })
+
     this.state = {
       isShow: true,
+      isMore: false,
       word: 'example',
       configs: []
     };
@@ -136,6 +158,40 @@ class NewsPane extends Component {
       }
    }
 
+   _showMore = () => {
+      this.setState({ isMore: true })
+   }
+   _hToggleMore = () => {
+     this.setState(prevState => ({
+       isMore: !prevState.isMore
+     }))
+   }
+
+   _getRootNodeStyle = () => {
+     const { rootDiv } = this
+     , { style={} } = rootDiv || {};
+     return style;
+   }
+
+   _resizeTo = (width) => {
+     this._getRootNodeStyle().width = _toStyleWidth(width);
+   }
+
+   _plusToWidth = () => {
+     const style = this._getRootNodeStyle()
+         , w = _getWidth(style) + RESIZE_DELTA;
+     if (w < RESIZE_MAX_WIDTH) {
+        style.width = _toStyleWidth(w)
+     }
+   }
+   _minusToWidth = () => {
+     const style = this._getRootNodeStyle()
+         , w = _getWidth(style) - RESIZE_DELTA;
+     if (w > RESIZE_MIN_WIDTH) {
+       style.width = _toStyleWidth(w)
+     }
+   }
+
    _hHide = () => {
       this.props.onClose()
       this.setState({ isShow: false })
@@ -147,9 +203,9 @@ class NewsPane extends Component {
 
    _hLoadItem = () => {
        const { itemConf, onLoad } = this.props
-           , _word = this.iWord
-                ? this.iWord.getValue()
-                : undefined;
+       , _word = this.iWord
+            ? this.iWord.getValue()
+            : void 0;
        onLoad({
          itemConf,
          word: _word,
@@ -158,22 +214,19 @@ class NewsPane extends Component {
 
   _renderConfigs(configs=[]){
      const {
-             Item,
-             onCloseItem,
-             onRemoveUnder,
-             onAddToWatch
-           } = this.props;
-     return configs.map(config => {
-        return (
-          <Item
-             key={config.id}
-             config={config}
-             onCloseItem={onCloseItem}
-             onRemoveUnder={onRemoveUnder}
-             onAddToWatch={onAddToWatch}
-          />
-        );
-     })
+       Item,
+       onCloseItem,
+       onRemoveUnder,
+       onAddToWatch
+     } = this.props;
+     return configs
+       .map(config => (<Item
+          key={config.id}
+          config={config}
+          onCloseItem={onCloseItem}
+          onRemoveUnder={onRemoveUnder}
+          onAddToWatch={onAddToWatch}
+     />));     
   }
 
 
@@ -187,23 +240,35 @@ class NewsPane extends Component {
               Input,
               onRemoveItems
             } = this.props
-          , { isShow, word, configs } = this.state
+          , { isShow, isMore, word, configs } = this.state
           , TS = theme.createStyle(styleConfig)
           , _showStyle = isShow
                ? S.INLINE_BLOCK
                : S.NONE
          , _showCl = isShow
-               ? SHOW_POPUP
-               : undefined;
+               ? CL.SHOW_POPUP
+               : void 0;
      return(
         <div
            ref={this._refRootDiv}
            className={_showCl}
-           style={{ ...S.ROOT_DIV, ...TS.PANE_ROOT, ..._showStyle }}
+           style={{
+             ...S.ROOT_DIV,
+             ...TS.BG_COLOR,
+             ..._showStyle
+           }}
         >
+          <A.ModalSlider
+            isShow={isMore}
+            className={CL.MENU_MORE}
+            style={TS.BG_COLOR}
+            model={this._MODEL}
+            onClose={this._hToggleMore}
+          />
           <A.BrowserCaption
              rootStyle={{ ...S.BR_CAPTION, ...TS.PANE_CAPTION }}
              caption={paneCaption}
+             onMore={this._showMore}
              onClose={this._hHide}
           >
             <A.CircleButton

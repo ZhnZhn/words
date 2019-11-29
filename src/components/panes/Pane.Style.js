@@ -1,20 +1,31 @@
 const S = {
   INPUT_ROOT: {
-    width: '250px',
-    marginLeft: '8px'
-    //display: 'block'
+    width: 250,
+    marginLeft: 8
   },
   BT_RAISED_ROOT: {
     position: 'relative',
-    top: '12px',
-    marginLeft: '16px'
+    top: 12,
+    marginLeft: 16
   },
 };
 
+const _crBgColorStyle = color => ({ backgroundColor: color });
+
 const styleConfig = {
-  themeName : undefined,
-  style : undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle : (R, themeName) => {
+    let _paneRoot;
+    switch(themeName){
+      case 'WHITE':
+        _paneRoot = _crBgColorStyle('rgb(235, 241, 245)')
+        break;
+      case 'SAND':
+        _paneRoot = _crBgColorStyle('#e8e0cb')
+        break;
+      default:
+    }
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
       PANE_CAPTION: {
@@ -23,9 +34,9 @@ const styleConfig = {
       SVG_RESIZE: {
         ...R.SVG_RESIZE
       },
-      PANE_ROOT: {
-        ...R.BG
-      },
+      BG_COLOR: {
+        ..._paneRoot
+      },      
       INPUT_ROOT: {
         ...S.INPUT_ROOT
       },

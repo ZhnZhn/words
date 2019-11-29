@@ -12,26 +12,39 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var S = {
   INPUT_ROOT: {
-    width: '250px',
-    marginLeft: '8px'
-    //display: 'block'
+    width: 250,
+    marginLeft: 8
   },
   BT_RAISED_ROOT: {
     position: 'relative',
-    top: '12px',
-    marginLeft: '16px'
+    top: 12,
+    marginLeft: 16
   }
 };
 
+var _crBgColorStyle = function _crBgColorStyle(color) {
+  return { backgroundColor: color };
+};
+
 var styleConfig = {
-  themeName: undefined,
-  style: undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle: function createStyle(R, themeName) {
+    var _paneRoot = void 0;
+    switch (themeName) {
+      case 'WHITE':
+        _paneRoot = _crBgColorStyle('rgb(235, 241, 245)');
+        break;
+      case 'SAND':
+        _paneRoot = _crBgColorStyle('#e8e0cb');
+        break;
+      default:
+    }
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
       PANE_CAPTION: (0, _extends3.default)({}, R.BG_HEADER),
       SVG_RESIZE: (0, _extends3.default)({}, R.SVG_RESIZE),
-      PANE_ROOT: (0, _extends3.default)({}, R.BG),
+      BG_COLOR: (0, _extends3.default)({}, _paneRoot),
       INPUT_ROOT: (0, _extends3.default)({}, S.INPUT_ROOT),
       BT: {
         CL_RAISED_DIV: R.CL_BT_RAISED_DIV,

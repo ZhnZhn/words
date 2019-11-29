@@ -39,20 +39,29 @@ var _Pane = require('./Pane.Style');
 
 var _Pane2 = _interopRequireDefault(_Pane);
 
-var _Atoms = require('../zhn-atoms/Atoms');
+var _crModelMore = require('./crModelMore');
 
-var _Atoms2 = _interopRequireDefault(_Atoms);
+var _crModelMore2 = _interopRequireDefault(_crModelMore);
+
+var _Comp = require('../Comp');
+
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SHOW_POPUP = "show-popup",
-    CHILD_MARGIN = 36,
+var CHILD_MARGIN = 36,
+    RESIZE_INIT_WIDTH = 635,
     RESIZE_MIN_WIDTH = 375,
-    RESIZE_MAX_WIDTH = 1200;
+    RESIZE_MAX_WIDTH = 1200,
+    RESIZE_DELTA = 10,
+    CL = {
+  SHOW_POPUP: "show-popup",
+  MENU_MORE: "popup-menu items__menu-more"
+};
 
 var S = {
   ROOT_DIV: {
-    backgroundColor: '#4D4D4D',
+    backgroundColor: '#4d4d4d',
     padding: '0px 0px 3px 0px',
     position: 'relative',
     borderRadius: 4,
@@ -68,6 +77,8 @@ var S = {
     marginRight: -2
   },
   BT_CIRCLE: {
+    position: 'relative',
+    top: -3,
     marginLeft: 16,
     marginRight: 6
   },
@@ -87,6 +98,13 @@ var S = {
 };
 
 var _fnNoop = function _fnNoop() {};
+
+var _getWidth = function _getWidth(style) {
+  return parseInt(style.width, 10) || RESIZE_INIT_WIDTH;
+};
+var _toStyleWidth = function _toStyleWidth(width) {
+  return width + 'px';
+};
 
 var NewsPane = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(NewsPane, _Component);
@@ -137,6 +155,47 @@ var NewsPane = (_temp = _class = function (_Component) {
       }
     };
 
+    _this._showMore = function () {
+      _this.setState({ isMore: true });
+    };
+
+    _this._hToggleMore = function () {
+      _this.setState(function (prevState) {
+        return {
+          isMore: !prevState.isMore
+        };
+      });
+    };
+
+    _this._getRootNodeStyle = function () {
+      var rootDiv = _this.rootDiv,
+          _ref = rootDiv || {},
+          _ref$style = _ref.style,
+          style = _ref$style === undefined ? {} : _ref$style;
+
+      return style;
+    };
+
+    _this._resizeTo = function (width) {
+      _this._getRootNodeStyle().width = _toStyleWidth(width);
+    };
+
+    _this._plusToWidth = function () {
+      var style = _this._getRootNodeStyle(),
+          w = _getWidth(style) + RESIZE_DELTA;
+      if (w < RESIZE_MAX_WIDTH) {
+        style.width = _toStyleWidth(w);
+      }
+    };
+
+    _this._minusToWidth = function () {
+      var style = _this._getRootNodeStyle(),
+          w = _getWidth(style) - RESIZE_DELTA;
+      if (w > RESIZE_MIN_WIDTH) {
+        style.width = _toStyleWidth(w);
+      }
+    };
+
     _this._hHide = function () {
       _this.props.onClose();
       _this.setState({ isShow: false });
@@ -150,7 +209,7 @@ var NewsPane = (_temp = _class = function (_Component) {
       var _this$props2 = _this.props,
           itemConf = _this$props2.itemConf,
           onLoad = _this$props2.onLoad,
-          _word = _this.iWord ? _this.iWord.getValue() : undefined;
+          _word = _this.iWord ? _this.iWord.getValue() : void 0;
 
       onLoad({
         itemConf: itemConf,
@@ -167,8 +226,18 @@ var NewsPane = (_temp = _class = function (_Component) {
     };
 
     _this.childMargin = CHILD_MARGIN;
+
+    _this._MODEL = (0, _crModelMore2.default)({
+      onMinWidth: _this._resizeTo.bind(_this, RESIZE_MIN_WIDTH),
+      onInitWidth: _this._resizeTo.bind(_this, RESIZE_INIT_WIDTH),
+      onPlusWidth: _this._plusToWidth,
+      onMinusWidth: _this._minusToWidth,
+      onRemoveItems: props.onRemoveItems
+    });
+
     _this.state = {
       isShow: true,
+      isMore: false,
       word: 'example',
       configs: []
     };
@@ -235,32 +304,41 @@ var NewsPane = (_temp = _class = function (_Component) {
           onRemoveItems = _props2.onRemoveItems,
           _state = this.state,
           isShow = _state.isShow,
+          isMore = _state.isMore,
           word = _state.word,
           configs = _state.configs,
           TS = theme.createStyle(_Pane2.default),
           _showStyle = isShow ? S.INLINE_BLOCK : S.NONE,
-          _showCl = isShow ? SHOW_POPUP : undefined;
+          _showCl = isShow ? CL.SHOW_POPUP : void 0;
 
       return _react2.default.createElement(
         'div',
         {
           ref: this._refRootDiv,
           className: _showCl,
-          style: (0, _extends3.default)({}, S.ROOT_DIV, TS.PANE_ROOT, _showStyle)
+          style: (0, _extends3.default)({}, S.ROOT_DIV, TS.BG_COLOR, _showStyle)
         },
+        _react2.default.createElement(_Comp2.default.ModalSlider, {
+          isShow: isMore,
+          className: CL.MENU_MORE,
+          style: TS.BG_COLOR,
+          model: this._MODEL,
+          onClose: this._hToggleMore
+        }),
         _react2.default.createElement(
-          _Atoms2.default.BrowserCaption,
+          _Comp2.default.BrowserCaption,
           {
             rootStyle: (0, _extends3.default)({}, S.BR_CAPTION, TS.PANE_CAPTION),
             caption: paneCaption,
+            onMore: this._showMore,
             onClose: this._hHide
           },
-          _react2.default.createElement(_Atoms2.default.CircleButton, {
+          _react2.default.createElement(_Comp2.default.CircleButton, {
             caption: 'R',
             style: S.BT_CIRCLE,
             onClick: onRemoveItems
           }),
-          _react2.default.createElement(_Atoms2.default.SvgHrzResize, {
+          _react2.default.createElement(_Comp2.default.SvgHrzResize, {
             svgStyle: TS.SVG_RESIZE,
             minWidth: RESIZE_MIN_WIDTH,
             maxWidth: RESIZE_MAX_WIDTH,
@@ -274,7 +352,7 @@ var NewsPane = (_temp = _class = function (_Component) {
           onEnter: this._hLoadItem
         }),
         _react2.default.createElement(
-          _Atoms2.default.ScrollPane,
+          _Comp2.default.ScrollPane,
           {
             className: TS.CL_SCROLL_PANE,
             style: S.SCROLL_PANE
