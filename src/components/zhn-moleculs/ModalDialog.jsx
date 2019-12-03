@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import PropTypes from "prop-types";
+
+import useClassAnimation from '../zhn-hooks/useClassAnimation'
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import RaisedButton from '../zhn-atoms/RaisedButton'
@@ -19,141 +21,76 @@ const S = {
     left: '40%',
     display: 'block',
     zIndex: 10
-  },
-  HIDE_POPUP: {
-    opacity: 0,
-    transform: 'scaleY(0)'
-  },
+  }
 };
 
-class ModalDialog extends Component {
-  /*
-   static propTypes = {
-     isShow: PropTypes.bool,
-     isWithButton: PropTypes.bool,
-     isNotUpdate: PropTypes.bool,
-     withoutClose: PropTypes.bool,
-     isFocusClose: PropTypes.bool,
-     commandButtons: PropTypes.arrayOf(PropTypes.element),
-     timeout: PropTypes.number,
-     caption: PropTypes.string,
-     style: PropTypes.object,
-     onClose: PropTypes.func
-   }
-   */
-   static defaultProps = {
-     isWithButton: true,
-     isNotUpdate: false,
-     isFocusClose: true,
-     timeout: 450,
-     STYLE: {}
-   }
-
-   constructor(props){
-     super()
-     this.wasClosing = false
-   }
-
-   shouldComponentUpdate(nextProps, nextState){
-     if (nextProps !== this.props){
-       if (nextProps.isNotUpdate){
-         return false;
-       }
-     }
-     return true;
-   }
-
-   focusBtClose(){
-     if (this.props.isFocusClose && this._btClose) {
-       this._btClose.focus()
-     }
-   }
-
-   componentDidMount(){
-     this.focusBtClose()
-   }
-
-   componentDidUpdate(prevProps, prevState){
-    const { timeout, isShow } = this.props
-     if (this.wasClosing){
-       setTimeout(
-         () => { this.setState({}) },
-         timeout
-       )
-     }
-     if (prevProps.isShow === false && isShow) {
-       this.focusBtClose()
-     }
-   }
-
-
-  _handleClickDialog(event) {
-    event.stopPropagation()
-   }
-
-  _refBtClose = n => this._btClose = n
-
-  _renderCommandButton = () => {
-    const { STYLE, commandButtons, withoutClose, onClose } = this.props;
-    return (
-      <div style={S.COMMAND_DIV}>
-        {commandButtons}
-        { !withoutClose &&
-           <RaisedButton
-             ref={this._refBtClose}
-             rootStyle={STYLE.RAISED_ROOT}
-             clDiv={STYLE.CL_RAISED_DIV}
-             caption="Close"
-             isPrimary={true}
-             onClick={onClose}
-           />
-        }
-      </div>
-    );
+const S2 = {
+  INIT: {
+    display: 'none'
+  },
+  SHOWING: {
+    display: 'block'
+  },
+  HIDING: {
+    opacity: 0,
+    transform: 'scaleY(0)'
   }
+}
 
-  render(){
-    const {
-            isShow, isWithButton, style,
-            caption, captionStyle,
-            //styleCaption,
-            children, onClose
-          } = this.props;
 
-    let _className, _style;
+function _hClickDialog(event) {
+  event.stopPropagation()
+}
 
-    if (this.wasClosing){
-      _style = S.HIDE
-      this.wasClosing = false
-    } else {
-      _className = isShow ? CL.SHOWING : CL.HIDING
-      _style = isShow ? S.SHOW : S.HIDE_POPUP
-      if (!isShow){
-        this.wasClosing = true
-      }
-    }
+const ModalDialog = ({
+  isShow,
+  style,
+  isWithButton=true,
+  //isFocusClose=true,
+  caption, captionStyle,
+  commandButtons, withoutClose,
+  children, onClose
+}) => {
+  //const _refBtClose = useRef();
+  const {
+    className:_className, style:_style
+  } = useClassAnimation({
+    isShow, CL, S: S2,
+    initialWasClosed: false
+  });
 
-    return (
-         <div
-            className={_className}
-            style={{
-              ...S.ROOT_DIV, ...S.ROOT_DIV_MODAL,
-              ...style, ..._style
-            }}
-            onClick={this._handleClickDialog}
-         >
-            <BrowserCaption
-               rootStyle={captionStyle}
-               caption={caption}
-               onClose={onClose}
+  return (
+    <div
+       className={_className}
+       style={{
+         ...S.ROOT_DIV, ...S.ROOT_DIV_MODAL,
+         ...style, ..._style
+       }}
+       onClick={_hClickDialog}
+    >
+       <BrowserCaption
+          rootStyle={captionStyle}
+          caption={caption}
+          onClose={onClose}
+       />
+       <div>
+         {children}
+       </div>
+       {isWithButton && <div style={S.COMMAND_DIV}>
+         {commandButtons}
+         { !withoutClose &&
+            <RaisedButton
+              //ref={_refBtClose}
+              rootStyle={STYLE.RAISED_ROOT}
+              clDiv={STYLE.CL_RAISED_DIV}
+              caption="Close"
+              isPrimary={true}
+              onClick={onClose}
             />
-            <div>
-              {children}
-            </div>
-            {isWithButton && this._renderCommandButton()}
-        </div>
-    );
-  }
+         }
+       </div>}
+   </div>
+  );
 }
 
 export default ModalDialog

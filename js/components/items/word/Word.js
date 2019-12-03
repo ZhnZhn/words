@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _temp;
+var _class, _temp2;
 
 var _react = require('react');
 
@@ -61,28 +61,29 @@ var S = {
   ROOT: {
     position: 'relative',
     lineHeight: 1.5,
-    marginBottom: '5px',
-    marginRight: '25px',
+    marginBottom: 5,
+    marginRight: 25,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-    borderBottomRightRadius: '2px'
+    borderBottomRightRadius: 2
   },
   LEFT_LINE: {
     position: 'absolute',
-    top: '0px',
-    left: 'Opx',
-    width: '3px',
-    height: '8px',
-    backgroundColor: '#3F51B5'
+    top: 0,
+    left: 0,
+    width: 3,
+    height: 8,
+    backgroundColor: '#3f51b5'
   },
   HEADER: {
     backgroundColor: '#404040',
-    paddingTop: '8px',
-    paddingLeft: '16px',
-    paddingBottom: '16px',
-    lineHeight: 1.5,
+    paddingTop: 8,
+    paddingLeft: 8,
+    paddingRight: 32,
+    paddingBottom: 16,
     width: '100%',
-    borderTopRightRadius: '2px',
-    borderBottomRightRadius: '2px'
+    lineHeight: 1.5,
+    borderTopRightRadius: 2,
+    borderBottomRightRadius: 2
   },
   HEADER_OPEN: {
     borderLeft: '6px solid #607d8b'
@@ -90,52 +91,53 @@ var S = {
   CAPTION: {
     display: 'inline-block',
     color: 'black',
+    paddingRight: 8,
     fontSize: '18px',
     fontWeight: 'bold',
-    paddingRight: '32px',
     cursor: 'pointer'
   },
   CAPTION_OPEN: {
     color: '#607d8b'
   },
   SVG_CLOSE: {
-    float: 'none',
     position: 'absolute',
-    top: '8px',
-    right: '0px'
+    top: 8,
+    right: 0
   }
 };
 
-var Word = (_temp = _class = function (_Component) {
+var Word = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(Word, _Component);
 
-  function Word(props) {
+  function Word() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, Word);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (Word.__proto__ || Object.getPrototypeOf(Word)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._handleToggle = function () {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Word.__proto__ || Object.getPrototypeOf(Word)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      isShow: false
+    }, _this._handleToggle = function () {
       _this.setState(function (prevState) {
         return {
           isShow: !prevState.isShow
         };
       });
-    };
-
-    _this._handleClose = function () {
+    }, _this._handleClose = function () {
       var _this$props = _this.props,
           onCloseItem = _this$props.onCloseItem,
           config = _this$props.config;
 
       onCloseItem(config);
-    };
-
-    _this._handleHide = function () {
+    }, _this._handleHide = function () {
       _this.headerComp.focus();
       _this.setState({ isShow: false });
-    };
-
-    _this._onDragEnd = function (dX) {
+    }, _this._onDragEnd = function (dX) {
       var _this$props2 = _this.props,
           onRemoveUnder = _this$props2.onRemoveUnder,
           config = _this$props2.config;
@@ -145,25 +147,16 @@ var Word = (_temp = _class = function (_Component) {
       } else if (dX > D_REMOVE_ITEM) {
         _this._handleClose();
       }
-    };
-
-    _this._onDragTouchEnd = function (dX) {
+    }, _this._onDragTouchEnd = function (dX) {
       if (dX > D_REMOVE_UNDER) {
         _this._handleClose();
         return false;
       } else {
         return true;
       }
-    };
-
-    _this._refItemHeader = function (comp) {
+    }, _this._refItemHeader = function (comp) {
       _this.headerComp = comp;
-    };
-
-    _this.state = {
-      isShow: false
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(Word, [{
@@ -211,6 +204,6 @@ var Word = (_temp = _class = function (_Component) {
   return Word;
 }(_react.Component), _class.defaultProps = {
   config: {}
-}, _temp);
+}, _temp2);
 exports.default = (0, _withTheme2.default)(Word);
 //# sourceMappingURL=Word.js.map

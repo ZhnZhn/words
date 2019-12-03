@@ -18,28 +18,29 @@ const S = {
   ROOT: {
     position : 'relative',
     lineHeight : 1.5,
-    marginBottom: '5px',
-    marginRight: '25px',
+    marginBottom: 5,
+    marginRight: 25,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-    borderBottomRightRadius: '2px'
+    borderBottomRightRadius: 2
   },
   LEFT_LINE: {
     position: 'absolute',
-    top: '0px',
-    left: 'Opx',
-    width: '3px',
-    height: '8px',
-    backgroundColor: '#3F51B5'
+    top: 0,
+    left: 0,
+    width: 3,
+    height: 8,
+    backgroundColor: '#3f51b5'
   },
   HEADER: {
     backgroundColor: '#404040',
-    paddingTop: '8px',
-    paddingLeft: '16px',
-    paddingBottom: '16px',
+    paddingTop: 8,
+    paddingLeft: 8,
+    paddingRight: 32,
+    paddingBottom: 16,
+    width: '100%',
     lineHeight: 1.5,
-    width : '100%',
-    borderTopRightRadius: '2px',
-    borderBottomRightRadius: '2px',
+    borderTopRightRadius: 2,
+    borderBottomRightRadius: 2,
   },
   HEADER_OPEN: {
     borderLeft: '6px solid #607d8b'
@@ -47,19 +48,18 @@ const S = {
   CAPTION: {
     display : 'inline-block',
     color: 'black',
+    paddingRight: 8,
     fontSize: '18px',
     fontWeight : 'bold',
-    paddingRight: '32px',
     cursor: 'pointer'
   },
   CAPTION_OPEN: {
     color: '#607d8b',
   },
   SVG_CLOSE: {
-    float: 'none',
     position: 'absolute',
-    top: '8px',
-    right: '0px'
+    top: 8,
+    right: 0
   }
 }
 
@@ -69,11 +69,8 @@ class Word extends Component {
     config: {}
   }
 
-  constructor(props){
-    super()
-    this.state = {
-      isShow: false
-    }
+  state = {
+    isShow: false
   }
 
   _handleToggle = () => {
@@ -84,9 +81,9 @@ class Word extends Component {
 
   _handleClose = () => {
     const {
-            onCloseItem,
-            config
-          } = this.props;
+      onCloseItem,
+      config
+    } = this.props;
     onCloseItem(config)
   }
 

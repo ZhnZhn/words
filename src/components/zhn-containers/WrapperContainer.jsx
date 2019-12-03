@@ -32,7 +32,7 @@ class WrapperContainer extends Component {
   }
   _onStore = (actionType, option) => {
      const { SHOW_ACTION } = this.props;
-     if (actionType === SHOW_ACTION){
+     if (actionType === SHOW_ACTION){       
        const type = option.modalDialogType
            , { inits, shows, data, dialogs } = this.state;
 
