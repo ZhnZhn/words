@@ -59,7 +59,11 @@ var S = {
     position: 'static',
     width: 350,
     height: 290,
-    margin: '70px auto 0px'
+    zIndex: 10,
+    margin: '70px auto 0px',
+    border: 'solid 2px #1b2836',
+    borderRadius: 5,
+    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
   },
   CARD_ROOT: {
     position: 'relative',
