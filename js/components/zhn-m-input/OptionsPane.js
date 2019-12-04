@@ -45,8 +45,12 @@ var S = {
 };
 
 var _renderOptions = function _renderOptions(options, currentItem, clItem, itemStyle, onSelect, isShow) {
+  var _ref = currentItem || {},
+      currentCaption = _ref.caption,
+      currentValue = _ref.value;
+
   return options.map(function (item) {
-    var _style = item.value === currentItem.value ? S.ITEM : void 0;
+    var _style = currentValue && item.value === currentValue || currentCaption && item.caption === currentCaption ? S.ITEM : void 0;
     return _react2.default.createElement(
       'button',
       {
@@ -60,15 +64,15 @@ var _renderOptions = function _renderOptions(options, currentItem, clItem, itemS
   });
 };
 
-var OptionsPane = function OptionsPane(_ref) {
-  var isShow = _ref.isShow,
-      rootStyle = _ref.rootStyle,
-      options = _ref.options,
-      item = _ref.item,
-      clItem = _ref.clItem,
-      itemStyle = _ref.itemStyle,
-      onSelect = _ref.onSelect,
-      onClose = _ref.onClose;
+var OptionsPane = function OptionsPane(_ref2) {
+  var isShow = _ref2.isShow,
+      rootStyle = _ref2.rootStyle,
+      options = _ref2.options,
+      item = _ref2.item,
+      clItem = _ref2.clItem,
+      itemStyle = _ref2.itemStyle,
+      onSelect = _ref2.onSelect,
+      onClose = _ref2.onClose;
   return _react2.default.createElement(
     _ModalPane2.default,
     {

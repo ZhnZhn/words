@@ -57,7 +57,8 @@ class FragmentSelectGroupList extends Component {
   }
 
   _handleSelectList = (item) => {
-     this.listCaption = (item && item.caption) ? item.caption : null
+     this.listCaption = item && item.caption
+       ? item.caption : null
   }
 
   render(){

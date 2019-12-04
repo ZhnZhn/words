@@ -8,7 +8,7 @@ import WatchActions, { WatchActionTypes as WAT } from '../../flux/actions/WatchA
 import Msg from '../../constants/MsgWatch';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import RowInputSelect from '../dialogs/RowInputSelect';
+import RowInputSelect from './RowInputSelect'
 import Row from '../dialogs/Row';
 import withValidationLoad from '../dialogs/decorators/withValidationLoad';
 import A from './Atoms';
@@ -18,6 +18,17 @@ const actionCompleted = WAT.EDIT_WATCH_COMPLETED
     , forActionType = WAT.ADD_ITEM;
 
 const { notSelected } = Msg;
+
+const CL_BT_DIV = 'bt-flat__div';
+
+const S2 = {
+  DIALOG: {
+    left: 'calc(50vw - 142px)'
+  },
+  BT_ROOT: {
+    color: '#3270b4'
+  }
+};
 
 @withValidationLoad
 class AddToWatchDialog extends Component {
@@ -140,11 +151,12 @@ class AddToWatchDialog extends Component {
 
   _crCommandButtons = (S) => {
     return [
-      <A.Button.Raised
+      <A.Button.Flat
+        key="_add"
         caption="Add"
         title="Add Item To Watch List"
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
+        rootStyle={S2.BT_ROOT}
+        clDiv={CL_BT_DIV}
         onClick={this._handleAdd}
        />
     ];
@@ -163,27 +175,31 @@ class AddToWatchDialog extends Component {
     return (
       <ModalDialog
          STYLE={TS.BT}
-         style={TS.R_DIALOG}
+         style={{...TS.R_DIALOG, ...S2.DIALOG}}
          captionStyle={TS.BROWSER_CAPTION}
          caption="Add To Watch List"
          isShow={isShow}
          commandButtons={_commandButtons}
          onClose={this._handleClose}
       >
-        <RowInputSelect
-          inputStyle={TS.INPUT}
-          caption="Group:"
-          options={groupOptions}
-          onSelect={this._handleSelectGroup}
-        />
-        <RowInputSelect
-          inputStyle={TS.INPUT}
-          caption="List:"
-          onSelect={this._handleSelectList}
-          options={listOptions}
-        />
+        <div>
+          <RowInputSelect
+            inputStyle={TS.INPUT}
+            caption="Group:"
+            options={groupOptions}
+            onSelect={this._handleSelectGroup}
+          />
+        </div>
+        <div>
+          <RowInputSelect
+            inputStyle={TS.INPUT}
+            caption="List:"
+            onSelect={this._handleSelectList}
+            options={listOptions}
+          />
+        </div>
         <Row.Text
-          caption="Item:"
+          caption="Word:"
           text={caption}
         />
         <A.ValidationMessages

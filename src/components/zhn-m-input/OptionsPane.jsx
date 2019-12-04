@@ -30,8 +30,13 @@ const _renderOptions = (
   clItem, itemStyle,
   onSelect, isShow
 ) => {
+  const {
+    caption:currentCaption,
+    value:currentValue
+  } = currentItem || {};
   return options.map(item => {
-    const _style = (item.value === currentItem.value)
+    const _style = (currentValue && item.value === currentValue)
+      || (currentCaption && item.caption === currentCaption)
              ? S.ITEM
              : void 0;
     return (

@@ -22,7 +22,7 @@ class ListEditPane extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       groupOptions: props.store.getWatchGroups(),
       listOptions: [],

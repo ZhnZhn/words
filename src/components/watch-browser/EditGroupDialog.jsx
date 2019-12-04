@@ -14,6 +14,8 @@ import GroupAddPane from './GroupAddPane';
 import GroupEditPane from './GroupEditPane';
 import GroupDeletePane from './GroupDeletePane';
 
+import S from './Dialog.Style'
+
 const { addGroup, renameGroup, deleteGroup } = Actions;
 const {
   EDIT_WATCH_COMPLETED, EDIT_WATCH_FAILED,
@@ -21,15 +23,9 @@ const {
 } = WAT;
 const { notSelected, emptyName } = Msg;
 
-const TAB_PANE_WIDTH = "380px";
+//const TAB_PANE_WIDTH = "300px";
 
-/*
-const S = {
-  BT_ROOT: {
-    color: 'rgb(35, 47, 59)'
-  }
-};
-*/
+
 
 class EditGroupDialog extends Component {
   /*
@@ -60,14 +56,14 @@ class EditGroupDialog extends Component {
     return (
       <ModalDialog
          //STYLE={TS.BT}
-         style={TS.R_DIALOG}
+         style={{ ...TS.R_DIALOG, ...S.DIALOG }}
          captionStyle={TS.BROWSER_CAPTION}
          caption="Watch Groups Edit"
          isShow={isShow}
          isWithButton={false}
          onClose={onClose}
       >
-        <A.TabPane width={TAB_PANE_WIDTH} isUpdateInit={true}>
+        <A.TabPane width={S.TAB_PANE_WIDTH} isUpdateInit={true}>
            <A.Tab title="Create" style={TS.TAB}>
              <GroupAddPane
                 store={store}

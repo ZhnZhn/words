@@ -9,18 +9,19 @@ const S = {
   BT_ROOT: {
     color: 'rgb(35, 47, 59)'
   }
-}
+};
 
-const Clear = ({ style, onClick }) =>
+const Clear = ({ style, onClick }) => (
   <FlatButton
     rootStyle={{ ...S.BT_ROOT, ...style }}
     clDiv={CL_DIV}
     caption="Clear"
     title="Clear Input"
     onClick={onClick}
-/>
+  />
+);
 
-const Close = ({ style, onClick }) =>
+const Close = ({ style, onClick }) => (
   <FlatButton
     rootStyle={{ ...S.BT_ROOT, ...style }}
     clDiv={CL_DIV}
@@ -28,8 +29,9 @@ const Close = ({ style, onClick }) =>
     title="Close Dialog"
     onClick={onClick}
   />
+);
 
-const Primary = ({ style, caption, title, onClick }) =>
+const Primary = ({ style, caption, title, onClick }) => (
     <FlatButton
       rootStyle={{ ...S.BT_ROOT, ...style}}
       clDiv={CL_DIV}
@@ -38,7 +40,7 @@ const Primary = ({ style, caption, title, onClick }) =>
       //isPrimary={true}
       onClick={onClick}
     />
-
+);
 
 export default {
   Primary,

@@ -39,9 +39,9 @@ var _Dialog = require('./Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
+var _Comp = require('../Comp');
 
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50,40 +50,41 @@ var CL = {
 };
 
 var S = {
+  DIALOG: {
+    left: 'calc(50vw - 184px)'
+  },
   CAPTION: {
-    //color: '#f44336',
     color: '#f44336',
     fontWeight: 'bold'
   },
   ROW: {
-    //display: 'block',
     display: 'flex',
     alignItems: 'center',
-    marginRight: '5px',
-    marginTop: '5px',
-    marginLeft: '5px',
-    marginBottom: '5px'
+    marginRight: 5,
+    marginTop: 5,
+    marginLeft: 5,
+    marginBottom: 5
   },
   TITLE: {
     display: 'inline-block',
-    width: '360px',
-    paddingLeft: '10px',
-    color: '#F44336',
+    color: '#f44336',
+    width: 360,
+    paddingLeft: 10,
+    lineHeight: 2,
     fontSize: '18px',
-    fontWeight: 'bold',
-    lineHeight: 2
+    fontWeight: 'bold'
   },
   ITEM_ID: {
-    width: '120px',
     color: '#a487d4',
+    width: 120,
     fontWeight: 'bold',
     verticalAlign: 'bottom'
   },
   DESCR: {
     color: 'gray',
-    width: '360px',
-    paddingLeft: '10px',
-    paddingRight: '8px',
+    width: 360,
+    paddingLeft: 10,
+    paddingRight: 8,
     fontWeight: 'bold',
     lineHeight: 1.4,
     whiteSpace: 'pre-line',
@@ -137,10 +138,10 @@ var AlertDialog2 = (_temp = _class = function (_Component) {
           _caption = caption + ': ';
 
       return _react2.default.createElement(
-        _ModalDialog2.default,
+        _Comp2.default.ModalDialog,
         {
           STYLE: TS.BT,
-          style: TS.R_DIALOG,
+          style: (0, _extends3.default)({}, TS.R_DIALOG, S.DIALOG),
           caption: 'Exception',
           captionStyle: (0, _extends3.default)({}, TS.BROWSER_CAPTION, S.CAPTION),
           isShow: isShow,

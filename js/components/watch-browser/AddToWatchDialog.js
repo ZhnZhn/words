@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -47,7 +51,7 @@ var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
-var _RowInputSelect = require('../dialogs/RowInputSelect');
+var _RowInputSelect = require('./RowInputSelect');
 
 var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
 
@@ -70,6 +74,18 @@ var actionCompleted = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     forActionType = _WatchActions.WatchActionTypes.ADD_ITEM;
 
 var notSelected = _MsgWatch2.default.notSelected;
+
+
+var CL_BT_DIV = 'bt-flat__div';
+
+var S2 = {
+  DIALOG: {
+    left: 'calc(50vw - 142px)'
+  },
+  BT_ROOT: {
+    color: '#3270b4'
+  }
+};
 
 var AddToWatchDialog = (0, _withValidationLoad2.default)(_class = function (_Component) {
   (0, _inherits3.default)(AddToWatchDialog, _Component);
@@ -160,11 +176,12 @@ var AddToWatchDialog = (0, _withValidationLoad2.default)(_class = function (_Com
     };
 
     _this._crCommandButtons = function (S) {
-      return [_react2.default.createElement(_Atoms2.default.Button.Raised, {
+      return [_react2.default.createElement(_Atoms2.default.Button.Flat, {
+        key: '_add',
         caption: 'Add',
         title: 'Add Item To Watch List',
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
+        rootStyle: S2.BT_ROOT,
+        clDiv: CL_BT_DIV,
         onClick: _this._handleAdd
       })];
     };
@@ -234,27 +251,35 @@ var AddToWatchDialog = (0, _withValidationLoad2.default)(_class = function (_Com
         _ModalDialog2.default,
         {
           STYLE: TS.BT,
-          style: TS.R_DIALOG,
+          style: (0, _extends3.default)({}, TS.R_DIALOG, S2.DIALOG),
           captionStyle: TS.BROWSER_CAPTION,
           caption: 'Add To Watch List',
           isShow: isShow,
           commandButtons: _commandButtons,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_RowInputSelect2.default, {
-          inputStyle: TS.INPUT,
-          caption: 'Group:',
-          options: groupOptions,
-          onSelect: this._handleSelectGroup
-        }),
-        _react2.default.createElement(_RowInputSelect2.default, {
-          inputStyle: TS.INPUT,
-          caption: 'List:',
-          onSelect: this._handleSelectList,
-          options: listOptions
-        }),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_RowInputSelect2.default, {
+            inputStyle: TS.INPUT,
+            caption: 'Group:',
+            options: groupOptions,
+            onSelect: this._handleSelectGroup
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_RowInputSelect2.default, {
+            inputStyle: TS.INPUT,
+            caption: 'List:',
+            onSelect: this._handleSelectList,
+            options: listOptions
+          })
+        ),
         _react2.default.createElement(_Row2.default.Text, {
-          caption: 'Item:',
+          caption: 'Word:',
           text: caption
         }),
         _react2.default.createElement(_Atoms2.default.ValidationMessages, {

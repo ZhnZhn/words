@@ -51,7 +51,7 @@ var ListEditPane = function (_Component) {
   function ListEditPane(props) {
     (0, _classCallCheck3.default)(this, ListEditPane);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ListEditPane.__proto__ || Object.getPrototypeOf(ListEditPane)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (ListEditPane.__proto__ || Object.getPrototypeOf(ListEditPane)).call(this, props));
 
     _this._onStore = function (actionType, data) {
       var _this$props = _this.props,

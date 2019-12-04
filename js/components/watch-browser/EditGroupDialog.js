@@ -8,6 +8,10 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -64,13 +68,17 @@ var _GroupDeletePane = require('./GroupDeletePane');
 
 var _GroupDeletePane2 = _interopRequireDefault(_GroupDeletePane);
 
+var _Dialog3 = require('./Dialog.Style');
+
+var _Dialog4 = _interopRequireDefault(_Dialog3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
 
 var addGroup = _WatchActions2.default.addGroup,
     renameGroup = _WatchActions2.default.renameGroup,
     deleteGroup = _WatchActions2.default.deleteGroup;
-//import PropTypes from "prop-types";
-
 var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     EDIT_WATCH_FAILED = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     ADD_GROUP = _WatchActions.WatchActionTypes.ADD_GROUP,
@@ -79,16 +87,8 @@ var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
 var notSelected = _MsgWatch2.default.notSelected,
     emptyName = _MsgWatch2.default.emptyName;
 
+//const TAB_PANE_WIDTH = "300px";
 
-var TAB_PANE_WIDTH = "380px";
-
-/*
-const S = {
-  BT_ROOT: {
-    color: 'rgb(35, 47, 59)'
-  }
-};
-*/
 
 var EditGroupDialog = function (_Component) {
   (0, _inherits3.default)(EditGroupDialog, _Component);
@@ -132,7 +132,7 @@ var EditGroupDialog = function (_Component) {
         _ModalDialog2.default
         //STYLE={TS.BT}
         ,
-        { style: TS.R_DIALOG,
+        { style: (0, _extends3.default)({}, TS.R_DIALOG, _Dialog4.default.DIALOG),
           captionStyle: TS.BROWSER_CAPTION,
           caption: 'Watch Groups Edit',
           isShow: isShow,
@@ -141,7 +141,7 @@ var EditGroupDialog = function (_Component) {
         },
         _react2.default.createElement(
           _Atoms2.default.TabPane,
-          { width: TAB_PANE_WIDTH, isUpdateInit: true },
+          { width: _Dialog4.default.TAB_PANE_WIDTH, isUpdateInit: true },
           _react2.default.createElement(
             _Atoms2.default.Tab,
             { title: 'Create', style: TS.TAB },

@@ -52,7 +52,7 @@ var S = {
     transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
@@ -150,9 +150,9 @@ var TextField = (_temp = _class = function (_Component) {
           _state = this.state,
           value = _state.value,
           isPassTest = _state.isPassTest,
-          _labelStyle = value || this.isFocus ? undefined : S.LABEL_TO_INPUT,
-          _labelErrStyle = isPassTest ? undefined : S.LABEL_ON_ERROR,
-          _lineStyle = isPassTest ? undefined : S.LINE_ERROR,
+          _labelStyle = value || this.isFocus ? void 0 : S.LABEL_TO_INPUT,
+          _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
+          _lineStyle = isPassTest ? void 0 : S.LINE_ERROR,
           _crCaption2 = _crCaption(caption, accessKey),
           cPrefix = _crCaption2.cPrefix,
           cKey = _crCaption2.cKey,
@@ -215,11 +215,18 @@ var TextField = (_temp = _class = function (_Component) {
       return String(this.state.value).trim();
     }
   }, {
+    key: 'setValue',
+    value: function setValue(str) {
+      if (typeof str === 'string') {
+        this.setState({ value: str });
+      }
+    }
+  }, {
     key: 'focus',
     value: function focus() {
       if (this.inputNode) {
         this.inputNode.focus();
-        if (typeof this.inputNode.setSelectionRange === 'function') {
+        if (_isFn(this.inputNode.setSelectionRange)) {
           var len = this.state.value.length;
           this.inputNode.setSelectionRange(len, len);
         }

@@ -13,27 +13,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var S = {
   BROWSER_CAPTION: {
     //padding: '5px',
-    paddingTop: '5px',
+    paddingTop: 5,
     //color: '#9e9e9e',
     color: '#303030',
     backgroundColor: '#3f5178',
     textAlign: 'center',
     fontSize: '18px',
-    marginBottom: '0px'
+    marginBottom: 0
   },
   BT_RAISED_ROOT: {
-    marginRight: '2px',
-    marginLeft: '2px'
+    marginRight: 2,
+    marginLeft: 2
   },
   INPUT_ROOT: {
-    width: '280px',
+    width: 280,
     display: 'block'
   }
 };
 
 var styleConfig = {
-  themeName: undefined,
-  style: undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle: function createStyle(R) {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
@@ -49,7 +49,7 @@ var styleConfig = {
         CL_ITEM: R.CL_SELECT_ITEM,
         ITEM: (0, _extends3.default)({}, R.M_SELECT_ITEM),
         ROOT: {
-          width: '280px'
+          width: 280
         },
         MODAL_PANE: (0, _extends3.default)({}, R.BG)
       },

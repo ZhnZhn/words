@@ -10,6 +10,10 @@ var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
 var _react = require('react');
 
+var _useForceUpdate3 = require('./useForceUpdate');
+
+var _useForceUpdate4 = _interopRequireDefault(_useForceUpdate3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useClassAnimation = function useClassAnimation(_ref) {
@@ -21,10 +25,10 @@ var useClassAnimation = function useClassAnimation(_ref) {
       _ref$timeout = _ref.timeout,
       timeout = _ref$timeout === undefined ? 450 : _ref$timeout;
 
-  var _useState = (0, _react.useState)(false),
-      _useState2 = (0, _slicedToArray3.default)(_useState, 2),
-      _wasUpdated = _useState2[0],
-      _forceUpdate = _useState2[1],
+  var _useForceUpdate = (0, _useForceUpdate4.default)(),
+      _useForceUpdate2 = (0, _slicedToArray3.default)(_useForceUpdate, 2),
+      _wasUpdated = _useForceUpdate2[0],
+      _forceUpdate = _useForceUpdate2[1],
       _refWasClosed = (0, _react.useRef)(initialWasClosed),
       _refPrevIsShow = (0, _react.useRef)(isShow);
 
@@ -32,15 +36,12 @@ var useClassAnimation = function useClassAnimation(_ref) {
     if (_refPrevIsShow.current && !isShow) {
       setTimeout(function () {
         _refWasClosed.current = true;
-        _forceUpdate(function (is) {
-          return !is;
-        });
+        _forceUpdate();
       }, timeout);
     }
     _refPrevIsShow.current = isShow;
     _refWasClosed.current = false;
   }, [isShow, _wasUpdated]);
-
   var className = void 0,
       style = void 0;
   if (_refWasClosed.current) {

@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -32,36 +36,35 @@ var _Dialog = require('./Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
+var _Comp = require('../Comp');
 
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
+  DIALOG: {
+    left: 'calc(50vw - 184px)'
+  },
   CAPTION: {
-    //width : '360px',
-    //paddingLeft : '10px',
-    paddingTop: '8px',
-    paddingLeft: '8px',
-    color: 'rgba(164, 135, 212,1)',
+    paddingTop: 8,
+    paddingLeft: 8,
+    color: 'rgba(164, 135, 212, 1)',
     fontSize: '18px',
     fontWeight: 'bold'
-    //lineHeight : 2
   },
   ROW: {
-    //display: 'block',
     display: 'flex',
     alignItems: 'center',
-    marginRight: '5px',
-    marginTop: '5px',
-    marginLeft: '5px',
-    marginBottom: '5px'
+    marginRight: 5,
+    marginTop: 5,
+    marginLeft: 5,
+    marginBottom: 5
   },
   DESCR: {
     color: 'gray',
-    width: '360px',
-    paddingLeft: '10px',
+    width: 360,
+    paddingLeft: 10,
     fontWeight: 'bold',
     lineHeight: 1.4,
     whiteSpace: 'pre'
@@ -97,12 +100,11 @@ var MsgDialog = function (_Component) {
           descr = data.descr;
 
       return _react2.default.createElement(
-        _ModalDialog2.default,
+        _Comp2.default.ModalDialog,
         {
           STYLE: TS.BT,
-          style: TS.R_DIALOG
-          //captionStyle={{ ...TS.BROWSER_CAPTION, ...S.CAPTION }}
-          , captionStyle: TS.BROWSER_CAPTION,
+          style: (0, _extends3.default)({}, TS.R_DIALOG, S.DIALOG),
+          captionStyle: TS.BROWSER_CAPTION,
           caption: 'Message',
           isShow: isShow,
           onClose: onClose

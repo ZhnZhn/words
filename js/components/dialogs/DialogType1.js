@@ -21,10 +21,6 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class;
-//import InputSelect from '../zhn-m-input/InputSelect'
-//import PoweredBy from '../links/PoweredBy'
-//import Link from '../links/Links'
-
 
 var _react = require('react');
 
@@ -56,33 +52,13 @@ var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-const S = {
-  POWERED_BY: {
-    marginLeft: '16px',
-    marginBottom: '8px'
-  }
-};
-*/
-
-//const DF_SORT_BY = { caption: "20 News", value: "20" };
-/*
-const _sortByOptions = [
-  { caption: "10 News", value: "10" },
-  { caption: "20 News", value: "20"},
-  { caption: "30 News", value: "30" },
-  { caption: "40 News", value: "40" },
-  { caption: "50 News", value: "50" }
-];
-*/
-
 var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
   (0, _inherits3.default)(DialogType1, _Component);
 
   function DialogType1(props) {
     (0, _classCallCheck3.default)(this, DialogType1);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType1.__proto__ || Object.getPrototypeOf(DialogType1)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType1.__proto__ || Object.getPrototypeOf(DialogType1)).call(this, props));
 
     _this._handleLoad = function () {
       var _this$props = _this.props,
@@ -105,12 +81,21 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
 
     _this._createCommandButtons = function (TS) {
       return [_react2.default.createElement(_RaisedButton2.default, {
+        key: '_load',
         rootStyle: TS.RAISED_ROOT,
         clDiv: TS.CL_RAISED_DIV,
         caption: 'Load',
         isPrimary: true,
         onClick: _this._handleLoad
       })];
+    };
+
+    _this._refDialogComp = function (comp) {
+      return _this.dialogComp = comp;
+    };
+
+    _this._refInputWord = function (comp) {
+      return _this.inputSymbol = comp;
     };
 
     _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
@@ -120,8 +105,6 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
   (0, _createClass3.default)(DialogType1, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           theme = _props.theme,
           isShow = _props.isShow,
@@ -133,9 +116,7 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
       return _react2.default.createElement(
         _DraggableDialog2.default,
         {
-          ref: function ref(comp) {
-            return _this2.dialogComp = comp;
-          },
+          ref: this._refDialogComp,
           rootStyle: TS.R_DIALOG,
           browserCaptionStyle: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
@@ -147,10 +128,8 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
           onClose: this._handleClose
         },
         _react2.default.createElement(_TextField2.default, {
+          ref: this._refInputWord,
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputSymbol = comp;
-          },
           caption: 'Word (Default: Example)',
           initValue: 'Example'
         })
@@ -161,5 +140,4 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
 }(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(DialogType1);
-//export default withTheme(IexNewsDialog)
 //# sourceMappingURL=DialogType1.js.map

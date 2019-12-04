@@ -3,37 +3,36 @@ import React, { Component } from 'react'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
-import ModalDialog from '../zhn-moleculs/ModalDialog'
+import A from '../Comp'
 
 const S = {
-  CAPTION : {
-    //width : '360px',
-    //paddingLeft : '10px',
-    paddingTop: '8px',
-    paddingLeft: '8px',
-    color : 'rgba(164, 135, 212,1)',
-    fontSize: '18px',
-    fontWeight : 'bold',
-    //lineHeight : 2
+  DIALOG: {
+    left: 'calc(50vw - 184px)'
   },
+  CAPTION : {
+    paddingTop: 8,
+    paddingLeft: 8,
+    color: 'rgba(164, 135, 212, 1)',
+    fontSize: '18px',
+    fontWeight: 'bold'
+},
   ROW: {
-    //display: 'block',
     display: 'flex',
     alignItems: 'center',
-    marginRight: '5px',
-    marginTop: '5px',
-    marginLeft: '5px',
-    marginBottom: '5px'
+    marginRight: 5,
+    marginTop: 5,
+    marginLeft: 5,
+    marginBottom: 5
   },
   DESCR : {
     color: 'gray',
-    width : '360px',
-    paddingLeft : '10px',
+    width: 360,
+    paddingLeft: 10,
     fontWeight: 'bold',
-    lineHeight : 1.4,
-    whiteSpace : 'pre'
+    lineHeight: 1.4,
+    whiteSpace: 'pre'
   }
-}
+};
 
 class MsgDialog extends Component {
 
@@ -49,10 +48,9 @@ class MsgDialog extends Component {
         , TS = theme.createStyle(styleConfig)
         , { caption, descr } = data;
     return (
-      <ModalDialog
+      <A.ModalDialog
         STYLE={TS.BT}
-        style={TS.R_DIALOG }
-        //captionStyle={{ ...TS.BROWSER_CAPTION, ...S.CAPTION }}
+        style={{...TS.R_DIALOG, ...S.DIALOG}}
         captionStyle={TS.BROWSER_CAPTION}
         caption="Message"
         isShow={isShow}
@@ -66,7 +64,7 @@ class MsgDialog extends Component {
          <div style={S.ROW}>
             <p style={S.DESCR}>{descr}</p>
          </div>
-      </ModalDialog>
+      </A.ModalDialog>
     );
   }
 }

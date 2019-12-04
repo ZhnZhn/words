@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -60,13 +64,17 @@ var _ListDeletePane = require('./ListDeletePane');
 
 var _ListDeletePane2 = _interopRequireDefault(_ListDeletePane);
 
+var _Dialog3 = require('./Dialog.Style');
+
+var _Dialog4 = _interopRequireDefault(_Dialog3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from "prop-types";
 
 var createList = _WatchActions2.default.createList,
     renameList = _WatchActions2.default.renameList,
     deleteList = _WatchActions2.default.deleteList;
-//import PropTypes from "prop-types";
-
 var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     EDIT_WATCH_FAILED = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     CREATE_LIST = _WatchActions.WatchActionTypes.CREATE_LIST,
@@ -74,9 +82,6 @@ var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     DELETE_LIST = _WatchActions.WatchActionTypes.DELETE_LIST;
 var notSelected = _MsgWatch2.default.notSelected,
     emptyName = _MsgWatch2.default.emptyName;
-
-
-var TAB_PANE_WIDTH = "380px";
 
 var EditListDialog = function (_Component) {
   (0, _inherits3.default)(EditListDialog, _Component);
@@ -117,7 +122,7 @@ var EditListDialog = function (_Component) {
         _ModalDialog2.default
         //STYLE={TS.BT}
         ,
-        { style: TS.R_DIALOG,
+        { style: (0, _extends3.default)({}, TS.R_DIALOG, _Dialog4.default.DIALOG),
           captionStyle: TS.BROWSER_CAPTION,
           caption: 'Watch Lists Edit',
           isShow: isShow,
@@ -126,7 +131,7 @@ var EditListDialog = function (_Component) {
         },
         _react2.default.createElement(
           _Atoms2.default.TabPane,
-          { width: TAB_PANE_WIDTH, isUpdateInit: true },
+          { width: _Dialog4.default.TAB_PANE_WIDTH, isUpdateInit: true },
           _react2.default.createElement(
             _Atoms2.default.Tab,
             { title: 'Create', style: TS.TAB },

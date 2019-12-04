@@ -1,0 +1,20 @@
+
+.modal-dialog {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  display: block;
+  z-index: 10;
+  background-color: #4d4d4d;
+  border: solid 2px #1b2836;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
+}
+
+.modal-dialog__actions {
+   float: right;
+   margin-top: 8px;
+   margin-bottom: 10px;
+   margin-right: 4px;
+   cursor: default;
+}

@@ -52,7 +52,7 @@ var InputSelect = (_temp = _class = function (_Component) {
   function InputSelect(props) {
     (0, _classCallCheck3.default)(this, InputSelect);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSelect.__proto__ || Object.getPrototypeOf(InputSelect)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSelect.__proto__ || Object.getPrototypeOf(InputSelect)).call(this, props));
 
     _this._handleOpen = function () {
       _this.setState({ isShow: true });
@@ -73,10 +73,24 @@ var InputSelect = (_temp = _class = function (_Component) {
 
     _this.state = {
       isShow: false,
+      initialOptions: props.options,
       item: props.initItem
     };
     return _this;
   }
+
+  /*
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.options !== this.props.options) {
+      this.setState({
+        item: {
+          caption: '',
+          value: ''
+        }
+      })
+    }
+  }
+  */
 
   (0, _createClass3.default)(InputSelect, [{
     key: 'render',
@@ -88,7 +102,6 @@ var InputSelect = (_temp = _class = function (_Component) {
           _state = this.state,
           isShow = _state.isShow,
           item = _state.item;
-
 
       return _react2.default.createElement(
         'div',
@@ -133,13 +146,29 @@ var InputSelect = (_temp = _class = function (_Component) {
         )
       );
     }
+  }], [{
+    key: 'getDerivedStateFromProps',
+    value: function getDerivedStateFromProps(props, state) {
+      if (props.options !== state.initialOptions) {
+        return {
+          isShow: false,
+          initialOptions: props.options,
+          item: {
+            caption: '',
+            value: ''
+          }
+        };
+      }
+    }
   }]);
   return InputSelect;
 }(_react.Component), _class.defaultProps = {
   initItem: {
     caption: '',
     value: ''
-  }
+  },
+  styleConfig: {},
+  onSelect: function onSelect() {}
 }, _temp);
 exports.default = InputSelect;
 //# sourceMappingURL=InputSelect.js.map

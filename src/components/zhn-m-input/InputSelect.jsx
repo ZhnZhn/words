@@ -18,16 +18,47 @@ class InputSelect extends Component {
     initItem: {
       caption: '',
       value: ''
-    }
+    },
+    styleConfig: {},
+    onSelect: () => {}
   }
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       isShow: false,
+      initialOptions: props.options,
       item: props.initItem
     }
   }
+
+  /*
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.options !== this.props.options) {
+      this.setState({
+        item: {
+          caption: '',
+          value: ''
+        }
+      })
+    }
+  }
+  */
+
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.options !== state.initialOptions) {
+      return {
+        isShow: false,
+        initialOptions: props.options,
+        item: {
+          caption: '',
+          value: ''
+        }
+      };
+    }
+  }
+
 
   _handleOpen = () => {
     this.setState({ isShow: true })
@@ -48,7 +79,6 @@ class InputSelect extends Component {
   render(){
     const { caption, options, styleConfig:TS } = this.props
         , { isShow, item } = this.state;
-
     return (
       <div
         className={CL.SELECT}

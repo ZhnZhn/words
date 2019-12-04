@@ -14,14 +14,14 @@ import ListCreatePane from './ListCreatePane';
 import ListEditPane from './ListEditPane';
 import ListDeletePane from './ListDeletePane';
 
+import S from './Dialog.Style'
+
 const { createList, renameList, deleteList } = Actions
 const {
   EDIT_WATCH_COMPLETED, EDIT_WATCH_FAILED,
   CREATE_LIST, RENAME_LIST, DELETE_LIST
 } = WAT;
 const { notSelected, emptyName } = Msg;
-
-const TAB_PANE_WIDTH = "380px";
 
 class EditListDialog extends Component {
   /*
@@ -50,14 +50,14 @@ class EditListDialog extends Component {
     return (
       <ModalDialog
         //STYLE={TS.BT}
-         style={TS.R_DIALOG}
+         style={{...TS.R_DIALOG, ...S.DIALOG }}
          captionStyle={TS.BROWSER_CAPTION}
          caption="Watch Lists Edit"
          isShow={isShow}
          isWithButton={false}
          onClose={onClose}
       >
-        <A.TabPane width={TAB_PANE_WIDTH} isUpdateInit={true}>
+        <A.TabPane width={S.TAB_PANE_WIDTH} isUpdateInit={true}>
            <A.Tab title="Create" style={TS.TAB}>
              <ListCreatePane
                 store={store}

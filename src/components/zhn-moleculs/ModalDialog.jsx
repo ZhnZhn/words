@@ -1,29 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
 //import PropTypes from "prop-types";
 
 import useClassAnimation from '../zhn-hooks/useClassAnimation'
 
-import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import RaisedButton from '../zhn-atoms/RaisedButton'
+import A from '../Comp'
 
-import STYLE from './Dialog.Style'
+
 
 const CL = {
-  SHOWING : 'show-popup',
-  HIDING : 'hide-popup'
+  D: 'modal-dialog',
+  D_ACTIONS: 'modal-dialog__actions',
+  BT_DIV: 'bt-flat__div'
 };
-
 const S = {
-  ...STYLE,
-  ROOT_DIV_MODAL: {
-    position: 'absolute',
-    top: '20%',
-    left: '40%',
-    display: 'block',
-    zIndex: 10
+  BT_ROOT: {
+    color: '#3270b4'
   }
 };
 
+const CL2 = {
+  SHOWING : 'show-popup',
+  HIDING : 'hide-popup'
+};
 const S2 = {
   INIT: {
     display: 'none'
@@ -35,15 +33,15 @@ const S2 = {
     opacity: 0,
     transform: 'scaleY(0)'
   }
-}
+};
 
-
-function _hClickDialog(event) {
+const _hClickDialog = (event) => {
   event.stopPropagation()
-}
+};
 
 const ModalDialog = ({
   isShow,
+  className=CL.D,
   style,
   isWithButton=true,
   //isFocusClose=true,
@@ -51,24 +49,26 @@ const ModalDialog = ({
   commandButtons, withoutClose,
   children, onClose
 }) => {
-  //const _refBtClose = useRef();
+  const _refBtClose = useRef(null);
   const {
     className:_className, style:_style
   } = useClassAnimation({
-    isShow, CL, S: S2,
+    isShow, CL: CL2, S: S2,
     initialWasClosed: false
-  });
-
+  })
+  , _className2 = _className
+      ? `${className} ${_className}`
+      : className;
   return (
     <div
-       className={_className}
+       className={_className2}
        style={{
-         ...S.ROOT_DIV, ...S.ROOT_DIV_MODAL,
+         //...S.ROOT_DIV,
          ...style, ..._style
        }}
        onClick={_hClickDialog}
     >
-       <BrowserCaption
+       <A.BrowserCaption
           rootStyle={captionStyle}
           caption={caption}
           onClose={onClose}
@@ -76,13 +76,13 @@ const ModalDialog = ({
        <div>
          {children}
        </div>
-       {isWithButton && <div style={S.COMMAND_DIV}>
+       {isWithButton && <div className={CL.D_ACTIONS}>
          {commandButtons}
          { !withoutClose &&
-            <RaisedButton
-              //ref={_refBtClose}
-              rootStyle={STYLE.RAISED_ROOT}
-              clDiv={STYLE.CL_RAISED_DIV}
+            <A.FlatButton
+              ref={_refBtClose}
+              rootStyle={S.BT_ROOT}
+              clDiv={CL.BT_DIV}
               caption="Close"
               isPrimary={true}
               onClick={onClose}

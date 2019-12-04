@@ -40,17 +40,9 @@ var _ComponentActions = require('../../flux/actions/ComponentActions');
 
 var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
+var _Comp = require('../Comp');
 
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-var _TabPane = require('../zhn-atoms/TabPane');
-
-var _TabPane2 = _interopRequireDefault(_TabPane);
-
-var _Tab = require('../zhn-atoms/Tab');
-
-var _Tab2 = _interopRequireDefault(_Tab);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 var _CardApiKey = require('./CardApiKey');
 
@@ -125,8 +117,9 @@ var SettingsDialog = function (_Component) {
 
 
       return _react2.default.createElement(
-        _ModalDialog2.default,
+        _Comp2.default.ModalDialog,
         {
+          className: '',
           STYLE: TS.BT,
           style: (0, _extends3.default)({}, S.MODAL, TS.R_DIALOG),
           caption: 'User Settings',
@@ -136,10 +129,10 @@ var SettingsDialog = function (_Component) {
           onClose: onClose
         },
         _react2.default.createElement(
-          _TabPane2.default,
+          _Comp2.default.TabPane,
           { width: '100%' },
           _react2.default.createElement(
-            _Tab2.default,
+            _Comp2.default.Tab,
             { title: 'API Key', style: TS.TAB },
             _react2.default.createElement(_CardApiKey2.default, {
               ref: this._ref1,
@@ -151,7 +144,7 @@ var SettingsDialog = function (_Component) {
             })
           ),
           _react2.default.createElement(
-            _Tab2.default,
+            _Comp2.default.Tab,
             { title: 'UI Theme', style: TS.TAB },
             _react2.default.createElement(_CardUi2.default, {
               style: S.CARD_ROOT,

@@ -16,37 +16,29 @@ var _useClassAnimation2 = require('../zhn-hooks/useClassAnimation');
 
 var _useClassAnimation3 = _interopRequireDefault(_useClassAnimation2);
 
-var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
+var _Comp = require('../Comp');
 
-var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
-
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _Dialog = require('./Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import PropTypes from "prop-types";
 
 var CL = {
+  D: 'modal-dialog',
+  D_ACTIONS: 'modal-dialog__actions',
+  BT_DIV: 'bt-flat__div'
+};
+var S = {
+  BT_ROOT: {
+    color: '#3270b4'
+  }
+};
+
+var CL2 = {
   SHOWING: 'show-popup',
   HIDING: 'hide-popup'
 };
-
-var S = (0, _extends3.default)({}, _Dialog2.default, {
-  ROOT_DIV_MODAL: {
-    position: 'absolute',
-    top: '20%',
-    left: '40%',
-    display: 'block',
-    zIndex: 10
-  }
-});
-
 var S2 = {
   INIT: {
     display: 'none'
@@ -60,12 +52,14 @@ var S2 = {
   }
 };
 
-function _hClickDialog(event) {
+var _hClickDialog = function _hClickDialog(event) {
   event.stopPropagation();
-}
+};
 
 var ModalDialog = function ModalDialog(_ref) {
   var isShow = _ref.isShow,
+      _ref$className = _ref.className,
+      className = _ref$className === undefined ? CL.D : _ref$className,
       style = _ref.style,
       _ref$isWithButton = _ref.isWithButton,
       isWithButton = _ref$isWithButton === undefined ? true : _ref$isWithButton,
@@ -76,22 +70,24 @@ var ModalDialog = function ModalDialog(_ref) {
       children = _ref.children,
       onClose = _ref.onClose;
 
-  //const _refBtClose = useRef();
+  var _refBtClose = (0, _react.useRef)(null);
+
   var _useClassAnimation = (0, _useClassAnimation3.default)({
-    isShow: isShow, CL: CL, S: S2,
+    isShow: isShow, CL: CL2, S: S2,
     initialWasClosed: false
   }),
       _className = _useClassAnimation.className,
-      _style = _useClassAnimation.style;
+      _style = _useClassAnimation.style,
+      _className2 = _className ? className + ' ' + _className : className;
 
   return _react2.default.createElement(
     'div',
     {
-      className: _className,
-      style: (0, _extends3.default)({}, S.ROOT_DIV, S.ROOT_DIV_MODAL, style, _style),
+      className: _className2,
+      style: (0, _extends3.default)({}, style, _style),
       onClick: _hClickDialog
     },
-    _react2.default.createElement(_BrowserCaption2.default, {
+    _react2.default.createElement(_Comp2.default.BrowserCaption, {
       rootStyle: captionStyle,
       caption: caption,
       onClose: onClose
@@ -103,12 +99,12 @@ var ModalDialog = function ModalDialog(_ref) {
     ),
     isWithButton && _react2.default.createElement(
       'div',
-      { style: S.COMMAND_DIV },
+      { className: CL.D_ACTIONS },
       commandButtons,
-      !withoutClose && _react2.default.createElement(_RaisedButton2.default
-      //ref={_refBtClose}
-      , { rootStyle: _Dialog2.default.RAISED_ROOT,
-        clDiv: _Dialog2.default.CL_RAISED_DIV,
+      !withoutClose && _react2.default.createElement(_Comp2.default.FlatButton, {
+        ref: _refBtClose,
+        rootStyle: S.BT_ROOT,
+        clDiv: CL.BT_DIV,
         caption: 'Close',
         isPrimary: true,
         onClick: onClose

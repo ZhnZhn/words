@@ -26,10 +26,9 @@ var S = {
   },
   LABEL_SPAN: {
     display: 'inline-block',
-    color: '#1B75BB',
-    width: '100px',
-    paddingRight: '5px',
-    textAlign: 'right',
+    color: '#1b75bb',
+    paddingLeft: 18,
+    paddingRight: 5,
     fontSize: '16px'
   }
 };

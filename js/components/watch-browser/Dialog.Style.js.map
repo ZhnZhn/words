@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/watch-browser/Dialog.Style.js"
+ ],
+ "file": "../../../src/components/watch-browser/Dialog.Style.js",
+ "names": [
+  "S",
+  "TAB_PANE_WIDTH",
+  "DIALOG",
+  "left"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,IAAI;AACRC,kBAAgB,OADR;AAERC,UAAQ;AACNC,UAAM;AADA;AAFA,CAAV;;kBAOeH,C"
+}

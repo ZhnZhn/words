@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 
+import useForceUpdate from './useForceUpdate'
+
 const useClassAnimation = ({
   isShow, CL, S,
   initialWasClosed=true,
   timeout=450
 }) => {
-  const [_wasUpdated , _forceUpdate] = useState(false)
+  const [_wasUpdated, _forceUpdate] = useForceUpdate()
   , _refWasClosed = useRef(initialWasClosed)
   , _refPrevIsShow = useRef(isShow);
   useEffect( () => {
@@ -13,7 +15,7 @@ const useClassAnimation = ({
       setTimeout(
         () => {
           _refWasClosed.current = true;
-          _forceUpdate(is => !is)
+          _forceUpdate()
         },
         timeout
       )
@@ -21,7 +23,6 @@ const useClassAnimation = ({
     _refPrevIsShow.current = isShow
     _refWasClosed.current = false
   }, [isShow, _wasUpdated]);
-
   let className, style;
   if (_refWasClosed.current) {
     className = CL.INIT;

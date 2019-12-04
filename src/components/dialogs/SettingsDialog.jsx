@@ -5,9 +5,7 @@ import styleConfig from './Dialog.Style'
 
 import Actions from '../../flux/actions/ComponentActions'
 
-import ModalDialog from '../zhn-moleculs/ModalDialog'
-import TabPane from '../zhn-atoms/TabPane'
-import Tab from '../zhn-atoms/Tab'
+import A from '../Comp'
 
 import CardApiKey from './CardApiKey'
 import CardUi from './CardUi'
@@ -68,7 +66,8 @@ class SettingsDialog extends Component {
         , TS = theme.createStyle(styleConfig);
 
     return (
-      <ModalDialog
+      <A.ModalDialog
+         className=""
          STYLE={TS.BT}
          style={{ ...S.MODAL, ...TS.R_DIALOG }}
          caption="User Settings"
@@ -77,8 +76,8 @@ class SettingsDialog extends Component {
          isWithButton={false}
          onClose={onClose}
       >
-        <TabPane width="100%">
-          <Tab title="API Key" style={TS.TAB}>
+        <A.TabPane width="100%">
+          <A.Tab title="API Key" style={TS.TAB}>
              <CardApiKey
                ref={this._ref1}
                style={S.CARD_ROOT}
@@ -87,8 +86,8 @@ class SettingsDialog extends Component {
                onSet={this._hSetAndClose}
                onClose={onClose}
              />
-          </Tab>
-          <Tab title="UI Theme" style={TS.TAB}>
+          </A.Tab>
+          <A.Tab title="UI Theme" style={TS.TAB}>
              <CardUi
                style={S.CARD_ROOT}
                buttonsStyle={S.CARD_BUTTONS}
@@ -96,9 +95,9 @@ class SettingsDialog extends Component {
                onSetTheme={this._hSelectTheme}
                onClose={onClose}
              />
-          </Tab>
-        </TabPane>
-      </ModalDialog>
+          </A.Tab>
+        </A.TabPane>
+      </A.ModalDialog>
     );
   }
 }

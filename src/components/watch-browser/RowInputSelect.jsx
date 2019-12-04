@@ -1,25 +1,19 @@
 import React from 'react';
 //import PropTypes from "prop-types";
 
-import InputSelect from '../zhn-select/InputSelect';
-import STYLE from '../styles/DialogStyles';
+import InputSelect from '../zhn-m-input/InputSelect'
 
-const S = {
-  CAPTION : {
-    width: '120px'
+const STYLE_CONFIG = {
+  ROOT: {
+    width: 250
   }
 };
 
-const RowInputSelect = ({ caption, ...rest }) => (
-  <div style={STYLE.rowDiv}>
-     <span style={{...STYLE.labelSpan, ...S.CAPTION}}>
-       {caption}
-     </span>
-     <InputSelect
-        width="250"
-        {...rest}
-     />
-  </div>
+const RowInputSelect = (props) => (
+   <InputSelect
+      styleConfig={STYLE_CONFIG}
+      {...props}
+   />
 );
 
 /*

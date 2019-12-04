@@ -39,23 +39,25 @@ var _Dialog = require('./Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
+var _Comp = require('../Comp');
 
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
+  DIALOG: {
+    left: 'calc(50vw - 152px)'
+  },
   CAPTION: {
-    //color: '#f44336',
     color: '#f44336',
     fontWeight: 'bold'
   },
   MSG: {
     color: 'black',
-    width: '300px',
-    paddingTop: '16px',
-    paddingLeft: '10px',
+    width: 300,
+    paddingTop: 16,
+    paddingLeft: 10,
     fontWeight: 'bold',
     lineHeight: 1.4,
     whiteSpace: 'pre-line'
@@ -132,10 +134,10 @@ var AlertDialog = (_temp2 = _class = function (_Component) {
           _msg = _toMsg(data);
 
       return _react2.default.createElement(
-        _ModalDialog2.default,
+        _Comp2.default.ModalDialog,
         {
           STYLE: TS.BT,
-          style: TS.R_DIALOG,
+          style: (0, _extends3.default)({}, TS.R_DIALOG, S.DIALOG),
           captionStyle: (0, _extends3.default)({}, TS.BROWSER_CAPTION, S.CAPTION)
           //styleButton={TS.BT}
           , caption: 'Exception Message',

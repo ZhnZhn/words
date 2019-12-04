@@ -2,27 +2,27 @@
 const S = {
   BROWSER_CAPTION: {
     //padding: '5px',
-    paddingTop: '5px',
+    paddingTop: 5,
     //color: '#9e9e9e',
     color: '#303030',
     backgroundColor: '#3f5178',
     textAlign: 'center',
     fontSize: '18px',
-    marginBottom: '0px'
+    marginBottom: 0
   },
   BT_RAISED_ROOT: {
-    marginRight: '2px',
-    marginLeft: '2px'
+    marginRight: 2,
+    marginLeft: 2
   },
   INPUT_ROOT: {
-    width: '280px',
+    width: 280,
     display: 'block'
   }
 }
 
 const styleConfig = {
-  themeName : undefined,
-  style : undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle : (R) => {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
@@ -52,7 +52,7 @@ const styleConfig = {
           ...R.M_SELECT_ITEM
         },
         ROOT: {
-          width: '280px'
+          width: 280
         },
         MODAL_PANE: {
           ...R.BG,
@@ -62,7 +62,7 @@ const styleConfig = {
         ...R.TAB
       },
       INPUT: {
-        ...R.INPUT        
+        ...R.INPUT
       }
     };
   }

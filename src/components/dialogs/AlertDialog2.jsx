@@ -4,47 +4,49 @@ import React, { Component } from 'react';
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
-import ModalDialog from '../zhn-moleculs/ModalDialog';
+import A from '../Comp'
+
 
 const CL = {
   ELL: 'ellipsis'
 };
 
 const S = {
+  DIALOG: {
+    left: 'calc(50vw - 184px)'
+  },
   CAPTION: {
-    //color: '#f44336',
     color: '#f44336',
     fontWeight: 'bold'
   },
   ROW: {
-    //display: 'block',
     display: 'flex',
     alignItems: 'center',
-    marginRight: '5px',
-    marginTop: '5px',
-    marginLeft: '5px',
-    marginBottom: '5px'
+    marginRight: 5,
+    marginTop: 5,
+    marginLeft: 5,
+    marginBottom: 5
   },
   TITLE : {
     display : 'inline-block',
-    width : '360px',
-    paddingLeft : '10px',
-    color : '#F44336',
+    color : '#f44336',
+    width : 360,
+    paddingLeft : 10,
+    lineHeight : 2,
     fontSize: '18px',
-    fontWeight : 'bold',
-    lineHeight : 2
+    fontWeight : 'bold'
   },
   ITEM_ID : {
-    width: '120px',
     color: '#a487d4',
+    width: 120,
     fontWeight : 'bold',
     verticalAlign: 'bottom'
   },
   DESCR: {
     color: 'gray',
-    width: '360px',
-    paddingLeft: '10px',
-    paddingRight: '8px',
+    width: 360,
+    paddingLeft: 10,
+    paddingRight: 8,
     fontWeight: 'bold',
     lineHeight: 1.4,
     whiteSpace: 'pre-line',
@@ -83,9 +85,9 @@ class AlertDialog2 extends Component{
         , { caption='Item', itemId='', descr } = data
         , _caption = caption + ': ';
     return (
-      <ModalDialog
+      <A.ModalDialog
         STYLE={TS.BT}
-        style={TS.R_DIALOG }
+        style={{...TS.R_DIALOG, ...S.DIALOG }}
         caption="Exception"
         captionStyle={{ ...TS.BROWSER_CAPTION, ...S.CAPTION }}
         isShow={isShow}
@@ -109,7 +111,7 @@ class AlertDialog2 extends Component{
               {descr}
             </p>
          </div>
-      </ModalDialog>
+      </A.ModalDialog>
     );
   }
 }

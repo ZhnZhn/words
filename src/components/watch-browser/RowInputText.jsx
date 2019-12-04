@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
-import InputText from '../zhn-atoms/InputText';
-import STYLE from '../styles/DialogStyles';
+import TextField from '../zhn-m-input/TextField'
 
 const S = {
-  ROOT : {
-    lineHeight: 2
-  },
-  CAPTION : {
-    width: '120px'
-  },
   INPUT_TEXT : {
-    width : '250px',
-    marginLeft : 0,
-    marginRight: 0,
-    paddingLeft: '10px',
-    height: '30px'
+    width : 250
   }
-}
+};
+
+/*
+const _onTest = str => typeof str === 'string'
+ ? str.length <= 20
+ : true;
+*/
 
 class RowInputText extends Component {
   /*
@@ -26,20 +21,18 @@ class RowInputText extends Component {
     caption: PropTypes.string
   }
   */
+  _refInputText = c => this.inputText = c
 
   render(){
-    const { caption, inputStyle } = this.props;
+    const { caption } = this.props;
     return (
-      <div style={{...STYLE.rowDiv, ...S.ROOT}}>
-         <span style={{...STYLE.labelSpan, ...S.CAPTION}}>
-           {caption}
-         </span>
-         <InputText
-            ref={c => this.inputText = c}
-            style={{ ...S.INPUT_TEXT, ...inputStyle }}
-         />
-      </div>
-    )
+      <TextField
+        ref={this._refInputText}
+        rootStyle={S.INPUT_TEXT}
+        caption={caption}
+        //onTest={_onTest}
+      />
+    );
   }
 
   getValue(){

@@ -4,24 +4,26 @@ import React, { Component } from 'react'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
-import ModalDialog from '../zhn-moleculs/ModalDialog'
+import A from '../Comp'
 
 const S = {
+  DIALOG: {
+    left: 'calc(50vw - 152px)'
+  },
   CAPTION: {
-    //color: '#f44336',
     color: '#f44336',
     fontWeight: 'bold'
   },
   MSG: {
     color: 'black',
-    width : '300px',
-    paddingTop: '16px',
-    paddingLeft : '10px',
+    width : 300,
+    paddingTop: 16,
+    paddingLeft : 10,
     fontWeight: 'bold',
     lineHeight : 1.4,
     whiteSpace: 'pre-line'
   }
-}
+};
 
 const _toMsg = (data) => {
   if (data instanceof TypeError){
@@ -71,9 +73,9 @@ class AlertDialog extends Component{
         , TS = theme.createStyle(styleConfig)
         , _msg  = _toMsg(data);
     return (
-      <ModalDialog
+      <A.ModalDialog
          STYLE={TS.BT}
-         style={TS.R_DIALOG }
+         style={{...TS.R_DIALOG, ...S.DIALOG }}
          captionStyle={{ ...TS.BROWSER_CAPTION, ...S.CAPTION }}
          //styleButton={TS.BT}
          caption="Exception Message"
@@ -87,7 +89,7 @@ class AlertDialog extends Component{
               {_msg}
             </p>
          </div>
-      </ModalDialog>
+      </A.ModalDialog>
     );
   }
 }

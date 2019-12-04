@@ -19,7 +19,7 @@ const S = {
      transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
@@ -158,13 +158,13 @@ class TextField extends Component {
           } = this.props
         , { value, isPassTest } = this.state
         , _labelStyle = (value || this.isFocus)
-            ? undefined
+            ? void 0
             : S.LABEL_TO_INPUT
         , _labelErrStyle = (isPassTest)
-            ? undefined
+            ? void 0
             : S.LABEL_ON_ERROR
         , _lineStyle = (isPassTest)
-            ? undefined
+            ? void 0
             : S.LINE_ERROR
        , { cPrefix, cKey, cTail } = _crCaption(caption, accessKey);
 
@@ -211,10 +211,15 @@ class TextField extends Component {
   getValue(){
     return String(this.state.value).trim();
   }
+  setValue(str){
+    if (typeof str === 'string'){
+      this.setState({ value: str })
+    }
+  }
   focus(){
     if (this.inputNode) {
       this.inputNode.focus()
-      if (typeof this.inputNode.setSelectionRange === 'function') {
+      if (_isFn(this.inputNode.setSelectionRange)) {
         const len = this.state.value.length
         this.inputNode.setSelectionRange(len, len)
       }
