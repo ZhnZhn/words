@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../../src/components/items/word/WordSyn.jsx"],"names":["S","ROOT","lineHeight","DER_ROOT","display","DER_CAPTION","color","paddingRight","fontWeight","SYN_CAPTION","ITEM","WordSyn","result","derivation","examples","synonyms","similarTo"],"mappings":";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAM;AACJC,gBAAY;AADR,GADE;AAIRC,YAAU;AACRC,aAAS;AADD,GAJF;AAORC,eAAa;AACXC,WAAO,SADI;AAEXC,kBAAc,KAFH;AAGXC,gBAAY;AAHD,GAPL;AAYRC,eAAa;AACXH,WAAO,OADI;AAEXC,kBAAc,KAFH;AAGXC,gBAAY;AAHD,GAZL;AAiBRE,QAAM;AACJF,gBAAY;AADR;AAjBE,CAAV;;AAsBA,IAAMG,UAAU,SAAVA,OAAU,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;AAAA,MAEtBC,UAFsB,GAMpBD,MANoB,CAEtBC,UAFsB;AAAA,MAGtBC,QAHsB,GAMpBF,MANoB,CAGtBE,QAHsB;AAAA,MAItBC,QAJsB,GAMpBH,MANoB,CAItBG,QAJsB;AAAA,MAKtBC,SALsB,GAMpBJ,MANoB,CAKtBI,SALsB;;AAO9B,SACE;AAAA;AAAA,MAAK,OAAOhB,EAAEC,IAAd;AACE,kDAAG,QAAH;AACE,eAAQ,aADV;AAEE,iBAAWD,EAAEG,QAFf;AAGE,oBAAcH,EAAEK,WAHlB;AAIE,aAAOQ;AAJT,MADF;AAOE,kDAAG,OAAH;AACE,iBAAWb,EAAEU,IADf;AAEE,aAAOI;AAFT,MAPF;AAWE,kDAAG,QAAH;AACE,eAAQ,WADV;AAEE,oBAAcd,EAAES,WAFlB;AAGE,aAAOM;AAHT,MAXF;AAgBE,kDAAG,QAAH;AACE,eAAQ,YADV;AAEE,oBAAcf,EAAES,WAFlB;AAGE,aAAOO;AAHT;AAhBF,GADF;AAwBD,CA/BD;;kBAiCeL,O","file":"WordSyn.js","sourcesContent":["import React from 'react'\r\n\r\nimport A from '../../zhn-atoms/Atoms'\r\n\r\nconst S = {\r\n  ROOT: {\r\n    lineHeight: 1.7\r\n  },\r\n  DER_ROOT: {\r\n    display: 'inline-block'\r\n  },\r\n  DER_CAPTION: {\r\n    color: '#0c7abf',\r\n    paddingRight: '8px',\r\n    fontWeight: 800\r\n  },\r\n  SYN_CAPTION: {\r\n    color: 'green',\r\n    paddingRight: '8px',\r\n    fontWeight: 800\r\n  },\r\n  ITEM: {\r\n    fontWeight: 400\r\n  }\r\n};\r\n\r\nconst WordSyn = ({ result }) => {\r\n  const {\r\n          derivation,\r\n          examples,\r\n          synonyms,\r\n          similarTo\r\n        } = result;\r\n  return (\r\n    <div style={S.ROOT}>\r\n      <A.ListSpan\r\n        caption=\"derivation:\"\r\n        rootStyle={S.DER_ROOT}\r\n        captionStyle={S.DER_CAPTION}\r\n        items={derivation}\r\n      />\r\n      <A.ListDiv\r\n        itemStyle={S.ITEM}\r\n        items={examples}\r\n      />\r\n      <A.ListSpan\r\n        caption=\"synonyms:\"\r\n        captionStyle={S.SYN_CAPTION}\r\n        items={synonyms}\r\n      />\r\n      <A.ListSpan\r\n        caption=\"similarTo:\"\r\n        captionStyle={S.SYN_CAPTION}\r\n        items={similarTo}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default WordSyn\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/word/WordSyn.js"
+ ],
+ "file": "../../../../src/components/items/word/WordSyn.js",
+ "names": [
+  "S",
+  "ROOT",
+  "lineHeight",
+  "DER_ROOT",
+  "display",
+  "DER_CAPTION",
+  "color",
+  "paddingRight",
+  "fontWeight",
+  "SYN_CAPTION",
+  "ITEM",
+  "WordSyn",
+  "result",
+  "derivation",
+  "examples",
+  "synonyms",
+  "similarTo"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAM;AACJC,gBAAY;AADR,GADE;AAIRC,YAAU;AACRC,aAAS;AADD,GAJF;AAORC,eAAa;AACXC,WAAO,SADI;AAEXC,kBAAc,CAFH;AAGXC,gBAAY;AAHD,GAPL;AAYRC,eAAa;AACXH,WAAO,OADI;AAEXC,kBAAc,CAFH;AAGXC,gBAAY;AAHD,GAZL;AAiBRE,QAAM;AACJF,gBAAY;AADR;AAjBE,CAAV;;AAsBA,IAAMG,UAAU,SAAVA,OAAU,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;AAAA,MAEtBC,UAFsB,GAMpBD,MANoB,CAEtBC,UAFsB;AAAA,MAGtBC,QAHsB,GAMpBF,MANoB,CAGtBE,QAHsB;AAAA,MAItBC,QAJsB,GAMpBH,MANoB,CAItBG,QAJsB;AAAA,MAKtBC,SALsB,GAMpBJ,MANoB,CAKtBI,SALsB;;AAO9B,SACE;AAAA;AAAA,MAAK,OAAOhB,EAAEC,IAAd;AACE,iDAAG,QAAH;AACE,eAAQ,aADV;AAEE,iBAAWD,EAAEG,QAFf;AAGE,oBAAcH,EAAEK,WAHlB;AAIE,aAAOQ;AAJT,MADF;AAOE,iDAAG,OAAH;AACE,iBAAWb,EAAEU,IADf;AAEE,aAAOI;AAFT,MAPF;AAWE,iDAAG,QAAH;AACE,eAAQ,WADV;AAEE,oBAAcd,EAAES,WAFlB;AAGE,aAAOM;AAHT,MAXF;AAgBE,iDAAG,QAAH;AACE,eAAQ,YADV;AAEE,oBAAcf,EAAES,WAFlB;AAGE,aAAOO;AAHT;AAhBF,GADF;AAwBD,CA/BD;;kBAiCeL,O"
+}

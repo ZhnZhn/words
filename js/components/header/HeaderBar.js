@@ -86,8 +86,7 @@ var STYLE = {
   }
 };
 
-var TITLE = 'Words v0.2.0';
-var LABEL_TITLE = 'Click to change app UI theme';
+var TITLE = 'Words v0.3.0';
 
 var HeaderBar = function (_Component) {
   (0, _inherits3.default)(HeaderBar, _Component);
@@ -95,33 +94,24 @@ var HeaderBar = function (_Component) {
   function HeaderBar(props) {
     (0, _classCallCheck3.default)(this, HeaderBar);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (HeaderBar.__proto__ || Object.getPrototypeOf(HeaderBar)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (HeaderBar.__proto__ || Object.getPrototypeOf(HeaderBar)).call(this, props));
 
     _this._onRegTopics = function (node) {
       _this.topicsNode = node;
     };
 
     _this._hClickTopics = function () {
-      _this.setState({ isTopics: !_this.state.isTopics });
+      _this.setState(function (prevState) {
+        return {
+          isTopics: !prevState.isTopics
+        };
+      });
     };
 
     _this._hCloseTopics = function (event) {
       if (!_this.topicsNode.contains(event.target)) {
         _this.setState({ isTopics: false });
       }
-    };
-
-    _this._hChangeTheme = function () {
-      var _this$props = _this.props,
-          theme = _this$props.theme,
-          onChangeTheme = _this$props.onChangeTheme;
-
-      if (theme.themeName === 'GREY') {
-        theme.setThemeName('WHITE');
-      } else {
-        theme.setThemeName('GREY');
-      }
-      onChangeTheme();
     };
 
     var onDefinition = props.onDefinition,
@@ -165,14 +155,11 @@ var HeaderBar = function (_Component) {
         }),
         _react2.default.createElement(_IconAppLogo2.default, {
           className: CL.ICON_APP,
-          title: TITLE,
-          onClick: this._hChangeTheme
+          title: TITLE
         }),
         _react2.default.createElement(_AppLabel2.default, {
           className: CL.LABEL_APP,
-          caption: TITLE,
-          title: LABEL_TITLE,
-          onClick: this._hChangeTheme
+          caption: TITLE
         }),
         _react2.default.createElement(
           'span',

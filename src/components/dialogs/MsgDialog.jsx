@@ -7,7 +7,7 @@ import A from '../Comp'
 
 const S = {
   DIALOG: {
-    left: 'calc(50vw - 184px)'
+    left: 'calc(50vw - 154px)'
   },
   CAPTION : {
     paddingTop: 8,
@@ -26,7 +26,7 @@ const S = {
   },
   DESCR : {
     color: 'gray',
-    width: 360,
+    width: 300,
     paddingLeft: 10,
     fontWeight: 'bold',
     lineHeight: 1.4,

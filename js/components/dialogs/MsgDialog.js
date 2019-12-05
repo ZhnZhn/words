@@ -44,7 +44,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var S = {
   DIALOG: {
-    left: 'calc(50vw - 184px)'
+    left: 'calc(50vw - 154px)'
   },
   CAPTION: {
     paddingTop: 8,
@@ -63,7 +63,7 @@ var S = {
   },
   DESCR: {
     color: 'gray',
-    width: 360,
+    width: 300,
     paddingLeft: 10,
     fontWeight: 'bold',
     lineHeight: 1.4,

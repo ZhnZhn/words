@@ -3,17 +3,12 @@ import React, { Component } from 'react';
 
 import TextField from '../zhn-m-input/TextField'
 
+const MAX_LENGTH = 24;
 const S = {
-  INPUT_TEXT : {
-    width : 250
+  INPUT_TEXT: {
+    width: 250
   }
 };
-
-/*
-const _onTest = str => typeof str === 'string'
- ? str.length <= 20
- : true;
-*/
 
 class RowInputText extends Component {
   /*
@@ -30,7 +25,7 @@ class RowInputText extends Component {
         ref={this._refInputText}
         rootStyle={S.INPUT_TEXT}
         caption={caption}
-        //onTest={_onTest}
+        maxLength={MAX_LENGTH}
       />
     );
   }

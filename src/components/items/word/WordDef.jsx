@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import A from '../../zhn-atoms/Atoms'
+import A from '../../Comp'
 import WordSyn from './WordSyn'
 import WordNyms from './WordNyms'
 
@@ -14,15 +14,16 @@ const S = {
     fontWeight: 800
   },
   OC_CHILDREN: {
-    paddingLeft: '16px',
-    paddingRight: '16px'
+    paddingLeft: 16,
+    paddingRight: 16
   }
 };
 
-const Span = ({ style, text }) =>
+const Span = ({ style, text }) => (
   <span style={style}>
     &nbsp;{text}
   </span>
+);
 
 
 class WordDef extends Component {

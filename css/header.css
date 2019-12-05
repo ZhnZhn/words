@@ -36,7 +36,6 @@
   left: 16px;
   width : 32px;
   height : 32px;
-  cursor: pointer;
 }
 .header__label-app {
   display: inline-block;
@@ -46,8 +45,7 @@
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
+  font-weight: bold; 
 }
 
 .header__bts {

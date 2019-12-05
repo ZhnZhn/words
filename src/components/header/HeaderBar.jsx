@@ -34,13 +34,12 @@ const STYLE = {
   }
 };
 
-const TITLE = 'Words v0.2.0';
-const LABEL_TITLE = 'Click to change app UI theme';
+const TITLE = 'Words v0.3.0';
 
 class HeaderBar extends Component {
 
   constructor(props){
-    super()
+    super(props)
 
     const { onDefinition, onSources, onWatch } = props;
     this._topicItems = [
@@ -58,22 +57,14 @@ class HeaderBar extends Component {
     this.topicsNode = node
   }
   _hClickTopics = () => {
-    this.setState({ isTopics: !this.state.isTopics })
+    this.setState(prevState => ({
+      isTopics: !prevState.isTopics
+    }))
   }
   _hCloseTopics = (event) => {
     if (!this.topicsNode.contains(event.target)){
       this.setState({ isTopics: false })
     }
-  }
-
-  _hChangeTheme = () => {
-    const { theme, onChangeTheme } = this.props;
-    if (theme.themeName === 'GREY'){
-      theme.setThemeName('WHITE')
-    } else {
-      theme.setThemeName('GREY')
-    }
-    onChangeTheme()
   }
 
   render(){
@@ -102,13 +93,10 @@ class HeaderBar extends Component {
          <IconAppLogo
            className={CL.ICON_APP}
            title={TITLE}
-           onClick={this._hChangeTheme}
          />
          <AppLabel
            className={CL.LABEL_APP}
            caption={TITLE}
-           title={LABEL_TITLE}
-           onClick={this._hChangeTheme}
          />
          <span className={CL.BROWSER_BTS}>
            <A.ModalButton

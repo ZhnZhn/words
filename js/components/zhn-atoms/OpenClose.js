@@ -83,7 +83,7 @@ var OpenClose = (_temp = _class = function (_Component) {
   function OpenClose(props) {
     (0, _classCallCheck3.default)(this, OpenClose);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (OpenClose.__proto__ || Object.getPrototypeOf(OpenClose)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (OpenClose.__proto__ || Object.getPrototypeOf(OpenClose)).call(this, props));
 
     _this._handleToggle = function () {
       _this.setState({ isOpen: !_this.state.isOpen });
@@ -144,14 +144,14 @@ var OpenClose = (_temp = _class = function (_Component) {
           onDragLeave = _props.onDragLeave,
           onDrop = _props.onDrop,
           children = _props.children,
-          _dragOption = isDraggable ? {
+          _dndOption = isDraggable ? {
         draggable: true,
         onDragStart: onDragStart.bind(null, option),
         onDrop: onDrop.bind(null, option),
         onDragEnter: onDragEnter,
         onDragOver: onDragOver,
         onDragLeave: onDragLeave
-      } : undefined;
+      } : void 0;
 
       var _pathV = void 0,
           _fillV = void 0,
@@ -184,7 +184,7 @@ var OpenClose = (_temp = _class = function (_Component) {
             style: (0, _extends3.default)({}, STYLE.ROOT_CAPTION, _itemStyle),
             onClick: this._handleToggle,
             onKeyDown: this._handleKeyDown
-          }, _dragOption),
+          }, _dndOption),
           _react2.default.createElement(
             'div',
             { style: STYLE.SVG },

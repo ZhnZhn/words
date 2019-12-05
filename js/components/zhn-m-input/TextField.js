@@ -8,6 +8,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -65,6 +69,9 @@ var S = {
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
+};
+var _isStr = function _isStr(str) {
+  return typeof str === 'function';
 };
 
 var _crCaption = function _crCaption(caption, accessKey) {
@@ -144,9 +151,9 @@ var TextField = (_temp = _class = function (_Component) {
           labelStyle = _props.labelStyle,
           inputStyle = _props.inputStyle,
           accessKey = _props.accessKey,
-          spellCheck = _props.spellCheck,
           _props$errorMsg = _props.errorMsg,
           errorMsg = _props$errorMsg === undefined ? '' : _props$errorMsg,
+          restProps = (0, _objectWithoutProperties3.default)(_props, ['rootStyle', 'caption', 'labelStyle', 'inputStyle', 'accessKey', 'errorMsg']),
           _state = this.state,
           value = _state.value,
           isPassTest = _state.isPassTest,
@@ -183,23 +190,23 @@ var TextField = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: CL.DIV },
-          _react2.default.createElement('input', {
+          _react2.default.createElement('input', (0, _extends3.default)({
             ref: this._ref,
             type: 'text',
             className: CL.INPUT,
             style: inputStyle,
             value: value,
-            accessKey: accessKey,
             autoComplete: 'new-text',
             autoCorrect: 'off',
             autoCapitalize: 'off',
-            spellCheck: spellCheck,
             translate: 'false',
+            accessKey: accessKey
+          }, restProps, {
             onFocus: this._handleFocusInput,
             onBlur: this._handleBlurInput,
             onChange: this._handleInputChange,
             onKeyDown: this._handleKeyDown
-          }),
+          })),
           _react2.default.createElement('div', { className: CL.INPUT_LINE, style: _lineStyle }),
           _lineStyle && _react2.default.createElement(
             'div',
@@ -217,7 +224,7 @@ var TextField = (_temp = _class = function (_Component) {
   }, {
     key: 'setValue',
     value: function setValue(str) {
-      if (typeof str === 'string') {
+      if (_isStr(str)) {
         this.setState({ value: str });
       }
     }

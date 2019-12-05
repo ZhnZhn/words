@@ -1,1 +1,18 @@
-{"version":3,"sources":["../../../../src/components/items/word/WordNyms.jsx"],"names":["S","FILL_OPEN","OC_CAPTION","color","OC_CHILDREN","paddingLeft","paddingRight","WordNyms","result","typeOf","hasTypes","partOf","hasParts"],"mappings":";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,aAAW,SADH;;AAGRC,cAAY;AACVC,WAAO;AADG,GAHJ;AAMRC,eAAa;AACXC,iBAAa,MADF;AAEXC,kBAAc;AAFH;AANL,CAAV;;AAYA,IAAMC,WAAW,SAAXA,QAAW,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;AAAA,MAEvBC,MAFuB,GAMrBD,MANqB,CAEvBC,MAFuB;AAAA,MAGvBC,QAHuB,GAMrBF,MANqB,CAGvBE,QAHuB;AAAA,MAIvBC,MAJuB,GAMrBH,MANqB,CAIvBG,MAJuB;AAAA,MAKvBC,QALuB,GAMrBJ,MANqB,CAKvBI,QALuB;;AAO/B,MAAK,CAACH,MAAD,IAAW,CAACC,QAAZ,IAAwB,CAACC,MAAzB,IAAmC,CAACC,QAAzC,EAAoD;AAClD,WAAO,IAAP;AACD;AACD,SACE;AAAA,oBAAG,SAAH;AAAA;AACE,eAAS,IADX;AAEE,eAAQ,MAFV;AAGE,gBAAUZ,EAAEC,SAHd;AAIE,oBAAcD,EAAEE,UAJlB;AAKE,qBAAeF,EAAEI;AALnB;AAOE;AACE,eAAQ,2BADV;AAEE,aAAOK;AAFT,MAPF;AAWE;AACE,eAAQ,2BADV;AAEE,aAAOC;AAFT,MAXF;AAeE;AACE,eAAQ,oBADV;AAEE,aAAOC;AAFT,MAfF;AAmBE;AACE,eAAQ,sBADV;AAEE,aAAOC;AAFT;AAnBF,GADF;AA0BD,CApCD;;kBAsCeL,Q","file":"WordNyms.js","sourcesContent":["import React from 'react'\r\n\r\nimport A from '../../zhn-atoms/Atoms'\r\nimport Nyms from './Nyms'\r\n\r\nconst S = {\r\n  FILL_OPEN: \"#80c040\",\r\n\r\n  OC_CAPTION: {\r\n    color: 'black'\r\n  },\r\n  OC_CHILDREN: {\r\n    paddingLeft: '16px',\r\n    paddingRight: '16px'\r\n  }\r\n};\r\n\r\nconst WordNyms = ({ result }) => {\r\n  const {\r\n          typeOf,\r\n          hasTypes,\r\n          partOf,\r\n          hasParts\r\n        } = result;\r\n  if ( !typeOf && !hasTypes && !partOf && !hasParts ) {\r\n    return null;\r\n  }\r\n  return (\r\n    <A.OpenClose\r\n      isClose={true}\r\n      caption=\"Nyms\"\r\n      fillOpen={S.FILL_OPEN}\r\n      captionStyle={S.OC_CAPTION}\r\n      childrenStyle={S.OC_CHILDREN}\r\n    >\r\n      <Nyms\r\n        caption=\"hypernyms (more generic):\"\r\n        items={typeOf}\r\n      />\r\n      <Nyms\r\n        caption=\"hyponyms (more specific):\"\r\n        items={hasTypes}\r\n      />\r\n      <Nyms\r\n        caption=\"holonyms (partOf):\"\r\n        items={partOf}\r\n      />\r\n      <Nyms\r\n        caption=\"meronyms (hasParts):\"\r\n        items={hasParts}\r\n      />\r\n    </A.OpenClose>\r\n  );\r\n};\r\n\r\nexport default WordNyms\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/word/WordNyms.js"
+ ],
+ "file": "../../../../src/components/items/word/WordNyms.js",
+ "names": [
+  "WordNyms",
+  "result",
+  "typeOf",
+  "hasTypes",
+  "partOf",
+  "hasParts",
+  "inCategory",
+  "hasCategories"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,WAAW,SAAXA,QAAW,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AAAA,cAQ3BA,UAAU,EARiB;AAAA,MAE7BC,MAF6B,SAE7BA,MAF6B;AAAA,MAG7BC,QAH6B,SAG7BA,QAH6B;AAAA,MAI7BC,MAJ6B,SAI7BA,MAJ6B;AAAA,MAK7BC,QAL6B,SAK7BA,QAL6B;AAAA,MAM7BC,UAN6B,SAM7BA,UAN6B;AAAA,MAO7BC,aAP6B,SAO7BA,aAP6B;;AAS/B,SACE;AAAA;AAAA;AACE;AACE,eAAQ,kCADV;AAEE,aAAOL;AAFT,MADF;AAKE;AACE,eAAQ,oCADV;AAEE,aAAOC;AAFT,MALF;AASE;AACE,eAAQ,mBADV;AAEE,aAAOC;AAFT,MATF;AAaE;AACE,eAAQ,qBADV;AAEE,aAAOC;AAFT,MAbF;AAiBE;AACE,eAAQ,YADV;AAEE,aAAOC,UAFT;AAGE,eAAS;AAHX,MAjBF;AAsBE;AACE,eAAQ,aADV;AAEE,aAAOC,aAFT;AAGE,eAAS;AAHX;AAtBF,GADF;AA8BD,CAvCD;;kBAyCeP,Q"
+}

@@ -32,6 +32,7 @@ const S = {
 
 
 const _isFn = fn => typeof fn === 'function';
+const _isStr = str => typeof str === 'function';
 
 const _crCaption = (caption, accessKey) => {
   if (!accessKey) {
@@ -153,8 +154,9 @@ class TextField extends Component {
     const {
             rootStyle, caption,
             labelStyle, inputStyle,
-            accessKey, spellCheck,
-            errorMsg=''
+            accessKey,
+            errorMsg='',
+            ...restProps
           } = this.props
         , { value, isPassTest } = this.state
         , _labelStyle = (value || this.isFocus)
@@ -190,12 +192,12 @@ class TextField extends Component {
             className={CL.INPUT}
             style={inputStyle}
             value={value}
-            accessKey={accessKey}
             autoComplete="new-text"
             autoCorrect="off"
             autoCapitalize="off"
-            spellCheck={spellCheck}
             translate="false"
+            accessKey={accessKey}
+            {...restProps}
             onFocus={this._handleFocusInput}
             onBlur={this._handleBlurInput}
             onChange={this._handleInputChange}
@@ -212,7 +214,7 @@ class TextField extends Component {
     return String(this.state.value).trim();
   }
   setValue(str){
-    if (typeof str === 'string'){
+    if (_isStr(str)){
       this.setState({ value: str })
     }
   }

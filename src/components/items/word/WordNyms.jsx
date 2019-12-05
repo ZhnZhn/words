@@ -1,55 +1,45 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
-import A from '../../zhn-atoms/Atoms'
-import Nyms from './Nyms'
-
-const S = {
-  FILL_OPEN: "#80c040",
-
-  OC_CAPTION: {
-    color: 'black'
-  },
-  OC_CHILDREN: {
-    paddingLeft: '16px',
-    paddingRight: '16px'
-  }
-};
+import WordOf from './WordOf'
 
 const WordNyms = ({ result }) => {
   const {
-          typeOf,
-          hasTypes,
-          partOf,
-          hasParts
-        } = result;
-  if ( !typeOf && !hasTypes && !partOf && !hasParts ) {
-    return null;
-  }
+    typeOf,
+    hasTypes,
+    partOf,
+    hasParts,
+    inCategory,
+    hasCategories
+  } = result || {};
   return (
-    <A.OpenClose
-      isClose={true}
-      caption="Nyms"
-      fillOpen={S.FILL_OPEN}
-      captionStyle={S.OC_CAPTION}
-      childrenStyle={S.OC_CHILDREN}
-    >
-      <Nyms
-        caption="hypernyms (more generic):"
+    <Fragment>
+      <WordOf
+        caption="typeOf (hypernyms: more generic)"
         items={typeOf}
       />
-      <Nyms
-        caption="hyponyms (more specific):"
+      <WordOf
+        caption="hasTypes (hyponyms: more specific)"
         items={hasTypes}
       />
-      <Nyms
-        caption="holonyms (partOf):"
+      <WordOf
+        caption="partOf (holonyms)"
         items={partOf}
       />
-      <Nyms
-        caption="meronyms (hasParts):"
+      <WordOf
+        caption="hasParts (meronyms)"
         items={hasParts}
       />
-    </A.OpenClose>
+      <WordOf
+        caption="inCategory"
+        items={inCategory}
+        isCount={true}
+      />
+      <WordOf
+        caption="hasCategory"
+        items={hasCategories}
+        isCount={true}
+      />
+    </Fragment>
   );
 };
 

@@ -14,12 +14,13 @@ const ListSpan = ({
   if (items.length === 0) {
     return null;
   }
-
   return (
     <div style={rootStyle}>
-       <span style={captionStyle}>
-         {caption}
-       </span>
+       {
+         caption && <span style={captionStyle}>
+           {caption}
+         </span>
+       }
        <span style={{ ...S.ITEM, ...itemStyle }}>
          {items.join(', ')}
        </span>

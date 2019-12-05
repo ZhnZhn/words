@@ -26,9 +26,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Atoms = require('../../zhn-atoms/Atoms');
+var _Comp = require('../../Comp');
 
-var _Atoms2 = _interopRequireDefault(_Atoms);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 var _WordSyn = require('./WordSyn');
 
@@ -50,8 +50,8 @@ var S = {
     fontWeight: 800
   },
   OC_CHILDREN: {
-    paddingLeft: '16px',
-    paddingRight: '16px'
+    paddingLeft: 16,
+    paddingRight: 16
   }
 };
 
@@ -93,7 +93,7 @@ var WordDef = (_temp2 = _class = function (_Component) {
         });
 
         return _react2.default.createElement(
-          _Atoms2.default.OpenClose,
+          _Comp2.default.OpenClose,
           {
             key: index,
             isClose: true,
@@ -124,7 +124,7 @@ var WordDef = (_temp2 = _class = function (_Component) {
           config = _props.config;
 
       return _react2.default.createElement(
-        _Atoms2.default.ShowHide,
+        _Comp2.default.ShowHide,
         {
           style: style,
           isShow: isShow

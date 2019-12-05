@@ -31,11 +31,10 @@ var ListSpan = function ListSpan(_ref) {
   if (items.length === 0) {
     return null;
   }
-
   return _react2.default.createElement(
     'div',
     { style: rootStyle },
-    _react2.default.createElement(
+    caption && _react2.default.createElement(
       'span',
       { style: captionStyle },
       caption

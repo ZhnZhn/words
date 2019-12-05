@@ -30,19 +30,14 @@ var _TextField2 = _interopRequireDefault(_TextField);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var MAX_LENGTH = 24;
+//import PropTypes from "prop-types";
+
 var S = {
   INPUT_TEXT: {
     width: 250
   }
 };
-
-/*
-const _onTest = str => typeof str === 'string'
- ? str.length <= 20
- : true;
-*/
-
-//import PropTypes from "prop-types";
 
 var RowInputText = function (_Component) {
   (0, _inherits3.default)(RowInputText, _Component);
@@ -77,8 +72,8 @@ var RowInputText = function (_Component) {
       return _react2.default.createElement(_TextField2.default, {
         ref: this._refInputText,
         rootStyle: S.INPUT_TEXT,
-        caption: caption
-        //onTest={_onTest}
+        caption: caption,
+        maxLength: MAX_LENGTH
       });
     }
   }, {

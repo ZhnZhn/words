@@ -14,15 +14,13 @@ var AppLabel = function AppLabel(_ref) {
   var className = _ref.className,
       style = _ref.style,
       title = _ref.title,
-      caption = _ref.caption,
-      onClick = _ref.onClick;
+      caption = _ref.caption;
   return _react2.default.createElement(
-    'button',
+    'div',
     {
       className: className,
       style: style,
-      title: title,
-      onClick: onClick
+      title: title
     },
     caption
   );

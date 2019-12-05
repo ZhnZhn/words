@@ -1,9 +1,7 @@
 
-//230, 236, 240
-
 const styleConfig = {
-  themeName: undefined,
-  style: undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle: (R, themeName) => {
     return {
       HEADER: {
@@ -11,10 +9,10 @@ const styleConfig = {
       },
        DESCR: {
          lineHeight: 2.2,
-         paddingRight: '8px'
+         paddingRight: 8
        }
     };
   }
-}
+};
 
 export default styleConfig

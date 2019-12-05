@@ -80,7 +80,7 @@ class OpenClose extends Component {
   }
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       isOpen: !props.isClose
     }
@@ -107,7 +107,7 @@ class OpenClose extends Component {
             isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
             children
           } = this.props
-          , _dragOption = (isDraggable)
+          , _dndOption = isDraggable
                ? {
                      draggable : true,
                      onDragStart : onDragStart.bind(null, option),
@@ -116,7 +116,7 @@ class OpenClose extends Component {
                      onDragOver : onDragOver,
                      onDragLeave : onDragLeave
                  }
-              : undefined ;
+              : void 0;
 
     let _pathV, _fillV, _styleCollapse, _classShow, _itemStyle;
     if (this.state.isOpen){
@@ -142,7 +142,7 @@ class OpenClose extends Component {
            style={{...STYLE.ROOT_CAPTION, ..._itemStyle }}
            onClick={this._handleToggle}
            onKeyDown={this._handleKeyDown}
-           {..._dragOption}
+           {..._dndOption}
          >
           <div style={STYLE.SVG}>
              <svg

@@ -1,1 +1,35 @@
-{"version":3,"sources":["../../../../src/components/items/word/WordDef.jsx"],"names":["S","FILL_OPEN","OC_CAPTION","color","OC_AFTER","fontWeight","OC_CHILDREN","paddingLeft","paddingRight","Span","style","text","WordDef","_renderDefinitions","results","map","result","index","definition","partOfSpeech","_afterComp","props","isShow","config","defaultProps"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,aAAW,OADH;AAERC,cAAY;AACVC,WAAO;AADG,GAFJ;AAKRC,YAAU;AACRD,WAAO,SADC;AAERE,gBAAY;AAFJ,GALF;AASRC,eAAa;AACXC,iBAAa,MADF;AAEXC,kBAAc;AAFH;AATL,CAAV;;AAeA,IAAMC,OAAO,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,IAAV,QAAUA,IAAV;AAAA,SACX;AAAA;AAAA,MAAM,OAAOD,KAAb;AAAA;AACSC;AADT,GADW;AAAA,CAAb;;IAMMC,O;;;;;;;;;;;;;;wMAMJC,kB,GAAqB,YAAuB;AAAA,UAAtBC,OAAsB,uEAAd,EAAc;AAAA,UAAVJ,KAAU;;AAC1C,aAAOI,QAAQC,GAAR,CAAY,UAACC,MAAD,EAASC,KAAT,EAAmB;AAAA,YAE5BC,UAF4B,GAI1BF,MAJ0B,CAE5BE,UAF4B;AAAA,YAG5BC,YAH4B,GAI1BH,MAJ0B,CAG5BG,YAH4B;AAAA,YAK9BC,UAL8B,GAM3B,8BAAC,IAAD;AACG,iBAAOpB,EAAEI,QADZ;AAEG,gBAAMe;AAFT,UAN2B;;AAWpC,eACE;AAAA,0BAAG,SAAH;AAAA;AACE,iBAAKF,KADP;AAEE,qBAAS,IAFX;AAGE,mBAAOP,KAHT;AAIE,qBAASQ,UAJX;AAKE,sBAAUlB,EAAEC,SALd;AAME,0BAAcD,EAAEE,UANlB;AAOE,8BAAkBkB,UAPpB;AAQE,2BAAepB,EAAEM;AARnB;AAUE;AACE,oBAAQU;AADV,YAVF;AAaE;AACE,oBAAQA;AADV;AAbF,SADF;AAmBD,OA9BM,CAAP;AA+BD,K;;;;;6BAEO;AAAA,mBAII,KAAKK,KAJT;AAAA,UAEEC,MAFF,UAEEA,MAFF;AAAA,UAEUZ,KAFV,UAEUA,KAFV;AAAA,UAGEa,MAHF,UAGEA,MAHF;;AAKN,aACE;AAAA,wBAAG,QAAH;AAAA;AACE,iBAAOb,KADT;AAEE,kBAAQY;AAFV;AAIG,aAAKT,kBAAL,CAAwBU,OAAOT,OAA/B,EAAwCJ,KAAxC;AAJH,OADF;AAQD;;;4BAnDMc,Y,GAAe;AACpBD,UAAQ;AADY,C;kBAsDTX,O","file":"WordDef.js","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport A from '../../zhn-atoms/Atoms'\r\nimport WordSyn from './WordSyn'\r\nimport WordNyms from './WordNyms'\r\n\r\nconst S = {\r\n  FILL_OPEN: \"black\",\r\n  OC_CAPTION: {\r\n    color: 'black'\r\n  },\r\n  OC_AFTER: {\r\n    color: '#0c7abf',\r\n    fontWeight: 800\r\n  },\r\n  OC_CHILDREN: {\r\n    paddingLeft: '16px',\r\n    paddingRight: '16px'\r\n  }\r\n};\r\n\r\nconst Span = ({ style, text }) =>\r\n  <span style={style}>\r\n    &nbsp;{text}\r\n  </span>\r\n\r\n\r\nclass WordDef extends Component {\r\n\r\n  static defaultProps = {\r\n    config: {}\r\n  }\r\n\r\n  _renderDefinitions = (results=[], style) => {\r\n    return results.map((result, index) => {\r\n      const {\r\n              definition,\r\n              partOfSpeech,\r\n            } = result\r\n          , _afterComp = (\r\n               <Span\r\n                  style={S.OC_AFTER}\r\n                  text={partOfSpeech}\r\n                />\r\n              );\r\n      return (\r\n        <A.OpenClose\r\n          key={index}\r\n          isClose={true}\r\n          style={style}\r\n          caption={definition}\r\n          fillOpen={S.FILL_OPEN}\r\n          captionStyle={S.OC_CAPTION}\r\n          afterCaptionComp={_afterComp}\r\n          childrenStyle={S.OC_CHILDREN}\r\n        >\r\n          <WordSyn\r\n            result={result}\r\n          />\r\n          <WordNyms\r\n            result={result}\r\n          />\r\n        </A.OpenClose>\r\n      );\r\n    })\r\n  }\r\n\r\n  render(){\r\n    const {\r\n            isShow, style,\r\n            config\r\n          } = this.props;\r\n    return (\r\n      <A.ShowHide\r\n        style={style}\r\n        isShow={isShow}\r\n      >\r\n        {this._renderDefinitions(config.results, style)}\r\n      </A.ShowHide>\r\n    );\r\n  }\r\n}\r\n\r\nexport default WordDef\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/word/WordDef.js"
+ ],
+ "file": "../../../../src/components/items/word/WordDef.js",
+ "names": [
+  "S",
+  "FILL_OPEN",
+  "OC_CAPTION",
+  "color",
+  "OC_AFTER",
+  "fontWeight",
+  "OC_CHILDREN",
+  "paddingLeft",
+  "paddingRight",
+  "Span",
+  "style",
+  "text",
+  "WordDef",
+  "_renderDefinitions",
+  "results",
+  "map",
+  "result",
+  "index",
+  "definition",
+  "partOfSpeech",
+  "_afterComp",
+  "props",
+  "isShow",
+  "config",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,aAAW,OADH;AAERC,cAAY;AACVC,WAAO;AADG,GAFJ;AAKRC,YAAU;AACRD,WAAO,SADC;AAERE,gBAAY;AAFJ,GALF;AASRC,eAAa;AACXC,iBAAa,EADF;AAEXC,kBAAc;AAFH;AATL,CAAV;;AAeA,IAAMC,OAAO,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,IAAV,QAAUA,IAAV;AAAA,SACX;AAAA;AAAA,MAAM,OAAOD,KAAb;AAAA;AACSC;AADT,GADW;AAAA,CAAb;;IAOMC,O;;;;;;;;;;;;;;wMAMJC,kB,GAAqB,YAAuB;AAAA,UAAtBC,OAAsB,uEAAd,EAAc;AAAA,UAAVJ,KAAU;;AAC1C,aAAOI,QAAQC,GAAR,CAAY,UAACC,MAAD,EAASC,KAAT,EAAmB;AAAA,YAE5BC,UAF4B,GAI1BF,MAJ0B,CAE5BE,UAF4B;AAAA,YAG5BC,YAH4B,GAI1BH,MAJ0B,CAG5BG,YAH4B;AAAA,YAK9BC,UAL8B,GAM3B,8BAAC,IAAD;AACG,iBAAOpB,EAAEI,QADZ;AAEG,gBAAMe;AAFT,UAN2B;;AAWpC,eACE;AAAA,yBAAG,SAAH;AAAA;AACE,iBAAKF,KADP;AAEE,qBAAS,IAFX;AAGE,mBAAOP,KAHT;AAIE,qBAASQ,UAJX;AAKE,sBAAUlB,EAAEC,SALd;AAME,0BAAcD,EAAEE,UANlB;AAOE,8BAAkBkB,UAPpB;AAQE,2BAAepB,EAAEM;AARnB;AAUE;AACE,oBAAQU;AADV,YAVF;AAaE;AACE,oBAAQA;AADV;AAbF,SADF;AAmBD,OA9BM,CAAP;AA+BD,K;;;;;6BAEO;AAAA,mBAII,KAAKK,KAJT;AAAA,UAEEC,MAFF,UAEEA,MAFF;AAAA,UAEUZ,KAFV,UAEUA,KAFV;AAAA,UAGEa,MAHF,UAGEA,MAHF;;AAKN,aACE;AAAA,uBAAG,QAAH;AAAA;AACE,iBAAOb,KADT;AAEE,kBAAQY;AAFV;AAIG,aAAKT,kBAAL,CAAwBU,OAAOT,OAA/B,EAAwCJ,KAAxC;AAJH,OADF;AAQD;;;4BAnDMc,Y,GAAe;AACpBD,UAAQ;AADY,C;kBAsDTX,O"
+}

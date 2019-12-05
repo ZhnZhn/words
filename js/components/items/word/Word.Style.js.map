@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../../src/components/items/word/Word.Style.js"],"names":["styleConfig","themeName","undefined","style","createStyle","R","HEADER","ITEM_HEADER","DESCR","lineHeight","paddingRight"],"mappings":";;;;;;;;;;;;AACA;;AAEA,IAAMA,cAAc;AAClBC,aAAWC,SADO;AAElBC,SAAOD,SAFW;AAGlBE,eAAa,qBAACC,CAAD,EAAIJ,SAAJ,EAAkB;AAC7B,WAAO;AACLK,yCACKD,EAAEE,WADP,CADK;AAIJC,aAAO;AACLC,oBAAY,GADP;AAELC,sBAAc;AAFT;AAJH,KAAP;AASD;AAbiB,CAApB;;kBAgBeV,W","file":"Word.Style.js","sourcesContent":["\r\n//230, 236, 240\r\n\r\nconst styleConfig = {\r\n  themeName: undefined,\r\n  style: undefined,\r\n  createStyle: (R, themeName) => {\r\n    return {\r\n      HEADER: {\r\n        ...R.ITEM_HEADER\r\n      },\r\n       DESCR: {\r\n         lineHeight: 2.2,\r\n         paddingRight: '8px'\r\n       }\r\n    };\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/word/Word.Style.js"
+ ],
+ "file": "../../../../src/components/items/word/Word.Style.js",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "style",
+  "createStyle",
+  "R",
+  "HEADER",
+  "ITEM_HEADER",
+  "DESCR",
+  "lineHeight",
+  "paddingRight"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA,IAAMA,cAAc;AAClBC,aAAW,KAAK,CADE;AAElBC,SAAO,KAAK,CAFM;AAGlBC,eAAa,qBAACC,CAAD,EAAIH,SAAJ,EAAkB;AAC7B,WAAO;AACLI,yCACKD,EAAEE,WADP,CADK;AAIJC,aAAO;AACLC,oBAAY,GADP;AAELC,sBAAc;AAFT;AAJH,KAAP;AASD;AAbiB,CAApB;;kBAgBeT,W"
+}

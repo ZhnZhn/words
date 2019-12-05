@@ -1,6 +1,6 @@
 import React from 'react'
 
-import A from '../../zhn-atoms/Atoms'
+import A from '../../Comp'
 
 const S = {
   ROOT: {
@@ -11,12 +11,12 @@ const S = {
   },
   DER_CAPTION: {
     color: '#0c7abf',
-    paddingRight: '8px',
+    paddingRight: 8,
     fontWeight: 800
   },
   SYN_CAPTION: {
     color: 'green',
-    paddingRight: '8px',
+    paddingRight: 8,
     fontWeight: 800
   },
   ITEM: {
