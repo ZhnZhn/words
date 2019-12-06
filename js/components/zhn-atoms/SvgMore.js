@@ -29,18 +29,18 @@ var S = {
   }
 };
 
-var SvgMore = function SvgMore(_ref) {
+var T = "Click to open menu More";
+
+var SvgMore = _react2.default.forwardRef(function (_ref, ref) {
   var style = _ref.style,
       svgStyle = _ref.svgStyle,
       _ref$title = _ref.title,
-      title = _ref$title === undefined ? 'Menu More' : _ref$title,
-      btRef = _ref.btRef,
+      title = _ref$title === undefined ? T : _ref$title,
       onClick = _ref.onClick;
-
   return _react2.default.createElement(
     'button',
     {
-      ref: btRef,
+      ref: ref,
       className: CL,
       style: (0, _extends3.default)({}, S.BT, style),
       title: title,
@@ -59,7 +59,7 @@ var SvgMore = function SvgMore(_ref) {
       _react2.default.createElement('circle', { cx: '3', cy: '18', r: '2' })
     )
   );
-};
+});
 
 exports.default = SvgMore;
 //# sourceMappingURL=SvgMore.js.map

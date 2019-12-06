@@ -1,4 +1,8 @@
 
+.dialog:focus {  
+  outline: greenyellow auto 2px;
+}
+
 .modal-dialog {
   position: absolute;
   top: 20%;

@@ -8,6 +8,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _A = require('./button/A');
+
+var _A2 = _interopRequireDefault(_A);
+
 var _SvgIcons = require('./svg/SvgIcons');
 
 var _SvgIcons2 = _interopRequireDefault(_SvgIcons);
@@ -23,10 +27,6 @@ var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
 var _CaptionInput = require('./CaptionInput');
 
 var _CaptionInput2 = _interopRequireDefault(_CaptionInput);
-
-var _CircleButton = require('./CircleButton');
-
-var _CircleButton2 = _interopRequireDefault(_CircleButton);
 
 var _FlatButton = require('./FlatButton');
 
@@ -106,11 +106,10 @@ var _ValidationMessages2 = _interopRequireDefault(_ValidationMessages);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Atoms = (0, _extends3.default)({}, _SvgIcons2.default, {
+var Atoms = (0, _extends3.default)({}, _A2.default, _SvgIcons2.default, {
   Browser: _Browser2.default,
   BrowserCaption: _BrowserCaption2.default,
   CaptionInput: _CaptionInput2.default,
-  CircleButton: _CircleButton2.default,
   FlatButton: _FlatButton2.default,
   InputText: _InputText2.default,
   Link: _Link2.default,

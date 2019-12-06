@@ -14,11 +14,13 @@ const WordNyms = ({ result }) => {
   return (
     <Fragment>
       <WordOf
-        caption="typeOf (hypernyms: more generic)"
+        //hypernyms
+        caption="typeOf (more generic)"
         items={typeOf}
       />
       <WordOf
-        caption="hasTypes (hyponyms: more specific)"
+        //hyponyms
+        caption="hasTypes (more specific)"
         items={hasTypes}
       />
       <WordOf

@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 
-import A from '../zhn-atoms/Atoms'
+import A from '../Comp'
 
 const CL_NOT_SELECTED = "not-selected";
+
+const T = {
+  A: "Click to open add to watch list dialog"
+};
 
 const _fnNoop = () => {};
 
@@ -57,9 +61,8 @@ class ItemHeader extends Component {
     }
   }
 
- _refRoot = (node) => {
-   this.rootNode = node
- }
+ _refRoot = (node) => this.rootNode = node
+
 
   render(){
     const {
@@ -86,6 +89,7 @@ class ItemHeader extends Component {
         </span>
         <A.CircleButton
           caption="A"
+          title={T.A}
           onClick={this._hAddToWatch}
         />
         <A.SvgClose

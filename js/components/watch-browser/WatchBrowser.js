@@ -49,9 +49,9 @@ var _WatchActions = require('../../flux/actions/WatchActions');
 
 var _WatchActions2 = _interopRequireDefault(_WatchActions);
 
-var _Atoms = require('../zhn-atoms/Atoms');
+var _Comp = require('../Comp');
 
-var _Atoms2 = _interopRequireDefault(_Atoms);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 var _EditBar = require('./EditBar');
 
@@ -78,17 +78,17 @@ var DRAG = {
 
 var S = {
   BROWSER: {
-    paddingRight: '0px'
+    paddingRight: 0
   },
   BT_CIRCLE: {
-    marginLeft: '20px',
     position: 'relative',
-    top: '-2px'
+    top: -2,
+    marginLeft: 20
   },
   SP: {
-    overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px'
+    paddingRight: 10,
+    overflowY: 'auto'
   },
   SP_SHORT: {
     height: 'calc(100% - 70px)'
@@ -97,15 +97,20 @@ var S = {
     lineHeight: 2.5
   },
   LIST_DIV: {
-    marginLeft: '8px',
-    paddingLeft: '12px',
+    marginLeft: 8,
+    paddingLeft: 12,
     borderLeft: '1px solid yellow',
     lineHeight: 2.5
   },
   ITEM_NOT_SELECTED: {
-    borderBottom: '1px solid rgba(128, 192, 64, 0.6)',
-    marginRight: '10px'
+    marginRight: 10,
+    borderBottom: '1px solid rgba(128, 192, 64, 0.6)'
   }
+};
+
+var T = {
+  S: "Click to save to LocalStorage",
+  E_V: "Click to toggle edit mode E/V"
 };
 
 var saveWatch = _WatchActions2.default.saveWatch,
@@ -116,7 +121,7 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
   function WatchBrowser(props) {
     (0, _classCallCheck3.default)(this, WatchBrowser);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (WatchBrowser.__proto__ || Object.getPrototypeOf(WatchBrowser)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (WatchBrowser.__proto__ || Object.getPrototypeOf(WatchBrowser)).call(this, props));
 
     _this._onStore = function (actionType, data) {
       var _this$props = _this.props,
@@ -151,7 +156,7 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
             lists = group.lists;
 
         return _react2.default.createElement(
-          _Atoms2.default.OpenClose2,
+          _Comp2.default.OpenClose2,
           {
             key: index,
             style: (0, _extends3.default)({}, S.GROUP_DIV, TS.OPEN_CLOSE),
@@ -178,7 +183,7 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
             items = list.items;
 
         return _react2.default.createElement(
-          _Atoms2.default.OpenClose2,
+          _Comp2.default.OpenClose2,
           {
             key: index,
             fillOpen: C_FILL_OPEN,
@@ -315,27 +320,27 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
           TS = theme.createStyle(_MenuBrowserStyle2.default);
 
       return _react2.default.createElement(
-        _Atoms2.default.Browser,
+        _Comp2.default.Browser,
         {
           isShow: isShow,
           style: (0, _extends3.default)({}, S.BROWSER, TS.BROWSER)
         },
         _react2.default.createElement(
-          _Atoms2.default.BrowserCaption,
+          _Comp2.default.BrowserCaption,
           {
             rootStyle: TS.BROWSER_CAPTION,
             caption: caption,
             onClose: this._handlerHide
           },
-          _react2.default.createElement(_Atoms2.default.CircleButton, {
+          _react2.default.createElement(_Comp2.default.CircleButton, {
             caption: 'S',
-            title: 'Save to LocalStorage',
+            title: T.S,
             style: S.BT_CIRCLE,
             onClick: this._handlerSaveWatch
           }),
-          _react2.default.createElement(_Atoms2.default.CircleButton, {
+          _react2.default.createElement(_Comp2.default.CircleButton, {
             caption: _captionEV,
-            title: 'Toggle Edit Mode: E/V',
+            title: T.E_V,
             style: S.BT_CIRCLE,
             onClick: this._handlerToggleEditMode
           })
@@ -346,7 +351,7 @@ var WatchBrowser = (_dec = _Decorators2.default.withDnDStyle, _dec2 = _Decorator
           onClickList: this._handlerEditList
         }),
         _react2.default.createElement(
-          _Atoms2.default.ScrollPane,
+          _Comp2.default.ScrollPane,
           {
             className: TS.CL_SCROLL_PANE,
             style: _spStyle

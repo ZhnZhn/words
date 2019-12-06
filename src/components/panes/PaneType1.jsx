@@ -55,6 +55,10 @@ const S = {
   }
 };
 
+const T = {
+  R: "Click to remove all items"
+};
+
 const _fnNoop = () => {};
 
 const _getWidth = style => parseInt(style.width, 10)
@@ -226,7 +230,7 @@ class NewsPane extends Component {
           onCloseItem={onCloseItem}
           onRemoveUnder={onRemoveUnder}
           onAddToWatch={onAddToWatch}
-     />));     
+     />));
   }
 
 
@@ -273,6 +277,7 @@ class NewsPane extends Component {
           >
             <A.CircleButton
               caption="R"
+              title={T.R}
               style={S.BT_CIRCLE}
               onClick={onRemoveItems}
             />

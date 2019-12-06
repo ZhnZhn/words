@@ -26,13 +26,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Atoms = require('../zhn-atoms/Atoms');
+var _Comp = require('../Comp');
 
-var _Atoms2 = _interopRequireDefault(_Atoms);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_NOT_SELECTED = "not-selected";
+
+var T = {
+  A: "Click to open add to watch list dialog"
+};
 
 var _fnNoop = function _fnNoop() {};
 
@@ -72,7 +76,7 @@ var ItemHeader = (_temp2 = _class = function (_Component) {
         onClose();
       }
     }, _this._refRoot = function (node) {
-      _this.rootNode = node;
+      return _this.rootNode = node;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -127,11 +131,12 @@ var ItemHeader = (_temp2 = _class = function (_Component) {
           },
           title
         ),
-        _react2.default.createElement(_Atoms2.default.CircleButton, {
+        _react2.default.createElement(_Comp2.default.CircleButton, {
           caption: 'A',
+          title: T.A,
           onClick: this._hAddToWatch
         }),
-        _react2.default.createElement(_Atoms2.default.SvgClose, {
+        _react2.default.createElement(_Comp2.default.SvgClose, {
           tabIndex: '-1',
           style: svgCloseStyle,
           onClose: this._hClose

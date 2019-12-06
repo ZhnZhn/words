@@ -97,6 +97,10 @@ var S = {
   }
 };
 
+var T = {
+  R: "Click to remove all items"
+};
+
 var _fnNoop = function _fnNoop() {};
 
 var _getWidth = function _getWidth(style) {
@@ -335,6 +339,7 @@ var NewsPane = (_temp = _class = function (_Component) {
           },
           _react2.default.createElement(_Comp2.default.CircleButton, {
             caption: 'R',
+            title: T.R,
             style: S.BT_CIRCLE,
             onClick: onRemoveItems
           }),

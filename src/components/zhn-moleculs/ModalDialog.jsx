@@ -1,11 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 //import PropTypes from "prop-types";
 
 import useClassAnimation from '../zhn-hooks/useClassAnimation'
 
 import A from '../Comp'
-
-
 
 const CL = {
   D: 'modal-dialog',
@@ -19,7 +17,7 @@ const S = {
 };
 
 const CL2 = {
-  SHOWING : 'show-popup',
+  SHOWING : 'dialog show-popup',
   HIDING : 'hide-popup'
 };
 const S2 = {
@@ -35,6 +33,9 @@ const S2 = {
   }
 };
 
+const _hasFocusFn = ref =>
+  typeof ((ref || {}).current || {}).focus === 'function';
+
 const _hClickDialog = (event) => {
   event.stopPropagation()
 };
@@ -49,8 +50,15 @@ const ModalDialog = ({
   commandButtons, withoutClose,
   children, onClose
 }) => {
-  const _refBtClose = useRef(null);
-  const {
+  const _refRootDiv = useRef()
+  , _refPrevFocused = useRef()
+  , _hKeyDown = useCallback((event) => {
+       if (_refRootDiv && document.activeElement === _refRootDiv.current
+         && event.keyCode === 27) {
+           onClose(event)
+       }
+     }, [])
+  , {
     className:_className, style:_style
   } = useClassAnimation({
     isShow, CL: CL2, S: S2,
@@ -59,14 +67,28 @@ const ModalDialog = ({
   , _className2 = _className
       ? `${className} ${_className}`
       : className;
+
+  useEffect(() => {
+    _refPrevFocused.current = document.activeElement
+  }, [])
+  useEffect(() => {
+    if (isShow && _hasFocusFn(_refRootDiv)) {
+      _refRootDiv.current.focus()
+    }
+  }, [isShow])
+  useEffect(() => {
+    if (_style === S2.HIDING && _hasFocusFn(_refPrevFocused) ) {
+      _refPrevFocused.current.focus()
+    }
+  })
   return (
     <div
+       ref={_refRootDiv}
+       tabIndex="0"
        className={_className2}
-       style={{
-         //...S.ROOT_DIV,
-         ...style, ..._style
-       }}
+       style={{...style, ..._style}}
        onClick={_hClickDialog}
+       onKeyDown={_hKeyDown}
     >
        <A.BrowserCaption
           rootStyle={captionStyle}
@@ -80,7 +102,7 @@ const ModalDialog = ({
          {commandButtons}
          { !withoutClose &&
             <A.FlatButton
-              ref={_refBtClose}
+              //ref={_refBtClose}
               rootStyle={S.BT_ROOT}
               clDiv={CL.BT_DIV}
               caption="Close"

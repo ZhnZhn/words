@@ -57,6 +57,11 @@ var S = {
   }
 };
 
+var T = {
+  L: "Click and hold to decrease width",
+  R: "Click and hold to increase width"
+};
+
 var SvgHrzResize = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(SvgHrzResize, _Component);
 
@@ -189,7 +194,7 @@ var SvgHrzResize = (_temp = _class = function (_Component) {
           (0, _extends3.default)({
             className: CL,
             style: S.BT_DIV,
-            title: 'Resize container horizontal to left'
+            title: T.L
           }, this._leftBtHandlers),
           _react2.default.createElement(
             'svg',
@@ -217,7 +222,7 @@ var SvgHrzResize = (_temp = _class = function (_Component) {
           (0, _extends3.default)({
             className: CL,
             style: S.BT_DIV,
-            title: 'Resize container horizontal to right'
+            title: T.R
           }, this._rightBtHandlers),
           _react2.default.createElement(
             'svg',

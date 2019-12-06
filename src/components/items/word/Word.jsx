@@ -73,13 +73,13 @@ class Word extends Component {
     isShow: false
   }
 
-  _handleToggle = () => {
+  _hToggle = () => {
     this.setState(prevState => ({
       isShow: !prevState.isShow
     }))
   }
 
-  _handleClose = () => {
+  _hClose = () => {
     const {
       onCloseItem,
       config
@@ -87,31 +87,22 @@ class Word extends Component {
     onCloseItem(config)
   }
 
-  _handleHide = () => {
-    this.headerComp.focus()
-    this.setState({ isShow: false })
-  }
-
   _onDragEnd = (dX) => {
     const { onRemoveUnder, config } = this.props;
     if (dX > D_REMOVE_UNDER) {
       onRemoveUnder(config)
     } else if (dX > D_REMOVE_ITEM){
-      this._handleClose()
+      this._hClose()
     }
   }
 
   _onDragTouchEnd = (dX) => {
     if (dX > D_REMOVE_UNDER) {
-      this._handleClose()
+      this._hClose()
       return false;
     } else {
       return true;
     }
-  }
-
-  _refItemHeader = (comp) => {
-    this.headerComp = comp
   }
 
   render() {
@@ -131,8 +122,7 @@ class Word extends Component {
           onDragEnd={this._onDragEnd}
           onDragTouchEnd={this._onDragTouchEnd}
         >
-          <ItemHeader
-             ref={this._refItemHeader}
+          <ItemHeader             
              className={CL_ITEM_HEADER}
              style={{ ..._headerStyle, ...TS.HEADER }}
              captionStyle={_captionStyle}
@@ -140,8 +130,8 @@ class Word extends Component {
              title={title}
              caption={caption}
              isShow={isShow}
-             onClick={this._handleToggle}
-             onClose={this._handleClose}
+             onClick={this._hToggle}
+             onClose={this._hClose}
              onAddToWatch={onAddToWatch}
           />
           <WordDef

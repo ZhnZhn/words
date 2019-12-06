@@ -20,6 +20,11 @@ const S = {
   }
 };
 
+const T = {
+  L: "Click and hold to decrease width",
+  R: "Click and hold to increase width"
+};
+
 class SvgHrzResize extends Component {
   /*
   static propTypes = {
@@ -139,7 +144,7 @@ class SvgHrzResize extends Component {
         <div
            className={CL}
            style={S.BT_DIV}
-           title="Resize container horizontal to left"
+           title={T.L}
            {...this._leftBtHandlers}
         >
            <svg
@@ -164,7 +169,7 @@ class SvgHrzResize extends Component {
       <div
          className={CL}
          style={S.BT_DIV}
-         title="Resize container horizontal to right"
+         title={T.R}
          {...this._rightBtHandlers}
       >
         <svg

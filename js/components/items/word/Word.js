@@ -122,21 +122,18 @@ var Word = (_temp2 = _class = function (_Component) {
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Word.__proto__ || Object.getPrototypeOf(Word)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       isShow: false
-    }, _this._handleToggle = function () {
+    }, _this._hToggle = function () {
       _this.setState(function (prevState) {
         return {
           isShow: !prevState.isShow
         };
       });
-    }, _this._handleClose = function () {
+    }, _this._hClose = function () {
       var _this$props = _this.props,
           onCloseItem = _this$props.onCloseItem,
           config = _this$props.config;
 
       onCloseItem(config);
-    }, _this._handleHide = function () {
-      _this.headerComp.focus();
-      _this.setState({ isShow: false });
     }, _this._onDragEnd = function (dX) {
       var _this$props2 = _this.props,
           onRemoveUnder = _this$props2.onRemoveUnder,
@@ -145,17 +142,15 @@ var Word = (_temp2 = _class = function (_Component) {
       if (dX > D_REMOVE_UNDER) {
         onRemoveUnder(config);
       } else if (dX > D_REMOVE_ITEM) {
-        _this._handleClose();
+        _this._hClose();
       }
     }, _this._onDragTouchEnd = function (dX) {
       if (dX > D_REMOVE_UNDER) {
-        _this._handleClose();
+        _this._hClose();
         return false;
       } else {
         return true;
       }
-    }, _this._refItemHeader = function (comp) {
-      _this.headerComp = comp;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -181,7 +176,6 @@ var Word = (_temp2 = _class = function (_Component) {
           onDragTouchEnd: this._onDragTouchEnd
         },
         _react2.default.createElement(_ItemHeader2.default, {
-          ref: this._refItemHeader,
           className: CL_ITEM_HEADER,
           style: (0, _extends3.default)({}, _headerStyle, TS.HEADER),
           captionStyle: _captionStyle,
@@ -189,8 +183,8 @@ var Word = (_temp2 = _class = function (_Component) {
           title: title,
           caption: caption,
           isShow: isShow,
-          onClick: this._handleToggle,
-          onClose: this._handleClose,
+          onClick: this._hToggle,
+          onClose: this._hClose,
           onAddToWatch: onAddToWatch
         }),
         _react2.default.createElement(_WordDef2.default, {

@@ -2,16 +2,21 @@ import React from 'react';
 
 import A from '../zhn-atoms/Atoms';
 
-const CLASS_FOR_BT = "bt__watch__bar";
+const CL_BT = "bt__watch__bar";
 
 const S = {
   ROOT: {
-    marginBottom: '10px'
+    marginBottom: 10
   },
   BT_LIST : {
-    marginLeft: '20px'
+    marginLeft: 20
   }
-}
+};
+
+const T = {
+  G: "Click to open groups edit dialog",
+  L: "Click to open lists edit dialog"
+};
 
 const EditBar = ({ isShow, onClickGroup, onClickList }) => {
   if (!isShow){
@@ -19,16 +24,16 @@ const EditBar = ({ isShow, onClickGroup, onClickList }) => {
   }
   return (
     <div style={S.ROOT}>
-       <A.CircleButton
+       <A.Button
          caption="GROUP"
-         className={CLASS_FOR_BT}
-         isWithoutDefault={true}
+         title={T.G}
+         className={CL_BT}
          onClick={onClickGroup}
       />
-      <A.CircleButton
+      <A.Button
          caption="LIST"
-         className={CLASS_FOR_BT}
-         isWithoutDefault={true}
+         title={T.L}
+         className={CL_BT}
          style={S.BT_LIST}
          onClick={onClickList}
       />

@@ -53,21 +53,24 @@
   border-right-color: transparent;
 }
 
-.button-circle {
-    display : inline-block;
-    position : relative;
-    top : 4px;
+.bt-circle {
+    display: inline-block;
+    color: #80c040;
+    background-color: transparent;
+    line-height: 24px;
+    width: 26px;
+    height: 26px;
+    text-align: center;
     border-radius: 50%;
-    border : 2px solid gray;
-    width : 24px;
-    height : 24px;
-    padding : 0;
-    stroke : gray;
+    border: 2px solid #80c040;
     cursor: pointer;
+    user-select: none;        
+    transition: background-color 200ms ease-out; 
 }
-.button-circle:hover{
-  border : 2px solid rgba(164, 135, 212, 1);
-  stroke : rgba(164, 135, 212, 1);
+.bt-circle:hover,
+.bt-circle:focus {
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.3);  
 }
 
 .svg-resize{
@@ -85,7 +88,7 @@
   stroke : rgba(164, 135, 212, 1) !important;
 }
 
-.bt__watch__bar{
+.bt__watch__bar {
   display: inline-block;
   text-align: center;
   font-weight : bold;
@@ -97,9 +100,12 @@
   border : 2px solid gray;
   color : gray;
   cursor: pointer;
+  user-select: none;
   transition: color, border-color 200ms ease-out;
 }
-.bt__watch__bar:hover {
+.bt__watch__bar:hover,
+.bt__watch__bar:focus {
+  outline: 0;  
   color : #80c040;
   border-color: #80c040;
 }

@@ -36,7 +36,7 @@ var S = {
 };
 
 var CL2 = {
-  SHOWING: 'show-popup',
+  SHOWING: 'dialog show-popup',
   HIDING: 'hide-popup'
 };
 var S2 = {
@@ -50,6 +50,10 @@ var S2 = {
     opacity: 0,
     transform: 'scaleY(0)'
   }
+};
+
+var _hasFocusFn = function _hasFocusFn(ref) {
+  return typeof ((ref || {}).current || {}).focus === 'function';
 };
 
 var _hClickDialog = function _hClickDialog(event) {
@@ -69,10 +73,14 @@ var ModalDialog = function ModalDialog(_ref) {
       withoutClose = _ref.withoutClose,
       children = _ref.children,
       onClose = _ref.onClose;
-
-  var _refBtClose = (0, _react.useRef)(null);
-
-  var _useClassAnimation = (0, _useClassAnimation3.default)({
+  var _refRootDiv = (0, _react.useRef)(),
+      _refPrevFocused = (0, _react.useRef)(),
+      _hKeyDown = (0, _react.useCallback)(function (event) {
+    if (_refRootDiv && document.activeElement === _refRootDiv.current && event.keyCode === 27) {
+      onClose(event);
+    }
+  }, []),
+      _useClassAnimation = (0, _useClassAnimation3.default)({
     isShow: isShow, CL: CL2, S: S2,
     initialWasClosed: false
   }),
@@ -80,12 +88,29 @@ var ModalDialog = function ModalDialog(_ref) {
       _style = _useClassAnimation.style,
       _className2 = _className ? className + ' ' + _className : className;
 
+
+  (0, _react.useEffect)(function () {
+    _refPrevFocused.current = document.activeElement;
+  }, []);
+  (0, _react.useEffect)(function () {
+    if (isShow && _hasFocusFn(_refRootDiv)) {
+      _refRootDiv.current.focus();
+    }
+  }, [isShow]);
+  (0, _react.useEffect)(function () {
+    if (_style === S2.HIDING && _hasFocusFn(_refPrevFocused)) {
+      _refPrevFocused.current.focus();
+    }
+  });
   return _react2.default.createElement(
     'div',
     {
+      ref: _refRootDiv,
+      tabIndex: '0',
       className: _className2,
       style: (0, _extends3.default)({}, style, _style),
-      onClick: _hClickDialog
+      onClick: _hClickDialog,
+      onKeyDown: _hKeyDown
     },
     _react2.default.createElement(_Comp2.default.BrowserCaption, {
       rootStyle: captionStyle,
@@ -102,7 +127,7 @@ var ModalDialog = function ModalDialog(_ref) {
       { className: CL.D_ACTIONS },
       commandButtons,
       !withoutClose && _react2.default.createElement(_Comp2.default.FlatButton, {
-        ref: _refBtClose,
+        //ref={_refBtClose}
         rootStyle: S.BT_ROOT,
         clDiv: CL.BT_DIV,
         caption: 'Close',

@@ -8,8 +8,7 @@ import { ModalDialog } from '../../constants/Type';
 import ComponentActions from '../../flux/actions/ComponentActions';
 import WatchActions from '../../flux/actions/WatchActions';
 
-import A from '../zhn-atoms/Atoms';
-
+import A from '../Comp';
 import EditBar from './EditBar';
 import WatchItem from './WatchItem';
 
@@ -26,17 +25,17 @@ const DRAG = {
 
 const S = {
   BROWSER: {
-    paddingRight: '0px'
+    paddingRight: 0
   },
   BT_CIRCLE: {
-    marginLeft: '20px',
     position: 'relative',
-    top: '-2px'
+    top: -2,
+    marginLeft: 20
   },
   SP: {
-    overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px'
+    paddingRight: 10,
+    overflowY: 'auto'
   },
   SP_SHORT: {
     height: 'calc(100% - 70px)'
@@ -45,15 +44,20 @@ const S = {
     lineHeight : 2.5
   },
   LIST_DIV: {
-    marginLeft : '8px',
-    paddingLeft : '12px',
+    marginLeft : 8,
+    paddingLeft : 12,
     borderLeft : '1px solid yellow',
     lineHeight : 2.5
   },
   ITEM_NOT_SELECTED: {
+    marginRight : 10,
     borderBottom : '1px solid rgba(128, 192, 64, 0.6)',
-    marginRight : '10px'
   }
+};
+
+const T = {
+  S: "Click to save to LocalStorage",
+  E_V: "Click to toggle edit mode E/V"
 };
 
 const { saveWatch, removeWatchItem } = WatchActions;
@@ -79,7 +83,7 @@ class WatchBrowser extends Component {
   }
 
   constructor(props){
-    super()
+    super(props)
 
     this._handlerDragStartGroup = this._handlerDragStartGroup.bind(this)
     this._handlerDropGroup = this._handlerDropGroup.bind(this)
@@ -199,7 +203,7 @@ class WatchBrowser extends Component {
     });
   }
 
-  _handlerClickItem(item) {    
+  _handlerClickItem(item) {
     this.props.onClickItem(item)
     //ComponentActions.showModalDialog(ModalDialog.LOAD_ITEM, item)
   }
@@ -251,13 +255,13 @@ class WatchBrowser extends Component {
           >
            <A.CircleButton
              caption="S"
-             title="Save to LocalStorage"
+             title={T.S}
              style={S.BT_CIRCLE}
              onClick={this._handlerSaveWatch}
            />
            <A.CircleButton
               caption={_captionEV}
-              title="Toggle Edit Mode: E/V"
+              title={T.E_V}
               style={S.BT_CIRCLE}
               onClick={this._handlerToggleEditMode}
            />

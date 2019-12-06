@@ -3,14 +3,17 @@ import React from 'react'
 
 const CL_ROOT = "svg-close"
 const S = {
-  //COLOR : '#F44336',
-  COLOR: '#D64336',
+  COLOR: '#d64336',
   SVG: {
-    padding: '3px',
+    padding: 3,
   }
 };
 
-const SvgClose = ({ style, tabIndex, onClose }) => (
+const SvgClose = ({
+  style,
+  tabIndex,
+  onClose
+}) => (
    <button
       tabIndex={tabIndex}
       className={CL_ROOT}
@@ -24,8 +27,8 @@ const SvgClose = ({ style, tabIndex, onClose }) => (
         stroke={S.COLOR}
         strokeLinecap="round"
       >
-        <path d="M 0,0 L 12,12"></path>
-        <path d="M 12,0 L 0,12"></path>
+        <path d="M 0,0 L 12,12" />
+        <path d="M 12,0 L 0,12" />
      </svg>
    </button>
 );

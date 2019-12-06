@@ -1,1 +1,36 @@
-{"version":3,"sources":["../../../src/components/items/ItemHeader.jsx"],"names":["CL_NOT_SELECTED","_fnNoop","ItemHeader","_hAddToWatch","event","stopPropagation","props","caption","onAddToWatch","_hClose","onClose","_hKeyDown","keyCode","onClick","_refRoot","node","rootNode","focus","className","style","captionStyle","svgCloseStyle","title","defaultProps"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,kBAAkB,cAAxB;;AAEA,IAAMC,UAAU,SAAVA,OAAU,GAAM,CAAE,CAAxB;;IAEMC,U;;;;;;;;;;;;;;4MA8BJC,Y,GAAe,UAACC,KAAD,EAAW;AACxBA,YAAMC,eAAN;AADwB,wBAEU,MAAKC,KAFf;AAAA,UAEhBC,OAFgB,eAEhBA,OAFgB;AAAA,UAEPC,YAFO,eAEPA,YAFO;;AAGxBA,mBAAa,EAAED,gBAAF,EAAb;AACD,K,QAEDE,O,GAAU,UAACL,KAAD,EAAW;AACnBA,YAAMC,eAAN;AACA,YAAKC,KAAL,CAAWI,OAAX;AACD,K,QAEDC,S,GAAY,UAACP,KAAD,EAAW;AACf,oBAAUA,MAAMQ,OAAhB;AAAA,yBACuB,MAAKN,KAD5B;AAAA,UACEO,OADF,gBACEA,OADF;AAAA,UACWH,OADX,gBACWA,OADX;;AAEN,UAAIE,YAAY,EAAhB,EAAoB;AAClBC;AACD,OAFD,MAEO,IAAID,YAAY,EAAhB,EAAoB;AACzBF;AACD;AACF,K,QAEFI,Q,GAAW,UAACC,IAAD,EAAU;AACnB,YAAKC,QAAL,GAAgBD,IAAhB;AACD,K;;;AAnDA;;;;;;;;;;;;;;;;wCAsBmB;AACjB,UAAI,KAAKC,QAAT,EAAmB;AACjB,aAAKA,QAAL,CAAcC,KAAd;AACD;AACF;;;6BA2BO;AAAA,mBAMI,KAAKX,KANT;AAAA,UAEEY,SAFF,UAEEA,SAFF;AAAA,UAGEC,KAHF,UAGEA,KAHF;AAAA,UAGSC,YAHT,UAGSA,YAHT;AAAA,UAGuBC,aAHvB,UAGuBA,aAHvB;AAAA,UAIEC,KAJF,UAIEA,KAJF;AAAA,UAKET,OALF,UAKEA,OALF;;AAON,aACE;AAAA;AAAA;AACE,oBAAS,GADX;AAEE,gBAAK,QAFP;AAGE,eAAK,KAAKC,QAHZ;AAIE,qBAAWI,SAJb;AAKE,iBAAOC,KALT;AAME,mBAASN,OANX;AAOE,qBAAW,KAAKF;AAPlB;AASE;AAAA;AAAA;AACG,uBAAWX,eADd;AAEG,mBAAOoB;AAFV;AAIIE;AAJJ,SATF;AAeE,sDAAG,YAAH;AACE,mBAAQ,GADV;AAEE,mBAAS,KAAKnB;AAFhB,UAfF;AAmBE,sDAAG,QAAH;AACI,oBAAS,IADb;AAEI,iBAAOkB,aAFX;AAGI,mBAAS,KAAKZ;AAHlB;AAnBF,OADF;AA2BD;;;4BAEO;AACN,WAAKO,QAAL,CAAcC,KAAd;AACD;;;4BA3EMM,Y,GAAe;AACpBV,WAASZ,OADW;AAEpBS,WAAST,OAFW;AAGpBO,gBAAcP;AAHM,C;kBA8ETC,U","file":"ItemHeader.js","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport A from '../zhn-atoms/Atoms'\r\n\r\nconst CL_NOT_SELECTED = \"not-selected\";\r\n\r\nconst _fnNoop = () => {};\r\n\r\nclass ItemHeader extends Component {\r\n\r\n  /*\r\n  static propTypes = {\r\n    title: PropTypes.string,\r\n    className: PropTypes.string,\r\n    style: PropTypes.object,\r\n    captionStyle: PropTypes.object,\r\n    svgCloseStyle: PropTypes.object,\r\n\r\n    caption: PropTypes.string,\r\n\r\n    onClick: PropTypes.func,\r\n    onClose: PropTypes.func,\r\n    onAddToWatch: PropTypes.func\r\n  }\r\n  */\r\n\r\n  static defaultProps = {\r\n    onClick: _fnNoop,\r\n    onClose: _fnNoop,\r\n    onAddToWatch: _fnNoop\r\n  }\r\n\r\n  componentDidMount(){\r\n    if (this.rootNode) {\r\n      this.rootNode.focus()\r\n    }\r\n  }\r\n\r\n  _hAddToWatch = (event) => {\r\n    event.stopPropagation()\r\n    const { caption, onAddToWatch } = this.props\r\n    onAddToWatch({ caption })\r\n  }\r\n\r\n  _hClose = (event) => {\r\n    event.stopPropagation()\r\n    this.props.onClose()\r\n  }\r\n\r\n  _hKeyDown = (event) => {\r\n    const keyCode = event.keyCode\r\n        , { onClick, onClose } = this.props;\r\n    if (keyCode === 13) {\r\n      onClick()\r\n    } else if (keyCode === 46) {\r\n      onClose()\r\n    }\r\n  }\r\n\r\n _refRoot = (node) => {\r\n   this.rootNode = node\r\n }\r\n\r\n  render(){\r\n    const {\r\n            className,\r\n            style, captionStyle, svgCloseStyle,\r\n            title,\r\n            onClick\r\n          } = this.props;\r\n    return (\r\n      <div\r\n        tabIndex=\"0\"\r\n        role=\"button\"\r\n        ref={this._refRoot}\r\n        className={className}\r\n        style={style}\r\n        onClick={onClick}\r\n        onKeyDown={this._hKeyDown}\r\n      >\r\n        <span\r\n           className={CL_NOT_SELECTED}\r\n           style={captionStyle}\r\n        >\r\n           {title}\r\n        </span>\r\n        <A.CircleButton\r\n          caption=\"A\"\r\n          onClick={this._hAddToWatch}\r\n        />\r\n        <A.SvgClose\r\n            tabIndex=\"-1\"\r\n            style={svgCloseStyle}\r\n            onClose={this._hClose}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n\r\n  focus() {\r\n    this.rootNode.focus()\r\n  }\r\n}\r\n\r\nexport default ItemHeader\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/ItemHeader.js"
+ ],
+ "file": "../../../src/components/items/ItemHeader.js",
+ "names": [
+  "CL_NOT_SELECTED",
+  "T",
+  "A",
+  "_fnNoop",
+  "ItemHeader",
+  "_hAddToWatch",
+  "event",
+  "stopPropagation",
+  "props",
+  "caption",
+  "onAddToWatch",
+  "_hClose",
+  "onClose",
+  "_hKeyDown",
+  "keyCode",
+  "onClick",
+  "_refRoot",
+  "node",
+  "rootNode",
+  "focus",
+  "className",
+  "style",
+  "captionStyle",
+  "svgCloseStyle",
+  "title",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,kBAAkB,cAAxB;;AAEA,IAAMC,IAAI;AACRC,KAAG;AADK,CAAV;;AAIA,IAAMC,UAAU,SAAVA,OAAU,GAAM,CAAE,CAAxB;;IAEMC,U;;;;;;;;;;;;;;4MA8BJC,Y,GAAe,UAACC,KAAD,EAAW;AACxBA,YAAMC,eAAN;AADwB,wBAEU,MAAKC,KAFf;AAAA,UAEhBC,OAFgB,eAEhBA,OAFgB;AAAA,UAEPC,YAFO,eAEPA,YAFO;;AAGxBA,mBAAa,EAAED,gBAAF,EAAb;AACD,K,QAEDE,O,GAAU,UAACL,KAAD,EAAW;AACnBA,YAAMC,eAAN;AACA,YAAKC,KAAL,CAAWI,OAAX;AACD,K,QAEDC,S,GAAY,UAACP,KAAD,EAAW;AACf,oBAAUA,MAAMQ,OAAhB;AAAA,yBACuB,MAAKN,KAD5B;AAAA,UACEO,OADF,gBACEA,OADF;AAAA,UACWH,OADX,gBACWA,OADX;;AAEN,UAAIE,YAAY,EAAhB,EAAoB;AAClBC;AACD,OAFD,MAEO,IAAID,YAAY,EAAhB,EAAoB;AACzBF;AACD;AACF,K,QAEFI,Q,GAAW,UAACC,IAAD;AAAA,aAAU,MAAKC,QAAL,GAAgBD,IAA1B;AAAA,K;;;AAjDV;;;;;;;;;;;;;;;;wCAsBmB;AACjB,UAAI,KAAKC,QAAT,EAAmB;AACjB,aAAKA,QAAL,CAAcC,KAAd;AACD;AACF;;;6BA0BO;AAAA,mBAMI,KAAKX,KANT;AAAA,UAEEY,SAFF,UAEEA,SAFF;AAAA,UAGEC,KAHF,UAGEA,KAHF;AAAA,UAGSC,YAHT,UAGSA,YAHT;AAAA,UAGuBC,aAHvB,UAGuBA,aAHvB;AAAA,UAIEC,KAJF,UAIEA,KAJF;AAAA,UAKET,OALF,UAKEA,OALF;;AAON,aACE;AAAA;AAAA;AACE,oBAAS,GADX;AAEE,gBAAK,QAFP;AAGE,eAAK,KAAKC,QAHZ;AAIE,qBAAWI,SAJb;AAKE,iBAAOC,KALT;AAME,mBAASN,OANX;AAOE,qBAAW,KAAKF;AAPlB;AASE;AAAA;AAAA;AACG,uBAAWb,eADd;AAEG,mBAAOsB;AAFV;AAIIE;AAJJ,SATF;AAeE,qDAAG,YAAH;AACE,mBAAQ,GADV;AAEE,iBAAOvB,EAAEC,CAFX;AAGE,mBAAS,KAAKG;AAHhB,UAfF;AAoBE,qDAAG,QAAH;AACI,oBAAS,IADb;AAEI,iBAAOkB,aAFX;AAGI,mBAAS,KAAKZ;AAHlB;AApBF,OADF;AA4BD;;;4BAEO;AACN,WAAKO,QAAL,CAAcC,KAAd;AACD;;;4BA3EMM,Y,GAAe;AACpBV,WAASZ,OADW;AAEpBS,WAAST,OAFW;AAGpBO,gBAAcP;AAHM,C;kBA8ETC,U"
+}

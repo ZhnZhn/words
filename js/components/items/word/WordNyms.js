@@ -28,12 +28,14 @@ var WordNyms = function WordNyms(_ref) {
   return _react2.default.createElement(
     _react.Fragment,
     null,
-    _react2.default.createElement(_WordOf2.default, {
-      caption: 'typeOf (hypernyms: more generic)',
+    _react2.default.createElement(_WordOf2.default
+    //hypernyms
+
+    //hyponyms
+    , { caption: 'typeOf (more generic)',
       items: typeOf
     }),
-    _react2.default.createElement(_WordOf2.default, {
-      caption: 'hasTypes (hyponyms: more specific)',
+    _react2.default.createElement(_WordOf2.default, { caption: 'hasTypes (more specific)',
       items: hasTypes
     }),
     _react2.default.createElement(_WordOf2.default, {

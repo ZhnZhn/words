@@ -1,10 +1,10 @@
 
+import Buttons from './button/A'
 import SvgIcons from './svg/SvgIcons'
 
 import Browser from './Browser'
 import BrowserCaption from './BrowserCaption'
 import CaptionInput from './CaptionInput'
-import CircleButton from './CircleButton'
 import FlatButton from './FlatButton'
 import InputText from './InputText'
 import Link from './Link'
@@ -26,11 +26,11 @@ import TabPane from './TabPane'
 import ValidationMessages from './ValidationMessages'
 
 const Atoms = {
+  ...Buttons,
   ...SvgIcons,
   Browser,
   BrowserCaption,
-  CaptionInput,
-  CircleButton,
+  CaptionInput,  
   FlatButton,
   InputText,
   Link,

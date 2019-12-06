@@ -14,10 +14,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var CL_ROOT = "svg-close";
 var S = {
-  //COLOR : '#F44336',
-  COLOR: '#D64336',
+  COLOR: '#d64336',
   SVG: {
-    padding: '3px'
+    padding: 3
   }
 };
 
