@@ -1,26 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _ItemActions = require('../actions/ItemActions');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _ItemActions = require("../actions/ItemActions");
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
-var _LoadingActions = require('../actions/LoadingActions');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _LoadingActions = require("../actions/LoadingActions");
 
 var Logic = {
   addItem: function addItem(slice, config, itemConf) {
     var _itemConf$paneId = itemConf.paneId,
-        paneId = _itemConf$paneId === undefined ? 'paneId' : _itemConf$paneId;
-
+        paneId = _itemConf$paneId === void 0 ? 'paneId' : _itemConf$paneId;
     config.paneId = paneId;
-
     var paneSlice = slice[paneId] || {},
         configs = paneSlice.configs;
 
@@ -33,6 +28,7 @@ var Logic = {
         configs: [config]
       };
     }
+
     return {
       configs: slice[paneId].configs,
       id: paneId
@@ -46,7 +42,6 @@ var Logic = {
   isItem: function isItem(slice, paneId, id) {
     var paneSlice = slice[paneId] || {},
         configs = paneSlice.configs;
-
     return Logic._isItem(configs, id);
   },
   _isConfigs: function _isConfigs(slice) {
@@ -71,40 +66,48 @@ var Logic = {
   },
   removeItems: function removeItems(slice, paneId) {
     var paneSlice = slice[paneId];
+
     if (paneSlice) {
       paneSlice.configs = [];
     }
   },
-  removeItemsUnder: function removeItemsUnder(slice) {
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var paneId = config.paneId,
-        id = config.id,
+  removeItemsUnder: function removeItemsUnder(slice, config) {
+    if (config === void 0) {
+      config = {};
+    }
+
+    var _config = config,
+        paneId = _config.paneId,
+        id = _config.id,
         paneSlice = slice[paneId];
 
     if (this._isConfigs(paneSlice)) {
       var _undexIndex = paneSlice.configs.findIndex(function (c) {
         return c.id === id;
       });
+
       paneSlice.configs = paneSlice.configs.slice(_undexIndex + 1);
       return {
         configs: paneSlice.configs,
         id: paneId
       };
     }
+
     return undefined;
   }
 };
-
 var ItemSlice = {
   items: {},
-
   isItem: function isItem(paneId, word) {
     return Logic.isItem(this.items, paneId, word);
   },
-  onLoadItem: function onLoadItem() {
-    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  onLoadItem: function onLoadItem(option) {
+    if (option === void 0) {
+      option = {};
+    }
 
-    _ComponentActions2.default.showPane(option.itemConf);
+    _ComponentActions["default"].showPane(option.itemConf);
+
     this.triggerLoading(_LoadingActions.T.LOADING);
   },
   onLoadItemCompleted: function onLoadItemCompleted(result, option) {
@@ -114,16 +117,20 @@ var ItemSlice = {
 
     if (config) {
       var _option = Logic.addItem(this.items, config, itemConf);
+
       this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, _option);
     }
+
     this.triggerLoading(_LoadingActions.T.LOADING_COMPLETE, limitRemaining);
   },
   onLoadItemFailed: function onLoadItemFailed(option) {
-    _ComponentActions2.default.showModalDialog('ALERT_DIALOG', option);
+    _ComponentActions["default"].showModalDialog('ALERT_DIALOG', option);
+
     this.triggerLoading(_LoadingActions.T.LOADING_FAILED);
   },
   onRemoveItem: function onRemoveItem(config) {
     var _options = Logic.removeItem(this.items, config);
+
     if (_options) {
       this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, _options);
     }
@@ -131,16 +138,18 @@ var ItemSlice = {
   onRemoveItems: function onRemoveItems(paneId) {
     Logic.removeItems(this.items, paneId);
     this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, {
-      configs: [], id: paneId
+      configs: [],
+      id: paneId
     });
   },
   onRemoveItemsUnder: function onRemoveItemsUnder(config) {
     var _option = Logic.removeItemsUnder(this.items, config);
+
     if (_option) {
       this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, _option);
     }
   }
 };
-
-exports.default = ItemSlice;
+var _default = ItemSlice;
+exports["default"] = _default;
 //# sourceMappingURL=ItemSlice.js.map

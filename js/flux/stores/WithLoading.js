@@ -1,10 +1,8 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 var CHANNEL = 'LOADING_PROGRESS';
-
 var WithLoading = {
   listenLoading: function listenLoading(fnHandler) {
     var _this = this;
@@ -18,6 +16,6 @@ var WithLoading = {
     this.emitter.emit(CHANNEL, actionType, value);
   }
 };
-
-exports.default = WithLoading;
+var _default = WithLoading;
+exports["default"] = _default;
 //# sourceMappingURL=WithLoading.js.map

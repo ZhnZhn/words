@@ -1,32 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 var ListDiv = function ListDiv(_ref) {
   var _ref$items = _ref.items,
-      items = _ref$items === undefined ? [] : _ref$items,
+      items = _ref$items === void 0 ? [] : _ref$items,
       itemStyle = _ref.itemStyle;
-
-  return _react2.default.createElement(
-    _react.Fragment,
-    null,
-    items.map(function (str, index) {
-      return _react2.default.createElement(
-        'div',
-        { key: index, style: itemStyle },
-        str
-      );
-    })
-  );
+  return _react["default"].createElement(_react.Fragment, null, items.map(function (str, index) {
+    return _react["default"].createElement("div", {
+      key: index,
+      style: itemStyle
+    }, str);
+  }));
 };
 
-exports.default = ListDiv;
+var _default = ListDiv;
+exports["default"] = _default;
 //# sourceMappingURL=ListDiv.js.map

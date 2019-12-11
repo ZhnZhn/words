@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/zhn-atoms/button/Button.js"
- ],
- "file": "../../../../src/components/zhn-atoms/button/Button.js",
- "names": [
-  "Button",
-  "className",
-  "style",
-  "tabIndex",
-  "caption",
-  "title",
-  "onClick"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,SAAS,SAATA,MAAS;AAAA,MACbC,SADa,QACbA,SADa;AAAA,MAEbC,KAFa,QAEbA,KAFa;AAAA,2BAGbC,QAHa;AAAA,MAGbA,QAHa,iCAGJ,GAHI;AAAA,0BAIbC,OAJa;AAAA,MAIbA,OAJa,gCAIL,EAJK;AAAA,MAKbC,KALa,QAKbA,KALa;AAAA,MAMbC,OANa,QAMbA,OANa;AAAA,SAQb;AAAA;AAAA;AACG,iBAAWL,SADd;AAEG,aAAOC,KAFV;AAGG,gBAAUC,QAHb;AAIG,aAAOE,KAJV;AAKG,eAASC;AALZ;AAOIF;AAPJ,GARa;AAAA,CAAf;;kBAoBeJ,M"
-}
+{"version":3,"sources":["../../../../src/components/zhn-atoms/button/Button.jsx"],"names":["Button","className","style","tabIndex","caption","title","onClick"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS;AAAA,MACbC,SADa,QACbA,SADa;AAAA,MAEbC,KAFa,QAEbA,KAFa;AAAA,2BAGbC,QAHa;AAAA,MAGbA,QAHa,8BAGJ,GAHI;AAAA,0BAIbC,OAJa;AAAA,MAIbA,OAJa,6BAIL,EAJK;AAAA,MAKbC,KALa,QAKbA,KALa;AAAA,MAMbC,OANa,QAMbA,OANa;AAAA,SAQb;AACG,IAAA,SAAS,EAAEL,SADd;AAEG,IAAA,KAAK,EAAEC,KAFV;AAGG,IAAA,QAAQ,EAAEC,QAHb;AAIG,IAAA,KAAK,EAAEE,KAJV;AAKG,IAAA,OAAO,EAAEC;AALZ,KAOIF,OAPJ,CARa;AAAA,CAAf;;eAoBeJ,M","sourcesContent":["import React from 'react'\r\n\r\nconst Button = ({\r\n  className,\r\n  style,\r\n  tabIndex='0',\r\n  caption='',\r\n  title,\r\n  onClick\r\n}) => (\r\n  <button\r\n     className={className}\r\n     style={style}\r\n     tabIndex={tabIndex}\r\n     title={title}\r\n     onClick={onClick}\r\n  >\r\n     {caption}\r\n  </button>\r\n);\r\n\r\n\r\nexport default Button\r\n"],"file":"Button.js"}

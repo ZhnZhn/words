@@ -1,22 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _WordsAdapter = require('./WordsAdapter');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _WordsAdapter2 = _interopRequireDefault(_WordsAdapter);
+var _WordsAdapter = _interopRequireDefault(require("./WordsAdapter"));
 
-var _WordsApi = require('./WordsApi');
-
-var _WordsApi2 = _interopRequireDefault(_WordsApi);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _WordsApi = _interopRequireDefault(require("./WordsApi"));
 
 var Words = {
-  api: _WordsApi2.default, adapter: _WordsAdapter2.default
+  api: _WordsApi["default"],
+  adapter: _WordsAdapter["default"]
 };
-
-exports.default = Words;
+var _default = Words;
+exports["default"] = _default;
 //# sourceMappingURL=Words.js.map

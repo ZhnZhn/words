@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Words = require('./words/Words');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Words2 = _interopRequireDefault(_Words);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Words = _interopRequireDefault(require("./words/Words"));
 
 var Adapter = {
-  Words: _Words2.default
+  Words: _Words["default"]
 };
-
-exports.default = Adapter;
+var _default = Adapter;
+exports["default"] = _default;
 //# sourceMappingURL=Adapter.js.map

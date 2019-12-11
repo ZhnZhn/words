@@ -1,43 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp2;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Atoms = require('../zhn-atoms/Atoms');
-
-var _Atoms2 = _interopRequireDefault(_Atoms);
-
-var _TextField = require('../zhn-m-input/TextField');
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 
 var CL_BT = 'bt-input-word';
-
 var S = {
   TF_LABEL: {
     top: '28px'
@@ -47,75 +25,72 @@ var S = {
   }
 };
 
-var InputWord = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(InputWord, _Component);
+var InputWord =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(InputWord, _Component);
 
   function InputWord() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, InputWord);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = InputWord.__proto__ || Object.getPrototypeOf(InputWord)).call.apply(_ref, [this].concat(args))), _this), _this._ref = function (n) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._ref = function (n) {
       return _this.iWord = n;
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(InputWord, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      if (this.iWord) {
-        this.iWord.focus();
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          TS = _props.TS,
-          initValue = _props.initValue,
-          onEnter = _props.onEnter;
+  var _proto = InputWord.prototype;
 
-      return _react2.default.createElement(
-        _react.Fragment,
-        null,
-        _react2.default.createElement(_TextField2.default, {
-          ref: this._ref,
-          rootStyle: TS.INPUT_ROOT,
-          labelStyle: S.TF_LABEL,
-          inputStyle: S.TF_INPUT,
-          caption: 'Word',
-          accessKey: 'W',
-          spellCheck: true,
-          initValue: initValue,
-          onEnter: onEnter
-        }),
-        _react2.default.createElement(_Atoms2.default.RaisedButton, {
-          className: CL_BT,
-          rootStyle: TS.BT.RAISED_ROOT,
-          clDiv: TS.BT.CL_RAISED_DIV,
-          caption: 'Load',
-          tabIndex: -1
-          //timeout={3000}
-          , isPrimary: true,
-          onClick: onEnter
-        })
-      );
+  _proto.componentDidMount = function componentDidMount() {
+    if (this.iWord) {
+      this.iWord.focus();
     }
-  }, {
-    key: 'getValue',
-    value: function getValue() {
-      return this.iWord ? this.iWord.getValue() : undefined;
-    }
-  }]);
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        TS = _this$props.TS,
+        initValue = _this$props.initValue,
+        onEnter = _this$props.onEnter;
+    return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_TextField["default"], {
+      ref: this._ref,
+      rootStyle: TS.INPUT_ROOT,
+      labelStyle: S.TF_LABEL,
+      inputStyle: S.TF_INPUT,
+      caption: "Word",
+      accessKey: "W",
+      spellCheck: true,
+      initValue: initValue,
+      onEnter: onEnter
+    }), _react["default"].createElement(_Atoms["default"].RaisedButton, {
+      className: CL_BT,
+      rootStyle: TS.BT.RAISED_ROOT,
+      clDiv: TS.BT.CL_RAISED_DIV,
+      caption: "Load",
+      tabIndex: -1 //timeout={3000}
+      ,
+      isPrimary: true,
+      onClick: onEnter
+    }));
+  };
+
+  _proto.getValue = function getValue() {
+    return this.iWord ? this.iWord.getValue() : undefined;
+  };
+
   return InputWord;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+InputWord.defaultProps = {
   initValue: 'example'
-}, _temp2);
-exports.default = InputWord;
+};
+var _default = InputWord;
+exports["default"] = _default;
 //# sourceMappingURL=InputWord.js.map

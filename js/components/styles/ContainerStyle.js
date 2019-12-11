@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _crBase = function _crBase() {
   return {
@@ -21,7 +18,7 @@ var _crBase = function _crBase() {
 };
 
 var ContainerStyle = {
-  BROWSER_ROOT: (0, _extends3.default)({}, _crBase(), {
+  BROWSER_ROOT: (0, _extends2["default"])({}, _crBase(), {
     flexShrink: 0,
     marginLeft: '10px',
     padding: '0px 3px 35px 0px',
@@ -29,7 +26,7 @@ var ContainerStyle = {
     maxWidth: '400px',
     minHeight: '500px'
   }),
-  ABOUT_ROOT: (0, _extends3.default)({}, _crBase(), {
+  ABOUT_ROOT: (0, _extends2["default"])({}, _crBase(), {
     marginLeft: '16px',
     padding: '0px',
     paddingBottom: '35px',
@@ -38,6 +35,6 @@ var ContainerStyle = {
     minHeight: '500px'
   })
 };
-
-exports.default = ContainerStyle;
+var _default = ContainerStyle;
+exports["default"] = _default;
 //# sourceMappingURL=ContainerStyle.js.map

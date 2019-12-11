@@ -1,30 +1,28 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-   value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var CL = 'with-scroll';
 
 var ScrollPane = function ScrollPane(_ref) {
-   var style = _ref.style,
-       _ref$className = _ref.className,
-       className = _ref$className === undefined ? "" : _ref$className,
-       children = _ref.children;
+  var style = _ref.style,
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? "" : _ref$className,
+      children = _ref.children;
 
-   var _className = className && className !== CL ? className : CL;
-   return _react2.default.createElement(
-      'div',
-      { className: _className, style: style },
-      children
-   );
+  var _className = className && className !== CL ? className : CL;
+
+  return _react["default"].createElement("div", {
+    className: _className,
+    style: style
+  }, children);
 };
 
-exports.default = ScrollPane;
+var _default = ScrollPane;
+exports["default"] = _default;
 //# sourceMappingURL=ScrollPane.js.map

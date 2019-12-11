@@ -1,14 +1,11 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require("babel-runtime/helpers/extends");
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var styleConfig = {
   themeName: undefined,
@@ -16,15 +13,15 @@ var styleConfig = {
   createStyle: function createStyle(R) {
     return {
       CL_QUERY_ITEM: R.CL_QUERY_ITEM,
-      HEADER: (0, _extends3.default)({}, R.BG),
-      PANE: (0, _extends3.default)({}, R.BG),
+      HEADER: (0, _extends2["default"])({}, R.BG),
+      PANE: (0, _extends2["default"])({}, R.BG),
       BT: {
-        FLAT_ROOT: (0, _extends3.default)({}, R.BT_FLAT),
+        FLAT_ROOT: (0, _extends2["default"])({}, R.BT_FLAT),
         CL_FLAT_DIV: R.CL_BT_FLAT_DIV
       }
     };
   }
 };
-
-exports.default = styleConfig;
+var _default = styleConfig;
+exports["default"] = _default;
 //# sourceMappingURL=HeaderBar.Style.js.map

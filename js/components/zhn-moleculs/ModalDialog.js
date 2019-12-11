@@ -1,29 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react = require('react');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireWildcard(require("react"));
 
-var _useClassAnimation2 = require('../zhn-hooks/useClassAnimation');
+var _useClassAnimation2 = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
 
-var _useClassAnimation3 = _interopRequireDefault(_useClassAnimation2);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 //import PropTypes from "prop-types";
-
 var CL = {
   D: 'modal-dialog',
   D_ACTIONS: 'modal-dialog__actions',
@@ -34,7 +26,6 @@ var S = {
     color: '#3270b4'
   }
 };
-
 var CL2 = {
   SHOWING: 'dialog show-popup',
   HIDING: 'hide-popup'
@@ -52,6 +43,16 @@ var S2 = {
   }
 };
 
+var _getPrevFocusedElement = function _getPrevFocusedElement() {
+  var _prevFocused = document._prevFocusedZhn;
+
+  if (_prevFocused) {
+    return document._prevFocusedZhn = void 0, _prevFocused;
+  }
+
+  return document.activeElement;
+};
+
 var _hasFocusFn = function _hasFocusFn(ref) {
   return typeof ((ref || {}).current || {}).focus === 'function';
 };
@@ -63,35 +64,39 @@ var _hClickDialog = function _hClickDialog(event) {
 var ModalDialog = function ModalDialog(_ref) {
   var isShow = _ref.isShow,
       _ref$className = _ref.className,
-      className = _ref$className === undefined ? CL.D : _ref$className,
+      className = _ref$className === void 0 ? CL.D : _ref$className,
       style = _ref.style,
       _ref$isWithButton = _ref.isWithButton,
-      isWithButton = _ref$isWithButton === undefined ? true : _ref$isWithButton,
+      isWithButton = _ref$isWithButton === void 0 ? true : _ref$isWithButton,
       caption = _ref.caption,
       captionStyle = _ref.captionStyle,
       commandButtons = _ref.commandButtons,
       withoutClose = _ref.withoutClose,
       children = _ref.children,
       onClose = _ref.onClose;
+
   var _refRootDiv = (0, _react.useRef)(),
       _refPrevFocused = (0, _react.useRef)(),
       _hKeyDown = (0, _react.useCallback)(function (event) {
-    if (_refRootDiv && document.activeElement === _refRootDiv.current && event.keyCode === 27) {
+    if (_refRootDiv && event.target === _refRootDiv.current && event.keyCode === 27) {
       onClose(event);
     }
   }, []),
-      _useClassAnimation = (0, _useClassAnimation3.default)({
-    isShow: isShow, CL: CL2, S: S2,
+      _useClassAnimation = (0, _useClassAnimation2["default"])({
+    isShow: isShow,
+    CL: CL2,
+    S: S2,
     initialWasClosed: false
   }),
       _className = _useClassAnimation.className,
       _style = _useClassAnimation.style,
-      _className2 = _className ? className + ' ' + _className : className;
-
+      _className2 = _className ? className + " " + _className : className;
 
   (0, _react.useEffect)(function () {
-    _refPrevFocused.current = document.activeElement;
-  }, []);
+    if (isShow) {
+      _refPrevFocused.current = _getPrevFocusedElement();
+    }
+  }, [isShow]);
   (0, _react.useEffect)(function () {
     if (isShow && _hasFocusFn(_refRootDiv)) {
       _refRootDiv.current.focus();
@@ -102,41 +107,29 @@ var ModalDialog = function ModalDialog(_ref) {
       _refPrevFocused.current.focus();
     }
   });
-  return _react2.default.createElement(
-    'div',
-    {
-      ref: _refRootDiv,
-      tabIndex: '0',
-      className: _className2,
-      style: (0, _extends3.default)({}, style, _style),
-      onClick: _hClickDialog,
-      onKeyDown: _hKeyDown
-    },
-    _react2.default.createElement(_Comp2.default.BrowserCaption, {
-      rootStyle: captionStyle,
-      caption: caption,
-      onClose: onClose
-    }),
-    _react2.default.createElement(
-      'div',
-      null,
-      children
-    ),
-    isWithButton && _react2.default.createElement(
-      'div',
-      { className: CL.D_ACTIONS },
-      commandButtons,
-      !withoutClose && _react2.default.createElement(_Comp2.default.FlatButton, {
-        //ref={_refBtClose}
-        rootStyle: S.BT_ROOT,
-        clDiv: CL.BT_DIV,
-        caption: 'Close',
-        isPrimary: true,
-        onClick: onClose
-      })
-    )
-  );
+  return _react["default"].createElement("div", {
+    ref: _refRootDiv,
+    tabIndex: "0",
+    className: _className2,
+    style: (0, _extends2["default"])({}, style, {}, _style),
+    onClick: _hClickDialog,
+    onKeyDown: _hKeyDown
+  }, _react["default"].createElement(_Comp["default"].BrowserCaption, {
+    rootStyle: captionStyle,
+    caption: caption,
+    onClose: onClose
+  }), _react["default"].createElement("div", null, children), isWithButton && _react["default"].createElement("div", {
+    className: CL.D_ACTIONS
+  }, commandButtons, !withoutClose && _react["default"].createElement(_Comp["default"].FlatButton, {
+    //ref={_refBtClose}
+    rootStyle: S.BT_ROOT,
+    clDiv: CL.BT_DIV,
+    caption: "Close",
+    isPrimary: true,
+    onClick: onClose
+  })));
 };
 
-exports.default = ModalDialog;
+var _default = ModalDialog;
+exports["default"] = _default;
 //# sourceMappingURL=ModalDialog.js.map

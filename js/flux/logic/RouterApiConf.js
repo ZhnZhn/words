@@ -1,32 +1,27 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Settings = require('../stores/Settings');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Settings2 = _interopRequireDefault(_Settings);
+var _Settings = _interopRequireDefault(require("../stores/Settings"));
 
-var _Adapter = require('../../adapters/Adapter');
-
-var _Adapter2 = _interopRequireDefault(_Adapter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Adapter = _interopRequireDefault(require("../../adapters/Adapter"));
 
 var MSG_ERR_TAIL = 'API key is not set. \nPlease, set in Settings Dialog [s]\nand try again.';
 var MSG_ERR_DF = 'Unknow data API provider';
-
 var RouterApiConf = {
   getApiConf: function getApiConf(id) {
     switch (id) {
       case 'WD':
         return {
-          apiKey: _Settings2.default.getKey('wordsApi'),
-          api: _Adapter2.default.Words.api,
-          adapter: _Adapter2.default.Words.adapter,
-          msgErr: 'WordsApi\'s ' + MSG_ERR_TAIL
+          apiKey: _Settings["default"].getKey('wordsApi'),
+          api: _Adapter["default"].Words.api,
+          adapter: _Adapter["default"].Words.adapter,
+          msgErr: "WordsApi's " + MSG_ERR_TAIL
         };
+
       default:
         return {
           msgErr: MSG_ERR_DF
@@ -34,6 +29,6 @@ var RouterApiConf = {
     }
   }
 };
-
-exports.default = RouterApiConf;
+var _default = RouterApiConf;
+exports["default"] = _default;
 //# sourceMappingURL=RouterApiConf.js.map

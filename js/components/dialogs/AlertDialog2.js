@@ -1,54 +1,28 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
 //import PropTypes from "prop-types";
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('./Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var CL = {
   ELL: 'ellipsis'
 };
-
 var S = {
   DIALOG: {
     left: 'calc(50vw - 184px)'
@@ -92,95 +66,81 @@ var S = {
   }
 };
 
-var AlertDialog2 = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(AlertDialog2, _Component);
+var AlertDialog2 =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(AlertDialog2, _Component);
 
   function AlertDialog2() {
-    (0, _classCallCheck3.default)(this, AlertDialog2);
-    return (0, _possibleConstructorReturn3.default)(this, (AlertDialog2.__proto__ || Object.getPrototypeOf(AlertDialog2)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(AlertDialog2, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
+  var _proto = AlertDialog2.prototype;
+
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      caption: PropTypes.string,
+      itemId: PropTypes.string,
+      descr: PropTypes.string
+    }),
+    onClose: PropTypes.func
+  }
+  */
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
 
-    /*
-    static propTypes = {
-      isShow: PropTypes.bool,
-      data: PropTypes.shape({
-        caption: PropTypes.string,
-        itemId: PropTypes.string,
-        descr: PropTypes.string
-      }),
-      onClose: PropTypes.func
-    }
-    */
+    return true;
+  };
 
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          theme = _props.theme,
-          isShow = _props.isShow,
-          data = _props.data,
-          onClose = _props.onClose,
-          TS = theme.createStyle(_Dialog2.default),
-          _data$caption = data.caption,
-          caption = _data$caption === undefined ? 'Item' : _data$caption,
-          _data$itemId = data.itemId,
-          itemId = _data$itemId === undefined ? '' : _data$itemId,
-          descr = data.descr,
-          _caption = caption + ': ';
+  _proto.render = function render() {
+    var _this$props = this.props,
+        theme = _this$props.theme,
+        isShow = _this$props.isShow,
+        data = _this$props.data,
+        onClose = _this$props.onClose,
+        TS = theme.createStyle(_Dialog["default"]),
+        _data$caption = data.caption,
+        caption = _data$caption === void 0 ? 'Item' : _data$caption,
+        _data$itemId = data.itemId,
+        itemId = _data$itemId === void 0 ? '' : _data$itemId,
+        descr = data.descr,
+        _caption = caption + ': ';
 
-      return _react2.default.createElement(
-        _Comp2.default.ModalDialog,
-        {
-          STYLE: TS.BT,
-          style: (0, _extends3.default)({}, TS.R_DIALOG, S.DIALOG),
-          caption: 'Exception',
-          captionStyle: (0, _extends3.default)({}, TS.BROWSER_CAPTION, S.CAPTION),
-          isShow: isShow,
-          isClosePrimary: true,
-          onClose: onClose
-        },
-        _react2.default.createElement(
-          'div',
-          { style: S.ROW },
-          _react2.default.createElement(
-            'span',
-            { style: S.TITLE },
-            _caption,
-            _react2.default.createElement(
-              'span',
-              {
-                className: CL.ELL,
-                style: S.ITEM_ID,
-                title: itemId
-              },
-              itemId
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: S.ROW },
-          _react2.default.createElement(
-            'p',
-            { style: S.DESCR },
-            descr
-          )
-        )
-      );
-    }
-  }]);
+    return _react["default"].createElement(_Comp["default"].ModalDialog, {
+      STYLE: TS.BT,
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S.DIALOG),
+      caption: "Exception",
+      captionStyle: (0, _extends2["default"])({}, TS.BROWSER_CAPTION, {}, S.CAPTION),
+      isShow: isShow,
+      isClosePrimary: true,
+      onClose: onClose
+    }, _react["default"].createElement("div", {
+      style: S.ROW
+    }, _react["default"].createElement("span", {
+      style: S.TITLE
+    }, _caption, _react["default"].createElement("span", {
+      className: CL.ELL,
+      style: S.ITEM_ID,
+      title: itemId
+    }, itemId))), _react["default"].createElement("div", {
+      style: S.ROW
+    }, _react["default"].createElement("p", {
+      style: S.DESCR
+    }, descr)));
+  };
+
   return AlertDialog2;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+AlertDialog2.defaultProps = {
   data: {}
-}, _temp);
-exports.default = (0, _withTheme2.default)(AlertDialog2);
+};
+
+var _default = (0, _withTheme["default"])(AlertDialog2);
+
+exports["default"] = _default;
 //# sourceMappingURL=AlertDialog2.js.map

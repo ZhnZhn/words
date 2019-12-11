@@ -1,21 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _Atoms = require('../zhn-atoms/Atoms');
-
-var _Atoms2 = _interopRequireDefault(_Atoms);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
 var CL_BT = "bt__watch__bar";
-
 var S = {
   ROOT: {
     marginBottom: 10
@@ -24,7 +18,6 @@ var S = {
     marginLeft: 20
   }
 };
-
 var T = {
   G: "Click to open groups edit dialog",
   L: "Click to open lists edit dialog"
@@ -38,24 +31,23 @@ var EditBar = function EditBar(_ref) {
   if (!isShow) {
     return null;
   }
-  return _react2.default.createElement(
-    'div',
-    { style: S.ROOT },
-    _react2.default.createElement(_Atoms2.default.Button, {
-      caption: 'GROUP',
-      title: T.G,
-      className: CL_BT,
-      onClick: onClickGroup
-    }),
-    _react2.default.createElement(_Atoms2.default.Button, {
-      caption: 'LIST',
-      title: T.L,
-      className: CL_BT,
-      style: S.BT_LIST,
-      onClick: onClickList
-    })
-  );
+
+  return _react["default"].createElement("div", {
+    style: S.ROOT
+  }, _react["default"].createElement(_Atoms["default"].Button, {
+    caption: "GROUP",
+    title: T.G,
+    className: CL_BT,
+    onClick: onClickGroup
+  }), _react["default"].createElement(_Atoms["default"].Button, {
+    caption: "LIST",
+    title: T.L,
+    className: CL_BT,
+    style: S.BT_LIST,
+    onClick: onClickList
+  }));
 };
 
-exports.default = EditBar;
+var _default = EditBar;
+exports["default"] = _default;
 //# sourceMappingURL=EditBar.js.map

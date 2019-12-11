@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/components/has.js"
- ],
- "file": "../../src/components/has.js",
- "names": [
-  "_isTouchable",
-  "document",
-  "documentElement",
-  "has",
-  "HAS_TOUCH"
- ],
- "mappings": ";;;;;;AACA,IAAMA,eAAe,SAAfA,YAAe;AAAA,SAAMC,YACtB,kBAAkBA,SAASC,eADX;AAAA,CAArB;;AAGA,IAAMC,MAAM;AACVC,aAAWJ;AADD,CAAZ;;kBAIeG,G"
-}
+{"version":3,"sources":["../../src/components/has.js"],"names":["_isTouchable","document","documentElement","has","HAS_TOUCH"],"mappings":";;;;;AACA,IAAMA,YAAY,GAAG,SAAfA,YAAe;AAAA,SAAMC,QAAQ,IAC9B,kBAAkBA,QAAQ,CAACC,eADX;AAAA,CAArB;;AAGA,IAAMC,GAAG,GAAG;AACVC,EAAAA,SAAS,EAAEJ,YAAY;AADb,CAAZ;eAIeG,G","sourcesContent":["\r\nconst _isTouchable = () => document\r\n  && 'ontouchstart' in document.documentElement;\r\n\r\nconst has = {\r\n  HAS_TOUCH: _isTouchable(),\r\n};\r\n\r\nexport default has\r\n"],"file":"has.js"}

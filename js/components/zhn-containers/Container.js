@@ -1,28 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _BrowserContainer = require('./BrowserContainer');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _BrowserContainer2 = _interopRequireDefault(_BrowserContainer);
+var _BrowserContainer = _interopRequireDefault(require("./BrowserContainer"));
 
-var _HrzContainer = require('./HrzContainer');
+var _HrzContainer = _interopRequireDefault(require("./HrzContainer"));
 
-var _HrzContainer2 = _interopRequireDefault(_HrzContainer);
-
-var _WrapperContainer = require('./WrapperContainer');
-
-var _WrapperContainer2 = _interopRequireDefault(_WrapperContainer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _WrapperContainer = _interopRequireDefault(require("./WrapperContainer"));
 
 var Container = {
-  Browser: _BrowserContainer2.default,
-  Hrz: _HrzContainer2.default,
-  Wrapper: _WrapperContainer2.default
+  Browser: _BrowserContainer["default"],
+  Hrz: _HrzContainer["default"],
+  Wrapper: _WrapperContainer["default"]
 };
-
-exports.default = Container;
+var _default = Container;
+exports["default"] = _default;
 //# sourceMappingURL=Container.js.map

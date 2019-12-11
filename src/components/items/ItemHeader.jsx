@@ -10,6 +10,10 @@ const T = {
 
 const _fnNoop = () => {};
 
+const _setPrevFocused = element => {
+  document._prevFocusedZhn = element
+};
+
 class ItemHeader extends Component {
 
   /*
@@ -27,6 +31,11 @@ class ItemHeader extends Component {
     onAddToWatch: PropTypes.func
   }
   */
+  constructor(props){
+    super(props)
+    this._refRootNode = React.createRef()
+    this._refBtAdd = React.createRef()
+  }
 
   static defaultProps = {
     onClick: _fnNoop,
@@ -35,13 +44,14 @@ class ItemHeader extends Component {
   }
 
   componentDidMount(){
-    if (this.rootNode) {
-      this.rootNode.focus()
+    if (this._refRootNode.current) {
+      this._refRootNode.current.focus()
     }
   }
 
   _hAddToWatch = (event) => {
     event.stopPropagation()
+    _setPrevFocused(this._refBtAdd.current)
     const { caption, onAddToWatch } = this.props
     onAddToWatch({ caption })
   }
@@ -52,17 +62,18 @@ class ItemHeader extends Component {
   }
 
   _hKeyDown = (event) => {
-    const keyCode = event.keyCode
-        , { onClick, onClose } = this.props;
-    if (keyCode === 13) {
-      onClick()
-    } else if (keyCode === 46) {
-      onClose()
+    const { target, keyCode } = event;
+    if (target === this._refRootNode.current) {
+      const { onClick, onClose } = this.props;
+      if (keyCode === 13) {
+        onClick()
+      } else if (keyCode === 46) {
+        onClose()
+      } else if (keyCode === 65) {
+        this._hAddToWatch(event)
+      }
     }
   }
-
- _refRoot = (node) => this.rootNode = node
-
 
   render(){
     const {
@@ -75,7 +86,7 @@ class ItemHeader extends Component {
       <div
         tabIndex="0"
         role="button"
-        ref={this._refRoot}
+        ref={this._refRootNode}
         className={className}
         style={style}
         onClick={onClick}
@@ -88,6 +99,7 @@ class ItemHeader extends Component {
            {title}
         </span>
         <A.CircleButton
+          ref={this._refBtAdd}
           caption="A"
           title={T.A}
           onClick={this._hAddToWatch}
@@ -102,7 +114,7 @@ class ItemHeader extends Component {
   }
 
   focus() {
-    this.rootNode.focus()
+    this._refRootNode.current.focus()
   }
 }
 

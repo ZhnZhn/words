@@ -1,135 +1,84 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _A = _interopRequireDefault(require("./button/A"));
+
+var _SvgIcons = _interopRequireDefault(require("./svg/SvgIcons"));
+
+var _Browser = _interopRequireDefault(require("./Browser"));
+
+var _BrowserCaption = _interopRequireDefault(require("./BrowserCaption"));
+
+var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
+
+var _FlatButton = _interopRequireDefault(require("./FlatButton"));
+
+var _InputText = _interopRequireDefault(require("./InputText"));
+
+var _Link = _interopRequireDefault(require("./Link"));
+
+var _ListDiv = _interopRequireDefault(require("./ListDiv"));
+
+var _ListSpan = _interopRequireDefault(require("./ListSpan"));
+
+var _MenuItem = _interopRequireDefault(require("./MenuItem"));
+
+var _ModalButton = _interopRequireDefault(require("./ModalButton"));
+
+var _OpenClose = _interopRequireDefault(require("./OpenClose"));
+
+var _OpenClose2 = _interopRequireDefault(require("./OpenClose2"));
+
+var _ProgressLine = _interopRequireDefault(require("./ProgressLine"));
+
+var _RaisedButton = _interopRequireDefault(require("./RaisedButton"));
+
+var _ScrollPane = _interopRequireDefault(require("./ScrollPane"));
+
+var _ShowHide = _interopRequireDefault(require("./ShowHide"));
+
+var _SpinnerLoading = _interopRequireDefault(require("./SpinnerLoading"));
+
+var _SvgClose = _interopRequireDefault(require("./SvgClose"));
+
+var _SvgHrzResize = _interopRequireDefault(require("./SvgHrzResize"));
+
+var _Tab = _interopRequireDefault(require("./Tab"));
+
+var _TabPane = _interopRequireDefault(require("./TabPane"));
+
+var _ValidationMessages = _interopRequireDefault(require("./ValidationMessages"));
+
+var Atoms = (0, _extends2["default"])({}, _A["default"], {}, _SvgIcons["default"], {
+  Browser: _Browser["default"],
+  BrowserCaption: _BrowserCaption["default"],
+  CaptionInput: _CaptionInput["default"],
+  FlatButton: _FlatButton["default"],
+  InputText: _InputText["default"],
+  Link: _Link["default"],
+  ListDiv: _ListDiv["default"],
+  ListSpan: _ListSpan["default"],
+  MenuItem: _MenuItem["default"],
+  ModalButton: _ModalButton["default"],
+  OpenClose: _OpenClose["default"],
+  OpenClose2: _OpenClose2["default"],
+  ProgressLine: _ProgressLine["default"],
+  RaisedButton: _RaisedButton["default"],
+  ScrollPane: _ScrollPane["default"],
+  ShowHide: _ShowHide["default"],
+  SpinnerLoading: _SpinnerLoading["default"],
+  SvgClose: _SvgClose["default"],
+  SvgHrzResize: _SvgHrzResize["default"],
+  Tab: _Tab["default"],
+  TabPane: _TabPane["default"],
+  ValidationMessages: _ValidationMessages["default"]
 });
-
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _A = require('./button/A');
-
-var _A2 = _interopRequireDefault(_A);
-
-var _SvgIcons = require('./svg/SvgIcons');
-
-var _SvgIcons2 = _interopRequireDefault(_SvgIcons);
-
-var _Browser = require('./Browser');
-
-var _Browser2 = _interopRequireDefault(_Browser);
-
-var _BrowserCaption = require('./BrowserCaption');
-
-var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
-
-var _CaptionInput = require('./CaptionInput');
-
-var _CaptionInput2 = _interopRequireDefault(_CaptionInput);
-
-var _FlatButton = require('./FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _InputText = require('./InputText');
-
-var _InputText2 = _interopRequireDefault(_InputText);
-
-var _Link = require('./Link');
-
-var _Link2 = _interopRequireDefault(_Link);
-
-var _ListDiv = require('./ListDiv');
-
-var _ListDiv2 = _interopRequireDefault(_ListDiv);
-
-var _ListSpan = require('./ListSpan');
-
-var _ListSpan2 = _interopRequireDefault(_ListSpan);
-
-var _MenuItem = require('./MenuItem');
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _ModalButton = require('./ModalButton');
-
-var _ModalButton2 = _interopRequireDefault(_ModalButton);
-
-var _OpenClose = require('./OpenClose');
-
-var _OpenClose2 = _interopRequireDefault(_OpenClose);
-
-var _OpenClose3 = require('./OpenClose2');
-
-var _OpenClose4 = _interopRequireDefault(_OpenClose3);
-
-var _ProgressLine = require('./ProgressLine');
-
-var _ProgressLine2 = _interopRequireDefault(_ProgressLine);
-
-var _RaisedButton = require('./RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _ScrollPane = require('./ScrollPane');
-
-var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
-
-var _ShowHide = require('./ShowHide');
-
-var _ShowHide2 = _interopRequireDefault(_ShowHide);
-
-var _SpinnerLoading = require('./SpinnerLoading');
-
-var _SpinnerLoading2 = _interopRequireDefault(_SpinnerLoading);
-
-var _SvgClose = require('./SvgClose');
-
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
-
-var _SvgHrzResize = require('./SvgHrzResize');
-
-var _SvgHrzResize2 = _interopRequireDefault(_SvgHrzResize);
-
-var _Tab = require('./Tab');
-
-var _Tab2 = _interopRequireDefault(_Tab);
-
-var _TabPane = require('./TabPane');
-
-var _TabPane2 = _interopRequireDefault(_TabPane);
-
-var _ValidationMessages = require('./ValidationMessages');
-
-var _ValidationMessages2 = _interopRequireDefault(_ValidationMessages);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Atoms = (0, _extends3.default)({}, _A2.default, _SvgIcons2.default, {
-  Browser: _Browser2.default,
-  BrowserCaption: _BrowserCaption2.default,
-  CaptionInput: _CaptionInput2.default,
-  FlatButton: _FlatButton2.default,
-  InputText: _InputText2.default,
-  Link: _Link2.default,
-  ListDiv: _ListDiv2.default,
-  ListSpan: _ListSpan2.default,
-  MenuItem: _MenuItem2.default,
-  ModalButton: _ModalButton2.default,
-  OpenClose: _OpenClose2.default,
-  OpenClose2: _OpenClose4.default,
-  ProgressLine: _ProgressLine2.default,
-  RaisedButton: _RaisedButton2.default,
-  ScrollPane: _ScrollPane2.default,
-  ShowHide: _ShowHide2.default,
-  SpinnerLoading: _SpinnerLoading2.default,
-  SvgClose: _SvgClose2.default,
-  SvgHrzResize: _SvgHrzResize2.default,
-  Tab: _Tab2.default,
-  TabPane: _TabPane2.default,
-  ValidationMessages: _ValidationMessages2.default
-});
-
-exports.default = Atoms;
+var _default = Atoms;
+exports["default"] = _default;
 //# sourceMappingURL=Atoms.js.map

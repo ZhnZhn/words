@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
+
 var _handleKeyDown = function _handleKeyDown(event) {
   if (event.keyCode === 13) {
     if (this && typeof this._handleLoad === 'function') {
@@ -19,5 +19,6 @@ var withKeyDown = function withKeyDown(target) {
   target.prototype._handleKeyDownWith = _handleKeyDown;
 };
 
-exports.default = withKeyDown;
+var _default = withKeyDown;
+exports["default"] = _default;
 //# sourceMappingURL=withKeyDown.js.map

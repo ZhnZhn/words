@@ -1,54 +1,35 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _reflux = require('reflux');
+var _reflux = _interopRequireDefault(require("reflux"));
 
-var _reflux2 = _interopRequireDefault(_reflux);
+var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _ItemActions = _interopRequireDefault(require("../actions/ItemActions"));
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _WatchActions = _interopRequireDefault(require("../actions/WatchActions"));
 
-var _ItemActions = require('../actions/ItemActions');
+var _ComponentSlice = _interopRequireDefault(require("./ComponentSlice"));
 
-var _ItemActions2 = _interopRequireDefault(_ItemActions);
+var _ItemSlice = _interopRequireDefault(require("./ItemSlice"));
 
-var _WatchActions = require('../actions/WatchActions');
+var _WithLoading = _interopRequireDefault(require("./WithLoading"));
 
-var _WatchActions2 = _interopRequireDefault(_WatchActions);
+var _WatchListSlice = _interopRequireDefault(require("../watch-list/WatchListSlice"));
 
-var _ComponentSlice = require('./ComponentSlice');
-
-var _ComponentSlice2 = _interopRequireDefault(_ComponentSlice);
-
-var _ItemSlice = require('./ItemSlice');
-
-var _ItemSlice2 = _interopRequireDefault(_ItemSlice);
-
-var _WithLoading = require('./WithLoading');
-
-var _WithLoading2 = _interopRequireDefault(_WithLoading);
-
-var _WatchListSlice = require('../watch-list/WatchListSlice');
-
-var _WatchListSlice2 = _interopRequireDefault(_WatchListSlice);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Store = _reflux2.default.createStore((0, _extends3.default)({
-  listenables: [_ComponentActions2.default, _ItemActions2.default, _WatchActions2.default],
-
+var Store = _reflux["default"].createStore((0, _extends2["default"])({
+  listenables: [_ComponentActions["default"], _ItemActions["default"], _WatchActions["default"]],
   init: function init() {
     this.initWatchList();
   }
-}, _ComponentSlice2.default, _ItemSlice2.default, _WatchListSlice2.default, _WithLoading2.default));
+}, _ComponentSlice["default"], {}, _ItemSlice["default"], {}, _WatchListSlice["default"], {}, _WithLoading["default"]));
 
-exports.default = Store;
+var _default = Store;
+exports["default"] = _default;
 //# sourceMappingURL=Store.js.map

@@ -1,193 +1,137 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _react = _interopRequireWildcard(require("react"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _GroupAddPane = _interopRequireDefault(require("./GroupAddPane"));
 
-var _react = require('react');
+var _GroupEditPane = _interopRequireDefault(require("./GroupEditPane"));
 
-var _react2 = _interopRequireDefault(_react);
+var _GroupDeletePane = _interopRequireDefault(require("./GroupDeletePane"));
 
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('../dialogs/Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _WatchActions = require('../../flux/actions/WatchActions');
-
-var _WatchActions2 = _interopRequireDefault(_WatchActions);
-
-var _MsgWatch = require('../../constants/MsgWatch');
-
-var _MsgWatch2 = _interopRequireDefault(_MsgWatch);
-
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
-
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-var _Atoms = require('../zhn-atoms/Atoms');
-
-var _Atoms2 = _interopRequireDefault(_Atoms);
-
-var _GroupAddPane = require('./GroupAddPane');
-
-var _GroupAddPane2 = _interopRequireDefault(_GroupAddPane);
-
-var _GroupEditPane = require('./GroupEditPane');
-
-var _GroupEditPane2 = _interopRequireDefault(_GroupEditPane);
-
-var _GroupDeletePane = require('./GroupDeletePane');
-
-var _GroupDeletePane2 = _interopRequireDefault(_GroupDeletePane);
-
-var _Dialog3 = require('./Dialog.Style');
-
-var _Dialog4 = _interopRequireDefault(_Dialog3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Dialog2 = _interopRequireDefault(require("./Dialog.Style"));
 
 //import PropTypes from "prop-types";
-
-var addGroup = _WatchActions2.default.addGroup,
-    renameGroup = _WatchActions2.default.renameGroup,
-    deleteGroup = _WatchActions2.default.deleteGroup;
+var addGroup = _WatchActions["default"].addGroup,
+    renameGroup = _WatchActions["default"].renameGroup,
+    deleteGroup = _WatchActions["default"].deleteGroup;
 var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     EDIT_WATCH_FAILED = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     ADD_GROUP = _WatchActions.WatchActionTypes.ADD_GROUP,
     RENAME_GROUP = _WatchActions.WatchActionTypes.RENAME_GROUP,
     DELETE_GROUP = _WatchActions.WatchActionTypes.DELETE_GROUP;
-var notSelected = _MsgWatch2.default.notSelected,
-    emptyName = _MsgWatch2.default.emptyName;
+var notSelected = _MsgWatch["default"].notSelected,
+    emptyName = _MsgWatch["default"].emptyName; //const TAB_PANE_WIDTH = "300px";
 
-//const TAB_PANE_WIDTH = "300px";
-
-
-var EditGroupDialog = function (_Component) {
-  (0, _inherits3.default)(EditGroupDialog, _Component);
+var EditGroupDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(EditGroupDialog, _Component);
 
   function EditGroupDialog() {
-    (0, _classCallCheck3.default)(this, EditGroupDialog);
-    return (0, _possibleConstructorReturn3.default)(this, (EditGroupDialog.__proto__ || Object.getPrototypeOf(EditGroupDialog)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(EditGroupDialog, [{
-    key: 'shouldComponentUpdate',
+  var _proto = EditGroupDialog.prototype;
 
-    /*
-    static propTypes = {
-      isShow: PropTypes.bool,
-      store: PropTypes.object,
-      onClose: PropTypes.func
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    store: PropTypes.object,
+    onClose: PropTypes.func
+  }
+  */
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-    */
 
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _React$createElement;
+    return true;
+  };
 
-      var _props = this.props,
-          theme = _props.theme,
-          isShow = _props.isShow,
-          store = _props.store,
-          onClose = _props.onClose,
-          TS = theme.createStyle(_Dialog2.default);
+  _proto.render = function render() {
+    var _React$createElement;
 
+    var _this$props = this.props,
+        theme = _this$props.theme,
+        isShow = _this$props.isShow,
+        store = _this$props.store,
+        onClose = _this$props.onClose,
+        TS = theme.createStyle(_Dialog["default"]);
+    return _react["default"].createElement(_ModalDialog["default"] //STYLE={TS.BT}
+    , {
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, _Dialog2["default"].DIALOG),
+      captionStyle: TS.BROWSER_CAPTION,
+      caption: "Watch Groups Edit",
+      isShow: isShow,
+      isWithButton: false,
+      onClose: onClose
+    }, _react["default"].createElement(_Atoms["default"].TabPane, {
+      width: _Dialog2["default"].TAB_PANE_WIDTH,
+      isUpdateInit: true
+    }, _react["default"].createElement(_Atoms["default"].Tab, {
+      title: "Create",
+      style: TS.TAB
+    }, _react["default"].createElement(_GroupAddPane["default"], {
+      store: store,
+      inputStyle: TS.INPUT,
+      btStyle: TS.BT.FLAT_ROOT,
+      actionCompleted: EDIT_WATCH_COMPLETED,
+      actionFailed: EDIT_WATCH_FAILED,
+      forActionType: ADD_GROUP,
+      msgOnIsEmptyName: emptyName,
+      onCreate: addGroup,
+      onClose: onClose
+    })), _react["default"].createElement(_Atoms["default"].Tab, {
+      title: "Rename",
+      style: TS.TAB
+    }, _react["default"].createElement(_GroupEditPane["default"], {
+      store: store,
+      inputStyle: TS.INPUT,
+      btStyle: TS.BT.FLAT_ROOT,
+      actionCompleted: EDIT_WATCH_COMPLETED,
+      actionFailed: EDIT_WATCH_FAILED,
+      forActionType: RENAME_GROUP,
+      msgOnNotSelect: notSelected,
+      msgOnIsEmptyName: emptyName,
+      onRename: renameGroup,
+      onClose: onClose
+    })), _react["default"].createElement(_Atoms["default"].Tab, {
+      title: "Delete",
+      style: TS.TAB
+    }, _react["default"].createElement(_GroupDeletePane["default"], (_React$createElement = {
+      store: store,
+      inputStyle: TS.INPUT,
+      btStyle: TS.BT.FLAT_ROOT
+    }, _React$createElement["store"] = store, _React$createElement.actionCompleted = EDIT_WATCH_COMPLETED, _React$createElement.forActionType = DELETE_GROUP, _React$createElement.msgOnNotSelect = notSelected, _React$createElement.onDelete = deleteGroup, _React$createElement.onClose = onClose, _React$createElement)))));
+  };
 
-      return _react2.default.createElement(
-        _ModalDialog2.default
-        //STYLE={TS.BT}
-        ,
-        { style: (0, _extends3.default)({}, TS.R_DIALOG, _Dialog4.default.DIALOG),
-          captionStyle: TS.BROWSER_CAPTION,
-          caption: 'Watch Groups Edit',
-          isShow: isShow,
-          isWithButton: false,
-          onClose: onClose
-        },
-        _react2.default.createElement(
-          _Atoms2.default.TabPane,
-          { width: _Dialog4.default.TAB_PANE_WIDTH, isUpdateInit: true },
-          _react2.default.createElement(
-            _Atoms2.default.Tab,
-            { title: 'Create', style: TS.TAB },
-            _react2.default.createElement(_GroupAddPane2.default, {
-              store: store,
-              inputStyle: TS.INPUT,
-              btStyle: TS.BT.FLAT_ROOT,
-              actionCompleted: EDIT_WATCH_COMPLETED,
-              actionFailed: EDIT_WATCH_FAILED,
-              forActionType: ADD_GROUP,
-              msgOnIsEmptyName: emptyName,
-              onCreate: addGroup,
-              onClose: onClose
-            })
-          ),
-          _react2.default.createElement(
-            _Atoms2.default.Tab,
-            { title: 'Rename', style: TS.TAB },
-            _react2.default.createElement(_GroupEditPane2.default, {
-              store: store,
-              inputStyle: TS.INPUT,
-              btStyle: TS.BT.FLAT_ROOT,
-              actionCompleted: EDIT_WATCH_COMPLETED,
-              actionFailed: EDIT_WATCH_FAILED,
-              forActionType: RENAME_GROUP,
-              msgOnNotSelect: notSelected,
-              msgOnIsEmptyName: emptyName,
-              onRename: renameGroup,
-              onClose: onClose
-            })
-          ),
-          _react2.default.createElement(
-            _Atoms2.default.Tab,
-            { title: 'Delete', style: TS.TAB },
-            _react2.default.createElement(_GroupDeletePane2.default, (_React$createElement = {
-              store: store,
-              inputStyle: TS.INPUT,
-              btStyle: TS.BT.FLAT_ROOT
-            }, (0, _defineProperty3.default)(_React$createElement, 'store', store), (0, _defineProperty3.default)(_React$createElement, 'actionCompleted', EDIT_WATCH_COMPLETED), (0, _defineProperty3.default)(_React$createElement, 'forActionType', DELETE_GROUP), (0, _defineProperty3.default)(_React$createElement, 'msgOnNotSelect', notSelected), (0, _defineProperty3.default)(_React$createElement, 'onDelete', deleteGroup), (0, _defineProperty3.default)(_React$createElement, 'onClose', onClose), _React$createElement))
-          )
-        )
-      );
-    }
-  }]);
   return EditGroupDialog;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(EditGroupDialog);
+var _default = (0, _withTheme["default"])(EditGroupDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=EditGroupDialog.js.map

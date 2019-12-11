@@ -1,27 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _withProps = require('../hoc/withProps');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _withProps2 = _interopRequireDefault(_withProps);
+var _withProps = _interopRequireDefault(require("../hoc/withProps"));
 
-var _Link = require('../zhn-atoms/Link');
+var _Link = _interopRequireDefault(require("../zhn-atoms/Link"));
 
-var _Link2 = _interopRequireDefault(_Link);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var WordsApi = (0, _withProps2.default)({
+var WordsApi = (0, _withProps["default"])({
   title: "WordsApi",
   href: "https://www.wordsapi.com/"
-})(_Link2.default);
-
+})(_Link["default"]);
 var Link = {
   WordsApi: WordsApi
 };
-
-exports.default = Link;
+var _default = Link;
+exports["default"] = _default;
 //# sourceMappingURL=Links.js.map

@@ -1,14 +1,12 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var Msg = {
   ITEM_EXISTED: function ITEM_EXISTED() {
     return 'Item in selected List already existed';
   }
 };
-
-exports.default = Msg;
+var _default = Msg;
+exports["default"] = _default;
 //# sourceMappingURL=Msg.js.map

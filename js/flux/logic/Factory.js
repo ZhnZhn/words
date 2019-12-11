@@ -1,51 +1,35 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react = require('react');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _throttle = require('../../utils/throttle');
+var _throttle = _interopRequireDefault(require("../../utils/throttle"));
 
-var _throttle2 = _interopRequireDefault(_throttle);
+var _ComponentActions = _interopRequireWildcard(require("../actions/ComponentActions"));
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _ItemActions = _interopRequireWildcard(require("../actions/ItemActions"));
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
 
-var _ItemActions = require('../actions/ItemActions');
+var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterPane"));
 
-var _ItemActions2 = _interopRequireDefault(_ItemActions);
+var _About = _interopRequireDefault(require("../../components/about/About"));
 
-var _RouterDialog = require('../../components/dialogs/RouterDialog');
-
-var _RouterDialog2 = _interopRequireDefault(_RouterDialog);
-
-var _RouterPane = require('../../components/panes/RouterPane');
-
-var _RouterPane2 = _interopRequireDefault(_RouterPane);
-
-var _About = require('../../components/about/About');
-
-var _About2 = _interopRequireDefault(_About);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var showPane = _ComponentActions2.default.showPane,
-    closePane = _ComponentActions2.default.closePane,
-    showModalDialog = _ComponentActions2.default.showModalDialog;
-
+var showPane = _ComponentActions["default"].showPane,
+    closePane = _ComponentActions["default"].closePane,
+    showModalDialog = _ComponentActions["default"].showModalDialog;
 
 var _addToWatch = showModalDialog.bind(null, 'AW');
 
-var _loadItem = (0, _throttle2.default)(_ItemActions2.default.loadItem, 2500, {
+var _loadItem = (0, _throttle["default"])(_ItemActions["default"].loadItem, 2500, {
   trailing: false
 });
 
@@ -54,30 +38,29 @@ var Factory = {
     var type = itemConf.type,
         dialogType = itemConf.dialogType,
         dialogProps = itemConf.dialogProps,
-        El = _RouterDialog2.default.getElement(dialogType);
+        El = _RouterDialog["default"].getElement(dialogType);
 
-    return _react2.default.createElement(El, (0, _extends3.default)({
+    return _react["default"].createElement(El, (0, _extends2["default"])({
       key: type,
       type: type,
       itemConf: itemConf
     }, dialogProps, {
       onShow: showPane.bind(null, itemConf),
-      onLoad: _loadItem
-      //onLoad: loadItem
+      onLoad: _loadItem //onLoad: loadItem
+
     }));
   },
-
   crPane: function crPane(itemConf, store) {
     var type = itemConf.type,
         paneType = itemConf.paneType,
         paneCaption = itemConf.paneCaption,
         paneId = itemConf.paneId,
-        _RouterPane$getElemen = _RouterPane2.default.getElement(paneType),
+        _RouterPane$getElemen = _RouterPane["default"].getElement(paneType),
         Pane = _RouterPane$getElemen.Pane,
         Input = _RouterPane$getElemen.Input,
         Item = _RouterPane$getElemen.Item;
 
-    return _react2.default.createElement(Pane, {
+    return _react["default"].createElement(Pane, {
       key: type,
       id: paneId,
       itemConf: itemConf,
@@ -89,25 +72,25 @@ var Factory = {
       showAction: _ComponentActions.T.SHOW_PANE,
       toggleAction: _ComponentActions.T.TOGGLE_PANE,
       watchAction: _ComponentActions.T.CLICK_WATCH_ITEM,
-      onRemoveItems: _ItemActions2.default.removeItems.bind(null, paneId),
-      onRemoveUnder: _ItemActions2.default.removeItemsUnder,
-      onCloseItem: _ItemActions2.default.removeItem,
+      onRemoveItems: _ItemActions["default"].removeItems.bind(null, paneId),
+      onRemoveUnder: _ItemActions["default"].removeItemsUnder,
+      onCloseItem: _ItemActions["default"].removeItem,
       onClose: closePane.bind(null, itemConf),
       //onLoad: ItemActions.loadItem
       onLoad: _loadItem,
       onAddToWatch: _addToWatch
     });
   },
-
   crAbout: function crAbout(store) {
-    return _react2.default.createElement(_About2.default, {
-      key: 'About', id: 'About',
+    return _react["default"].createElement(_About["default"], {
+      key: 'About',
+      id: 'About',
       showAction: _ComponentActions.T.SHOW_ABOUT,
       closeAction: _ComponentActions.T.CLOSE_ABOUT,
       store: store
     });
   }
 };
-
-exports.default = Factory;
+var _default = Factory;
+exports["default"] = _default;
 //# sourceMappingURL=Factory.js.map

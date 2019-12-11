@@ -33,6 +33,14 @@ const S2 = {
   }
 };
 
+const _getPrevFocusedElement = () => {
+  const _prevFocused = document._prevFocusedZhn;
+  if (_prevFocused) {
+    return document._prevFocusedZhn = void 0, _prevFocused;
+  }
+  return document.activeElement;
+};
+
 const _hasFocusFn = ref =>
   typeof ((ref || {}).current || {}).focus === 'function';
 
@@ -53,7 +61,8 @@ const ModalDialog = ({
   const _refRootDiv = useRef()
   , _refPrevFocused = useRef()
   , _hKeyDown = useCallback((event) => {
-       if (_refRootDiv && document.activeElement === _refRootDiv.current
+       if (_refRootDiv
+         && event.target === _refRootDiv.current
          && event.keyCode === 27) {
            onClose(event)
        }
@@ -69,8 +78,10 @@ const ModalDialog = ({
       : className;
 
   useEffect(() => {
-    _refPrevFocused.current = document.activeElement
-  }, [])
+    if(isShow) {
+      _refPrevFocused.current = _getPrevFocusedElement()
+    }
+  }, [isShow])
   useEffect(() => {
     if (isShow && _hasFocusFn(_refRootDiv)) {
       _refRootDiv.current.focus()

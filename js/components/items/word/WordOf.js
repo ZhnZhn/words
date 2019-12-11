@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _Comp = require('../../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../../Comp"));
 
 var S = {
   FILL_OPEN: "#80c040",
@@ -45,7 +40,7 @@ var WordOf = function WordOf(_ref) {
   var caption = _ref.caption,
       items = _ref.items,
       _ref$isCount = _ref.isCount,
-      isCount = _ref$isCount === undefined ? false : _ref$isCount,
+      isCount = _ref$isCount === void 0 ? false : _ref$isCount,
       fillOpen = _ref.fillOpen,
       captionStyle = _ref.captionStyle,
       childrenStyle = _ref.childrenStyle;
@@ -53,25 +48,24 @@ var WordOf = function WordOf(_ref) {
   if (!_isItems(items)) {
     return null;
   }
-  var _caption = isCount ? caption + ' (' + items.length + ')' : caption;
-  return _react2.default.createElement(
-    _Comp2.default.OpenClose,
-    {
-      isClose: true,
-      caption: _caption,
-      style: S.OC,
-      fillOpen: S.FILL_OPEN,
-      captionStyle: S.OC_CAPTION,
-      childrenStyle: S.OC_CHILDREN
-    },
-    _react2.default.createElement(_Comp2.default.ListSpan, {
-      caption: '',
-      rootStyle: S.LIST,
-      captionStyle: S.LIST_CAPTION,
-      items: items
-    })
-  );
+
+  var _caption = isCount ? caption + " (" + items.length + ")" : caption;
+
+  return _react["default"].createElement(_Comp["default"].OpenClose, {
+    isClose: true,
+    caption: _caption,
+    style: S.OC,
+    fillOpen: S.FILL_OPEN,
+    captionStyle: S.OC_CAPTION,
+    childrenStyle: S.OC_CHILDREN
+  }, _react["default"].createElement(_Comp["default"].ListSpan, {
+    caption: "",
+    rootStyle: S.LIST,
+    captionStyle: S.LIST_CAPTION,
+    items: items
+  }));
 };
 
-exports.default = WordOf;
+var _default = WordOf;
+exports["default"] = _default;
 //# sourceMappingURL=WordOf.js.map

@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/watch-browser/Dialog.Style.js"
- ],
- "file": "../../../src/components/watch-browser/Dialog.Style.js",
- "names": [
-  "S",
-  "TAB_PANE_WIDTH",
-  "DIALOG",
-  "left"
- ],
- "mappings": ";;;;;;AACA,IAAMA,IAAI;AACRC,kBAAgB,OADR;AAERC,UAAQ;AACNC,UAAM;AADA;AAFA,CAAV;;kBAOeH,C"
-}
+{"version":3,"sources":["../../../src/components/watch-browser/Dialog.Style.js"],"names":["S","TAB_PANE_WIDTH","DIALOG","left"],"mappings":";;;;AACA,IAAMA,CAAC,GAAG;AACRC,EAAAA,cAAc,EAAE,OADR;AAERC,EAAAA,MAAM,EAAE;AACNC,IAAAA,IAAI,EAAE;AADA;AAFA,CAAV;eAOeH,C","sourcesContent":["\r\nconst S = {\r\n  TAB_PANE_WIDTH: \"300px\",\r\n  DIALOG: {\r\n    left: 'calc(50vw - 152px)'\r\n  }\r\n};\r\n\r\nexport default S\r\n"],"file":"Dialog.Style.js"}

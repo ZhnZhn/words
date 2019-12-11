@@ -1,76 +1,56 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _MenuBrowserStyle = _interopRequireDefault(require("../styles/MenuBrowserStyle"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _DynamicMenuBrowser = _interopRequireDefault(require("../zhn-moleculs/DynamicMenuBrowser"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _MenuBrowserStyle = require('../styles/MenuBrowserStyle');
-
-var _MenuBrowserStyle2 = _interopRequireDefault(_MenuBrowserStyle);
-
-var _DynamicMenuBrowser = require('../zhn-moleculs/DynamicMenuBrowser');
-
-var _DynamicMenuBrowser2 = _interopRequireDefault(_DynamicMenuBrowser);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var MenuBrowser = function (_Component) {
-  (0, _inherits3.default)(MenuBrowser, _Component);
+var MenuBrowser =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(MenuBrowser, _Component);
 
   function MenuBrowser() {
-    (0, _classCallCheck3.default)(this, MenuBrowser);
-    return (0, _possibleConstructorReturn3.default)(this, (MenuBrowser.__proto__ || Object.getPrototypeOf(MenuBrowser)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(MenuBrowser, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          theme = _props.theme,
-          store = _props.store,
-          showAction = _props.showAction,
-          browserId = _props.browserId,
-          onClickItem = _props.onClickItem,
-          TS = theme.createStyle(_MenuBrowserStyle2.default);
+  var _proto = MenuBrowser.prototype;
 
+  _proto.render = function render() {
+    var _this$props = this.props,
+        theme = _this$props.theme,
+        store = _this$props.store,
+        showAction = _this$props.showAction,
+        browserId = _this$props.browserId,
+        onClickItem = _this$props.onClickItem,
+        TS = theme.createStyle(_MenuBrowserStyle["default"]);
+    return _react["default"].createElement(_DynamicMenuBrowser["default"], {
+      styleConfig: TS,
+      store: store,
+      showAction: showAction,
+      browserId: browserId,
+      caption: "Words Sources",
+      url: "data/words-source-menu.json",
+      onClickItem: onClickItem
+    });
+  };
 
-      return _react2.default.createElement(_DynamicMenuBrowser2.default, {
-        styleConfig: TS,
-        store: store,
-        showAction: showAction,
-        browserId: browserId,
-        caption: 'Words Sources',
-        url: 'data/words-source-menu.json',
-        onClickItem: onClickItem
-      });
-    }
-  }]);
   return MenuBrowser;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(MenuBrowser);
+var _default = (0, _withTheme["default"])(MenuBrowser);
+
+exports["default"] = _default;
 //# sourceMappingURL=MenuBrowser.js.map

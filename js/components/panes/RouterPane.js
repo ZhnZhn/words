@@ -1,45 +1,35 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _PaneType = require('./PaneType1');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _PaneType2 = _interopRequireDefault(_PaneType);
+var _PaneType = _interopRequireDefault(require("./PaneType1"));
 
-var _Word = require('../items/word/Word');
+var _Word = _interopRequireDefault(require("../items/word/Word"));
 
-var _Word2 = _interopRequireDefault(_Word);
+var _InputWord = _interopRequireDefault(require("./InputWord"));
 
-var _InputWord = require('./InputWord');
-
-var _InputWord2 = _interopRequireDefault(_InputWord);
-
-var _InputRandom = require('./InputRandom');
-
-var _InputRandom2 = _interopRequireDefault(_InputRandom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _InputRandom = _interopRequireDefault(require("./InputRandom"));
 
 var R = {
   DF: {
-    Pane: _PaneType2.default,
-    Input: _InputWord2.default,
-    Item: _Word2.default
+    Pane: _PaneType["default"],
+    Input: _InputWord["default"],
+    Item: _Word["default"]
   },
   R: {
-    Pane: _PaneType2.default,
-    Input: _InputRandom2.default,
-    Item: _Word2.default
+    Pane: _PaneType["default"],
+    Input: _InputRandom["default"],
+    Item: _Word["default"]
   }
 };
-
 var RouterPane = {
   getElement: function getElement(type) {
     return R[type] || R.DF;
   }
 };
-
-exports.default = RouterPane;
+var _default = RouterPane;
+exports["default"] = _default;
 //# sourceMappingURL=RouterPane.js.map

@@ -1,23 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _EditGroupDialog = require('./EditGroupDialog');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _EditGroupDialog2 = _interopRequireDefault(_EditGroupDialog);
+var _EditGroupDialog = _interopRequireDefault(require("./EditGroupDialog"));
 
-var _EditListDialog = require('./EditListDialog');
-
-var _EditListDialog2 = _interopRequireDefault(_EditListDialog);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _EditListDialog = _interopRequireDefault(require("./EditListDialog"));
 
 var ModalDialogs = {
-  EditGroup: _EditGroupDialog2.default,
-  EditList: _EditListDialog2.default
+  EditGroup: _EditGroupDialog["default"],
+  EditList: _EditListDialog["default"]
 };
-
-exports.default = ModalDialogs;
+var _default = ModalDialogs;
+exports["default"] = _default;
 //# sourceMappingURL=ModalDialogs.js.map

@@ -1,65 +1,53 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _localforage = require('localforage');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _localforage2 = _interopRequireDefault(_localforage);
+var _localforage = _interopRequireDefault(require("localforage"));
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _ComponentActions = require("../actions/ComponentActions");
 
-var _WatchActions = require('../actions/WatchActions');
+var _WatchActions = require("../actions/WatchActions");
 
-var _WatchDefault = require('../../constants/WatchDefault');
+var _WatchDefault = _interopRequireDefault(require("../../constants/WatchDefault"));
 
-var _WatchDefault2 = _interopRequireDefault(_WatchDefault);
+var _Type = require("../../constants/Type");
 
-var _Type = require('../../constants/Type');
+var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
 
-var _MsgWatch = require('../../constants/MsgWatch');
-
-var _MsgWatch2 = _interopRequireDefault(_MsgWatch);
-
-var _Logic = require('./Logic');
-
-var _Logic2 = _interopRequireDefault(_Logic);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Logic = _interopRequireDefault(require("./Logic"));
 
 var STORAGE_KEY = 'WATCH_LIST_WORDS',
     DIALOG_CAPTION = 'Watch List:';
-
-var WATCH_SAVED = _MsgWatch2.default.WATCH_SAVED,
-    WATCH_PREV = _MsgWatch2.default.WATCH_PREV;
-var findGroup = _Logic2.default.findGroup,
-    addItem = _Logic2.default.addItem,
-    removeItem = _Logic2.default.removeItem,
-    dragDropItem = _Logic2.default.dragDropItem,
-    dragDropList = _Logic2.default.dragDropList,
-    dragDropGroup = _Logic2.default.dragDropGroup,
-    addGroup = _Logic2.default.addGroup,
-    renameGroup = _Logic2.default.renameGroup,
-    deleteGroup = _Logic2.default.deleteGroup,
-    createList = _Logic2.default.createList,
-    renameList = _Logic2.default.renameList,
-    deleteList = _Logic2.default.deleteList;
-
-
+var WATCH_SAVED = _MsgWatch["default"].WATCH_SAVED,
+    WATCH_PREV = _MsgWatch["default"].WATCH_PREV;
+var findGroup = _Logic["default"].findGroup,
+    addItem = _Logic["default"].addItem,
+    removeItem = _Logic["default"].removeItem,
+    dragDropItem = _Logic["default"].dragDropItem,
+    dragDropList = _Logic["default"].dragDropList,
+    dragDropGroup = _Logic["default"].dragDropGroup,
+    addGroup = _Logic["default"].addGroup,
+    renameGroup = _Logic["default"].renameGroup,
+    deleteGroup = _Logic["default"].deleteGroup,
+    createList = _Logic["default"].createList,
+    renameList = _Logic["default"].renameList,
+    deleteList = _Logic["default"].deleteList;
 var WatchListSlice = {
-
-  watchList: _WatchDefault2.default,
+  watchList: _WatchDefault["default"],
   isWatchEdited: false,
-
   initWatchList: function initWatchList() {
     var _this = this;
 
-    _localforage2.default.getItem(STORAGE_KEY).then(function (value) {
-      _this.watchList = value || _WatchDefault2.default;
+    _localforage["default"].getItem(STORAGE_KEY).then(function (value) {
+      _this.watchList = value || _WatchDefault["default"];
+
       _this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, _this.watchList);
-    }).catch(function () {
-      _this.watchList = _WatchDefault2.default;
+    })["catch"](function () {
+      _this.watchList = _WatchDefault["default"];
+
       _this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, _this.watchList);
     });
   },
@@ -71,9 +59,11 @@ var WatchListSlice = {
   },
   getWatchListsByGroup: function getWatchListsByGroup(groupCaption) {
     var group = findGroup(this.watchList, groupCaption);
+
     if (!group) {
       return [];
     }
+
     return group.lists;
   },
   onAddWatchItem: function onAddWatchItem(item) {
@@ -105,13 +95,14 @@ var WatchListSlice = {
     var _this2 = this;
 
     if (this.isWatchEdited) {
-      _localforage2.default.setItem(STORAGE_KEY, this.watchList).then(function () {
+      _localforage["default"].setItem(STORAGE_KEY, this.watchList).then(function () {
         _this2.isWatchEdited = false;
+
         _this2.onShowModalDialog(_Type.ModalDialog.MSG, {
           caption: DIALOG_CAPTION,
           descr: WATCH_SAVED
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         /*eslint-disable no-console*/
         console.warn(error);
         /*eslint-enable no-console*/
@@ -127,7 +118,9 @@ var WatchListSlice = {
     if (result.isDone) {
       this.isWatchEdited = true;
       this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, this.watchList);
-      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, { forActionType: forActionType });
+      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, {
+        forActionType: forActionType
+      });
     } else {
       this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_FAILED, {
         messages: [result.message],
@@ -154,6 +147,6 @@ var WatchListSlice = {
     this._onEditWatch(deleteList(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_LIST);
   }
 };
-
-exports.default = WatchListSlice;
+var _default = WatchListSlice;
+exports["default"] = _default;
 //# sourceMappingURL=WatchListSlice.js.map

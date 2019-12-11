@@ -1,93 +1,69 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _MenuBrowser = _interopRequireDefault(require("../zhn-browsers/MenuBrowser"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _WatchBrowser = _interopRequireDefault(require("../watch-browser/WatchBrowser"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _MenuBrowser = require('../zhn-browsers/MenuBrowser');
-
-var _MenuBrowser2 = _interopRequireDefault(_MenuBrowser);
-
-var _WatchBrowser = require('../watch-browser/WatchBrowser');
-
-var _WatchBrowser2 = _interopRequireDefault(_WatchBrowser);
-
-var _DialogContainer = require('./DialogContainer');
-
-var _DialogContainer2 = _interopRequireDefault(_DialogContainer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
 
 var CL_ROOT = "hrz-container";
 
-var BrowserContainer = function (_Component) {
-  (0, _inherits3.default)(BrowserContainer, _Component);
+var BrowserContainer =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(BrowserContainer, _Component);
 
   function BrowserContainer() {
-    (0, _classCallCheck3.default)(this, BrowserContainer);
-    return (0, _possibleConstructorReturn3.default)(this, (BrowserContainer.__proto__ || Object.getPrototypeOf(BrowserContainer)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(BrowserContainer, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          store = _props.store,
-          browserId = _props.browserId,
-          showBrowserAction = _props.showBrowserAction,
-          showDialogAction = _props.showDialogAction,
-          onClickItem = _props.onClickItem,
-          updateWatchAction = _props.updateWatchAction,
-          onClickWatchItem = _props.onClickWatchItem;
+  var _proto = BrowserContainer.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        { className: CL_ROOT },
-        _react2.default.createElement(_MenuBrowser2.default, {
-          store: store,
-          browserId: browserId,
-          showAction: showBrowserAction,
-          onClickItem: onClickItem
-        }),
-        _react2.default.createElement(_WatchBrowser2.default, {
-          caption: 'Watch Words',
-          store: store,
-          isInitShow: false,
-          browserType: 'WATCH_ID',
-          showAction: showBrowserAction,
-          updateAction: updateWatchAction,
-          onClickItem: onClickWatchItem
-        }),
-        _react2.default.createElement(_DialogContainer2.default, {
-          maxDialog: 3,
-          store: store,
-          showAction: showDialogAction
-        })
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        store = _this$props.store,
+        browserId = _this$props.browserId,
+        showBrowserAction = _this$props.showBrowserAction,
+        showDialogAction = _this$props.showDialogAction,
+        onClickItem = _this$props.onClickItem,
+        updateWatchAction = _this$props.updateWatchAction,
+        onClickWatchItem = _this$props.onClickWatchItem;
+    return _react["default"].createElement("div", {
+      className: CL_ROOT
+    }, _react["default"].createElement(_MenuBrowser["default"], {
+      store: store,
+      browserId: browserId,
+      showAction: showBrowserAction,
+      onClickItem: onClickItem
+    }), _react["default"].createElement(_WatchBrowser["default"], {
+      caption: "Watch Words",
+      store: store,
+      isInitShow: false,
+      browserType: "WATCH_ID",
+      showAction: showBrowserAction,
+      updateAction: updateWatchAction,
+      onClickItem: onClickWatchItem
+    }), _react["default"].createElement(_DialogContainer["default"], {
+      maxDialog: 3,
+      store: store,
+      showAction: showDialogAction
+    }));
+  };
+
   return BrowserContainer;
 }(_react.Component);
 
-exports.default = BrowserContainer;
+var _default = BrowserContainer;
+exports["default"] = _default;
 //# sourceMappingURL=BrowserContainer.js.map

@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/watch-browser/ModalDialogs.js"
- ],
- "file": "../../../src/components/watch-browser/ModalDialogs.js",
- "names": [
-  "ModalDialogs",
-  "EditGroup",
-  "EditList"
- ],
- "mappings": ";;;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,eAAe;AACnBC,sCADmB;AAEnBC;AAFmB,CAArB;;kBAKeF,Y"
-}
+{"version":3,"sources":["../../../src/components/watch-browser/ModalDialogs.js"],"names":["ModalDialogs","EditGroup","EditList"],"mappings":";;;;;;;AACA;;AACA;;AAEA,IAAMA,YAAY,GAAG;AACnBC,EAAAA,SAAS,EAATA,2BADmB;AAEnBC,EAAAA,QAAQ,EAARA;AAFmB,CAArB;eAKeF,Y","sourcesContent":["\r\nimport EditGroup from './EditGroupDialog';\r\nimport EditList from './EditListDialog';\r\n\r\nconst ModalDialogs = {\r\n  EditGroup,\r\n  EditList\r\n};\r\n\r\nexport default ModalDialogs\r\n"],"file":"ModalDialogs.js"}

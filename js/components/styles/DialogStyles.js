@@ -1,8 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 var DialogStyles = {
   //Dialogs, DatesFragments
   rowDiv: {
@@ -28,7 +27,6 @@ var DialogStyles = {
     fontWeight: 'bold',
     userSelect: 'none'
   },
-
   //ValidationMessagesFragment
   validationContainer: {
     paddingLeft: '10px',
@@ -44,9 +42,10 @@ var DialogStyles = {
     textAlign: 'center',
     marginRight: '5px'
   },
-
-  crRowLabelStyle: function crRowLabelStyle() {
-    var isShowLabels = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  crRowLabelStyle: function crRowLabelStyle(isShowLabels) {
+    if (isShowLabels === void 0) {
+      isShowLabels = true;
+    }
 
     /*
     const rowStyle = isShowLabels
@@ -62,8 +61,7 @@ var DialogStyles = {
       labelStyle: DialogStyles.labelSpan
     };
   }
-
 };
-
-exports.default = DialogStyles;
+var _default = DialogStyles;
+exports["default"] = _default;
 //# sourceMappingURL=DialogStyles.js.map

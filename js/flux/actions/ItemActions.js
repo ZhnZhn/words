@@ -1,80 +1,79 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.T = undefined;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+exports.__esModule = true;
+exports["default"] = exports.T = void 0;
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _reflux = _interopRequireDefault(require("reflux"));
+
+var _Store = _interopRequireDefault(require("../stores/Store"));
+
+var _RouterApiConf = _interopRequireDefault(require("../logic/RouterApiConf"));
+
+var _loadItem = _interopRequireDefault(require("../logic/loadItem"));
 
 var _Reflux$createActions;
 
-var _reflux = require('reflux');
-
-var _reflux2 = _interopRequireDefault(_reflux);
-
-var _Store = require('../stores/Store');
-
-var _Store2 = _interopRequireDefault(_Store);
-
-var _RouterApiConf = require('../logic/RouterApiConf');
-
-var _RouterApiConf2 = _interopRequireDefault(_RouterApiConf);
-
-var _loadItem = require('../logic/loadItem');
-
-var _loadItem2 = _interopRequireDefault(_loadItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var T = exports.T = {
+var T = {
   LOAD_ITEM: 'loadItem',
   LOAD_ITEM_COMPLETED: 'loadItemCompleted',
   LOAD_ITEM_FAILED: 'loadItemFailed',
-
   REMOVE_ITEM: 'removeItem',
   REMOVE_ITEMS: 'removeItems',
   REMOVE_ITEMS_UNDER: 'removeItemsUnder'
 };
+exports.T = T;
 
-var Actions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, T.LOAD_ITEM, {
+var Actions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[T.LOAD_ITEM] = {
   children: ['completed', 'failed']
-}), (0, _defineProperty3.default)(_Reflux$createActions, T.REMOVE_ITEM, {}), (0, _defineProperty3.default)(_Reflux$createActions, T.REMOVE_ITEMS, {}), (0, _defineProperty3.default)(_Reflux$createActions, T.REMOVE_ITEMS_UNDER, {}), _Reflux$createActions));
+}, _Reflux$createActions[T.REMOVE_ITEM] = {}, _Reflux$createActions[T.REMOVE_ITEMS] = {}, _Reflux$createActions[T.REMOVE_ITEMS_UNDER] = {}, _Reflux$createActions));
 
 var _crDbLoadMsg = function _crDbLoadMsg(word) {
-  return 'Item \'' + word + '\' has been already loaded.';
+  return "Item '" + word + "' has been already loaded.";
 };
 
-Actions[T.LOAD_ITEM].listen(function () {
-  var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var _option$itemConf = option.itemConf,
-      itemConf = _option$itemConf === undefined ? {} : _option$itemConf,
-      _option$word = option.word,
-      word = _option$word === undefined ? '' : _option$word,
+Actions[T.LOAD_ITEM].listen(function (option) {
+  if (option === void 0) {
+    option = {};
+  }
+
+  var _option = option,
+      _option$itemConf = _option.itemConf,
+      itemConf = _option$itemConf === void 0 ? {} : _option$itemConf,
+      _option$word = _option.word,
+      word = _option$word === void 0 ? '' : _option$word,
       paneId = itemConf.paneId;
 
-  if (_Store2.default.isItem(paneId, word)) {
-    this.failed({ msg: _crDbLoadMsg(word) });
+  if (_Store["default"].isItem(paneId, word)) {
+    this.failed({
+      msg: _crDbLoadMsg(word)
+    });
     return;
   }
 
-  var _option$loadId = option.loadId,
-      loadId = _option$loadId === undefined ? 'WD' : _option$loadId,
-      _RouterApiConf$getApi = _RouterApiConf2.default.getApiConf(loadId),
+  var _option2 = option,
+      _option2$loadId = _option2.loadId,
+      loadId = _option2$loadId === void 0 ? 'WD' : _option2$loadId,
+      _RouterApiConf$getApi = _RouterApiConf["default"].getApiConf(loadId),
       apiKey = _RouterApiConf$getApi.apiKey,
       adapter = _RouterApiConf$getApi.adapter,
       api = _RouterApiConf$getApi.api,
       msgErr = _RouterApiConf$getApi.msgErr;
 
   if (apiKey) {
-    Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
-    (0, _loadItem2.default)(option, this.completed, this.failed);
+    Object.assign(option, {
+      apiKey: apiKey,
+      adapter: adapter,
+      api: api
+    });
+    (0, _loadItem["default"])(option, this.completed, this.failed);
   } else {
-    this.failed({ msg: msgErr });
+    this.failed({
+      msg: msgErr
+    });
   }
 });
-
-exports.default = Actions;
+var _default = Actions;
+exports["default"] = _default;
 //# sourceMappingURL=ItemActions.js.map

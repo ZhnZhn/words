@@ -1,26 +1,23 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var S = {
   KEY: {
     textDecoration: 'underline'
   }
 };
-
 var EMPTY = '';
 
 var _toCaptionIn = function _toCaptionIn(caption, accessKey) {
   var captionIn = caption == null ? EMPTY : EMPTY + caption,
       _index = captionIn.toLowerCase().indexOf(accessKey);
+
   if (accessKey && _index !== -1) {
     return {
       before: captionIn.substring(0, _index),
@@ -28,7 +25,10 @@ var _toCaptionIn = function _toCaptionIn(caption, accessKey) {
       after: captionIn.substring(_index + 1)
     };
   }
-  return { captionIn: captionIn };
+
+  return {
+    captionIn: captionIn
+  };
 };
 
 var CaptionInput = function CaptionInput(_ref) {
@@ -45,34 +45,20 @@ var CaptionInput = function CaptionInput(_ref) {
       before = _toCaptionIn2.before;
 
   if (typeof captionIn !== 'undefined') {
-    return _react2.default.createElement(
-      'span',
-      { className: className, style: rootStyle },
-      captionIn,
-      children
-    );
+    return _react["default"].createElement("span", {
+      className: className,
+      style: rootStyle
+    }, captionIn, children);
   }
-  return _react2.default.createElement(
-    'span',
-    { className: className, style: rootStyle },
-    _react2.default.createElement(
-      'span',
-      null,
-      before
-    ),
-    _react2.default.createElement(
-      'span',
-      { style: S.KEY },
-      key
-    ),
-    _react2.default.createElement(
-      'span',
-      null,
-      after
-    ),
-    children
-  );
+
+  return _react["default"].createElement("span", {
+    className: className,
+    style: rootStyle
+  }, _react["default"].createElement("span", null, before), _react["default"].createElement("span", {
+    style: S.KEY
+  }, key), _react["default"].createElement("span", null, after), children);
 };
 
-exports.default = CaptionInput;
+var _default = CaptionInput;
+exports["default"] = _default;
 //# sourceMappingURL=CaptionInput.js.map

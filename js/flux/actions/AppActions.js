@@ -1,29 +1,22 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Settings = require('../stores/Settings');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Settings2 = _interopRequireDefault(_Settings);
+var _Settings = _interopRequireDefault(require("../stores/Settings"));
 
-var _ComponentActions = require('./ComponentActions');
-
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ComponentActions = _interopRequireDefault(require("./ComponentActions"));
 
 var WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 var WATCH_BROWSER_ID = 'WATCH_ID';
-
-var showBrowser = _ComponentActions2.default.showBrowser,
-    showPane = _ComponentActions2.default.showPane,
-    showModalDialog = _ComponentActions2.default.showModalDialog,
-    showAbout = _ComponentActions2.default.showAbout,
-    changeTheme = _ComponentActions2.default.changeTheme,
-    clickWatchItem = _ComponentActions2.default.clickWatchItem;
-
+var showBrowser = _ComponentActions["default"].showBrowser,
+    showPane = _ComponentActions["default"].showPane,
+    showModalDialog = _ComponentActions["default"].showModalDialog,
+    showAbout = _ComponentActions["default"].showAbout,
+    changeTheme = _ComponentActions["default"].changeTheme,
+    clickWatchItem = _ComponentActions["default"].clickWatchItem;
 
 var _fShowBrowser = function _fShowBrowser(id) {
   return showBrowser.bind(null, id);
@@ -31,7 +24,6 @@ var _fShowBrowser = function _fShowBrowser(id) {
 
 var AppActions = {
   showAbout: showAbout,
-
   headerActions: {
     onDefinition: showPane.bind(null, {
       paneCaption: "Word Definition",
@@ -40,16 +32,15 @@ var AppActions = {
     }),
     onSources: _fShowBrowser(WORDS_BROWSER_ID),
     onWatch: _fShowBrowser(WATCH_BROWSER_ID),
-    onSettings: showModalDialog.bind(null, "SETTINGS", _Settings2.default.settingFn()),
+    onSettings: showModalDialog.bind(null, "SETTINGS", _Settings["default"].settingFn()),
     onAbout: showAbout,
     onChangeTheme: changeTheme
   },
-
   browserActions: {
     onClickItem: showPane,
     onClickWatchItem: clickWatchItem
   }
 };
-
-exports.default = AppActions;
+var _default = AppActions;
+exports["default"] = _default;
 //# sourceMappingURL=AppActions.js.map

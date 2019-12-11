@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/items/word/WordNyms.js"
- ],
- "file": "../../../../src/components/items/word/WordNyms.js",
- "names": [
-  "WordNyms",
-  "result",
-  "typeOf",
-  "hasTypes",
-  "partOf",
-  "hasParts",
-  "inCategory",
-  "hasCategories"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,WAAW,SAAXA,QAAW,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AAAA,cAQ3BA,UAAU,EARiB;AAAA,MAE7BC,MAF6B,SAE7BA,MAF6B;AAAA,MAG7BC,QAH6B,SAG7BA,QAH6B;AAAA,MAI7BC,MAJ6B,SAI7BA,MAJ6B;AAAA,MAK7BC,QAL6B,SAK7BA,QAL6B;AAAA,MAM7BC,UAN6B,SAM7BA,UAN6B;AAAA,MAO7BC,aAP6B,SAO7BA,aAP6B;;AAS/B,SACE;AAAA;AAAA;AACE;AACE;;AAKA;AANF,QAEE,SAAQ,uBAFV;AAGE,aAAOL;AAHT,MADF;AAME,sDAEE,SAAQ,0BAFV;AAGE,aAAOC;AAHT,MANF;AAWE;AACE,eAAQ,mBADV;AAEE,aAAOC;AAFT,MAXF;AAeE;AACE,eAAQ,qBADV;AAEE,aAAOC;AAFT,MAfF;AAmBE;AACE,eAAQ,YADV;AAEE,aAAOC,UAFT;AAGE,eAAS;AAHX,MAnBF;AAwBE;AACE,eAAQ,aADV;AAEE,aAAOC,aAFT;AAGE,eAAS;AAHX;AAxBF,GADF;AAgCD,CAzCD;;kBA2CeP,Q"
-}
+{"version":3,"sources":["../../../../src/components/items/word/WordNyms.jsx"],"names":["WordNyms","result","typeOf","hasTypes","partOf","hasParts","inCategory","hasCategories"],"mappings":";;;;;;;;;AAAA;;AAEA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AAAA,cAQ3BA,MAAM,IAAI,EARiB;AAAA,MAE7BC,MAF6B,SAE7BA,MAF6B;AAAA,MAG7BC,QAH6B,SAG7BA,QAH6B;AAAA,MAI7BC,MAJ6B,SAI7BA,MAJ6B;AAAA,MAK7BC,QAL6B,SAK7BA,QAL6B;AAAA,MAM7BC,UAN6B,SAM7BA,UAN6B;AAAA,MAO7BC,aAP6B,SAO7BA,aAP6B;;AAS/B,SACE,gCAAC,eAAD,QACE,gCAAC,kBAAD,CACE;AADF;AAEE,IAAA,OAAO,EAAC,uBAFV;AAGE,IAAA,KAAK,EAAEL;AAHT,IADF,EAME,gCAAC,kBAAD,CACE;AADF;AAEE,IAAA,OAAO,EAAC,0BAFV;AAGE,IAAA,KAAK,EAAEC;AAHT,IANF,EAWE,gCAAC,kBAAD;AACE,IAAA,OAAO,EAAC,mBADV;AAEE,IAAA,KAAK,EAAEC;AAFT,IAXF,EAeE,gCAAC,kBAAD;AACE,IAAA,OAAO,EAAC,qBADV;AAEE,IAAA,KAAK,EAAEC;AAFT,IAfF,EAmBE,gCAAC,kBAAD;AACE,IAAA,OAAO,EAAC,YADV;AAEE,IAAA,KAAK,EAAEC,UAFT;AAGE,IAAA,OAAO,EAAE;AAHX,IAnBF,EAwBE,gCAAC,kBAAD;AACE,IAAA,OAAO,EAAC,aADV;AAEE,IAAA,KAAK,EAAEC,aAFT;AAGE,IAAA,OAAO,EAAE;AAHX,IAxBF,CADF;AAgCD,CAzCD;;eA2CeP,Q","sourcesContent":["import React, { Fragment } from 'react'\r\n\r\nimport WordOf from './WordOf'\r\n\r\nconst WordNyms = ({ result }) => {\r\n  const {\r\n    typeOf,\r\n    hasTypes,\r\n    partOf,\r\n    hasParts,\r\n    inCategory,\r\n    hasCategories\r\n  } = result || {};\r\n  return (\r\n    <Fragment>\r\n      <WordOf\r\n        //hypernyms\r\n        caption=\"typeOf (more generic)\"\r\n        items={typeOf}\r\n      />\r\n      <WordOf\r\n        //hyponyms\r\n        caption=\"hasTypes (more specific)\"\r\n        items={hasTypes}\r\n      />\r\n      <WordOf\r\n        caption=\"partOf (holonyms)\"\r\n        items={partOf}\r\n      />\r\n      <WordOf\r\n        caption=\"hasParts (meronyms)\"\r\n        items={hasParts}\r\n      />\r\n      <WordOf\r\n        caption=\"inCategory\"\r\n        items={inCategory}\r\n        isCount={true}\r\n      />\r\n      <WordOf\r\n        caption=\"hasCategory\"\r\n        items={hasCategories}\r\n        isCount={true}\r\n      />\r\n    </Fragment>\r\n  );\r\n};\r\n\r\nexport default WordNyms\r\n"],"file":"WordNyms.js"}

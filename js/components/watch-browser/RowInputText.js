@@ -1,94 +1,70 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _TextField = require('../zhn-m-input/TextField');
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var MAX_LENGTH = 24;
 //import PropTypes from "prop-types";
-
+var MAX_LENGTH = 24;
 var S = {
   INPUT_TEXT: {
     width: 250
   }
 };
 
-var RowInputText = function (_Component) {
-  (0, _inherits3.default)(RowInputText, _Component);
+var RowInputText =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(RowInputText, _Component);
 
   function RowInputText() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, RowInputText);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = RowInputText.__proto__ || Object.getPrototypeOf(RowInputText)).call.apply(_ref, [this].concat(args))), _this), _this._refInputText = function (c) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._refInputText = function (c) {
       return _this.inputText = c;
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
-  /*
-  static propTypes = {
-    caption: PropTypes.string
-  }
-  */
 
+  var _proto = RowInputText.prototype;
 
-  (0, _createClass3.default)(RowInputText, [{
-    key: 'render',
-    value: function render() {
-      var caption = this.props.caption;
+  _proto.render = function render() {
+    var caption = this.props.caption;
+    return _react["default"].createElement(_TextField["default"], {
+      ref: this._refInputText,
+      rootStyle: S.INPUT_TEXT,
+      caption: caption,
+      maxLength: MAX_LENGTH
+    });
+  };
 
-      return _react2.default.createElement(_TextField2.default, {
-        ref: this._refInputText,
-        rootStyle: S.INPUT_TEXT,
-        caption: caption,
-        maxLength: MAX_LENGTH
-      });
-    }
-  }, {
-    key: 'getValue',
-    value: function getValue() {
-      return this.inputText.getValue().trim();
-    }
-  }, {
-    key: 'setValue',
-    value: function setValue(value) {
-      this.inputText.setValue(value);
-    }
-  }]);
+  _proto.getValue = function getValue() {
+    return this.inputText.getValue().trim();
+  };
+
+  _proto.setValue = function setValue(value) {
+    this.inputText.setValue(value);
+  };
+
   return RowInputText;
 }(_react.Component);
 
-exports.default = RowInputText;
+var _default = RowInputText;
+exports["default"] = _default;
 //# sourceMappingURL=RowInputText.js.map

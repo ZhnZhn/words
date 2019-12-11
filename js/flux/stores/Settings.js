@@ -1,21 +1,16 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var _settings = {
   wordsApi: void 0
 };
-
 var Settings = {
   settingFn: function settingFn() {
     return {
       key1: this.fSetKey('wordsApi')
     };
   },
-
-
   fSetKey: function fSetKey(propName) {
     return function (value) {
       _settings[propName] = value;
@@ -25,6 +20,6 @@ var Settings = {
     return _settings[id];
   }
 };
-
-exports.default = Settings;
+var _default = Settings;
+exports["default"] = _default;
 //# sourceMappingURL=Settings.js.map

@@ -1,32 +1,26 @@
-'use strict';
+"use strict";
 
-var _react = require('react');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = require('react-dom');
+var _reactDom = require("react-dom");
 
-var _Store = require('./flux/stores/Store');
+var _Store = _interopRequireDefault(require("./flux/stores/Store"));
 
-var _Store2 = _interopRequireDefault(_Store);
+var _AppActions = _interopRequireDefault(require("./flux/actions/AppActions"));
 
-var _AppActions = require('./flux/actions/AppActions');
+var _ComponentActions = require("./flux/actions/ComponentActions");
 
-var _AppActions2 = _interopRequireDefault(_AppActions);
+var _LoadingActions = require("./flux/actions/LoadingActions");
 
-var _ComponentActions = require('./flux/actions/ComponentActions');
-
-var _LoadingActions = require('./flux/actions/LoadingActions');
-
-var _AppWords = require('./components/AppWords');
-
-var _AppWords2 = _interopRequireDefault(_AppWords);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _AppWords = _interopRequireDefault(require("./components/AppWords"));
 
 var appProps = {
-  store: _Store2.default, action: _AppActions2.default, CAT: _ComponentActions.T, LPT: _LoadingActions.T
+  store: _Store["default"],
+  action: _AppActions["default"],
+  CAT: _ComponentActions.T,
+  LPT: _LoadingActions.T
 };
-
-(0, _reactDom.render)(_react2.default.createElement(_AppWords2.default, appProps), document.getElementById('app'));
+(0, _reactDom.render)(_react["default"].createElement(_AppWords["default"], appProps), document.getElementById('app'));
 //# sourceMappingURL=index.js.map

@@ -1,189 +1,142 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
-var _react = require('react');
+var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
-var _react2 = _interopRequireDefault(_react);
+var _ListCreatePane = _interopRequireDefault(require("./ListCreatePane"));
 
-var _withTheme = require('../hoc/withTheme');
+var _ListEditPane = _interopRequireDefault(require("./ListEditPane"));
 
-var _withTheme2 = _interopRequireDefault(_withTheme);
+var _ListDeletePane = _interopRequireDefault(require("./ListDeletePane"));
 
-var _Dialog = require('../dialogs/Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _WatchActions = require('../../flux/actions/WatchActions');
-
-var _WatchActions2 = _interopRequireDefault(_WatchActions);
-
-var _MsgWatch = require('../../constants/MsgWatch');
-
-var _MsgWatch2 = _interopRequireDefault(_MsgWatch);
-
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
-
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-var _Atoms = require('../zhn-atoms/Atoms');
-
-var _Atoms2 = _interopRequireDefault(_Atoms);
-
-var _ListCreatePane = require('./ListCreatePane');
-
-var _ListCreatePane2 = _interopRequireDefault(_ListCreatePane);
-
-var _ListEditPane = require('./ListEditPane');
-
-var _ListEditPane2 = _interopRequireDefault(_ListEditPane);
-
-var _ListDeletePane = require('./ListDeletePane');
-
-var _ListDeletePane2 = _interopRequireDefault(_ListDeletePane);
-
-var _Dialog3 = require('./Dialog.Style');
-
-var _Dialog4 = _interopRequireDefault(_Dialog3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Dialog2 = _interopRequireDefault(require("./Dialog.Style"));
 
 //import PropTypes from "prop-types";
-
-var createList = _WatchActions2.default.createList,
-    renameList = _WatchActions2.default.renameList,
-    deleteList = _WatchActions2.default.deleteList;
+var createList = _WatchActions["default"].createList,
+    renameList = _WatchActions["default"].renameList,
+    deleteList = _WatchActions["default"].deleteList;
 var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     EDIT_WATCH_FAILED = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     CREATE_LIST = _WatchActions.WatchActionTypes.CREATE_LIST,
     RENAME_LIST = _WatchActions.WatchActionTypes.RENAME_LIST,
     DELETE_LIST = _WatchActions.WatchActionTypes.DELETE_LIST;
-var notSelected = _MsgWatch2.default.notSelected,
-    emptyName = _MsgWatch2.default.emptyName;
+var notSelected = _MsgWatch["default"].notSelected,
+    emptyName = _MsgWatch["default"].emptyName;
 
-var EditListDialog = function (_Component) {
-  (0, _inherits3.default)(EditListDialog, _Component);
+var EditListDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(EditListDialog, _Component);
 
   function EditListDialog() {
-    (0, _classCallCheck3.default)(this, EditListDialog);
-    return (0, _possibleConstructorReturn3.default)(this, (EditListDialog.__proto__ || Object.getPrototypeOf(EditListDialog)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(EditListDialog, [{
-    key: 'shouldComponentUpdate',
+  var _proto = EditListDialog.prototype;
 
-    /*
-    static propTypes = {
-      isShow : PropTypes.bool,
-      store : PropTypes.object,
-      onClose : PropTypes.func
+  /*
+  static propTypes = {
+    isShow : PropTypes.bool,
+    store : PropTypes.object,
+    onClose : PropTypes.func
+  }
+  */
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-    */
 
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          theme = _props.theme,
-          isShow = _props.isShow,
-          store = _props.store,
-          onClose = _props.onClose,
-          TS = theme.createStyle(_Dialog2.default);
+    return true;
+  };
 
-      return _react2.default.createElement(
-        _ModalDialog2.default
-        //STYLE={TS.BT}
-        ,
-        { style: (0, _extends3.default)({}, TS.R_DIALOG, _Dialog4.default.DIALOG),
-          captionStyle: TS.BROWSER_CAPTION,
-          caption: 'Watch Lists Edit',
-          isShow: isShow,
-          isWithButton: false,
-          onClose: onClose
-        },
-        _react2.default.createElement(
-          _Atoms2.default.TabPane,
-          { width: _Dialog4.default.TAB_PANE_WIDTH, isUpdateInit: true },
-          _react2.default.createElement(
-            _Atoms2.default.Tab,
-            { title: 'Create', style: TS.TAB },
-            _react2.default.createElement(_ListCreatePane2.default, {
-              store: store,
-              inputStyle: TS.INPUT,
-              btStyle: TS.BT.FLAT_ROOT,
-              actionCompleted: EDIT_WATCH_COMPLETED,
-              actionFailed: EDIT_WATCH_FAILED,
-              forActionType: CREATE_LIST,
-              msgOnNotSelect: notSelected,
-              msgOnIsEmptyName: emptyName,
-              onCreate: createList,
-              onClose: onClose })
-          ),
-          _react2.default.createElement(
-            _Atoms2.default.Tab,
-            { title: 'Rename', style: TS.TAB },
-            _react2.default.createElement(_ListEditPane2.default, {
-              store: store,
-              inputStyle: TS.INPUT,
-              btStyle: TS.BT.FLAT_ROOT,
-              actionCompleted: EDIT_WATCH_COMPLETED,
-              actionFailed: EDIT_WATCH_FAILED,
-              forActionType: RENAME_LIST,
-              msgOnNotSelect: notSelected,
-              msgOnIsEmptyName: emptyName,
-              onRename: renameList,
-              onClose: onClose
-            })
-          ),
-          _react2.default.createElement(
-            _Atoms2.default.Tab,
-            { title: 'Delete', style: TS.TAB },
-            _react2.default.createElement(_ListDeletePane2.default, {
-              store: store,
-              inputStyle: TS.INPUT,
-              btStyle: TS.BT.FLAT_ROOT,
-              actionCompleted: EDIT_WATCH_COMPLETED,
-              actionFailed: EDIT_WATCH_FAILED,
-              forActionType: DELETE_LIST,
-              msgOnNotSelect: notSelected,
-              onDelete: deleteList,
-              onClose: onClose
-            })
-          )
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        theme = _this$props.theme,
+        isShow = _this$props.isShow,
+        store = _this$props.store,
+        onClose = _this$props.onClose,
+        TS = theme.createStyle(_Dialog["default"]);
+    return _react["default"].createElement(_ModalDialog["default"] //STYLE={TS.BT}
+    , {
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, _Dialog2["default"].DIALOG),
+      captionStyle: TS.BROWSER_CAPTION,
+      caption: "Watch Lists Edit",
+      isShow: isShow,
+      isWithButton: false,
+      onClose: onClose
+    }, _react["default"].createElement(_Atoms["default"].TabPane, {
+      width: _Dialog2["default"].TAB_PANE_WIDTH,
+      isUpdateInit: true
+    }, _react["default"].createElement(_Atoms["default"].Tab, {
+      title: "Create",
+      style: TS.TAB
+    }, _react["default"].createElement(_ListCreatePane["default"], {
+      store: store,
+      inputStyle: TS.INPUT,
+      btStyle: TS.BT.FLAT_ROOT,
+      actionCompleted: EDIT_WATCH_COMPLETED,
+      actionFailed: EDIT_WATCH_FAILED,
+      forActionType: CREATE_LIST,
+      msgOnNotSelect: notSelected,
+      msgOnIsEmptyName: emptyName,
+      onCreate: createList,
+      onClose: onClose
+    })), _react["default"].createElement(_Atoms["default"].Tab, {
+      title: "Rename",
+      style: TS.TAB
+    }, _react["default"].createElement(_ListEditPane["default"], {
+      store: store,
+      inputStyle: TS.INPUT,
+      btStyle: TS.BT.FLAT_ROOT,
+      actionCompleted: EDIT_WATCH_COMPLETED,
+      actionFailed: EDIT_WATCH_FAILED,
+      forActionType: RENAME_LIST,
+      msgOnNotSelect: notSelected,
+      msgOnIsEmptyName: emptyName,
+      onRename: renameList,
+      onClose: onClose
+    })), _react["default"].createElement(_Atoms["default"].Tab, {
+      title: "Delete",
+      style: TS.TAB
+    }, _react["default"].createElement(_ListDeletePane["default"], {
+      store: store,
+      inputStyle: TS.INPUT,
+      btStyle: TS.BT.FLAT_ROOT,
+      actionCompleted: EDIT_WATCH_COMPLETED,
+      actionFailed: EDIT_WATCH_FAILED,
+      forActionType: DELETE_LIST,
+      msgOnNotSelect: notSelected,
+      onDelete: deleteList,
+      onClose: onClose
+    }))));
+  };
+
   return EditListDialog;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(EditListDialog);
+var _default = (0, _withTheme["default"])(EditListDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=EditListDialog.js.map

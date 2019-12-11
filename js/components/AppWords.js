@@ -1,160 +1,117 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _theme = _interopRequireDefault(require("./styles/theme"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ThemeContext = require('./hoc/ThemeContext');
-
-var _ThemeContext2 = _interopRequireDefault(_ThemeContext);
-
-var _theme = require('./styles/theme');
-
-var _theme2 = _interopRequireDefault(_theme);
-
-var _HeaderBar = require('./header/HeaderBar');
-
-var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
-
-var _Container = require('./zhn-containers/Container');
-
-var _Container2 = _interopRequireDefault(_Container);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Container = _interopRequireDefault(require("./zhn-containers/Container"));
 
 var CL_COMP = "component-container";
 var CL_ITEMS = "items-container";
 var WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 
-var AppWords = function (_Component) {
-  (0, _inherits3.default)(AppWords, _Component);
+var AppWords =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(AppWords, _Component);
 
   function AppWords() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, AppWords);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AppWords.__proto__ || Object.getPrototypeOf(AppWords)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      theme: _theme2.default
-    }, _this._onStore = function (actionType, themeName) {
-      if (actionType === "changeTheme") {
-        _this.setState(function (_ref2) {
-          var theme = _ref2.theme;
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      theme: _theme["default"]
+    };
 
+    _this._onStore = function (actionType, themeName) {
+      if (actionType === "changeTheme") {
+        _this.setState(function (_ref) {
+          var theme = _ref.theme;
           theme.setThemeName(themeName);
           return {
-            theme: (0, _extends3.default)({}, theme)
+            theme: (0, _extends2["default"])({}, theme)
           };
         });
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(AppWords, [{
-    key: 'componentDidCatch',
-    value: function componentDidCatch(error, info) {
-      /*eslint-disable no-console*/
-      console.warn(error, info);
-      /*eslint-enable no-console*/
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _props = this.props,
-          store = _props.store,
-          action = _props.action;
+  var _proto = AppWords.prototype;
 
-      this.unsubscribe = store.listen(this._onStore);
-      action.showAbout();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props2 = this.props,
-          store = _props2.store,
-          CAT = _props2.CAT,
-          LPT = _props2.LPT,
-          action = _props2.action,
-          headerActions = action.headerActions,
-          browserActions = action.browserActions,
-          theme = this.state.theme;
+  _proto.componentDidCatch = function componentDidCatch(error, info) {
+    /*eslint-disable no-console*/
+    console.warn(error, info);
+    /*eslint-enable no-console*/
+  };
 
+  _proto.componentDidMount = function componentDidMount() {
+    var _this$props = this.props,
+        store = _this$props.store,
+        action = _this$props.action;
+    this.unsubscribe = store.listen(this._onStore);
+    action.showAbout();
+  };
 
-      return _react2.default.createElement(
-        _react2.default.StrictMode,
-        null,
-        _react2.default.createElement(
-          _ThemeContext2.default.Provider,
-          { value: theme },
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_HeaderBar2.default, (0, _extends3.default)({
-              store: store,
-              LPT: LPT
-            }, headerActions)),
-            _react2.default.createElement(
-              'div',
-              { className: CL_COMP },
-              _react2.default.createElement(_Container2.default.Browser, (0, _extends3.default)({
-                store: store,
-                showBrowserAction: CAT.SHOW_BROWSER,
-                showDialogAction: CAT.SHOW_DIALOG,
-                browserId: WORDS_BROWSER_ID,
-                updateWatchAction: CAT.UPDATE_WATCH_BROWSER
-              }, browserActions)),
-              _react2.default.createElement(_Container2.default.Hrz, {
-                className: CL_ITEMS,
-                store: store,
-                addAction: CAT.SHOW_PANE
-              })
-            ),
-            _react2.default.createElement(_Container2.default.Wrapper, {
-              store: store,
-              SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
-            })
-          )
-        )
-      );
-    }
-  }]);
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        store = _this$props2.store,
+        CAT = _this$props2.CAT,
+        LPT = _this$props2.LPT,
+        action = _this$props2.action,
+        headerActions = action.headerActions,
+        browserActions = action.browserActions,
+        theme = this.state.theme;
+    return _react["default"].createElement(_react["default"].StrictMode, null, _react["default"].createElement(_ThemeContext["default"].Provider, {
+      value: theme
+    }, _react["default"].createElement("div", null, _react["default"].createElement(_HeaderBar["default"], (0, _extends2["default"])({
+      store: store,
+      LPT: LPT
+    }, headerActions)), _react["default"].createElement("div", {
+      className: CL_COMP
+    }, _react["default"].createElement(_Container["default"].Browser, (0, _extends2["default"])({
+      store: store,
+      showBrowserAction: CAT.SHOW_BROWSER,
+      showDialogAction: CAT.SHOW_DIALOG,
+      browserId: WORDS_BROWSER_ID,
+      updateWatchAction: CAT.UPDATE_WATCH_BROWSER
+    }, browserActions)), _react["default"].createElement(_Container["default"].Hrz, {
+      className: CL_ITEMS,
+      store: store,
+      addAction: CAT.SHOW_PANE
+    })), _react["default"].createElement(_Container["default"].Wrapper, {
+      store: store,
+      SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
+    }))));
+  };
+
   return AppWords;
 }(_react.Component);
 
-exports.default = AppWords;
+var _default = AppWords;
+exports["default"] = _default;
 //# sourceMappingURL=AppWords.js.map

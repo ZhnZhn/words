@@ -1,8 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
 var _isTouchable = function _isTouchable() {
   return document && 'ontouchstart' in document.documentElement;
@@ -11,6 +10,6 @@ var _isTouchable = function _isTouchable() {
 var has = {
   HAS_TOUCH: _isTouchable()
 };
-
-exports.default = has;
+var _default = has;
+exports["default"] = _default;
 //# sourceMappingURL=has.js.map

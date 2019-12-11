@@ -1,22 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _Button = require('./Button');
+var _Button = _interopRequireDefault(require("./Button"));
 
-var _Button2 = _interopRequireDefault(_Button);
-
-var _Pane = require('./Pane.Style');
-
-var _Pane2 = _interopRequireDefault(_Pane);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Pane = _interopRequireDefault(require("./Pane.Style"));
 
 var RowButtons = function RowButtons(_ref) {
   var btStyle = _ref.btStyle,
@@ -24,20 +17,17 @@ var RowButtons = function RowButtons(_ref) {
       withoutClear = _ref.withoutClear,
       onClear = _ref.onClear,
       onClose = _ref.onClose;
-  return _react2.default.createElement(
-    'div',
-    { style: _Pane2.default.COMMAND_DIV },
-    Primary,
-    !withoutClear && _react2.default.createElement(_Button2.default.Clear, {
-      style: btStyle,
-      onClick: onClear
-    }),
-    _react2.default.createElement(_Button2.default.Close, {
-      style: btStyle,
-      onClick: onClose
-    })
-  );
+  return _react["default"].createElement("div", {
+    style: _Pane["default"].COMMAND_DIV
+  }, Primary, !withoutClear && _react["default"].createElement(_Button["default"].Clear, {
+    style: btStyle,
+    onClick: onClear
+  }), _react["default"].createElement(_Button["default"].Close, {
+    style: btStyle,
+    onClick: onClose
+  }));
 };
 
-exports.default = RowButtons;
+var _default = RowButtons;
+exports["default"] = _default;
 //# sourceMappingURL=RowButtons.js.map

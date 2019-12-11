@@ -1,48 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
-
-var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
-
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _Interact = require('../../utils/Interact');
-
-var _Interact2 = _interopRequireDefault(_Interact);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Interact = _interopRequireDefault(require("../../utils/Interact"));
 
 var CL_DIALOG = 'dialog';
-//import PropTypes from 'prop-types'
-
 var CL_DIALOG_OPEN = 'dialog show-popup';
-
 var STYLE = {
   ROOT: {
     position: 'absolute',
@@ -59,7 +35,7 @@ var STYLE = {
   },
   COMMAND: {
     cursor: 'default',
-    float: 'right',
+    "float": 'right',
     marginTop: '16px',
     marginBottom: '10px',
     marginRight: '4px'
@@ -72,138 +48,135 @@ var STYLE = {
   }
 };
 
-var DraggableDialog = function (_Component) {
-  (0, _inherits3.default)(DraggableDialog, _Component);
+var DraggableDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(DraggableDialog, _Component);
 
   function DraggableDialog() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, DraggableDialog);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DraggableDialog.__proto__ || Object.getPrototypeOf(DraggableDialog)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._handleKeyDown = function (event) {
       var focused = document.activeElement;
+
       if (focused == _this.rootDiv) {
         _this.props.onKeyDown(event);
       }
-    }, _this._handleClose = function (event) {
+    };
+
+    _this._handleClose = function (event) {
       if (_this.prevFocusedEl) {
         _this.prevFocusedEl.focus();
       }
-      _this.props.onClose();
-    }, _this._renderCommandButton = function (_ref2) {
-      var commandButtons = _ref2.commandButtons,
-          _ref2$styleButton = _ref2.styleButton,
-          S = _ref2$styleButton === undefined ? {} : _ref2$styleButton,
-          onShowChart = _ref2.onShowChart,
-          onClose = _ref2.onClose;
 
-      return _react2.default.createElement(
-        'div',
-        { style: STYLE.COMMAND },
-        commandButtons,
-        typeof onShowChart === 'function' && _react2.default.createElement(_RaisedButton2.default, {
-          rootStyle: S.RAISED_ROOT,
-          clDiv: S.CL_RAISED_DIV,
-          caption: 'Show',
-          onClick: onShowChart
-        }),
-        _react2.default.createElement(_RaisedButton2.default, {
-          rootStyle: S.RAISED_ROOT,
-          clDiv: S.CL_RAISED_DIV,
-          caption: 'Close',
-          onClick: _this._handleClose
-        })
-      );
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+      _this.props.onClose();
+    };
+
+    _this._renderCommandButton = function (_ref) {
+      var commandButtons = _ref.commandButtons,
+          _ref$styleButton = _ref.styleButton,
+          S = _ref$styleButton === void 0 ? {} : _ref$styleButton,
+          onShowChart = _ref.onShowChart,
+          onClose = _ref.onClose;
+      return _react["default"].createElement("div", {
+        style: STYLE.COMMAND
+      }, commandButtons, typeof onShowChart === 'function' && _react["default"].createElement(_RaisedButton["default"], {
+        rootStyle: S.RAISED_ROOT,
+        clDiv: S.CL_RAISED_DIV,
+        caption: "Show",
+        onClick: onShowChart
+      }), _react["default"].createElement(_RaisedButton["default"], {
+        rootStyle: S.RAISED_ROOT,
+        clDiv: S.CL_RAISED_DIV,
+        caption: "Close",
+        onClick: _this._handleClose
+      }));
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(DraggableDialog, [{
-    key: 'componentDidMount',
+  var _proto = DraggableDialog.prototype;
 
-    /*
-    static propTypes = {
-      isShow: PropTypes.bool,
-      caption: PropTypes.string,
-      children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-      ]),
-      commandButtons: PropTypes.arrayOf(PropTypes.element),
-      onShowChart: PropTypes.func,
-      onClose: PropTypes.func
-    }
-    */
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    caption: PropTypes.string,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]),
+    commandButtons: PropTypes.arrayOf(PropTypes.element),
+    onShowChart: PropTypes.func,
+    onClose: PropTypes.func
+  }
+  */
+  _proto.componentDidMount = function componentDidMount() {
+    _Interact["default"].makeDragable(this.rootDiv);
 
-    value: function componentDidMount() {
-      _Interact2.default.makeDragable(this.rootDiv);
-      this.prevFocusedEl = document.activeElement;
+    this.prevFocusedEl = document.activeElement;
+    this.rootDiv.focus();
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    if (this.props.isShow && !prevProps.isShow) {
       this.rootDiv.focus();
     }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps, prevState) {
-      if (this.props.isShow && !prevProps.isShow) {
-        this.rootDiv.focus();
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+  };
 
-      var _props = this.props,
-          isShow = _props.isShow,
-          rootStyle = _props.rootStyle,
-          caption = _props.caption,
-          browserCaptionStyle = _props.browserCaptionStyle,
-          commandButtons = _props.commandButtons,
-          styleButton = _props.styleButton,
-          children = _props.children,
-          onShowChart = _props.onShowChart,
-          onClose = _props.onClose,
-          _styleShow = isShow ? STYLE.BLOCK : STYLE.NONE,
-          _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
+  _proto.render = function render() {
+    var _this2 = this;
 
-      return _react2.default.createElement(
-        'div',
-        {
-          ref: function ref(c) {
-            return _this2.rootDiv = c;
-          },
-          className: _classShow,
-          style: Object.assign({}, STYLE.ROOT, rootStyle, _styleShow),
-          tabIndex: '0',
-          onKeyDown: this._handleKeyDown
-        },
-        _react2.default.createElement(_BrowserCaption2.default, {
-          rootStyle: browserCaptionStyle,
-          caption: caption,
-          onClose: onClose
-        }),
-        _react2.default.createElement(
-          'div',
-          { style: STYLE.CHILDREN },
-          children
-        ),
-        this._renderCommandButton({ commandButtons: commandButtons, styleButton: styleButton, onShowChart: onShowChart, onClose: onClose })
-      );
+    var _this$props = this.props,
+        isShow = _this$props.isShow,
+        rootStyle = _this$props.rootStyle,
+        caption = _this$props.caption,
+        browserCaptionStyle = _this$props.browserCaptionStyle,
+        commandButtons = _this$props.commandButtons,
+        styleButton = _this$props.styleButton,
+        children = _this$props.children,
+        onShowChart = _this$props.onShowChart,
+        onClose = _this$props.onClose,
+        _styleShow = isShow ? STYLE.BLOCK : STYLE.NONE,
+        _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
+
+    return _react["default"].createElement("div", {
+      ref: function ref(c) {
+        return _this2.rootDiv = c;
+      },
+      className: _classShow,
+      style: Object.assign({}, STYLE.ROOT, rootStyle, _styleShow),
+      tabIndex: "0",
+      onKeyDown: this._handleKeyDown
+    }, _react["default"].createElement(_BrowserCaption["default"], {
+      rootStyle: browserCaptionStyle,
+      caption: caption,
+      onClose: onClose
+    }), _react["default"].createElement("div", {
+      style: STYLE.CHILDREN
+    }, children), this._renderCommandButton({
+      commandButtons: commandButtons,
+      styleButton: styleButton,
+      onShowChart: onShowChart,
+      onClose: onClose
+    }));
+  };
+
+  _proto.focusPrevEl = function focusPrevEl() {
+    if (this.prevFocusedEl) {
+      this.prevFocusedEl.focus();
     }
-  }, {
-    key: 'focusPrevEl',
-    value: function focusPrevEl() {
-      if (this.prevFocusedEl) {
-        this.prevFocusedEl.focus();
-      }
-    }
-  }]);
+  };
+
   return DraggableDialog;
 }(_react.Component);
 
-exports.default = DraggableDialog;
+var _default = DraggableDialog;
+exports["default"] = _default;
 //# sourceMappingURL=DraggableDialog.js.map

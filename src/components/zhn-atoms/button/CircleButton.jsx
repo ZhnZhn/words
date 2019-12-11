@@ -2,14 +2,15 @@ import React from 'react'
 
 const CL = 'bt-circle';
 
-const CircleButton = ({
+const CircleButton = React.forwardRef(({
   style,
   tabIndex='-1',
   caption='',
   title,
   onClick
-}) => (
+}, ref) => (
   <button
+     ref={ref}
      className={CL}
      style={style}
      tabIndex={tabIndex}
@@ -18,6 +19,6 @@ const CircleButton = ({
   >
      {caption}
   </button>
-);
+));
 
 export default CircleButton

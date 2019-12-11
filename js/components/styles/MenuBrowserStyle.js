@@ -1,14 +1,11 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require("babel-runtime/helpers/extends");
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var styleConfig = {
   themeName: undefined,
@@ -17,17 +14,16 @@ var styleConfig = {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
       CL_ROW: R.CL_ROW_NEWS,
-
-      BROWSER: (0, _extends3.default)({}, R.BG),
-      OPEN_CLOSE: (0, _extends3.default)({}, R.BG),
-      BROWSER_CAPTION: (0, _extends3.default)({}, R.BG_HEADER),
+      BROWSER: (0, _extends2["default"])({}, R.BG),
+      OPEN_CLOSE: (0, _extends2["default"])({}, R.BG),
+      BROWSER_CAPTION: (0, _extends2["default"])({}, R.BG_HEADER),
       ITEM: {
         borderBottom: "1px solid #9e9e9e"
       },
-      BADGE: (0, _extends3.default)({}, R.BG_HEADER)
+      BADGE: (0, _extends2["default"])({}, R.BG_HEADER)
     };
   }
 };
-
-exports.default = styleConfig;
+var _default = styleConfig;
+exports["default"] = _default;
 //# sourceMappingURL=MenuBrowserStyle.js.map

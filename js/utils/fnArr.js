@@ -1,11 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var fnArr = {
-
   findIndexByProp: function findIndexByProp(propName) {
     return function (arr, propValue) {
       if (!Array.isArray(arr)) {
@@ -17,7 +14,6 @@ var fnArr = {
       });
     };
   },
-
   isSameByProp: function isSameByProp(propName) {
     return function (arr, propValue) {
       if (!Array.isArray(arr)) {
@@ -27,12 +23,10 @@ var fnArr = {
       var index = arr.findIndex(function (item) {
         return item[propName] === propValue;
       });
-
       return index === -1 ? false : true;
     };
   }
-
 };
-
-exports.default = fnArr;
+var _default = fnArr;
+exports["default"] = _default;
 //# sourceMappingURL=fnArr.js.map

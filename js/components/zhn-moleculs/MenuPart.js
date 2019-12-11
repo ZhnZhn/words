@@ -1,27 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 
-var _OpenClose = require('../zhn-atoms/OpenClose');
-
-var _OpenClose2 = _interopRequireDefault(_OpenClose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//import PropTypes from 'prop-types'
 //import MenuItemBadge from './MenuItemBadge'
-
 var CL_NOT_S = 'not-selected';
-
 /*
 const _createOnKeyDown = (onClick) => (event) => {
   if (event.keyCode === 13){
@@ -30,35 +22,29 @@ const _createOnKeyDown = (onClick) => (event) => {
 }
 */
 
-//import PropTypes from 'prop-types'
-
 var _renderMenuItems = function _renderMenuItems(TS, option) {
   var _option$items = option.items,
-      items = _option$items === undefined ? [] : _option$items,
+      items = _option$items === void 0 ? [] : _option$items,
       _option$hmItems = option.hmItems,
-      hmItems = _option$hmItems === undefined ? {} : _option$hmItems,
+      hmItems = _option$hmItems === void 0 ? {} : _option$hmItems,
       onClickItem = option.onClickItem,
-      rest = (0, _objectWithoutProperties3.default)(option, ['items', 'hmItems', 'onClickItem']);
-
+      rest = (0, _objectWithoutPropertiesLoose2["default"])(option, ["items", "hmItems", "onClickItem"]);
   return items.map(function (item, index) {
-    var _className = TS.CL_ROW ? TS.CL_ROW + ' ' + CL_NOT_S : CL_NOT_S,
+    var _className = TS.CL_ROW ? TS.CL_ROW + " " + CL_NOT_S : CL_NOT_S,
         _itemConf = hmItems[item.id],
         menuTitle = _itemConf.menuTitle;
 
-
     Object.assign(_itemConf, rest);
+
     var _onClick = typeof onClickItem === 'function' ? onClickItem.bind(null, _itemConf) : undefined;
-    return _react2.default.createElement(
-      'button',
-      {
-        tabIndex: '0',
-        key: index,
-        className: _className,
-        onClick: _onClick
-        //onKeyDown={_createOnKeyDown(_onClick)}
-      },
-      menuTitle
-    );
+
+    return _react["default"].createElement("button", {
+      tabIndex: "0",
+      key: index,
+      className: _className,
+      onClick: _onClick //onKeyDown={_createOnKeyDown(_onClick)}
+
+    }, menuTitle);
   });
 };
 
@@ -66,17 +52,13 @@ var MenuPart = function MenuPart(_ref) {
   var TS = _ref.styleConfig,
       caption = _ref.caption,
       isInitClose = _ref.isInitClose,
-      restProps = (0, _objectWithoutProperties3.default)(_ref, ['styleConfig', 'caption', 'isInitClose']);
-  return _react2.default.createElement(
-    _OpenClose2.default,
-    {
-      style: TS.OPEN_CLOSE,
-      caption: caption,
-      isClose: isInitClose,
-      itemStyle: TS.ITEM
-    },
-    _renderMenuItems(TS, restProps)
-  );
+      restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["styleConfig", "caption", "isInitClose"]);
+  return _react["default"].createElement(_OpenClose["default"], {
+    style: TS.OPEN_CLOSE,
+    caption: caption,
+    isClose: isInitClose,
+    itemStyle: TS.ITEM
+  }, _renderMenuItems(TS, restProps));
 };
 /*
 MenuPart.propTypes = {
@@ -86,5 +68,7 @@ MenuPart.propTypes = {
 }
 */
 
-exports.default = MenuPart;
+
+var _default = MenuPart;
+exports["default"] = _default;
 //# sourceMappingURL=MenuPart.js.map

@@ -1,46 +1,23 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('./Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var S = {
   DIALOG: {
@@ -71,67 +48,56 @@ var S = {
   }
 };
 
-var MsgDialog = function (_Component) {
-  (0, _inherits3.default)(MsgDialog, _Component);
+var MsgDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(MsgDialog, _Component);
 
   function MsgDialog() {
-    (0, _classCallCheck3.default)(this, MsgDialog);
-    return (0, _possibleConstructorReturn3.default)(this, (MsgDialog.__proto__ || Object.getPrototypeOf(MsgDialog)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(MsgDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          theme = _props.theme,
-          isShow = _props.isShow,
-          data = _props.data,
-          onClose = _props.onClose,
-          TS = theme.createStyle(_Dialog2.default),
-          caption = data.caption,
-          descr = data.descr;
+  var _proto = MsgDialog.prototype;
 
-      return _react2.default.createElement(
-        _Comp2.default.ModalDialog,
-        {
-          STYLE: TS.BT,
-          style: (0, _extends3.default)({}, TS.R_DIALOG, S.DIALOG),
-          captionStyle: TS.BROWSER_CAPTION,
-          caption: 'Message',
-          isShow: isShow,
-          onClose: onClose
-        },
-        _react2.default.createElement(
-          'div',
-          { style: S.ROW },
-          _react2.default.createElement(
-            'p',
-            { style: S.CAPTION },
-            caption
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: S.ROW },
-          _react2.default.createElement(
-            'p',
-            { style: S.DESCR },
-            descr
-          )
-        )
-      );
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        theme = _this$props.theme,
+        isShow = _this$props.isShow,
+        data = _this$props.data,
+        onClose = _this$props.onClose,
+        TS = theme.createStyle(_Dialog["default"]),
+        caption = data.caption,
+        descr = data.descr;
+    return _react["default"].createElement(_Comp["default"].ModalDialog, {
+      STYLE: TS.BT,
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S.DIALOG),
+      captionStyle: TS.BROWSER_CAPTION,
+      caption: "Message",
+      isShow: isShow,
+      onClose: onClose
+    }, _react["default"].createElement("div", {
+      style: S.ROW
+    }, _react["default"].createElement("p", {
+      style: S.CAPTION
+    }, caption)), _react["default"].createElement("div", {
+      style: S.ROW
+    }, _react["default"].createElement("p", {
+      style: S.DESCR
+    }, descr)));
+  };
+
   return MsgDialog;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(MsgDialog);
+var _default = (0, _withTheme["default"])(MsgDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=MsgDialog.js.map

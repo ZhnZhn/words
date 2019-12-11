@@ -1,34 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 var S = {
   ROOT: {
@@ -41,16 +24,18 @@ var S = {
 };
 
 var _doVisible = function _doVisible(arr, keyValue) {
-  var index = void 0,
+  var index,
       max = arr.length,
-      i = void 0;
+      i;
+
   for (i = 0; i < max; i++) {
     if (arr[i].key === keyValue) {
       index = i;
       break;
     }
   }
-  return [].concat((0, _toConsumableArray3.default)(arr.slice(0, index)), (0, _toConsumableArray3.default)(arr.slice(index + 1)), [arr[index]]);
+
+  return [].concat(arr.slice(0, index), arr.slice(index + 1), [arr[index]]);
 };
 
 var _updateVisible = function _updateVisible(state, key, maxDialog) {
@@ -58,9 +43,9 @@ var _updateVisible = function _updateVisible(state, key, maxDialog) {
 
   if (!hmIs[key]) {
     var visibleDialogs = state.visibleDialogs;
-
     hmIs[key] = true;
     visibleDialogs.push(key);
+
     if (visibleDialogs.length > maxDialog) {
       hmIs[visibleDialogs[0]] = false;
       visibleDialogs = visibleDialogs.slice(1);
@@ -68,13 +53,15 @@ var _updateVisible = function _updateVisible(state, key, maxDialog) {
   }
 };
 
-var DialogContainer = function (_Component) {
-  (0, _inherits3.default)(DialogContainer, _Component);
+var DialogContainer =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(DialogContainer, _Component);
 
   function DialogContainer(props) {
-    (0, _classCallCheck3.default)(this, DialogContainer);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogContainer.__proto__ || Object.getPrototypeOf(DialogContainer)).call(this));
+    _this = _Component.call(this) || this;
 
     _this._onStore = function (actionType, option) {
       var showAction = _this.props.showAction;
@@ -86,11 +73,13 @@ var DialogContainer = function (_Component) {
               maxDialog = _this.props.maxDialog;
 
           _updateVisible(prevState, key, maxDialog);
+
           if (!Comp) {
             prevState.compDialogs = _doVisible(prevState.compDialogs, key);
           } else {
             prevState.compDialogs.push(Comp);
           }
+
           return prevState;
         });
       }
@@ -99,14 +88,15 @@ var DialogContainer = function (_Component) {
     _this._handleToggleDialog = function (key) {
       _this.setState(function (prevState) {
         var hmIs = prevState.hmIs;
-
         hmIs[key] = !hmIs[key];
+
         if (!hmIs[key]) {
           prevState.visibleDialogs = prevState.visibleDialogs.filter(function (value) {
             return value !== key;
           });
           _this.elHtml.style.cursor = '';
         }
+
         return prevState;
       });
     };
@@ -115,13 +105,12 @@ var DialogContainer = function (_Component) {
       var _this$state = _this.state,
           hmIs = _this$state.hmIs,
           compDialogs = _this$state.compDialogs;
-
       return compDialogs.map(function (Comp) {
         var key = Comp.key;
-        return _react2.default.cloneElement(Comp, {
+        return _react["default"].cloneElement(Comp, {
           key: key,
           isShow: hmIs[key],
-          onClose: _this._handleToggleDialog.bind(_this, key)
+          onClose: _this._handleToggleDialog.bind((0, _assertThisInitialized2["default"])(_this), key)
         });
       });
     };
@@ -135,28 +124,25 @@ var DialogContainer = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(DialogContainer, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { style: S.ROOT },
-        this._renderDialogs()
-      );
-    }
-  }]);
+  var _proto = DialogContainer.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.unsubscribe = this.props.store.listen(this._onStore);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.render = function render() {
+    return _react["default"].createElement("div", {
+      style: S.ROOT
+    }, this._renderDialogs());
+  };
+
   return DialogContainer;
 }(_react.Component);
 
-exports.default = DialogContainer;
+var _default = DialogContainer;
+exports["default"] = _default;
 //# sourceMappingURL=DialogContainer.js.map

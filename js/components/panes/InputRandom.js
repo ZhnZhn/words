@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _Atoms = require('../zhn-atoms/Atoms');
-
-var _Atoms2 = _interopRequireDefault(_Atoms);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
 var S = {
   ROOT: {
@@ -30,23 +25,19 @@ var S = {
 var InputRandom = function InputRandom(_ref) {
   var TS = _ref.TS,
       onEnter = _ref.onEnter;
-  return _react2.default.createElement(
-    'div',
-    { style: S.ROOT },
-    _react2.default.createElement(
-      'span',
-      { style: S.SPAN },
-      'Random Word'
-    ),
-    _react2.default.createElement(_Atoms2.default.RaisedButton, {
-      rootStyle: TS.BT.RAISED_ROOT,
-      clDiv: TS.BT.CL_RAISED_DIV,
-      caption: 'Load',
-      isPrimary: true,
-      onClick: onEnter
-    })
-  );
+  return _react["default"].createElement("div", {
+    style: S.ROOT
+  }, _react["default"].createElement("span", {
+    style: S.SPAN
+  }, "Random Word"), _react["default"].createElement(_Atoms["default"].RaisedButton, {
+    rootStyle: TS.BT.RAISED_ROOT,
+    clDiv: TS.BT.CL_RAISED_DIV,
+    caption: "Load",
+    isPrimary: true,
+    onClick: onEnter
+  }));
 };
 
-exports.default = InputRandom;
+var _default = InputRandom;
+exports["default"] = _default;
 //# sourceMappingURL=InputRandom.js.map

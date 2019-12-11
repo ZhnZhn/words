@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _Comp = require('../../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../../Comp"));
 
 var S = {
   ROOT: {
@@ -42,32 +37,27 @@ var WordSyn = function WordSyn(_ref) {
       examples = result.examples,
       synonyms = result.synonyms,
       similarTo = result.similarTo;
-
-  return _react2.default.createElement(
-    'div',
-    { style: S.ROOT },
-    _react2.default.createElement(_Comp2.default.ListSpan, {
-      caption: 'derivation:',
-      rootStyle: S.DER_ROOT,
-      captionStyle: S.DER_CAPTION,
-      items: derivation
-    }),
-    _react2.default.createElement(_Comp2.default.ListDiv, {
-      itemStyle: S.ITEM,
-      items: examples
-    }),
-    _react2.default.createElement(_Comp2.default.ListSpan, {
-      caption: 'synonyms:',
-      captionStyle: S.SYN_CAPTION,
-      items: synonyms
-    }),
-    _react2.default.createElement(_Comp2.default.ListSpan, {
-      caption: 'similarTo:',
-      captionStyle: S.SYN_CAPTION,
-      items: similarTo
-    })
-  );
+  return _react["default"].createElement("div", {
+    style: S.ROOT
+  }, _react["default"].createElement(_Comp["default"].ListSpan, {
+    caption: "derivation:",
+    rootStyle: S.DER_ROOT,
+    captionStyle: S.DER_CAPTION,
+    items: derivation
+  }), _react["default"].createElement(_Comp["default"].ListDiv, {
+    itemStyle: S.ITEM,
+    items: examples
+  }), _react["default"].createElement(_Comp["default"].ListSpan, {
+    caption: "synonyms:",
+    captionStyle: S.SYN_CAPTION,
+    items: synonyms
+  }), _react["default"].createElement(_Comp["default"].ListSpan, {
+    caption: "similarTo:",
+    captionStyle: S.SYN_CAPTION,
+    items: similarTo
+  }));
 };
 
-exports.default = WordSyn;
+var _default = WordSyn;
+exports["default"] = _default;
 //# sourceMappingURL=WordSyn.js.map

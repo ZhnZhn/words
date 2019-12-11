@@ -1,23 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Button = require('./Button');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Button2 = _interopRequireDefault(_Button);
+var _Button = _interopRequireDefault(require("./Button"));
 
-var _CircleButton = require('./CircleButton');
-
-var _CircleButton2 = _interopRequireDefault(_CircleButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CircleButton = _interopRequireDefault(require("./CircleButton"));
 
 var A = {
-  Button: _Button2.default,
-  CircleButton: _CircleButton2.default
+  Button: _Button["default"],
+  CircleButton: _CircleButton["default"]
 };
-
-exports.default = A;
+var _default = A;
+exports["default"] = _default;
 //# sourceMappingURL=A.js.map

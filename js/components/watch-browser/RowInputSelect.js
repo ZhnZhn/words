@@ -1,36 +1,28 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 
-var _InputSelect = require('../zhn-m-input/InputSelect');
-
-var _InputSelect2 = _interopRequireDefault(_InputSelect);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//import PropTypes from "prop-types";
 var STYLE_CONFIG = {
   ROOT: {
     width: 250
   }
 };
-//import PropTypes from "prop-types";
 
 var RowInputSelect = function RowInputSelect(props) {
-  return _react2.default.createElement(_InputSelect2.default, (0, _extends3.default)({
+  return _react["default"].createElement(_InputSelect["default"], (0, _extends2["default"])({
     styleConfig: STYLE_CONFIG
   }, props));
 };
-
 /*
 RowInputSelect.propTypes = {
   caption : PropTypes.string,
@@ -40,5 +32,7 @@ RowInputSelect.propTypes = {
 }
 */
 
-exports.default = RowInputSelect;
+
+var _default = RowInputSelect;
+exports["default"] = _default;
 //# sourceMappingURL=RowInputSelect.js.map

@@ -1,47 +1,23 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _SecretField = _interopRequireDefault(require("../zhn-m-input/SecretField"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _SecretField = require('../zhn-m-input/SecretField');
-
-var _SecretField2 = _interopRequireDefault(_SecretField);
-
-var _FlatButton = require('../zhn-atoms/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import PropTypes from "prop-types";
+var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 
 var CL_DIV = 'bt-flat__div';
-
 var S = {
   ROOT: {
     position: 'relative',
@@ -62,88 +38,69 @@ var S = {
   }
 };
 
-var CardApiKey = function (_Component) {
-  (0, _inherits3.default)(CardApiKey, _Component);
+var CardApiKey =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(CardApiKey, _Component);
 
   function CardApiKey() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, CardApiKey);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = CardApiKey.__proto__ || Object.getPrototypeOf(CardApiKey)).call.apply(_ref, [this].concat(args))), _this), _this._refInput = function (c) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._refInput = function (c) {
       return _this._input = c;
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  /*
-  static propTypes = {
-    style: PropTypes.object,
-    buttonsStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-    onClose: PropTypes.func,
-    onSet: PropTypes.func
-  }
-  */
+  var _proto = CardApiKey.prototype;
 
-  (0, _createClass3.default)(CardApiKey, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          style = _props.style,
-          buttonsStyle = _props.buttonsStyle,
-          btStyle = _props.btStyle,
-          onClose = _props.onClose,
-          onSet = _props.onSet;
+  _proto.render = function render() {
+    var _this$props = this.props,
+        style = _this$props.style,
+        buttonsStyle = _this$props.buttonsStyle,
+        btStyle = _this$props.btStyle,
+        onClose = _this$props.onClose,
+        onSet = _this$props.onSet;
+    return _react["default"].createElement("div", {
+      style: style
+    }, _react["default"].createElement("form", null, _react["default"].createElement(_SecretField["default"], {
+      ref: this._refInput,
+      rootStyle: S.SECRET,
+      caption: "Words API Key",
+      name: "wordsapi",
+      maxLength: "50",
+      onEnter: onSet
+    })), _react["default"].createElement("div", {
+      style: buttonsStyle
+    }, _react["default"].createElement(_FlatButton["default"], {
+      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, btStyle),
+      clDiv: CL_DIV,
+      caption: "Set & Close",
+      title: "Set & Close Dialog",
+      onClick: onSet
+    }), _react["default"].createElement(_FlatButton["default"], {
+      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, btStyle),
+      clDiv: CL_DIV,
+      caption: "Close",
+      title: "Close Dialog",
+      onClick: onClose
+    })));
+  };
 
-      return _react2.default.createElement(
-        'div',
-        { style: style },
-        _react2.default.createElement(
-          'form',
-          null,
-          _react2.default.createElement(_SecretField2.default, {
-            ref: this._refInput,
-            rootStyle: S.SECRET,
-            caption: 'Words API Key',
-            name: 'wordsapi',
-            maxLength: '50',
-            onEnter: onSet
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: buttonsStyle },
-          _react2.default.createElement(_FlatButton2.default, {
-            rootStyle: (0, _extends3.default)({}, S.BT_ROOT, btStyle),
-            clDiv: CL_DIV,
-            caption: 'Set & Close',
-            title: 'Set & Close Dialog',
-            onClick: onSet
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            rootStyle: (0, _extends3.default)({}, S.BT_ROOT, btStyle),
-            clDiv: CL_DIV,
-            caption: 'Close',
-            title: 'Close Dialog',
-            onClick: onClose
-          })
-        )
-      );
-    }
-  }, {
-    key: 'getValue',
-    value: function getValue() {
-      return this._input.getValue();
-    }
-  }]);
+  _proto.getValue = function getValue() {
+    return this._input.getValue();
+  };
+
   return CardApiKey;
 }(_react.Component);
 
-exports.default = CardApiKey;
+var _default = CardApiKey;
+exports["default"] = _default;
 //# sourceMappingURL=CardApiKey.js.map

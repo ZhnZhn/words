@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _react2 = _interopRequireDefault(_react);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _WordOf = require('./WordOf');
+var _react = _interopRequireWildcard(require("react"));
 
-var _WordOf2 = _interopRequireDefault(_WordOf);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _WordOf = _interopRequireDefault(require("./WordOf"));
 
 var WordNyms = function WordNyms(_ref) {
   var result = _ref.result;
@@ -25,39 +22,31 @@ var WordNyms = function WordNyms(_ref) {
       inCategory = _ref2.inCategory,
       hasCategories = _ref2.hasCategories;
 
-  return _react2.default.createElement(
-    _react.Fragment,
-    null,
-    _react2.default.createElement(_WordOf2.default
-    //hypernyms
-
-    //hyponyms
-    , { caption: 'typeOf (more generic)',
-      items: typeOf
-    }),
-    _react2.default.createElement(_WordOf2.default, { caption: 'hasTypes (more specific)',
-      items: hasTypes
-    }),
-    _react2.default.createElement(_WordOf2.default, {
-      caption: 'partOf (holonyms)',
-      items: partOf
-    }),
-    _react2.default.createElement(_WordOf2.default, {
-      caption: 'hasParts (meronyms)',
-      items: hasParts
-    }),
-    _react2.default.createElement(_WordOf2.default, {
-      caption: 'inCategory',
-      items: inCategory,
-      isCount: true
-    }),
-    _react2.default.createElement(_WordOf2.default, {
-      caption: 'hasCategory',
-      items: hasCategories,
-      isCount: true
-    })
-  );
+  return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_WordOf["default"] //hypernyms
+  , {
+    caption: "typeOf (more generic)",
+    items: typeOf
+  }), _react["default"].createElement(_WordOf["default"] //hyponyms
+  , {
+    caption: "hasTypes (more specific)",
+    items: hasTypes
+  }), _react["default"].createElement(_WordOf["default"], {
+    caption: "partOf (holonyms)",
+    items: partOf
+  }), _react["default"].createElement(_WordOf["default"], {
+    caption: "hasParts (meronyms)",
+    items: hasParts
+  }), _react["default"].createElement(_WordOf["default"], {
+    caption: "inCategory",
+    items: inCategory,
+    isCount: true
+  }), _react["default"].createElement(_WordOf["default"], {
+    caption: "hasCategory",
+    items: hasCategories,
+    isCount: true
+  }));
 };
 
-exports.default = WordNyms;
+var _default = WordNyms;
+exports["default"] = _default;
 //# sourceMappingURL=WordNyms.js.map
