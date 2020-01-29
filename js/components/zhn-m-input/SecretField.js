@@ -36,12 +36,17 @@ var S = {
   }
 };
 
-var TextField =
+var _crId = function _crId(_ref) {
+  var name = _ref.name;
+  return name + '_sf';
+};
+
+var SecretField =
 /*#__PURE__*/
 function (_Component) {
-  (0, _inheritsLoose2["default"])(TextField, _Component);
+  (0, _inheritsLoose2["default"])(SecretField, _Component);
 
-  function TextField(props) {
+  function SecretField(props) {
     var _this;
 
     _this = _Component.call(this, props) || this;
@@ -61,6 +66,16 @@ function (_Component) {
     _this._hInputChange = function (event) {
       _this.setState({
         value: event.target.value.trim()
+      });
+    };
+
+    _this._clearAttrValue = function () {
+      _this._clearId = setTimeout(function () {
+        var _input = _this._input;
+
+        if (_input && _input.hasAttribute('value')) {
+          _input.removeAttribute('value');
+        }
       });
     };
 
@@ -94,15 +109,18 @@ function (_Component) {
 
     _this._wasEnter = false;
     _this.isFocus = false;
-    var name = props.name;
-    _this._id = name + '_sf';
+    _this._id = _crId(props);
     _this.state = {
       value: ''
     };
     return _this;
   }
 
-  var _proto = TextField.prototype;
+  var _proto = SecretField.prototype;
+
+  _proto.componentWillUnmound = function componentWillUnmound() {
+    clearTimeout(this._clearId);
+  };
 
   _proto.render = function render() {
     var _this$props = this.props,
@@ -153,14 +171,18 @@ function (_Component) {
     }, errorMsg)));
   };
 
+  _proto.componentDidUpdate = function componentDidUpdate() {
+    this._clearAttrValue();
+  };
+
   _proto.getValue = function getValue() {
     return this._input && this._input.value;
   };
 
-  return TextField;
+  return SecretField;
 }(_react.Component);
 
-TextField.defaultProps = {
+SecretField.defaultProps = {
   name: 'pwd',
   maxLength: "32",
   onTest: function onTest() {
@@ -168,6 +190,6 @@ TextField.defaultProps = {
   },
   onEnter: function onEnter() {}
 };
-var _default = TextField;
+var _default = SecretField;
 exports["default"] = _default;
 //# sourceMappingURL=SecretField.js.map
