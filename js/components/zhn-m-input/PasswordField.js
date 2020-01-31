@@ -38,15 +38,15 @@ var S = {
 
 var _crId = function _crId(_ref) {
   var name = _ref.name;
-  return name + '_sf';
+  return name + '_' + Math.random().toString(36).substr(2, 5);
 };
 
-var SecretField =
+var PasswordField =
 /*#__PURE__*/
 function (_Component) {
-  (0, _inheritsLoose2["default"])(SecretField, _Component);
+  (0, _inheritsLoose2["default"])(PasswordField, _Component);
 
-  function SecretField(props) {
+  function PasswordField(props) {
     var _this;
 
     _this = _Component.call(this, props) || this;
@@ -116,7 +116,7 @@ function (_Component) {
     return _this;
   }
 
-  var _proto = SecretField.prototype;
+  var _proto = PasswordField.prototype;
 
   _proto.componentWillUnmound = function componentWillUnmound() {
     clearTimeout(this._clearId);
@@ -179,10 +179,10 @@ function (_Component) {
     return this._input && this._input.value;
   };
 
-  return SecretField;
+  return PasswordField;
 }(_react.Component);
 
-SecretField.defaultProps = {
+PasswordField.defaultProps = {
   name: 'pwd',
   maxLength: "32",
   onTest: function onTest() {
@@ -190,6 +190,6 @@ SecretField.defaultProps = {
   },
   onEnter: function onEnter() {}
 };
-var _default = SecretField;
+var _default = PasswordField;
 exports["default"] = _default;
-//# sourceMappingURL=SecretField.js.map
+//# sourceMappingURL=PasswordField.js.map

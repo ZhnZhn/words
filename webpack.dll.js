@@ -10,7 +10,7 @@ module.exports = {
   entry: {
      lib: [
             "react", "react-dom",
-            "reflux",            
+            "reflux-core",            
             "interactjs", "localforage"
           ]
   },

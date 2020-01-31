@@ -19,6 +19,8 @@ var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
 var _FlatButton = _interopRequireDefault(require("./FlatButton"));
 
+var _ButtonClear = _interopRequireDefault(require("./ButtonClear"));
+
 var _InputText = _interopRequireDefault(require("./InputText"));
 
 var _Link = _interopRequireDefault(require("./Link"));
@@ -60,6 +62,7 @@ var Atoms = (0, _extends2["default"])({}, _A["default"], {}, _SvgIcons["default"
   BrowserCaption: _BrowserCaption["default"],
   CaptionInput: _CaptionInput["default"],
   FlatButton: _FlatButton["default"],
+  ButtonClear: _ButtonClear["default"],
   InputText: _InputText["default"],
   Link: _Link["default"],
   ListDiv: _ListDiv["default"],

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _reflux = _interopRequireDefault(require("reflux"));
+var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
 var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
@@ -23,7 +23,7 @@ var _WithLoading = _interopRequireDefault(require("./WithLoading"));
 
 var _WatchListSlice = _interopRequireDefault(require("../watch-list/WatchListSlice"));
 
-var Store = _reflux["default"].createStore((0, _extends2["default"])({
+var Store = _refluxCore["default"].createStore((0, _extends2["default"])({
   listenables: [_ComponentActions["default"], _ItemActions["default"], _WatchActions["default"]],
   init: function init() {
     this.initWatchList();

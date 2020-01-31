@@ -23,6 +23,8 @@ const DRAG = {
   ITEM : 'ITEM'
 };
 
+const COLOR_CAPTION = '#9e9e9e';
+
 const S = {
   BROWSER: {
     paddingRight: 0
@@ -43,11 +45,14 @@ const S = {
   GROUP_DIV: {
     lineHeight : 2.5
   },
+  CAPTION: {
+    color: COLOR_CAPTION
+  },
   LIST_DIV: {
-    marginLeft : 8,
-    paddingLeft : 12,
-    borderLeft : '1px solid yellow',
-    lineHeight : 2.5
+    marginLeft: 8,
+    paddingLeft: 12,
+    borderLeft: `3px solid ${COLOR_CAPTION}`,
+    lineHeight: 2.5
   },
   ITEM_NOT_SELECTED: {
     marginRight : 10,
@@ -147,30 +152,49 @@ class WatchBrowser extends Component {
     ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_LIST)
   }
 
+  _crGroupDraggableOption = (isModeEdit, option) => {
+    return isModeEdit
+      ? {
+        draggable: true,
+        onDragStart: this._handlerDragStartGroup.bind(null, option),
+        onDragEnter: this._handlerDragEnterGroup,
+        onDragOver: this._handlerDragOverGroup,
+        onDragLeave: this._handlerDragLeaveGroup,
+        onDrop: this._handlerDropGroup.bind(null, option)
+      }
+    : void 0;
+  }
+  _crListDraggableOption = (isModeEdit, option) => {
+    return isModeEdit
+      ? {
+        draggable: true,
+        onDragStart: this._handlerDragStartList.bind(null, option),
+        onDragEnter: this._handlerDragEnterList,
+        onDragOver: this._handlerDragOverList,
+        onDragLeave: this._handlerDragLeaveList,
+        onDrop: this._handlerDropList.bind(null, option)
+      }
+    : void 0;
+  }
+
   _renderWatchList = (watchList, TS) => {
      const { isModeEdit } = this.state;
      return watchList.groups.map((group, index) => {
        const {caption, lists} = group;
        return (
-               <A.OpenClose2
-                  key={index}
-                  style={{ ...S.GROUP_DIV, ...TS.OPEN_CLOSE }}
-                  caption={caption}
-                  isClose={true}
-                  isDraggable={isModeEdit}
-                  option={{ caption }}
-                  onDragStart={this._handlerDragStartGroup}
-                  onDragEnter={this._handlerDragEnterGroup}
-                  onDragOver={this._handlerDragOverGroup}
-                  onDragLeave={this._handlerDragLeaveGroup}
-                  onDrop={this._handlerDropGroup}
-                >
-                {
-                  lists &&
-                  this._renderLists(lists, caption, TS)
-                }
-              </A.OpenClose2>
-              );
+         <A.OpenClose2
+            key={index}
+            style={{ ...S.GROUP_DIV, ...TS.OPEN_CLOSE }}
+            styleCaption={S.CAPTION}
+            caption={caption}
+            draggableOption={this._crGroupDraggableOption(isModeEdit, { caption })}
+          >
+          {
+            lists &&
+            this._renderLists(lists, caption, TS)
+          }
+        </A.OpenClose2>
+       );
      });
   }
 
@@ -183,16 +207,10 @@ class WatchBrowser extends Component {
            key={index}
            fillOpen={C_FILL_OPEN}
            style={{ ...S.LIST_DIV, ...TS.OPEN_CLOSE }}
+           styleCaption={S.CAPTION}
            styleNotSelected={S.ITEM_NOT_SELECTED}
            caption={caption}
-           isClose={true}
-           isDraggable={isModeEdit}
-           option={{ groupCaption, caption }}
-           onDragStart={this._handlerDragStartList}
-           onDragEnter={this._handlerDragEnterList}
-           onDragOver={this._handlerDragOverList}
-           onDragLeave={this._handlerDragLeaveList}
-           onDrop={this._handlerDropList}
+           draggableOption={this._crListDraggableOption(isModeEdit, { groupCaption, caption })}           
         >
          {
            items &&

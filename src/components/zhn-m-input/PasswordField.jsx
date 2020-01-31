@@ -24,9 +24,11 @@ const S = {
   }
 };
 
-const _crId = ({ name }) => name + '_sf';
+const _crId = ({ name }) => name
+  + '_'
+  + Math.random().toString(36).substr(2, 5);
 
-class SecretField extends Component {
+class PasswordField extends Component {
   static defaultProps = {
     name: 'pwd',
     maxLength: "32",
@@ -166,4 +168,4 @@ class SecretField extends Component {
   }
 }
 
-export default SecretField
+export default PasswordField

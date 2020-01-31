@@ -1,4 +1,4 @@
-import Reflux from 'reflux'
+import Reflux from 'reflux-core'
 
 import ComponentActions from '../actions/ComponentActions'
 import ItemActions from '../actions/ItemActions'
@@ -16,7 +16,7 @@ const Store = Reflux.createStore({
     ItemActions,
     WatchActions
   ],
-  
+
   init(){
     this.initWatchList()
   },

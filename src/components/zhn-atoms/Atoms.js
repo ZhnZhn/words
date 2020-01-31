@@ -6,6 +6,7 @@ import Browser from './Browser'
 import BrowserCaption from './BrowserCaption'
 import CaptionInput from './CaptionInput'
 import FlatButton from './FlatButton'
+import ButtonClear from './ButtonClear'
 import InputText from './InputText'
 import Link from './Link'
 import ListDiv from './ListDiv'
@@ -30,8 +31,9 @@ const Atoms = {
   ...SvgIcons,
   Browser,
   BrowserCaption,
-  CaptionInput,  
+  CaptionInput,
   FlatButton,
+  ButtonClear,
   InputText,
   Link,
   ListDiv,

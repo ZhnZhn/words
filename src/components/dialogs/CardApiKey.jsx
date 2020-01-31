@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 //import PropTypes from "prop-types";
 
-import SecretField from '../zhn-m-input/SecretField'
-import FlatButton from '../zhn-atoms/FlatButton'
+import A from '../Comp'
 
 const CL_DIV = 'bt-flat__div';
 
@@ -42,14 +41,18 @@ class CardApiKey extends Component {
 
   render(){
     const {
+      isShow, isSelected,
       style,
       buttonsStyle, btStyle,
       onClose, onSet
     } = this.props;
+    if (!(isShow && isSelected)) {
+      return null;
+    }
     return(
       <div style={style}>
         <form>
-          <SecretField
+          <A.PasswordField
             ref={this._refInput}
             rootStyle={S.SECRET}
             caption="Words API Key"
@@ -59,14 +62,14 @@ class CardApiKey extends Component {
           />
         </form>
         <div style={buttonsStyle}>
-          <FlatButton
+          <A.FlatButton
             rootStyle={{ ...S.BT_ROOT, ...btStyle }}
             clDiv={CL_DIV}
             caption="Set & Close"
             title="Set & Close Dialog"
             onClick={onSet}
           />
-          <FlatButton
+          <A.FlatButton
             rootStyle={{ ...S.BT_ROOT, ...btStyle }}
             clDiv={CL_DIV}
             caption="Close"

@@ -42,6 +42,7 @@ var DRAG = {
   LIST: 'LIST',
   ITEM: 'ITEM'
 };
+var COLOR_CAPTION = '#9e9e9e';
 var S = {
   BROWSER: {
     paddingRight: 0
@@ -62,10 +63,13 @@ var S = {
   GROUP_DIV: {
     lineHeight: 2.5
   },
+  CAPTION: {
+    color: COLOR_CAPTION
+  },
   LIST_DIV: {
     marginLeft: 8,
     paddingLeft: 12,
-    borderLeft: '1px solid yellow',
+    borderLeft: "3px solid " + COLOR_CAPTION,
     lineHeight: 2.5
   },
   ITEM_NOT_SELECTED: {
@@ -133,6 +137,28 @@ function (_Component) {
       });
     };
 
+    _this._crGroupDraggableOption = function (isModeEdit, option) {
+      return isModeEdit ? {
+        draggable: true,
+        onDragStart: _this._handlerDragStartGroup.bind(null, option),
+        onDragEnter: _this._handlerDragEnterGroup,
+        onDragOver: _this._handlerDragOverGroup,
+        onDragLeave: _this._handlerDragLeaveGroup,
+        onDrop: _this._handlerDropGroup.bind(null, option)
+      } : void 0;
+    };
+
+    _this._crListDraggableOption = function (isModeEdit, option) {
+      return isModeEdit ? {
+        draggable: true,
+        onDragStart: _this._handlerDragStartList.bind(null, option),
+        onDragEnter: _this._handlerDragEnterList,
+        onDragOver: _this._handlerDragOverList,
+        onDragLeave: _this._handlerDragLeaveList,
+        onDrop: _this._handlerDropList.bind(null, option)
+      } : void 0;
+    };
+
     _this._renderWatchList = function (watchList, TS) {
       var isModeEdit = _this.state.isModeEdit;
       return watchList.groups.map(function (group, index) {
@@ -141,17 +167,11 @@ function (_Component) {
         return _react["default"].createElement(_Comp["default"].OpenClose2, {
           key: index,
           style: (0, _extends2["default"])({}, S.GROUP_DIV, {}, TS.OPEN_CLOSE),
+          styleCaption: S.CAPTION,
           caption: caption,
-          isClose: true,
-          isDraggable: isModeEdit,
-          option: {
+          draggableOption: _this._crGroupDraggableOption(isModeEdit, {
             caption: caption
-          },
-          onDragStart: _this._handlerDragStartGroup,
-          onDragEnter: _this._handlerDragEnterGroup,
-          onDragOver: _this._handlerDragOverGroup,
-          onDragLeave: _this._handlerDragLeaveGroup,
-          onDrop: _this._handlerDropGroup
+          })
         }, lists && _this._renderLists(lists, caption, TS));
       });
     };
@@ -165,19 +185,13 @@ function (_Component) {
           key: index,
           fillOpen: C_FILL_OPEN,
           style: (0, _extends2["default"])({}, S.LIST_DIV, {}, TS.OPEN_CLOSE),
+          styleCaption: S.CAPTION,
           styleNotSelected: S.ITEM_NOT_SELECTED,
           caption: caption,
-          isClose: true,
-          isDraggable: isModeEdit,
-          option: {
+          draggableOption: _this._crListDraggableOption(isModeEdit, {
             groupCaption: groupCaption,
             caption: caption
-          },
-          onDragStart: _this._handlerDragStartList,
-          onDragEnter: _this._handlerDragEnterList,
-          onDragOver: _this._handlerDragOverList,
-          onDragLeave: _this._handlerDragLeaveList,
-          onDrop: _this._handlerDropList
+          })
         }, items && _this._renderItems(items, groupCaption, caption));
       });
     };

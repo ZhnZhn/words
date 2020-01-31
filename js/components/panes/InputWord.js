@@ -11,17 +11,21 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _has = _interopRequireDefault(require("../has"));
 
-var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
+var _Comp = _interopRequireDefault(require("../Comp"));
 
-var CL_BT = 'bt-input-word';
 var S = {
   TF_LABEL: {
-    top: '28px'
+    top: 28
   },
   TF_INPUT: {
     fontSize: '24px'
+  },
+  BT_CLEAR: {
+    position: 'relative',
+    top: 18,
+    left: 6
   }
 };
 
@@ -38,6 +42,12 @@ function (_Component) {
     }
 
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._hClear = function () {
+      if (_this.iWord) {
+        _this.iWord.setValue('');
+      }
+    };
 
     _this._ref = function (n) {
       return _this.iWord = n;
@@ -58,8 +68,21 @@ function (_Component) {
     var _this$props = this.props,
         TS = _this$props.TS,
         initValue = _this$props.initValue,
-        onEnter = _this$props.onEnter;
-    return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_TextField["default"], {
+        onEnter = _this$props.onEnter,
+        _elBt = _has["default"].HAS_TOUCH ? _react["default"].createElement(_Comp["default"].ButtonClear, {
+      style: S.BT_CLEAR,
+      onClick: this._hClear
+    }) : _react["default"].createElement(_Comp["default"].RaisedButton, {
+      rootStyle: TS.BT.RAISED_ROOT,
+      clDiv: TS.BT.CL_RAISED_DIV,
+      caption: "Load",
+      tabIndex: -1 //timeout={3000}
+      ,
+      isPrimary: true,
+      onClick: onEnter
+    });
+
+    return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._ref,
       rootStyle: TS.INPUT_ROOT,
       labelStyle: S.TF_LABEL,
@@ -69,16 +92,7 @@ function (_Component) {
       spellCheck: true,
       initValue: initValue,
       onEnter: onEnter
-    }), _react["default"].createElement(_Atoms["default"].RaisedButton, {
-      className: CL_BT,
-      rootStyle: TS.BT.RAISED_ROOT,
-      clDiv: TS.BT.CL_RAISED_DIV,
-      caption: "Load",
-      tabIndex: -1 //timeout={3000}
-      ,
-      isPrimary: true,
-      onClick: onEnter
-    }));
+    }), _elBt);
   };
 
   _proto.getValue = function getValue() {

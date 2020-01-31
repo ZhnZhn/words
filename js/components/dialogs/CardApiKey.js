@@ -13,9 +13,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _SecretField = _interopRequireDefault(require("../zhn-m-input/SecretField"));
-
-var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var CL_DIV = 'bt-flat__div';
 var S = {
@@ -63,14 +61,21 @@ function (_Component) {
 
   _proto.render = function render() {
     var _this$props = this.props,
+        isShow = _this$props.isShow,
+        isSelected = _this$props.isSelected,
         style = _this$props.style,
         buttonsStyle = _this$props.buttonsStyle,
         btStyle = _this$props.btStyle,
         onClose = _this$props.onClose,
         onSet = _this$props.onSet;
+
+    if (!(isShow && isSelected)) {
+      return null;
+    }
+
     return _react["default"].createElement("div", {
       style: style
-    }, _react["default"].createElement("form", null, _react["default"].createElement(_SecretField["default"], {
+    }, _react["default"].createElement("form", null, _react["default"].createElement(_Comp["default"].PasswordField, {
       ref: this._refInput,
       rootStyle: S.SECRET,
       caption: "Words API Key",
@@ -79,13 +84,13 @@ function (_Component) {
       onEnter: onSet
     })), _react["default"].createElement("div", {
       style: buttonsStyle
-    }, _react["default"].createElement(_FlatButton["default"], {
+    }, _react["default"].createElement(_Comp["default"].FlatButton, {
       rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, btStyle),
       clDiv: CL_DIV,
       caption: "Set & Close",
       title: "Set & Close Dialog",
       onClick: onSet
-    }), _react["default"].createElement(_FlatButton["default"], {
+    }), _react["default"].createElement(_Comp["default"].FlatButton, {
       rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, btStyle),
       clDiv: CL_DIV,
       caption: "Close",

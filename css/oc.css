@@ -1,0 +1,10 @@
+.oc-item {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+.oc-item:focus,
+.oc-item:active {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.15);
+}

@@ -1,16 +1,20 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
-import A from '../zhn-atoms/Atoms'
-import TextField from '../zhn-m-input/TextField'
+import has from '../has'
 
-const CL_BT = 'bt-input-word';
+import A from '../Comp'
 
 const S = {
   TF_LABEL: {
-    top: '28px'
+    top: 28
   },
   TF_INPUT: {
     fontSize: '24px'
+  },
+  BT_CLEAR: {
+    position: 'relative',
+    top: 18,
+    left: 6
   }
 };
 
@@ -26,17 +30,38 @@ class InputWord extends Component {
     }
   }
 
+  _hClear = () => {
+    if (this.iWord) {
+      this.iWord.setValue('')
+    }
+  }
+
+
   _ref = n => this.iWord = n
 
   render(){
     const {
-            TS,
-            initValue,
-            onEnter
-          } = this.props;
+        TS,
+        initValue,
+        onEnter
+      } = this.props
+    , _elBt = has.HAS_TOUCH
+       ? (<A.ButtonClear
+           style={S.BT_CLEAR}
+           onClick={this._hClear}
+         />)
+      :  (<A.RaisedButton
+            rootStyle={TS.BT.RAISED_ROOT}
+            clDiv={TS.BT.CL_RAISED_DIV}
+            caption="Load"
+            tabIndex={-1}
+            //timeout={3000}
+            isPrimary={true}
+            onClick={onEnter}
+        />);
     return (
-      <Fragment>
-        <TextField
+      <>
+        <A.TextField
           ref={this._ref}
           rootStyle={TS.INPUT_ROOT}
           labelStyle={S.TF_LABEL}
@@ -47,17 +72,8 @@ class InputWord extends Component {
           initValue={initValue}
           onEnter={onEnter}
         />
-        <A.RaisedButton
-          className={CL_BT}
-          rootStyle={TS.BT.RAISED_ROOT}
-          clDiv={TS.BT.CL_RAISED_DIV}
-          caption="Load"
-          tabIndex={-1}
-          //timeout={3000}
-          isPrimary={true}
-          onClick={onEnter}
-        />
-      </Fragment>
+        {_elBt}
+      </>
     );
   }
 

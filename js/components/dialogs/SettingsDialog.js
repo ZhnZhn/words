@@ -28,9 +28,9 @@ var _CardUi = _interopRequireDefault(require("./CardUi"));
 var S = {
   MODAL: {
     position: 'static',
+    zIndex: 10,
     width: 350,
     height: 290,
-    zIndex: 10,
     margin: '70px auto 0px',
     border: 'solid 2px #1b2836',
     borderRadius: 5,
@@ -110,6 +110,7 @@ function (_Component) {
       style: S.CARD_ROOT,
       buttonsStyle: S.CARD_BUTTONS,
       btStyle: TS.BT.FLAT_ROOT,
+      isShow: isShow,
       onSet: this._hSetAndClose,
       onClose: onClose
     })), _react["default"].createElement(_Comp["default"].Tab, {

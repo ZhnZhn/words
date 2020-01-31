@@ -93,7 +93,7 @@ function (_Component) {
       caption: 'Words Sources',
       onClick: onSources
     }, {
-      caption: 'Watch',
+      caption: 'Watch Lists',
       onClick: onWatch
     }];
     _this.state = {

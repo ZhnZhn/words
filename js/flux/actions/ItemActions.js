@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = exports.T = void 0;
 
-var _reflux = _interopRequireDefault(require("reflux"));
+var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
 var _Store = _interopRequireDefault(require("../stores/Store"));
 
@@ -25,7 +25,7 @@ var T = {
 };
 exports.T = T;
 
-var Actions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[T.LOAD_ITEM] = {
+var Actions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[T.LOAD_ITEM] = {
   children: ['completed', 'failed']
 }, _Reflux$createActions[T.REMOVE_ITEM] = {}, _Reflux$createActions[T.REMOVE_ITEMS] = {}, _Reflux$createActions[T.REMOVE_ITEMS_UNDER] = {}, _Reflux$createActions));
 

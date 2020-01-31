@@ -1,1 +1,41 @@
-{"version":3,"sources":["../../../src/flux/actions/ItemActions.js"],"names":["T","LOAD_ITEM","LOAD_ITEM_COMPLETED","LOAD_ITEM_FAILED","REMOVE_ITEM","REMOVE_ITEMS","REMOVE_ITEMS_UNDER","Actions","Reflux","createActions","children","_crDbLoadMsg","word","listen","option","itemConf","paneId","Store","isItem","failed","msg","loadId","RouterApiConf","getApiConf","apiKey","adapter","api","msgErr","Object","assign","completed"],"mappings":";;;;;;;AAAA;;AAEA;;AAEA;;AACA;;;;AAEO,IAAMA,CAAC,GAAG;AACfC,EAAAA,SAAS,EAAE,UADI;AAEfC,EAAAA,mBAAmB,EAAE,mBAFN;AAGfC,EAAAA,gBAAgB,EAAE,gBAHH;AAKfC,EAAAA,WAAW,EAAE,YALE;AAMfC,EAAAA,YAAY,EAAE,aANC;AAOfC,EAAAA,kBAAkB,EAAE;AAPL,CAAV;;;AAUP,IAAMC,OAAO,GAAGC,mBAAOC,aAAP,oDACbT,CAAC,CAACC,SADW,IACC;AACbS,EAAAA,QAAQ,EAAE,CAAC,WAAD,EAAc,QAAd;AADG,CADD,wBAIbV,CAAC,CAACI,WAJW,IAIG,EAJH,wBAKbJ,CAAC,CAACK,YALW,IAKI,EALJ,wBAMbL,CAAC,CAACM,kBANW,IAMU,EANV,yBAAhB;;AAUA,IAAMK,YAAY,GAAG,SAAfA,YAAe,CAAAC,IAAI;AAAA,oBAAaA,IAAb;AAAA,CAAzB;;AAEAL,OAAO,CAACP,CAAC,CAACC,SAAH,CAAP,CAAqBY,MAArB,CAA4B,UAASC,MAAT,EAAmB;AAAA,MAAVA,MAAU;AAAVA,IAAAA,MAAU,GAAH,EAAG;AAAA;;AAAA,gBAEZA,MAFY;AAAA,iCAErCC,QAFqC;AAAA,MAErCA,QAFqC,iCAE5B,EAF4B;AAAA,6BAExBH,IAFwB;AAAA,MAExBA,IAFwB,6BAEnB,EAFmB;AAAA,MAGrCI,MAHqC,GAG1BD,QAH0B,CAGrCC,MAHqC;;AAI7C,MAAIC,kBAAMC,MAAN,CAAaF,MAAb,EAAqBJ,IAArB,CAAJ,EAA+B;AAC7B,SAAKO,MAAL,CAAY;AAAEC,MAAAA,GAAG,EAAET,YAAY,CAACC,IAAD;AAAnB,KAAZ;AACA;AACD;;AAP4C,iBAWzCE,MAXyC;AAAA,iCAU3CO,MAV2C;AAAA,MAU3CA,MAV2C,gCAUpC,IAVoC;AAAA,8BAgBzCC,0BAAcC,UAAd,CAAyBF,MAAzB,CAhByC;AAAA,MAa3CG,MAb2C,yBAa3CA,MAb2C;AAAA,MAc3CC,OAd2C,yBAc3CA,OAd2C;AAAA,MAclCC,GAdkC,yBAclCA,GAdkC;AAAA,MAe3CC,MAf2C,yBAe3CA,MAf2C;;AAiB7C,MAAIH,MAAJ,EAAW;AACTI,IAAAA,MAAM,CAACC,MAAP,CAAcf,MAAd,EAAsB;AAAEU,MAAAA,MAAM,EAANA,MAAF;AAAUC,MAAAA,OAAO,EAAPA,OAAV;AAAmBC,MAAAA,GAAG,EAAHA;AAAnB,KAAtB;AACA,8BAASZ,MAAT,EAAiB,KAAKgB,SAAtB,EAAiC,KAAKX,MAAtC;AACD,GAHD,MAGO;AACL,SAAKA,MAAL,CAAY;AAAEC,MAAAA,GAAG,EAAEO;AAAP,KAAZ;AACD;AACF,CAvBD;eA0BepB,O","sourcesContent":["import Reflux from 'reflux'\r\n\r\nimport Store from '../stores/Store'\r\n\r\nimport RouterApiConf from '../logic/RouterApiConf'\r\nimport loadItem from '../logic/loadItem'\r\n\r\nexport const T = {\r\n  LOAD_ITEM: 'loadItem',\r\n  LOAD_ITEM_COMPLETED: 'loadItemCompleted',\r\n  LOAD_ITEM_FAILED: 'loadItemFailed',\r\n\r\n  REMOVE_ITEM: 'removeItem',\r\n  REMOVE_ITEMS: 'removeItems',\r\n  REMOVE_ITEMS_UNDER: 'removeItemsUnder'\r\n};\r\n\r\nconst Actions = Reflux.createActions({\r\n  [T.LOAD_ITEM]: {\r\n    children: ['completed', 'failed']\r\n  },\r\n  [T.REMOVE_ITEM]: {},\r\n  [T.REMOVE_ITEMS]: {},\r\n  [T.REMOVE_ITEMS_UNDER]: {}\r\n});\r\n\r\n\r\nconst _crDbLoadMsg = word => `Item '${word}' has been already loaded.`;\r\n\r\nActions[T.LOAD_ITEM].listen(function(option={}){\r\n\r\n  const { itemConf={}, word='' } = option\r\n      , { paneId } = itemConf;\r\n  if (Store.isItem(paneId, word)){\r\n    this.failed({ msg: _crDbLoadMsg(word) })\r\n    return;\r\n  }\r\n\r\n  const {\r\n    loadId='WD'\r\n  } = option\r\n  , {\r\n    apiKey,\r\n    adapter, api,\r\n    msgErr\r\n  } = RouterApiConf.getApiConf(loadId);\r\n  if (apiKey){\r\n    Object.assign(option, { apiKey, adapter, api })\r\n    loadItem(option, this.completed, this.failed)\r\n  } else {\r\n    this.failed({ msg: msgErr })\r\n  }\r\n});\r\n\r\n\r\nexport default Actions\r\n"],"file":"ItemActions.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/actions/ItemActions.js"
+ ],
+ "file": "../../../src/flux/actions/ItemActions.js",
+ "names": [
+  "T",
+  "LOAD_ITEM",
+  "LOAD_ITEM_COMPLETED",
+  "LOAD_ITEM_FAILED",
+  "REMOVE_ITEM",
+  "REMOVE_ITEMS",
+  "REMOVE_ITEMS_UNDER",
+  "Actions",
+  "Reflux",
+  "createActions",
+  "children",
+  "_crDbLoadMsg",
+  "word",
+  "listen",
+  "option",
+  "itemConf",
+  "paneId",
+  "Store",
+  "isItem",
+  "failed",
+  "msg",
+  "loadId",
+  "RouterApiConf",
+  "getApiConf",
+  "apiKey",
+  "adapter",
+  "api",
+  "msgErr",
+  "Object",
+  "assign",
+  "completed"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AAEA;;AACA;;;;AAEO,IAAMA,CAAC,GAAG;AACfC,EAAAA,SAAS,EAAE,UADI;AAEfC,EAAAA,mBAAmB,EAAE,mBAFN;AAGfC,EAAAA,gBAAgB,EAAE,gBAHH;AAKfC,EAAAA,WAAW,EAAE,YALE;AAMfC,EAAAA,YAAY,EAAE,aANC;AAOfC,EAAAA,kBAAkB,EAAE;AAPL,CAAV;;;AAUP,IAAMC,OAAO,GAAGC,uBAAOC,aAAP,oDACbT,CAAC,CAACC,SADW,IACC;AACbS,EAAAA,QAAQ,EAAE,CAAC,WAAD,EAAc,QAAd;AADG,CADD,wBAIbV,CAAC,CAACI,WAJW,IAIG,EAJH,wBAKbJ,CAAC,CAACK,YALW,IAKI,EALJ,wBAMbL,CAAC,CAACM,kBANW,IAMU,EANV,yBAAhB;;AAUA,IAAMK,YAAY,GAAG,SAAfA,YAAe,CAAAC,IAAI;AAAA,oBAAaA,IAAb;AAAA,CAAzB;;AAEAL,OAAO,CAACP,CAAC,CAACC,SAAH,CAAP,CAAqBY,MAArB,CAA4B,UAASC,MAAT,EAAmB;AAAA,MAAVA,MAAU;AAAVA,IAAAA,MAAU,GAAH,EAAG;AAAA;;AAAA,gBAEZA,MAFY;AAAA,iCAErCC,QAFqC;AAAA,MAErCA,QAFqC,iCAE5B,EAF4B;AAAA,6BAExBH,IAFwB;AAAA,MAExBA,IAFwB,6BAEnB,EAFmB;AAAA,MAGrCI,MAHqC,GAG1BD,QAH0B,CAGrCC,MAHqC;;AAI7C,MAAIC,kBAAMC,MAAN,CAAaF,MAAb,EAAqBJ,IAArB,CAAJ,EAA+B;AAC7B,SAAKO,MAAL,CAAY;AAAEC,MAAAA,GAAG,EAAET,YAAY,CAACC,IAAD;AAAnB,KAAZ;AACA;AACD;;AAP4C,iBAWzCE,MAXyC;AAAA,iCAU3CO,MAV2C;AAAA,MAU3CA,MAV2C,gCAUpC,IAVoC;AAAA,8BAgBzCC,0BAAcC,UAAd,CAAyBF,MAAzB,CAhByC;AAAA,MAa3CG,MAb2C,yBAa3CA,MAb2C;AAAA,MAc3CC,OAd2C,yBAc3CA,OAd2C;AAAA,MAclCC,GAdkC,yBAclCA,GAdkC;AAAA,MAe3CC,MAf2C,yBAe3CA,MAf2C;;AAiB7C,MAAIH,MAAJ,EAAW;AACTI,IAAAA,MAAM,CAACC,MAAP,CAAcf,MAAd,EAAsB;AAAEU,MAAAA,MAAM,EAANA,MAAF;AAAUC,MAAAA,OAAO,EAAPA,OAAV;AAAmBC,MAAAA,GAAG,EAAHA;AAAnB,KAAtB;AACA,8BAASZ,MAAT,EAAiB,KAAKgB,SAAtB,EAAiC,KAAKX,MAAtC;AACD,GAHD,MAGO;AACL,SAAKA,MAAL,CAAY;AAAEC,MAAAA,GAAG,EAAEO;AAAP,KAAZ;AACD;AACF,CAvBD;eA0BepB,O"
+}

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 //import PropsTypes from 'prop-types'
 
-//import CaptionInput from '../zhn-atoms/CaptionInput'
-
-const DB_TOUCH_PERIOD = 500
+//const DB_TOUCH_PERIOD = 500
 
 const CL = {
   SELECT: 'm-select',
@@ -32,7 +30,7 @@ const S = {
 
 
 const _isFn = fn => typeof fn === 'function';
-const _isStr = str => typeof str === 'function';
+const _isStr = str => typeof str === 'string';
 
 const _crCaption = (caption, accessKey) => {
   if (!accessKey) {
@@ -101,9 +99,11 @@ class TextField extends Component {
   }
 
 
+  /*
   _handleClearInput = () => {
     this.setState({ value: '' })
   }
+
 
   _handleDbTouch = (ev) => {
     const _ms = Date.now();
@@ -118,6 +118,7 @@ class TextField extends Component {
       this._firstTouch = _ms
     }
   }
+  */
 
   _handleFocusInput = () => {
     this.isFocus = true
@@ -175,7 +176,7 @@ class TextField extends Component {
         className={CL.SELECT}
         style={rootStyle}
         //onDoubleClick={this._handleClearInput}
-        onTouchStart={this._handleDbTouch}
+        //onTouchStart={this._handleDbTouch}
       >
         <label
           className={CL.LABEL}

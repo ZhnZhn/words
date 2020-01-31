@@ -45,7 +45,7 @@ class HeaderBar extends Component {
     this._topicItems = [
       { caption: 'Words Definition', onClick: onDefinition },
       { caption: 'Words Sources', onClick: onSources },
-      { caption: 'Watch', onClick: onWatch },
+      { caption: 'Watch Lists', onClick: onWatch },
     ]
 
     this.state = {

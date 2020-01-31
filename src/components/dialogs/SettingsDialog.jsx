@@ -13,9 +13,9 @@ import CardUi from './CardUi'
 const S = {
   MODAL: {
     position : 'static',
+    zIndex: 10,
     width: 350,
     height: 290,
-    zIndex: 10,
     margin: '70px auto 0px',
     border: 'solid 2px #1b2836',
     borderRadius: 5,
@@ -87,6 +87,7 @@ class SettingsDialog extends Component {
                style={S.CARD_ROOT}
                buttonsStyle={S.CARD_BUTTONS}
                btStyle={TS.BT.FLAT_ROOT}
+               isShow={isShow}
                onSet={this._hSetAndClose}
                onClose={onClose}
              />

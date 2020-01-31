@@ -40,18 +40,17 @@ var TabPane =
 function (_Component) {
   (0, _inheritsLoose2["default"])(TabPane, _Component);
 
-  /*
-  static propTypes = {
-    isUpdateInit: PropTypes.bool,
-    width: PropTypes.string,
-    height: PropTypes.string,
-    children: PropTypes.arrayOf(PropTypes.node)
-  }
-  */
-  function TabPane(props) {
+  function TabPane() {
     var _this;
 
-    _this = _Component.call(this, props) || this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      selectedTabIndex: 0
+    };
 
     _this._handleClickTab = function (index) {
       _this.setState({
@@ -59,10 +58,11 @@ function (_Component) {
       });
     };
 
-    _this._renderTabs = function (children) {
-      var selectedTabIndex = _this.state.selectedTabIndex;
+    _this._renderTabs = function () {
+      var children = _this.props.children,
+          selectedTabIndex = _this.state.selectedTabIndex;
       return children.map(function (tab, index) {
-        var isSelected = index === selectedTabIndex ? true : false;
+        var isSelected = index === selectedTabIndex;
         return _react["default"].cloneElement(tab, {
           key: index,
           onClick: _this._handleClickTab.bind(null, index),
@@ -72,15 +72,19 @@ function (_Component) {
     };
 
     _this._renderComponents = function () {
-      var _this$state = _this.state,
-          selectedTabIndex = _this$state.selectedTabIndex,
-          components = _this$state.components;
-      return components.map(function (comp, index) {
-        var divStyle = index === selectedTabIndex ? S.BLOCK : S.NONE;
+      var children = _this.props.children,
+          selectedTabIndex = _this.state.selectedTabIndex;
+      return children.map(function (tab, index) {
+        var _isSelected = index === selectedTabIndex,
+            _divStyle = _isSelected ? S.BLOCK : S.NONE;
+
         return _react["default"].createElement("div", {
-          style: divStyle,
+          style: _divStyle,
           key: 'a' + index
-        }, comp);
+        }, _react["default"].cloneElement(tab.props.children, {
+          key: 'comp' + index,
+          isSelected: _isSelected
+        }));
       });
     };
 
@@ -88,39 +92,13 @@ function (_Component) {
       return _this.state.selectedTabIndex;
     };
 
-    _this.isUpdateInit = props.isUpdateInit;
-
-    var _components = props.children.map(function (tab, index) {
-      return _react["default"].cloneElement(tab.props.children, {
-        key: 'comp' + index
-      });
-    });
-
-    _this.state = {
-      selectedTabIndex: 0,
-      components: _components
-    };
     return _this;
   }
 
   var _proto = TabPane.prototype;
 
-  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.isUpdateInit && this.props !== nextProps) {
-      var components = nextProps.children.map(function (tab, index) {
-        return _react["default"].cloneElement(tab.props.children, {
-          key: 'comp' + index
-        });
-      });
-      this.setState({
-        components: components
-      });
-    }
-  };
-
   _proto.render = function render() {
     var _this$props = this.props,
-        children = _this$props.children,
         width = _this$props.width,
         height = _this$props.height;
     return _react["default"].createElement("div", {
@@ -131,7 +109,7 @@ function (_Component) {
     }, _react["default"].createElement("ul", {
       className: CL_UL,
       style: S.UL
-    }, this._renderTabs(children)), _react["default"].createElement("div", {
+    }, this._renderTabs()), _react["default"].createElement("div", {
       style: S.DIV
     }, this._renderComponents()));
   };

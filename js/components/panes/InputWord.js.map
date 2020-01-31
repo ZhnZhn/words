@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../../src/components/panes/InputWord.jsx"],"names":["CL_BT","S","TF_LABEL","top","TF_INPUT","fontSize","InputWord","_ref","n","iWord","componentDidMount","focus","render","props","TS","initValue","onEnter","INPUT_ROOT","BT","RAISED_ROOT","CL_RAISED_DIV","getValue","undefined","Component","defaultProps"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA,IAAMA,KAAK,GAAG,eAAd;AAEA,IAAMC,CAAC,GAAG;AACRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,GAAG,EAAE;AADG,GADF;AAIRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,QAAQ,EAAE;AADF;AAJF,CAAV;;IASMC,S;;;;;;;;;;;;;;UAYJC,I,GAAO,UAAAC,CAAC;AAAA,aAAI,MAAKC,KAAL,GAAaD,CAAjB;AAAA,K;;;;;;;SANRE,iB,GAAA,6BAAmB;AACjB,QAAI,KAAKD,KAAT,EAAgB;AACd,WAAKA,KAAL,CAAWE,KAAX;AACD;AACF,G;;SAIDC,M,GAAA,kBAAQ;AAAA,sBAKI,KAAKC,KALT;AAAA,QAEEC,EAFF,eAEEA,EAFF;AAAA,QAGEC,SAHF,eAGEA,SAHF;AAAA,QAIEC,OAJF,eAIEA,OAJF;AAMN,WACE,gCAAC,eAAD,QACE,gCAAC,qBAAD;AACE,MAAA,GAAG,EAAE,KAAKT,IADZ;AAEE,MAAA,SAAS,EAAEO,EAAE,CAACG,UAFhB;AAGE,MAAA,UAAU,EAAEhB,CAAC,CAACC,QAHhB;AAIE,MAAA,UAAU,EAAED,CAAC,CAACG,QAJhB;AAKE,MAAA,OAAO,EAAC,MALV;AAME,MAAA,SAAS,EAAC,GANZ;AAOE,MAAA,UAAU,EAAE,IAPd;AAQE,MAAA,SAAS,EAAEW,SARb;AASE,MAAA,OAAO,EAAEC;AATX,MADF,EAYE,gCAAC,iBAAD,CAAG,YAAH;AACE,MAAA,SAAS,EAAEhB,KADb;AAEE,MAAA,SAAS,EAAEc,EAAE,CAACI,EAAH,CAAMC,WAFnB;AAGE,MAAA,KAAK,EAAEL,EAAE,CAACI,EAAH,CAAME,aAHf;AAIE,MAAA,OAAO,EAAC,MAJV;AAKE,MAAA,QAAQ,EAAE,CAAC,CALb,CAME;AANF;AAOE,MAAA,SAAS,EAAE,IAPb;AAQE,MAAA,OAAO,EAAEJ;AARX,MAZF,CADF;AAyBD,G;;SAEDK,Q,GAAA,oBAAU;AACR,WAAO,KAAKZ,KAAL,GACH,KAAKA,KAAL,CAAWY,QAAX,EADG,GAEHC,SAFJ;AAGD,G;;;EAnDqBC,gB;;AAAlBjB,S,CAEGkB,Y,GAAe;AACpBT,EAAAA,SAAS,EAAE;AADS,C;eAoDTT,S","sourcesContent":["import React, { Component, Fragment } from 'react'\r\n\r\nimport A from '../zhn-atoms/Atoms'\r\nimport TextField from '../zhn-m-input/TextField'\r\n\r\nconst CL_BT = 'bt-input-word';\r\n\r\nconst S = {\r\n  TF_LABEL: {\r\n    top: '28px'\r\n  },\r\n  TF_INPUT: {\r\n    fontSize: '24px'\r\n  }\r\n};\r\n\r\nclass InputWord extends Component {\r\n\r\n  static defaultProps = {\r\n    initValue: 'example'\r\n  }\r\n\r\n  componentDidMount(){\r\n    if (this.iWord) {\r\n      this.iWord.focus()\r\n    }\r\n  }\r\n\r\n  _ref = n => this.iWord = n\r\n\r\n  render(){\r\n    const {\r\n            TS,\r\n            initValue,\r\n            onEnter\r\n          } = this.props;\r\n    return (\r\n      <Fragment>\r\n        <TextField\r\n          ref={this._ref}\r\n          rootStyle={TS.INPUT_ROOT}\r\n          labelStyle={S.TF_LABEL}\r\n          inputStyle={S.TF_INPUT}\r\n          caption=\"Word\"\r\n          accessKey=\"W\"\r\n          spellCheck={true}\r\n          initValue={initValue}\r\n          onEnter={onEnter}\r\n        />\r\n        <A.RaisedButton\r\n          className={CL_BT}\r\n          rootStyle={TS.BT.RAISED_ROOT}\r\n          clDiv={TS.BT.CL_RAISED_DIV}\r\n          caption=\"Load\"\r\n          tabIndex={-1}\r\n          //timeout={3000}\r\n          isPrimary={true}\r\n          onClick={onEnter}\r\n        />\r\n      </Fragment>\r\n    );\r\n  }\r\n\r\n  getValue(){\r\n    return this.iWord\r\n      ? this.iWord.getValue()\r\n      : undefined;\r\n  }\r\n}\r\n\r\nexport default InputWord\r\n"],"file":"InputWord.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/InputWord.js"
+ ],
+ "file": "../../../src/components/panes/InputWord.js",
+ "names": [
+  "S",
+  "TF_LABEL",
+  "top",
+  "TF_INPUT",
+  "fontSize",
+  "BT_CLEAR",
+  "position",
+  "left",
+  "InputWord",
+  "_hClear",
+  "iWord",
+  "setValue",
+  "_ref",
+  "n",
+  "componentDidMount",
+  "focus",
+  "render",
+  "props",
+  "TS",
+  "initValue",
+  "onEnter",
+  "_elBt",
+  "has",
+  "HAS_TOUCH",
+  "BT",
+  "RAISED_ROOT",
+  "CL_RAISED_DIV",
+  "INPUT_ROOT",
+  "getValue",
+  "undefined",
+  "Component",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AAEA;;AAEA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,GAAG,EAAE;AADG,GADF;AAIRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,QAAQ,EAAE;AADF,GAJF;AAORC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,QAAQ,EAAE,UADF;AAERJ,IAAAA,GAAG,EAAE,EAFG;AAGRK,IAAAA,IAAI,EAAE;AAHE;AAPF,CAAV;;IAcMC,S;;;;;;;;;;;;;;UAYJC,O,GAAU,YAAM;AACd,UAAI,MAAKC,KAAT,EAAgB;AACd,cAAKA,KAAL,CAAWC,QAAX,CAAoB,EAApB;AACD;AACF,K;;UAGDC,I,GAAO,UAAAC,CAAC;AAAA,aAAI,MAAKH,KAAL,GAAaG,CAAjB;AAAA,K;;;;;;;SAbRC,iB,GAAA,6BAAmB;AACjB,QAAI,KAAKJ,KAAT,EAAgB;AACd,WAAKA,KAAL,CAAWK,KAAX;AACD;AACF,G;;SAWDC,M,GAAA,kBAAQ;AAAA,sBAKA,KAAKC,KALL;AAAA,QAEFC,EAFE,eAEFA,EAFE;AAAA,QAGFC,SAHE,eAGFA,SAHE;AAAA,QAIFC,OAJE,eAIFA,OAJE;AAAA,QAMJC,KANI,GAMIC,gBAAIC,SAAJ,GACJ,gCAAC,gBAAD,CAAG,WAAH;AACC,MAAA,KAAK,EAAEvB,CAAC,CAACK,QADV;AAEC,MAAA,OAAO,EAAE,KAAKI;AAFf,MADI,GAKJ,gCAAC,gBAAD,CAAG,YAAH;AACE,MAAA,SAAS,EAAES,EAAE,CAACM,EAAH,CAAMC,WADnB;AAEE,MAAA,KAAK,EAAEP,EAAE,CAACM,EAAH,CAAME,aAFf;AAGE,MAAA,OAAO,EAAC,MAHV;AAIE,MAAA,QAAQ,EAAE,CAAC,CAJb,CAKE;AALF;AAME,MAAA,SAAS,EAAE,IANb;AAOE,MAAA,OAAO,EAAEN;AAPX,MAXA;;AAoBN,WACE,kEACE,gCAAC,gBAAD,CAAG,SAAH;AACE,MAAA,GAAG,EAAE,KAAKR,IADZ;AAEE,MAAA,SAAS,EAAEM,EAAE,CAACS,UAFhB;AAGE,MAAA,UAAU,EAAE3B,CAAC,CAACC,QAHhB;AAIE,MAAA,UAAU,EAAED,CAAC,CAACG,QAJhB;AAKE,MAAA,OAAO,EAAC,MALV;AAME,MAAA,SAAS,EAAC,GANZ;AAOE,MAAA,UAAU,EAAE,IAPd;AAQE,MAAA,SAAS,EAAEgB,SARb;AASE,MAAA,OAAO,EAAEC;AATX,MADF,EAYGC,KAZH,CADF;AAgBD,G;;SAEDO,Q,GAAA,oBAAU;AACR,WAAO,KAAKlB,KAAL,GACH,KAAKA,KAAL,CAAWkB,QAAX,EADG,GAEHC,SAFJ;AAGD,G;;;EA/DqBC,gB;;AAAlBtB,S,CAEGuB,Y,GAAe;AACpBZ,EAAAA,SAAS,EAAE;AADS,C;eAgETX,S"
+}

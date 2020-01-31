@@ -87,8 +87,7 @@ function (_Component) {
       isWithButton: false,
       onClose: onClose
     }, _react["default"].createElement(_Atoms["default"].TabPane, {
-      width: _Dialog2["default"].TAB_PANE_WIDTH,
-      isUpdateInit: true
+      width: _Dialog2["default"].TAB_PANE_WIDTH
     }, _react["default"].createElement(_Atoms["default"].Tab, {
       title: "Create",
       style: TS.TAB

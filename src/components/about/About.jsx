@@ -79,11 +79,8 @@ class About extends Component {
                    <span style={TS.APP_TITLE}>Words</span> is web app, RESTful client.
                  </p>
                  <p>
-                   Words data provider:
+                   Words data provider <Link.WordsApi/>
                  </p>
-                 <div>
-                    <Link.WordsApi/>
-                 </div>
                  <p style={TS.MARGIN_TOP}>
                    Provider's API Key is required for using app.
                  </p>

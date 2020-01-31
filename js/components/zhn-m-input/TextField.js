@@ -15,7 +15,6 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var DB_TOUCH_PERIOD = 500;
 var CL = {
   SELECT: 'm-select',
   LABEL: 'm-select__label',
@@ -44,7 +43,7 @@ var _isFn = function _isFn(fn) {
 };
 
 var _isStr = function _isStr(str) {
-  return typeof str === 'function';
+  return typeof str === 'string';
 };
 
 var _crCaption = function _crCaption(caption, accessKey) {
@@ -92,28 +91,6 @@ function (_Component) {
     var _this;
 
     _this = _Component.call(this, props) || this;
-
-    _this._handleClearInput = function () {
-      _this.setState({
-        value: ''
-      });
-    };
-
-    _this._handleDbTouch = function (ev) {
-      var _ms = Date.now();
-
-      if (_this._firstTouch) {
-        if (_ms - _this._firstTouch < DB_TOUCH_PERIOD) {
-          _this._firstTouch = 0;
-
-          _this._handleClearInput();
-        } else {
-          _this._firstTouch = _ms;
-        }
-      } else {
-        _this._firstTouch = _ms;
-      }
-    };
 
     _this._handleFocusInput = function () {
       _this.isFocus = true;
@@ -185,7 +162,27 @@ function (_Component) {
         value: nextProps.initValue || ''
       });
     }
-  };
+  }
+  /*
+  _handleClearInput = () => {
+    this.setState({ value: '' })
+  }
+  
+  _handleDbTouch = (ev) => {
+    const _ms = Date.now();
+    if (this._firstTouch) {
+      if (_ms - this._firstTouch<DB_TOUCH_PERIOD) {
+        this._firstTouch = 0
+        this._handleClearInput()
+      } else {
+        this._firstTouch = _ms
+      }
+    } else {
+      this._firstTouch = _ms
+    }
+  }
+  */
+  ;
 
   _proto.render = function render() {
     var _this$props = this.props,
@@ -211,8 +208,8 @@ function (_Component) {
     return _react["default"].createElement("div", {
       className: CL.SELECT,
       style: rootStyle //onDoubleClick={this._handleClearInput}
-      ,
-      onTouchStart: this._handleDbTouch
+      //onTouchStart={this._handleDbTouch}
+
     }, _react["default"].createElement("label", {
       className: CL.LABEL,
       style: (0, _extends2["default"])({}, labelStyle, {}, _labelStyle, {}, _labelErrStyle)
