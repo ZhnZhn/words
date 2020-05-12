@@ -1,1 +1,22 @@
-{"version":3,"sources":["../../../src/adapters/words/WordsApi.js"],"names":["C","URL","WordsApi","crOptions","option","apiKey","headers","getRequestUrl","word","itemConf","loadType","checkResponse"],"mappings":";;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE;AADG,CAAV;AAIA,IAAMC,QAAQ,GAAG;AACfC,EAAAA,SADe,qBACLC,MADK,EACE;AAAA,QACPC,MADO,GACID,MADJ,CACPC,MADO;AAEf,WAAO;AACLC,MAAAA,OAAO,EAAE;AACP,yBAAiBD;AADV;AADJ,KAAP;AAKD,GARc;AASfE,EAAAA,aATe,yBASDH,MATC,EASM;AAAA,uBACqBA,MADrB,CACXI,IADW;AAAA,QACXA,IADW,6BACN,SADM;AAAA,2BACqBJ,MADrB,CACKK,QADL;AAAA,QACKA,QADL,iCACc,EADd;AAAA,QAEXC,QAFW,GAEED,QAFF,CAEXC,QAFW;;AAGnB,QAAIA,QAAQ,KAAK,GAAjB,EAAsB;AACpB,aAAUV,CAAC,CAACC,GAAZ;AACD;;AACD,WAAUD,CAAC,CAACC,GAAZ,SAAmBO,IAAnB;AACD,GAhBc;AAiBfG,EAAAA,aAjBe,2BAiBA;AACb,WAAO,IAAP;AACD;AAnBc,CAAjB;eAsBeT,Q","sourcesContent":["const C = {\r\n  URL: 'https://wordsapiv1.p.mashape.com/words'\r\n};\r\n\r\nconst WordsApi = {\r\n  crOptions(option){\r\n    const { apiKey } = option;\r\n    return {\r\n      headers: {\r\n        'X-Mashape-Key': apiKey\r\n      }\r\n    };\r\n  },\r\n  getRequestUrl(option){\r\n    const { word='example', itemConf={} } = option\r\n        , { loadType } = itemConf    \r\n    if (loadType === 'R') {\r\n      return `${C.URL}/?random=true`;\r\n    }\r\n    return `${C.URL}/${word}`;\r\n  },\r\n  checkResponse(){\r\n    return true;\r\n  }\r\n}\r\n\r\nexport default WordsApi\r\n"],"file":"WordsApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/adapters/words/WordsApi.js"
+ ],
+ "file": "../../../src/adapters/words/WordsApi.js",
+ "names": [
+  "C",
+  "URL",
+  "WordsApi",
+  "crOptions",
+  "option",
+  "apiKey",
+  "headers",
+  "getRequestUrl",
+  "word",
+  "itemConf",
+  "loadType",
+  "checkResponse"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE;AADG,CAAV;AAIA,IAAMC,QAAQ,GAAG;AACfC,EAAAA,SADe,qBACLC,MADK,EACE;AAAA,QACPC,MADO,GACID,MADJ,CACPC,MADO;AAEf,WAAO;AACLC,MAAAA,OAAO,EAAE;AACP,0BAAkBD;AADX;AADJ,KAAP;AAKD,GARc;AASfE,EAAAA,aATe,yBASDH,MATC,EASM;AAAA,uBACqBA,MADrB,CACXI,IADW;AAAA,QACXA,IADW,6BACN,SADM;AAAA,2BACqBJ,MADrB,CACKK,QADL;AAAA,QACKA,QADL,iCACc,EADd;AAAA,QAEXC,QAFW,GAEED,QAFF,CAEXC,QAFW;;AAGnB,QAAIA,QAAQ,KAAK,GAAjB,EAAsB;AACpB,aAAUV,CAAC,CAACC,GAAZ;AACD;;AACD,WAAUD,CAAC,CAACC,GAAZ,SAAmBO,IAAnB;AACD,GAhBc;AAiBfG,EAAAA,aAjBe,2BAiBA;AACb,WAAO,IAAP;AACD;AAnBc,CAAjB;eAsBeT,Q"
+}

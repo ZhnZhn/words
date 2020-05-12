@@ -3,14 +3,14 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 var C = {
-  URL: 'https://wordsapiv1.p.mashape.com/words'
+  URL: 'https://wordsapiv1.p.rapidapi.com/words'
 };
 var WordsApi = {
   crOptions: function crOptions(option) {
     var apiKey = option.apiKey;
     return {
       headers: {
-        'X-Mashape-Key': apiKey
+        'x-rapidapi-key': apiKey
       }
     };
   },

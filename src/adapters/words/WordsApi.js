@@ -1,5 +1,5 @@
-const C = {
-  URL: 'https://wordsapiv1.p.mashape.com/words'
+const C = {  
+  URL: 'https://wordsapiv1.p.rapidapi.com/words'
 };
 
 const WordsApi = {
@@ -7,13 +7,13 @@ const WordsApi = {
     const { apiKey } = option;
     return {
       headers: {
-        'X-Mashape-Key': apiKey
+        'x-rapidapi-key': apiKey
       }
     };
   },
   getRequestUrl(option){
     const { word='example', itemConf={} } = option
-        , { loadType } = itemConf    
+        , { loadType } = itemConf
     if (loadType === 'R') {
       return `${C.URL}/?random=true`;
     }
