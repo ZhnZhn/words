@@ -64,13 +64,13 @@
     border-radius: 50%;
     border: 2px solid #80c040;
     cursor: pointer;
-    user-select: none;        
-    transition: background-color 200ms ease-out; 
+    user-select: none;
+    transition: background-color 200ms ease-out;
 }
 .bt-circle:hover,
 .bt-circle:focus {
   outline: 0;
-  background-color: rgba(0, 0, 0, 0.3);  
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .svg-resize{
@@ -105,7 +105,7 @@
 }
 .bt__watch__bar:hover,
 .bt__watch__bar:focus {
-  outline: 0;  
+  outline: 0;
   color : #80c040;
   border-color: #80c040;
 }
@@ -147,15 +147,20 @@ button::-moz-focus-inner {
 
 .link {
   color: #009ae5;
-  font-weight: bold;  
-  padding: 3px 6px 3px 6px;
+  font-weight: bold;
+  padding-bottom: 2px;
+  border-bottom: 1px solid;
   text-decoration: none;
-  background-color: transparent;
-  transition: background-color 200ms ease-out;
 }
 .link:hover,
 .link:focus {
-  background-color: rgba(0, 0, 0, 0.3);
+  border-bottom-width: 3px;
+}
+@media screen (max-width: 600px) {
+  .link:hover,
+  .link:focus {
+    border-bottom-width: 2px;
+  }
 }
 
 .bt-raised {
@@ -252,10 +257,10 @@ button::-moz-focus-inner {
   top: 0px;
   background-color: rgba(0, 0, 0, 0);
 }
-.bt-flat__div:hover {  
+.bt-flat__div:hover {
   background-color: rgba(120, 120, 120, 0.2);
 }
-.bt-flat:focus {  
+.bt-flat:focus {
   background-color: rgba(120, 120, 120, 0.2);
 }
 
@@ -277,7 +282,7 @@ button::-moz-focus-inner {
   display: inline-block;
   color: #f44336;
   width: 32px;
-  height: 32px;    
+  height: 32px;
   text-align: center;
   font-size: 24px;
   border-radius: 50%;

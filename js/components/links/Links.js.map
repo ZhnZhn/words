@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../../src/components/links/Links.jsx"],"names":["WordsApi","title","href","BaseComp","Link"],"mappings":";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,QAAQ,GAAG,2BAAU;AACzBC,EAAAA,KAAK,EAAE,UADkB;AAEzBC,EAAAA,IAAI,EAAE;AAFmB,CAAV,EAGdC,gBAHc,CAAjB;AAKA,IAAMC,IAAI,GAAG;AACXJ,EAAAA,QAAQ,EAARA;AADW,CAAb;eAIeI,I","sourcesContent":["import withProps from '../hoc/withProps'\r\n\r\nimport BaseComp from '../zhn-atoms/Link'\r\n\r\nconst WordsApi = withProps({\r\n  title: \"WordsApi\",\r\n  href: \"https://www.wordsapi.com/\",\r\n})(BaseComp)\r\n\r\nconst Link = {\r\n  WordsApi\r\n};\r\n\r\nexport default Link\r\n"],"file":"Links.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/links/Links.js"
+ ],
+ "file": "../../../src/components/links/Links.js",
+ "names": [
+  "WordsApi",
+  "title",
+  "href",
+  "BaseComp",
+  "RapidApi",
+  "Link"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,QAAQ,GAAG,2BAAU;AACzBC,EAAAA,KAAK,EAAE,UADkB;AAEzBC,EAAAA,IAAI,EAAE;AAFmB,CAAV,EAGdC,gBAHc,CAAjB;AAKA,IAAMC,QAAQ,GAAG,2BAAU;AACzBH,EAAAA,KAAK,EAAE,UADkB;AAEzBC,EAAAA,IAAI,EAAE;AAFmB,CAAV,EAGdC,gBAHc,CAAjB;AAKA,IAAME,IAAI,GAAG;AACXL,EAAAA,QAAQ,EAARA,QADW;AAEXI,EAAAA,QAAQ,EAARA;AAFW,CAAb;eAKeC,I"
+}

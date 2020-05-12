@@ -115,7 +115,7 @@ function (_Component) {
       style: TS.DIV_TEXT
     }, _react["default"].createElement("p", null, _react["default"].createElement("span", {
       style: TS.APP_TITLE
-    }, "Words"), " is web app, RESTful client."), _react["default"].createElement("p", null, "Words data provider ", _react["default"].createElement(_Links["default"].WordsApi, null)), _react["default"].createElement("p", {
+    }, "Words"), " is web app, RESTful client."), _react["default"].createElement("p", null, "Words data provider ", _react["default"].createElement(_Links["default"].WordsApi, null), " via ", _react["default"].createElement(_Links["default"].RapidApi, null)), _react["default"].createElement("p", {
       style: TS.MARGIN_TOP
     }, "Provider's API Key is required for using app."), _react["default"].createElement("p", null, "API Key can be set in Settings Dialog [s].")), _react["default"].createElement(_IconLogoBar["default"], {
       iconStyle: TS.ICON,

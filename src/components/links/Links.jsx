@@ -7,8 +7,14 @@ const WordsApi = withProps({
   href: "https://www.wordsapi.com/",
 })(BaseComp)
 
+const RapidApi = withProps({
+  title: "RapidApi",
+  href: "https://rapidapi.com/dpventures/api/wordsapi/details",
+})(BaseComp)
+
 const Link = {
-  WordsApi
+  WordsApi,
+  RapidApi
 };
 
 export default Link

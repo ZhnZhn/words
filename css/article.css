@@ -1,3 +1,11 @@
+.article-header {
+  width: 100%;
+  padding: 8px 32px 10px 8px;
+  line-height: 1.5;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom: 2px solid transparent;
+}
 .article-header:focus {
   border-bottom: 2px solid #80c040;
 }

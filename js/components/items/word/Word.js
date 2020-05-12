@@ -44,15 +44,7 @@ var S = {
     backgroundColor: '#3f51b5'
   },
   HEADER: {
-    backgroundColor: '#404040',
-    paddingTop: 8,
-    paddingLeft: 8,
-    paddingRight: 32,
-    paddingBottom: 16,
-    width: '100%',
-    lineHeight: 1.5,
-    borderTopRightRadius: 2,
-    borderBottomRightRadius: 2
+    backgroundColor: '#404040'
   },
   HEADER_OPEN: {
     borderLeft: '6px solid #607d8b'
