@@ -21,6 +21,9 @@ const S = {
     borderRadius: 5,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
   },
+  TAB_PANE: {
+     width: "100%"
+  },
   CARD_ROOT: {
     position: 'relative',
     height: 200
@@ -80,7 +83,7 @@ class SettingsDialog extends Component {
          isWithButton={false}
          onClose={onClose}
       >
-        <A.TabPane width="100%">
+        <A.TabPane style={S.TAB_PANE} >
           <A.Tab title="API Key" style={TS.TAB}>
              <CardApiKey
                ref={this._ref1}

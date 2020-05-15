@@ -57,7 +57,7 @@ class EditListDialog extends Component {
          isWithButton={false}
          onClose={onClose}
       >
-        <A.TabPane width={S.TAB_PANE_WIDTH}>
+        <A.TabPane style={S.TAB_PANE} tabStyle={S.TABS}>
            <A.Tab title="Create" style={TS.TAB}>
              <ListCreatePane
                 store={store}

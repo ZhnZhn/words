@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
-const CL_UL = "tabpane__tabs";
-
 const S = {
-  UL: {
-    listStyle : 'outside none none',
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 5,
-    borderBottom : '2px solid #80c040'
+  TAB_CAPTIONS: {
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 5
   },
-  DIV: {
+  TABS: {
     width: "100%",
-    height : "100%"
+    height: "100%"
   },
-  BLOCK: {
+  TAB_SELECTED: {
     display: 'block',
     width: "100%",
-    height : "100%"
+    height: "100%"
   },
   NONE: {
     display: 'none'
@@ -51,6 +47,7 @@ class TabPane extends Component {
           const isSelected = (index === selectedTabIndex);
           return React.cloneElement(tab, {
             key: index,
+            id: index,
             onClick: this._handleClickTab.bind(null, index),
             isSelected
           })
@@ -62,7 +59,7 @@ class TabPane extends Component {
       , { selectedTabIndex } = this.state;
       return children.map((tab, index) => {
         const _isSelected = (index === selectedTabIndex)
-        , _divStyle = _isSelected ? S.BLOCK : S.NONE
+        , _divStyle = _isSelected ? S.TAB_SELECTED : S.NONE;
         return (
           <div style={_divStyle} key={'a'+index}>
             {
@@ -77,13 +74,16 @@ class TabPane extends Component {
   }
 
   render(){
-    const { width, height } = this.props;
+    const {
+      style,
+      tabStyle
+    } = this.props;
     return (
-      <div style={{ width, height }}>
-        <ul className={CL_UL} style={S.UL}>
+      <div style={style}>
+        <div  style={{...S.TAB_CAPTIONS, ...tabStyle}}>
            {this._renderTabs()}
-        </ul>
-        <div style={S.DIV}>
+        </div>
+        <div style={S.TABS}>
            {this._renderComponents()}
         </div>
       </div>

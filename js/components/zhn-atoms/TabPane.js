@@ -7,25 +7,24 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = _interopRequireWildcard(require("react"));
 
 //import PropTypes from "prop-types";
-var CL_UL = "tabpane__tabs";
 var S = {
-  UL: {
-    listStyle: 'outside none none',
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 5,
-    borderBottom: '2px solid #80c040'
+  TAB_CAPTIONS: {
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 5
   },
-  DIV: {
+  TABS: {
     width: "100%",
     height: "100%"
   },
-  BLOCK: {
+  TAB_SELECTED: {
     display: 'block',
     width: "100%",
     height: "100%"
@@ -65,6 +64,7 @@ function (_Component) {
         var isSelected = index === selectedTabIndex;
         return _react["default"].cloneElement(tab, {
           key: index,
+          id: index,
           onClick: _this._handleClickTab.bind(null, index),
           isSelected: isSelected
         });
@@ -76,7 +76,7 @@ function (_Component) {
           selectedTabIndex = _this.state.selectedTabIndex;
       return children.map(function (tab, index) {
         var _isSelected = index === selectedTabIndex,
-            _divStyle = _isSelected ? S.BLOCK : S.NONE;
+            _divStyle = _isSelected ? S.TAB_SELECTED : S.NONE;
 
         return _react["default"].createElement("div", {
           style: _divStyle,
@@ -99,18 +99,14 @@ function (_Component) {
 
   _proto.render = function render() {
     var _this$props = this.props,
-        width = _this$props.width,
-        height = _this$props.height;
+        style = _this$props.style,
+        tabStyle = _this$props.tabStyle;
     return _react["default"].createElement("div", {
-      style: {
-        width: width,
-        height: height
-      }
-    }, _react["default"].createElement("ul", {
-      className: CL_UL,
-      style: S.UL
+      style: style
+    }, _react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, S.TAB_CAPTIONS, {}, tabStyle)
     }, this._renderTabs()), _react["default"].createElement("div", {
-      style: S.DIV
+      style: S.TABS
     }, this._renderComponents()));
   };
 

@@ -1,55 +1,33 @@
 import React from 'react';
-//import PropTypes from "prop-types";
 
+const CL = "tab";
 const S = {
-  LI : {
-    float : 'left',
-    display : 'inline-block',
-    backgroundColor : '#1b2836',
-    color : 'gray',
-    paddingLeft : '10px',
-    paddingRight : '10px',
-    paddingTop : '6px',
-    paddingBottom : '6px',
-    borderTopLeftRadius : '8px',
-    borderTopRightRadius : '8px',
-    cursor : 'pointer',
-
-    fontWeight : 'bold',
-    //border: '2px solid gray',
-    border: '2px solid #303030',
-    borderBottom : 'none',
-
+  BT : {
+    color: '#2f7ed8',
+    borderBottom : '3px solid #2f7ed8'
   },
-  SELECTED : {
-    //borderColor : 'rgba(164, 135, 212, 1)',
-    //color : 'rgba(164, 135, 212, 1)'
-    color: '#80c040',
-    borderColor: '#80c040'
+  TITLE: {
+    color: '#2f7ed8'
   }
-}
+};
 
-
-const Tab = ({ title, style, isSelected, onClick }) => {
-    const _selectedStyle = (isSelected)
-              ? S.SELECTED
-              : null;    
-    return (
-       <li
-          style={{ ...S.LI, ...style, ..._selectedStyle }}
-          onClick={onClick}
-       >
-          <span>{title}</span>
-       </li>
-    )
+const Tab = ({ id, title, isSelected, onClick }) => {
+  const _btStyle = isSelected ? S.BT : null
+  , _titleStyle = isSelected ? S.TITLE : null;
+  return (
+    <button
+       className={CL}
+       style={_btStyle}
+       id={`tab-${id}`}
+       role="tab"
+       aria-selected={isSelected}
+       aria-controls={`tabpanel-${id}`}
+       tabIndex="0"
+       onClick={onClick}
+    >
+       <span style={_titleStyle}>{title}</span>
+    </button>
+  );
 }
-
-/*
-Tab.propTypes = {
-  title: PropTypes.string,
-  isSelected: PropTypes.bool,
-  onClick: PropTypes.func
-}
-*/
 
 export default Tab

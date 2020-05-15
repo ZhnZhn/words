@@ -36,6 +36,9 @@ var S = {
     borderRadius: 5,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
   },
+  TAB_PANE: {
+    width: "100%"
+  },
   CARD_ROOT: {
     position: 'relative',
     height: 200
@@ -101,7 +104,7 @@ function (_Component) {
       isWithButton: false,
       onClose: onClose
     }, _react["default"].createElement(_Comp["default"].TabPane, {
-      width: "100%"
+      style: S.TAB_PANE
     }, _react["default"].createElement(_Comp["default"].Tab, {
       title: "API Key",
       style: TS.TAB
