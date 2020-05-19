@@ -5,6 +5,9 @@ import isKeyEnter from './isKeyEnter'
 import C from '../styles/Color';
 
 
+//const DF_COLOR_IS = "#80c040";
+const DF_COLOR_IS = "#2f7ed8"
+
 const S = {
   DIV : {
     display: 'inline-block',
@@ -17,11 +20,13 @@ const S = {
   }
 };
 
-const EL_CHECKED = (
+const SvgChecked = ({ stroke }) => (
   <path
-      d="M 2,3 L 8,14 14,3"
+      //d="M 2,3 L 8,14 14,3"
+      d="M 2,5 L 8,14 14,1"
       strokeWidth="2"
-      stroke={C.YELLOW}
+      strokeLinecap="round"
+      stroke={stroke}
       fill={C.BLANK}
   />
 );
@@ -31,7 +36,8 @@ const _isFn = fn => typeof fn === 'function';
 class SvgCheckBox extends Component {
   /*
   static propTypes = {
-    value: PropTypes.bool,
+    initialValue: PropTypes.bool,
+    stroke: PropTypes.string,
     onCheck: PropTypes.func,
     onUnCheck: PropTypes.func
   }
@@ -39,34 +45,20 @@ class SvgCheckBox extends Component {
 
   constructor(props){
     super(props);
-
-    const { value, onCheck, onUnCheck } = props;
-    this._isOnCheck = _isFn(onCheck)
-    this._isOnUnCheck = _isFn(onUnCheck)
+    const { initialValue } = props;
 
     this.state = {
-        isChecked: !!value,
+        isChecked: !!initialValue,
     }
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if (this.props !== nextProps
-        && typeof nextProps.value !== 'undefined')
-    {
-      this.setState({ isChecked: !!nextProps.value })
-    }
-  }
 
   _hClick = () => {
-    const {
-           _isOnCheck, _isOnUnCheck,
-            state, props
-          } = this
-        , { onCheck, onUnCheck } = props
-        , { isChecked } = state;
-    if (!isChecked && _isOnCheck){
+    const { onCheck, onUnCheck } = this.props
+    , { isChecked } = this.state;
+    if (!isChecked && _isFn(onCheck)){
       onCheck(this);
-    } else if (_isOnUnCheck){
+    } else if (_isFn(onUnCheck)){
       onUnCheck(this);
     }
     this.setState({ isChecked: !isChecked });
@@ -80,17 +72,17 @@ class SvgCheckBox extends Component {
   }
 
   render(){
-    const { rootStyle } = this.props
-        , { isChecked } = this.state
-        , _elChecked = isChecked
-            ? EL_CHECKED
-            : null;
+    const { style, stroke } = this.props
+    , { isChecked } = this.state
+    , _restProps = isChecked
+        ? { stroke: DF_COLOR_IS, fill: DF_COLOR_IS}
+        : { stroke: C.GREY, fill: C.BLANK };
     return (
       <div
          role="checkbox"
          tabIndex="0"
          aria-checked={isChecked}
-         style={{ ...S.DIV, ...rootStyle }}
+         style={{ ...S.DIV, ...style }}
          onClick={this._hClick}
          onKeyDown={this._hKeyDown}
       >
@@ -103,9 +95,13 @@ class SvgCheckBox extends Component {
              x="1" y="1"
              height="14" width="14"
              strokeWidth="2" rx="3"
-             stroke={C.GREY}  fill={C.BLANK}
+             strokeLinecap="round"
+             {..._restProps}
           />
-          {_elChecked}
+          { isChecked
+              ? <SvgChecked stroke={stroke} />
+              : null
+          }
         </svg>
       </div>
     );

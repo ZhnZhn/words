@@ -20,6 +20,8 @@ var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 var _Color = _interopRequireDefault(require("../styles/Color"));
 
 //import PropTypes from "prop-types";
+//const DF_COLOR_IS = "#80c040";
+var DF_COLOR_IS = "#2f7ed8";
 var S = {
   DIV: {
     display: 'inline-block',
@@ -32,12 +34,17 @@ var S = {
   }
 };
 
-var EL_CHECKED = _react["default"].createElement("path", {
-  d: "M 2,3 L 8,14 14,3",
-  strokeWidth: "2",
-  stroke: _Color["default"].YELLOW,
-  fill: _Color["default"].BLANK
-});
+var SvgChecked = function SvgChecked(_ref) {
+  var stroke = _ref.stroke;
+  return _react["default"].createElement("path", {
+    //d="M 2,3 L 8,14 14,3"
+    d: "M 2,5 L 8,14 14,1",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    stroke: stroke,
+    fill: _Color["default"].BLANK
+  });
+};
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
@@ -50,29 +57,26 @@ function (_Component) {
 
   /*
   static propTypes = {
-    value: PropTypes.bool,
+    initialValue: PropTypes.bool,
+    stroke: PropTypes.string,
     onCheck: PropTypes.func,
     onUnCheck: PropTypes.func
   }
   */
-  function SvgCheckBox(_props) {
+  function SvgCheckBox(props) {
     var _this;
 
-    _this = _Component.call(this, _props) || this;
+    _this = _Component.call(this, props) || this;
 
     _this._hClick = function () {
-      var _assertThisInitialize = (0, _assertThisInitialized2["default"])(_this),
-          _isOnCheck = _assertThisInitialize._isOnCheck,
-          _isOnUnCheck = _assertThisInitialize._isOnUnCheck,
-          state = _assertThisInitialize.state,
-          props = _assertThisInitialize.props,
-          onCheck = props.onCheck,
-          onUnCheck = props.onUnCheck,
-          isChecked = state.isChecked;
+      var _this$props = _this.props,
+          onCheck = _this$props.onCheck,
+          onUnCheck = _this$props.onUnCheck,
+          isChecked = _this.state.isChecked;
 
-      if (!isChecked && _isOnCheck) {
+      if (!isChecked && _isFn(onCheck)) {
         onCheck((0, _assertThisInitialized2["default"])(_this));
-      } else if (_isOnUnCheck) {
+      } else if (_isFn(onUnCheck)) {
         onUnCheck((0, _assertThisInitialized2["default"])(_this));
       }
 
@@ -95,37 +99,33 @@ function (_Component) {
       });
     };
 
-    var value = _props.value,
-        _onCheck = _props.onCheck,
-        _onUnCheck = _props.onUnCheck;
-    _this._isOnCheck = _isFn(_onCheck);
-    _this._isOnUnCheck = _isFn(_onUnCheck);
+    var initialValue = props.initialValue;
     _this.state = {
-      isChecked: !!value
+      isChecked: !!initialValue
     };
     return _this;
   }
 
   var _proto = SvgCheckBox.prototype;
 
-  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps && typeof nextProps.value !== 'undefined') {
-      this.setState({
-        isChecked: !!nextProps.value
-      });
-    }
-  };
-
   _proto.render = function render() {
-    var rootStyle = this.props.rootStyle,
+    var _this$props2 = this.props,
+        style = _this$props2.style,
+        stroke = _this$props2.stroke,
         isChecked = this.state.isChecked,
-        _elChecked = isChecked ? EL_CHECKED : null;
+        _restProps = isChecked ? {
+      stroke: DF_COLOR_IS,
+      fill: DF_COLOR_IS
+    } : {
+      stroke: _Color["default"].GREY,
+      fill: _Color["default"].BLANK
+    };
 
     return _react["default"].createElement("div", {
       role: "checkbox",
       tabIndex: "0",
       "aria-checked": isChecked,
-      style: (0, _extends2["default"])({}, S.DIV, {}, rootStyle),
+      style: (0, _extends2["default"])({}, S.DIV, {}, style),
       onClick: this._hClick,
       onKeyDown: this._hKeyDown
     }, _react["default"].createElement("svg", {
@@ -135,16 +135,17 @@ function (_Component) {
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg",
       style: S.SVG
-    }, _react["default"].createElement("rect", {
+    }, _react["default"].createElement("rect", (0, _extends2["default"])({
       x: "1",
       y: "1",
       height: "14",
       width: "14",
       strokeWidth: "2",
       rx: "3",
-      stroke: _Color["default"].GREY,
-      fill: _Color["default"].BLANK
-    }), _elChecked));
+      strokeLinecap: "round"
+    }, _restProps)), isChecked ? _react["default"].createElement(SvgChecked, {
+      stroke: stroke
+    }) : null));
   };
 
   return SvgCheckBox;
