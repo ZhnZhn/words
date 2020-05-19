@@ -9,7 +9,7 @@ const CL_DIV = 'bt-flat__div';
 const S = {
   SELECT: {
     ROOT: {
-      width: '280px'
+      width: 280
     }
   },
   BT_ROOT: {

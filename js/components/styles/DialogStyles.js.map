@@ -1,1 +1,35 @@
-{"version":3,"sources":["../../../src/components/styles/DialogStyles.js"],"names":["DialogStyles","rowDiv","display","alignItems","marginRight","marginTop","marginLeft","marginBottom","labelSpan","color","textAlign","width","paddingRight","fontSize","fontWeight","userSelect","validationContainer","paddingLeft","paddingTop","validationMessageNumber","height","border","borderRadius","crRowLabelStyle","isShowLabels","rowStyle","labelStyle"],"mappings":";;;;AAAA,IAAMA,YAAY,GAAG;AACnB;AACAC,EAAAA,MAAM,EAAE;AACN;AACA;AACAC,IAAAA,OAAO,EAAE,MAHH;AAINC,IAAAA,UAAU,EAAE,QAJN;AAKNC,IAAAA,WAAW,EAAE,KALP;AAMNC,IAAAA,SAAS,EAAE,KANL;AAONC,IAAAA,UAAU,EAAE,KAPN;AAQNC,IAAAA,YAAY,EAAE;AARR,GAFW;AAYnBC,EAAAA,SAAS,EAAG;AACV;AACA;AACAC,IAAAA,KAAK,EAAE,OAHG;AAIVP,IAAAA,OAAO,EAAE,cAJC;AAKV;AACAQ,IAAAA,SAAS,EAAE,OAND;AAOVC,IAAAA,KAAK,EAAE,OAPG;AAQVC,IAAAA,YAAY,EAAE,KARJ;AASVC,IAAAA,QAAQ,EAAE,MATA;AAUVC,IAAAA,UAAU,EAAE,MAVF;AAWVC,IAAAA,UAAU,EAAE;AAXF,GAZO;AA0BnB;AACAC,EAAAA,mBAAmB,EAAE;AACnBC,IAAAA,WAAW,EAAE,MADM;AAEnBC,IAAAA,UAAU,EAAE,KAFO;AAGnBT,IAAAA,KAAK,EAAE;AAHY,GA3BF;AAgCnBU,EAAAA,uBAAuB,EAAG;AACxBjB,IAAAA,OAAO,EAAE,cADe;AAExBS,IAAAA,KAAK,EAAE,MAFiB;AAGxBS,IAAAA,MAAM,EAAE,MAHgB;AAIxBC,IAAAA,MAAM,EAAE,mBAJgB;AAKxBC,IAAAA,YAAY,EAAE,KALU;AAMxBZ,IAAAA,SAAS,EAAE,QANa;AAOxBN,IAAAA,WAAW,EAAE;AAPW,GAhCP;AA0CnBmB,EAAAA,eAAe,EAAE,yBAACC,YAAD,EAAuB;AAAA,QAAtBA,YAAsB;AAAtBA,MAAAA,YAAsB,GAAT,IAAS;AAAA;;AACtC;;;;;;;;;AASA,WAAO;AACLC,MAAAA,QAAQ,EAAEzB,YAAY,CAACC,MADlB;AAELyB,MAAAA,UAAU,EAAE1B,YAAY,CAACQ;AAFpB,KAAP;AAID;AAxDkB,CAArB;eA4DeR,Y","sourcesContent":["const DialogStyles = {\r\n  //Dialogs, DatesFragments\r\n  rowDiv: {\r\n    //display: 'block',\r\n    //margin: '5px'\r\n    display: 'flex',\r\n    alignItems: 'center',\r\n    marginRight: '5px',\r\n    marginTop: '5px',\r\n    marginLeft: '5px',\r\n    marginBottom: '5px'\r\n  },\r\n  labelSpan : {\r\n    //color: '#1B75BB',\r\n    //color: '#009688',\r\n    color: 'black',\r\n    display: 'inline-block',\r\n    //verticalAlign: 'top',\r\n    textAlign: 'right',\r\n    width: '110px',\r\n    paddingRight: '5px',\r\n    fontSize: '16px',\r\n    fontWeight: 'bold',\r\n    userSelect: 'none'\r\n  },\r\n\r\n  //ValidationMessagesFragment\r\n  validationContainer: {\r\n    paddingLeft: '10px',\r\n    paddingTop: '5px',\r\n    color: '#F44336'\r\n  },\r\n  validationMessageNumber : {\r\n    display: 'inline-block',\r\n    width: '22px',\r\n    height: '22px',\r\n    border: 'solid 2px #F44336',\r\n    borderRadius: '50%',\r\n    textAlign: 'center',\r\n    marginRight: '5px'\r\n  },\r\n\r\n  crRowLabelStyle: (isShowLabels=true) => {\r\n    /*\r\n    const rowStyle = isShowLabels\r\n             ? { ...S.ROW }\r\n             : { ...S.ROW, ...S.ROW_SHORT }\r\n         , labelStyle = isShowLabels\r\n             ? { ...S.LABEL }\r\n             : { ...S.LABEL, ...S.NONE };\r\n    return { rowStyle, labelStyle };\r\n    */\r\n    return {\r\n      rowStyle: DialogStyles.rowDiv,\r\n      labelStyle: DialogStyles.labelSpan\r\n    }\r\n  },\r\n\r\n}\r\n\r\nexport default DialogStyles\r\n"],"file":"DialogStyles.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/styles/DialogStyles.js"
+ ],
+ "file": "../../../src/components/styles/DialogStyles.js",
+ "names": [
+  "DialogStyles",
+  "rowDiv",
+  "display",
+  "alignItems",
+  "margin",
+  "labelSpan",
+  "color",
+  "textAlign",
+  "width",
+  "paddingRight",
+  "fontSize",
+  "fontWeight",
+  "userSelect",
+  "validationContainer",
+  "paddingLeft",
+  "paddingTop",
+  "validationMessageNumber",
+  "height",
+  "border",
+  "borderRadius",
+  "marginRight",
+  "crRowLabelStyle",
+  "isShowLabels",
+  "rowStyle",
+  "labelStyle"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,YAAY,GAAG;AACnB;AACAC,EAAAA,MAAM,EAAE;AACNC,IAAAA,OAAO,EAAE,MADH;AAENC,IAAAA,UAAU,EAAE,QAFN;AAGNC,IAAAA,MAAM,EAAE;AAHF,GAFW;AAOnBC,EAAAA,SAAS,EAAG;AACVC,IAAAA,KAAK,EAAE,OADG;AAEVJ,IAAAA,OAAO,EAAE,cAFC;AAGVK,IAAAA,SAAS,EAAE,OAHD;AAIVC,IAAAA,KAAK,EAAE,GAJG;AAKVC,IAAAA,YAAY,EAAE,CALJ;AAMVC,IAAAA,QAAQ,EAAE,MANA;AAOVC,IAAAA,UAAU,EAAE,MAPF;AAQVC,IAAAA,UAAU,EAAE;AARF,GAPO;AAkBnB;AACAC,EAAAA,mBAAmB,EAAE;AACnBC,IAAAA,WAAW,EAAE,EADM;AAEnBC,IAAAA,UAAU,EAAE,CAFO;AAGnBT,IAAAA,KAAK,EAAE;AAHY,GAnBF;AAwBnBU,EAAAA,uBAAuB,EAAG;AACxBd,IAAAA,OAAO,EAAE,cADe;AAExBM,IAAAA,KAAK,EAAE,EAFiB;AAGxBS,IAAAA,MAAM,EAAE,EAHgB;AAIxBC,IAAAA,MAAM,EAAE,mBAJgB;AAKxBC,IAAAA,YAAY,EAAE,KALU;AAMxBZ,IAAAA,SAAS,EAAE,QANa;AAOxBa,IAAAA,WAAW,EAAE;AAPW,GAxBP;AAkCnBC,EAAAA,eAAe,EAAE,yBAACC,YAAD,EAAuB;AAAA,QAAtBA,YAAsB;AAAtBA,MAAAA,YAAsB,GAAT,IAAS;AAAA;;AACtC,WAAO;AACLC,MAAAA,QAAQ,EAAEvB,YAAY,CAACC,MADlB;AAELuB,MAAAA,UAAU,EAAExB,YAAY,CAACK;AAFpB,KAAP;AAID;AAvCkB,CAArB;eA2CeL,Y"
+}

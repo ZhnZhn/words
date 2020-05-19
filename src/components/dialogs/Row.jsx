@@ -4,7 +4,7 @@ import STYLE from '../styles/DialogStyles';
 
 const S = {
   ROOT_DIV: {
-    margin: '5px',
+    margin: 5,
     lineHeight: 2,
     fontWeight: 'bold'
   },

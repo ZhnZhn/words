@@ -11,11 +11,9 @@ var S = {
   SVG: {
     display: 'inline-block',
     color: 'black',
-    //color: 'rgb(255, 255, 255)',
-    //fill: 'inherit',
     fill: 'black',
-    height: '24px',
-    width: '24px',
+    height: 24,
+    width: 24,
     userSelect: 'none',
     transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'
   }

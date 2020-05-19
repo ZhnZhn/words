@@ -21,7 +21,7 @@ var CL_DIV = 'bt-flat__div';
 var S = {
   SELECT: {
     ROOT: {
-      width: '280px'
+      width: 280
     }
   },
   BT_ROOT: {

@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../src/components/styles/ContainerStyle.js"],"names":["_crBase","position","backgroundColor","height","boxShadow","borderRadius","ContainerStyle","BROWSER_ROOT","flexShrink","marginLeft","padding","minWidth","maxWidth","minHeight","ABOUT_ROOT","paddingBottom","width"],"mappings":";;;;;;;;;AACA,IAAMA,OAAO,GAAG,SAAVA,OAAU;AAAA,SAAO;AACrBC,IAAAA,QAAQ,EAAE,UADW;AAErBC,IAAAA,eAAe,EAAE,SAFI;AAGrBC,IAAAA,MAAM,EAAE,oBAHa;AAIrBC,IAAAA,SAAS,EAAE,iCAJU;AAKrBC,IAAAA,YAAY,EAAE;AALO,GAAP;AAAA,CAAhB;;AAQA,IAAMC,cAAc,GAAG;AACrBC,EAAAA,YAAY,gCACPP,OAAO,EADA;AAEVQ,IAAAA,UAAU,EAAE,CAFF;AAGVC,IAAAA,UAAU,EAAE,MAHF;AAIVC,IAAAA,OAAO,EAAE,kBAJC;AAKVC,IAAAA,QAAQ,EAAE,OALA;AAMVC,IAAAA,QAAQ,EAAE,OANA;AAOVC,IAAAA,SAAS,EAAE;AAPD,IADS;AAUrBC,EAAAA,UAAU,gCACLd,OAAO,EADF;AAERS,IAAAA,UAAU,EAAE,MAFJ;AAGRC,IAAAA,OAAO,EAAE,KAHD;AAIRK,IAAAA,aAAa,EAAE,MAJP;AAKRC,IAAAA,KAAK,EAAE,OALC;AAMRL,IAAAA,QAAQ,EAAE,OANF;AAORE,IAAAA,SAAS,EAAE;AAPH;AAVW,CAAvB;eAqBeP,c","sourcesContent":["\r\nconst _crBase = () => ({\r\n  position: 'relative',\r\n  backgroundColor: '#4d4d4d',\r\n  height: 'calc(100vh - 71px)',\r\n  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',\r\n  borderRadius: '4px'\r\n});\r\n\r\nconst ContainerStyle = {\r\n  BROWSER_ROOT: {\r\n    ..._crBase(),\r\n    flexShrink: 0,\r\n    marginLeft: '10px',\r\n    padding: '0px 3px 35px 0px',\r\n    minWidth: '270px',\r\n    maxWidth: '400px',\r\n    minHeight: '500px'\r\n  },\r\n  ABOUT_ROOT: {\r\n    ..._crBase(),\r\n    marginLeft: '16px',\r\n    padding: '0px',\r\n    paddingBottom: '35px',\r\n    width: '380px',\r\n    minWidth: '300px',\r\n    minHeight: '500px'\r\n  }\r\n};\r\n\r\nexport default ContainerStyle\r\n"],"file":"ContainerStyle.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/styles/ContainerStyle.js"
+ ],
+ "file": "../../../src/components/styles/ContainerStyle.js",
+ "names": [
+  "_crBase",
+  "position",
+  "backgroundColor",
+  "height",
+  "boxShadow",
+  "borderRadius",
+  "ContainerStyle",
+  "BROWSER_ROOT",
+  "flexShrink",
+  "marginLeft",
+  "padding",
+  "minWidth",
+  "maxWidth",
+  "minHeight",
+  "ABOUT_ROOT",
+  "paddingBottom",
+  "width"
+ ],
+ "mappings": ";;;;;;;;;AACA,IAAMA,OAAO,GAAG,SAAVA,OAAU;AAAA,SAAO;AACrBC,IAAAA,QAAQ,EAAE,UADW;AAErBC,IAAAA,eAAe,EAAE,SAFI;AAGrBC,IAAAA,MAAM,EAAE,oBAHa;AAIrBC,IAAAA,SAAS,EAAE,iCAJU;AAKrBC,IAAAA,YAAY,EAAE;AALO,GAAP;AAAA,CAAhB;;AAQA,IAAMC,cAAc,GAAG;AACrBC,EAAAA,YAAY,gCACPP,OAAO,EADA;AAEVQ,IAAAA,UAAU,EAAE,CAFF;AAGVC,IAAAA,UAAU,EAAE,EAHF;AAIVC,IAAAA,OAAO,EAAE,kBAJC;AAKVC,IAAAA,QAAQ,EAAE,GALA;AAMVC,IAAAA,QAAQ,EAAE,GANA;AAOVC,IAAAA,SAAS,EAAE;AAPD,IADS;AAUrBC,EAAAA,UAAU,gCACLd,OAAO,EADF;AAERS,IAAAA,UAAU,EAAE,EAFJ;AAGRC,IAAAA,OAAO,EAAE,CAHD;AAIRK,IAAAA,aAAa,EAAE,EAJP;AAKRC,IAAAA,KAAK,EAAE,GALC;AAMRL,IAAAA,QAAQ,EAAE,GANF;AAORE,IAAAA,SAAS,EAAE;AAPH;AAVW,CAAvB;eAqBeP,c"
+}

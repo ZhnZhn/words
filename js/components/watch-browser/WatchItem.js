@@ -12,19 +12,19 @@ var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 var STYLE = {
   ITEM_DIV: {
     position: 'relative',
-    paddingRight: '40px',
+    paddingRight: 40,
     lineHeight: 1.4,
-    paddingTop: '5px',
-    paddingBottom: '5px'
+    paddingTop: 5,
+    paddingBottom: 5
   },
   ITEM_SPAN: {
     display: 'inline-block',
     verticalAlign: 'middle',
     width: '100%',
-    maxWidth: '250px',
+    maxWidth: 250,
+    paddingLeft: 8,
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    paddingLeft: '8px',
     fontWeight: 'bold',
     cursor: 'pointer'
   },

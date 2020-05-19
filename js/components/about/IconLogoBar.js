@@ -16,7 +16,7 @@ var _IconReact = _interopRequireDefault(require("./IconReact"));
 var S = {
   ROOT: {
     textAlign: 'center',
-    paddingTop: '20px'
+    paddingTop: 20
   }
 };
 

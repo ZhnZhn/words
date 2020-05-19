@@ -1,1 +1,30 @@
-{"version":3,"sources":["../../../src/components/dialogs/CardUi.jsx"],"names":["CL_DIV","S","SELECT","ROOT","width","BT_ROOT","color","DF_THEME","caption","value","_themeOptions","CardUi","render","props","style","buttonsStyle","btStyle","onSetTheme","onClose","Component"],"mappings":";;;;;;;;;;;;;AAAA;;AAGA;;AACA;;AAEA,IAAMA,MAAM,GAAG,cAAf;AAEA,IAAMC,CAAC,GAAG;AACRC,EAAAA,MAAM,EAAE;AACNC,IAAAA,IAAI,EAAE;AACJC,MAAAA,KAAK,EAAE;AADH;AADA,GADA;AAMRC,EAAAA,OAAO,EAAE;AACPC,IAAAA,KAAK,EAAE;AADA;AAND,CAAV;AAWA,IAAMC,QAAQ,GAAG;AAAEC,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAAjB;AACA,IAAMC,aAAa,GAAG,CACpB;AAAEF,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CADoB,EAEpB;AAAED,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAFoB,EAGpB;AAAED,EAAAA,OAAO,EAAE,OAAX;AAAoBC,EAAAA,KAAK,EAAE;AAA3B,CAHoB,CAAtB;;IAMME,M;;;;;;;;;;;AAEJ;;;;;;;;;SAUAC,M,GAAA,kBAAQ;AAAA,sBAKK,KAAKC,KALV;AAAA,QAEGC,KAFH,eAEGA,KAFH;AAAA,QAGGC,YAHH,eAGGA,YAHH;AAAA,QAGiBC,OAHjB,eAGiBA,OAHjB;AAAA,QAIGC,UAJH,eAIGA,UAJH;AAAA,QAIeC,OAJf,eAIeA,OAJf;AAMN,WACE;AAAK,MAAA,KAAK,EAAEJ;AAAZ,OACE,gCAAC,uBAAD;AACE,MAAA,WAAW,EAAEb,CAAC,CAACC,MADjB;AAEE,MAAA,OAAO,EAAC,uBAFV;AAGE,MAAA,QAAQ,EAAEK,QAHZ;AAIE,MAAA,OAAO,EAAEG,aAJX;AAKE,MAAA,QAAQ,EAAEO;AALZ,MADF,EAQE;AAAK,MAAA,KAAK,EAAEF;AAAZ,OACE,gCAAC,sBAAD;AACE,MAAA,SAAS,gCAAOd,CAAC,CAACI,OAAT,MAAqBW,OAArB,CADX;AAEE,MAAA,KAAK,EAAEhB,MAFT;AAGE,MAAA,OAAO,EAAC,OAHV;AAIE,MAAA,KAAK,EAAC,cAJR;AAKE,MAAA,OAAO,EAAEkB;AALX,MADF,CARF,CADF;AAoBD,G;;;EAtCkBC,gB;;eAyCNR,M","sourcesContent":["import React, { Component } from 'react'\r\n//import PropTypes from \"prop-types\";\r\n\r\nimport InputSelect from '../zhn-m-input/InputSelect'\r\nimport FlatButton from '../zhn-atoms/FlatButton'\r\n\r\nconst CL_DIV = 'bt-flat__div';\r\n\r\nconst S = {\r\n  SELECT: {\r\n    ROOT: {\r\n      width: '280px'\r\n    }\r\n  },\r\n  BT_ROOT: {\r\n    color: 'rgb(35, 47, 59)'\r\n  }\r\n};\r\n\r\nconst DF_THEME = { caption: 'Grey', value: 'GREY' };\r\nconst _themeOptions = [\r\n  { caption: 'Grey', value: 'GREY' },\r\n  { caption: 'Sand', value: 'SAND' },\r\n  { caption: 'White', value: 'WHITE' }\r\n];\r\n\r\nclass CardUi extends Component {\r\n\r\n  /*\r\n  static propTypes = {\r\n    style: PropTypes.object,\r\n    buttonsStyle: PropTypes.object,\r\n    btStyle: PropTypes.object,\r\n    onSetTheme: PropTypes.func,\r\n    onClose: PropTypes.func\r\n  }\r\n  */\r\n\r\n  render(){\r\n    const {\r\n             style,\r\n             buttonsStyle, btStyle,\r\n             onSetTheme, onClose\r\n           } = this.props\r\n    return (\r\n      <div style={style}>\r\n        <InputSelect\r\n          styleConfig={S.SELECT}\r\n          caption=\"Theme (Default: Grey)\"\r\n          initItem={DF_THEME}\r\n          options={_themeOptions}\r\n          onSelect={onSetTheme}\r\n        />\r\n        <div style={buttonsStyle}>\r\n          <FlatButton\r\n            rootStyle={{ ...S.BT_ROOT, ...btStyle }}\r\n            clDiv={CL_DIV}\r\n            caption=\"Close\"\r\n            title=\"Close Dialog\"\r\n            onClick={onClose}\r\n          />\r\n        </div>\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default CardUi\r\n"],"file":"CardUi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/CardUi.js"
+ ],
+ "file": "../../../src/components/dialogs/CardUi.js",
+ "names": [
+  "CL_DIV",
+  "S",
+  "SELECT",
+  "ROOT",
+  "width",
+  "BT_ROOT",
+  "color",
+  "DF_THEME",
+  "caption",
+  "value",
+  "_themeOptions",
+  "CardUi",
+  "render",
+  "props",
+  "style",
+  "buttonsStyle",
+  "btStyle",
+  "onSetTheme",
+  "onClose",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;AAAA;;AAGA;;AACA;;AAEA,IAAMA,MAAM,GAAG,cAAf;AAEA,IAAMC,CAAC,GAAG;AACRC,EAAAA,MAAM,EAAE;AACNC,IAAAA,IAAI,EAAE;AACJC,MAAAA,KAAK,EAAE;AADH;AADA,GADA;AAMRC,EAAAA,OAAO,EAAE;AACPC,IAAAA,KAAK,EAAE;AADA;AAND,CAAV;AAWA,IAAMC,QAAQ,GAAG;AAAEC,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAAjB;AACA,IAAMC,aAAa,GAAG,CACpB;AAAEF,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CADoB,EAEpB;AAAED,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAFoB,EAGpB;AAAED,EAAAA,OAAO,EAAE,OAAX;AAAoBC,EAAAA,KAAK,EAAE;AAA3B,CAHoB,CAAtB;;IAMME,M;;;;;;;;;;;AAEJ;;;;;;;;;SAUAC,M,GAAA,kBAAQ;AAAA,sBAKK,KAAKC,KALV;AAAA,QAEGC,KAFH,eAEGA,KAFH;AAAA,QAGGC,YAHH,eAGGA,YAHH;AAAA,QAGiBC,OAHjB,eAGiBA,OAHjB;AAAA,QAIGC,UAJH,eAIGA,UAJH;AAAA,QAIeC,OAJf,eAIeA,OAJf;AAMN,WACE;AAAK,MAAA,KAAK,EAAEJ;AAAZ,OACE,gCAAC,uBAAD;AACE,MAAA,WAAW,EAAEb,CAAC,CAACC,MADjB;AAEE,MAAA,OAAO,EAAC,uBAFV;AAGE,MAAA,QAAQ,EAAEK,QAHZ;AAIE,MAAA,OAAO,EAAEG,aAJX;AAKE,MAAA,QAAQ,EAAEO;AALZ,MADF,EAQE;AAAK,MAAA,KAAK,EAAEF;AAAZ,OACE,gCAAC,sBAAD;AACE,MAAA,SAAS,gCAAOd,CAAC,CAACI,OAAT,MAAqBW,OAArB,CADX;AAEE,MAAA,KAAK,EAAEhB,MAFT;AAGE,MAAA,OAAO,EAAC,OAHV;AAIE,MAAA,KAAK,EAAC,cAJR;AAKE,MAAA,OAAO,EAAEkB;AALX,MADF,CARF,CADF;AAoBD,G;;;EAtCkBC,gB;;eAyCNR,M"
+}

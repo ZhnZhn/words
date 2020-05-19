@@ -21,14 +21,14 @@ var CL_DIALOG = 'dialog';
 var CL_DIALOG_OPEN = 'dialog show-popup';
 var STYLE = {
   ROOT: {
+    zIndex: 10,
     position: 'absolute',
-    top: '30px',
-    left: '50px',
+    top: 30,
+    left: 50,
     backgroundColor: '#4D4D4D',
     border: 'solid 2px #3f5178',
-    borderRadius: '5px',
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
-    zIndex: 10
+    borderRadius: 5,
+    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
   },
   CHILDREN: {
     cursor: 'default'
@@ -36,9 +36,9 @@ var STYLE = {
   COMMAND: {
     cursor: 'default',
     "float": 'right',
-    marginTop: '16px',
-    marginBottom: '10px',
-    marginRight: '4px'
+    marginTop: 16,
+    marginBottom: 10,
+    marginRight: 4
   },
   BLOCK: {
     display: 'block'

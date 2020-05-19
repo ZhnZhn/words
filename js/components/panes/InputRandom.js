@@ -11,14 +11,14 @@ var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
 var S = {
   ROOT: {
-    height: '60px',
-    marginTop: '-10px'
+    height: 60,
+    marginTop: -10
   },
   SPAN: {
     position: 'relative',
-    top: '16px',
-    fontWeight: 'bold',
-    paddingLeft: '16px'
+    top: 16,
+    paddingLeft: 16,
+    fontWeight: 'bold'
   }
 };
 

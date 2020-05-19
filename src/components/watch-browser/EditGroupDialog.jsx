@@ -23,10 +23,6 @@ const {
 } = WAT;
 const { notSelected, emptyName } = Msg;
 
-//const TAB_PANE_WIDTH = "300px";
-
-
-
 class EditGroupDialog extends Component {
   /*
   static propTypes = {

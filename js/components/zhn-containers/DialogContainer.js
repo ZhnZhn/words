@@ -17,8 +17,8 @@ var S = {
   ROOT: {
     zIndex: 1030,
     position: 'absolute',
-    top: '70px',
-    left: '10px',
+    top: 70,
+    left: 10,
     width: '99%'
   }
 };
@@ -61,7 +61,7 @@ function (_Component) {
   function DialogContainer(props) {
     var _this;
 
-    _this = _Component.call(this) || this;
+    _this = _Component.call(this, props) || this;
 
     _this._onStore = function (actionType, option) {
       var showAction = _this.props.showAction;

@@ -43,7 +43,7 @@ var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     RENAME_GROUP = _WatchActions.WatchActionTypes.RENAME_GROUP,
     DELETE_GROUP = _WatchActions.WatchActionTypes.DELETE_GROUP;
 var notSelected = _MsgWatch["default"].notSelected,
-    emptyName = _MsgWatch["default"].emptyName; //const TAB_PANE_WIDTH = "300px";
+    emptyName = _MsgWatch["default"].emptyName;
 
 var EditGroupDialog =
 /*#__PURE__*/

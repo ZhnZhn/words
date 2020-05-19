@@ -1,1 +1,17 @@
-{"version":3,"sources":["../../../src/components/about/IconLogoBar.jsx"],"names":["S","ROOT","textAlign","paddingTop","IconLogoBar","iconStyle","iconGitHubStyle"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,SAAS,EAAG,QADP;AAELC,IAAAA,UAAU,EAAE;AAFP;AADC,CAAV;;AAOA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,eAAd,QAAcA,eAAd;AAAA,SAClB;AAAK,IAAA,KAAK,EAAEN,CAAC,CAACC;AAAd,KACG,gCAAC,sBAAD;AACG,IAAA,KAAK,EAAEK,eADV;AAEG,IAAA,KAAK,EAAC,eAFT;AAGG,IAAA,IAAI,EAAC;AAHR,IADH,EAMG,gCAAC,wBAAD;AACE,IAAA,KAAK,EAAED;AADT,IANH,EASG,gCAAC,qBAAD;AACE,IAAA,KAAK,EAAEA;AADT,IATH,CADkB;AAAA,CAApB;;eAgBeD,W","sourcesContent":["import React from 'react'\r\n\r\nimport IconGitHub from './IconGitHub'\r\nimport IconWordsApi from './IconWordsApi'\r\nimport IconReact from './IconReact'\r\n\r\nconst S = {\r\n  ROOT : {\r\n    textAlign : 'center',\r\n    paddingTop: '20px'\r\n  }\r\n};\r\n\r\nconst IconLogoBar = ({ iconStyle, iconGitHubStyle }) => (\r\n  <div style={S.ROOT}>\r\n     <IconGitHub\r\n        style={iconGitHubStyle}\r\n        title=\"GitHub ZhnZhn\"\r\n        href=\"https://github.com/zhnzhn\"\r\n     />\r\n     <IconWordsApi\r\n       style={iconStyle}\r\n     />\r\n     <IconReact\r\n       style={iconStyle}\r\n     />\r\n  </div>\r\n);\r\n\r\nexport default IconLogoBar\r\n"],"file":"IconLogoBar.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/IconLogoBar.js"
+ ],
+ "file": "../../../src/components/about/IconLogoBar.js",
+ "names": [
+  "S",
+  "ROOT",
+  "textAlign",
+  "paddingTop",
+  "IconLogoBar",
+  "iconStyle",
+  "iconGitHubStyle"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,SAAS,EAAE,QADN;AAELC,IAAAA,UAAU,EAAE;AAFP;AADC,CAAV;;AAOA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,eAAd,QAAcA,eAAd;AAAA,SAClB;AAAK,IAAA,KAAK,EAAEN,CAAC,CAACC;AAAd,KACG,gCAAC,sBAAD;AACG,IAAA,KAAK,EAAEK,eADV;AAEG,IAAA,KAAK,EAAC,eAFT;AAGG,IAAA,IAAI,EAAC;AAHR,IADH,EAMG,gCAAC,wBAAD;AACE,IAAA,KAAK,EAAED;AADT,IANH,EASG,gCAAC,qBAAD;AACE,IAAA,KAAK,EAAEA;AADT,IATH,CADkB;AAAA,CAApB;;eAgBeD,W"
+}

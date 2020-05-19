@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 const S = {
   ROOT: {
-    zIndex : 1030,
+    zIndex: 1030,
     position: 'absolute',
-    top: '70px',
-    left: '10px',
+    top: 70,
+    left: 10,
     width: '99%'
   }
 };
@@ -38,7 +38,7 @@ const _updateVisible = (state, key, maxDialog) => {
 
 class DialogContainer extends Component {
   constructor(props){
-    super()
+    super(props)
     this.elHtml = document.getElementsByTagName('html')[0]
     this.state = {
       hmIs: {},

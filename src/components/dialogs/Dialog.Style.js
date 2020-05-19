@@ -1,9 +1,7 @@
 
 const S = {
-  BROWSER_CAPTION: {
-    //padding: '5px',
+  BROWSER_CAPTION: {    
     paddingTop: 5,
-    //color: '#9e9e9e',
     color: '#303030',
     backgroundColor: '#3f5178',
     textAlign: 'center',

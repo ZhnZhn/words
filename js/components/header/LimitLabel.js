@@ -17,10 +17,10 @@ var S = {
   LABEL: {
     position: 'relative',
     "float": 'right',
-    top: '9px',
+    top: 9,
     display: 'inline-block',
     color: '#2f7ed8',
-    paddingRight: '10px',
+    paddingRight: 10,
     fontSize: '16px',
     fontWeight: 'bold'
   }

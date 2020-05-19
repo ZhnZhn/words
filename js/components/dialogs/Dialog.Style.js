@@ -9,9 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var S = {
   BROWSER_CAPTION: {
-    //padding: '5px',
     paddingTop: 5,
-    //color: '#9e9e9e',
     color: '#303030',
     backgroundColor: '#3f5178',
     textAlign: 'center',

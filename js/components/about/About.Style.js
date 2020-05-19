@@ -11,11 +11,11 @@ var S = {
   SCROLL_DIV: {
     overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px'
+    paddingRight: 10
   },
   DIV_WRAPPER: {
-    paddingLeft: '12px',
-    paddingRight: '5px',
+    paddingLeft: 12,
+    paddingRight: 5,
     lineHeight: 1.4,
     color: 'gray',
     fontWeight: 'bold'
@@ -33,16 +33,16 @@ var S = {
     color: '#80c040'
   },
   STEP: {
-    marginTop: '3px'
+    marginTop: 3
   },
   BLACK: {
     color: 'black'
   },
   MARGIN_TOP: {
-    marginTop: '8px'
+    marginTop: 8
   },
   PROVIDER: {
-    color: '#009AE5'
+    color: '#009ae5'
   }
 };
 var styleConfig = {

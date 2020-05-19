@@ -6,19 +6,19 @@ import SvgClose from '../zhn-atoms/SvgClose';
 const STYLE = {
   ITEM_DIV : {
     position: 'relative',
-    paddingRight: '40px',
-    lineHeight : 1.4,
-    paddingTop : '5px',
-    paddingBottom: '5px'
+    paddingRight: 40,
+    lineHeight: 1.4,
+    paddingTop: 5,
+    paddingBottom: 5
   },
   ITEM_SPAN : {
     display: 'inline-block',
-    verticalAlign : 'middle',
+    verticalAlign: 'middle',
     width: '100%',
-    maxWidth: '250px',
+    maxWidth: 250,
+    paddingLeft: 8,
     textOverflow: 'ellipsis',
     overflow: 'hidden',
-    paddingLeft: '8px',
     fontWeight: 'bold',
     cursor: 'pointer'
   },
@@ -38,11 +38,11 @@ const WatchItem = (props) => {
            onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop
          } = props
       , { caption } = item
-      , _btClose = (isModeEdit)
+      , _btClose = isModeEdit
           ? (
              <SvgClose
                style={STYLE.SVG_CLOSE}
-               onClose={onClose.bind(null, option)}                                                  
+               onClose={onClose.bind(null, option)}
              />
             )
           : null;

@@ -6,8 +6,8 @@ import IconReact from './IconReact'
 
 const S = {
   ROOT : {
-    textAlign : 'center',
-    paddingTop: '20px'
+    textAlign: 'center',
+    paddingTop: 20
   }
 };
 

@@ -1,11 +1,11 @@
 
 const STYLE = {
-  COMMAND_DIV : {
-     cursor: 'default',
+  COMMAND_DIV : {     
      float: 'right',
-     marginTop: '8px',
-     marginBottom: '10px',
-     marginRight: '4px'
+     marginTop: 8,
+     marginBottom: 10,
+     marginRight: 4,
+     cursor: 'default'
   }
 }
 

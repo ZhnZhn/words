@@ -4,11 +4,11 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var STYLE = {
   COMMAND_DIV: {
-    cursor: 'default',
     "float": 'right',
-    marginTop: '8px',
-    marginBottom: '10px',
-    marginRight: '4px'
+    marginTop: 8,
+    marginBottom: 10,
+    marginRight: 4,
+    cursor: 'default'
   }
 };
 var _default = STYLE;

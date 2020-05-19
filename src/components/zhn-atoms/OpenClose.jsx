@@ -4,25 +4,22 @@ import React, { Component } from 'react'
 const CL_CAPTION = 'open-close not-selected';
 
 const STYLE = {
-  ROOT: {
-    //backgroundColor: '#4D4D4D',
+  ROOT: {    
     backgroundColor: 'inherit',
     lineHeight: 2.5
   },
   SVG: {
-    width: '16px',
-    height: '16px',
+    width: 16,
+    height: 16,
     display: 'inline-block'
   },
   ROOT_CAPTION: {
-    paddingLeft: '12px'
+    paddingLeft: 12
   },
   CAPTION: {
-    paddingLeft: '4px',
+    paddingLeft: 4,
     verticalAlign: 'top',
     color: '#9e9e9e',
-    //color: '#8a8a8a',
-    //color: 'rgba(164, 135, 212, 1)',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
     fontWeight: 'bold',
     fontSize: '16px',

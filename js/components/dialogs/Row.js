@@ -13,7 +13,7 @@ var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
 var S = {
   ROOT_DIV: {
-    margin: '5px',
+    margin: 5,
     lineHeight: 2,
     fontWeight: 'bold'
   },

@@ -4,18 +4,18 @@ import A from '../zhn-atoms/Atoms'
 
 const S = {
   ROOT: {
-    height: '60px',
-    marginTop: '-10px'
+    height: 60,
+    marginTop: -10
   },
   SPAN: {
     position: 'relative',
-    top: '16px',
-    fontWeight: 'bold',
-    paddingLeft: '16px'
+    top: 16,
+    paddingLeft: 16,
+    fontWeight: 'bold'
  }
 }
 
-const InputRandom = ({ TS, onEnter }) =>
+const InputRandom = ({ TS, onEnter }) => (
   <div style={S.ROOT}>
     <span style={S.SPAN}>
       Random Word
@@ -28,5 +28,6 @@ const InputRandom = ({ TS, onEnter }) =>
       onClick={onEnter}
     />
   </div>
+)
 
 export default InputRandom

@@ -5,25 +5,25 @@ import MenuPart from './MenuPart'
 
 const S = {
   BROWSER: {
-    paddingRight: '0px'
+    paddingRight: 0
   },
   SCROLL_PANE: {
     overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px',
-    //paddingLeft: '4px'
+    paddingRight: 10,
+
   },
   SPINNER_LOADING: {
     position: 'relative',
     display: 'block',
-    textAlign: 'middle',
+    width: 32,
+    height: 32,
     margin: '0 auto',
-    marginTop: '32px',
-    width: '32px',
-    height: '32px'
+    marginTop: 32,
+    textAlign: 'middle'
   },
   ROOT_MENU: {
-    paddingLeft: '4px'
+    paddingLeft: 4
   }
 }
 
