@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import PropTypes from "prop-types";
 
+import isKeyEnter from './isKeyEnter'
 import C from '../styles/Color';
 
 
@@ -71,16 +72,27 @@ class SvgCheckBox extends Component {
     this.setState({ isChecked: !isChecked });
   }
 
+  _hKeyDown = (evt) => {
+    if (isKeyEnter(evt)){
+      evt.preventDefault()
+      this._hClick()
+    }
+  }
+
   render(){
     const { rootStyle } = this.props
         , { isChecked } = this.state
-        , _elChecked = (isChecked)
+        , _elChecked = isChecked
             ? EL_CHECKED
             : null;
     return (
       <div
+         role="checkbox"
+         tabIndex="0"
+         aria-checked={isChecked}
          style={{ ...S.DIV, ...rootStyle }}
          onClick={this._hClick}
+         onKeyDown={this._hKeyDown}
       >
         <svg
             viewBox="0 0 16 16" width="100%" height="100%"

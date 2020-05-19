@@ -15,6 +15,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
+
 var _Color = _interopRequireDefault(require("../styles/Color"));
 
 //import PropTypes from "prop-types";
@@ -79,6 +81,14 @@ function (_Component) {
       });
     };
 
+    _this._hKeyDown = function (evt) {
+      if ((0, _isKeyEnter["default"])(evt)) {
+        evt.preventDefault();
+
+        _this._hClick();
+      }
+    };
+
     _this.setUnchecked = function () {
       _this.setState({
         isChecked: false
@@ -112,8 +122,12 @@ function (_Component) {
         _elChecked = isChecked ? EL_CHECKED : null;
 
     return _react["default"].createElement("div", {
+      role: "checkbox",
+      tabIndex: "0",
+      "aria-checked": isChecked,
       style: (0, _extends2["default"])({}, S.DIV, {}, rootStyle),
-      onClick: this._hClick
+      onClick: this._hClick,
+      onKeyDown: this._hKeyDown
     }, _react["default"].createElement("svg", {
       viewBox: "0 0 16 16",
       width: "100%",
