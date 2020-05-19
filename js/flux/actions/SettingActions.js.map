@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/actions/SettingActions.js"
+ ],
+ "file": "../../../src/flux/actions/SettingActions.js",
+ "names": [
+  "T",
+  "CHECK_AUTO_SAVE",
+  "UNCHECK_AUTO_SAVE",
+  "Actions",
+  "Reflux",
+  "createActions"
+ ],
+ "mappings": ";;;;;;;AACA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,eAAe,EAAE,eADT;AAERC,EAAAA,iBAAiB,EAAE;AAFX,CAAV;;AAKA,IAAMC,OAAO,GAAGC,uBAAOC,aAAP,oDACbL,CAAC,CAACC,eADW,IACO,EADP,wBAEbD,CAAC,CAACE,iBAFW,IAES,EAFT,yBAAhB;;eAKeC,O"
+}

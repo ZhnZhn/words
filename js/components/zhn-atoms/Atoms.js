@@ -47,6 +47,8 @@ var _ShowHide = _interopRequireDefault(require("./ShowHide"));
 
 var _SpinnerLoading = _interopRequireDefault(require("./SpinnerLoading"));
 
+var _SvgCheckBox = _interopRequireDefault(require("./SvgCheckBox"));
+
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 
 var _SvgHrzResize = _interopRequireDefault(require("./SvgHrzResize"));
@@ -76,6 +78,7 @@ var Atoms = (0, _extends2["default"])({}, _A["default"], {}, _SvgIcons["default"
   ScrollPane: _ScrollPane["default"],
   ShowHide: _ShowHide["default"],
   SpinnerLoading: _SpinnerLoading["default"],
+  SvgCheckBox: _SvgCheckBox["default"],
   SvgClose: _SvgClose["default"],
   SvgHrzResize: _SvgHrzResize["default"],
   Tab: _Tab["default"],

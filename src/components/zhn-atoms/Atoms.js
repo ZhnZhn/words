@@ -20,6 +20,7 @@ import RaisedButton from './RaisedButton'
 import ScrollPane from './ScrollPane'
 import ShowHide from './ShowHide'
 import SpinnerLoading from './SpinnerLoading'
+import SvgCheckBox from './SvgCheckBox'
 import SvgClose from './SvgClose'
 import SvgHrzResize from './SvgHrzResize'
 import Tab from './Tab'
@@ -47,6 +48,7 @@ const Atoms = {
   ScrollPane,
   ShowHide,
   SpinnerLoading,
+  SvgCheckBox,
   SvgClose,
   SvgHrzResize,
   Tab,

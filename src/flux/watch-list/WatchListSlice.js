@@ -51,6 +51,9 @@ const WatchListSlice = {
     this._onEditWatch(
       addItem(this.watchList, item), WAT.ADD_ITEM
     );
+    if (this.isAutoSaveOnAdd){
+      this.onSaveWatch({ isShowDialog: false })
+    }
   },
   onRemoveWatchItem(option){
     removeItem(this.watchList, option);
@@ -79,15 +82,17 @@ const WatchListSlice = {
   },
 
 
-  onSaveWatch(){
+  onSaveWatch({ isShowDialog=true } = {}){
     if (this.isWatchEdited){
        LocalForage.setItem(STORAGE_KEY , this.watchList)
           .then(()=>{
              this.isWatchEdited = false;
-             this.onShowModalDialog(MD.MSG, {
-                caption: DIALOG_CAPTION,
-                descr: WATCH_SAVED
-             })
+             if (isShowDialog) {
+               this.onShowModalDialog(MD.MSG, {
+                  caption: DIALOG_CAPTION,
+                  descr: WATCH_SAVED
+               })
+             }
           })
           .catch((error) => {
              /*eslint-disable no-console*/
@@ -151,7 +156,7 @@ const WatchListSlice = {
       WAT.DELETE_LIST
     );
   }
-    
+
 }
 
 export default WatchListSlice

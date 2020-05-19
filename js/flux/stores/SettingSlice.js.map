@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/stores/SettingSlice.js"
+ ],
+ "file": "../../../src/flux/stores/SettingSlice.js",
+ "names": [
+  "SettingSlice",
+  "isAutoSaveOnAdd",
+  "onCheckAutoSave",
+  "onUncheckAutoSave"
+ ],
+ "mappings": ";;;;AACA,IAAMA,YAAY,GAAG;AACnBC,EAAAA,eAAe,EAAE,IADE;AAGnBC,EAAAA,eAHmB,6BAGF;AACf,SAAKD,eAAL,GAAuB,IAAvB;AACD,GALkB;AAMnBE,EAAAA,iBANmB,+BAMA;AACjB,SAAKF,eAAL,GAAuB,KAAvB;AACD;AARkB,CAArB;eAWeD,Y"
+}

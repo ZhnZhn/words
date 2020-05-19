@@ -1,22 +1,18 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _react = _interopRequireDefault(require("react"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _react = _interopRequireWildcard(require("react"));
-
-var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
-
-var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
-
+//import PropTypes from "prop-types";
+var InputSelect = _Comp["default"].InputSelect,
+    SvgCheckBox = _Comp["default"].SvgCheckBox,
+    FlatButton = _Comp["default"].FlatButton;
 var CL_DIV = 'bt-flat__div';
 var S = {
   SELECT: {
@@ -24,15 +20,18 @@ var S = {
       width: 280
     }
   },
-  BT_ROOT: {
-    color: 'rgb(35, 47, 59)'
+  CHB_ROW: {
+    paddingTop: 20,
+    paddingLeft: 22
+  },
+  TEXT: {
+    display: 'inline-block',
+    paddingLeft: 8,
+    fontWeight: 'bold',
+    userSelect: 'none'
   }
 };
-var DF_THEME = {
-  caption: 'Grey',
-  value: 'GREY'
-};
-var _themeOptions = [{
+var THEME_OPTIONS = [{
   caption: 'Grey',
   value: 'GREY'
 }, {
@@ -41,56 +40,57 @@ var _themeOptions = [{
 }, {
   caption: 'White',
   value: 'WHITE'
-}];
+}],
+    DF_THEME = THEME_OPTIONS[0];
 
-var CardUi =
-/*#__PURE__*/
-function (_Component) {
-  (0, _inheritsLoose2["default"])(CardUi, _Component);
+var CardUi = function CardUi(_ref) {
+  var style = _ref.style,
+      buttonsStyle = _ref.buttonsStyle,
+      btStyle = _ref.btStyle,
+      chbStroke = _ref.chbStroke,
+      onSetTheme = _ref.onSetTheme,
+      onCheckAutoSave = _ref.onCheckAutoSave,
+      onUncheckAutoSave = _ref.onUncheckAutoSave,
+      onClose = _ref.onClose;
+  return _react["default"].createElement("div", {
+    style: style
+  }, _react["default"].createElement(InputSelect, {
+    styleConfig: S.SELECT,
+    caption: "Theme (Default: Grey)",
+    initItem: DF_THEME,
+    options: THEME_OPTIONS,
+    onSelect: onSetTheme
+  }), _react["default"].createElement("div", {
+    style: S.CHB_ROW
+  }, _react["default"].createElement(SvgCheckBox, {
+    initialValue: true,
+    stroke: chbStroke,
+    onCheck: onCheckAutoSave,
+    onUnCheck: onUncheckAutoSave
+  }), _react["default"].createElement("span", {
+    style: S.TEXT
+  }, "AutoSave on Add to Watch List")), _react["default"].createElement("div", {
+    style: buttonsStyle
+  }, _react["default"].createElement(FlatButton, {
+    rootStyle: btStyle,
+    clDiv: CL_DIV,
+    caption: "Close",
+    title: "Close Dialog",
+    onClick: onClose
+  })));
+};
+/*
+CardUi.propTypes = {
+  style: PropTypes.object,
+  buttonsStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+  onSetTheme: PropTypes.func,
+  onCheckAutoSave: PropTypes.func,
+  onUncheckAutoSave: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
 
-  function CardUi() {
-    return _Component.apply(this, arguments) || this;
-  }
-
-  var _proto = CardUi.prototype;
-
-  /*
-  static propTypes = {
-    style: PropTypes.object,
-    buttonsStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-    onSetTheme: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-  _proto.render = function render() {
-    var _this$props = this.props,
-        style = _this$props.style,
-        buttonsStyle = _this$props.buttonsStyle,
-        btStyle = _this$props.btStyle,
-        onSetTheme = _this$props.onSetTheme,
-        onClose = _this$props.onClose;
-    return _react["default"].createElement("div", {
-      style: style
-    }, _react["default"].createElement(_InputSelect["default"], {
-      styleConfig: S.SELECT,
-      caption: "Theme (Default: Grey)",
-      initItem: DF_THEME,
-      options: _themeOptions,
-      onSelect: onSetTheme
-    }), _react["default"].createElement("div", {
-      style: buttonsStyle
-    }, _react["default"].createElement(_FlatButton["default"], {
-      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, btStyle),
-      clDiv: CL_DIV,
-      caption: "Close",
-      title: "Close Dialog",
-      onClick: onClose
-    })));
-  };
-
-  return CardUi;
-}(_react.Component);
 
 var _default = CardUi;
 exports["default"] = _default;

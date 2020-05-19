@@ -1,6 +1,6 @@
 
 const S = {
-  BROWSER_CAPTION: {    
+  BROWSER_CAPTION: {
     paddingTop: 5,
     color: '#303030',
     backgroundColor: '#3f5178',
@@ -27,6 +27,7 @@ const styleConfig = {
       R_DIALOG: {
         ...R.R_DIALOG
       },
+      CHB_STROKE: R.R_DIALOG.backgroundColor,
       BROWSER_CAPTION: {
         ...S.BROWSER_CAPTION,
         ...R.BG_HEADER

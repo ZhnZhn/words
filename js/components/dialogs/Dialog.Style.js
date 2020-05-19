@@ -32,6 +32,7 @@ var styleConfig = {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
       R_DIALOG: (0, _extends2["default"])({}, R.R_DIALOG),
+      CHB_STROKE: R.R_DIALOG.backgroundColor,
       BROWSER_CAPTION: (0, _extends2["default"])({}, S.BROWSER_CAPTION, {}, R.BG_HEADER),
       INPUT_ROOT: (0, _extends2["default"])({}, S.INPUT_ROOT),
       BT: {

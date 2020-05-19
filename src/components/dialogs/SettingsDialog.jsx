@@ -4,6 +4,7 @@ import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
 import Actions from '../../flux/actions/ComponentActions'
+import SA from '../../flux/actions/SettingActions'
 
 import A from '../Comp'
 
@@ -100,7 +101,10 @@ class SettingsDialog extends Component {
                style={S.CARD_ROOT}
                buttonsStyle={S.CARD_BUTTONS}
                btStyle={TS.BT.FLAT_ROOT}
+               chbStroke={TS.CHB_STROKE}
                onSetTheme={this._hSelectTheme}
+               onCheckAutoSave={SA.checkAutoSave}
+               onUncheckAutoSave={SA.uncheckAutoSave}
                onClose={onClose}
              />
           </A.Tab>

@@ -68,6 +68,12 @@ var WatchListSlice = {
   },
   onAddWatchItem: function onAddWatchItem(item) {
     this._onEditWatch(addItem(this.watchList, item), _WatchActions.WatchActionTypes.ADD_ITEM);
+
+    if (this.isAutoSaveOnAdd) {
+      this.onSaveWatch({
+        isShowDialog: false
+      });
+    }
   },
   onRemoveWatchItem: function onRemoveWatchItem(option) {
     removeItem(this.watchList, option);
@@ -91,17 +97,23 @@ var WatchListSlice = {
   onDragDropGroup: function onDragDropGroup(option) {
     this._onDragDrop(dragDropGroup(this.watchList, option));
   },
-  onSaveWatch: function onSaveWatch() {
+  onSaveWatch: function onSaveWatch(_temp) {
     var _this2 = this;
+
+    var _ref = _temp === void 0 ? {} : _temp,
+        _ref$isShowDialog = _ref.isShowDialog,
+        isShowDialog = _ref$isShowDialog === void 0 ? true : _ref$isShowDialog;
 
     if (this.isWatchEdited) {
       _localforage["default"].setItem(STORAGE_KEY, this.watchList).then(function () {
         _this2.isWatchEdited = false;
 
-        _this2.onShowModalDialog(_Type.ModalDialog.MSG, {
-          caption: DIALOG_CAPTION,
-          descr: WATCH_SAVED
-        });
+        if (isShowDialog) {
+          _this2.onShowModalDialog(_Type.ModalDialog.MSG, {
+            caption: DIALOG_CAPTION,
+            descr: WATCH_SAVED
+          });
+        }
       })["catch"](function (error) {
         /*eslint-disable no-console*/
         console.warn(error);

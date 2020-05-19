@@ -19,6 +19,8 @@ var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
 var _ComponentActions = _interopRequireDefault(require("../../flux/actions/ComponentActions"));
 
+var _SettingActions = _interopRequireDefault(require("../../flux/actions/SettingActions"));
+
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _CardApiKey = _interopRequireDefault(require("./CardApiKey"));
@@ -123,7 +125,10 @@ function (_Component) {
       style: S.CARD_ROOT,
       buttonsStyle: S.CARD_BUTTONS,
       btStyle: TS.BT.FLAT_ROOT,
+      chbStroke: TS.CHB_STROKE,
       onSetTheme: this._hSelectTheme,
+      onCheckAutoSave: _SettingActions["default"].checkAutoSave,
+      onUncheckAutoSave: _SettingActions["default"].uncheckAutoSave,
       onClose: onClose
     }))));
   };

@@ -1,8 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 //import PropTypes from "prop-types";
 
-import InputSelect from '../zhn-m-input/InputSelect'
-import FlatButton from '../zhn-atoms/FlatButton'
+import Comp from '../Comp'
+
+const {
+  InputSelect,
+  SvgCheckBox,
+  FlatButton
+} = Comp;
 
 const CL_DIV = 'bt-flat__div';
 
@@ -12,57 +17,72 @@ const S = {
       width: 280
     }
   },
-  BT_ROOT: {
-    color: 'rgb(35, 47, 59)'
+  CHB_ROW: {
+    paddingTop: 20,
+    paddingLeft: 22
+  },
+  TEXT: {
+    display: 'inline-block',
+    paddingLeft: 8,
+    fontWeight: 'bold',
+    userSelect: 'none'
   }
 };
 
-const DF_THEME = { caption: 'Grey', value: 'GREY' };
-const _themeOptions = [
+const THEME_OPTIONS = [
   { caption: 'Grey', value: 'GREY' },
   { caption: 'Sand', value: 'SAND' },
   { caption: 'White', value: 'WHITE' }
-];
+],
+DF_THEME = THEME_OPTIONS[0];
 
-class CardUi extends Component {
+const CardUi = ({
+  style,
+  buttonsStyle, btStyle,
+  chbStroke,
+  onSetTheme,
+  onCheckAutoSave, onUncheckAutoSave,
+  onClose
+}) => (
+  <div style={style}>
+    <InputSelect
+      styleConfig={S.SELECT}
+      caption="Theme (Default: Grey)"
+      initItem={DF_THEME}
+      options={THEME_OPTIONS}
+      onSelect={onSetTheme}
+    />
+    <div style={S.CHB_ROW}>
+      <SvgCheckBox
+        initialValue={true}
+        stroke={chbStroke}
+        onCheck={onCheckAutoSave}
+        onUnCheck={onUncheckAutoSave}
+      />
+      <span style={S.TEXT}>AutoSave on Add to Watch List</span>
+    </div>
+    <div style={buttonsStyle}>
+      <FlatButton
+        rootStyle={btStyle}
+        clDiv={CL_DIV}
+        caption="Close"
+        title="Close Dialog"
+        onClick={onClose}
+      />
+    </div>
+  </div>
+)
 
-  /*
-  static propTypes = {
-    style: PropTypes.object,
-    buttonsStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-    onSetTheme: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-
-  render(){
-    const {
-             style,
-             buttonsStyle, btStyle,
-             onSetTheme, onClose
-           } = this.props
-    return (
-      <div style={style}>
-        <InputSelect
-          styleConfig={S.SELECT}
-          caption="Theme (Default: Grey)"
-          initItem={DF_THEME}
-          options={_themeOptions}
-          onSelect={onSetTheme}
-        />
-        <div style={buttonsStyle}>
-          <FlatButton
-            rootStyle={{ ...S.BT_ROOT, ...btStyle }}
-            clDiv={CL_DIV}
-            caption="Close"
-            title="Close Dialog"
-            onClick={onClose}
-          />
-        </div>
-      </div>
-    );
-  }
+/*
+CardUi.propTypes = {
+  style: PropTypes.object,
+  buttonsStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+  onSetTheme: PropTypes.func,
+  onCheckAutoSave: PropTypes.func,
+  onUncheckAutoSave: PropTypes.func,
+  onClose: PropTypes.func
 }
+*/
 
 export default CardUi
