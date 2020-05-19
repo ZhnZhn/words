@@ -47,10 +47,20 @@ var DynamicMenuBrowser =
 function (_Component) {
   (0, _inheritsLoose2["default"])(DynamicMenuBrowser, _Component);
 
-  function DynamicMenuBrowser(props) {
+  function DynamicMenuBrowser() {
     var _this;
 
-    _this = _Component.call(this) || this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      isShow: true,
+      isLoading: true,
+      isLoadingFailed: false,
+      menuModel: {}
+    };
 
     _this._onStore = function (actionType, id) {
       var _this$props = _this.props,
@@ -100,12 +110,6 @@ function (_Component) {
       });
     };
 
-    _this.state = {
-      isShow: true,
-      isLoading: true,
-      isLoadingFailed: false,
-      menuModel: {}
-    };
     return _this;
   }
 

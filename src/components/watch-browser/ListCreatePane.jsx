@@ -25,7 +25,7 @@ class ListCreatePane extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.captionGroup = null
     this.state = {
       groupOptions: props.store.getWatchGroups(),

@@ -22,7 +22,7 @@ class ListDeletePane extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       groupOptions: props.store.getWatchGroups(),
       validationMessages: []
@@ -90,7 +90,7 @@ class ListDeletePane extends Component {
          <A.FragmentSelectGroupList
            ref={this._ref}
            store={store}
-           inputStyle={inputStyle}           
+           inputStyle={inputStyle}
            groupCaption="In Group:"
            groupOptions={groupOptions}
            listCaption="List:"

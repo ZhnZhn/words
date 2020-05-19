@@ -9,16 +9,16 @@ const Transitions = {
 
 class ProgressLine extends Component {
   static defaultProps = {
-    color: '#2F7ED8',
+    color: '#2f7ed8',
     height: 3
   }
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.wasCompleted = false;
     this.idCompleted = null;
     this.wasOpacied = false;
-    this.idOpacied = null;    
+    this.idOpacied = null;
   }
 
   componentWillUnmount(){

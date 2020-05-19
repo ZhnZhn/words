@@ -25,7 +25,7 @@ class DndOnlyX extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.clientX = 0
     this._isDragTouch = false
 

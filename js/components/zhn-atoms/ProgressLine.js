@@ -22,10 +22,10 @@ var ProgressLine =
 function (_Component) {
   (0, _inheritsLoose2["default"])(ProgressLine, _Component);
 
-  function ProgressLine() {
+  function ProgressLine(props) {
     var _this;
 
-    _this = _Component.call(this) || this;
+    _this = _Component.call(this, props) || this;
     _this.wasCompleted = false;
     _this.idCompleted = null;
     _this.wasOpacied = false;
@@ -117,7 +117,7 @@ function (_Component) {
 }(_react.Component);
 
 ProgressLine.defaultProps = {
-  color: '#2F7ED8',
+  color: '#2f7ed8',
   height: 3
 };
 var _default = ProgressLine;

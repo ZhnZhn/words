@@ -33,16 +33,12 @@ class DynamicMenuBrowser extends Component {
     onError: ()=>{}
   }
 
-  constructor(props){
-    super()
-    this.state = {
-      isShow: true,
-      isLoading: true,
-      isLoadingFailed: false,
-      menuModel: {}
-    }
-  }
-
+  state = {
+    isShow: true,
+    isLoading: true,
+    isLoadingFailed: false,
+    menuModel: {}
+  }  
 
   componentDidMount(){
     const { store={} } = this.props;

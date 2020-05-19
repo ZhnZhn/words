@@ -25,7 +25,7 @@ class GroupEditPane extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.captionFrom = null
     this.state = {
       groupOptions: props.store.getWatchGroups(),

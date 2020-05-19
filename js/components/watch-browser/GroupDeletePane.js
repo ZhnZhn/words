@@ -37,7 +37,7 @@ function (_Component) {
   function GroupDeletePane(props) {
     var _this;
 
-    _this = _Component.call(this) || this;
+    _this = _Component.call(this, props) || this;
 
     _this._onStore = function (actionType, data) {
       var _this$props = _this.props,

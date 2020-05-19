@@ -31,11 +31,6 @@ class ItemHeader extends Component {
     onAddToWatch: PropTypes.func
   }
   */
-  constructor(props){
-    super(props)
-    this._refRootNode = React.createRef()
-    this._refBtAdd = React.createRef()
-  }
 
   static defaultProps = {
     onClick: _fnNoop,
@@ -43,6 +38,13 @@ class ItemHeader extends Component {
     onAddToWatch: _fnNoop
   }
 
+  constructor(props){
+    super(props)
+    this._refRootNode = React.createRef()
+    this._refBtAdd = React.createRef()
+  }
+
+  
   componentDidMount(){
     if (this._refRootNode.current) {
       this._refRootNode.current.focus()

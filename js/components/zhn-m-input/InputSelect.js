@@ -65,19 +65,6 @@ function (_Component) {
     };
     return _this;
   }
-  /*
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.options !== this.props.options) {
-      this.setState({
-        item: {
-          caption: '',
-          value: ''
-        }
-      })
-    }
-  }
-  */
-
 
   InputSelect.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
     if (props.options !== state.initialOptions) {

@@ -23,7 +23,7 @@ class GroupDeletePane extends Component {
   */
 
   constructor(props){
-    super()
+    super(props)
     this.caption = null
     this.state = {
       groupOptions: props.store.getWatchGroups(),

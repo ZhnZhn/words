@@ -57,7 +57,7 @@ class ModalSlider extends Component {
   }
 
   constructor(props){
-    super()
+    super(props)
     const {
             INIT_ID,
             pageWidth, maxPages,

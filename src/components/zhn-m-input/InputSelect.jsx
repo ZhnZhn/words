@@ -31,21 +31,7 @@ class InputSelect extends Component {
       item: props.initItem
     }
   }
-
-  /*
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.options !== this.props.options) {
-      this.setState({
-        item: {
-          caption: '',
-          value: ''
-        }
-      })
-    }
-  }
-  */
-
-
+  
   static getDerivedStateFromProps(props, state) {
     if (props.options !== state.initialOptions) {
       return {

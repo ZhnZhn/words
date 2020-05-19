@@ -16,17 +16,14 @@ class GroupAddPane extends Component {
 
     inputStyle: PropTypes.object,
     btStyle: PropTypes.object,
-    
+
     onCreate: PropTypes.func,
     onClose: PropTypes.func
   }
   */
 
-  constructor(props){
-    super()
-    this.state = {
-      validationMessages : []
-    }
+  state = {
+    validationMessages: []
   }
 
   componentDidMount(){

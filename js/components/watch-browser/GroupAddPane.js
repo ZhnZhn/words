@@ -19,26 +19,17 @@ var GroupAddPane =
 function (_Component) {
   (0, _inheritsLoose2["default"])(GroupAddPane, _Component);
 
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    actionFailed: PropTypes.string,
-    forActionType: PropTypes.string,
-    msgOnIsEmptyName: PropTypes.func,
-      inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-    
-    onCreate: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-  function GroupAddPane(props) {
+  function GroupAddPane() {
     var _this;
 
-    _this = _Component.call(this) || this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      validationMessages: []
+    };
 
     _this._onStore = function (actionType, data) {
       var _this$props = _this.props,
@@ -97,9 +88,6 @@ function (_Component) {
       return _this.inputText = c;
     };
 
-    _this.state = {
-      validationMessages: []
-    };
     return _this;
   }
 
