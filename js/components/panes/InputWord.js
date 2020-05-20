@@ -7,6 +7,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -15,6 +17,9 @@ var _has = _interopRequireDefault(require("../has"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var ButtonClear = _Comp["default"].ButtonClear,
+    FlatButton = _Comp["default"].FlatButton,
+    TextField = _Comp["default"].TextField;
 var S = {
   TF_LABEL: {
     top: 28
@@ -26,6 +31,11 @@ var S = {
     position: 'relative',
     top: 18,
     left: 6
+  },
+  BT_LOAD: {
+    position: 'relative',
+    top: 22,
+    marginLeft: 8
   }
 };
 
@@ -69,20 +79,19 @@ function (_Component) {
         TS = _this$props.TS,
         initValue = _this$props.initValue,
         onEnter = _this$props.onEnter,
-        _elBt = _has["default"].HAS_TOUCH ? _react["default"].createElement(_Comp["default"].ButtonClear, {
+        _elBt = _has["default"].HAS_TOUCH ? _react["default"].createElement(ButtonClear, {
       style: S.BT_CLEAR,
       onClick: this._hClear
-    }) : _react["default"].createElement(_Comp["default"].RaisedButton, {
-      rootStyle: TS.BT.RAISED_ROOT,
-      clDiv: TS.BT.CL_RAISED_DIV,
+    }) : _react["default"].createElement(FlatButton, {
       caption: "Load",
-      tabIndex: -1 //timeout={3000}
-      ,
+      tabIndex: -1,
+      rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, {}, S.BT_LOAD),
+      clDiv: TS.BT.CL_FLAT_DIV,
       isPrimary: true,
       onClick: onEnter
     });
 
-    return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_Comp["default"].TextField, {
+    return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(TextField, {
       ref: this._ref,
       rootStyle: TS.INPUT_ROOT,
       labelStyle: S.TF_LABEL,
@@ -96,7 +105,7 @@ function (_Component) {
   };
 
   _proto.getValue = function getValue() {
-    return this.iWord ? this.iWord.getValue() : undefined;
+    return this.iWord ? this.iWord.getValue() : void 0;
   };
 
   return InputWord;

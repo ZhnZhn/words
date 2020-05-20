@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../../src/components/zhn-moleculs/MenuPart.jsx"],"names":["CL_NOT_S","_renderMenuItems","TS","option","items","hmItems","onClickItem","rest","map","item","index","_className","CL_ROW","_itemConf","id","menuTitle","Object","assign","_onClick","bind","undefined","MenuPart","styleConfig","caption","isInitClose","restProps","OPEN_CLOSE","ITEM"],"mappings":";;;;;;;;;AAAA;;AAGA;;AAFA;AAGA;AAEA,IAAMA,QAAQ,GAAG,cAAjB;AAEA;;;;;;;;AAQA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB,CAASC,EAAT,EAAaC,MAAb,EAAoB;AAAA,sBAKvBA,MALuB,CACnCC,KADmC;AAAA,MACnCA,KADmC,8BAC7B,EAD6B;AAAA,wBAKvBD,MALuB,CACzBE,OADyB;AAAA,MACzBA,OADyB,gCACjB,EADiB;AAAA,MAGnCC,WAHmC,GAKvBH,MALuB,CAGnCG,WAHmC;AAAA,MAKhCC,IALgC,kDAKvBJ,MALuB;AAM3C,SAAOC,KAAK,CAACI,GAAN,CAAU,UAACC,IAAD,EAAOC,KAAP,EAAiB;AAC1B,QAAAC,UAAU,GAAIT,EAAE,CAACU,MAAJ,GACLV,EAAE,CAACU,MADE,SACQZ,QADR,GAEPA,QAFN;AAAA,QAGEa,SAHF,GAGcR,OAAO,CAACI,IAAI,CAACK,EAAN,CAHrB;AAAA,QAIIC,SAJJ,GAIiBF,SAJjB,CAIIE,SAJJ;;AAgBNC,IAAAA,MAAM,CAACC,MAAP,CAAcJ,SAAd,EAAyBN,IAAzB;;AACA,QAAMW,QAAQ,GAAI,OAAOZ,WAAP,KAAuB,UAAxB,GACLA,WAAW,CAACa,IAAZ,CAAiB,IAAjB,EAAuBN,SAAvB,CADK,GAELO,SAFZ;;AAGA,WACG;AACI,MAAA,QAAQ,EAAC,GADb;AAEI,MAAA,GAAG,EAAEV,KAFT;AAGI,MAAA,SAAS,EAAEC,UAHf;AAII,MAAA,OAAO,EAAEO,QAJb,CAKI;;AALJ,OAOIH,SAPJ,CADH;AAYD,GAjCM,CAAP;AAkCD,CAxCD;;AA0CA,IAAMM,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACHnB,EADG,QACfoB,WADe;AAAA,MAEfC,OAFe,QAEfA,OAFe;AAAA,MAENC,WAFM,QAENA,WAFM;AAAA,MAEUC,SAFV;AAAA,SAIf,gCAAC,qBAAD;AACG,IAAA,KAAK,EAAEvB,EAAE,CAACwB,UADb;AAEG,IAAA,OAAO,EAAEH,OAFZ;AAGG,IAAA,OAAO,EAAEC,WAHZ;AAIG,IAAA,SAAS,EAAEtB,EAAE,CAACyB;AAJjB,KAMI1B,gBAAgB,CAACC,EAAD,EAAKuB,SAAL,CANpB,CAJe;AAAA,CAAjB;AAaA;;;;;;;;;eAQeJ,Q","sourcesContent":["import React from 'react'\r\n//import PropTypes from 'prop-types'\r\n\r\nimport OpenClose from '../zhn-atoms/OpenClose'\r\n//import MenuItemBadge from './MenuItemBadge'\r\n\r\nconst CL_NOT_S = 'not-selected';\r\n\r\n/*\r\nconst _createOnKeyDown = (onClick) => (event) => {\r\n  if (event.keyCode === 13){\r\n    onClick()\r\n  }\r\n}\r\n*/\r\n\r\nconst _renderMenuItems = function(TS, option){\r\n  const { items=[], hmItems={},\r\n          //itemData,\r\n          onClickItem,\r\n          //onClickBadge,\r\n          ...rest } = option\r\n  return items.map((item, index) => {\r\n    const _className = (TS.CL_ROW)\r\n             ? `${TS.CL_ROW} ${CL_NOT_S}`\r\n             :  CL_NOT_S\r\n          , _itemConf = hmItems[item.id]\r\n          , { menuTitle} = _itemConf\r\n          /*\r\n          , badgeEl = itemData[item.id]\r\n               ? <MenuItemBadge\r\n                    style={TS.BADGE}\r\n                    itemBadge={itemData[item.id]}\r\n                    itemConf={_itemConf}\r\n                    onClick={onClickBadge}\r\n                 />\r\n               : undefined\r\n              */;\r\n\r\n    Object.assign(_itemConf, rest)\r\n    const _onClick = (typeof onClickItem === 'function')\r\n              ? onClickItem.bind(null, _itemConf)\r\n              : undefined;\r\n    return (\r\n       <button\r\n           tabIndex=\"0\"\r\n           key={index}\r\n           className={_className}\r\n           onClick={_onClick}\r\n           //onKeyDown={_createOnKeyDown(_onClick)}\r\n        >\r\n          {menuTitle}\r\n          {/*badgeEl*/}\r\n       </button>\r\n    )\r\n  })\r\n}\r\n\r\nconst MenuPart = ({\r\n  styleConfig:TS,\r\n  caption, isInitClose, ...restProps\r\n}) => (\r\n  <OpenClose\r\n     style={TS.OPEN_CLOSE}\r\n     caption={caption}\r\n     isClose={isInitClose}\r\n     itemStyle={TS.ITEM}\r\n  >\r\n     {_renderMenuItems(TS, restProps)}\r\n  </OpenClose>\r\n)\r\n/*\r\nMenuPart.propTypes = {\r\n  caption: PropTypes.string,\r\n  items: PropTypes.arrayOf(PropTypes.object),\r\n  isInitClose: PropTypes.bool\r\n}\r\n*/\r\n\r\nexport default MenuPart\r\n"],"file":"MenuPart.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-moleculs/MenuPart.js"
+ ],
+ "file": "../../../src/components/zhn-moleculs/MenuPart.js",
+ "names": [
+  "CL_NOT_S",
+  "_isFn",
+  "fn",
+  "_hKeyDown",
+  "onClick",
+  "evt",
+  "_renderMenuItems",
+  "TS",
+  "option",
+  "items",
+  "hmItems",
+  "onClickItem",
+  "restOption",
+  "map",
+  "item",
+  "index",
+  "_className",
+  "CL_ROW",
+  "_itemConf",
+  "id",
+  "menuTitle",
+  "Object",
+  "assign",
+  "_onClick",
+  "bind",
+  "MenuPart",
+  "styleConfig",
+  "caption",
+  "isInitClose",
+  "restProps",
+  "OPEN_CLOSE",
+  "ITEM"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAGA;;AACA;;AAHA;AAKA,IAAMA,QAAQ,GAAG,cAAjB;;AAEA,IAAMC,KAAK,GAAG,SAARA,KAAQ,CAAAC,EAAE;AAAA,SAAI,OAAOA,EAAP,KAAc,UAAlB;AAAA,CAAhB;;AAEA,IAAMC,SAAS,GAAG,SAAZA,SAAY,CAACC,OAAD,EAAUC,GAAV,EAAkB;AAClC,MAAIJ,KAAK,CAACG,OAAD,CAAL,IAAkB,4BAAWC,GAAX,CAAtB,EAAuC;AACrCD,IAAAA,OAAO;AACR;AACF,CAJD;;AAMA,IAAME,gBAAgB,GAAG,SAAnBA,gBAAmB,CAASC,EAAT,EAAaC,MAAb,EAAoB;AAAA,sBAMvCA,MANuC,CAEzCC,KAFyC;AAAA,MAEzCA,KAFyC,8BAEnC,EAFmC;AAAA,wBAMvCD,MANuC,CAGzCE,OAHyC;AAAA,MAGzCA,OAHyC,gCAGjC,EAHiC;AAAA,MAIzCC,WAJyC,GAMvCH,MANuC,CAIzCG,WAJyC;AAAA,MAKtCC,UALsC,kDAMvCJ,MANuC;AAO3C,SAAOC,KAAK,CAACI,GAAN,CAAU,UAACC,IAAD,EAAOC,KAAP,EAAiB;AAC1B,QAAAC,UAAU,GAAGT,EAAE,CAACU,MAAH,GACZV,EAAE,CAACU,MADS,SACCjB,QADD,GAEdA,QAFC;AAAA,QAGJkB,SAHI,GAGQR,OAAO,CAACI,IAAI,CAACK,EAAN,CAHf;AAAA,QAIFC,SAJE,GAIWF,SAJX,CAIFE,SAJE;;AAMNC,IAAAA,MAAM,CAACC,MAAP,CAAcJ,SAAd,EAAyBN,UAAzB;;AACA,QAAMW,QAAQ,GAAGtB,KAAK,CAACU,WAAD,CAAL,GACZA,WAAW,CAACa,IAAZ,CAAiB,IAAjB,EAAuBN,SAAvB,CADY,GAEZ,KAAK,CAFV;;AAGA,WACG;AACE,MAAA,GAAG,EAAEH,KADP;AAEE,MAAA,IAAI,EAAC,UAFP;AAGE,MAAA,QAAQ,EAAC,GAHX;AAIE,MAAA,SAAS,EAAEC,UAJb;AAKE,MAAA,OAAO,EAAEO,QALX;AAME,MAAA,SAAS,EAAEpB,SAAS,CAACqB,IAAV,CAAe,IAAf,EAAqBD,QAArB;AANb,OAQIH,SARJ,CADH;AAYD,GAvBM,CAAP;AAwBD,CA/BD;;AAiCA,IAAMK,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACHlB,EADG,QACfmB,WADe;AAAA,MAEfC,OAFe,QAEfA,OAFe;AAAA,MAENC,WAFM,QAENA,WAFM;AAAA,MAEUC,SAFV;AAAA,SAIf,gCAAC,qBAAD;AACG,IAAA,KAAK,EAAEtB,EAAE,CAACuB,UADb;AAEG,IAAA,OAAO,EAAEH,OAFZ;AAGG,IAAA,OAAO,EAAEC,WAHZ;AAIG,IAAA,SAAS,EAAErB,EAAE,CAACwB;AAJjB,KAMIzB,gBAAgB,CAACC,EAAD,EAAKsB,SAAL,CANpB,CAJe;AAAA,CAAjB;AAaA;;;;;;;;;eAQeJ,Q"
+}

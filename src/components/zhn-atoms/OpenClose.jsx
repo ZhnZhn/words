@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 const CL_CAPTION = 'open-close not-selected';
 
 const STYLE = {
-  ROOT: {    
+  ROOT: {
     backgroundColor: 'inherit',
     lineHeight: 2.5
   },
@@ -17,13 +17,9 @@ const STYLE = {
     paddingLeft: 12
   },
   CAPTION: {
-    paddingLeft: 4,
-    verticalAlign: 'top',
     color: '#9e9e9e',
-    fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    cursor: 'pointer'
+    paddingLeft: 4,
+    verticalAlign: 'top'    
   },
   INLINE : {
     display: 'inline-block'

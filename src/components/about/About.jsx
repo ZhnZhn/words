@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { useState, useCallback } from 'react'
 
-import withTheme from '../hoc/withTheme'
+import useListen from '../hoc/useListen'
+import useTheme from '../hoc/useTheme'
 import styleConfig from './About.Style'
 
 import A from '../zhn-atoms/Atoms'
@@ -11,95 +12,68 @@ import STYLE from '../styles/ContainerStyle'
 
 const CL_SHOW = "show-popup";
 
-class About extends Component {
+const About = ({ store, showAction, closeAction }) => {
+  const [isShow, setIsShow] = useState(true)
+  , _hClose = useCallback(() => {
+    setIsShow(false)
+  }, [])
 
-  state = {
-    isShow: true
-  }
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  }
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
-  _onStore = (actionType, data) => {
-    const { showAction, closeAction } = this.props;
+  useListen(store, (actionType, data) => {
     switch(actionType){
       case showAction:
-         this.setState(prevState => {
-           return prevState.isShow
-              ? null
-              : { isShow: true };
-         })
+         setIsShow(true)
          break;
       case closeAction:
-        this.setState(prevState => {
-          return prevState.isShow
-            ? { isShow: false }
-            : null;
-        })
-        break;
-      default: return void 0;
+         setIsShow(false)
+         break;
+      default: return;
     }
-  }
+  })
 
-  _handleClose = () => {
-    this.setState({ isShow : false })
-  }
+  const TS = useTheme(styleConfig)
+  , _cn = isShow ? CL_SHOW : null
+  , _style = isShow ? TS.BLOCK : TS.NONE;
 
-  render(){
-    const  { theme } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , { isShow } = this.state
-         , _rootClass = isShow
-              ? CL_SHOW
-              : null
-         , _rootStyle = isShow
-              ? TS.BLOCK
-              : TS.NONE;
-    return (
-      <div
-        className={_rootClass}
-        style={{...STYLE.ABOUT_ROOT, ..._rootStyle, ...TS.ROOT}}
+  return (
+    <div
+      className={_cn}
+      style={{...STYLE.ABOUT_ROOT, ..._style, ...TS.ROOT}}
+     >
+       <A.BrowserCaption
+          rootStyle={TS.BROWSER_CAPTION}
+          caption="About"
+          onClose={_hClose}
+       />
+       <A.ScrollPane
+          className={TS.CL_SCROLL_PANE}
+          style={TS.SCROLL_DIV}
        >
-         <A.BrowserCaption
-            rootStyle={TS.BROWSER_CAPTION}
-            caption="About"
-            onClose={this._handleClose}
-         />
-
-         <A.ScrollPane
-            className={TS.CL_SCROLL_PANE}
-            style={TS.SCROLL_DIV}
-         >
-           <div style={TS.DIV_WRAPPER}>
-              <div style={TS.DIV_TEXT}>
-                 <p>
-                   <span style={TS.APP_TITLE}>Words</span> is web app, RESTful client.
-                 </p>
-                 <p>
-                   Words data provider <Link.WordsApi/> via <Link.RapidApi/>
-                 </p>
-                 <p style={TS.MARGIN_TOP}>
-                   Provider's API Key is required for using app.
-                 </p>
-                 <p>
-                   API Key can be set in Settings Dialog [s].
-                 </p>
-             </div>
-             <IconLogoBar
-                iconStyle={TS.ICON}
-                iconGitHubStyle={TS.ICON_GITHUB}
-             />
-             <p style={TS.BLACK}>
-               *Logos Fair Use.
-              </p>
+         <div style={TS.DIV_WRAPPER}>
+            <div style={TS.DIV_TEXT}>
+               <p>
+                 <span style={TS.APP_TITLE}>Words</span> is web app, RESTful client.
+               </p>
+               <p>
+                 Words data provider <Link.WordsApi/> via <Link.RapidApi/>
+               </p>
+               <p style={TS.PADDING_TOP}>
+                 Provider's API Key is required for using app.
+               </p>
+               <p>
+                 API Key can be set in Settings Dialog [s].
+               </p>
            </div>
-        </A.ScrollPane>
-      </div>
-    );
-  }
+           <IconLogoBar
+              iconStyle={TS.ICON}
+              iconGitHubStyle={TS.ICON_GITHUB}
+           />
+           <p style={TS.BLACK}>
+             *Logos Fair Use.
+            </p>
+         </div>
+      </A.ScrollPane>
+    </div>
+  );
 }
 
-export default withTheme(About)
+export default About

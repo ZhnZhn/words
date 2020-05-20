@@ -13,7 +13,7 @@ var styleConfig = {
   createStyle: function createStyle(R) {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
-      CL_ROW: R.CL_ROW_NEWS,
+      CL_ROW: R.CL_ROW_ITEM,
       BROWSER: (0, _extends2["default"])({}, R.BG),
       OPEN_CLOSE: (0, _extends2["default"])({}, R.BG),
       BROWSER_CAPTION: (0, _extends2["default"])({}, R.BG_HEADER),

@@ -1,1 +1,38 @@
-{"version":3,"sources":["../../../src/components/panes/Pane.Style.js"],"names":["S","INPUT_ROOT","width","marginLeft","BT_RAISED_ROOT","position","top","_crBgColorStyle","color","backgroundColor","styleConfig","themeName","style","createStyle","R","_paneRoot","CL_SCROLL_PANE","PANE_CAPTION","BG_HEADER","SVG_RESIZE","BG_COLOR","BT","CL_RAISED_DIV","CL_BT_RAISED_DIV","RAISED_ROOT"],"mappings":";;;;;;;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,UAAU,EAAE;AACVC,IAAAA,KAAK,EAAE,GADG;AAEVC,IAAAA,UAAU,EAAE;AAFF,GADJ;AAKRC,EAAAA,cAAc,EAAE;AACdC,IAAAA,QAAQ,EAAE,UADI;AAEdC,IAAAA,GAAG,EAAE,EAFS;AAGdH,IAAAA,UAAU,EAAE;AAHE;AALR,CAAV;;AAYA,IAAMI,eAAe,GAAG,SAAlBA,eAAkB,CAAAC,KAAK;AAAA,SAAK;AAAEC,IAAAA,eAAe,EAAED;AAAnB,GAAL;AAAA,CAA7B;;AAEA,IAAME,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAE,KAAK,CADE;AAElBC,EAAAA,KAAK,EAAE,KAAK,CAFM;AAGlBC,EAAAA,WAAW,EAAG,qBAACC,CAAD,EAAIH,SAAJ,EAAkB;AAC9B,QAAII,SAAJ;;AACA,YAAOJ,SAAP;AACE,WAAK,OAAL;AACEI,QAAAA,SAAS,GAAGR,eAAe,CAAC,oBAAD,CAA3B;AACA;;AACF,WAAK,MAAL;AACEQ,QAAAA,SAAS,GAAGR,eAAe,CAAC,SAAD,CAA3B;AACA;;AACF;AAPF;;AASA,WAAO;AACLS,MAAAA,cAAc,EAAEF,CAAC,CAACE,cADb;AAELC,MAAAA,YAAY,gCACPH,CAAC,CAACI,SADK,CAFP;AAKLC,MAAAA,UAAU,gCACLL,CAAC,CAACK,UADG,CALL;AAQLC,MAAAA,QAAQ,gCACHL,SADG,CARH;AAWLd,MAAAA,UAAU,gCACLD,CAAC,CAACC,UADG,CAXL;AAcLoB,MAAAA,EAAE,EAAE;AACFC,QAAAA,aAAa,EAAER,CAAC,CAACS,gBADf;AAEFC,QAAAA,WAAW,gCACNxB,CAAC,CAACI,cADI,MAENU,CAAC,CAACI,SAFI;AAFT;AAdC,KAAP;AAsBD;AApCiB,CAApB;eAuCeR,W","sourcesContent":["const S = {\r\n  INPUT_ROOT: {\r\n    width: 250,\r\n    marginLeft: 8\r\n  },\r\n  BT_RAISED_ROOT: {\r\n    position: 'relative',\r\n    top: 12,\r\n    marginLeft: 16\r\n  },\r\n};\r\n\r\nconst _crBgColorStyle = color => ({ backgroundColor: color });\r\n\r\nconst styleConfig = {\r\n  themeName: void 0,\r\n  style: void 0,\r\n  createStyle : (R, themeName) => {\r\n    let _paneRoot;\r\n    switch(themeName){\r\n      case 'WHITE':\r\n        _paneRoot = _crBgColorStyle('rgb(235, 241, 245)')\r\n        break;\r\n      case 'SAND':\r\n        _paneRoot = _crBgColorStyle('#e8e0cb')\r\n        break;\r\n      default:\r\n    }\r\n    return {\r\n      CL_SCROLL_PANE: R.CL_SCROLL_PANE,\r\n      PANE_CAPTION: {\r\n        ...R.BG_HEADER\r\n      },\r\n      SVG_RESIZE: {\r\n        ...R.SVG_RESIZE\r\n      },\r\n      BG_COLOR: {\r\n        ..._paneRoot\r\n      },      \r\n      INPUT_ROOT: {\r\n        ...S.INPUT_ROOT\r\n      },\r\n      BT: {\r\n        CL_RAISED_DIV: R.CL_BT_RAISED_DIV,\r\n        RAISED_ROOT: {\r\n          ...S.BT_RAISED_ROOT,\r\n          ...R.BG_HEADER\r\n        }\r\n      },\r\n    };\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"],"file":"Pane.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/Pane.Style.js"
+ ],
+ "file": "../../../src/components/panes/Pane.Style.js",
+ "names": [
+  "S",
+  "INPUT_ROOT",
+  "width",
+  "marginLeft",
+  "BT_RAISED_ROOT",
+  "position",
+  "top",
+  "_crBgColorStyle",
+  "color",
+  "backgroundColor",
+  "styleConfig",
+  "themeName",
+  "style",
+  "createStyle",
+  "R",
+  "_paneRoot",
+  "CL_SCROLL_PANE",
+  "PANE_CAPTION",
+  "BG_HEADER",
+  "SVG_RESIZE",
+  "BG_COLOR",
+  "BT",
+  "CL_RAISED_DIV",
+  "CL_BT_RAISED_DIV",
+  "RAISED_ROOT",
+  "CL_FLAT_DIV",
+  "CL_BT_FLAT_DIV",
+  "FLAT"
+ ],
+ "mappings": ";;;;;;;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,UAAU,EAAE;AACVC,IAAAA,KAAK,EAAE,GADG;AAEVC,IAAAA,UAAU,EAAE;AAFF,GADJ;AAKRC,EAAAA,cAAc,EAAE;AACdC,IAAAA,QAAQ,EAAE,UADI;AAEdC,IAAAA,GAAG,EAAE,EAFS;AAGdH,IAAAA,UAAU,EAAE;AAHE;AALR,CAAV;;AAYA,IAAMI,eAAe,GAAG,SAAlBA,eAAkB,CAAAC,KAAK;AAAA,SAAK;AAAEC,IAAAA,eAAe,EAAED;AAAnB,GAAL;AAAA,CAA7B;;AAEA,IAAME,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAE,KAAK,CADE;AAElBC,EAAAA,KAAK,EAAE,KAAK,CAFM;AAGlBC,EAAAA,WAAW,EAAG,qBAACC,CAAD,EAAIH,SAAJ,EAAkB;AAC9B,QAAII,SAAJ;;AACA,YAAOJ,SAAP;AACE,WAAK,OAAL;AACEI,QAAAA,SAAS,GAAGR,eAAe,CAAC,oBAAD,CAA3B;AACA;;AACF,WAAK,MAAL;AACEQ,QAAAA,SAAS,GAAGR,eAAe,CAAC,SAAD,CAA3B;AACA;;AACF;AAPF;;AASA,WAAO;AACLS,MAAAA,cAAc,EAAEF,CAAC,CAACE,cADb;AAELC,MAAAA,YAAY,gCACPH,CAAC,CAACI,SADK,CAFP;AAKLC,MAAAA,UAAU,gCACLL,CAAC,CAACK,UADG,CALL;AAQLC,MAAAA,QAAQ,gCACHL,SADG,CARH;AAWLd,MAAAA,UAAU,gCACLD,CAAC,CAACC,UADG,CAXL;AAcLoB,MAAAA,EAAE,EAAE;AACFC,QAAAA,aAAa,EAAER,CAAC,CAACS,gBADf;AAEFC,QAAAA,WAAW,gCACNxB,CAAC,CAACI,cADI,MAENU,CAAC,CAACI,SAFI,CAFT;AAMFO,QAAAA,WAAW,EAAEX,CAAC,CAACY,cANb;AAOFC,QAAAA,IAAI,EAAE;AACJnB,UAAAA,KAAK,EAAEM,CAAC,CAACI,SAAF,CAAYT;AADf;AAPJ;AAdC,KAAP;AA0BD;AAxCiB,CAApB;eA2CeC,W"
+}

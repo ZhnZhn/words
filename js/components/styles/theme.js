@@ -36,7 +36,7 @@ var TH_SAND = {
 };
 var CSS_RULE = {
   CL_QUERY_ITEM: 'row__topic',
-  CL_ROW_NEWS: "row__news-source",
+  CL_ROW_ITEM: "row__item",
   CL_SELECT_ITEM: 'm-select__item',
   CL_BT_FLAT_DIV: 'bt-flat__div',
   ICON: {},

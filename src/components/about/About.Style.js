@@ -23,15 +23,12 @@ const S = {
   },
   APP_TITLE: {
     color: '#80c040'
-  },
-  STEP: {
-    marginTop: 3
-  },
+  },  
   BLACK: {
     color: 'black'
   },
-  MARGIN_TOP: {
-    marginTop: 8
+  PADDING_TOP: {
+    paddingTop: 8
   },
   PROVIDER: {
     color: '#009ae5'

@@ -27,8 +27,8 @@ var IconLogoBar = function IconLogoBar(_ref) {
     style: S.ROOT
   }, _react["default"].createElement(_IconGitHub["default"], {
     style: iconGitHubStyle,
-    title: "GitHub ZhnZhn",
-    href: "https://github.com/zhnzhn"
+    title: "GitHub Repository",
+    href: "https://github.com/zhnzhn/words/"
   }), _react["default"].createElement(_IconWordsApi["default"], {
     style: iconStyle
   }), _react["default"].createElement(_IconReact["default"], {

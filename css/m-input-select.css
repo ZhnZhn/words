@@ -67,6 +67,7 @@
   font-weight: normal;
   white-space: nowrap;
   text-overflow: ellipsis;
+  user-select: none;
 }
 
 .m-select__div__bt {

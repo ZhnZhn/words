@@ -62,25 +62,22 @@ function (_Component) {
   (0, _inheritsLoose2["default"])(AlertDialog, _Component);
 
   function AlertDialog() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
-    _this._handleKeyDown = function (event) {
-      if (event.keyCode === 27 || event.keyCode === 13) {
-        _this.props.onClose();
-      }
-    };
-
-    return _this;
+    return _Component.apply(this, arguments) || this;
   }
 
   var _proto = AlertDialog.prototype;
 
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      status: PropTypes.string,
+      url: PropTypes.string,
+      msg: PropTypes.string
+    }),
+    onClose: PropTypes.func
+  }
+  */
   _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
       return false;
@@ -106,7 +103,6 @@ function (_Component) {
       caption: "Exception Message",
       isShow: isShow,
       isClosePrimary: true,
-      onKeyDown: this._handleKeyDown,
       onClose: onClose
     }, _react["default"].createElement("div", null, _react["default"].createElement("p", {
       style: S.MSG

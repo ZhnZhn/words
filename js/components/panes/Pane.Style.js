@@ -51,7 +51,11 @@ var styleConfig = {
       INPUT_ROOT: (0, _extends2["default"])({}, S.INPUT_ROOT),
       BT: {
         CL_RAISED_DIV: R.CL_BT_RAISED_DIV,
-        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, {}, R.BG_HEADER)
+        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, {}, R.BG_HEADER),
+        CL_FLAT_DIV: R.CL_BT_FLAT_DIV,
+        FLAT: {
+          color: R.BG_HEADER.backgroundColor
+        }
       }
     };
   }

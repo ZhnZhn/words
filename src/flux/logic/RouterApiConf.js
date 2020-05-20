@@ -3,7 +3,7 @@ import Settings from '../stores/Settings'
 
 import Adapter from '../../adapters/Adapter'
 
-const MSG_ERR_TAIL = 'API key is not set. \nPlease, set in Settings Dialog [s]\nand try again.';
+const MSG_ERR_TAIL = 'API key is not set \nin User Settings Dialog [s].';
 const MSG_ERR_DF = 'Unknow data API provider';
 
 const RouterApiConf = {

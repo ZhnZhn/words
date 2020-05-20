@@ -9,7 +9,7 @@ var _Settings = _interopRequireDefault(require("../stores/Settings"));
 
 var _Adapter = _interopRequireDefault(require("../../adapters/Adapter"));
 
-var MSG_ERR_TAIL = 'API key is not set. \nPlease, set in Settings Dialog [s]\nand try again.';
+var MSG_ERR_TAIL = 'API key is not set \nin User Settings Dialog [s].';
 var MSG_ERR_DF = 'Unknow data API provider';
 var RouterApiConf = {
   getApiConf: function getApiConf(id) {

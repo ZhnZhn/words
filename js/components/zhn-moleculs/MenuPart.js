@@ -9,18 +9,22 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _react = _interopRequireDefault(require("react"));
 
+var _isKeyEnter = _interopRequireDefault(require("../zhn-atoms/isKeyEnter"));
+
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 
 //import PropTypes from 'prop-types'
-//import MenuItemBadge from './MenuItemBadge'
 var CL_NOT_S = 'not-selected';
-/*
-const _createOnKeyDown = (onClick) => (event) => {
-  if (event.keyCode === 13){
-    onClick()
+
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+
+var _hKeyDown = function _hKeyDown(onClick, evt) {
+  if (_isFn(onClick) && (0, _isKeyEnter["default"])(evt)) {
+    onClick();
   }
-}
-*/
+};
 
 var _renderMenuItems = function _renderMenuItems(TS, option) {
   var _option$items = option.items,
@@ -28,22 +32,23 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
       _option$hmItems = option.hmItems,
       hmItems = _option$hmItems === void 0 ? {} : _option$hmItems,
       onClickItem = option.onClickItem,
-      rest = (0, _objectWithoutPropertiesLoose2["default"])(option, ["items", "hmItems", "onClickItem"]);
+      restOption = (0, _objectWithoutPropertiesLoose2["default"])(option, ["items", "hmItems", "onClickItem"]);
   return items.map(function (item, index) {
     var _className = TS.CL_ROW ? TS.CL_ROW + " " + CL_NOT_S : CL_NOT_S,
         _itemConf = hmItems[item.id],
         menuTitle = _itemConf.menuTitle;
 
-    Object.assign(_itemConf, rest);
+    Object.assign(_itemConf, restOption);
 
-    var _onClick = typeof onClickItem === 'function' ? onClickItem.bind(null, _itemConf) : undefined;
+    var _onClick = _isFn(onClickItem) ? onClickItem.bind(null, _itemConf) : void 0;
 
-    return _react["default"].createElement("button", {
-      tabIndex: "0",
+    return _react["default"].createElement("div", {
       key: index,
+      role: "menuitem",
+      tabIndex: "0",
       className: _className,
-      onClick: _onClick //onKeyDown={_createOnKeyDown(_onClick)}
-
+      onClick: _onClick,
+      onKeyDown: _hKeyDown.bind(null, _onClick)
     }, menuTitle);
   });
 };

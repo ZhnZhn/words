@@ -94,7 +94,7 @@ const ModalDialog = ({
   })
   return (
     <div
-       ref={_refRootDiv}
+       ref={_refRootDiv}       
        tabIndex="0"
        className={_className2}
        style={{...style, ..._style}}

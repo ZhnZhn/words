@@ -1,32 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import withTheme from '../hoc/withTheme'
+import useTheme from '../hoc/useTheme'
 import styleConfig from '../styles/MenuBrowserStyle'
 
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
 
-class MenuBrowser extends Component {
-  render(){
-    const {
-            theme,
-            store,
-            showAction, browserId,
-            onClickItem
-          } = this.props
-        , TS = theme.createStyle(styleConfig);
-
-    return (
-      <DynamicMenuBrowser
-         styleConfig={TS}
-         store={store}
-         showAction={showAction}
-         browserId={browserId}
-         caption="Words Sources"
-         url="data/words-source-menu.json"
-         onClickItem={onClickItem}
-      />
-    );
-  }
+const MenuBrowser = (props) => {
+  const TS = useTheme(styleConfig);
+  return (
+    <DynamicMenuBrowser
+       {...props}
+       styleConfig={TS}
+       caption="Words Sources"
+       url="data/words-source-menu.json"
+    />
+  );
 }
 
-export default withTheme(MenuBrowser)
+/*
+MenuBrowser.propTypes = {
+  store: PropTypes.object,
+  showAction: PropTypes.string,
+  browserId: PropTypes.string,
+  onClickItem: PropTypes.func
+}
+*/
+
+export default MenuBrowser

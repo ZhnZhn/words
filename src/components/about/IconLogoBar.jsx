@@ -15,8 +15,8 @@ const IconLogoBar = ({ iconStyle, iconGitHubStyle }) => (
   <div style={S.ROOT}>
      <IconGitHub
         style={iconGitHubStyle}
-        title="GitHub ZhnZhn"
-        href="https://github.com/zhnzhn"
+        title="GitHub Repository"
+        href="https://github.com/zhnzhn/words/"
      />
      <IconWordsApi
        style={iconStyle}

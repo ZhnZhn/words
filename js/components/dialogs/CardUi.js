@@ -21,7 +21,7 @@ var S = {
     }
   },
   CHB_ROW: {
-    paddingTop: 20,
+    paddingTop: 28,
     paddingLeft: 22
   },
   TEXT: {

@@ -5,6 +5,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
@@ -12,13 +14,14 @@ var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 var S = {
   ROOT: {
     height: 60,
-    marginTop: -10
+    paddingTop: 8
   },
   SPAN: {
-    position: 'relative',
-    top: 16,
     paddingLeft: 16,
     fontWeight: 'bold'
+  },
+  BT: {
+    marginLeft: 8
   }
 };
 
@@ -29,11 +32,10 @@ var InputRandom = function InputRandom(_ref) {
     style: S.ROOT
   }, _react["default"].createElement("span", {
     style: S.SPAN
-  }, "Random Word"), _react["default"].createElement(_Atoms["default"].RaisedButton, {
-    rootStyle: TS.BT.RAISED_ROOT,
-    clDiv: TS.BT.CL_RAISED_DIV,
+  }, "Random Word"), _react["default"].createElement(_Atoms["default"].FlatButton, {
+    rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, {}, S.BT),
+    clDiv: TS.BT.CL_FLAT_DIV,
     caption: "Load",
-    isPrimary: true,
     onClick: onEnter
   }));
 };

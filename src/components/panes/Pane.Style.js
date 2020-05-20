@@ -7,7 +7,7 @@ const S = {
     position: 'relative',
     top: 12,
     marginLeft: 16
-  },
+  }
 };
 
 const _crBgColorStyle = color => ({ backgroundColor: color });
@@ -36,7 +36,7 @@ const styleConfig = {
       },
       BG_COLOR: {
         ..._paneRoot
-      },      
+      },
       INPUT_ROOT: {
         ...S.INPUT_ROOT
       },
@@ -45,6 +45,10 @@ const styleConfig = {
         RAISED_ROOT: {
           ...S.BT_RAISED_ROOT,
           ...R.BG_HEADER
+        },
+        CL_FLAT_DIV: R.CL_BT_FLAT_DIV,
+        FLAT: {
+          color: R.BG_HEADER.backgroundColor
         }
       },
     };

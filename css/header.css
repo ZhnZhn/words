@@ -45,7 +45,7 @@
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .header__bts {
@@ -77,30 +77,21 @@
  }
 }
 
-
 .row__topic {
-  line-height: 2;
   color: black;
-  font-size: 16px;
-  font-weight: bold;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  line-height: 2;  
   padding-left: 16px;
   padding-right: 16px;
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  font-weight: bold;
+  user-select: none;
   cursor: pointer;
 }
-/*
-.row__topic:nth-child(odd){
+.row__topic:focus {
+  border-bottom: 2px solid #1b75bb;
+}
+.row__topic:hover {
   background-color: rgba(0, 0, 0, 0.15);
+  outline: none;
 }
-*/
-.row__topic:hover,
-.row__topic:focus {
-  border-bottom: 1px solid #1b75bb;
-}
-/*
-.row__topic:focus {
-  border-bottom: 1px solid #80c040;
-}
-*/

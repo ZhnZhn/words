@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 
 import has from '../has'
 
-import A from '../Comp'
+import Comp from '../Comp'
+
+const {
+  ButtonClear,
+  FlatButton,
+  TextField
+} = Comp;
 
 const S = {
   TF_LABEL: {
@@ -15,6 +21,11 @@ const S = {
     position: 'relative',
     top: 18,
     left: 6
+  },
+  BT_LOAD: {
+    position: 'relative',
+    top: 22,
+    marginLeft: 8
   }
 };
 
@@ -36,7 +47,6 @@ class InputWord extends Component {
     }
   }
 
-
   _ref = n => this.iWord = n
 
   render(){
@@ -46,22 +56,22 @@ class InputWord extends Component {
         onEnter
       } = this.props
     , _elBt = has.HAS_TOUCH
-       ? (<A.ButtonClear
+       ? (<ButtonClear
            style={S.BT_CLEAR}
            onClick={this._hClear}
          />)
-      :  (<A.RaisedButton
-            rootStyle={TS.BT.RAISED_ROOT}
-            clDiv={TS.BT.CL_RAISED_DIV}
+       : (<FlatButton
             caption="Load"
             tabIndex={-1}
-            //timeout={3000}
+            rootStyle={{ ...TS.BT.FLAT, ...S.BT_LOAD}}
+            clDiv={TS.BT.CL_FLAT_DIV}
             isPrimary={true}
             onClick={onEnter}
-        />);
+          />);
+
     return (
       <>
-        <A.TextField
+        <TextField
           ref={this._ref}
           rootStyle={TS.INPUT_ROOT}
           labelStyle={S.TF_LABEL}
@@ -80,7 +90,7 @@ class InputWord extends Component {
   getValue(){
     return this.iWord
       ? this.iWord.getValue()
-      : undefined;
+      : void 0;
   }
 }
 
