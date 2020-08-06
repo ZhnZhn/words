@@ -17,7 +17,7 @@ var _DynamicMenuBrowser = _interopRequireDefault(require("../zhn-moleculs/Dynami
 
 var MenuBrowser = function MenuBrowser(props) {
   var TS = (0, _useTheme["default"])(_MenuBrowserStyle["default"]);
-  return _react["default"].createElement(_DynamicMenuBrowser["default"], (0, _extends2["default"])({}, props, {
+  return /*#__PURE__*/_react["default"].createElement(_DynamicMenuBrowser["default"], (0, _extends2["default"])({}, props, {
     styleConfig: TS,
     caption: "Words Sources",
     url: "data/words-source-menu.json"

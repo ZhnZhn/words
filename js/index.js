@@ -22,5 +22,5 @@ var appProps = {
   CAT: _ComponentActions.T,
   LPT: _LoadingActions.T
 };
-(0, _reactDom.render)(_react["default"].createElement(_AppWords["default"], appProps), document.getElementById('app'));
+(0, _reactDom.render)( /*#__PURE__*/_react["default"].createElement(_AppWords["default"], appProps), document.getElementById('app'));
 //# sourceMappingURL=index.js.map

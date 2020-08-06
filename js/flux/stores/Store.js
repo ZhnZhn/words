@@ -32,7 +32,7 @@ var Store = _refluxCore["default"].createStore((0, _extends2["default"])({
   init: function init() {
     this.initWatchList();
   }
-}, _ComponentSlice["default"], {}, _ItemSlice["default"], {}, _SettingSlice["default"], {}, _WatchListSlice["default"], {}, _WithLoading["default"]));
+}, _ComponentSlice["default"], _ItemSlice["default"], _SettingSlice["default"], _WatchListSlice["default"], _WithLoading["default"]));
 
 var _default = Store;
 exports["default"] = _default;

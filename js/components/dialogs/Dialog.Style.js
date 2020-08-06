@@ -33,11 +33,11 @@ var styleConfig = {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
       R_DIALOG: (0, _extends2["default"])({}, R.R_DIALOG),
       CHB_STROKE: R.R_DIALOG.backgroundColor,
-      BROWSER_CAPTION: (0, _extends2["default"])({}, S.BROWSER_CAPTION, {}, R.BG_HEADER),
+      BROWSER_CAPTION: (0, _extends2["default"])({}, S.BROWSER_CAPTION, R.BG_HEADER),
       INPUT_ROOT: (0, _extends2["default"])({}, S.INPUT_ROOT),
       BT: {
         CL_RAISED_DIV: R.CL_BT_RAISED_DIV,
-        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, {}, R.BG_HEADER),
+        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, R.BG_HEADER),
         FLAT_ROOT: (0, _extends2["default"])({}, R.BT_FLAT)
       },
       SELECT: {

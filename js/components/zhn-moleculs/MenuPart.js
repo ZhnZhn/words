@@ -42,7 +42,7 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
 
     var _onClick = _isFn(onClickItem) ? onClickItem.bind(null, _itemConf) : void 0;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       key: index,
       role: "menuitem",
       tabIndex: "0",
@@ -58,7 +58,7 @@ var MenuPart = function MenuPart(_ref) {
       caption = _ref.caption,
       isInitClose = _ref.isInitClose,
       restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["styleConfig", "caption", "isInitClose"]);
-  return _react["default"].createElement(_OpenClose["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_OpenClose["default"], {
     style: TS.OPEN_CLOSE,
     caption: caption,
     isClose: isInitClose,

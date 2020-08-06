@@ -34,7 +34,7 @@ var ModalContainer = function ModalContainer(_ref) {
       timeout = _ref.timeout,
       children = _ref.children,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", (0, _extends2["default"])({}, (0, _useClassAnimation["default"])({
+  return /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({}, (0, _useClassAnimation["default"])({
     isShow: isShow,
     CL: CL,
     S: S,

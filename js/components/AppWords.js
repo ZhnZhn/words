@@ -25,9 +25,7 @@ var CL_COMP = "component-container";
 var CL_ITEMS = "items-container";
 var WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 
-var AppWords =
-/*#__PURE__*/
-function (_Component) {
+var AppWords = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(AppWords, _Component);
 
   function AppWords() {
@@ -86,24 +84,24 @@ function (_Component) {
         headerActions = action.headerActions,
         browserActions = action.browserActions,
         theme = this.state.theme;
-    return _react["default"].createElement(_react["default"].StrictMode, null, _react["default"].createElement(_ThemeContext["default"].Provider, {
+    return /*#__PURE__*/_react["default"].createElement(_react["default"].StrictMode, null, /*#__PURE__*/_react["default"].createElement(_ThemeContext["default"].Provider, {
       value: theme
-    }, _react["default"].createElement("div", null, _react["default"].createElement(_HeaderBar["default"], (0, _extends2["default"])({
+    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_HeaderBar["default"], (0, _extends2["default"])({
       store: store,
       LPT: LPT
-    }, headerActions)), _react["default"].createElement("div", {
+    }, headerActions)), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL_COMP
-    }, _react["default"].createElement(_Container["default"].Browser, (0, _extends2["default"])({
+    }, /*#__PURE__*/_react["default"].createElement(_Container["default"].Browser, (0, _extends2["default"])({
       store: store,
       showBrowserAction: CAT.SHOW_BROWSER,
       showDialogAction: CAT.SHOW_DIALOG,
       browserId: WORDS_BROWSER_ID,
       updateWatchAction: CAT.UPDATE_WATCH_BROWSER
-    }, browserActions)), _react["default"].createElement(_Container["default"].Hrz, {
+    }, browserActions)), /*#__PURE__*/_react["default"].createElement(_Container["default"].Hrz, {
       className: CL_ITEMS,
       store: store,
       addAction: CAT.SHOW_PANE
-    })), _react["default"].createElement(_Container["default"].Wrapper, {
+    })), /*#__PURE__*/_react["default"].createElement(_Container["default"].Wrapper, {
       store: store,
       SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
     }))));

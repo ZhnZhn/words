@@ -28,12 +28,12 @@ var S = {
 var InputRandom = function InputRandom(_ref) {
   var TS = _ref.TS,
       onEnter = _ref.onEnter;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT
-  }, _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     style: S.SPAN
-  }, "Random Word"), _react["default"].createElement(_Atoms["default"].FlatButton, {
-    rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, {}, S.BT),
+  }, "Random Word"), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].FlatButton, {
+    rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, S.BT),
     clDiv: TS.BT.CL_FLAT_DIV,
     caption: "Load",
     onClick: onEnter

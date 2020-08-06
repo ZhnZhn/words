@@ -12,7 +12,7 @@ var _react = _interopRequireDefault(require("react"));
 var withProps = function withProps(overrideProps) {
   return function (BaseComponent) {
     return function (props) {
-      return _react["default"].createElement(BaseComponent, (0, _extends2["default"])({}, props, overrideProps));
+      return /*#__PURE__*/_react["default"].createElement(BaseComponent, (0, _extends2["default"])({}, props, overrideProps));
     };
   };
 };

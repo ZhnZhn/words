@@ -23,8 +23,8 @@ var S = {
 var Clear = function Clear(_ref) {
   var style = _ref.style,
       onClick = _ref.onClick;
-  return _react["default"].createElement(_FlatButton["default"], {
-    rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, style),
+  return /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
+    rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, style),
     clDiv: CL_DIV,
     caption: "Clear",
     title: "Clear Input",
@@ -35,8 +35,8 @@ var Clear = function Clear(_ref) {
 var Close = function Close(_ref2) {
   var style = _ref2.style,
       onClick = _ref2.onClick;
-  return _react["default"].createElement(_FlatButton["default"], {
-    rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, style),
+  return /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
+    rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, style),
     clDiv: CL_DIV,
     caption: "Close",
     title: "Close Dialog",
@@ -49,8 +49,8 @@ var Primary = function Primary(_ref3) {
       caption = _ref3.caption,
       title = _ref3.title,
       onClick = _ref3.onClick;
-  return _react["default"].createElement(_FlatButton["default"], {
-    rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, style),
+  return /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
+    rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, style),
     clDiv: CL_DIV,
     caption: caption,
     title: title //isPrimary={true}

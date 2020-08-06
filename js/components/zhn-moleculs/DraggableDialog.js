@@ -17,6 +17,7 @@ var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"))
 
 var _Interact = _interopRequireDefault(require("../../utils/Interact"));
 
+//import PropTypes from 'prop-types'
 var CL_DIALOG = 'dialog';
 var CL_DIALOG_OPEN = 'dialog show-popup';
 var STYLE = {
@@ -48,9 +49,7 @@ var STYLE = {
   }
 };
 
-var DraggableDialog =
-/*#__PURE__*/
-function (_Component) {
+var DraggableDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DraggableDialog, _Component);
 
   function DraggableDialog() {
@@ -84,14 +83,14 @@ function (_Component) {
           S = _ref$styleButton === void 0 ? {} : _ref$styleButton,
           onShowChart = _ref.onShowChart,
           onClose = _ref.onClose;
-      return _react["default"].createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         style: STYLE.COMMAND
-      }, commandButtons, typeof onShowChart === 'function' && _react["default"].createElement(_RaisedButton["default"], {
+      }, commandButtons, typeof onShowChart === 'function' && /*#__PURE__*/_react["default"].createElement(_RaisedButton["default"], {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: "Show",
         onClick: onShowChart
-      }), _react["default"].createElement(_RaisedButton["default"], {
+      }), /*#__PURE__*/_react["default"].createElement(_RaisedButton["default"], {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: "Close",
@@ -146,7 +145,7 @@ function (_Component) {
         _styleShow = isShow ? STYLE.BLOCK : STYLE.NONE,
         _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       ref: function ref(c) {
         return _this2.rootDiv = c;
       },
@@ -154,11 +153,11 @@ function (_Component) {
       style: Object.assign({}, STYLE.ROOT, rootStyle, _styleShow),
       tabIndex: "0",
       onKeyDown: this._handleKeyDown
-    }, _react["default"].createElement(_BrowserCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_BrowserCaption["default"], {
       rootStyle: browserCaptionStyle,
       caption: caption,
       onClose: onClose
-    }), _react["default"].createElement("div", {
+    }), /*#__PURE__*/_react["default"].createElement("div", {
       style: STYLE.CHILDREN
     }, children), this._renderCommandButton({
       commandButtons: commandButtons,

@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var CL = 'bt-circle';
 
-var CircleButton = _react["default"].forwardRef(function (_ref, ref) {
+var CircleButton = /*#__PURE__*/_react["default"].forwardRef(function (_ref, ref) {
   var style = _ref.style,
       _ref$tabIndex = _ref.tabIndex,
       tabIndex = _ref$tabIndex === void 0 ? '-1' : _ref$tabIndex,
@@ -17,7 +17,7 @@ var CircleButton = _react["default"].forwardRef(function (_ref, ref) {
       caption = _ref$caption === void 0 ? '' : _ref$caption,
       title = _ref.title,
       onClick = _ref.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     ref: ref,
     className: CL,
     style: style,

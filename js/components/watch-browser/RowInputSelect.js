@@ -19,7 +19,7 @@ var STYLE_CONFIG = {
 };
 
 var RowInputSelect = function RowInputSelect(props) {
-  return _react["default"].createElement(_InputSelect["default"], (0, _extends2["default"])({
+  return /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], (0, _extends2["default"])({
     styleConfig: STYLE_CONFIG
   }, props));
 };

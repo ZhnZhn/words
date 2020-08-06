@@ -14,9 +14,7 @@ var _react = _interopRequireWildcard(require("react"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
 //import PropTypes from "prop-types";
-var ListEditPane =
-/*#__PURE__*/
-function (_Component) {
+var ListEditPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ListEditPane, _Component);
 
   /*
@@ -108,7 +106,7 @@ function (_Component) {
     };
 
     _this._crPrimaryBt = function (btStyle) {
-      return _react["default"].createElement(_Atoms["default"].Button.Primary, {
+      return /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Button.Primary, {
         style: btStyle,
         caption: "Edit",
         title: "Edit List Name",
@@ -151,20 +149,20 @@ function (_Component) {
         _this$state = this.state,
         groupOptions = _this$state.groupOptions,
         validationMessages = _this$state.validationMessages;
-    return _react["default"].createElement("div", null, _react["default"].createElement(_Atoms["default"].FragmentSelectGroupList, {
+    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].FragmentSelectGroupList, {
       ref: this._refGroup,
       inputStyle: inputStyle,
       store: store,
       groupCaption: "In Group:",
       groupOptions: groupOptions,
       listCaption: "List From:"
-    }), _react["default"].createElement(_Atoms["default"].RowInputText, {
+    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].RowInputText, {
       ref: this._refText,
       inputStyle: inputStyle,
       caption: "List To:"
-    }), _react["default"].createElement(_Atoms["default"].ValidationMessages, {
+    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ValidationMessages, {
       validationMessages: validationMessages
-    }), _react["default"].createElement(_Atoms["default"].RowButtons, {
+    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].RowButtons, {
       btStyle: btStyle,
       Primary: this._crPrimaryBt(btStyle),
       onClear: this._handleClear,

@@ -14,7 +14,7 @@ var _react = _interopRequireDefault(require("react"));
 var Link = function Link(_ref) {
   var title = _ref.title,
       rest = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["title"]);
-  return _react["default"].createElement("a", (0, _extends2["default"])({
+  return /*#__PURE__*/_react["default"].createElement("a", (0, _extends2["default"])({
     target: "_blank",
     className: "link"
   }, rest), title);

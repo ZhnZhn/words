@@ -17,9 +17,7 @@ var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
-var PaneTopics =
-/*#__PURE__*/
-function (_Component) {
+var PaneTopics = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PaneTopics, _Component);
 
   function PaneTopics() {
@@ -42,7 +40,7 @@ function (_Component) {
       return items.map(function (item, index) {
         var _ref = index === 0 ? _this._ref : undefined;
 
-        return _react["default"].createElement(_Atoms["default"].MenuItem, (0, _extends2["default"])({
+        return /*#__PURE__*/_react["default"].createElement(_Atoms["default"].MenuItem, (0, _extends2["default"])({
           key: item.caption,
           ref: _ref,
           className: clItem
@@ -80,10 +78,10 @@ function (_Component) {
         clItem = _this$props.clItem,
         items = _this$props.items,
         onClose = _this$props.onClose;
-    return _react["default"].createElement(_ModalPane["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
       isShow: isShow,
       onClose: onClose
-    }, _react["default"].createElement(_Atoms["default"].ShowHide, {
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ShowHide, {
       className: className,
       style: paneStyle,
       isShow: isShow

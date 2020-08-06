@@ -15,6 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+//import PropTypes from "prop-types";
 var CL_DIV = 'bt-flat__div';
 var S = {
   ROOT: {
@@ -36,9 +37,7 @@ var S = {
   }
 };
 
-var CardApiKey =
-/*#__PURE__*/
-function (_Component) {
+var CardApiKey = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(CardApiKey, _Component);
 
   function CardApiKey() {
@@ -73,25 +72,25 @@ function (_Component) {
       return null;
     }
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: style
-    }, _react["default"].createElement("form", null, _react["default"].createElement(_Comp["default"].PasswordField, {
+    }, /*#__PURE__*/_react["default"].createElement("form", null, /*#__PURE__*/_react["default"].createElement(_Comp["default"].PasswordField, {
       ref: this._refInput,
       rootStyle: S.SECRET,
       caption: "Words API Key",
       name: "wordsapi",
       maxLength: "50",
       onEnter: onSet
-    })), _react["default"].createElement("div", {
+    })), /*#__PURE__*/_react["default"].createElement("div", {
       style: buttonsStyle
-    }, _react["default"].createElement(_Comp["default"].FlatButton, {
-      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, btStyle),
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
+      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, btStyle),
       clDiv: CL_DIV,
       caption: "Set & Close",
       title: "Set & Close Dialog",
       onClick: onSet
-    }), _react["default"].createElement(_Comp["default"].FlatButton, {
-      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, {}, btStyle),
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
+      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, btStyle),
       clDiv: CL_DIV,
       caption: "Close",
       title: "Close Dialog",

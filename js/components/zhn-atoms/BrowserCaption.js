@@ -71,17 +71,17 @@ var BrowserCaption = function BrowserCaption(_ref2) {
       children = _ref2.children,
       onMore = _ref2.onMore,
       onClose = _ref2.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: CL_GAP,
-    style: (0, _extends2["default"])({}, S.ROOT, {}, rootStyle)
-  }, _isFn(onMore) && _react["default"].createElement(_SvgMore["default"], {
+    style: (0, _extends2["default"])({}, S.ROOT, rootStyle)
+  }, _isFn(onMore) && /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
     style: S.BT_MORE,
     svgStyle: _extractColorToSvgStyle(rootStyle, S.SVG_MORE),
     onClick: onMore
-  }), _react["default"].createElement("span", {
+  }), /*#__PURE__*/_react["default"].createElement("span", {
     className: CL_NOT_SELECTED,
     style: S.CAPTION
-  }, caption), children, _react["default"].createElement(_SvgClose["default"], {
+  }, caption), children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: S.SVG_CLOSE,
     onClose: onClose
   }));

@@ -15,6 +15,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+//import PropsTypes from 'prop-types'
+//const DB_TOUCH_PERIOD = 500
 var CL = {
   SELECT: 'm-select',
   LABEL: 'm-select__label',
@@ -68,9 +70,7 @@ var _crCaption = function _crCaption(caption, accessKey) {
   };
 };
 
-var TextField =
-/*#__PURE__*/
-function (_Component) {
+var TextField = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TextField, _Component);
 
   /*
@@ -205,19 +205,19 @@ function (_Component) {
         cKey = _crCaption2.cKey,
         cTail = _crCaption2.cTail;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.SELECT,
       style: rootStyle //onDoubleClick={this._handleClearInput}
       //onTouchStart={this._handleDbTouch}
 
-    }, _react["default"].createElement("label", {
+    }, /*#__PURE__*/_react["default"].createElement("label", {
       className: CL.LABEL,
-      style: (0, _extends2["default"])({}, labelStyle, {}, _labelStyle, {}, _labelErrStyle)
-    }, cPrefix, _react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, labelStyle, _labelStyle, _labelErrStyle)
+    }, cPrefix, /*#__PURE__*/_react["default"].createElement("span", {
       style: S.KEY
-    }, cKey), cTail), _react["default"].createElement("div", {
+    }, cKey), cTail), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.DIV
-    }, _react["default"].createElement("input", (0, _extends2["default"])({
+    }, /*#__PURE__*/_react["default"].createElement("input", (0, _extends2["default"])({
       ref: this._ref,
       type: "text",
       className: CL.INPUT,
@@ -233,10 +233,10 @@ function (_Component) {
       onBlur: this._handleBlurInput,
       onChange: this._handleInputChange,
       onKeyDown: this._handleKeyDown
-    })), _react["default"].createElement("div", {
+    })), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.INPUT_LINE,
       style: _lineStyle
-    }), _lineStyle && _react["default"].createElement("div", {
+    }), _lineStyle && /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.INPUT_MSG_ERR
     }, errorMsg)));
   };

@@ -11,6 +11,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+//import PropTypes from 'prop-types'
 var CL_BT = 'bt-raised';
 var CL_BT_SPAN = 'bt-raised__span';
 var S = {
@@ -19,9 +20,7 @@ var S = {
   }
 };
 
-var RaisedButton =
-/*#__PURE__*/
-function (_Component) {
+var RaisedButton = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(RaisedButton, _Component);
 
   function RaisedButton() {
@@ -54,15 +53,15 @@ function (_Component) {
         _btCl = CL_BT + " " + className,
         _spanStyle = isPrimary ? S.PRIMARY_SPAN : undefined;
 
-    return _react["default"].createElement("button", {
+    return /*#__PURE__*/_react["default"].createElement("button", {
       ref: this._refNode,
       tabIndex: tabIndex,
       className: _btCl,
       style: rootStyle,
       onClick: onClick
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       className: clDiv
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       className: CL_BT_SPAN,
       style: _spanStyle
     }, caption)));

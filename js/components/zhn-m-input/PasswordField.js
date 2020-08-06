@@ -41,9 +41,7 @@ var _crId = function _crId(_ref) {
   return name + '_' + Math.random().toString(36).substr(2, 5);
 };
 
-var PasswordField =
-/*#__PURE__*/
-function (_Component) {
+var PasswordField = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PasswordField, _Component);
 
   function PasswordField(props) {
@@ -137,21 +135,21 @@ function (_Component) {
         _labelErrStyle = isPassTest ? null : S.LABEL_ON_ERROR,
         _lineStyle = isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.SELECT,
       style: rootStyle
-    }, _react["default"].createElement("label", {
+    }, /*#__PURE__*/_react["default"].createElement("label", {
       className: CL.LABEL,
-      style: (0, _extends2["default"])({}, _labelStyle, {}, _labelErrStyle),
+      style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
       htmlFor: this._id
-    }, caption), _react["default"].createElement("div", {
+    }, caption), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.DIV
-    }, _react["default"].createElement("input", {
+    }, /*#__PURE__*/_react["default"].createElement("input", {
       hidden: true,
       autoComplete: "username",
       value: name,
       readOnly: true
-    }), _react["default"].createElement("input", {
+    }), /*#__PURE__*/_react["default"].createElement("input", {
       ref: this._refInput,
       id: this._id,
       type: "password",
@@ -163,10 +161,10 @@ function (_Component) {
       onKeyDown: this._hKeyDown,
       onFocus: this._hFocusInput,
       onBlur: this._hBlurInput
-    }), _react["default"].createElement("div", {
+    }), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.INPUT_LINE,
       style: _lineStyle
-    }), !isPassTest && _react["default"].createElement("div", {
+    }), !isPassTest && /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.INPUT_MSG_ERR
     }, errorMsg)));
   };

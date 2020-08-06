@@ -107,20 +107,20 @@ var ModalDialog = function ModalDialog(_ref) {
       _refPrevFocused.current.focus();
     }
   });
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     ref: _refRootDiv,
     tabIndex: "0",
     className: _className2,
-    style: (0, _extends2["default"])({}, style, {}, _style),
+    style: (0, _extends2["default"])({}, style, _style),
     onClick: _hClickDialog,
     onKeyDown: _hKeyDown
-  }, _react["default"].createElement(_Comp["default"].BrowserCaption, {
+  }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].BrowserCaption, {
     rootStyle: captionStyle,
     caption: caption,
     onClose: onClose
-  }), _react["default"].createElement("div", null, children), isWithButton && _react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("div", null, children), isWithButton && /*#__PURE__*/_react["default"].createElement("div", {
     className: CL.D_ACTIONS
-  }, commandButtons, !withoutClose && _react["default"].createElement(_Comp["default"].FlatButton, {
+  }, commandButtons, !withoutClose && /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
     //ref={_refBtClose}
     rootStyle: S.BT_ROOT,
     clDiv: CL.BT_DIV,

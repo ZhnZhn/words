@@ -12,7 +12,7 @@ var AppLabel = function AppLabel(_ref) {
       style = _ref.style,
       title = _ref.title,
       caption = _ref.caption;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: className,
     style: style,
     title: title

@@ -19,9 +19,7 @@ var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
 
 var CL_ROOT = "hrz-container";
 
-var BrowserContainer =
-/*#__PURE__*/
-function (_Component) {
+var BrowserContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(BrowserContainer, _Component);
 
   function BrowserContainer() {
@@ -39,14 +37,14 @@ function (_Component) {
         onClickItem = _this$props.onClickItem,
         updateWatchAction = _this$props.updateWatchAction,
         onClickWatchItem = _this$props.onClickWatchItem;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL_ROOT
-    }, _react["default"].createElement(_MenuBrowser["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_MenuBrowser["default"], {
       store: store,
       browserId: browserId,
       showAction: showBrowserAction,
       onClickItem: onClickItem
-    }), _react["default"].createElement(_WatchBrowser["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_WatchBrowser["default"], {
       caption: "Watch Words",
       store: store,
       isInitShow: false,
@@ -54,7 +52,7 @@ function (_Component) {
       showAction: showBrowserAction,
       updateAction: updateWatchAction,
       onClickItem: onClickWatchItem
-    }), _react["default"].createElement(_DialogContainer["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogContainer["default"], {
       maxDialog: 3,
       store: store,
       showAction: showDialogAction

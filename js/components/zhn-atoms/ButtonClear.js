@@ -12,7 +12,7 @@ var CL = 'bt-clear';
 var ButtonClear = function ButtonClear(_ref) {
   var style = _ref.style,
       onClick = _ref.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     className: CL,
     style: style,
     onClick: onClick

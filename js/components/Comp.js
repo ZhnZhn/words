@@ -15,7 +15,7 @@ var _A2 = _interopRequireDefault(require("./zhn-modal-slider/A"));
 
 var _A3 = _interopRequireDefault(require("./zhn-m-input/A"));
 
-var Comp = (0, _extends2["default"])({}, _Atoms["default"], {}, _A["default"], {}, _A2["default"], {}, _A3["default"]);
+var Comp = (0, _extends2["default"])({}, _Atoms["default"], _A["default"], _A2["default"], _A3["default"]);
 var _default = Comp;
 exports["default"] = _default;
 //# sourceMappingURL=Comp.js.map

@@ -16,7 +16,7 @@ var Button = function Button(_ref) {
       caption = _ref$caption === void 0 ? '' : _ref$caption,
       title = _ref.title,
       onClick = _ref.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     className: className,
     style: style,
     tabIndex: tabIndex,

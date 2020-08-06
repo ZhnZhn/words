@@ -45,9 +45,7 @@ var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
 var notSelected = _MsgWatch["default"].notSelected,
     emptyName = _MsgWatch["default"].emptyName;
 
-var EditGroupDialog =
-/*#__PURE__*/
-function (_Component) {
+var EditGroupDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(EditGroupDialog, _Component);
 
   function EditGroupDialog() {
@@ -80,21 +78,21 @@ function (_Component) {
         store = _this$props.store,
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
-    return _react["default"].createElement(_ModalDialog["default"] //STYLE={TS.BT}
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"] //STYLE={TS.BT}
     , {
-      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, _Dialog2["default"].DIALOG),
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, _Dialog2["default"].DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Watch Groups Edit",
       isShow: isShow,
       isWithButton: false,
       onClose: onClose
-    }, _react["default"].createElement(_Atoms["default"].TabPane, {
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].TabPane, {
       style: _Dialog2["default"].TAB_PANE,
       tabStyle: _Dialog2["default"].TABS
-    }, _react["default"].createElement(_Atoms["default"].Tab, {
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
       title: "Create",
       style: TS.TAB
-    }, _react["default"].createElement(_GroupAddPane["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_GroupAddPane["default"], {
       store: store,
       inputStyle: TS.INPUT,
       btStyle: TS.BT.FLAT_ROOT,
@@ -104,10 +102,10 @@ function (_Component) {
       msgOnIsEmptyName: emptyName,
       onCreate: addGroup,
       onClose: onClose
-    })), _react["default"].createElement(_Atoms["default"].Tab, {
+    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
       title: "Rename",
       style: TS.TAB
-    }, _react["default"].createElement(_GroupEditPane["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_GroupEditPane["default"], {
       store: store,
       inputStyle: TS.INPUT,
       btStyle: TS.BT.FLAT_ROOT,
@@ -118,10 +116,10 @@ function (_Component) {
       msgOnIsEmptyName: emptyName,
       onRename: renameGroup,
       onClose: onClose
-    })), _react["default"].createElement(_Atoms["default"].Tab, {
+    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
       title: "Delete",
       style: TS.TAB
-    }, _react["default"].createElement(_GroupDeletePane["default"], (_React$createElement = {
+    }, /*#__PURE__*/_react["default"].createElement(_GroupDeletePane["default"], (_React$createElement = {
       store: store,
       inputStyle: TS.INPUT,
       btStyle: TS.BT.FLAT_ROOT

@@ -35,14 +35,12 @@ var S = {
 var Span = function Span(_ref) {
   var style = _ref.style,
       text = _ref.text;
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     style: style
   }, "\xA0", text);
 };
 
-var WordDef =
-/*#__PURE__*/
-function (_Component) {
+var WordDef = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WordDef, _Component);
 
   function WordDef() {
@@ -62,12 +60,12 @@ function (_Component) {
       return results.map(function (result, index) {
         var definition = result.definition,
             partOfSpeech = result.partOfSpeech,
-            _afterComp = _react["default"].createElement(Span, {
+            _afterComp = /*#__PURE__*/_react["default"].createElement(Span, {
           style: S.OC_AFTER,
           text: partOfSpeech
         });
 
-        return _react["default"].createElement(_Comp["default"].OpenClose, {
+        return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose, {
           key: index,
           isClose: true,
           style: style,
@@ -76,9 +74,9 @@ function (_Component) {
           captionStyle: S.OC_CAPTION,
           afterCaptionComp: _afterComp,
           childrenStyle: S.OC_CHILDREN
-        }, _react["default"].createElement(_WordSyn["default"], {
+        }, /*#__PURE__*/_react["default"].createElement(_WordSyn["default"], {
           result: result
-        }), _react["default"].createElement(_WordNyms["default"], {
+        }), /*#__PURE__*/_react["default"].createElement(_WordNyms["default"], {
           result: result
         }));
       });
@@ -94,7 +92,7 @@ function (_Component) {
         isShow = _this$props.isShow,
         style = _this$props.style,
         config = _this$props.config;
-    return _react["default"].createElement(_Comp["default"].ShowHide, {
+    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ShowHide, {
       style: style,
       isShow: isShow
     }, this._renderDefinitions(config.results, style));

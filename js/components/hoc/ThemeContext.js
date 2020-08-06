@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var ThemeContext = _react["default"].createContext();
+var ThemeContext = /*#__PURE__*/_react["default"].createContext();
 
 var _default = ThemeContext;
 exports["default"] = _default;

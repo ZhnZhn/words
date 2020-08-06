@@ -27,9 +27,7 @@ var _withKeyDown = _interopRequireDefault(require("./decorators/withKeyDown"));
 
 var _class, _temp;
 
-var DialogType1 = (0, _withKeyDown["default"])(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var DialogType1 = (0, _withKeyDown["default"])(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType1, _Component);
 
   function DialogType1(props) {
@@ -60,7 +58,7 @@ function (_Component) {
     };
 
     _this._createCommandButtons = function (TS) {
-      return [_react["default"].createElement(_RaisedButton["default"], {
+      return [/*#__PURE__*/_react["default"].createElement(_RaisedButton["default"], {
         key: "_load",
         rootStyle: TS.RAISED_ROOT,
         clDiv: TS.CL_RAISED_DIV,
@@ -93,7 +91,7 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _commandButtons = this._createCommandButtons(TS.BT);
 
-    return _react["default"].createElement(_DraggableDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_DraggableDialog["default"], {
       ref: this._refDialogComp,
       rootStyle: TS.R_DIALOG,
       browserCaptionStyle: TS.BROWSER_CAPTION,
@@ -104,7 +102,7 @@ function (_Component) {
       onKeyDown: this._handleKeyDownWith,
       onShowChart: onShow,
       onClose: this._handleClose
-    }, _react["default"].createElement(_TextField["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_TextField["default"], {
       ref: this._refInputWord,
       rootStyle: TS.INPUT_ROOT,
       caption: "Word (Default: Example)",

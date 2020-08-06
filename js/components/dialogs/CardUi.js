@@ -52,26 +52,26 @@ var CardUi = function CardUi(_ref) {
       onCheckAutoSave = _ref.onCheckAutoSave,
       onUncheckAutoSave = _ref.onUncheckAutoSave,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: style
-  }, _react["default"].createElement(InputSelect, {
+  }, /*#__PURE__*/_react["default"].createElement(InputSelect, {
     styleConfig: S.SELECT,
     caption: "Theme (Default: Grey)",
     initItem: DF_THEME,
     options: THEME_OPTIONS,
     onSelect: onSetTheme
-  }), _react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("div", {
     style: S.CHB_ROW
-  }, _react["default"].createElement(SvgCheckBox, {
+  }, /*#__PURE__*/_react["default"].createElement(SvgCheckBox, {
     initialValue: true,
     stroke: chbStroke,
     onCheck: onCheckAutoSave,
     onUnCheck: onUncheckAutoSave
-  }), _react["default"].createElement("span", {
+  }), /*#__PURE__*/_react["default"].createElement("span", {
     style: S.TEXT
-  }, "AutoSave on Add to Watch List")), _react["default"].createElement("div", {
+  }, "AutoSave on Add to Watch List")), /*#__PURE__*/_react["default"].createElement("div", {
     style: buttonsStyle
-  }, _react["default"].createElement(FlatButton, {
+  }, /*#__PURE__*/_react["default"].createElement(FlatButton, {
     rootStyle: btStyle,
     clDiv: CL_DIV,
     caption: "Close",

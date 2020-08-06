@@ -30,9 +30,9 @@ var Browser = function Browser(_ref) {
   var _styleOpen = isShow ? S.BLOCK : S.NONE,
       _classOpen = isShow ? CL_SHOW : null;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _classOpen,
-    style: (0, _extends2["default"])({}, _ContainerStyle["default"].BROWSER_ROOT, {}, style, {}, _styleOpen)
+    style: (0, _extends2["default"])({}, _ContainerStyle["default"].BROWSER_ROOT, style, _styleOpen)
   }, children);
 };
 /*

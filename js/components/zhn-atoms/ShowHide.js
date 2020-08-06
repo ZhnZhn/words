@@ -27,7 +27,7 @@ var ShowHide = function ShowHide(props) {
       _classShow = isShow ? SHOW_POPUP : '',
       _className = className ? className + " " + _classShow : _classShow !== '' ? _classShow : undefined;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _className,
     style: Object.assign({}, style, _styleShow)
   }, children);

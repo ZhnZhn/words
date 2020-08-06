@@ -66,9 +66,7 @@ var S = {
   }
 };
 
-var AlertDialog2 =
-/*#__PURE__*/
-function (_Component) {
+var AlertDialog2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(AlertDialog2, _Component);
 
   function AlertDialog2() {
@@ -110,25 +108,25 @@ function (_Component) {
         descr = data.descr,
         _caption = caption + ': ';
 
-    return _react["default"].createElement(_Comp["default"].ModalDialog, {
+    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalDialog, {
       STYLE: TS.BT,
-      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S.DIALOG),
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, S.DIALOG),
       caption: "Exception",
-      captionStyle: (0, _extends2["default"])({}, TS.BROWSER_CAPTION, {}, S.CAPTION),
+      captionStyle: (0, _extends2["default"])({}, TS.BROWSER_CAPTION, S.CAPTION),
       isShow: isShow,
       isClosePrimary: true,
       onClose: onClose
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROW
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       style: S.TITLE
-    }, _caption, _react["default"].createElement("span", {
+    }, _caption, /*#__PURE__*/_react["default"].createElement("span", {
       className: CL.ELL,
       style: S.ITEM_ID,
       title: itemId
-    }, itemId))), _react["default"].createElement("div", {
+    }, itemId))), /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROW
-    }, _react["default"].createElement("p", {
+    }, /*#__PURE__*/_react["default"].createElement("p", {
       style: S.DESCR
     }, descr)));
   };

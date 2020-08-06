@@ -20,10 +20,10 @@ var S = {
 };
 
 var ArrowCell = function ArrowCell() {
-  return _react["default"].createElement("svg", {
+  return /*#__PURE__*/_react["default"].createElement("svg", {
     viewBox: "0 0 24 24",
     style: S.ROOT
-  }, _react["default"].createElement("path", {
+  }, /*#__PURE__*/_react["default"].createElement("path", {
     d: "M7 10l5 5 5-5z"
   }));
 };

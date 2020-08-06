@@ -11,8 +11,8 @@ var ListDiv = function ListDiv(_ref) {
   var _ref$items = _ref.items,
       items = _ref$items === void 0 ? [] : _ref$items,
       itemStyle = _ref.itemStyle;
-  return _react["default"].createElement(_react.Fragment, null, items.map(function (str, index) {
-    return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, items.map(function (str, index) {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       key: index,
       style: itemStyle
     }, str);

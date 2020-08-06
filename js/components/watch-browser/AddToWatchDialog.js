@@ -49,9 +49,7 @@ var S2 = {
   }
 };
 
-var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(AddToWatchDialog, _Component);
 
   /*
@@ -161,7 +159,7 @@ function (_Component) {
     };
 
     _this._crCommandButtons = function (S) {
-      return [_react["default"].createElement(_Atoms["default"].Button.Flat, {
+      return [/*#__PURE__*/_react["default"].createElement(_Atoms["default"].Button.Flat, {
         key: "_add",
         caption: "Add",
         title: "Add Item To Watch List",
@@ -236,28 +234,28 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _commandButtons = this._crCommandButtons(TS.BT);
 
-    return _react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
       STYLE: TS.BT,
-      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S2.DIALOG),
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, S2.DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Add To Watch List",
       isShow: isShow,
       commandButtons: _commandButtons,
       onClose: this._handleClose
-    }, _react["default"].createElement("div", null, _react["default"].createElement(_RowInputSelect["default"], {
+    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
       inputStyle: TS.INPUT,
       caption: "Group:",
       options: groupOptions,
       onSelect: this._handleSelectGroup
-    })), _react["default"].createElement("div", null, _react["default"].createElement(_RowInputSelect["default"], {
+    })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_RowInputSelect["default"], {
       inputStyle: TS.INPUT,
       caption: "List:",
       onSelect: this._handleSelectList,
       options: listOptions
-    })), _react["default"].createElement(_Row["default"].Text, {
+    })), /*#__PURE__*/_react["default"].createElement(_Row["default"].Text, {
       caption: "Word:",
       text: caption
-    }), _react["default"].createElement(_Atoms["default"].ValidationMessages, {
+    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ValidationMessages, {
       validationMessages: validationMessages
     }));
   };

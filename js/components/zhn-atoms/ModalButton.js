@@ -16,9 +16,7 @@ var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 var CL_BT = 'bt-flat';
 var CL_BT_SPAN = 'bt-flat__span';
 
-var ModalButton =
-/*#__PURE__*/
-function (_Component) {
+var ModalButton = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalButton, _Component);
 
   function ModalButton() {
@@ -56,7 +54,7 @@ function (_Component) {
         accessKey = _this$props.accessKey,
         children = _this$props.children,
         onClick = _this$props.onClick;
-    return _react["default"].createElement("button", {
+    return /*#__PURE__*/_react["default"].createElement("button", {
       ref: this._ref,
       className: CL_BT,
       style: rootStyle,
@@ -64,9 +62,9 @@ function (_Component) {
       title: title,
       accessKey: accessKey,
       onClick: onClick
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       className: clDiv
-    }, _react["default"].createElement(_CaptionInput["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_CaptionInput["default"], {
       className: CL_BT_SPAN,
       caption: caption,
       accessKey: accessKey

@@ -36,7 +36,7 @@ var S = {
 
 var SvgChecked = function SvgChecked(_ref) {
   var stroke = _ref.stroke;
-  return _react["default"].createElement("path", {
+  return /*#__PURE__*/_react["default"].createElement("path", {
     //d="M 2,3 L 8,14 14,3"
     d: "M 2,5 L 8,14 14,1",
     strokeWidth: "2",
@@ -50,9 +50,7 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var SvgCheckBox =
-/*#__PURE__*/
-function (_Component) {
+var SvgCheckBox = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(SvgCheckBox, _Component);
 
   /*
@@ -121,21 +119,21 @@ function (_Component) {
       fill: _Color["default"].BLANK
     };
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       role: "checkbox",
       tabIndex: "0",
       "aria-checked": isChecked,
-      style: (0, _extends2["default"])({}, S.DIV, {}, style),
+      style: (0, _extends2["default"])({}, S.DIV, style),
       onClick: this._hClick,
       onKeyDown: this._hKeyDown
-    }, _react["default"].createElement("svg", {
+    }, /*#__PURE__*/_react["default"].createElement("svg", {
       viewBox: "0 0 16 16",
       width: "100%",
       height: "100%",
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg",
       style: S.SVG
-    }, _react["default"].createElement("rect", (0, _extends2["default"])({
+    }, /*#__PURE__*/_react["default"].createElement("rect", (0, _extends2["default"])({
       x: "1",
       y: "1",
       height: "14",
@@ -143,7 +141,7 @@ function (_Component) {
       strokeWidth: "2",
       rx: "3",
       strokeLinecap: "round"
-    }, _restProps)), isChecked ? _react["default"].createElement(SvgChecked, {
+    }, _restProps)), isChecked ? /*#__PURE__*/_react["default"].createElement(SvgChecked, {
       stroke: stroke
     }) : null));
   };

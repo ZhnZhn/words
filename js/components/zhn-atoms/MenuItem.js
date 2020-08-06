@@ -13,9 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _fnNoop = function _fnNoop() {};
 
-var MenuItem =
-/*#__PURE__*/
-function (_Component) {
+var MenuItem = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuItem, _Component);
 
   function MenuItem() {
@@ -53,7 +51,7 @@ function (_Component) {
         className = _this$props.className,
         caption = _this$props.caption,
         onClick = _this$props.onClick;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       role: "button",
       ref: this._ref,
       className: className,

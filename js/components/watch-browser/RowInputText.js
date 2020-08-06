@@ -21,9 +21,7 @@ var S = {
   }
 };
 
-var RowInputText =
-/*#__PURE__*/
-function (_Component) {
+var RowInputText = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(RowInputText, _Component);
 
   function RowInputText() {
@@ -46,7 +44,7 @@ function (_Component) {
 
   _proto.render = function render() {
     var caption = this.props.caption;
-    return _react["default"].createElement(_TextField["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_TextField["default"], {
       ref: this._refInputText,
       rootStyle: S.INPUT_TEXT,
       caption: caption,

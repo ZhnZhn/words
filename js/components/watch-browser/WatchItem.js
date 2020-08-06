@@ -47,12 +47,12 @@ var WatchItem = function WatchItem(props) {
       onDragLeave = props.onDragLeave,
       onDrop = props.onDrop,
       caption = item.caption,
-      _btClose = isModeEdit ? _react["default"].createElement(_SvgClose["default"], {
+      _btClose = isModeEdit ? /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     style: STYLE.SVG_CLOSE,
     onClose: onClose.bind(null, option)
   }) : null;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: className,
     style: STYLE.ITEM_DIV,
     onClick: onClick.bind(null, item) //onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_ITEM, item)}
@@ -63,7 +63,7 @@ var WatchItem = function WatchItem(props) {
     onDragOver: isModeEdit && onDragOver,
     onDragEnter: isModeEdit && onDragEnter,
     onDragLeave: isModeEdit && onDragLeave
-  }, _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     style: STYLE.ITEM_SPAN
   }, caption), _btClose);
 };

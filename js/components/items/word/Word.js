@@ -67,9 +67,7 @@ var S = {
   }
 };
 
-var Word =
-/*#__PURE__*/
-function (_Component) {
+var Word = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(Word, _Component);
 
   function Word() {
@@ -135,16 +133,16 @@ function (_Component) {
         caption = config.caption,
         TS = theme.createStyle(_Word["default"]),
         isShow = this.state.isShow,
-        _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, {}, S.HEADER_OPEN) : S.HEADER,
-        _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, {}, S.CAPTION_OPEN) : S.CAPTION;
+        _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
+        _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION;
 
-    return _react["default"].createElement(_DndOnlyX["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_DndOnlyX["default"], {
       style: S.ROOT,
       onDragEnd: this._onDragEnd,
       onDragTouchEnd: this._onDragTouchEnd
-    }, _react["default"].createElement(_ItemHeader["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_ItemHeader["default"], {
       className: CL_ITEM_HEADER,
-      style: (0, _extends2["default"])({}, _headerStyle, {}, TS.HEADER),
+      style: (0, _extends2["default"])({}, _headerStyle, TS.HEADER),
       captionStyle: _captionStyle,
       svgCloseStyle: S.SVG_CLOSE,
       title: title,
@@ -153,7 +151,7 @@ function (_Component) {
       onClick: this._hToggle,
       onClose: this._hClose,
       onAddToWatch: onAddToWatch
-    }), _react["default"].createElement(_WordDef["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_WordDef["default"], {
       style: TS.DESCR,
       isShow: isShow,
       config: config

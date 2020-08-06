@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/actions/SettingActions.js"
- ],
- "file": "../../../src/flux/actions/SettingActions.js",
- "names": [
-  "T",
-  "CHECK_AUTO_SAVE",
-  "UNCHECK_AUTO_SAVE",
-  "Actions",
-  "Reflux",
-  "createActions"
- ],
- "mappings": ";;;;;;;AACA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,eAAe,EAAE,eADT;AAERC,EAAAA,iBAAiB,EAAE;AAFX,CAAV;;AAKA,IAAMC,OAAO,GAAGC,uBAAOC,aAAP,oDACbL,CAAC,CAACC,eADW,IACO,EADP,wBAEbD,CAAC,CAACE,iBAFW,IAES,EAFT,yBAAhB;;eAKeC,O"
-}
+{"version":3,"sources":["../../../src/flux/actions/SettingActions.js"],"names":["T","CHECK_AUTO_SAVE","UNCHECK_AUTO_SAVE","Actions","Reflux","createActions"],"mappings":";;;;;;;AACA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,eAAe,EAAE,eADT;AAERC,EAAAA,iBAAiB,EAAE;AAFX,CAAV;;AAKA,IAAMC,OAAO,GAAGC,uBAAOC,aAAP,oDACbL,CAAC,CAACC,eADW,IACO,EADP,wBAEbD,CAAC,CAACE,iBAFW,IAES,EAFT,yBAAhB;;eAKeC,O","sourcesContent":["\r\nimport Reflux from 'reflux-core'\r\n\r\nconst T = {\r\n  CHECK_AUTO_SAVE: \"checkAutoSave\",\r\n  UNCHECK_AUTO_SAVE: \"uncheckAutoSave\"\r\n}\r\n\r\nconst Actions = Reflux.createActions({\r\n  [T.CHECK_AUTO_SAVE]: {},\r\n  [T.UNCHECK_AUTO_SAVE]: {}\r\n});\r\n\r\nexport default Actions\r\n"],"file":"SettingActions.js"}

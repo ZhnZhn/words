@@ -23,9 +23,7 @@ var _getClientX = function _getClientX(ev) {
   return targetTouches && targetTouches[0] ? targetTouches[0].clientX : changedTouches && changedTouches[0] ? changedTouches[0].clientX : 0;
 };
 
-var DndOnlyX =
-/*#__PURE__*/
-function (_Component) {
+var DndOnlyX = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DndOnlyX, _Component);
 
   /*
@@ -176,7 +174,7 @@ function (_Component) {
     var _this$props = this.props,
         style = _this$props.style,
         children = _this$props.children;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: style,
       draggable: true,
       onDragStart: this._dragStart,

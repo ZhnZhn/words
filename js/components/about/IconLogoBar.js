@@ -23,15 +23,15 @@ var S = {
 var IconLogoBar = function IconLogoBar(_ref) {
   var iconStyle = _ref.iconStyle,
       iconGitHubStyle = _ref.iconGitHubStyle;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT
-  }, _react["default"].createElement(_IconGitHub["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_IconGitHub["default"], {
     style: iconGitHubStyle,
     title: "GitHub Repository",
     href: "https://github.com/zhnzhn/words/"
-  }), _react["default"].createElement(_IconWordsApi["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_IconWordsApi["default"], {
     style: iconStyle
-  }), _react["default"].createElement(_IconReact["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_IconReact["default"], {
     style: iconStyle
   }));
 };

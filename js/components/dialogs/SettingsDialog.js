@@ -53,9 +53,7 @@ var S = {
   }
 };
 
-var SettingsDialog =
-/*#__PURE__*/
-function (_Component) {
+var SettingsDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(SettingsDialog, _Component);
 
   function SettingsDialog(props) {
@@ -96,21 +94,21 @@ function (_Component) {
         isShow = _this$props.isShow,
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
-    return _react["default"].createElement(_Comp["default"].ModalDialog, {
+    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalDialog, {
       className: "",
       STYLE: TS.BT,
-      style: (0, _extends2["default"])({}, S.MODAL, {}, TS.R_DIALOG),
+      style: (0, _extends2["default"])({}, S.MODAL, TS.R_DIALOG),
       caption: "User Settings",
       captionStyle: TS.BROWSER_CAPTION,
       isShow: isShow,
       isWithButton: false,
       onClose: onClose
-    }, _react["default"].createElement(_Comp["default"].TabPane, {
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].TabPane, {
       style: S.TAB_PANE
-    }, _react["default"].createElement(_Comp["default"].Tab, {
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].Tab, {
       title: "API Key",
       style: TS.TAB
-    }, _react["default"].createElement(_CardApiKey["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_CardApiKey["default"], {
       ref: this._ref1,
       style: S.CARD_ROOT,
       buttonsStyle: S.CARD_BUTTONS,
@@ -118,10 +116,10 @@ function (_Component) {
       isShow: isShow,
       onSet: this._hSetAndClose,
       onClose: onClose
-    })), _react["default"].createElement(_Comp["default"].Tab, {
+    })), /*#__PURE__*/_react["default"].createElement(_Comp["default"].Tab, {
       title: "UI Theme",
       style: TS.TAB
-    }, _react["default"].createElement(_CardUi["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_CardUi["default"], {
       style: S.CARD_ROOT,
       buttonsStyle: S.CARD_BUTTONS,
       btStyle: TS.BT.FLAT_ROOT,

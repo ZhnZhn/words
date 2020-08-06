@@ -45,18 +45,18 @@ var CaptionInput = function CaptionInput(_ref) {
       before = _toCaptionIn2.before;
 
   if (typeof captionIn !== 'undefined') {
-    return _react["default"].createElement("span", {
+    return /*#__PURE__*/_react["default"].createElement("span", {
       className: className,
       style: rootStyle
     }, captionIn, children);
   }
 
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     className: className,
     style: rootStyle
-  }, _react["default"].createElement("span", null, before), _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", null, before), /*#__PURE__*/_react["default"].createElement("span", {
     style: S.KEY
-  }, key), _react["default"].createElement("span", null, after), children);
+  }, key), /*#__PURE__*/_react["default"].createElement("span", null, after), children);
 };
 
 var _default = CaptionInput;

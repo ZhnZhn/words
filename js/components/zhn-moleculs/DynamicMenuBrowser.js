@@ -42,9 +42,7 @@ var S = {
   }
 };
 
-var DynamicMenuBrowser =
-/*#__PURE__*/
-function (_Component) {
+var DynamicMenuBrowser = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DynamicMenuBrowser, _Component);
 
   function DynamicMenuBrowser() {
@@ -141,7 +139,7 @@ function (_Component) {
         _menuModel$items = menuModel.items,
         items = _menuModel$items === void 0 ? {} : _menuModel$items;
     return menu.map(function (menuPart, index) {
-      return _react["default"].createElement(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
+      return /*#__PURE__*/_react["default"].createElement(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
         key: index,
         hmItems: items,
         styleConfig: styleConfig
@@ -161,19 +159,19 @@ function (_Component) {
         isLoading = _this$state.isLoading,
         isLoadingFailed = _this$state.isLoadingFailed,
         menuModel = _this$state.menuModel;
-    return _react["default"].createElement(_Atoms["default"].Browser, {
+    return /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Browser, {
       isShow: isShow,
-      style: (0, _extends2["default"])({}, S.BROWSER, {}, TS.BROWSER)
-    }, _react["default"].createElement(_Atoms["default"].BrowserCaption, {
+      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER)
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].BrowserCaption, {
       rootStyle: TS.BROWSER_CAPTION,
       caption: caption,
       onClose: this._handleHide
-    }), isLoading && _react["default"].createElement(_Atoms["default"].SpinnerLoading, {
+    }), isLoading && /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SpinnerLoading, {
       style: S.SPINNER_LOADING
-    }), isLoadingFailed && _react["default"].createElement(_Atoms["default"].SpinnerLoading, {
+    }), isLoadingFailed && /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SpinnerLoading, {
       style: S.SPINNER_LOADING,
       isFailed: true
-    }), _react["default"].createElement(_Atoms["default"].ScrollPane, {
+    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ScrollPane, {
       className: TS.CL_SCROLL_PANE,
       style: S.SCROLL_PANE
     }, this._renderMenuParts({

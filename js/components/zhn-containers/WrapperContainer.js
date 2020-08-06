@@ -16,9 +16,7 @@ var _RouterModal = _interopRequireDefault(require("../dialogs/RouterModal"));
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 
 //import PropTypes from "prop-types";
-var WrapperContainer =
-/*#__PURE__*/
-function (_Component) {
+var WrapperContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WrapperContainer, _Component);
 
   function WrapperContainer() {
@@ -99,7 +97,7 @@ function (_Component) {
       return dialogs.map(function (dialog, index) {
         var type = dialog.type,
             comp = dialog.comp;
-        return _react["default"].createElement(comp, {
+        return /*#__PURE__*/_react["default"].createElement(comp, {
           key: type,
           isShow: shows[type],
           data: data[type],
@@ -126,7 +124,7 @@ function (_Component) {
     var _this$state3 = this.state,
         isShow = _this$state3.isShow,
         currentDialog = _this$state3.currentDialog;
-    return _react["default"].createElement(_ModalContainer["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalContainer["default"], {
       isShow: isShow,
       onClose: this._handleClose.bind(null, currentDialog)
     }, this._renderDialogs());

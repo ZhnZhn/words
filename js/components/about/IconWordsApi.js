@@ -10,11 +10,11 @@ var _react = _interopRequireDefault(require("react"));
 var IconWordsApi = function IconWordsApi(_ref) {
   var className = _ref.className,
       style = _ref.style;
-  return _react["default"].createElement("a", {
+  return /*#__PURE__*/_react["default"].createElement("a", {
     className: "icon__words",
     style: style,
     href: "https://www.wordsapi.com/"
-  }, _react["default"].createElement("img", {
+  }, /*#__PURE__*/_react["default"].createElement("img", {
     alt: "Logo WordsApi",
     src: "css/wordsapilogo.png"
   }));

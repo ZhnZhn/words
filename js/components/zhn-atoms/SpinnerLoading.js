@@ -13,7 +13,7 @@ var SpinnerLoading = function SpinnerLoading(_ref) {
 
   var _dataLoader = isFailed ? "circle-failed" : "circle";
 
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     style: style,
     "data-loader": _dataLoader
   });

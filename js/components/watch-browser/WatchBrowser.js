@@ -83,9 +83,7 @@ var T = {
 };
 var saveWatch = _WatchActions["default"].saveWatch,
     removeWatchItem = _WatchActions["default"].removeWatchItem;
-var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorators["default"].withDnDGroup(DRAG, _WatchActions["default"]), _dec3 = _Decorators["default"].withDnDList(DRAG, _WatchActions["default"]), _dec4 = _Decorators["default"].withDnDItem(DRAG, _WatchActions["default"]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_temp = _class2 =
-/*#__PURE__*/
-function (_Component) {
+var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorators["default"].withDnDGroup(DRAG, _WatchActions["default"]), _dec3 = _Decorators["default"].withDnDList(DRAG, _WatchActions["default"]), _dec4 = _Decorators["default"].withDnDItem(DRAG, _WatchActions["default"]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WatchBrowser, _Component);
 
   /*
@@ -164,9 +162,9 @@ function (_Component) {
       return watchList.groups.map(function (group, index) {
         var caption = group.caption,
             lists = group.lists;
-        return _react["default"].createElement(_Comp["default"].OpenClose2, {
+        return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose2, {
           key: index,
-          style: (0, _extends2["default"])({}, S.GROUP_DIV, {}, TS.OPEN_CLOSE),
+          style: (0, _extends2["default"])({}, S.GROUP_DIV, TS.OPEN_CLOSE),
           styleCaption: S.CAPTION,
           caption: caption,
           draggableOption: _this._crGroupDraggableOption(isModeEdit, {
@@ -181,10 +179,10 @@ function (_Component) {
       return lists.map(function (list, index) {
         var caption = list.caption,
             items = list.items;
-        return _react["default"].createElement(_Comp["default"].OpenClose2, {
+        return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose2, {
           key: index,
           fillOpen: C_FILL_OPEN,
-          style: (0, _extends2["default"])({}, S.LIST_DIV, {}, TS.OPEN_CLOSE),
+          style: (0, _extends2["default"])({}, S.LIST_DIV, TS.OPEN_CLOSE),
           styleCaption: S.CAPTION,
           styleNotSelected: S.ITEM_NOT_SELECTED,
           caption: caption,
@@ -201,7 +199,7 @@ function (_Component) {
       return items.map(function (item, index) {
         var id = item.id,
             caption = item.caption;
-        return _react["default"].createElement(_WatchItem["default"], {
+        return /*#__PURE__*/_react["default"].createElement(_WatchItem["default"], {
           key: id,
           className: CL_WATCH_ITEM,
           isModeEdit: isModeEdit,
@@ -285,31 +283,31 @@ function (_Component) {
         isModeEdit = _this$state.isModeEdit,
         watchList = _this$state.watchList,
         _captionEV = isModeEdit ? 'V' : 'E',
-        _spStyle = isModeEdit ? (0, _extends2["default"])({}, S.SP, {}, S.SP_SHORT) : S.SP,
+        _spStyle = isModeEdit ? (0, _extends2["default"])({}, S.SP, S.SP_SHORT) : S.SP,
         TS = theme.createStyle(_MenuBrowserStyle["default"]);
 
-    return _react["default"].createElement(_Comp["default"].Browser, {
+    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].Browser, {
       isShow: isShow,
-      style: (0, _extends2["default"])({}, S.BROWSER, {}, TS.BROWSER)
-    }, _react["default"].createElement(_Comp["default"].BrowserCaption, {
+      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER)
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].BrowserCaption, {
       rootStyle: TS.BROWSER_CAPTION,
       caption: caption,
       onClose: this._handlerHide
-    }, _react["default"].createElement(_Comp["default"].CircleButton, {
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
       caption: "S",
       title: T.S,
       style: S.BT_CIRCLE,
       onClick: this._handlerSaveWatch
-    }), _react["default"].createElement(_Comp["default"].CircleButton, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
       caption: _captionEV,
       title: T.E_V,
       style: S.BT_CIRCLE,
       onClick: this._handlerToggleEditMode
-    })), _react["default"].createElement(_EditBar["default"], {
+    })), /*#__PURE__*/_react["default"].createElement(_EditBar["default"], {
       isShow: isModeEdit,
       onClickGroup: this._handlerEditGroup,
       onClickList: this._handlerEditList
-    }), _react["default"].createElement(_Comp["default"].ScrollPane, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ScrollPane, {
       className: TS.CL_SCROLL_PANE,
       style: _spStyle
     }, watchList && this._renderWatchList(watchList, TS)));

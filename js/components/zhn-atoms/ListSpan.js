@@ -27,12 +27,12 @@ var ListSpan = function ListSpan(_ref) {
     return null;
   }
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: rootStyle
-  }, caption && _react["default"].createElement("span", {
+  }, caption && /*#__PURE__*/_react["default"].createElement("span", {
     style: captionStyle
-  }, caption), _react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, S.ITEM, {}, itemStyle)
+  }, caption), /*#__PURE__*/_react["default"].createElement("span", {
+    style: (0, _extends2["default"])({}, S.ITEM, itemStyle)
   }, items.join(', ')));
 };
 

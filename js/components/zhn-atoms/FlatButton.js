@@ -26,17 +26,17 @@ var FlatButton = function FlatButton(_ref) {
       accessKey = _ref.accessKey,
       children = _ref.children,
       onClick = _ref.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     className: CL.BT + " " + className,
     style: rootStyle,
     tabIndex: 0,
     title: title,
     accessKey: accessKey,
     onClick: onClick
-  }, _react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     className: clDiv,
     style: divStyle
-  }, caption ? _react["default"].createElement(_CaptionInput["default"], {
+  }, caption ? /*#__PURE__*/_react["default"].createElement(_CaptionInput["default"], {
     className: CL.BT_SPAN,
     caption: caption,
     accessKey: accessKey

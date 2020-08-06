@@ -73,9 +73,7 @@ var _crStyleConf = function _crStyleConf(_ref) {
   };
 };
 
-var OpenClose2 =
-/*#__PURE__*/
-function (_Component) {
+var OpenClose2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(OpenClose2, _Component);
 
   function OpenClose2(props) {
@@ -129,32 +127,32 @@ function (_Component) {
         _classShow = _crStyleConf2._classShow,
         _styleNotSelected = _crStyleConf2._styleNotSelected;
 
-    return _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, S.ROOT, {}, style)
-    }, _react["default"].createElement("div", (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, S.ROOT, style)
+    }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
       role: "menuitem",
       tabIndex: "0",
       className: CL,
       style: _styleNotSelected,
       onClick: this._hClick,
       onKeyDown: this._hKeyDown
-    }, draggableOption), _react["default"].createElement("div", {
+    }, draggableOption), /*#__PURE__*/_react["default"].createElement("div", {
       style: S.DIV_SVG
-    }, _react["default"].createElement("svg", {
+    }, /*#__PURE__*/_react["default"].createElement("svg", {
       viewBox: "0 0 16 16",
       width: "100%",
       height: "100%",
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg",
       style: S.SVG
-    }, _react["default"].createElement("path", {
+    }, /*#__PURE__*/_react["default"].createElement("path", {
       d: _pathV,
       fill: _fillV,
       strokeWidth: "1",
       stroke: fillOpen
-    }))), _react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, S.CAPTION, {}, styleCaption)
-    }, caption)), _react["default"].createElement("div", {
+    }))), /*#__PURE__*/_react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, S.CAPTION, styleCaption)
+    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
       className: _classShow,
       style: _divStyle
     }, children));

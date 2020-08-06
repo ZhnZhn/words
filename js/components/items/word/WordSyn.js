@@ -37,21 +37,21 @@ var WordSyn = function WordSyn(_ref) {
       examples = result.examples,
       synonyms = result.synonyms,
       similarTo = result.similarTo;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT
-  }, _react["default"].createElement(_Comp["default"].ListSpan, {
+  }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
     caption: "derivation:",
     rootStyle: S.DER_ROOT,
     captionStyle: S.DER_CAPTION,
     items: derivation
-  }), _react["default"].createElement(_Comp["default"].ListDiv, {
+  }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListDiv, {
     itemStyle: S.ITEM,
     items: examples
-  }), _react["default"].createElement(_Comp["default"].ListSpan, {
+  }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
     caption: "synonyms:",
     captionStyle: S.SYN_CAPTION,
     items: synonyms
-  }), _react["default"].createElement(_Comp["default"].ListSpan, {
+  }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
     caption: "similarTo:",
     captionStyle: S.SYN_CAPTION,
     items: similarTo

@@ -23,6 +23,7 @@ var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+//import PropTypes from 'prop-types'
 var CHILD_MARGIN = 36,
     RESIZE_INIT_WIDTH = 635,
     RESIZE_MIN_WIDTH = 375,
@@ -83,9 +84,7 @@ var _toStyleWidth = function _toStyleWidth(width) {
   return width + 'px';
 };
 
-var NewsPane =
-/*#__PURE__*/
-function (_Component) {
+var NewsPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(NewsPane, _Component);
 
   /*
@@ -282,7 +281,7 @@ function (_Component) {
         onRemoveUnder = _this$props3.onRemoveUnder,
         onAddToWatch = _this$props3.onAddToWatch;
     return configs.map(function (config) {
-      return _react["default"].createElement(Item, {
+      return /*#__PURE__*/_react["default"].createElement(Item, {
         key: config.id,
         config: config,
         onCloseItem: onCloseItem,
@@ -307,37 +306,37 @@ function (_Component) {
         _showStyle = isShow ? S.INLINE_BLOCK : S.NONE,
         _showCl = isShow ? CL.SHOW_POPUP : void 0;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       ref: this._refRootDiv,
       className: _showCl,
-      style: (0, _extends2["default"])({}, S.ROOT_DIV, {}, TS.BG_COLOR, {}, _showStyle)
-    }, _react["default"].createElement(_Comp["default"].ModalSlider, {
+      style: (0, _extends2["default"])({}, S.ROOT_DIV, TS.BG_COLOR, _showStyle)
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalSlider, {
       isShow: isMore,
       className: CL.MENU_MORE,
       style: TS.BG_COLOR,
       model: this._MODEL,
       onClose: this._hToggleMore
-    }), _react["default"].createElement(_Comp["default"].BrowserCaption, {
-      rootStyle: (0, _extends2["default"])({}, S.BR_CAPTION, {}, TS.PANE_CAPTION),
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].BrowserCaption, {
+      rootStyle: (0, _extends2["default"])({}, S.BR_CAPTION, TS.PANE_CAPTION),
       caption: paneCaption,
       onMore: this._showMore,
       onClose: this._hHide
-    }, _react["default"].createElement(_Comp["default"].CircleButton, {
+    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
       caption: "R",
       title: T.R,
       style: S.BT_CIRCLE,
       onClick: onRemoveItems
-    }), _react["default"].createElement(_Comp["default"].SvgHrzResize, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].SvgHrzResize, {
       svgStyle: TS.SVG_RESIZE,
       minWidth: RESIZE_MIN_WIDTH,
       maxWidth: RESIZE_MAX_WIDTH,
       getDomNode: this._getRootDiv
-    })), _react["default"].createElement(Input, {
+    })), /*#__PURE__*/_react["default"].createElement(Input, {
       ref: this._refIWord,
       TS: TS,
       initValue: word,
       onEnter: this._hLoadItem
-    }), _react["default"].createElement(_Comp["default"].ScrollPane, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ScrollPane, {
       className: TS.CL_SCROLL_PANE,
       style: S.SCROLL_PANE
     }, this._renderConfigs(configs)));

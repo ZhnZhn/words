@@ -51,14 +51,14 @@ var WordOf = function WordOf(_ref) {
 
   var _caption = isCount ? caption + " (" + items.length + ")" : caption;
 
-  return _react["default"].createElement(_Comp["default"].OpenClose, {
+  return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose, {
     isClose: true,
     caption: _caption,
     style: S.OC,
     fillOpen: S.FILL_OPEN,
     captionStyle: S.OC_CAPTION,
     childrenStyle: S.OC_CHILDREN
-  }, _react["default"].createElement(_Comp["default"].ListSpan, {
+  }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
     caption: "",
     rootStyle: S.LIST,
     captionStyle: S.LIST_CAPTION,

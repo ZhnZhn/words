@@ -53,9 +53,7 @@ var _updateVisible = function _updateVisible(state, key, maxDialog) {
   }
 };
 
-var DialogContainer =
-/*#__PURE__*/
-function (_Component) {
+var DialogContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogContainer, _Component);
 
   function DialogContainer(props) {
@@ -107,7 +105,7 @@ function (_Component) {
           compDialogs = _this$state.compDialogs;
       return compDialogs.map(function (Comp) {
         var key = Comp.key;
-        return _react["default"].cloneElement(Comp, {
+        return /*#__PURE__*/_react["default"].cloneElement(Comp, {
           key: key,
           isShow: hmIs[key],
           onClose: _this._handleToggleDialog.bind((0, _assertThisInitialized2["default"])(_this), key)
@@ -135,7 +133,7 @@ function (_Component) {
   };
 
   _proto.render = function render() {
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROOT
     }, this._renderDialogs());
   };

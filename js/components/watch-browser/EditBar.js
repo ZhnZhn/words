@@ -32,14 +32,14 @@ var EditBar = function EditBar(_ref) {
     return null;
   }
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT
-  }, _react["default"].createElement(_Atoms["default"].Button, {
+  }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Button, {
     caption: "GROUP",
     title: T.G,
     className: CL_BT,
     onClick: onClickGroup
-  }), _react["default"].createElement(_Atoms["default"].Button, {
+  }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Button, {
     caption: "LIST",
     title: T.L,
     className: CL_BT,

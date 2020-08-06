@@ -24,9 +24,7 @@ var _setPrevFocused = function _setPrevFocused(element) {
   document._prevFocusedZhn = element;
 };
 
-var ItemHeader =
-/*#__PURE__*/
-function (_Component) {
+var ItemHeader = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ItemHeader, _Component);
 
   /*
@@ -85,8 +83,8 @@ function (_Component) {
       }
     };
 
-    _this._refRootNode = _react["default"].createRef();
-    _this._refBtAdd = _react["default"].createRef();
+    _this._refRootNode = /*#__PURE__*/_react["default"].createRef();
+    _this._refBtAdd = /*#__PURE__*/_react["default"].createRef();
     return _this;
   }
 
@@ -106,7 +104,7 @@ function (_Component) {
         svgCloseStyle = _this$props3.svgCloseStyle,
         title = _this$props3.title,
         onClick = _this$props3.onClick;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       tabIndex: "0",
       role: "button",
       ref: this._refRootNode,
@@ -114,15 +112,15 @@ function (_Component) {
       style: style,
       onClick: onClick,
       onKeyDown: this._hKeyDown
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       className: CL_NOT_SELECTED,
       style: captionStyle
-    }, title), _react["default"].createElement(_Comp["default"].CircleButton, {
+    }, title), /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
       ref: this._refBtAdd,
       caption: "A",
       title: T.A,
       onClick: this._hAddToWatch
-    }), _react["default"].createElement(_Comp["default"].SvgClose, {
+    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].SvgClose, {
       tabIndex: "-1",
       style: svgCloseStyle,
       onClose: this._hClose

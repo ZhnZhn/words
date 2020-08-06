@@ -19,6 +19,7 @@ var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+//import PropTypes from 'prop-types'
 var S = {
   DIALOG: {
     left: 'calc(50vw - 152px)'
@@ -56,9 +57,7 @@ var _toMsg = function _toMsg(data) {
   return 'Exception Message';
 };
 
-var AlertDialog =
-/*#__PURE__*/
-function (_Component) {
+var AlertDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(AlertDialog, _Component);
 
   function AlertDialog() {
@@ -95,16 +94,16 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _msg = _toMsg(data);
 
-    return _react["default"].createElement(_Comp["default"].ModalDialog, {
+    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalDialog, {
       STYLE: TS.BT,
-      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S.DIALOG),
-      captionStyle: (0, _extends2["default"])({}, TS.BROWSER_CAPTION, {}, S.CAPTION) //styleButton={TS.BT}
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, S.DIALOG),
+      captionStyle: (0, _extends2["default"])({}, TS.BROWSER_CAPTION, S.CAPTION) //styleButton={TS.BT}
       ,
       caption: "Exception Message",
       isShow: isShow,
       isClosePrimary: true,
       onClose: onClose
-    }, _react["default"].createElement("div", null, _react["default"].createElement("p", {
+    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("p", {
       style: S.MSG
     }, _msg)));
   };

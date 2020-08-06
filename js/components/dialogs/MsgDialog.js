@@ -48,9 +48,7 @@ var S = {
   }
 };
 
-var MsgDialog =
-/*#__PURE__*/
-function (_Component) {
+var MsgDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MsgDialog, _Component);
 
   function MsgDialog() {
@@ -76,20 +74,20 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         caption = data.caption,
         descr = data.descr;
-    return _react["default"].createElement(_Comp["default"].ModalDialog, {
+    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalDialog, {
       STYLE: TS.BT,
-      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S.DIALOG),
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, S.DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Message",
       isShow: isShow,
       onClose: onClose
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROW
-    }, _react["default"].createElement("p", {
+    }, /*#__PURE__*/_react["default"].createElement("p", {
       style: S.CAPTION
-    }, caption)), _react["default"].createElement("div", {
+    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROW
-    }, _react["default"].createElement("p", {
+    }, /*#__PURE__*/_react["default"].createElement("p", {
       style: S.DESCR
     }, descr)));
   };

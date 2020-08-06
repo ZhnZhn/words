@@ -40,7 +40,7 @@ var Factory = {
         dialogProps = itemConf.dialogProps,
         El = _RouterDialog["default"].getElement(dialogType);
 
-    return _react["default"].createElement(El, (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement(El, (0, _extends2["default"])({
       key: type,
       type: type,
       itemConf: itemConf
@@ -60,7 +60,7 @@ var Factory = {
         Input = _RouterPane$getElemen.Input,
         Item = _RouterPane$getElemen.Item;
 
-    return _react["default"].createElement(Pane, {
+    return /*#__PURE__*/_react["default"].createElement(Pane, {
       key: type,
       id: paneId,
       itemConf: itemConf,
@@ -82,7 +82,7 @@ var Factory = {
     });
   },
   crAbout: function crAbout(store) {
-    return _react["default"].createElement(_About["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_About["default"], {
       key: 'About',
       id: 'About',
       showAction: _ComponentActions.T.SHOW_ABOUT,

@@ -39,9 +39,7 @@ var S = {
   }
 };
 
-var InputWord =
-/*#__PURE__*/
-function (_Component) {
+var InputWord = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputWord, _Component);
 
   function InputWord() {
@@ -79,19 +77,19 @@ function (_Component) {
         TS = _this$props.TS,
         initValue = _this$props.initValue,
         onEnter = _this$props.onEnter,
-        _elBt = _has["default"].HAS_TOUCH ? _react["default"].createElement(ButtonClear, {
+        _elBt = _has["default"].HAS_TOUCH ? /*#__PURE__*/_react["default"].createElement(ButtonClear, {
       style: S.BT_CLEAR,
       onClick: this._hClear
-    }) : _react["default"].createElement(FlatButton, {
+    }) : /*#__PURE__*/_react["default"].createElement(FlatButton, {
       caption: "Load",
       tabIndex: -1,
-      rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, {}, S.BT_LOAD),
+      rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, S.BT_LOAD),
       clDiv: TS.BT.CL_FLAT_DIV,
       isPrimary: true,
       onClick: onEnter
     });
 
-    return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(TextField, {
+    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(TextField, {
       ref: this._ref,
       rootStyle: TS.INPUT_ROOT,
       labelStyle: S.TF_LABEL,

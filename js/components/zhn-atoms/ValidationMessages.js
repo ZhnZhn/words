@@ -22,9 +22,7 @@ var STYLE = {
   }
 };
 
-var ValidationMessages =
-/*#__PURE__*/
-function (_Component) {
+var ValidationMessages = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ValidationMessages, _Component);
 
   function ValidationMessages() {
@@ -38,11 +36,11 @@ function (_Component) {
 
     _this._renderValidationMessages = function (validationMessages) {
       return validationMessages.map(function (msg, index) {
-        return _react["default"].createElement("div", {
+        return /*#__PURE__*/_react["default"].createElement("div", {
           key: index
-        }, _react["default"].createElement("div", {
+        }, /*#__PURE__*/_react["default"].createElement("div", {
           style: styles.validationMessageNumber
-        }, index + 1), _react["default"].createElement("span", {
+        }, index + 1), /*#__PURE__*/_react["default"].createElement("span", {
           style: STYLE.MSG_SPAN
         }, msg));
       });
@@ -55,7 +53,7 @@ function (_Component) {
 
   _proto.render = function render() {
     var validationMessages = this.props.validationMessages;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: styles.validationContainer
     }, this._renderValidationMessages(validationMessages));
   };

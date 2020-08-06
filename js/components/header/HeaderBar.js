@@ -53,9 +53,7 @@ var STYLE = {
 };
 var TITLE = 'Words v0.3.0';
 
-var HeaderBar =
-/*#__PURE__*/
-function (_Component) {
+var HeaderBar = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(HeaderBar, _Component);
 
   function HeaderBar(props) {
@@ -113,28 +111,28 @@ function (_Component) {
         onAbout = _this$props.onAbout,
         isTopics = this.state.isTopics,
         S = theme.createStyle(_HeaderBar["default"]);
-    return _react["default"].createElement("header", {
+    return /*#__PURE__*/_react["default"].createElement("header", {
       className: CL.HEADER,
       style: S.HEADER
-    }, _react["default"].createElement(_PaneTopics["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_PaneTopics["default"], {
       paneStyle: S.PANE,
       className: CL.PANEL_BROWSER,
       clItem: S.CL_QUERY_ITEM,
       isShow: isTopics,
       items: this._topicItems,
       onClose: this._hCloseTopics
-    }), _react["default"].createElement(_ProgressLoading["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_ProgressLoading["default"], {
       store: store,
       ACTIONS: LPT
-    }), _react["default"].createElement(_IconAppLogo["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_IconAppLogo["default"], {
       className: CL.ICON_APP,
       title: TITLE
-    }), _react["default"].createElement(_AppLabel["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_AppLabel["default"], {
       className: CL.LABEL_APP,
       caption: TITLE
-    }), _react["default"].createElement("span", {
+    }), /*#__PURE__*/_react["default"].createElement("span", {
       className: CL.BROWSER_BTS
-    }, _react["default"].createElement(_Atoms["default"].ModalButton, {
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ModalButton, {
       rootStyle: S.BT.FLAT_ROOT,
       clDiv: S.BT.CL_FLAT_DIV,
       caption: "Topics",
@@ -142,21 +140,21 @@ function (_Component) {
       accessKey: "t",
       onClick: this._hClickTopics,
       onReg: this._onRegTopics
-    }, _react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       className: CL.ARROW_DOWN
-    }))), _react["default"].createElement("div", {
+    }))), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.BTS
-    }, _react["default"].createElement(_Atoms["default"].FlatButton, {
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].FlatButton, {
       className: CL.SETTINGS,
-      rootStyle: (0, _extends2["default"])({}, S.BT.FLAT_ROOT, {}, S.BT_SETTINGS),
+      rootStyle: (0, _extends2["default"])({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
       clDiv: S.BT.CL_FLAT_DIV,
       divStyle: STYLE.DIV_STYLE,
       title: "User Settings Dialog",
       accessKey: "s",
       onClick: onSettings
-    }, _react["default"].createElement(_Atoms["default"].SvgSettings, {
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SvgSettings, {
       style: STYLE.SETTINGS
-    })), _react["default"].createElement(_Atoms["default"].FlatButton, {
+    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].FlatButton, {
       className: CL.BT_ABOUT,
       rootStyle: S.BT.FLAT_ROOT,
       clDiv: S.BT.CL_FLAT_DIV,
@@ -164,9 +162,9 @@ function (_Component) {
       title: "About Words",
       accessKey: "a",
       onClick: onAbout
-    }, _react["default"].createElement(_Atoms["default"].SvgInfo, {
+    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SvgInfo, {
       style: STYLE.SETTINGS
-    }))), _react["default"].createElement(_LimitLabel["default"], {
+    }))), /*#__PURE__*/_react["default"].createElement(_LimitLabel["default"], {
       store: store,
       ACTIONS: LPT,
       style: S.LIMIT

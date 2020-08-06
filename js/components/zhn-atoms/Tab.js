@@ -27,7 +27,7 @@ var Tab = function Tab(_ref) {
   var _btStyle = isSelected ? S.BT : null,
       _titleStyle = isSelected ? S.TITLE : null;
 
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     className: CL,
     style: _btStyle,
     id: "tab-" + id,
@@ -36,7 +36,7 @@ var Tab = function Tab(_ref) {
     "aria-controls": "tabpanel-" + id,
     tabIndex: "0",
     onClick: onClick
-  }, _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     style: _titleStyle
   }, title));
 };

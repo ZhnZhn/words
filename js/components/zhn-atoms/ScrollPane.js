@@ -17,7 +17,7 @@ var ScrollPane = function ScrollPane(_ref) {
 
   var _className = className && className !== CL ? className : CL;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _className,
     style: style
   }, children);

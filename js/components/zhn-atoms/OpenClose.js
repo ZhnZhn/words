@@ -13,6 +13,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+//import PropTypes from 'prop-types'
 var CL_CAPTION = 'open-close not-selected';
 var STYLE = {
   ROOT: {
@@ -47,9 +48,7 @@ var FILL_OPEN = '#9e9e9e',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-var OpenClose =
-/*#__PURE__*/
-function (_Component) {
+var OpenClose = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(OpenClose, _Component);
 
   /*
@@ -143,34 +142,34 @@ function (_Component) {
       _itemStyle = itemStyle;
     }
 
-    return _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, STYLE.ROOT, {}, style)
-    }, _react["default"].createElement("div", (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, STYLE.ROOT, style)
+    }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
       role: "button",
       className: CL_CAPTION,
       tabIndex: "0",
-      style: (0, _extends2["default"])({}, STYLE.ROOT_CAPTION, {}, _itemStyle),
+      style: (0, _extends2["default"])({}, STYLE.ROOT_CAPTION, _itemStyle),
       onClick: this._handleToggle,
       onKeyDown: this._handleKeyDown
-    }, _dndOption), _react["default"].createElement("div", {
+    }, _dndOption), /*#__PURE__*/_react["default"].createElement("div", {
       style: STYLE.SVG
-    }, _react["default"].createElement("svg", {
+    }, /*#__PURE__*/_react["default"].createElement("svg", {
       viewBox: "0 0 16 16",
       width: "100%",
       height: "100%",
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg",
       style: STYLE.INLINE
-    }, _react["default"].createElement("path", {
+    }, /*#__PURE__*/_react["default"].createElement("path", {
       d: _pathV,
       fill: _fillV,
       strokeWidth: "1",
       stroke: fillOpen
-    }))), _react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, STYLE.CAPTION, {}, captionStyle)
-    }, caption), afterCaptionComp), _react["default"].createElement("div", {
+    }))), /*#__PURE__*/_react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, STYLE.CAPTION, captionStyle)
+    }, caption), afterCaptionComp), /*#__PURE__*/_react["default"].createElement("div", {
       className: _classShow,
-      style: (0, _extends2["default"])({}, childrenStyle, {}, _styleCollapse)
+      style: (0, _extends2["default"])({}, childrenStyle, _styleCollapse)
     }, children));
   };
 

@@ -26,9 +26,7 @@ var S = {
   }
 };
 
-var LimitLabel =
-/*#__PURE__*/
-function (_Component) {
+var LimitLabel = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(LimitLabel, _Component);
 
   function LimitLabel() {
@@ -72,8 +70,8 @@ function (_Component) {
   _proto.render = function render() {
     var style = this.props.style,
         value = this.state.value;
-    return _react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, S.LABEL, {}, style)
+    return /*#__PURE__*/_react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, S.LABEL, style)
     }, value);
   };
 

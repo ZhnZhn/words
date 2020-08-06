@@ -59,7 +59,7 @@ var _TabPane = _interopRequireDefault(require("./TabPane"));
 
 var _ValidationMessages = _interopRequireDefault(require("./ValidationMessages"));
 
-var Atoms = (0, _extends2["default"])({}, _A["default"], {}, _SvgIcons["default"], {
+var Atoms = (0, _extends2["default"])({}, _A["default"], _SvgIcons["default"], {
   Browser: _Browser["default"],
   BrowserCaption: _BrowserCaption["default"],
   CaptionInput: _CaptionInput["default"],

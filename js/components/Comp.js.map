@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/components/Comp.js"
- ],
- "file": "../../src/components/Comp.js",
- "names": [
-  "Comp",
-  "A",
-  "ZhnM",
-  "ZhnMs",
-  "ZhnMi"
- ],
- "mappings": ";;;;;;;;;AAAA;;AACA;;AACA;;AACA;;AAEA,IAAMA,IAAI,iCACLC,iBADK,MAELC,aAFK,MAGLC,cAHK,MAILC,cAJK,CAAV;eAOeJ,I"
-}
+{"version":3,"sources":["../../src/components/Comp.js"],"names":["Comp","A","ZhnM","ZhnMs","ZhnMi"],"mappings":";;;;;;;;;AAAA;;AACA;;AACA;;AACA;;AAEA,IAAMA,IAAI,iCACLC,iBADK,EAELC,aAFK,EAGLC,cAHK,EAILC,cAJK,CAAV;eAOeJ,I","sourcesContent":["import A from './zhn-atoms/Atoms'\r\nimport ZhnM from './zhn-moleculs/A'\r\nimport ZhnMs from './zhn-modal-slider/A'\r\nimport ZhnMi from './zhn-m-input/A'\r\n\r\nconst Comp = {\r\n  ...A,\r\n  ...ZhnM,\r\n  ...ZhnMs,\r\n  ...ZhnMi\r\n};\r\n\r\nexport default Comp\r\n"],"file":"Comp.js"}

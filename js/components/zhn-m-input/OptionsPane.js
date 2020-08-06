@@ -43,10 +43,10 @@ var _renderOptions = function _renderOptions(options, currentItem, clItem, itemS
   return options.map(function (item) {
     var _style = currentValue && item.value === currentValue || currentCaption && item.caption === currentCaption ? S.ITEM : void 0;
 
-    return _react["default"].createElement("button", {
+    return /*#__PURE__*/_react["default"].createElement("button", {
       key: item.caption,
       className: clItem,
-      style: (0, _extends2["default"])({}, S.BT, {}, itemStyle, {}, _style),
+      style: (0, _extends2["default"])({}, S.BT, itemStyle, _style),
       onClick: onSelect.bind(null, item)
     }, item.caption);
   });
@@ -61,13 +61,13 @@ var OptionsPane = function OptionsPane(_ref2) {
       itemStyle = _ref2.itemStyle,
       onSelect = _ref2.onSelect,
       onClose = _ref2.onClose;
-  return _react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
     style: rootStyle,
     isShow: isShow,
     onClose: onClose
-  }, _react["default"].createElement(_ShowHide["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_ShowHide["default"], {
     isShow: isShow,
-    style: (0, _extends2["default"])({}, S.PANE, {}, rootStyle)
+    style: (0, _extends2["default"])({}, S.PANE, rootStyle)
   }, _renderOptions(options, item, clItem, itemStyle, onSelect, isShow)));
 };
 

@@ -11,9 +11,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var ModalPane =
-/*#__PURE__*/
-function (_Component) {
+var ModalPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalPane, _Component);
 
   function ModalPane() {
@@ -54,7 +52,7 @@ function (_Component) {
     var _this$props = this.props,
         style = _this$props.style,
         children = _this$props.children;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: style,
       ref: function ref(n) {
         return _this2.rootNode = n;

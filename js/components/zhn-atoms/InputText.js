@@ -43,9 +43,7 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var InputText =
-/*#__PURE__*/
-function (_Component) {
+var InputText = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputText, _Component);
 
   /*
@@ -127,8 +125,8 @@ function (_Component) {
         _autoCorrect = spellCheck ? C.ON : C.OFF,
         _spellCheck = spellCheck ? "true" : "false";
 
-    return _react["default"].createElement("input", {
-      style: (0, _extends2["default"])({}, S.INPUT_TEXT, {}, style),
+    return /*#__PURE__*/_react["default"].createElement("input", {
+      style: (0, _extends2["default"])({}, S.INPUT_TEXT, style),
       type: C.TEXT,
       name: C.TEXT,
       autoCapitalize: C.OFF,

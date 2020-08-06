@@ -11,6 +11,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+//import PropTypes from 'prop-types'
 var CL_DIV = "hrz-container";
 
 var _isInCont = function _isInCont(arrComps, comp) {
@@ -27,9 +28,7 @@ var _isInCont = function _isInCont(arrComps, comp) {
   return false;
 };
 
-var HrzContainer =
-/*#__PURE__*/
-function (_Component) {
+var HrzContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(HrzContainer, _Component);
 
   function HrzContainer() {
@@ -74,7 +73,7 @@ function (_Component) {
   _proto.render = function render() {
     var className = this.props.className,
         containers = this.state.containers;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL_DIV + " " + className
     }, containers);
   };
