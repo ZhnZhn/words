@@ -38,3 +38,6 @@ button {
   -webkit-appearance: none;
   -moz-aapearance: none;
 }
+button:focus {
+  outline: 0;
+}
