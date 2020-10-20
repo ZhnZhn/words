@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 //import PropTypes from 'prop-types'
 var CL_BT = 'bt-raised';
@@ -53,18 +53,21 @@ var RaisedButton = /*#__PURE__*/function (_Component) {
         _btCl = CL_BT + " " + className,
         _spanStyle = isPrimary ? S.PRIMARY_SPAN : undefined;
 
-    return /*#__PURE__*/_react["default"].createElement("button", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
       ref: this._refNode,
       tabIndex: tabIndex,
       className: _btCl,
       style: rootStyle,
-      onClick: onClick
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: clDiv
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      className: CL_BT_SPAN,
-      style: _spanStyle
-    }, caption)));
+      onClick: onClick,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: clDiv,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          className: CL_BT_SPAN,
+          style: _spanStyle,
+          children: caption
+        })
+      })
+    });
   };
 
   _proto.focus = function focus() {

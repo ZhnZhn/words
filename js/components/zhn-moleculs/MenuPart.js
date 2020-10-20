@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _isKeyEnter = _interopRequireDefault(require("../zhn-atoms/isKeyEnter"));
 
@@ -42,14 +42,14 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
 
     var _onClick = _isFn(onClickItem) ? onClickItem.bind(null, _itemConf) : void 0;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      key: index,
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       role: "menuitem",
       tabIndex: "0",
       className: _className,
       onClick: _onClick,
-      onKeyDown: _hKeyDown.bind(null, _onClick)
-    }, menuTitle);
+      onKeyDown: _hKeyDown.bind(null, _onClick),
+      children: menuTitle
+    }, index);
   });
 };
 
@@ -58,12 +58,13 @@ var MenuPart = function MenuPart(_ref) {
       caption = _ref.caption,
       isInitClose = _ref.isInitClose,
       restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["styleConfig", "caption", "isInitClose"]);
-  return /*#__PURE__*/_react["default"].createElement(_OpenClose["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose["default"], {
     style: TS.OPEN_CLOSE,
     caption: caption,
     isClose: isInitClose,
-    itemStyle: TS.ITEM
-  }, _renderMenuItems(TS, restProps));
+    itemStyle: TS.ITEM,
+    children: _renderMenuItems(TS, restProps)
+  });
 };
 /*
 MenuPart.propTypes = {

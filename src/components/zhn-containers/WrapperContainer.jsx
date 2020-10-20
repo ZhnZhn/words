@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, createElement } from 'react';
 //import PropTypes from "prop-types";
 
 import Router from '../dialogs/RouterModal';
@@ -32,7 +32,7 @@ class WrapperContainer extends Component {
   }
   _onStore = (actionType, option) => {
      const { SHOW_ACTION } = this.props;
-     if (actionType === SHOW_ACTION){       
+     if (actionType === SHOW_ACTION){
        const type = option.modalDialogType
            , { inits, shows, data, dialogs } = this.state;
 
@@ -74,7 +74,7 @@ class WrapperContainer extends Component {
 
     return dialogs.map((dialog, index) => {
       const { type, comp } = dialog;
-      return React.createElement(comp, {
+      return createElement(comp, {
          key: type,
          isShow: shows[type],
          data: data[type],

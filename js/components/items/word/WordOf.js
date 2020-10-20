@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _Comp = _interopRequireDefault(require("../../Comp"));
 
@@ -51,19 +51,20 @@ var WordOf = function WordOf(_ref) {
 
   var _caption = isCount ? caption + " (" + items.length + ")" : caption;
 
-  return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].OpenClose, {
     isClose: true,
     caption: _caption,
     style: S.OC,
     fillOpen: S.FILL_OPEN,
     captionStyle: S.OC_CAPTION,
-    childrenStyle: S.OC_CHILDREN
-  }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
-    caption: "",
-    rootStyle: S.LIST,
-    captionStyle: S.LIST_CAPTION,
-    items: items
-  }));
+    childrenStyle: S.OC_CHILDREN,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
+      caption: "",
+      rootStyle: S.LIST,
+      captionStyle: S.LIST_CAPTION,
+      items: items
+    })
+  });
 };
 
 var _default = WordOf;

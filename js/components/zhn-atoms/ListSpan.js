@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   ITEM: {
@@ -27,13 +27,16 @@ var ListSpan = function ListSpan(_ref) {
     return null;
   }
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: rootStyle
-  }, caption && /*#__PURE__*/_react["default"].createElement("span", {
-    style: captionStyle
-  }, caption), /*#__PURE__*/_react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, S.ITEM, itemStyle)
-  }, items.join(', ')));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: rootStyle,
+    children: [caption && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: captionStyle,
+      children: caption
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: (0, _extends2["default"])({}, S.ITEM, itemStyle),
+      children: items.join(', ')
+    })]
+  });
 };
 
 var _default = ListSpan;

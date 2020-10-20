@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _useListen = _interopRequireDefault(require("../hoc/useListen"));
 
@@ -58,30 +58,43 @@ var About = function About(_ref) {
       _cn = isShow ? CL_SHOW : null,
       _style = isShow ? TS.BLOCK : TS.NONE;
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _cn,
-    style: (0, _extends2["default"])({}, _ContainerStyle["default"].ABOUT_ROOT, _style, TS.ROOT)
-  }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].BrowserCaption, {
-    rootStyle: TS.BROWSER_CAPTION,
-    caption: "About",
-    onClose: _hClose
-  }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ScrollPane, {
-    className: TS.CL_SCROLL_PANE,
-    style: TS.SCROLL_DIV
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: TS.DIV_WRAPPER
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: TS.DIV_TEXT
-  }, /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement("span", {
-    style: TS.APP_TITLE
-  }, "Words"), " is web app, RESTful client."), /*#__PURE__*/_react["default"].createElement("p", null, "Words data provider ", /*#__PURE__*/_react["default"].createElement(_Links["default"].WordsApi, null), " via ", /*#__PURE__*/_react["default"].createElement(_Links["default"].RapidApi, null)), /*#__PURE__*/_react["default"].createElement("p", {
-    style: TS.PADDING_TOP
-  }, "Provider's API Key is required for using app."), /*#__PURE__*/_react["default"].createElement("p", null, "API Key can be set in Settings Dialog [s].")), /*#__PURE__*/_react["default"].createElement(_IconLogoBar["default"], {
-    iconStyle: TS.ICON,
-    iconGitHubStyle: TS.ICON_GITHUB
-  }), /*#__PURE__*/_react["default"].createElement("p", {
-    style: TS.BLACK
-  }, "*Logos Fair Use."))));
+    style: (0, _extends2["default"])({}, _ContainerStyle["default"].ABOUT_ROOT, _style, TS.ROOT),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].BrowserCaption, {
+      rootStyle: TS.BROWSER_CAPTION,
+      caption: "About",
+      onClose: _hClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ScrollPane, {
+      className: TS.CL_SCROLL_PANE,
+      style: TS.SCROLL_DIV,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: TS.DIV_WRAPPER,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          style: TS.DIV_TEXT,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              style: TS.APP_TITLE,
+              children: "Words"
+            }), " is web app, RESTful client."]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
+            children: ["Words data provider ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_Links["default"].WordsApi, {}), " via ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_Links["default"].RapidApi, {})]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            style: TS.PADDING_TOP,
+            children: "Provider's API Key is required for using app."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            children: "API Key can be set in Settings Dialog [s]."
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconLogoBar["default"], {
+          iconStyle: TS.ICON,
+          iconGitHubStyle: TS.ICON_GITHUB
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: TS.BLACK,
+          children: "*Logos Fair Use."
+        })]
+      })
+    })]
+  });
 };
 
 var _default = About;

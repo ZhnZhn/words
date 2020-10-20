@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
@@ -74,7 +74,7 @@ var GroupAddPane = /*#__PURE__*/function (_Component) {
     };
 
     _this._crPrimaryBt = function (btStyle) {
-      return /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Button.Primary, {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
         style: btStyle,
         caption: "Create",
         title: "Create New Group",
@@ -105,18 +105,20 @@ var GroupAddPane = /*#__PURE__*/function (_Component) {
         btStyle = _this$props3.btStyle,
         onClose = _this$props3.onClose,
         validationMessages = this.state.validationMessages;
-    return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].RowInputText, {
-      ref: this._refInputText,
-      caption: "Group:",
-      inputStyle: inputStyle
-    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ValidationMessages, {
-      validationMessages: validationMessages
-    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].RowButtons, {
-      btStyle: btStyle,
-      Primary: this._crPrimaryBt(btStyle),
-      onClear: this._handleClear,
-      onClose: onClose
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowInputText, {
+        ref: this._refInputText,
+        caption: "Group:",
+        inputStyle: inputStyle
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ValidationMessages, {
+        validationMessages: validationMessages
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
+        btStyle: btStyle,
+        Primary: this._crPrimaryBt(btStyle),
+        onClear: this._handleClear,
+        onClose: onClose
+      })]
+    });
   };
 
   return GroupAddPane;

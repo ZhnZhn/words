@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
 
@@ -84,27 +84,33 @@ var AppWords = /*#__PURE__*/function (_Component) {
         headerActions = action.headerActions,
         browserActions = action.browserActions,
         theme = this.state.theme;
-    return /*#__PURE__*/_react["default"].createElement(_react["default"].StrictMode, null, /*#__PURE__*/_react["default"].createElement(_ThemeContext["default"].Provider, {
-      value: theme
-    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_HeaderBar["default"], (0, _extends2["default"])({
-      store: store,
-      LPT: LPT
-    }, headerActions)), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL_COMP
-    }, /*#__PURE__*/_react["default"].createElement(_Container["default"].Browser, (0, _extends2["default"])({
-      store: store,
-      showBrowserAction: CAT.SHOW_BROWSER,
-      showDialogAction: CAT.SHOW_DIALOG,
-      browserId: WORDS_BROWSER_ID,
-      updateWatchAction: CAT.UPDATE_WATCH_BROWSER
-    }, browserActions)), /*#__PURE__*/_react["default"].createElement(_Container["default"].Hrz, {
-      className: CL_ITEMS,
-      store: store,
-      addAction: CAT.SHOW_PANE
-    })), /*#__PURE__*/_react["default"].createElement(_Container["default"].Wrapper, {
-      store: store,
-      SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
-    }))));
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
+        value: theme,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], (0, _extends2["default"])({
+            store: store,
+            LPT: LPT
+          }, headerActions)), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            className: CL_COMP,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Browser, (0, _extends2["default"])({
+              store: store,
+              showBrowserAction: CAT.SHOW_BROWSER,
+              showDialogAction: CAT.SHOW_DIALOG,
+              browserId: WORDS_BROWSER_ID,
+              updateWatchAction: CAT.UPDATE_WATCH_BROWSER
+            }, browserActions)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Hrz, {
+              className: CL_ITEMS,
+              store: store,
+              addAction: CAT.SHOW_PANE
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Wrapper, {
+            store: store,
+            SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
+          })]
+        })
+      })
+    });
   };
 
   return AppWords;

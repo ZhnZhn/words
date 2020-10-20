@@ -1,11 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   KEY: {
@@ -45,18 +43,25 @@ var CaptionInput = function CaptionInput(_ref) {
       before = _toCaptionIn2.before;
 
   if (typeof captionIn !== 'undefined') {
-    return /*#__PURE__*/_react["default"].createElement("span", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
       className: className,
-      style: rootStyle
-    }, captionIn, children);
+      style: rootStyle,
+      children: [captionIn, children]
+    });
   }
 
-  return /*#__PURE__*/_react["default"].createElement("span", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
     className: className,
-    style: rootStyle
-  }, /*#__PURE__*/_react["default"].createElement("span", null, before), /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.KEY
-  }, key), /*#__PURE__*/_react["default"].createElement("span", null, after), children);
+    style: rootStyle,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: before
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: S.KEY,
+      children: key
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: after
+    }), children]
+  });
 };
 
 var _default = CaptionInput;

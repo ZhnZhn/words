@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 //import PropTypes from 'prop-types'
 
 const CL_CAPTION = 'open-close not-selected';
@@ -19,7 +19,7 @@ const STYLE = {
   CAPTION: {
     color: '#9e9e9e',
     paddingLeft: 4,
-    verticalAlign: 'top'    
+    verticalAlign: 'top'
   },
   INLINE : {
     display: 'inline-block'

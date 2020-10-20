@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 
@@ -43,11 +43,11 @@ var _renderOptions = function _renderOptions(options, currentItem, clItem, itemS
   return options.map(function (item) {
     var _style = currentValue && item.value === currentValue || currentCaption && item.caption === currentCaption ? S.ITEM : void 0;
 
-    return /*#__PURE__*/_react["default"].createElement("button", {
-      key: item.caption,
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
       className: clItem,
       style: (0, _extends2["default"])({}, S.BT, itemStyle, _style),
-      onClick: onSelect.bind(null, item)
+      onClick: onSelect.bind(null, item),
+      children: item.caption
     }, item.caption);
   });
 };
@@ -61,14 +61,16 @@ var OptionsPane = function OptionsPane(_ref2) {
       itemStyle = _ref2.itemStyle,
       onSelect = _ref2.onSelect,
       onClose = _ref2.onClose;
-  return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
     style: rootStyle,
     isShow: isShow,
-    onClose: onClose
-  }, /*#__PURE__*/_react["default"].createElement(_ShowHide["default"], {
-    isShow: isShow,
-    style: (0, _extends2["default"])({}, S.PANE, rootStyle)
-  }, _renderOptions(options, item, clItem, itemStyle, onSelect, isShow)));
+    onClose: onClose,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
+      isShow: isShow,
+      style: (0, _extends2["default"])({}, S.PANE, rootStyle),
+      children: _renderOptions(options, item, clItem, itemStyle, onSelect, isShow)
+    })
+  });
 };
 
 var _default = OptionsPane;

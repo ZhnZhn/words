@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _MenuBrowser = _interopRequireDefault(require("../zhn-browsers/MenuBrowser"));
 
@@ -37,26 +37,27 @@ var BrowserContainer = /*#__PURE__*/function (_Component) {
         onClickItem = _this$props.onClickItem,
         updateWatchAction = _this$props.updateWatchAction,
         onClickWatchItem = _this$props.onClickWatchItem;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL_ROOT
-    }, /*#__PURE__*/_react["default"].createElement(_MenuBrowser["default"], {
-      store: store,
-      browserId: browserId,
-      showAction: showBrowserAction,
-      onClickItem: onClickItem
-    }), /*#__PURE__*/_react["default"].createElement(_WatchBrowser["default"], {
-      caption: "Watch Words",
-      store: store,
-      isInitShow: false,
-      browserType: "WATCH_ID",
-      showAction: showBrowserAction,
-      updateAction: updateWatchAction,
-      onClickItem: onClickWatchItem
-    }), /*#__PURE__*/_react["default"].createElement(_DialogContainer["default"], {
-      maxDialog: 3,
-      store: store,
-      showAction: showDialogAction
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: CL_ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuBrowser["default"], {
+        store: store,
+        browserId: browserId,
+        showAction: showBrowserAction,
+        onClickItem: onClickItem
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser["default"], {
+        caption: "Watch Words",
+        store: store,
+        isInitShow: false,
+        browserType: "WATCH_ID",
+        showAction: showBrowserAction,
+        updateAction: updateWatchAction,
+        onClickItem: onClickWatchItem
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogContainer["default"], {
+        maxDialog: 3,
+        store: store,
+        showAction: showDialogAction
+      })]
+    });
   };
 
   return BrowserContainer;

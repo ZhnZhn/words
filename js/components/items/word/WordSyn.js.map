@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../../src/components/items/word/WordSyn.jsx"],"names":["S","ROOT","lineHeight","DER_ROOT","display","DER_CAPTION","color","paddingRight","fontWeight","SYN_CAPTION","ITEM","WordSyn","result","derivation","examples","synonyms","similarTo"],"mappings":";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,UAAU,EAAE;AADR,GADE;AAIRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,OAAO,EAAE;AADD,GAJF;AAORC,EAAAA,WAAW,EAAE;AACXC,IAAAA,KAAK,EAAE,SADI;AAEXC,IAAAA,YAAY,EAAE,CAFH;AAGXC,IAAAA,UAAU,EAAE;AAHD,GAPL;AAYRC,EAAAA,WAAW,EAAE;AACXH,IAAAA,KAAK,EAAE,OADI;AAEXC,IAAAA,YAAY,EAAE,CAFH;AAGXC,IAAAA,UAAU,EAAE;AAHD,GAZL;AAiBRE,EAAAA,IAAI,EAAE;AACJF,IAAAA,UAAU,EAAE;AADR;AAjBE,CAAV;;AAsBA,IAAMG,OAAO,GAAG,SAAVA,OAAU,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;AAAA,MAEtBC,UAFsB,GAMpBD,MANoB,CAEtBC,UAFsB;AAAA,MAGtBC,QAHsB,GAMpBF,MANoB,CAGtBE,QAHsB;AAAA,MAItBC,QAJsB,GAMpBH,MANoB,CAItBG,QAJsB;AAAA,MAKtBC,SALsB,GAMpBJ,MANoB,CAKtBI,SALsB;AAO9B,sBACE;AAAK,IAAA,KAAK,EAAEhB,CAAC,CAACC;AAAd,kBACE,gCAAC,gBAAD,CAAG,QAAH;AACE,IAAA,OAAO,EAAC,aADV;AAEE,IAAA,SAAS,EAAED,CAAC,CAACG,QAFf;AAGE,IAAA,YAAY,EAAEH,CAAC,CAACK,WAHlB;AAIE,IAAA,KAAK,EAAEQ;AAJT,IADF,eAOE,gCAAC,gBAAD,CAAG,OAAH;AACE,IAAA,SAAS,EAAEb,CAAC,CAACU,IADf;AAEE,IAAA,KAAK,EAAEI;AAFT,IAPF,eAWE,gCAAC,gBAAD,CAAG,QAAH;AACE,IAAA,OAAO,EAAC,WADV;AAEE,IAAA,YAAY,EAAEd,CAAC,CAACS,WAFlB;AAGE,IAAA,KAAK,EAAEM;AAHT,IAXF,eAgBE,gCAAC,gBAAD,CAAG,QAAH;AACE,IAAA,OAAO,EAAC,YADV;AAEE,IAAA,YAAY,EAAEf,CAAC,CAACS,WAFlB;AAGE,IAAA,KAAK,EAAEO;AAHT,IAhBF,CADF;AAwBD,CA/BD;;eAiCeL,O","sourcesContent":["import React from 'react'\r\n\r\nimport A from '../../Comp'\r\n\r\nconst S = {\r\n  ROOT: {\r\n    lineHeight: 1.7\r\n  },\r\n  DER_ROOT: {\r\n    display: 'inline-block'\r\n  },\r\n  DER_CAPTION: {\r\n    color: '#0c7abf',\r\n    paddingRight: 8,\r\n    fontWeight: 800\r\n  },\r\n  SYN_CAPTION: {\r\n    color: 'green',\r\n    paddingRight: 8,\r\n    fontWeight: 800\r\n  },\r\n  ITEM: {\r\n    fontWeight: 400\r\n  }\r\n};\r\n\r\nconst WordSyn = ({ result }) => {\r\n  const {\r\n          derivation,\r\n          examples,\r\n          synonyms,\r\n          similarTo\r\n        } = result;\r\n  return (\r\n    <div style={S.ROOT}>\r\n      <A.ListSpan\r\n        caption=\"derivation:\"\r\n        rootStyle={S.DER_ROOT}\r\n        captionStyle={S.DER_CAPTION}\r\n        items={derivation}\r\n      />\r\n      <A.ListDiv\r\n        itemStyle={S.ITEM}\r\n        items={examples}\r\n      />\r\n      <A.ListSpan\r\n        caption=\"synonyms:\"\r\n        captionStyle={S.SYN_CAPTION}\r\n        items={synonyms}\r\n      />\r\n      <A.ListSpan\r\n        caption=\"similarTo:\"\r\n        captionStyle={S.SYN_CAPTION}\r\n        items={similarTo}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default WordSyn\r\n"],"file":"WordSyn.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/items/word/WordSyn.js"
+ ],
+ "file": "../../../../src/components/items/word/WordSyn.js",
+ "names": [
+  "S",
+  "ROOT",
+  "lineHeight",
+  "DER_ROOT",
+  "display",
+  "DER_CAPTION",
+  "color",
+  "paddingRight",
+  "fontWeight",
+  "SYN_CAPTION",
+  "ITEM",
+  "WordSyn",
+  "result",
+  "derivation",
+  "examples",
+  "synonyms",
+  "similarTo"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,UAAU,EAAE;AADR,GADE;AAIRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,OAAO,EAAE;AADD,GAJF;AAORC,EAAAA,WAAW,EAAE;AACXC,IAAAA,KAAK,EAAE,SADI;AAEXC,IAAAA,YAAY,EAAE,CAFH;AAGXC,IAAAA,UAAU,EAAE;AAHD,GAPL;AAYRC,EAAAA,WAAW,EAAE;AACXH,IAAAA,KAAK,EAAE,OADI;AAEXC,IAAAA,YAAY,EAAE,CAFH;AAGXC,IAAAA,UAAU,EAAE;AAHD,GAZL;AAiBRE,EAAAA,IAAI,EAAE;AACJF,IAAAA,UAAU,EAAE;AADR;AAjBE,CAAV;;AAsBA,IAAMG,OAAO,GAAG,SAAVA,OAAU,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;AAAA,MAEtBC,UAFsB,GAMpBD,MANoB,CAEtBC,UAFsB;AAAA,MAGtBC,QAHsB,GAMpBF,MANoB,CAGtBE,QAHsB;AAAA,MAItBC,QAJsB,GAMpBH,MANoB,CAItBG,QAJsB;AAAA,MAKtBC,SALsB,GAMpBJ,MANoB,CAKtBI,SALsB;AAO9B,sBACE;AAAK,IAAA,KAAK,EAAEhB,CAAC,CAACC,IAAd;AAAA,4BACE,qBAAC,gBAAD,CAAG,QAAH;AACE,MAAA,OAAO,EAAC,aADV;AAEE,MAAA,SAAS,EAAED,CAAC,CAACG,QAFf;AAGE,MAAA,YAAY,EAAEH,CAAC,CAACK,WAHlB;AAIE,MAAA,KAAK,EAAEQ;AAJT,MADF,eAOE,qBAAC,gBAAD,CAAG,OAAH;AACE,MAAA,SAAS,EAAEb,CAAC,CAACU,IADf;AAEE,MAAA,KAAK,EAAEI;AAFT,MAPF,eAWE,qBAAC,gBAAD,CAAG,QAAH;AACE,MAAA,OAAO,EAAC,WADV;AAEE,MAAA,YAAY,EAAEd,CAAC,CAACS,WAFlB;AAGE,MAAA,KAAK,EAAEM;AAHT,MAXF,eAgBE,qBAAC,gBAAD,CAAG,QAAH;AACE,MAAA,OAAO,EAAC,YADV;AAEE,MAAA,YAAY,EAAEf,CAAC,CAACS,WAFlB;AAGE,MAAA,KAAK,EAAEO;AAHT,MAhBF;AAAA,IADF;AAwBD,CA/BD;;eAiCeL,O"
+}

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
@@ -28,16 +28,18 @@ var S = {
 var InputRandom = function InputRandom(_ref) {
   var TS = _ref.TS,
       onEnter = _ref.onEnter;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.ROOT
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.SPAN
-  }, "Random Word"), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].FlatButton, {
-    rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, S.BT),
-    clDiv: TS.BT.CL_FLAT_DIV,
-    caption: "Load",
-    onClick: onEnter
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: S.SPAN,
+      children: "Random Word"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+      rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, S.BT),
+      clDiv: TS.BT.CL_FLAT_DIV,
+      caption: "Load",
+      onClick: onEnter
+    })]
+  });
 };
 
 var _default = InputRandom;

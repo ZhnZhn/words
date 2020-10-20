@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -13,7 +11,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -162,15 +162,15 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
       return watchList.groups.map(function (group, index) {
         var caption = group.caption,
             lists = group.lists;
-        return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose2, {
-          key: index,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].OpenClose2, {
           style: (0, _extends2["default"])({}, S.GROUP_DIV, TS.OPEN_CLOSE),
           styleCaption: S.CAPTION,
           caption: caption,
           draggableOption: _this._crGroupDraggableOption(isModeEdit, {
             caption: caption
-          })
-        }, lists && _this._renderLists(lists, caption, TS));
+          }),
+          children: lists && _this._renderLists(lists, caption, TS)
+        }, index);
       });
     };
 
@@ -179,8 +179,7 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
       return lists.map(function (list, index) {
         var caption = list.caption,
             items = list.items;
-        return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose2, {
-          key: index,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].OpenClose2, {
           fillOpen: C_FILL_OPEN,
           style: (0, _extends2["default"])({}, S.LIST_DIV, TS.OPEN_CLOSE),
           styleCaption: S.CAPTION,
@@ -189,8 +188,9 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
           draggableOption: _this._crListDraggableOption(isModeEdit, {
             groupCaption: groupCaption,
             caption: caption
-          })
-        }, items && _this._renderItems(items, groupCaption, caption));
+          }),
+          children: items && _this._renderItems(items, groupCaption, caption)
+        }, index);
       });
     };
 
@@ -199,8 +199,7 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
       return items.map(function (item, index) {
         var id = item.id,
             caption = item.caption;
-        return /*#__PURE__*/_react["default"].createElement(_WatchItem["default"], {
-          key: id,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItem["default"], {
           className: CL_WATCH_ITEM,
           isModeEdit: isModeEdit,
           item: item,
@@ -216,7 +215,7 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
           onDragEnter: _this._handlerDragEnterItem,
           onDragLeave: _this._handlerDragLeaveItem,
           onDrop: _this._handlerDropItem
-        });
+        }, id);
       });
     };
 
@@ -286,31 +285,34 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
         _spStyle = isModeEdit ? (0, _extends2["default"])({}, S.SP, S.SP_SHORT) : S.SP,
         TS = theme.createStyle(_MenuBrowserStyle["default"]);
 
-    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].Browser, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].Browser, {
       isShow: isShow,
-      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER)
-    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].BrowserCaption, {
-      rootStyle: TS.BROWSER_CAPTION,
-      caption: caption,
-      onClose: this._handlerHide
-    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
-      caption: "S",
-      title: T.S,
-      style: S.BT_CIRCLE,
-      onClick: this._handlerSaveWatch
-    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
-      caption: _captionEV,
-      title: T.E_V,
-      style: S.BT_CIRCLE,
-      onClick: this._handlerToggleEditMode
-    })), /*#__PURE__*/_react["default"].createElement(_EditBar["default"], {
-      isShow: isModeEdit,
-      onClickGroup: this._handlerEditGroup,
-      onClickList: this._handlerEditList
-    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
-      style: _spStyle
-    }, watchList && this._renderWatchList(watchList, TS)));
+      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
+        rootStyle: TS.BROWSER_CAPTION,
+        caption: caption,
+        onClose: this._handlerHide,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+          caption: "S",
+          title: T.S,
+          style: S.BT_CIRCLE,
+          onClick: this._handlerSaveWatch
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+          caption: _captionEV,
+          title: T.E_V,
+          style: S.BT_CIRCLE,
+          onClick: this._handlerToggleEditMode
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditBar["default"], {
+        isShow: isModeEdit,
+        onClickGroup: this._handlerEditGroup,
+        onClickList: this._handlerEditList
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
+        className: TS.CL_SCROLL_PANE,
+        style: _spStyle,
+        children: watchList && this._renderWatchList(watchList, TS)
+      })]
+    });
   };
 
   return WatchBrowser;

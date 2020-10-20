@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component, StrictMode } from 'react'
 
 import ThemeContext from './hoc/ThemeContext'
 import initTheme  from './styles/theme'
@@ -56,7 +56,7 @@ class AppWords extends Component {
   , { theme } = this.state;
 
     return (
-      <React.StrictMode>
+      <StrictMode>
       <ThemeContext.Provider value={theme}>
         <div>
           <HeaderBar
@@ -85,7 +85,7 @@ class AppWords extends Component {
           />
         </div>
       </ThemeContext.Provider>
-      </React.StrictMode>
+      </StrictMode>
     );
   }
 }

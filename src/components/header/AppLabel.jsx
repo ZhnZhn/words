@@ -1,5 +1,3 @@
-import React from 'react'
-
 const AppLabel = ({ className, style, title, caption }) => (
   <div
     className={className}

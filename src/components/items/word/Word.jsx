@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import withTheme from '../../hoc/withTheme'
 import styleConfig from './Word.Style'
@@ -32,7 +32,7 @@ const S = {
     backgroundColor: '#3f51b5'
   },
   HEADER: {
-    backgroundColor: '#404040'    
+    backgroundColor: '#404040'
   },
   HEADER_OPEN: {
     borderLeft: '6px solid #607d8b'

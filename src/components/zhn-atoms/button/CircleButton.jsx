@@ -1,8 +1,8 @@
-import React from 'react'
+import { forwardRef } from 'react'
 
 const CL = 'bt-circle';
 
-const CircleButton = React.forwardRef(({
+const CircleButton = forwardRef(({
   style,
   tabIndex='-1',
   caption='',

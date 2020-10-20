@@ -1,5 +1,3 @@
-import React from 'react'
-
 import FlatButton from '../zhn-atoms/FlatButton'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 

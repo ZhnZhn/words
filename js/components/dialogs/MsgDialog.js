@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -74,22 +74,27 @@ var MsgDialog = /*#__PURE__*/function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         caption = data.caption,
         descr = data.descr;
-    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].ModalDialog, {
       STYLE: TS.BT,
       style: (0, _extends2["default"])({}, TS.R_DIALOG, S.DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Message",
       isShow: isShow,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ROW
-    }, /*#__PURE__*/_react["default"].createElement("p", {
-      style: S.CAPTION
-    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ROW
-    }, /*#__PURE__*/_react["default"].createElement("p", {
-      style: S.DESCR
-    }, descr)));
+      onClose: onClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.ROW,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: S.CAPTION,
+          children: caption
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.ROW,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: S.DESCR,
+          children: descr
+        })
+      })]
+    });
   };
 
   return MsgDialog;

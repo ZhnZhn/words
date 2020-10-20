@@ -1,11 +1,9 @@
-import React from 'react';
-
 const IconReact = ({ style }) => (
    <a
       className="icon__react"
       style={style}
       title="React"
-      href="https://facebook.github.io/react/"
+      href="https://reactjs.org/"
       tabIndex="-1"
    >
     <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round">

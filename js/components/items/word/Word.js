@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../../hoc/withTheme"));
 
@@ -136,26 +136,27 @@ var Word = /*#__PURE__*/function (_Component) {
         _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
         _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION;
 
-    return /*#__PURE__*/_react["default"].createElement(_DndOnlyX["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DndOnlyX["default"], {
       style: S.ROOT,
       onDragEnd: this._onDragEnd,
-      onDragTouchEnd: this._onDragTouchEnd
-    }, /*#__PURE__*/_react["default"].createElement(_ItemHeader["default"], {
-      className: CL_ITEM_HEADER,
-      style: (0, _extends2["default"])({}, _headerStyle, TS.HEADER),
-      captionStyle: _captionStyle,
-      svgCloseStyle: S.SVG_CLOSE,
-      title: title,
-      caption: caption,
-      isShow: isShow,
-      onClick: this._hToggle,
-      onClose: this._hClose,
-      onAddToWatch: onAddToWatch
-    }), /*#__PURE__*/_react["default"].createElement(_WordDef["default"], {
-      style: TS.DESCR,
-      isShow: isShow,
-      config: config
-    }));
+      onDragTouchEnd: this._onDragTouchEnd,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
+        className: CL_ITEM_HEADER,
+        style: (0, _extends2["default"])({}, _headerStyle, TS.HEADER),
+        captionStyle: _captionStyle,
+        svgCloseStyle: S.SVG_CLOSE,
+        title: title,
+        caption: caption,
+        isShow: isShow,
+        onClick: this._hToggle,
+        onClose: this._hClose,
+        onAddToWatch: onAddToWatch
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordDef["default"], {
+        style: TS.DESCR,
+        isShow: isShow,
+        config: config
+      })]
+    });
   };
 
   return Word;

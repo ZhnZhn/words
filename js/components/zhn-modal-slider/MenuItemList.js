@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 
@@ -42,9 +42,10 @@ var _fClick = function _fClick(_ref) {
 var NextPageArrow = function NextPageArrow(_ref2) {
   var type = _ref2.type;
   if (type !== SUB_MENU) return null;
-  return /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.NEXT_PAGE
-  }, ">");
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    style: S.NEXT_PAGE,
+    children: ">"
+  });
 };
 
 var MenuItemList = /*#__PURE__*/function (_Component) {
@@ -81,15 +82,17 @@ var MenuItemList = /*#__PURE__*/function (_Component) {
         }),
             _onReg = index === 0 ? onReg : void 0;
 
-        return /*#__PURE__*/_react["default"].createElement(_MenuAriaItem["default"], {
-          key: name,
+        return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem["default"], {
           className: cn || itemCl,
           style: S.ITEM,
           onClick: _onClick,
-          onReg: _onReg
-        }, /*#__PURE__*/_react["default"].createElement("span", null, name), /*#__PURE__*/_react["default"].createElement(NextPageArrow, {
-          type: type
-        }));
+          onReg: _onReg,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            children: name
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(NextPageArrow, {
+            type: type
+          })]
+        }, name);
       });
     };
 
@@ -99,7 +102,9 @@ var MenuItemList = /*#__PURE__*/function (_Component) {
   var _proto = MenuItemList.prototype;
 
   _proto.render = function render() {
-    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, this._renderItems());
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.Fragment, {
+      children: this._renderItems()
+    });
   };
 
   return MenuItemList;

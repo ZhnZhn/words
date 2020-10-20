@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -111,64 +111,70 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         onAbout = _this$props.onAbout,
         isTopics = this.state.isTopics,
         S = theme.createStyle(_HeaderBar["default"]);
-    return /*#__PURE__*/_react["default"].createElement("header", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
       className: CL.HEADER,
-      style: S.HEADER
-    }, /*#__PURE__*/_react["default"].createElement(_PaneTopics["default"], {
-      paneStyle: S.PANE,
-      className: CL.PANEL_BROWSER,
-      clItem: S.CL_QUERY_ITEM,
-      isShow: isTopics,
-      items: this._topicItems,
-      onClose: this._hCloseTopics
-    }), /*#__PURE__*/_react["default"].createElement(_ProgressLoading["default"], {
-      store: store,
-      ACTIONS: LPT
-    }), /*#__PURE__*/_react["default"].createElement(_IconAppLogo["default"], {
-      className: CL.ICON_APP,
-      title: TITLE
-    }), /*#__PURE__*/_react["default"].createElement(_AppLabel["default"], {
-      className: CL.LABEL_APP,
-      caption: TITLE
-    }), /*#__PURE__*/_react["default"].createElement("span", {
-      className: CL.BROWSER_BTS
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ModalButton, {
-      rootStyle: S.BT.FLAT_ROOT,
-      clDiv: S.BT.CL_FLAT_DIV,
-      caption: "Topics",
-      title: "Topics",
-      accessKey: "t",
-      onClick: this._hClickTopics,
-      onReg: this._onRegTopics
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      className: CL.ARROW_DOWN
-    }))), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.BTS
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].FlatButton, {
-      className: CL.SETTINGS,
-      rootStyle: (0, _extends2["default"])({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
-      clDiv: S.BT.CL_FLAT_DIV,
-      divStyle: STYLE.DIV_STYLE,
-      title: "User Settings Dialog",
-      accessKey: "s",
-      onClick: onSettings
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SvgSettings, {
-      style: STYLE.SETTINGS
-    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].FlatButton, {
-      className: CL.BT_ABOUT,
-      rootStyle: S.BT.FLAT_ROOT,
-      clDiv: S.BT.CL_FLAT_DIV,
-      divStyle: STYLE.DIV_STYLE,
-      title: "About Words",
-      accessKey: "a",
-      onClick: onAbout
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SvgInfo, {
-      style: STYLE.SETTINGS
-    }))), /*#__PURE__*/_react["default"].createElement(_LimitLabel["default"], {
-      store: store,
-      ACTIONS: LPT,
-      style: S.LIMIT
-    }));
+      style: S.HEADER,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_PaneTopics["default"], {
+        paneStyle: S.PANE,
+        className: CL.PANEL_BROWSER,
+        clItem: S.CL_QUERY_ITEM,
+        isShow: isTopics,
+        items: this._topicItems,
+        onClose: this._hCloseTopics
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLoading["default"], {
+        store: store,
+        ACTIONS: LPT
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
+        className: CL.ICON_APP,
+        title: TITLE
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
+        className: CL.LABEL_APP,
+        caption: TITLE
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: CL.BROWSER_BTS,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ModalButton, {
+          rootStyle: S.BT.FLAT_ROOT,
+          clDiv: S.BT.CL_FLAT_DIV,
+          caption: "Topics",
+          title: "Topics",
+          accessKey: "t",
+          onClick: this._hClickTopics,
+          onReg: this._onRegTopics,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            className: CL.ARROW_DOWN
+          })
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL.BTS,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+          className: CL.SETTINGS,
+          rootStyle: (0, _extends2["default"])({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
+          clDiv: S.BT.CL_FLAT_DIV,
+          divStyle: STYLE.DIV_STYLE,
+          title: "User Settings Dialog",
+          accessKey: "s",
+          onClick: onSettings,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgSettings, {
+            style: STYLE.SETTINGS
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+          className: CL.BT_ABOUT,
+          rootStyle: S.BT.FLAT_ROOT,
+          clDiv: S.BT.CL_FLAT_DIV,
+          divStyle: STYLE.DIV_STYLE,
+          title: "About Words",
+          accessKey: "a",
+          onClick: onAbout,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgInfo, {
+            style: STYLE.SETTINGS
+          })
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitLabel["default"], {
+        store: store,
+        ACTIONS: LPT,
+        style: S.LIMIT
+      })]
+    });
   };
 
   return HeaderBar;

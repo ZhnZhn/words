@@ -1,5 +1,3 @@
-import React from 'react'
-
 import A from '../zhn-atoms/Atoms'
 
 const S = {

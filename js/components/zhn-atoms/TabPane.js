@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 //import PropTypes from "prop-types";
 var S = {
@@ -60,7 +60,7 @@ var TabPane = /*#__PURE__*/function (_Component) {
           selectedTabIndex = _this.state.selectedTabIndex;
       return children.map(function (tab, index) {
         var isSelected = index === selectedTabIndex;
-        return /*#__PURE__*/_react["default"].cloneElement(tab, {
+        return /*#__PURE__*/(0, _react.cloneElement)(tab, {
           key: index,
           id: index,
           onClick: _this._handleClickTab.bind(null, index),
@@ -76,13 +76,13 @@ var TabPane = /*#__PURE__*/function (_Component) {
         var _isSelected = index === selectedTabIndex,
             _divStyle = _isSelected ? S.TAB_SELECTED : S.NONE;
 
-        return /*#__PURE__*/_react["default"].createElement("div", {
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: _divStyle,
-          key: 'a' + index
-        }, /*#__PURE__*/_react["default"].cloneElement(tab.props.children, {
-          key: 'comp' + index,
-          isSelected: _isSelected
-        }));
+          children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
+            key: 'comp' + index,
+            isSelected: _isSelected
+          })
+        }, 'a' + index);
       });
     };
 
@@ -99,13 +99,16 @@ var TabPane = /*#__PURE__*/function (_Component) {
     var _this$props = this.props,
         style = _this$props.style,
         tabStyle = _this$props.tabStyle;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: style
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, S.TAB_CAPTIONS, tabStyle)
-    }, this._renderTabs()), /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.TABS
-    }, this._renderComponents()));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: style,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: (0, _extends2["default"])({}, S.TAB_CAPTIONS, tabStyle),
+        children: this._renderTabs()
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.TABS,
+        children: this._renderComponents()
+      })]
+    });
   };
 
   return TabPane;

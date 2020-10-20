@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import MenuBrowser from '../zhn-browsers/MenuBrowser'
 import WatchBrowser from '../watch-browser/WatchBrowser'
@@ -15,7 +15,7 @@ class BrowserContainer extends Component {
              onClickItem,
              updateWatchAction,
              onClickWatchItem
-           } = this.props;    
+           } = this.props;
     return (
       <div className={CL_ROOT}>
         <MenuBrowser

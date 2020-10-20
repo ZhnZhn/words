@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
@@ -127,35 +127,42 @@ var OpenClose2 = /*#__PURE__*/function (_Component) {
         _classShow = _crStyleConf2._classShow,
         _styleNotSelected = _crStyleConf2._styleNotSelected;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, S.ROOT, style)
-    }, /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
-      role: "menuitem",
-      tabIndex: "0",
-      className: CL,
-      style: _styleNotSelected,
-      onClick: this._hClick,
-      onKeyDown: this._hKeyDown
-    }, draggableOption), /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.DIV_SVG
-    }, /*#__PURE__*/_react["default"].createElement("svg", {
-      viewBox: "0 0 16 16",
-      width: "100%",
-      height: "100%",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      style: S.SVG
-    }, /*#__PURE__*/_react["default"].createElement("path", {
-      d: _pathV,
-      fill: _fillV,
-      strokeWidth: "1",
-      stroke: fillOpen
-    }))), /*#__PURE__*/_react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, S.CAPTION, styleCaption)
-    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
-      className: _classShow,
-      style: _divStyle
-    }, children));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: (0, _extends2["default"])({}, S.ROOT, style),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
+        role: "menuitem",
+        tabIndex: "0",
+        className: CL,
+        style: _styleNotSelected,
+        onClick: this._hClick,
+        onKeyDown: this._hKeyDown
+      }, draggableOption, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          style: S.DIV_SVG,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+            viewBox: "0 0 16 16",
+            width: "100%",
+            height: "100%",
+            preserveAspectRatio: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            style: S.SVG,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+              d: _pathV,
+              fill: _fillV,
+              strokeWidth: "1",
+              stroke: fillOpen
+            })
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: (0, _extends2["default"])({}, S.CAPTION, styleCaption),
+          children: caption
+        })]
+      })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: _classShow,
+        style: _divStyle,
+        children: children
+      })]
+    });
   };
 
   return OpenClose2;

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 
@@ -44,7 +44,7 @@ var RowInputText = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     var caption = this.props.caption;
-    return /*#__PURE__*/_react["default"].createElement(_TextField["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextField["default"], {
       ref: this._refInputText,
       rootStyle: S.INPUT_TEXT,
       caption: caption,

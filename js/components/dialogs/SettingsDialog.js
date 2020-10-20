@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -94,7 +94,7 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
         isShow = _this$props.isShow,
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
-    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
       className: "",
       STYLE: TS.BT,
       style: (0, _extends2["default"])({}, S.MODAL, TS.R_DIALOG),
@@ -102,33 +102,37 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
       captionStyle: TS.BROWSER_CAPTION,
       isShow: isShow,
       isWithButton: false,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].TabPane, {
-      style: S.TAB_PANE
-    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].Tab, {
-      title: "API Key",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_CardApiKey["default"], {
-      ref: this._ref1,
-      style: S.CARD_ROOT,
-      buttonsStyle: S.CARD_BUTTONS,
-      btStyle: TS.BT.FLAT_ROOT,
-      isShow: isShow,
-      onSet: this._hSetAndClose,
-      onClose: onClose
-    })), /*#__PURE__*/_react["default"].createElement(_Comp["default"].Tab, {
-      title: "UI Theme",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_CardUi["default"], {
-      style: S.CARD_ROOT,
-      buttonsStyle: S.CARD_BUTTONS,
-      btStyle: TS.BT.FLAT_ROOT,
-      chbStroke: TS.CHB_STROKE,
-      onSetTheme: this._hSelectTheme,
-      onCheckAutoSave: _SettingActions["default"].checkAutoSave,
-      onUncheckAutoSave: _SettingActions["default"].uncheckAutoSave,
-      onClose: onClose
-    }))));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
+        style: S.TAB_PANE,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+          title: "API Key",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardApiKey["default"], {
+            ref: this._ref1,
+            style: S.CARD_ROOT,
+            buttonsStyle: S.CARD_BUTTONS,
+            btStyle: TS.BT.FLAT_ROOT,
+            isShow: isShow,
+            onSet: this._hSetAndClose,
+            onClose: onClose
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+          title: "UI Theme",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardUi["default"], {
+            style: S.CARD_ROOT,
+            buttonsStyle: S.CARD_BUTTONS,
+            btStyle: TS.BT.FLAT_ROOT,
+            chbStroke: TS.CHB_STROKE,
+            onSetTheme: this._hSelectTheme,
+            onCheckAutoSave: _SettingActions["default"].checkAutoSave,
+            onUncheckAutoSave: _SettingActions["default"].uncheckAutoSave,
+            onClose: onClose
+          })
+        })]
+      })
+    });
   };
 
   return SettingsDialog;

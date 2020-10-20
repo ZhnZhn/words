@@ -11,7 +11,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -70,7 +72,7 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    var _React$createElement;
+    var _jsx2;
 
     var _this$props = this.props,
         theme = _this$props.theme,
@@ -78,52 +80,57 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
         store = _this$props.store,
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"] //STYLE={TS.BT}
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"] //STYLE={TS.BT}
     , {
       style: (0, _extends2["default"])({}, TS.R_DIALOG, _Dialog2["default"].DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Watch Groups Edit",
       isShow: isShow,
       isWithButton: false,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].TabPane, {
-      style: _Dialog2["default"].TAB_PANE,
-      tabStyle: _Dialog2["default"].TABS
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
-      title: "Create",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_GroupAddPane["default"], {
-      store: store,
-      inputStyle: TS.INPUT,
-      btStyle: TS.BT.FLAT_ROOT,
-      actionCompleted: EDIT_WATCH_COMPLETED,
-      actionFailed: EDIT_WATCH_FAILED,
-      forActionType: ADD_GROUP,
-      msgOnIsEmptyName: emptyName,
-      onCreate: addGroup,
-      onClose: onClose
-    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
-      title: "Rename",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_GroupEditPane["default"], {
-      store: store,
-      inputStyle: TS.INPUT,
-      btStyle: TS.BT.FLAT_ROOT,
-      actionCompleted: EDIT_WATCH_COMPLETED,
-      actionFailed: EDIT_WATCH_FAILED,
-      forActionType: RENAME_GROUP,
-      msgOnNotSelect: notSelected,
-      msgOnIsEmptyName: emptyName,
-      onRename: renameGroup,
-      onClose: onClose
-    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
-      title: "Delete",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_GroupDeletePane["default"], (_React$createElement = {
-      store: store,
-      inputStyle: TS.INPUT,
-      btStyle: TS.BT.FLAT_ROOT
-    }, _React$createElement["store"] = store, _React$createElement.actionCompleted = EDIT_WATCH_COMPLETED, _React$createElement.forActionType = DELETE_GROUP, _React$createElement.msgOnNotSelect = notSelected, _React$createElement.onDelete = deleteGroup, _React$createElement.onClose = onClose, _React$createElement)))));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].TabPane, {
+        style: _Dialog2["default"].TAB_PANE,
+        tabStyle: _Dialog2["default"].TABS,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+          title: "Create",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupAddPane["default"], {
+            store: store,
+            inputStyle: TS.INPUT,
+            btStyle: TS.BT.FLAT_ROOT,
+            actionCompleted: EDIT_WATCH_COMPLETED,
+            actionFailed: EDIT_WATCH_FAILED,
+            forActionType: ADD_GROUP,
+            msgOnIsEmptyName: emptyName,
+            onCreate: addGroup,
+            onClose: onClose
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+          title: "Rename",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupEditPane["default"], {
+            store: store,
+            inputStyle: TS.INPUT,
+            btStyle: TS.BT.FLAT_ROOT,
+            actionCompleted: EDIT_WATCH_COMPLETED,
+            actionFailed: EDIT_WATCH_FAILED,
+            forActionType: RENAME_GROUP,
+            msgOnNotSelect: notSelected,
+            msgOnIsEmptyName: emptyName,
+            onRename: renameGroup,
+            onClose: onClose
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+          title: "Delete",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupDeletePane["default"], (_jsx2 = {
+            store: store,
+            inputStyle: TS.INPUT,
+            btStyle: TS.BT.FLAT_ROOT
+          }, _jsx2["store"] = store, _jsx2.actionCompleted = EDIT_WATCH_COMPLETED, _jsx2.forActionType = DELETE_GROUP, _jsx2.msgOnNotSelect = notSelected, _jsx2.onDelete = deleteGroup, _jsx2.onClose = onClose, _jsx2))
+        })]
+      })
+    });
   };
 
   return EditGroupDialog;

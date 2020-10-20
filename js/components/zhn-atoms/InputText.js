@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 //import PropTypes from "prop-types";
 var S = {
@@ -125,7 +125,7 @@ var InputText = /*#__PURE__*/function (_Component) {
         _autoCorrect = spellCheck ? C.ON : C.OFF,
         _spellCheck = spellCheck ? "true" : "false";
 
-    return /*#__PURE__*/_react["default"].createElement("input", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
       style: (0, _extends2["default"])({}, S.INPUT_TEXT, style),
       type: C.TEXT,
       name: C.TEXT,

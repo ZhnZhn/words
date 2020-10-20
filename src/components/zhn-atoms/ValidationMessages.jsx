@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from "prop-types";
 
 import DialogStyles from '../styles/DialogStyles';
@@ -16,7 +16,7 @@ class ValidationMessages extends Component {
    static propTypes = {
      validationMessages : PropTypes.array
    }
-  */ 
+  */
    static defaultProps = {
      validationMessages : []
    }

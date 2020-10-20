@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var BORDER_LEFT = 'border-left';
 var DRAG_START_BORDER_LEFT = "4px solid #D64336";
@@ -174,7 +174,7 @@ var DndOnlyX = /*#__PURE__*/function (_Component) {
     var _this$props = this.props,
         style = _this$props.style,
         children = _this$props.children;
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: style,
       draggable: true,
       onDragStart: this._dragStart,
@@ -185,8 +185,9 @@ var DndOnlyX = /*#__PURE__*/function (_Component) {
       onDragLeave: this._preventDefault,
       onTouchStart: this._dragTouchStart,
       onTouchMove: this._dragTouchMove,
-      onTouchEnd: this._dragTouchEnd
-    }, children);
+      onTouchEnd: this._dragTouchEnd,
+      children: children
+    });
   };
 
   return DndOnlyX;

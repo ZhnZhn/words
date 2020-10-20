@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
 //import PropTypes from "prop-types";
 
 import useClassAnimation from '../zhn-hooks/useClassAnimation'
@@ -94,7 +94,7 @@ const ModalDialog = ({
   })
   return (
     <div
-       ref={_refRootDiv}       
+       ref={_refRootDiv}
        tabIndex="0"
        className={_className2}
        style={{...style, ..._style}}

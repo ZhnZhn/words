@@ -11,7 +11,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -76,59 +78,64 @@ var EditListDialog = /*#__PURE__*/function (_Component) {
         store = _this$props.store,
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"] //STYLE={TS.BT}
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"] //STYLE={TS.BT}
     , {
       style: (0, _extends2["default"])({}, TS.R_DIALOG, _Dialog2["default"].DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Watch Lists Edit",
       isShow: isShow,
       isWithButton: false,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].TabPane, {
-      style: _Dialog2["default"].TAB_PANE,
-      tabStyle: _Dialog2["default"].TABS
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
-      title: "Create",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_ListCreatePane["default"], {
-      store: store,
-      inputStyle: TS.INPUT,
-      btStyle: TS.BT.FLAT_ROOT,
-      actionCompleted: EDIT_WATCH_COMPLETED,
-      actionFailed: EDIT_WATCH_FAILED,
-      forActionType: CREATE_LIST,
-      msgOnNotSelect: notSelected,
-      msgOnIsEmptyName: emptyName,
-      onCreate: createList,
-      onClose: onClose
-    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
-      title: "Rename",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_ListEditPane["default"], {
-      store: store,
-      inputStyle: TS.INPUT,
-      btStyle: TS.BT.FLAT_ROOT,
-      actionCompleted: EDIT_WATCH_COMPLETED,
-      actionFailed: EDIT_WATCH_FAILED,
-      forActionType: RENAME_LIST,
-      msgOnNotSelect: notSelected,
-      msgOnIsEmptyName: emptyName,
-      onRename: renameList,
-      onClose: onClose
-    })), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Tab, {
-      title: "Delete",
-      style: TS.TAB
-    }, /*#__PURE__*/_react["default"].createElement(_ListDeletePane["default"], {
-      store: store,
-      inputStyle: TS.INPUT,
-      btStyle: TS.BT.FLAT_ROOT,
-      actionCompleted: EDIT_WATCH_COMPLETED,
-      actionFailed: EDIT_WATCH_FAILED,
-      forActionType: DELETE_LIST,
-      msgOnNotSelect: notSelected,
-      onDelete: deleteList,
-      onClose: onClose
-    }))));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].TabPane, {
+        style: _Dialog2["default"].TAB_PANE,
+        tabStyle: _Dialog2["default"].TABS,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+          title: "Create",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ListCreatePane["default"], {
+            store: store,
+            inputStyle: TS.INPUT,
+            btStyle: TS.BT.FLAT_ROOT,
+            actionCompleted: EDIT_WATCH_COMPLETED,
+            actionFailed: EDIT_WATCH_FAILED,
+            forActionType: CREATE_LIST,
+            msgOnNotSelect: notSelected,
+            msgOnIsEmptyName: emptyName,
+            onCreate: createList,
+            onClose: onClose
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+          title: "Rename",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ListEditPane["default"], {
+            store: store,
+            inputStyle: TS.INPUT,
+            btStyle: TS.BT.FLAT_ROOT,
+            actionCompleted: EDIT_WATCH_COMPLETED,
+            actionFailed: EDIT_WATCH_FAILED,
+            forActionType: RENAME_LIST,
+            msgOnNotSelect: notSelected,
+            msgOnIsEmptyName: emptyName,
+            onRename: renameList,
+            onClose: onClose
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+          title: "Delete",
+          style: TS.TAB,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ListDeletePane["default"], {
+            store: store,
+            inputStyle: TS.INPUT,
+            btStyle: TS.BT.FLAT_ROOT,
+            actionCompleted: EDIT_WATCH_COMPLETED,
+            actionFailed: EDIT_WATCH_FAILED,
+            forActionType: DELETE_LIST,
+            msgOnNotSelect: notSelected,
+            onDelete: deleteList,
+            onClose: onClose
+          })
+        })]
+      })
+    });
   };
 
   return EditListDialog;

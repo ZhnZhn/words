@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
@@ -32,20 +32,21 @@ var EditBar = function EditBar(_ref) {
     return null;
   }
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.ROOT
-  }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Button, {
-    caption: "GROUP",
-    title: T.G,
-    className: CL_BT,
-    onClick: onClickGroup
-  }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Button, {
-    caption: "LIST",
-    title: T.L,
-    className: CL_BT,
-    style: S.BT_LIST,
-    onClick: onClickList
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button, {
+      caption: "GROUP",
+      title: T.G,
+      className: CL_BT,
+      onClick: onClickGroup
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button, {
+      caption: "LIST",
+      title: T.L,
+      className: CL_BT,
+      style: S.BT_LIST,
+      onClick: onClickList
+    })]
+  });
 };
 
 var _default = EditBar;

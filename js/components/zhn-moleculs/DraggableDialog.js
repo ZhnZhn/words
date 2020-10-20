@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
@@ -83,19 +83,20 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
           S = _ref$styleButton === void 0 ? {} : _ref$styleButton,
           onShowChart = _ref.onShowChart,
           onClose = _ref.onClose;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        style: STYLE.COMMAND
-      }, commandButtons, typeof onShowChart === 'function' && /*#__PURE__*/_react["default"].createElement(_RaisedButton["default"], {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: "Show",
-        onClick: onShowChart
-      }), /*#__PURE__*/_react["default"].createElement(_RaisedButton["default"], {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: "Close",
-        onClick: _this._handleClose
-      }));
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: STYLE.COMMAND,
+        children: [commandButtons, typeof onShowChart === 'function' && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+          rootStyle: S.RAISED_ROOT,
+          clDiv: S.CL_RAISED_DIV,
+          caption: "Show",
+          onClick: onShowChart
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+          rootStyle: S.RAISED_ROOT,
+          clDiv: S.CL_RAISED_DIV,
+          caption: "Close",
+          onClick: _this._handleClose
+        })]
+      });
     };
 
     return _this;
@@ -145,26 +146,28 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         _styleShow = isShow ? STYLE.BLOCK : STYLE.NONE,
         _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       ref: function ref(c) {
         return _this2.rootDiv = c;
       },
       className: _classShow,
       style: Object.assign({}, STYLE.ROOT, rootStyle, _styleShow),
       tabIndex: "0",
-      onKeyDown: this._handleKeyDown
-    }, /*#__PURE__*/_react["default"].createElement(_BrowserCaption["default"], {
-      rootStyle: browserCaptionStyle,
-      caption: caption,
-      onClose: onClose
-    }), /*#__PURE__*/_react["default"].createElement("div", {
-      style: STYLE.CHILDREN
-    }, children), this._renderCommandButton({
-      commandButtons: commandButtons,
-      styleButton: styleButton,
-      onShowChart: onShowChart,
-      onClose: onClose
-    }));
+      onKeyDown: this._handleKeyDown,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
+        rootStyle: browserCaptionStyle,
+        caption: caption,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: STYLE.CHILDREN,
+        children: children
+      }), this._renderCommandButton({
+        commandButtons: commandButtons,
+        styleButton: styleButton,
+        onShowChart: onShowChart,
+        onClose: onClose
+      })]
+    });
   };
 
   _proto.focusPrevEl = function focusPrevEl() {

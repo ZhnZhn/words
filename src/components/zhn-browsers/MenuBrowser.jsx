@@ -1,5 +1,3 @@
-import React from 'react'
-
 import useTheme from '../hoc/useTheme'
 import styleConfig from '../styles/MenuBrowserStyle'
 

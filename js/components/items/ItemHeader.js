@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -83,8 +83,8 @@ var ItemHeader = /*#__PURE__*/function (_Component) {
       }
     };
 
-    _this._refRootNode = /*#__PURE__*/_react["default"].createRef();
-    _this._refBtAdd = /*#__PURE__*/_react["default"].createRef();
+    _this._refRootNode = /*#__PURE__*/(0, _react.createRef)();
+    _this._refBtAdd = /*#__PURE__*/(0, _react.createRef)();
     return _this;
   }
 
@@ -104,27 +104,29 @@ var ItemHeader = /*#__PURE__*/function (_Component) {
         svgCloseStyle = _this$props3.svgCloseStyle,
         title = _this$props3.title,
         onClick = _this$props3.onClick;
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       tabIndex: "0",
       role: "button",
       ref: this._refRootNode,
       className: className,
       style: style,
       onClick: onClick,
-      onKeyDown: this._hKeyDown
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      className: CL_NOT_SELECTED,
-      style: captionStyle
-    }, title), /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
-      ref: this._refBtAdd,
-      caption: "A",
-      title: T.A,
-      onClick: this._hAddToWatch
-    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].SvgClose, {
-      tabIndex: "-1",
-      style: svgCloseStyle,
-      onClose: this._hClose
-    }));
+      onKeyDown: this._hKeyDown,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: CL_NOT_SELECTED,
+        style: captionStyle,
+        children: title
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+        ref: this._refBtAdd,
+        caption: "A",
+        title: T.A,
+        onClick: this._hAddToWatch
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgClose, {
+        tabIndex: "-1",
+        style: svgCloseStyle,
+        onClose: this._hClose
+      })]
+    });
   };
 
   _proto.focus = function focus() {

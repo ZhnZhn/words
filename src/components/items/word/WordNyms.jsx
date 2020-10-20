@@ -1,5 +1,3 @@
-import React, { Fragment } from 'react'
-
 import WordOf from './WordOf'
 
 const WordNyms = ({ result }) => {
@@ -12,7 +10,7 @@ const WordNyms = ({ result }) => {
     hasCategories
   } = result || {};
   return (
-    <Fragment>
+    <>
       <WordOf
         //hypernyms
         caption="typeOf (more generic)"
@@ -41,7 +39,7 @@ const WordNyms = ({ result }) => {
         items={hasCategories}
         isCount={true}
       />
-    </Fragment>
+    </>
   );
 };
 

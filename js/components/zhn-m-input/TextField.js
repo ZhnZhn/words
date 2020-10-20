@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 //import PropsTypes from 'prop-types'
 //const DB_TOUCH_PERIOD = 500
@@ -205,40 +205,45 @@ var TextField = /*#__PURE__*/function (_Component) {
         cKey = _crCaption2.cKey,
         cTail = _crCaption2.cTail;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL.SELECT,
       style: rootStyle //onDoubleClick={this._handleClearInput}
       //onTouchStart={this._handleDbTouch}
-
-    }, /*#__PURE__*/_react["default"].createElement("label", {
-      className: CL.LABEL,
-      style: (0, _extends2["default"])({}, labelStyle, _labelStyle, _labelErrStyle)
-    }, cPrefix, /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.KEY
-    }, cKey), cTail), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.DIV
-    }, /*#__PURE__*/_react["default"].createElement("input", (0, _extends2["default"])({
-      ref: this._ref,
-      type: "text",
-      className: CL.INPUT,
-      style: inputStyle,
-      value: value,
-      autoComplete: "new-text",
-      autoCorrect: "off",
-      autoCapitalize: "off",
-      translate: "false",
-      accessKey: accessKey
-    }, restProps, {
-      onFocus: this._handleFocusInput,
-      onBlur: this._handleBlurInput,
-      onChange: this._handleInputChange,
-      onKeyDown: this._handleKeyDown
-    })), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.INPUT_LINE,
-      style: _lineStyle
-    }), _lineStyle && /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.INPUT_MSG_ERR
-    }, errorMsg)));
+      ,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
+        className: CL.LABEL,
+        style: (0, _extends2["default"])({}, labelStyle, _labelStyle, _labelErrStyle),
+        children: [cPrefix, /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.KEY,
+          children: cKey
+        }), cTail]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL.DIV,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", (0, _extends2["default"])({
+          ref: this._ref,
+          type: "text",
+          className: CL.INPUT,
+          style: inputStyle,
+          value: value,
+          autoComplete: "new-text",
+          autoCorrect: "off",
+          autoCapitalize: "off",
+          translate: "false",
+          accessKey: accessKey
+        }, restProps, {
+          onFocus: this._handleFocusInput,
+          onBlur: this._handleBlurInput,
+          onChange: this._handleInputChange,
+          onKeyDown: this._handleKeyDown
+        })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.INPUT_LINE,
+          style: _lineStyle
+        }), _lineStyle && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.INPUT_MSG_ERR,
+          children: errorMsg
+        })]
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

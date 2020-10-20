@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _Comp = _interopRequireDefault(require("../../Comp"));
 
@@ -37,25 +37,26 @@ var WordSyn = function WordSyn(_ref) {
       examples = result.examples,
       synonyms = result.synonyms,
       similarTo = result.similarTo;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.ROOT
-  }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
-    caption: "derivation:",
-    rootStyle: S.DER_ROOT,
-    captionStyle: S.DER_CAPTION,
-    items: derivation
-  }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListDiv, {
-    itemStyle: S.ITEM,
-    items: examples
-  }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
-    caption: "synonyms:",
-    captionStyle: S.SYN_CAPTION,
-    items: synonyms
-  }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ListSpan, {
-    caption: "similarTo:",
-    captionStyle: S.SYN_CAPTION,
-    items: similarTo
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
+      caption: "derivation:",
+      rootStyle: S.DER_ROOT,
+      captionStyle: S.DER_CAPTION,
+      items: derivation
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListDiv, {
+      itemStyle: S.ITEM,
+      items: examples
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
+      caption: "synonyms:",
+      captionStyle: S.SYN_CAPTION,
+      items: synonyms
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
+      caption: "similarTo:",
+      captionStyle: S.SYN_CAPTION,
+      items: similarTo
+    })]
+  });
 };
 
 var _default = WordSyn;

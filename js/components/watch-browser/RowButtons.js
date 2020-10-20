@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _Button = _interopRequireDefault(require("./Button"));
 
@@ -17,15 +17,16 @@ var RowButtons = function RowButtons(_ref) {
       withoutClear = _ref.withoutClear,
       onClear = _ref.onClear,
       onClose = _ref.onClose;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: _Pane["default"].COMMAND_DIV
-  }, Primary, !withoutClear && /*#__PURE__*/_react["default"].createElement(_Button["default"].Clear, {
-    style: btStyle,
-    onClick: onClear
-  }), /*#__PURE__*/_react["default"].createElement(_Button["default"].Close, {
-    style: btStyle,
-    onClick: onClose
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: _Pane["default"].COMMAND_DIV,
+    children: [Primary, !withoutClear && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Button["default"].Clear, {
+      style: btStyle,
+      onClick: onClear
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Button["default"].Close, {
+      style: btStyle,
+      onClick: onClose
+    })]
+  });
 };
 
 var _default = RowButtons;

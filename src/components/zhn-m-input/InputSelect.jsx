@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import ArrowCell from './ArrowCell'
 import OptionsPane from './OptionsPane'
@@ -31,7 +31,7 @@ class InputSelect extends Component {
       item: props.initItem
     }
   }
-  
+
   static getDerivedStateFromProps(props, state) {
     if (props.options !== state.initialOptions) {
       return {

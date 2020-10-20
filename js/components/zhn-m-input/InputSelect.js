@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 
@@ -87,31 +87,38 @@ var InputSelect = /*#__PURE__*/function (_Component) {
         _this$state = this.state,
         isShow = _this$state.isShow,
         item = _this$state.item;
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL.SELECT,
       style: TS.ROOT,
-      onClick: this._handleOpen
-    }, /*#__PURE__*/_react["default"].createElement(_OptionsPane["default"], {
-      rootStyle: TS.MODAL_PANE,
-      isShow: isShow,
-      item: item,
-      options: options,
-      clItem: TS.CL_ITEM || CL.ITEM,
-      itemStyle: TS.ITEM,
-      onSelect: this._handleSelect,
-      onClose: this._handleClose
-    }), /*#__PURE__*/_react["default"].createElement("label", {
-      className: CL.LABEL
-    }, caption), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.DIV
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.DIV_VALUE
-    }, item.caption), /*#__PURE__*/_react["default"].createElement("button", {
-      className: CL.DIV_BT,
-      tabIndex: "0"
-    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_ArrowCell["default"], null))), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.INPUT_LINE
-    })));
+      onClick: this._handleOpen,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_OptionsPane["default"], {
+        rootStyle: TS.MODAL_PANE,
+        isShow: isShow,
+        item: item,
+        options: options,
+        clItem: TS.CL_ITEM || CL.ITEM,
+        itemStyle: TS.ITEM,
+        onSelect: this._handleSelect,
+        onClose: this._handleClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+        className: CL.LABEL,
+        children: caption
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL.DIV,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.DIV_VALUE,
+          children: item.caption
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          className: CL.DIV_BT,
+          tabIndex: "0",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell["default"], {})
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.INPUT_LINE
+        })]
+      })]
+    });
   };
 
   return InputSelect;

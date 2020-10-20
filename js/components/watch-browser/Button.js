@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 
@@ -23,7 +23,7 @@ var S = {
 var Clear = function Clear(_ref) {
   var style = _ref.style,
       onClick = _ref.onClick;
-  return /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
     rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, style),
     clDiv: CL_DIV,
     caption: "Clear",
@@ -35,7 +35,7 @@ var Clear = function Clear(_ref) {
 var Close = function Close(_ref2) {
   var style = _ref2.style,
       onClick = _ref2.onClick;
-  return /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
     rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, style),
     clDiv: CL_DIV,
     caption: "Close",
@@ -49,7 +49,7 @@ var Primary = function Primary(_ref3) {
       caption = _ref3.caption,
       title = _ref3.title,
       onClick = _ref3.onClick;
-  return /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
     rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, style),
     clDiv: CL_DIV,
     caption: caption,

@@ -1,6 +1,4 @@
-import React from 'react'
-
-const IconWordsApi = ({ className, style }) =>
+const IconWordsApi = ({ className, style }) => (
  <a
    className="icon__words"
    style={style}
@@ -11,5 +9,6 @@ const IconWordsApi = ({ className, style }) =>
       src="css/wordsapilogo.png"
     />
  </a>
+);
 
  export default IconWordsApi

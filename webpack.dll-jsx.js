@@ -45,10 +45,11 @@ module.exports = {
   },
   plugins : [    
     new webpack.DllReferencePlugin({
-      context: '.',
+      context: __dirname,
       manifest: require('./dll/lib-manifest.json')
     }),    
     new HtmlWebpackPlugin({
+        minify: false,
         filename: path.resolve('index.html'),
         template: path.resolve('template', 'index.ejs'),
         inject: false,

@@ -1,22 +1,21 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = 'bt-clear';
 
 var ButtonClear = function ButtonClear(_ref) {
   var style = _ref.style,
       onClick = _ref.onClick;
-  return /*#__PURE__*/_react["default"].createElement("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: CL,
     style: style,
-    onClick: onClick
-  }, "x");
+    onClick: onClick,
+    children: "x"
+  });
 };
 
 var _default = ButtonClear;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import ModalPane from '../zhn-moleculs/ModalPane'
 import A from '../zhn-atoms/Atoms'

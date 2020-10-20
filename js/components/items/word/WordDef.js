@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../../Comp"));
 
@@ -35,9 +35,10 @@ var S = {
 var Span = function Span(_ref) {
   var style = _ref.style,
       text = _ref.text;
-  return /*#__PURE__*/_react["default"].createElement("span", {
-    style: style
-  }, "\xA0", text);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+    style: style,
+    children: ["\xA0", text]
+  });
 };
 
 var WordDef = /*#__PURE__*/function (_Component) {
@@ -60,25 +61,25 @@ var WordDef = /*#__PURE__*/function (_Component) {
       return results.map(function (result, index) {
         var definition = result.definition,
             partOfSpeech = result.partOfSpeech,
-            _afterComp = /*#__PURE__*/_react["default"].createElement(Span, {
+            _afterComp = /*#__PURE__*/(0, _jsxRuntime.jsx)(Span, {
           style: S.OC_AFTER,
           text: partOfSpeech
         });
 
-        return /*#__PURE__*/_react["default"].createElement(_Comp["default"].OpenClose, {
-          key: index,
+        return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].OpenClose, {
           isClose: true,
           style: style,
           caption: definition,
           fillOpen: S.FILL_OPEN,
           captionStyle: S.OC_CAPTION,
           afterCaptionComp: _afterComp,
-          childrenStyle: S.OC_CHILDREN
-        }, /*#__PURE__*/_react["default"].createElement(_WordSyn["default"], {
-          result: result
-        }), /*#__PURE__*/_react["default"].createElement(_WordNyms["default"], {
-          result: result
-        }));
+          childrenStyle: S.OC_CHILDREN,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WordSyn["default"], {
+            result: result
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordNyms["default"], {
+            result: result
+          })]
+        }, index);
       });
     };
 
@@ -92,10 +93,11 @@ var WordDef = /*#__PURE__*/function (_Component) {
         isShow = _this$props.isShow,
         style = _this$props.style,
         config = _this$props.config;
-    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ShowHide, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ShowHide, {
       style: style,
-      isShow: isShow
-    }, this._renderDefinitions(config.results, style));
+      isShow: isShow,
+      children: this._renderDefinitions(config.results, style)
+    });
   };
 
   return WordDef;

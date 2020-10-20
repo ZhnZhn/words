@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 //import PropsTypes from 'prop-types'
 
 //const DB_TOUCH_PERIOD = 500

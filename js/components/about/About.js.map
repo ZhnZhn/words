@@ -1,1 +1,39 @@
-{"version":3,"sources":["../../../src/components/about/About.jsx"],"names":["CL_SHOW","About","store","showAction","closeAction","isShow","setIsShow","_hClose","actionType","data","TS","styleConfig","_cn","_style","BLOCK","NONE","STYLE","ABOUT_ROOT","ROOT","BROWSER_CAPTION","CL_SCROLL_PANE","SCROLL_DIV","DIV_WRAPPER","DIV_TEXT","APP_TITLE","PADDING_TOP","ICON","ICON_GITHUB","BLACK"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;AACA;;AAEA;;AACA;;AACA;;AAEA;;AAEA,IAAMA,OAAO,GAAG,YAAhB;;AAEA,IAAMC,KAAK,GAAG,SAARA,KAAQ,OAAwC;AAAA,MAArCC,KAAqC,QAArCA,KAAqC;AAAA,MAA9BC,UAA8B,QAA9BA,UAA8B;AAAA,MAAlBC,WAAkB,QAAlBA,WAAkB;;AAAA,kBACxB,qBAAS,IAAT,CADwB;AAAA,MAC7CC,MAD6C;AAAA,MACrCC,SADqC;AAAA,MAElDC,OAFkD,GAExC,wBAAY,YAAM;AAC5BD,IAAAA,SAAS,CAAC,KAAD,CAAT;AACD,GAFW,EAET,EAFS,CAFwC;;AAMpD,6BAAUJ,KAAV,EAAiB,UAACM,UAAD,EAAaC,IAAb,EAAsB;AACrC,YAAOD,UAAP;AACE,WAAKL,UAAL;AACGG,QAAAA,SAAS,CAAC,IAAD,CAAT;AACA;;AACH,WAAKF,WAAL;AACGE,QAAAA,SAAS,CAAC,KAAD,CAAT;AACA;;AACH;AAAS;AAPX;AASD,GAVD;;AAYA,MAAMI,EAAE,GAAG,0BAASC,iBAAT,CAAX;AAAA,MACEC,GAAG,GAAGP,MAAM,GAAGL,OAAH,GAAa,IAD3B;AAAA,MAEEa,MAAM,GAAGR,MAAM,GAAGK,EAAE,CAACI,KAAN,GAAcJ,EAAE,CAACK,IAFlC;;AAIA,sBACE;AACE,IAAA,SAAS,EAAEH,GADb;AAEE,IAAA,KAAK,gCAAMI,2BAAMC,UAAZ,EAA2BJ,MAA3B,EAAsCH,EAAE,CAACQ,IAAzC;AAFP,kBAIG,gCAAC,iBAAD,CAAG,cAAH;AACG,IAAA,SAAS,EAAER,EAAE,CAACS,eADjB;AAEG,IAAA,OAAO,EAAC,OAFX;AAGG,IAAA,OAAO,EAAEZ;AAHZ,IAJH,eASG,gCAAC,iBAAD,CAAG,UAAH;AACG,IAAA,SAAS,EAAEG,EAAE,CAACU,cADjB;AAEG,IAAA,KAAK,EAAEV,EAAE,CAACW;AAFb,kBAIE;AAAK,IAAA,KAAK,EAAEX,EAAE,CAACY;AAAf,kBACG;AAAK,IAAA,KAAK,EAAEZ,EAAE,CAACa;AAAf,kBACG,wDACE;AAAM,IAAA,KAAK,EAAEb,EAAE,CAACc;AAAhB,aADF,iCADH,eAIG,gFACsB,gCAAC,iBAAD,CAAM,QAAN,OADtB,wBAC2C,gCAAC,iBAAD,CAAM,QAAN,OAD3C,CAJH,eAOG;AAAG,IAAA,KAAK,EAAEd,EAAE,CAACe;AAAb,qDAPH,eAUG,wFAVH,CADH,eAeE,gCAAC,uBAAD;AACG,IAAA,SAAS,EAAEf,EAAE,CAACgB,IADjB;AAEG,IAAA,eAAe,EAAEhB,EAAE,CAACiB;AAFvB,IAfF,eAmBE;AAAG,IAAA,KAAK,EAAEjB,EAAE,CAACkB;AAAb,wBAnBF,CAJF,CATH,CADF;AAwCD,CA9DD;;eAgEe3B,K","sourcesContent":["import React, { useState, useCallback } from 'react'\r\n\r\nimport useListen from '../hoc/useListen'\r\nimport useTheme from '../hoc/useTheme'\r\nimport styleConfig from './About.Style'\r\n\r\nimport A from '../zhn-atoms/Atoms'\r\nimport Link from '../links/Links'\r\nimport IconLogoBar from './IconLogoBar'\r\n\r\nimport STYLE from '../styles/ContainerStyle'\r\n\r\nconst CL_SHOW = \"show-popup\";\r\n\r\nconst About = ({ store, showAction, closeAction }) => {\r\n  const [isShow, setIsShow] = useState(true)\r\n  , _hClose = useCallback(() => {\r\n    setIsShow(false)\r\n  }, [])\r\n\r\n  useListen(store, (actionType, data) => {\r\n    switch(actionType){\r\n      case showAction:\r\n         setIsShow(true)\r\n         break;\r\n      case closeAction:\r\n         setIsShow(false)\r\n         break;\r\n      default: return;\r\n    }\r\n  })\r\n\r\n  const TS = useTheme(styleConfig)\r\n  , _cn = isShow ? CL_SHOW : null\r\n  , _style = isShow ? TS.BLOCK : TS.NONE;\r\n\r\n  return (\r\n    <div\r\n      className={_cn}\r\n      style={{...STYLE.ABOUT_ROOT, ..._style, ...TS.ROOT}}\r\n     >\r\n       <A.BrowserCaption\r\n          rootStyle={TS.BROWSER_CAPTION}\r\n          caption=\"About\"\r\n          onClose={_hClose}\r\n       />\r\n       <A.ScrollPane\r\n          className={TS.CL_SCROLL_PANE}\r\n          style={TS.SCROLL_DIV}\r\n       >\r\n         <div style={TS.DIV_WRAPPER}>\r\n            <div style={TS.DIV_TEXT}>\r\n               <p>\r\n                 <span style={TS.APP_TITLE}>Words</span> is web app, RESTful client.\r\n               </p>\r\n               <p>\r\n                 Words data provider <Link.WordsApi/> via <Link.RapidApi/>\r\n               </p>\r\n               <p style={TS.PADDING_TOP}>\r\n                 Provider's API Key is required for using app.\r\n               </p>\r\n               <p>\r\n                 API Key can be set in Settings Dialog [s].\r\n               </p>\r\n           </div>\r\n           <IconLogoBar\r\n              iconStyle={TS.ICON}\r\n              iconGitHubStyle={TS.ICON_GITHUB}\r\n           />\r\n           <p style={TS.BLACK}>\r\n             *Logos Fair Use.\r\n            </p>\r\n         </div>\r\n      </A.ScrollPane>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default About\r\n"],"file":"About.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/About.js"
+ ],
+ "file": "../../../src/components/about/About.js",
+ "names": [
+  "CL_SHOW",
+  "About",
+  "store",
+  "showAction",
+  "closeAction",
+  "isShow",
+  "setIsShow",
+  "_hClose",
+  "actionType",
+  "data",
+  "TS",
+  "styleConfig",
+  "_cn",
+  "_style",
+  "BLOCK",
+  "NONE",
+  "STYLE",
+  "ABOUT_ROOT",
+  "ROOT",
+  "BROWSER_CAPTION",
+  "CL_SCROLL_PANE",
+  "SCROLL_DIV",
+  "DIV_WRAPPER",
+  "DIV_TEXT",
+  "APP_TITLE",
+  "PADDING_TOP",
+  "ICON",
+  "ICON_GITHUB",
+  "BLACK"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AAEA;;AACA;;AACA;;AAEA;;AACA;;AACA;;AAEA;;AAEA,IAAMA,OAAO,GAAG,YAAhB;;AAEA,IAAMC,KAAK,GAAG,SAARA,KAAQ,OAAwC;AAAA,MAArCC,KAAqC,QAArCA,KAAqC;AAAA,MAA9BC,UAA8B,QAA9BA,UAA8B;AAAA,MAAlBC,WAAkB,QAAlBA,WAAkB;;AAAA,kBACxB,qBAAS,IAAT,CADwB;AAAA,MAC7CC,MAD6C;AAAA,MACrCC,SADqC;AAAA,MAElDC,OAFkD,GAExC,wBAAY,YAAM;AAC5BD,IAAAA,SAAS,CAAC,KAAD,CAAT;AACD,GAFW,EAET,EAFS,CAFwC;;AAMpD,6BAAUJ,KAAV,EAAiB,UAACM,UAAD,EAAaC,IAAb,EAAsB;AACrC,YAAOD,UAAP;AACE,WAAKL,UAAL;AACGG,QAAAA,SAAS,CAAC,IAAD,CAAT;AACA;;AACH,WAAKF,WAAL;AACGE,QAAAA,SAAS,CAAC,KAAD,CAAT;AACA;;AACH;AAAS;AAPX;AASD,GAVD;;AAYA,MAAMI,EAAE,GAAG,0BAASC,iBAAT,CAAX;AAAA,MACEC,GAAG,GAAGP,MAAM,GAAGL,OAAH,GAAa,IAD3B;AAAA,MAEEa,MAAM,GAAGR,MAAM,GAAGK,EAAE,CAACI,KAAN,GAAcJ,EAAE,CAACK,IAFlC;;AAIA,sBACE;AACE,IAAA,SAAS,EAAEH,GADb;AAEE,IAAA,KAAK,gCAAMI,2BAAMC,UAAZ,EAA2BJ,MAA3B,EAAsCH,EAAE,CAACQ,IAAzC,CAFP;AAAA,4BAIG,qBAAC,iBAAD,CAAG,cAAH;AACG,MAAA,SAAS,EAAER,EAAE,CAACS,eADjB;AAEG,MAAA,OAAO,EAAC,OAFX;AAGG,MAAA,OAAO,EAAEZ;AAHZ,MAJH,eASG,qBAAC,iBAAD,CAAG,UAAH;AACG,MAAA,SAAS,EAAEG,EAAE,CAACU,cADjB;AAEG,MAAA,KAAK,EAAEV,EAAE,CAACW,UAFb;AAAA,6BAIE;AAAK,QAAA,KAAK,EAAEX,EAAE,CAACY,WAAf;AAAA,gCACG;AAAK,UAAA,KAAK,EAAEZ,EAAE,CAACa,QAAf;AAAA,kCACG;AAAA,oCACE;AAAM,cAAA,KAAK,EAAEb,EAAE,CAACc,SAAhB;AAAA;AAAA,cADF;AAAA,YADH,eAIG;AAAA,4DACsB,qBAAC,iBAAD,CAAM,QAAN,KADtB,wBAC2C,qBAAC,iBAAD,CAAM,QAAN,KAD3C;AAAA,YAJH,eAOG;AAAG,YAAA,KAAK,EAAEd,EAAE,CAACe,WAAb;AAAA;AAAA,YAPH,eAUG;AAAA;AAAA,YAVH;AAAA,UADH,eAeE,qBAAC,uBAAD;AACG,UAAA,SAAS,EAAEf,EAAE,CAACgB,IADjB;AAEG,UAAA,eAAe,EAAEhB,EAAE,CAACiB;AAFvB,UAfF,eAmBE;AAAG,UAAA,KAAK,EAAEjB,EAAE,CAACkB,KAAb;AAAA;AAAA,UAnBF;AAAA;AAJF,MATH;AAAA,IADF;AAwCD,CA9DD;;eAgEe3B,K"
+}

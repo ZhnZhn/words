@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 const BORDER_LEFT = 'border-left';
 const DRAG_START_BORDER_LEFT = "4px solid #D64336";

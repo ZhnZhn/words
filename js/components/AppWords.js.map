@@ -1,1 +1,46 @@
-{"version":3,"sources":["../../src/components/AppWords.jsx"],"names":["CL_COMP","CL_ITEMS","WORDS_BROWSER_ID","AppWords","state","theme","initTheme","_onStore","actionType","themeName","setState","setThemeName","componentDidCatch","error","info","console","warn","componentDidMount","props","store","action","unsubscribe","listen","showAbout","componentWillUnmount","render","CAT","LPT","headerActions","browserActions","SHOW_BROWSER","SHOW_DIALOG","UPDATE_WATCH_BROWSER","SHOW_PANE","SHOW_MODAL_DIALOG","Component"],"mappings":";;;;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AAEA,IAAMA,OAAO,GAAG,qBAAhB;AACA,IAAMC,QAAQ,GAAG,iBAAjB;AACA,IAAMC,gBAAgB,GAAG,kBAAzB;;IAEMC,Q;;;;;;;;;;;UAEJC,K,GAAQ;AACNC,MAAAA,KAAK,EAAEC;AADD,K;;UAmBRC,Q,GAAW,UAACC,UAAD,EAAaC,SAAb,EAA2B;AACpC,UAAID,UAAU,KAAK,aAAnB,EAAiC;AAC/B,cAAKE,QAAL,CAAc,gBAAe;AAAA,cAAZL,KAAY,QAAZA,KAAY;AACzBA,UAAAA,KAAK,CAACM,YAAN,CAAmBF,SAAnB;AACA,iBAAO;AACLJ,YAAAA,KAAK,gCAAMA,KAAN;AADA,WAAP;AAGH,SALD;AAMD;AACF,K;;;;;;;SAxBDO,iB,GAAA,2BAAkBC,KAAlB,EAAyBC,IAAzB,EAA8B;AAC5B;AACAC,IAAAA,OAAO,CAACC,IAAR,CAAaH,KAAb,EAAoBC,IAApB;AACA;AACD,G;;SAEDG,iB,GAAA,6BAAmB;AAAA,sBACS,KAAKC,KADd;AAAA,QACTC,KADS,eACTA,KADS;AAAA,QACFC,MADE,eACFA,MADE;AAEjB,SAAKC,WAAL,GAAmBF,KAAK,CAACG,MAAN,CAAa,KAAKf,QAAlB,CAAnB;AACAa,IAAAA,MAAM,CAACG,SAAP;AACD,G;;SACDC,oB,GAAA,gCAAsB;AACpB,SAAKH,WAAL;AACD,G;;SAcDI,M,GAAA,kBAAQ;AAAA,uBAKF,KAAKP,KALH;AAAA,QAEJC,KAFI,gBAEJA,KAFI;AAAA,QAGJO,GAHI,gBAGJA,GAHI;AAAA,QAGCC,GAHD,gBAGCA,GAHD;AAAA,QAIJP,MAJI,gBAIJA,MAJI;AAAA,QAOJQ,aAPI,GASFR,MATE,CAOJQ,aAPI;AAAA,QAQJC,cARI,GASFT,MATE,CAQJS,cARI;AAAA,QAUJxB,KAVI,GAUM,KAAKD,KAVX,CAUJC,KAVI;AAYN,wBACE,gCAAC,iBAAD,CAAO,UAAP,qBACA,gCAAC,wBAAD,CAAc,QAAd;AAAuB,MAAA,KAAK,EAAEA;AAA9B,oBACE,0DACE,gCAAC,qBAAD;AACE,MAAA,KAAK,EAAEc,KADT;AAEE,MAAA,GAAG,EAAEQ;AAFP,OAGMC,aAHN,EADF,eAME;AAAK,MAAA,SAAS,EAAE5B;AAAhB,oBACG,gCAAC,qBAAD,CAAW,OAAX;AACE,MAAA,KAAK,EAAEmB,KADT;AAEE,MAAA,iBAAiB,EAAEO,GAAG,CAACI,YAFzB;AAGE,MAAA,gBAAgB,EAAEJ,GAAG,CAACK,WAHxB;AAIE,MAAA,SAAS,EAAE7B,gBAJb;AAKE,MAAA,iBAAiB,EAAEwB,GAAG,CAACM;AALzB,OAMMH,cANN,EADH,eASG,gCAAC,qBAAD,CAAW,GAAX;AACE,MAAA,SAAS,EAAE5B,QADb;AAEE,MAAA,KAAK,EAAEkB,KAFT;AAGE,MAAA,SAAS,EAAEO,GAAG,CAACO;AAHjB,MATH,CANF,eAqBE,gCAAC,qBAAD,CAAW,OAAX;AACG,MAAA,KAAK,EAAEd,KADV;AAEG,MAAA,WAAW,EAAEO,GAAG,CAACQ;AAFpB,MArBF,CADF,CADA,CADF;AAgCD,G;;;EA7EoBC,gB;;eAgFRhC,Q","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport ThemeContext from './hoc/ThemeContext'\r\nimport initTheme  from './styles/theme'\r\n\r\nimport HeaderBar from './header/HeaderBar'\r\nimport Container from './zhn-containers/Container'\r\n\r\nconst CL_COMP = \"component-container\";\r\nconst CL_ITEMS = \"items-container\";\r\nconst WORDS_BROWSER_ID = 'WORDS_DIFINITION';\r\n\r\nclass AppWords extends Component {\r\n\r\n  state = {\r\n    theme: initTheme\r\n  }\r\n\r\n  componentDidCatch(error, info){\r\n    /*eslint-disable no-console*/\r\n    console.warn(error, info)\r\n    /*eslint-enable no-console*/\r\n  }\r\n\r\n  componentDidMount(){\r\n    const { store, action } = this.props\r\n    this.unsubscribe = store.listen(this._onStore)\r\n    action.showAbout()\r\n  }\r\n  componentWillUnmount(){\r\n    this.unsubscribe()\r\n  }\r\n\r\n  _onStore = (actionType, themeName) => {\r\n    if (actionType === \"changeTheme\"){\r\n      this.setState(({ theme }) => {\r\n          theme.setThemeName(themeName)\r\n          return {\r\n            theme: {...theme}\r\n          };\r\n      })\r\n    }\r\n  }\r\n\r\n\r\n  render(){\r\n    const {\r\n      store,\r\n      CAT, LPT,\r\n      action,\r\n    } = this.props\r\n  , {\r\n      headerActions,\r\n      browserActions\r\n    } = action\r\n  , { theme } = this.state;\r\n\r\n    return (\r\n      <React.StrictMode>\r\n      <ThemeContext.Provider value={theme}>\r\n        <div>\r\n          <HeaderBar\r\n            store={store}\r\n            LPT={LPT}\r\n            {...headerActions}\r\n          />\r\n          <div className={CL_COMP}>\r\n             <Container.Browser\r\n               store={store}\r\n               showBrowserAction={CAT.SHOW_BROWSER}\r\n               showDialogAction={CAT.SHOW_DIALOG}\r\n               browserId={WORDS_BROWSER_ID}\r\n               updateWatchAction={CAT.UPDATE_WATCH_BROWSER}\r\n               {...browserActions}\r\n             />\r\n             <Container.Hrz\r\n               className={CL_ITEMS}\r\n               store={store}\r\n               addAction={CAT.SHOW_PANE}\r\n             />\r\n          </div>\r\n          <Container.Wrapper\r\n             store={store}\r\n             SHOW_ACTION={CAT.SHOW_MODAL_DIALOG}\r\n          />\r\n        </div>\r\n      </ThemeContext.Provider>\r\n      </React.StrictMode>\r\n    );\r\n  }\r\n}\r\n\r\nexport default AppWords\r\n"],"file":"AppWords.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/AppWords.js"
+ ],
+ "file": "../../src/components/AppWords.js",
+ "names": [
+  "CL_COMP",
+  "CL_ITEMS",
+  "WORDS_BROWSER_ID",
+  "AppWords",
+  "state",
+  "theme",
+  "initTheme",
+  "_onStore",
+  "actionType",
+  "themeName",
+  "setState",
+  "setThemeName",
+  "componentDidCatch",
+  "error",
+  "info",
+  "console",
+  "warn",
+  "componentDidMount",
+  "props",
+  "store",
+  "action",
+  "unsubscribe",
+  "listen",
+  "showAbout",
+  "componentWillUnmount",
+  "render",
+  "CAT",
+  "LPT",
+  "headerActions",
+  "browserActions",
+  "SHOW_BROWSER",
+  "SHOW_DIALOG",
+  "UPDATE_WATCH_BROWSER",
+  "SHOW_PANE",
+  "SHOW_MODAL_DIALOG",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AAEA,IAAMA,OAAO,GAAG,qBAAhB;AACA,IAAMC,QAAQ,GAAG,iBAAjB;AACA,IAAMC,gBAAgB,GAAG,kBAAzB;;IAEMC,Q;;;;;;;;;;;UAEJC,K,GAAQ;AACNC,MAAAA,KAAK,EAAEC;AADD,K;;UAmBRC,Q,GAAW,UAACC,UAAD,EAAaC,SAAb,EAA2B;AACpC,UAAID,UAAU,KAAK,aAAnB,EAAiC;AAC/B,cAAKE,QAAL,CAAc,gBAAe;AAAA,cAAZL,KAAY,QAAZA,KAAY;AACzBA,UAAAA,KAAK,CAACM,YAAN,CAAmBF,SAAnB;AACA,iBAAO;AACLJ,YAAAA,KAAK,gCAAMA,KAAN;AADA,WAAP;AAGH,SALD;AAMD;AACF,K;;;;;;;SAxBDO,iB,GAAA,2BAAkBC,KAAlB,EAAyBC,IAAzB,EAA8B;AAC5B;AACAC,IAAAA,OAAO,CAACC,IAAR,CAAaH,KAAb,EAAoBC,IAApB;AACA;AACD,G;;SAEDG,iB,GAAA,6BAAmB;AAAA,sBACS,KAAKC,KADd;AAAA,QACTC,KADS,eACTA,KADS;AAAA,QACFC,MADE,eACFA,MADE;AAEjB,SAAKC,WAAL,GAAmBF,KAAK,CAACG,MAAN,CAAa,KAAKf,QAAlB,CAAnB;AACAa,IAAAA,MAAM,CAACG,SAAP;AACD,G;;SACDC,oB,GAAA,gCAAsB;AACpB,SAAKH,WAAL;AACD,G;;SAcDI,M,GAAA,kBAAQ;AAAA,uBAKF,KAAKP,KALH;AAAA,QAEJC,KAFI,gBAEJA,KAFI;AAAA,QAGJO,GAHI,gBAGJA,GAHI;AAAA,QAGCC,GAHD,gBAGCA,GAHD;AAAA,QAIJP,MAJI,gBAIJA,MAJI;AAAA,QAOJQ,aAPI,GASFR,MATE,CAOJQ,aAPI;AAAA,QAQJC,cARI,GASFT,MATE,CAQJS,cARI;AAAA,QAUJxB,KAVI,GAUM,KAAKD,KAVX,CAUJC,KAVI;AAYN,wBACE,qBAAC,iBAAD;AAAA,6BACA,qBAAC,wBAAD,CAAc,QAAd;AAAuB,QAAA,KAAK,EAAEA,KAA9B;AAAA,+BACE;AAAA,kCACE,qBAAC,qBAAD;AACE,YAAA,KAAK,EAAEc,KADT;AAEE,YAAA,GAAG,EAAEQ;AAFP,aAGMC,aAHN,EADF,eAME;AAAK,YAAA,SAAS,EAAE5B,OAAhB;AAAA,oCACG,qBAAC,qBAAD,CAAW,OAAX;AACE,cAAA,KAAK,EAAEmB,KADT;AAEE,cAAA,iBAAiB,EAAEO,GAAG,CAACI,YAFzB;AAGE,cAAA,gBAAgB,EAAEJ,GAAG,CAACK,WAHxB;AAIE,cAAA,SAAS,EAAE7B,gBAJb;AAKE,cAAA,iBAAiB,EAAEwB,GAAG,CAACM;AALzB,eAMMH,cANN,EADH,eASG,qBAAC,qBAAD,CAAW,GAAX;AACE,cAAA,SAAS,EAAE5B,QADb;AAEE,cAAA,KAAK,EAAEkB,KAFT;AAGE,cAAA,SAAS,EAAEO,GAAG,CAACO;AAHjB,cATH;AAAA,YANF,eAqBE,qBAAC,qBAAD,CAAW,OAAX;AACG,YAAA,KAAK,EAAEd,KADV;AAEG,YAAA,WAAW,EAAEO,GAAG,CAACQ;AAFpB,YArBF;AAAA;AADF;AADA,MADF;AAgCD,G;;;EA7EoBC,gB;;eAgFRhC,Q"
+}

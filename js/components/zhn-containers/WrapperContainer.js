@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _RouterModal = _interopRequireDefault(require("../dialogs/RouterModal"));
 
@@ -97,7 +97,7 @@ var WrapperContainer = /*#__PURE__*/function (_Component) {
       return dialogs.map(function (dialog, index) {
         var type = dialog.type,
             comp = dialog.comp;
-        return /*#__PURE__*/_react["default"].createElement(comp, {
+        return /*#__PURE__*/(0, _react.createElement)(comp, {
           key: type,
           isShow: shows[type],
           data: data[type],
@@ -124,10 +124,11 @@ var WrapperContainer = /*#__PURE__*/function (_Component) {
     var _this$state3 = this.state,
         isShow = _this$state3.isShow,
         currentDialog = _this$state3.currentDialog;
-    return /*#__PURE__*/_react["default"].createElement(_ModalContainer["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalContainer["default"], {
       isShow: isShow,
-      onClose: this._handleClose.bind(null, currentDialog)
-    }, this._renderDialogs());
+      onClose: this._handleClose.bind(null, currentDialog),
+      children: this._renderDialogs()
+    });
   };
 
   return WrapperContainer;

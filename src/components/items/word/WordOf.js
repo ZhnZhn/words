@@ -1,5 +1,3 @@
-import React from 'react'
-
 import A from '../../Comp'
 
 const S = {
@@ -16,7 +14,7 @@ const S = {
   },
   LIST: {
     lineHeight: 1.5,
-    paddingBottom: 6    
+    paddingBottom: 6
   },
   LIST_CAPTION: {
     color: '#0c7abf',

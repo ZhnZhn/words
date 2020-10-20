@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 
@@ -29,20 +29,25 @@ var S = {
 var Plain = function Plain(_ref) {
   var style = _ref.style,
       children = _ref.children;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, style)
-  }, children);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, style),
+    children: children
+  });
 };
 
 var Text = function Text(_ref2) {
   var caption = _ref2.caption,
       text = _ref2.text,
       styleRoot = _ref2.styleRoot;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: (0, _extends2["default"])({}, S.ROOT_DIV, styleRoot)
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.LABEL_SPAN
-  }, caption), /*#__PURE__*/_react["default"].createElement("span", null, text));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: (0, _extends2["default"])({}, S.ROOT_DIV, styleRoot),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: S.LABEL_SPAN,
+      children: caption
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: text
+    })]
+  });
 };
 
 var _default = {

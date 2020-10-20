@@ -1,5 +1,3 @@
-import React from 'react';
-
 const IconAppLogo = ({ className, title }) => (
     <div
        className={className}

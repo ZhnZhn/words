@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
@@ -139,7 +139,7 @@ var DynamicMenuBrowser = /*#__PURE__*/function (_Component) {
         _menuModel$items = menuModel.items,
         items = _menuModel$items === void 0 ? {} : _menuModel$items;
     return menu.map(function (menuPart, index) {
-      return /*#__PURE__*/_react["default"].createElement(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
+      return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
         key: index,
         hmItems: items,
         styleConfig: styleConfig
@@ -159,26 +159,28 @@ var DynamicMenuBrowser = /*#__PURE__*/function (_Component) {
         isLoading = _this$state.isLoading,
         isLoadingFailed = _this$state.isLoadingFailed,
         menuModel = _this$state.menuModel;
-    return /*#__PURE__*/_react["default"].createElement(_Atoms["default"].Browser, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].Browser, {
       isShow: isShow,
-      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER)
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].BrowserCaption, {
-      rootStyle: TS.BROWSER_CAPTION,
-      caption: caption,
-      onClose: this._handleHide
-    }), isLoading && /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SpinnerLoading, {
-      style: S.SPINNER_LOADING
-    }), isLoadingFailed && /*#__PURE__*/_react["default"].createElement(_Atoms["default"].SpinnerLoading, {
-      style: S.SPINNER_LOADING,
-      isFailed: true
-    }), /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
-      style: S.SCROLL_PANE
-    }, this._renderMenuParts({
-      styleConfig: TS,
-      menuModel: menuModel,
-      restProps: restProps
-    }), children));
+      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].BrowserCaption, {
+        rootStyle: TS.BROWSER_CAPTION,
+        caption: caption,
+        onClose: this._handleHide
+      }), isLoading && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SpinnerLoading, {
+        style: S.SPINNER_LOADING
+      }), isLoadingFailed && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SpinnerLoading, {
+        style: S.SPINNER_LOADING,
+        isFailed: true
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].ScrollPane, {
+        className: TS.CL_SCROLL_PANE,
+        style: S.SCROLL_PANE,
+        children: [this._renderMenuParts({
+          styleConfig: TS,
+          menuModel: menuModel,
+          restProps: restProps
+        }), children]
+      })]
+    });
   };
 
   return DynamicMenuBrowser;

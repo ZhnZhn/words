@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, cloneElement } from 'react';
 //import PropTypes from "prop-types";
 
 const S = {
@@ -45,7 +45,7 @@ class TabPane extends Component {
        , { selectedTabIndex } = this.state;
        return children.map((tab, index) => {
           const isSelected = (index === selectedTabIndex);
-          return React.cloneElement(tab, {
+          return cloneElement(tab, {
             key: index,
             id: index,
             onClick: this._handleClickTab.bind(null, index),
@@ -63,7 +63,7 @@ class TabPane extends Component {
         return (
           <div style={_divStyle} key={'a'+index}>
             {
-              React.cloneElement(tab.props.children, {
+              cloneElement(tab.props.children, {
                 key: 'comp' + index,
                 isSelected: _isSelected
               })

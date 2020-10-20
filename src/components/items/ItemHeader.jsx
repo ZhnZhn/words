@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component, createRef } from 'react'
 
 import A from '../Comp'
 
@@ -40,11 +40,11 @@ class ItemHeader extends Component {
 
   constructor(props){
     super(props)
-    this._refRootNode = React.createRef()
-    this._refBtAdd = React.createRef()
+    this._refRootNode = createRef()
+    this._refBtAdd = createRef()
   }
 
-  
+
   componentDidMount(){
     if (this._refRootNode.current) {
       this._refRootNode.current.focus()

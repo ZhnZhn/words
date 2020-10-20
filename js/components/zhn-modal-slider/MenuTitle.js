@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 
@@ -57,16 +57,19 @@ var MenuTitle = /*#__PURE__*/function (_Component) {
       return null;
     }
 
-    return /*#__PURE__*/_react["default"].createElement(_MenuAriaItem["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem["default"], {
       className: baseTitleCl,
       style: S.ITEM,
       onClick: onPrevPage.bind(null, pageNumber),
-      onReg: onReg
-    }, /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.PREV_PAGE
-    }, '<'), /*#__PURE__*/_react["default"].createElement("span", {
-      style: S.TITLE
-    }, title));
+      onReg: onReg,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S.PREV_PAGE,
+        children: '<'
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S.TITLE,
+        children: title
+      })]
+    });
   };
 
   return MenuTitle;

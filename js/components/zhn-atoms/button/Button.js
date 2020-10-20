@@ -1,11 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var Button = function Button(_ref) {
   var className = _ref.className,
@@ -16,13 +14,14 @@ var Button = function Button(_ref) {
       caption = _ref$caption === void 0 ? '' : _ref$caption,
       title = _ref.title,
       onClick = _ref.onClick;
-  return /*#__PURE__*/_react["default"].createElement("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: className,
     style: style,
     tabIndex: tabIndex,
     title: title,
-    onClick: onClick
-  }, caption);
+    onClick: onClick,
+    children: caption
+  });
 };
 
 var _default = Button;

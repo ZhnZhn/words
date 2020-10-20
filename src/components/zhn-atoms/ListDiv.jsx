@@ -1,20 +1,16 @@
 
-import React, { Fragment } from 'react'
-
-const ListDiv = ({ items=[], itemStyle }) => {
-  return (
-    <Fragment>
-      {
-        items.map((str, index) => {
-          return (
-            <div key={index} style={itemStyle}>
-               {str}
-            </div>
-          );
-        })
-      }
-    </Fragment>  
-  )
-};
+const ListDiv = ({ items=[], itemStyle }) => (
+  <>
+    {
+      items.map((str, index) => {
+        return (
+          <div key={index} style={itemStyle}>
+             {str}
+          </div>
+        );
+      })
+    }
+  </>
+);
 
 export default ListDiv

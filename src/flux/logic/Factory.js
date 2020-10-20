@@ -1,4 +1,4 @@
-import React from 'react'
+import { createElement } from 'react'
 
 import throttle from '../../utils/throttle'
 
@@ -26,7 +26,7 @@ const Factory = {
   crDialog: (itemConf) => {
     const { type, dialogType, dialogProps } = itemConf
         , El = RouterDialog.getElement(dialogType);
-    return React.createElement(El, {
+    return createElement(El, {
       key: type,
       type: type,
       itemConf: itemConf,
@@ -42,7 +42,7 @@ const Factory = {
             paneType, paneCaption, paneId,
           } = itemConf
         , { Pane, Input, Item } = RouterPane.getElement(paneType)
-    return React.createElement(Pane, {
+    return createElement(Pane, {
       key: type,
       id: paneId,
       itemConf: itemConf,
@@ -65,7 +65,7 @@ const Factory = {
   },
 
   crAbout: (store) => {
-    return React.createElement(About, {
+    return createElement(About, {
       key: 'About', id: 'About',
       showAction: CAT.SHOW_ABOUT,
       closeAction: CAT.CLOSE_ABOUT,

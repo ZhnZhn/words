@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -72,30 +72,34 @@ var CardApiKey = /*#__PURE__*/function (_Component) {
       return null;
     }
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: style
-    }, /*#__PURE__*/_react["default"].createElement("form", null, /*#__PURE__*/_react["default"].createElement(_Comp["default"].PasswordField, {
-      ref: this._refInput,
-      rootStyle: S.SECRET,
-      caption: "Words API Key",
-      name: "wordsapi",
-      maxLength: "50",
-      onEnter: onSet
-    })), /*#__PURE__*/_react["default"].createElement("div", {
-      style: buttonsStyle
-    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
-      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, btStyle),
-      clDiv: CL_DIV,
-      caption: "Set & Close",
-      title: "Set & Close Dialog",
-      onClick: onSet
-    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
-      rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, btStyle),
-      clDiv: CL_DIV,
-      caption: "Close",
-      title: "Close Dialog",
-      onClick: onClose
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: style,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+          ref: this._refInput,
+          rootStyle: S.SECRET,
+          caption: "Words API Key",
+          name: "wordsapi",
+          maxLength: "50",
+          onEnter: onSet
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: buttonsStyle,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+          rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, btStyle),
+          clDiv: CL_DIV,
+          caption: "Set & Close",
+          title: "Set & Close Dialog",
+          onClick: onSet
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+          rootStyle: (0, _extends2["default"])({}, S.BT_ROOT, btStyle),
+          clDiv: CL_DIV,
+          caption: "Close",
+          title: "Close Dialog",
+          onClick: onClose
+        })]
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

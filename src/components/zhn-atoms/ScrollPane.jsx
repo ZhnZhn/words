@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CL = 'with-scroll';
 
 const ScrollPane = ({ style, className="", children }) => {

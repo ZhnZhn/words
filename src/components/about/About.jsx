@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
 import useListen from '../hoc/useListen'
 import useTheme from '../hoc/useTheme'

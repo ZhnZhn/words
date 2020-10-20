@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
 import withTheme from '../hoc/withTheme'
@@ -210,7 +210,7 @@ class WatchBrowser extends Component {
            styleCaption={S.CAPTION}
            styleNotSelected={S.ITEM_NOT_SELECTED}
            caption={caption}
-           draggableOption={this._crListDraggableOption(isModeEdit, { groupCaption, caption })}           
+           draggableOption={this._crListDraggableOption(isModeEdit, { groupCaption, caption })}
         >
          {
            items &&

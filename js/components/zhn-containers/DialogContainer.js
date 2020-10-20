@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var S = {
   ROOT: {
@@ -105,7 +105,7 @@ var DialogContainer = /*#__PURE__*/function (_Component) {
           compDialogs = _this$state.compDialogs;
       return compDialogs.map(function (Comp) {
         var key = Comp.key;
-        return /*#__PURE__*/_react["default"].cloneElement(Comp, {
+        return /*#__PURE__*/(0, _react.cloneElement)(Comp, {
           key: key,
           isShow: hmIs[key],
           onClose: _this._handleToggleDialog.bind((0, _assertThisInitialized2["default"])(_this), key)
@@ -133,9 +133,10 @@ var DialogContainer = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ROOT
-    }, this._renderDialogs());
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: S.ROOT,
+      children: this._renderDialogs()
+    });
   };
 
   return DialogContainer;

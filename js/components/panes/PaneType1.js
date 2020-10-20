@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -281,13 +281,12 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         onRemoveUnder = _this$props3.onRemoveUnder,
         onAddToWatch = _this$props3.onAddToWatch;
     return configs.map(function (config) {
-      return /*#__PURE__*/_react["default"].createElement(Item, {
-        key: config.id,
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(Item, {
         config: config,
         onCloseItem: onCloseItem,
         onRemoveUnder: onRemoveUnder,
         onAddToWatch: onAddToWatch
-      });
+      }, config.id);
     });
   };
 
@@ -306,40 +305,43 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         _showStyle = isShow ? S.INLINE_BLOCK : S.NONE,
         _showCl = isShow ? CL.SHOW_POPUP : void 0;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       ref: this._refRootDiv,
       className: _showCl,
-      style: (0, _extends2["default"])({}, S.ROOT_DIV, TS.BG_COLOR, _showStyle)
-    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalSlider, {
-      isShow: isMore,
-      className: CL.MENU_MORE,
-      style: TS.BG_COLOR,
-      model: this._MODEL,
-      onClose: this._hToggleMore
-    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].BrowserCaption, {
-      rootStyle: (0, _extends2["default"])({}, S.BR_CAPTION, TS.PANE_CAPTION),
-      caption: paneCaption,
-      onMore: this._showMore,
-      onClose: this._hHide
-    }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].CircleButton, {
-      caption: "R",
-      title: T.R,
-      style: S.BT_CIRCLE,
-      onClick: onRemoveItems
-    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].SvgHrzResize, {
-      svgStyle: TS.SVG_RESIZE,
-      minWidth: RESIZE_MIN_WIDTH,
-      maxWidth: RESIZE_MAX_WIDTH,
-      getDomNode: this._getRootDiv
-    })), /*#__PURE__*/_react["default"].createElement(Input, {
-      ref: this._refIWord,
-      TS: TS,
-      initValue: word,
-      onEnter: this._hLoadItem
-    }), /*#__PURE__*/_react["default"].createElement(_Comp["default"].ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
-      style: S.SCROLL_PANE
-    }, this._renderConfigs(configs)));
+      style: (0, _extends2["default"])({}, S.ROOT_DIV, TS.BG_COLOR, _showStyle),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
+        isShow: isMore,
+        className: CL.MENU_MORE,
+        style: TS.BG_COLOR,
+        model: this._MODEL,
+        onClose: this._hToggleMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
+        rootStyle: (0, _extends2["default"])({}, S.BR_CAPTION, TS.PANE_CAPTION),
+        caption: paneCaption,
+        onMore: this._showMore,
+        onClose: this._hHide,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+          caption: "R",
+          title: T.R,
+          style: S.BT_CIRCLE,
+          onClick: onRemoveItems
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgHrzResize, {
+          svgStyle: TS.SVG_RESIZE,
+          minWidth: RESIZE_MIN_WIDTH,
+          maxWidth: RESIZE_MAX_WIDTH,
+          getDomNode: this._getRootDiv
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Input, {
+        ref: this._refIWord,
+        TS: TS,
+        initValue: word,
+        onEnter: this._hLoadItem
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
+        className: TS.CL_SCROLL_PANE,
+        style: S.SCROLL_PANE,
+        children: this._renderConfigs(configs)
+      })]
+    });
   };
 
   return NewsPane;

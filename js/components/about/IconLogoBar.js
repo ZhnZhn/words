@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _IconGitHub = _interopRequireDefault(require("./IconGitHub"));
 
@@ -23,17 +23,18 @@ var S = {
 var IconLogoBar = function IconLogoBar(_ref) {
   var iconStyle = _ref.iconStyle,
       iconGitHubStyle = _ref.iconGitHubStyle;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.ROOT
-  }, /*#__PURE__*/_react["default"].createElement(_IconGitHub["default"], {
-    style: iconGitHubStyle,
-    title: "GitHub Repository",
-    href: "https://github.com/zhnzhn/words/"
-  }), /*#__PURE__*/_react["default"].createElement(_IconWordsApi["default"], {
-    style: iconStyle
-  }), /*#__PURE__*/_react["default"].createElement(_IconReact["default"], {
-    style: iconStyle
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_IconGitHub["default"], {
+      style: iconGitHubStyle,
+      title: "GitHub Repository",
+      href: "https://github.com/zhnzhn/words/"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconWordsApi["default"], {
+      style: iconStyle
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconReact["default"], {
+      style: iconStyle
+    })]
+  });
 };
 
 var _default = IconLogoBar;

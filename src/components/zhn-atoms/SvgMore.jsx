@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef }  from 'react'
 
 const CL = 'focusable';
 
@@ -17,7 +17,7 @@ const S = {
 
 const T = "Click to open menu More";
 
-const SvgMore = React.forwardRef(({
+const SvgMore = forwardRef(({
   style,
   svgStyle,
   title=T,

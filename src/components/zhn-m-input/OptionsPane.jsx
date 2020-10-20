@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ModalPane from '../zhn-moleculs/ModalPane'
 import ShowHide from '../zhn-atoms/ShowHide'
 

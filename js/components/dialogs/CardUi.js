@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -52,32 +52,36 @@ var CardUi = function CardUi(_ref) {
       onCheckAutoSave = _ref.onCheckAutoSave,
       onUncheckAutoSave = _ref.onUncheckAutoSave,
       onClose = _ref.onClose;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: style
-  }, /*#__PURE__*/_react["default"].createElement(InputSelect, {
-    styleConfig: S.SELECT,
-    caption: "Theme (Default: Grey)",
-    initItem: DF_THEME,
-    options: THEME_OPTIONS,
-    onSelect: onSetTheme
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.CHB_ROW
-  }, /*#__PURE__*/_react["default"].createElement(SvgCheckBox, {
-    initialValue: true,
-    stroke: chbStroke,
-    onCheck: onCheckAutoSave,
-    onUnCheck: onUncheckAutoSave
-  }), /*#__PURE__*/_react["default"].createElement("span", {
-    style: S.TEXT
-  }, "AutoSave on Add to Watch List")), /*#__PURE__*/_react["default"].createElement("div", {
-    style: buttonsStyle
-  }, /*#__PURE__*/_react["default"].createElement(FlatButton, {
-    rootStyle: btStyle,
-    clDiv: CL_DIV,
-    caption: "Close",
-    title: "Close Dialog",
-    onClick: onClose
-  })));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: style,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(InputSelect, {
+      styleConfig: S.SELECT,
+      caption: "Theme (Default: Grey)",
+      initItem: DF_THEME,
+      options: THEME_OPTIONS,
+      onSelect: onSetTheme
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: S.CHB_ROW,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(SvgCheckBox, {
+        initialValue: true,
+        stroke: chbStroke,
+        onCheck: onCheckAutoSave,
+        onUnCheck: onUncheckAutoSave
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S.TEXT,
+        children: "AutoSave on Add to Watch List"
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: buttonsStyle,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(FlatButton, {
+        rootStyle: btStyle,
+        clDiv: CL_DIV,
+        caption: "Close",
+        title: "Close Dialog",
+        onClick: onClose
+      })
+    })]
+  });
 };
 /*
 CardUi.propTypes = {

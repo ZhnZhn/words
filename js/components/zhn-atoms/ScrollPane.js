@@ -1,11 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = 'with-scroll';
 
@@ -17,10 +15,11 @@ var ScrollPane = function ScrollPane(_ref) {
 
   var _className = className && className !== CL ? className : CL;
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,
-    style: style
-  }, children);
+    style: style,
+    children: children
+  });
 };
 
 var _default = ScrollPane;

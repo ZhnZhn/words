@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -94,7 +94,7 @@ var AlertDialog = /*#__PURE__*/function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _msg = _toMsg(data);
 
-    return /*#__PURE__*/_react["default"].createElement(_Comp["default"].ModalDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
       STYLE: TS.BT,
       style: (0, _extends2["default"])({}, TS.R_DIALOG, S.DIALOG),
       captionStyle: (0, _extends2["default"])({}, TS.BROWSER_CAPTION, S.CAPTION) //styleButton={TS.BT}
@@ -102,10 +102,14 @@ var AlertDialog = /*#__PURE__*/function (_Component) {
       caption: "Exception Message",
       isShow: isShow,
       isClosePrimary: true,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("p", {
-      style: S.MSG
-    }, _msg)));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: S.MSG,
+          children: _msg
+        })
+      })
+    });
   };
 
   return AlertDialog;

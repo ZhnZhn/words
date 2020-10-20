@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _throttleOnce = _interopRequireDefault(require("../../utils/throttleOnce"));
 
@@ -75,8 +75,7 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
       var _this$props = _this.props,
           model = _this$props.model,
           onClose = _this$props.onClose;
-      pages.push( /*#__PURE__*/_react["default"].createElement(_MenuPage["default"], {
-        key: id,
+      pages.push( /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage["default"], {
         style: _this._pageStyle,
         title: title,
         items: model[id],
@@ -84,7 +83,7 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
         itemCl: model.itemCl,
         onPrevPage: _this.hPrevPage,
         onClose: onClose
-      }));
+      }, id));
     };
 
     _this.hNextPage = function (id, title, pageNumber) {
@@ -140,7 +139,7 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
           pages = _this$state.pages,
           pageCurrent = _this$state.pageCurrent;
       return pages.map(function (Page, index) {
-        return /*#__PURE__*/_react["default"].cloneElement(Page, {
+        return /*#__PURE__*/(0, _react.cloneElement)(Page, {
           pageCurrent: pageCurrent,
           //pageNumber: index,
           pageNumber: index + 1
@@ -167,15 +166,14 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
       width: _pW + "px"
     };
 
-    _pages.push( /*#__PURE__*/_react["default"].createElement(_MenuPage["default"], {
-      key: INIT_ID,
+    _pages.push( /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuPage["default"], {
       style: _this._pageStyle,
       items: _model[INIT_ID],
       baseTitleCl: _model.baseTitleCl,
       itemCl: _model.itemCl,
       onNextPage: _this.hNextPage,
       onClose: _onClose
-    }));
+    }, INIT_ID));
 
     _this._direction = 0;
     _this.state = {
@@ -200,18 +198,21 @@ var ModalSlider = /*#__PURE__*/function (_Component) {
         _showHideStyle = (0, _extends2["default"])({}, style, S.SHOW_HIDE, _pageStyle),
         _divStyle = (0, _extends2["default"])({}, S.PAGES, _pagesStyle, _transform);
 
-    return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
       isShow: isShow,
       style: rootStyle,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement(_ShowHide["default"], {
-      className: className,
-      style: _showHideStyle,
-      isShow: isShow
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      ref: this._refPages,
-      style: _divStyle
-    }, this._renderPages())));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
+        className: className,
+        style: _showHideStyle,
+        isShow: isShow,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          ref: this._refPages,
+          style: _divStyle,
+          children: this._renderPages()
+        })
+      })
+    });
   };
 
   return ModalSlider;

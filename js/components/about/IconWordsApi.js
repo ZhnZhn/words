@@ -1,23 +1,22 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var IconWordsApi = function IconWordsApi(_ref) {
   var className = _ref.className,
       style = _ref.style;
-  return /*#__PURE__*/_react["default"].createElement("a", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
     className: "icon__words",
     style: style,
-    href: "https://www.wordsapi.com/"
-  }, /*#__PURE__*/_react["default"].createElement("img", {
-    alt: "Logo WordsApi",
-    src: "css/wordsapilogo.png"
-  }));
+    href: "https://www.wordsapi.com/",
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+      alt: "Logo WordsApi",
+      src: "css/wordsapilogo.png"
+    })
+  });
 };
 
 var _default = IconWordsApi;

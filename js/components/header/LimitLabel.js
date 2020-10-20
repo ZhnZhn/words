@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var S = {
   LABEL: {
@@ -70,9 +70,10 @@ var LimitLabel = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var style = this.props.style,
         value = this.state.value;
-    return /*#__PURE__*/_react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, S.LABEL, style)
-    }, value);
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: (0, _extends2["default"])({}, S.LABEL, style),
+      children: value
+    });
   };
 
   return LimitLabel;

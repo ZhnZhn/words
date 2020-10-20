@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import A from '../zhn-atoms/Atoms'
 import MenuPart from './MenuPart'
@@ -38,7 +38,7 @@ class DynamicMenuBrowser extends Component {
     isLoading: true,
     isLoadingFailed: false,
     menuModel: {}
-  }  
+  }
 
   componentDidMount(){
     const { store={} } = this.props;

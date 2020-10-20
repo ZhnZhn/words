@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
@@ -36,7 +36,7 @@ var S = {
 
 var SvgChecked = function SvgChecked(_ref) {
   var stroke = _ref.stroke;
-  return /*#__PURE__*/_react["default"].createElement("path", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
     //d="M 2,3 L 8,14 14,3"
     d: "M 2,5 L 8,14 14,1",
     strokeWidth: "2",
@@ -119,31 +119,33 @@ var SvgCheckBox = /*#__PURE__*/function (_Component) {
       fill: _Color["default"].BLANK
     };
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       role: "checkbox",
       tabIndex: "0",
       "aria-checked": isChecked,
       style: (0, _extends2["default"])({}, S.DIV, style),
       onClick: this._hClick,
-      onKeyDown: this._hKeyDown
-    }, /*#__PURE__*/_react["default"].createElement("svg", {
-      viewBox: "0 0 16 16",
-      width: "100%",
-      height: "100%",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      style: S.SVG
-    }, /*#__PURE__*/_react["default"].createElement("rect", (0, _extends2["default"])({
-      x: "1",
-      y: "1",
-      height: "14",
-      width: "14",
-      strokeWidth: "2",
-      rx: "3",
-      strokeLinecap: "round"
-    }, _restProps)), isChecked ? /*#__PURE__*/_react["default"].createElement(SvgChecked, {
-      stroke: stroke
-    }) : null));
+      onKeyDown: this._hKeyDown,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+        viewBox: "0 0 16 16",
+        width: "100%",
+        height: "100%",
+        preserveAspectRatio: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        style: S.SVG,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("rect", (0, _extends2["default"])({
+          x: "1",
+          y: "1",
+          height: "14",
+          width: "14",
+          strokeWidth: "2",
+          rx: "3",
+          strokeLinecap: "round"
+        }, _restProps)), isChecked ? /*#__PURE__*/(0, _jsxRuntime.jsx)(SvgChecked, {
+          stroke: stroke
+        }) : null]
+      })
+    });
   };
 
   return SvgCheckBox;

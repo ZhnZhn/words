@@ -2,12 +2,10 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _WordOf = _interopRequireDefault(require("./WordOf"));
 
@@ -22,29 +20,31 @@ var WordNyms = function WordNyms(_ref) {
       inCategory = _ref2.inCategory,
       hasCategories = _ref2.hasCategories;
 
-  return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement(_WordOf["default"] //hypernyms
-  , {
-    caption: "typeOf (more generic)",
-    items: typeOf
-  }), /*#__PURE__*/_react["default"].createElement(_WordOf["default"] //hyponyms
-  , {
-    caption: "hasTypes (more specific)",
-    items: hasTypes
-  }), /*#__PURE__*/_react["default"].createElement(_WordOf["default"], {
-    caption: "partOf (holonyms)",
-    items: partOf
-  }), /*#__PURE__*/_react["default"].createElement(_WordOf["default"], {
-    caption: "hasParts (meronyms)",
-    items: hasParts
-  }), /*#__PURE__*/_react["default"].createElement(_WordOf["default"], {
-    caption: "inCategory",
-    items: inCategory,
-    isCount: true
-  }), /*#__PURE__*/_react["default"].createElement(_WordOf["default"], {
-    caption: "hasCategory",
-    items: hasCategories,
-    isCount: true
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WordOf["default"] //hypernyms
+    , {
+      caption: "typeOf (more generic)",
+      items: typeOf
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordOf["default"] //hyponyms
+    , {
+      caption: "hasTypes (more specific)",
+      items: hasTypes
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordOf["default"], {
+      caption: "partOf (holonyms)",
+      items: partOf
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordOf["default"], {
+      caption: "hasParts (meronyms)",
+      items: hasParts
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordOf["default"], {
+      caption: "inCategory",
+      items: inCategory,
+      isCount: true
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordOf["default"], {
+      caption: "hasCategory",
+      items: hasCategories,
+      isCount: true
+    })]
+  });
 };
 
 var _default = WordNyms;

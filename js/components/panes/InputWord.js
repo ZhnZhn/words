@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _has = _interopRequireDefault(require("../has"));
 
@@ -77,10 +77,10 @@ var InputWord = /*#__PURE__*/function (_Component) {
         TS = _this$props.TS,
         initValue = _this$props.initValue,
         onEnter = _this$props.onEnter,
-        _elBt = _has["default"].HAS_TOUCH ? /*#__PURE__*/_react["default"].createElement(ButtonClear, {
+        _elBt = _has["default"].HAS_TOUCH ? /*#__PURE__*/(0, _jsxRuntime.jsx)(ButtonClear, {
       style: S.BT_CLEAR,
       onClick: this._hClear
-    }) : /*#__PURE__*/_react["default"].createElement(FlatButton, {
+    }) : /*#__PURE__*/(0, _jsxRuntime.jsx)(FlatButton, {
       caption: "Load",
       tabIndex: -1,
       rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, S.BT_LOAD),
@@ -89,17 +89,19 @@ var InputWord = /*#__PURE__*/function (_Component) {
       onClick: onEnter
     });
 
-    return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(TextField, {
-      ref: this._ref,
-      rootStyle: TS.INPUT_ROOT,
-      labelStyle: S.TF_LABEL,
-      inputStyle: S.TF_INPUT,
-      caption: "Word",
-      accessKey: "W",
-      spellCheck: true,
-      initValue: initValue,
-      onEnter: onEnter
-    }), _elBt);
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(TextField, {
+        ref: this._ref,
+        rootStyle: TS.INPUT_ROOT,
+        labelStyle: S.TF_LABEL,
+        inputStyle: S.TF_INPUT,
+        caption: "Word",
+        accessKey: "W",
+        spellCheck: true,
+        initValue: initValue,
+        onEnter: onEnter
+      }), _elBt]
+    });
   };
 
   _proto.getValue = function getValue() {

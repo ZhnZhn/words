@@ -1,1 +1,47 @@
-{"version":3,"sources":["../../../src/components/panes/InputWord.jsx"],"names":["ButtonClear","Comp","FlatButton","TextField","S","TF_LABEL","top","TF_INPUT","fontSize","BT_CLEAR","position","left","BT_LOAD","marginLeft","InputWord","_hClear","iWord","setValue","_ref","n","componentDidMount","focus","render","props","TS","initValue","onEnter","_elBt","has","HAS_TOUCH","BT","FLAT","CL_FLAT_DIV","INPUT_ROOT","getValue","Component","defaultProps"],"mappings":";;;;;;;;;;;;;AAAA;;AAEA;;AAEA;;IAGEA,W,GAGEC,gB,CAHFD,W;IACAE,U,GAEED,gB,CAFFC,U;IACAC,S,GACEF,gB,CADFE,S;AAGF,IAAMC,CAAC,GAAG;AACRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,GAAG,EAAE;AADG,GADF;AAIRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,QAAQ,EAAE;AADF,GAJF;AAORC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,QAAQ,EAAE,UADF;AAERJ,IAAAA,GAAG,EAAE,EAFG;AAGRK,IAAAA,IAAI,EAAE;AAHE,GAPF;AAYRC,EAAAA,OAAO,EAAE;AACPF,IAAAA,QAAQ,EAAE,UADH;AAEPJ,IAAAA,GAAG,EAAE,EAFE;AAGPO,IAAAA,UAAU,EAAE;AAHL;AAZD,CAAV;;IAmBMC,S;;;;;;;;;;;;UAYJC,O,GAAU,YAAM;AACd,UAAI,MAAKC,KAAT,EAAgB;AACd,cAAKA,KAAL,CAAWC,QAAX,CAAoB,EAApB;AACD;AACF,K;;UAEDC,I,GAAO,UAAAC,CAAC;AAAA,aAAI,MAAKH,KAAL,GAAaG,CAAjB;AAAA,K;;;;;;;SAZRC,iB,GAAA,6BAAmB;AACjB,QAAI,KAAKJ,KAAT,EAAgB;AACd,WAAKA,KAAL,CAAWK,KAAX;AACD;AACF,G;;SAUDC,M,GAAA,kBAAQ;AAAA,sBAKA,KAAKC,KALL;AAAA,QAEFC,EAFE,eAEFA,EAFE;AAAA,QAGFC,SAHE,eAGFA,SAHE;AAAA,QAIFC,OAJE,eAIFA,OAJE;AAAA,QAMJC,KANI,GAMIC,gBAAIC,SAAJ,gBACJ,gCAAC,WAAD;AACC,MAAA,KAAK,EAAEzB,CAAC,CAACK,QADV;AAEC,MAAA,OAAO,EAAE,KAAKM;AAFf,MADI,gBAKJ,gCAAC,UAAD;AACE,MAAA,OAAO,EAAC,MADV;AAEE,MAAA,QAAQ,EAAE,CAAC,CAFb;AAGE,MAAA,SAAS,gCAAOS,EAAE,CAACM,EAAH,CAAMC,IAAb,EAAsB3B,CAAC,CAACQ,OAAxB,CAHX;AAIE,MAAA,KAAK,EAAEY,EAAE,CAACM,EAAH,CAAME,WAJf;AAKE,MAAA,SAAS,EAAE,IALb;AAME,MAAA,OAAO,EAAEN;AANX,MAXA;;AAoBN,wBACE,+EACE,gCAAC,SAAD;AACE,MAAA,GAAG,EAAE,KAAKR,IADZ;AAEE,MAAA,SAAS,EAAEM,EAAE,CAACS,UAFhB;AAGE,MAAA,UAAU,EAAE7B,CAAC,CAACC,QAHhB;AAIE,MAAA,UAAU,EAAED,CAAC,CAACG,QAJhB;AAKE,MAAA,OAAO,EAAC,MALV;AAME,MAAA,SAAS,EAAC,GANZ;AAOE,MAAA,UAAU,EAAE,IAPd;AAQE,MAAA,SAAS,EAAEkB,SARb;AASE,MAAA,OAAO,EAAEC;AATX,MADF,EAYGC,KAZH,CADF;AAgBD,G;;SAEDO,Q,GAAA,oBAAU;AACR,WAAO,KAAKlB,KAAL,GACH,KAAKA,KAAL,CAAWkB,QAAX,EADG,GAEH,KAAK,CAFT;AAGD,G;;;EA9DqBC,gB;;AAAlBrB,S,CAEGsB,Y,GAAe;AACpBX,EAAAA,SAAS,EAAE;AADS,C;eA+DTX,S","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport has from '../has'\r\n\r\nimport Comp from '../Comp'\r\n\r\nconst {\r\n  ButtonClear,\r\n  FlatButton,\r\n  TextField\r\n} = Comp;\r\n\r\nconst S = {\r\n  TF_LABEL: {\r\n    top: 28\r\n  },\r\n  TF_INPUT: {\r\n    fontSize: '24px'\r\n  },\r\n  BT_CLEAR: {\r\n    position: 'relative',\r\n    top: 18,\r\n    left: 6\r\n  },\r\n  BT_LOAD: {\r\n    position: 'relative',\r\n    top: 22,\r\n    marginLeft: 8\r\n  }\r\n};\r\n\r\nclass InputWord extends Component {\r\n\r\n  static defaultProps = {\r\n    initValue: 'example'\r\n  }\r\n\r\n  componentDidMount(){\r\n    if (this.iWord) {\r\n      this.iWord.focus()\r\n    }\r\n  }\r\n\r\n  _hClear = () => {\r\n    if (this.iWord) {\r\n      this.iWord.setValue('')\r\n    }\r\n  }\r\n\r\n  _ref = n => this.iWord = n\r\n\r\n  render(){\r\n    const {\r\n        TS,\r\n        initValue,\r\n        onEnter\r\n      } = this.props\r\n    , _elBt = has.HAS_TOUCH\r\n       ? (<ButtonClear\r\n           style={S.BT_CLEAR}\r\n           onClick={this._hClear}\r\n         />)\r\n       : (<FlatButton\r\n            caption=\"Load\"\r\n            tabIndex={-1}\r\n            rootStyle={{ ...TS.BT.FLAT, ...S.BT_LOAD}}\r\n            clDiv={TS.BT.CL_FLAT_DIV}\r\n            isPrimary={true}\r\n            onClick={onEnter}\r\n          />);\r\n\r\n    return (\r\n      <>\r\n        <TextField\r\n          ref={this._ref}\r\n          rootStyle={TS.INPUT_ROOT}\r\n          labelStyle={S.TF_LABEL}\r\n          inputStyle={S.TF_INPUT}\r\n          caption=\"Word\"\r\n          accessKey=\"W\"\r\n          spellCheck={true}\r\n          initValue={initValue}\r\n          onEnter={onEnter}\r\n        />\r\n        {_elBt}\r\n      </>\r\n    );\r\n  }\r\n\r\n  getValue(){\r\n    return this.iWord\r\n      ? this.iWord.getValue()\r\n      : void 0;\r\n  }\r\n}\r\n\r\nexport default InputWord\r\n"],"file":"InputWord.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/InputWord.js"
+ ],
+ "file": "../../../src/components/panes/InputWord.js",
+ "names": [
+  "ButtonClear",
+  "Comp",
+  "FlatButton",
+  "TextField",
+  "S",
+  "TF_LABEL",
+  "top",
+  "TF_INPUT",
+  "fontSize",
+  "BT_CLEAR",
+  "position",
+  "left",
+  "BT_LOAD",
+  "marginLeft",
+  "InputWord",
+  "_hClear",
+  "iWord",
+  "setValue",
+  "_ref",
+  "n",
+  "componentDidMount",
+  "focus",
+  "render",
+  "props",
+  "TS",
+  "initValue",
+  "onEnter",
+  "_elBt",
+  "has",
+  "HAS_TOUCH",
+  "BT",
+  "FLAT",
+  "CL_FLAT_DIV",
+  "INPUT_ROOT",
+  "getValue",
+  "Component",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;AAAA;;AAEA;;AAEA;;IAGEA,W,GAGEC,gB,CAHFD,W;IACAE,U,GAEED,gB,CAFFC,U;IACAC,S,GACEF,gB,CADFE,S;AAGF,IAAMC,CAAC,GAAG;AACRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,GAAG,EAAE;AADG,GADF;AAIRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,QAAQ,EAAE;AADF,GAJF;AAORC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,QAAQ,EAAE,UADF;AAERJ,IAAAA,GAAG,EAAE,EAFG;AAGRK,IAAAA,IAAI,EAAE;AAHE,GAPF;AAYRC,EAAAA,OAAO,EAAE;AACPF,IAAAA,QAAQ,EAAE,UADH;AAEPJ,IAAAA,GAAG,EAAE,EAFE;AAGPO,IAAAA,UAAU,EAAE;AAHL;AAZD,CAAV;;IAmBMC,S;;;;;;;;;;;;UAYJC,O,GAAU,YAAM;AACd,UAAI,MAAKC,KAAT,EAAgB;AACd,cAAKA,KAAL,CAAWC,QAAX,CAAoB,EAApB;AACD;AACF,K;;UAEDC,I,GAAO,UAAAC,CAAC;AAAA,aAAI,MAAKH,KAAL,GAAaG,CAAjB;AAAA,K;;;;;;;SAZRC,iB,GAAA,6BAAmB;AACjB,QAAI,KAAKJ,KAAT,EAAgB;AACd,WAAKA,KAAL,CAAWK,KAAX;AACD;AACF,G;;SAUDC,M,GAAA,kBAAQ;AAAA,sBAKA,KAAKC,KALL;AAAA,QAEFC,EAFE,eAEFA,EAFE;AAAA,QAGFC,SAHE,eAGFA,SAHE;AAAA,QAIFC,OAJE,eAIFA,OAJE;AAAA,QAMJC,KANI,GAMIC,gBAAIC,SAAJ,gBACJ,qBAAC,WAAD;AACC,MAAA,KAAK,EAAEzB,CAAC,CAACK,QADV;AAEC,MAAA,OAAO,EAAE,KAAKM;AAFf,MADI,gBAKJ,qBAAC,UAAD;AACE,MAAA,OAAO,EAAC,MADV;AAEE,MAAA,QAAQ,EAAE,CAAC,CAFb;AAGE,MAAA,SAAS,gCAAOS,EAAE,CAACM,EAAH,CAAMC,IAAb,EAAsB3B,CAAC,CAACQ,OAAxB,CAHX;AAIE,MAAA,KAAK,EAAEY,EAAE,CAACM,EAAH,CAAME,WAJf;AAKE,MAAA,SAAS,EAAE,IALb;AAME,MAAA,OAAO,EAAEN;AANX,MAXA;;AAoBN,wBACE;AAAA,8BACE,qBAAC,SAAD;AACE,QAAA,GAAG,EAAE,KAAKR,IADZ;AAEE,QAAA,SAAS,EAAEM,EAAE,CAACS,UAFhB;AAGE,QAAA,UAAU,EAAE7B,CAAC,CAACC,QAHhB;AAIE,QAAA,UAAU,EAAED,CAAC,CAACG,QAJhB;AAKE,QAAA,OAAO,EAAC,MALV;AAME,QAAA,SAAS,EAAC,GANZ;AAOE,QAAA,UAAU,EAAE,IAPd;AAQE,QAAA,SAAS,EAAEkB,SARb;AASE,QAAA,OAAO,EAAEC;AATX,QADF,EAYGC,KAZH;AAAA,MADF;AAgBD,G;;SAEDO,Q,GAAA,oBAAU;AACR,WAAO,KAAKlB,KAAL,GACH,KAAKA,KAAL,CAAWkB,QAAX,EADG,GAEH,KAAK,CAFT;AAGD,G;;;EA9DqBC,gB;;AAAlBrB,S,CAEGsB,Y,GAAe;AACpBX,EAAAA,SAAS,EAAE;AADS,C;eA+DTX,S"
+}

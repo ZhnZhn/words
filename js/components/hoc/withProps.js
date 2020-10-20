@@ -7,12 +7,12 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var withProps = function withProps(overrideProps) {
   return function (BaseComponent) {
     return function (props) {
-      return /*#__PURE__*/_react["default"].createElement(BaseComponent, (0, _extends2["default"])({}, props, overrideProps));
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(BaseComponent, (0, _extends2["default"])({}, props, overrideProps));
     };
   };
 };

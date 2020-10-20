@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
@@ -47,12 +47,12 @@ var WatchItem = function WatchItem(props) {
       onDragLeave = props.onDragLeave,
       onDrop = props.onDrop,
       caption = item.caption,
-      _btClose = isModeEdit ? /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
+      _btClose = isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
     style: STYLE.SVG_CLOSE,
     onClose: onClose.bind(null, option)
   }) : null;
 
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: className,
     style: STYLE.ITEM_DIV,
     onClick: onClick.bind(null, item) //onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_ITEM, item)}
@@ -62,10 +62,12 @@ var WatchItem = function WatchItem(props) {
     onDrop: isModeEdit && onDrop.bind(null, option),
     onDragOver: isModeEdit && onDragOver,
     onDragEnter: isModeEdit && onDragEnter,
-    onDragLeave: isModeEdit && onDragLeave
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    style: STYLE.ITEM_SPAN
-  }, caption), _btClose);
+    onDragLeave: isModeEdit && onDragLeave,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: STYLE.ITEM_SPAN,
+      children: caption
+    }), _btClose]
+  });
 };
 
 var _default = WatchItem;

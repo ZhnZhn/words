@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../../src/components/panes/InputRandom.jsx"],"names":["S","ROOT","height","paddingTop","SPAN","paddingLeft","fontWeight","BT","marginLeft","InputRandom","TS","onEnter","FLAT","CL_FLAT_DIV"],"mappings":";;;;;;;;;AAAA;;AAEA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,MAAM,EAAE,EADJ;AAEJC,IAAAA,UAAU,EAAE;AAFR,GADE;AAKRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,WAAW,EAAE,EADT;AAEJC,IAAAA,UAAU,EAAE;AAFR,GALE;AASTC,EAAAA,EAAE,EAAE;AACFC,IAAAA,UAAU,EAAE;AADV;AATK,CAAV;;AAcA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,EAAH,QAAGA,EAAH;AAAA,MAAOC,OAAP,QAAOA,OAAP;AAAA,sBAClB;AAAK,IAAA,KAAK,EAAEX,CAAC,CAACC;AAAd,kBACE;AAAM,IAAA,KAAK,EAAED,CAAC,CAACI;AAAf,mBADF,eAIE,gCAAC,iBAAD,CAAG,UAAH;AACE,IAAA,SAAS,gCAAOM,EAAE,CAACH,EAAH,CAAMK,IAAb,EAAsBZ,CAAC,CAACO,EAAxB,CADX;AAEE,IAAA,KAAK,EAAEG,EAAE,CAACH,EAAH,CAAMM,WAFf;AAGE,IAAA,OAAO,EAAC,MAHV;AAIE,IAAA,OAAO,EAAEF;AAJX,IAJF,CADkB;AAAA,CAApB;;eAceF,W","sourcesContent":["import React from 'react'\r\n\r\nimport A from '../zhn-atoms/Atoms'\r\n\r\nconst S = {\r\n  ROOT: {\r\n    height: 60,\r\n    paddingTop: 8,\r\n  },\r\n  SPAN: {\r\n    paddingLeft: 16,\r\n    fontWeight: 'bold'\r\n },\r\n BT: {\r\n   marginLeft: 8\r\n }\r\n};\r\n\r\nconst InputRandom = ({ TS, onEnter }) => (\r\n  <div style={S.ROOT}>\r\n    <span style={S.SPAN}>\r\n      Random Word\r\n    </span>\r\n    <A.FlatButton\r\n      rootStyle={{ ...TS.BT.FLAT, ...S.BT }}\r\n      clDiv={TS.BT.CL_FLAT_DIV}\r\n      caption=\"Load\"\r\n      onClick={onEnter}\r\n    />\r\n  </div>\r\n)\r\n\r\nexport default InputRandom\r\n"],"file":"InputRandom.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/InputRandom.js"
+ ],
+ "file": "../../../src/components/panes/InputRandom.js",
+ "names": [
+  "S",
+  "ROOT",
+  "height",
+  "paddingTop",
+  "SPAN",
+  "paddingLeft",
+  "fontWeight",
+  "BT",
+  "marginLeft",
+  "InputRandom",
+  "TS",
+  "onEnter",
+  "FLAT",
+  "CL_FLAT_DIV"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,MAAM,EAAE,EADJ;AAEJC,IAAAA,UAAU,EAAE;AAFR,GADE;AAKRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,WAAW,EAAE,EADT;AAEJC,IAAAA,UAAU,EAAE;AAFR,GALE;AASTC,EAAAA,EAAE,EAAE;AACFC,IAAAA,UAAU,EAAE;AADV;AATK,CAAV;;AAcA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,EAAH,QAAGA,EAAH;AAAA,MAAOC,OAAP,QAAOA,OAAP;AAAA,sBAClB;AAAK,IAAA,KAAK,EAAEX,CAAC,CAACC,IAAd;AAAA,4BACE;AAAM,MAAA,KAAK,EAAED,CAAC,CAACI,IAAf;AAAA;AAAA,MADF,eAIE,qBAAC,iBAAD,CAAG,UAAH;AACE,MAAA,SAAS,gCAAOM,EAAE,CAACH,EAAH,CAAMK,IAAb,EAAsBZ,CAAC,CAACO,EAAxB,CADX;AAEE,MAAA,KAAK,EAAEG,EAAE,CAACH,EAAH,CAAMM,WAFf;AAGE,MAAA,OAAO,EAAC,MAHV;AAIE,MAAA,OAAO,EAAEF;AAJX,MAJF;AAAA,IADkB;AAAA,CAApB;;eAceF,W"
+}

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _useClassAnimation2 = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
 
@@ -107,27 +107,31 @@ var ModalDialog = function ModalDialog(_ref) {
       _refPrevFocused.current.focus();
     }
   });
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     ref: _refRootDiv,
     tabIndex: "0",
     className: _className2,
     style: (0, _extends2["default"])({}, style, _style),
     onClick: _hClickDialog,
-    onKeyDown: _hKeyDown
-  }, /*#__PURE__*/_react["default"].createElement(_Comp["default"].BrowserCaption, {
-    rootStyle: captionStyle,
-    caption: caption,
-    onClose: onClose
-  }), /*#__PURE__*/_react["default"].createElement("div", null, children), isWithButton && /*#__PURE__*/_react["default"].createElement("div", {
-    className: CL.D_ACTIONS
-  }, commandButtons, !withoutClose && /*#__PURE__*/_react["default"].createElement(_Comp["default"].FlatButton, {
-    //ref={_refBtClose}
-    rootStyle: S.BT_ROOT,
-    clDiv: CL.BT_DIV,
-    caption: "Close",
-    isPrimary: true,
-    onClick: onClose
-  })));
+    onKeyDown: _hKeyDown,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
+      rootStyle: captionStyle,
+      caption: caption,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: children
+    }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: CL.D_ACTIONS,
+      children: [commandButtons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+        //ref={_refBtClose}
+        rootStyle: S.BT_ROOT,
+        clDiv: CL.BT_DIV,
+        caption: "Close",
+        isPrimary: true,
+        onClick: onClose
+      })]
+    })]
+  });
 };
 
 var _default = ModalDialog;

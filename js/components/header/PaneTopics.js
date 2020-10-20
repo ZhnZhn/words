@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 
@@ -40,13 +40,12 @@ var PaneTopics = /*#__PURE__*/function (_Component) {
       return items.map(function (item, index) {
         var _ref = index === 0 ? _this._ref : undefined;
 
-        return /*#__PURE__*/_react["default"].createElement(_Atoms["default"].MenuItem, (0, _extends2["default"])({
-          key: item.caption,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].MenuItem, (0, _extends2["default"])({
           ref: _ref,
           className: clItem
         }, item, {
           onClose: onClose
-        }));
+        }), item.caption);
       });
     };
 
@@ -78,18 +77,20 @@ var PaneTopics = /*#__PURE__*/function (_Component) {
         clItem = _this$props.clItem,
         items = _this$props.items,
         onClose = _this$props.onClose;
-    return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
       isShow: isShow,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement(_Atoms["default"].ShowHide, {
-      className: className,
-      style: paneStyle,
-      isShow: isShow
-    }, this._renderItems({
-      clItem: clItem,
-      items: items,
-      onClose: onClose
-    })));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ShowHide, {
+        className: className,
+        style: paneStyle,
+        isShow: isShow,
+        children: this._renderItems({
+          clItem: clItem,
+          items: items,
+          onClose: onClose
+        })
+      })
+    });
   };
 
   return PaneTopics;

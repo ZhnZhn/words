@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var CL = {
   SELECT: 'm-select',
@@ -135,38 +135,42 @@ var PasswordField = /*#__PURE__*/function (_Component) {
         _labelErrStyle = isPassTest ? null : S.LABEL_ON_ERROR,
         _lineStyle = isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL.SELECT,
-      style: rootStyle
-    }, /*#__PURE__*/_react["default"].createElement("label", {
-      className: CL.LABEL,
-      style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
-      htmlFor: this._id
-    }, caption), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.DIV
-    }, /*#__PURE__*/_react["default"].createElement("input", {
-      hidden: true,
-      autoComplete: "username",
-      value: name,
-      readOnly: true
-    }), /*#__PURE__*/_react["default"].createElement("input", {
-      ref: this._refInput,
-      id: this._id,
-      type: "password",
-      autoComplete: "current-password",
-      className: CL.INPUT,
-      maxLength: maxLength,
-      value: value,
-      onChange: this._hInputChange,
-      onKeyDown: this._hKeyDown,
-      onFocus: this._hFocusInput,
-      onBlur: this._hBlurInput
-    }), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.INPUT_LINE,
-      style: _lineStyle
-    }), !isPassTest && /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.INPUT_MSG_ERR
-    }, errorMsg)));
+      style: rootStyle,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+        className: CL.LABEL,
+        style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
+        htmlFor: this._id,
+        children: caption
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL.DIV,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+          hidden: true,
+          autoComplete: "username",
+          value: name,
+          readOnly: true
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+          ref: this._refInput,
+          id: this._id,
+          type: "password",
+          autoComplete: "current-password",
+          className: CL.INPUT,
+          maxLength: maxLength,
+          value: value,
+          onChange: this._hInputChange,
+          onKeyDown: this._hKeyDown,
+          onFocus: this._hFocusInput,
+          onBlur: this._hBlurInput
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.INPUT_LINE,
+          style: _lineStyle
+        }), !isPassTest && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.INPUT_MSG_ERR,
+          children: errorMsg
+        })]
+      })]
+    });
   };
 
   _proto.componentDidUpdate = function componentDidUpdate() {
