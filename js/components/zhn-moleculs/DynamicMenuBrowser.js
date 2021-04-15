@@ -11,13 +11,13 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   BROWSER: {

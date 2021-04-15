@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _ThemeContext = _interopRequireDefault(require("./ThemeContext"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var withTheme = function withTheme(Wrapper) {
   return function (props) {

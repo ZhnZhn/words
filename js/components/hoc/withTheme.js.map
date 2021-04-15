@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hoc/withTheme.js"
- ],
- "file": "../../../src/components/hoc/withTheme.js",
- "names": [
-  "withTheme",
-  "Wrapper",
-  "props",
-  "theme"
- ],
- "mappings": ";;;;;;;;;;;AAAA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAAAC,OAAO;AAAA,SAAI,UAAAC,KAAK;AAAA,wBAChC,qBAAC,wBAAD,CAAc,QAAd;AAAA,gBACI,kBAAAC,KAAK;AAAA,4BAAI,qBAAC,OAAD,gCAAaD,KAAb;AAAoB,UAAA,KAAK,EAAEC;AAA3B,WAAJ;AAAA;AADT,MADgC;AAAA,GAAT;AAAA,CAAzB;;eAMeH,S"
-}
+{"version":3,"sources":["../../../src/components/hoc/withTheme.jsx"],"names":["withTheme","Wrapper","props","theme"],"mappings":";;;;;;;;;AAAA;;;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAAAC,OAAO;AAAA,SAAI,UAAAC,KAAK;AAAA,wBAChC,qBAAC,wBAAD,CAAc,QAAd;AAAA,gBACI,kBAAAC,KAAK;AAAA,4BAAI,qBAAC,OAAD,gCAAaD,KAAb;AAAoB,UAAA,KAAK,EAAEC;AAA3B,WAAJ;AAAA;AADT,MADgC;AAAA,GAAT;AAAA,CAAzB;;eAMeH,S","sourcesContent":["import ThemeContext from './ThemeContext'\r\n\r\nconst withTheme = Wrapper => props => (\r\n  <ThemeContext.Consumer>\r\n    { theme => <Wrapper {...props} theme={theme} /> }\r\n  </ThemeContext.Consumer>\r\n);\r\n\r\nexport default withTheme\r\n"],"file":"withTheme.js"}

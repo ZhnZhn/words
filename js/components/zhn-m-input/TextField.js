@@ -70,6 +70,22 @@ var _crCaption = function _crCaption(caption, accessKey) {
   };
 };
 
+var _crValue = function _crValue(initValue) {
+  return initValue || '';
+};
+
+var _crInitialState = function _crInitialState(props) {
+  var initValue = props.initValue,
+      onTest = props.onTest,
+      _value = _crValue(initValue);
+
+  return {
+    initValue: initValue,
+    value: _value,
+    isPassTest: _isFn(onTest) ? onTest(_value) : true
+  };
+};
+
 var TextField = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TextField, _Component);
 
@@ -106,18 +122,15 @@ var TextField = /*#__PURE__*/function (_Component) {
 
     _this._handleInputChange = function (event) {
       var value = event.target.value,
-          onTest = _this.props.onTest;
+          onTest = _this.props.onTest,
+          _nextState = _isFn(onTest) ? {
+        value: value,
+        isPassTest: onTest(value)
+      } : {
+        value: value
+      };
 
-      if (_this.isOnTest) {
-        _this.setState({
-          value: value,
-          isPassTest: onTest(value)
-        });
-      } else {
-        _this.setState({
-          value: value
-        });
-      }
+      _this.setState(_nextState);
     };
 
     _this._handleKeyDown = function (event) {
@@ -127,7 +140,7 @@ var TextField = /*#__PURE__*/function (_Component) {
         _this.setState({
           value: ''
         });
-      } else if (keyCode === 13 && _this.isOnEnter) {
+      } else if (keyCode === 13 && _isFn(_this.props.onEnter)) {
         _this.props.onEnter(event.target.value);
       }
     };
@@ -136,53 +149,29 @@ var TextField = /*#__PURE__*/function (_Component) {
       return _this.inputNode = n;
     };
 
-    var _onTest = props.onTest,
-        onEnter = props.onEnter,
-        initValue = props.initValue;
     _this.isFocus = false;
-    _this.isOnTest = _isFn(_onTest);
-    _this.isOnEnter = _isFn(onEnter);
-    _this._firstTouch = 0;
-
-    var _value = initValue || '';
-
-    _this.state = {
-      value: _value,
-      isPassTest: _this.isOnTest ? _onTest(_value) : true
-    };
+    _this.state = _crInitialState(props);
     return _this;
   }
 
-  var _proto = TextField.prototype;
-
-  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
-    /* update new initValue from parent component */
-    if (this.props !== nextProps && this.props.initValue !== nextProps.initValue) {
-      this.setState({
-        value: nextProps.initValue || ''
-      });
-    }
+  TextField.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
+    var initValue = props.initValue;
+    return state.initValue !== initValue ? _crInitialState(props) : null;
   }
   /*
-  _handleClearInput = () => {
-    this.setState({ value: '' })
-  }
-  
-  _handleDbTouch = (ev) => {
-    const _ms = Date.now();
-    if (this._firstTouch) {
-      if (_ms - this._firstTouch<DB_TOUCH_PERIOD) {
-        this._firstTouch = 0
-        this._handleClearInput()
-      } else {
-        this._firstTouch = _ms
-      }
-    } else {
-      this._firstTouch = _ms
+  UNSAFE_componentWillReceiveProps(nextProps){
+    //update new initValue from parent component
+    if (this.props !== nextProps
+      && this.props.initValue !== nextProps.initValue ) {
+        this.setState({
+          value: nextProps.initValue || ''
+        })
     }
   }
   */
   ;
+
+  var _proto = TextField.prototype;
 
   _proto.render = function render() {
     var _this$props = this.props,
@@ -193,7 +182,9 @@ var TextField = /*#__PURE__*/function (_Component) {
         accessKey = _this$props.accessKey,
         _this$props$errorMsg = _this$props.errorMsg,
         errorMsg = _this$props$errorMsg === void 0 ? '' : _this$props$errorMsg,
-        restProps = (0, _objectWithoutPropertiesLoose2["default"])(_this$props, ["rootStyle", "caption", "labelStyle", "inputStyle", "accessKey", "errorMsg"]),
+        initValue = _this$props.initValue,
+        onEnter = _this$props.onEnter,
+        restProps = (0, _objectWithoutPropertiesLoose2["default"])(_this$props, ["rootStyle", "caption", "labelStyle", "inputStyle", "accessKey", "errorMsg", "initValue", "onEnter"]),
         _this$state = this.state,
         value = _this$state.value,
         isPassTest = _this$state.isPassTest,
@@ -207,9 +198,7 @@ var TextField = /*#__PURE__*/function (_Component) {
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL.SELECT,
-      style: rootStyle //onDoubleClick={this._handleClearInput}
-      //onTouchStart={this._handleDbTouch}
-      ,
+      style: rootStyle,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
         className: CL.LABEL,
         style: (0, _extends2["default"])({}, labelStyle, _labelStyle, _labelErrStyle),
@@ -225,7 +214,7 @@ var TextField = /*#__PURE__*/function (_Component) {
           className: CL.INPUT,
           style: inputStyle,
           value: value,
-          autoComplete: "new-text",
+          autoComplete: "off",
           autoCorrect: "off",
           autoCapitalize: "off",
           translate: "false",

@@ -11,9 +11,9 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _fKeyPressed = function _fKeyPressed(onClick) {
   return function (evt) {

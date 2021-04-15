@@ -11,8 +11,6 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
@@ -32,6 +30,8 @@ var _EditBar = _interopRequireDefault(require("./EditBar"));
 var _WatchItem = _interopRequireDefault(require("./WatchItem"));
 
 var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _dec, _dec2, _dec3, _dec4, _class, _class2, _temp;
 

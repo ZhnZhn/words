@@ -9,8 +9,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
@@ -20,6 +18,8 @@ var _theme = _interopRequireDefault(require("./styles/theme"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 
 var _Container = _interopRequireDefault(require("./zhn-containers/Container"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_COMP = "component-container";
 var CL_ITEMS = "items-container";

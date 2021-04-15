@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _useListen = _interopRequireDefault(require("../hoc/useListen"));
@@ -24,6 +22,8 @@ var _Links = _interopRequireDefault(require("../links/Links"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 
 var _ContainerStyle = _interopRequireDefault(require("../styles/ContainerStyle"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_SHOW = "show-popup";
 

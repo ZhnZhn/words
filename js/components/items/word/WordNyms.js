@@ -5,9 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _WordOf = _interopRequireDefault(require("./WordOf"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var WordNyms = function WordNyms(_ref) {
   var result = _ref.result;

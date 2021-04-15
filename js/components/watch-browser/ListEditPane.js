@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
 var ListEditPane = /*#__PURE__*/function (_Component) {

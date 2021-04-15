@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_NOT_SELECTED = "not-selected";
 var CL_GAP = "gap-right";

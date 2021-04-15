@@ -7,13 +7,13 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _useClassAnimation2 = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
 var CL = {

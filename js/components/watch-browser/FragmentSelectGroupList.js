@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
 var FragmentSelectGroupList = /*#__PURE__*/function (_Component) {

@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _MenuBrowser = _interopRequireDefault(require("../zhn-browsers/MenuBrowser"));
@@ -16,6 +14,8 @@ var _MenuBrowser = _interopRequireDefault(require("../zhn-browsers/MenuBrowser")
 var _WatchBrowser = _interopRequireDefault(require("../watch-browser/WatchBrowser"));
 
 var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_ROOT = "hrz-container";
 

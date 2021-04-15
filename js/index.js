@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactDom = require("react-dom");
 
 var _Store = _interopRequireDefault(require("./flux/stores/Store"));
@@ -17,6 +15,8 @@ var _ComponentActions = require("./flux/actions/ComponentActions");
 var _LoadingActions = require("./flux/actions/LoadingActions");
 
 var _AppWords = _interopRequireDefault(require("./components/AppWords"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var appProps = {
   store: _Store["default"],

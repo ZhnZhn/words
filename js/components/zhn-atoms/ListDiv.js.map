@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/zhn-atoms/ListDiv.js"
- ],
- "file": "../../../src/components/zhn-atoms/ListDiv.js",
- "names": [
-  "ListDiv",
-  "items",
-  "itemStyle",
-  "map",
-  "str",
-  "index"
- ],
- "mappings": ";;;;;;;AACA,IAAMA,OAAO,GAAG,SAAVA,OAAU;AAAA,wBAAGC,KAAH;AAAA,MAAGA,KAAH,2BAAS,EAAT;AAAA,MAAaC,SAAb,QAAaA,SAAb;AAAA,sBACd;AAAA,cAEID,KAAK,CAACE,GAAN,CAAU,UAACC,GAAD,EAAMC,KAAN,EAAgB;AACxB,0BACE;AAAiB,QAAA,KAAK,EAAEH,SAAxB;AAAA,kBACIE;AADJ,SAAUC,KAAV,CADF;AAKD,KAND;AAFJ,IADc;AAAA,CAAhB;;eAceL,O"
-}
+{"version":3,"sources":["../../../src/components/zhn-atoms/ListDiv.jsx"],"names":["ListDiv","items","itemStyle","map","str","index"],"mappings":";;;;;;;AACA,IAAMA,OAAO,GAAG,SAAVA,OAAU;AAAA,wBAAGC,KAAH;AAAA,MAAGA,KAAH,2BAAS,EAAT;AAAA,MAAaC,SAAb,QAAaA,SAAb;AAAA,sBACd;AAAA,cAEID,KAAK,CAACE,GAAN,CAAU,UAACC,GAAD,EAAMC,KAAN,EAAgB;AACxB,0BACE;AAAiB,QAAA,KAAK,EAAEH,SAAxB;AAAA,kBACIE;AADJ,SAAUC,KAAV,CADF;AAKD,KAND;AAFJ,IADc;AAAA,CAAhB;;eAceL,O","sourcesContent":["\r\nconst ListDiv = ({ items=[], itemStyle }) => (\r\n  <>\r\n    {\r\n      items.map((str, index) => {\r\n        return (\r\n          <div key={index} style={itemStyle}>\r\n             {str}\r\n          </div>\r\n        );\r\n      })\r\n    }\r\n  </>\r\n);\r\n\r\nexport default ListDiv\r\n"],"file":"ListDiv.js"}

@@ -11,13 +11,13 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
 var _Color = _interopRequireDefault(require("../styles/Color"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
 //const DF_COLOR_IS = "#80c040";

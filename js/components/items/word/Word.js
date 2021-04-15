@@ -9,8 +9,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../../hoc/withTheme"));
@@ -22,6 +20,8 @@ var _DndOnlyX = _interopRequireDefault(require("../../zhn-dnd/DndOnlyX"));
 var _ItemHeader = _interopRequireDefault(require("../ItemHeader"));
 
 var _WordDef = _interopRequireDefault(require("./WordDef"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var D_REMOVE_UNDER = 60;
 var D_REMOVE_ITEM = 35;

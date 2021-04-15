@@ -11,8 +11,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
@@ -34,6 +32,8 @@ var _ListEditPane = _interopRequireDefault(require("./ListEditPane"));
 var _ListDeletePane = _interopRequireDefault(require("./ListDeletePane"));
 
 var _Dialog2 = _interopRequireDefault(require("./Dialog.Style"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
 var createList = _WatchActions["default"].createList,

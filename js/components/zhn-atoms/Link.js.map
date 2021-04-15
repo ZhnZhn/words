@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/zhn-atoms/Link.js"
- ],
- "file": "../../../src/components/zhn-atoms/Link.js",
- "names": [
-  "Link",
-  "title",
-  "rest"
- ],
- "mappings": ";;;;;;;;;;;;;AAAA,IAAMA,IAAI,GAAG,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAaC,IAAb;AAAA,sBACZ;AAAG,IAAA,MAAM,EAAC,QAAV;AAAmB,IAAA,SAAS,EAAC;AAA7B,KAAwCA,IAAxC;AAAA,cACKD;AADL,KADY;AAAA,CAAb;;eAMeD,I"
-}
+{"version":3,"sources":["../../../src/components/zhn-atoms/Link.jsx"],"names":["Link","title","rest"],"mappings":";;;;;;;;;;;;;AAAA,IAAMA,IAAI,GAAG,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAaC,IAAb;AAAA,sBACZ;AAAG,IAAA,MAAM,EAAC,QAAV;AAAmB,IAAA,SAAS,EAAC;AAA7B,KAAwCA,IAAxC;AAAA,cACKD;AADL,KADY;AAAA,CAAb;;eAMeD,I","sourcesContent":["const Link = ({ title, ...rest }) => (\r\n <a target=\"_blank\" className=\"link\" {...rest}>\r\n     {title}\r\n </a>\r\n);\r\n\r\nexport default Link\r\n"],"file":"Link.js"}

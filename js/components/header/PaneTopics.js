@@ -9,13 +9,13 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var PaneTopics = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PaneTopics, _Component);

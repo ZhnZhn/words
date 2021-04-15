@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/about/IconLogoBar.js"
- ],
- "file": "../../../src/components/about/IconLogoBar.js",
- "names": [
-  "S",
-  "ROOT",
-  "textAlign",
-  "paddingTop",
-  "IconLogoBar",
-  "iconStyle",
-  "iconGitHubStyle"
- ],
- "mappings": ";;;;;;;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,SAAS,EAAE,QADN;AAELC,IAAAA,UAAU,EAAE;AAFP;AADC,CAAV;;AAOA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,eAAd,QAAcA,eAAd;AAAA,sBAClB;AAAK,IAAA,KAAK,EAAEN,CAAC,CAACC,IAAd;AAAA,4BACG,qBAAC,sBAAD;AACG,MAAA,KAAK,EAAEK,eADV;AAEG,MAAA,KAAK,EAAC,mBAFT;AAGG,MAAA,IAAI,EAAC;AAHR,MADH,eAMG,qBAAC,wBAAD;AACE,MAAA,KAAK,EAAED;AADT,MANH,eASG,qBAAC,qBAAD;AACE,MAAA,KAAK,EAAEA;AADT,MATH;AAAA,IADkB;AAAA,CAApB;;eAgBeD,W"
-}
+{"version":3,"sources":["../../../src/components/about/IconLogoBar.jsx"],"names":["S","ROOT","textAlign","paddingTop","IconLogoBar","iconStyle","iconGitHubStyle"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,SAAS,EAAE,QADN;AAELC,IAAAA,UAAU,EAAE;AAFP;AADC,CAAV;;AAOA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,eAAd,QAAcA,eAAd;AAAA,sBAClB;AAAK,IAAA,KAAK,EAAEN,CAAC,CAACC,IAAd;AAAA,4BACG,qBAAC,sBAAD;AACG,MAAA,KAAK,EAAEK,eADV;AAEG,MAAA,KAAK,EAAC,mBAFT;AAGG,MAAA,IAAI,EAAC;AAHR,MADH,eAMG,qBAAC,wBAAD;AACE,MAAA,KAAK,EAAED;AADT,MANH,eASG,qBAAC,qBAAD;AACE,MAAA,KAAK,EAAEA;AADT,MATH;AAAA,IADkB;AAAA,CAApB;;eAgBeD,W","sourcesContent":["import IconGitHub from './IconGitHub'\r\nimport IconWordsApi from './IconWordsApi'\r\nimport IconReact from './IconReact'\r\n\r\nconst S = {\r\n  ROOT : {\r\n    textAlign: 'center',\r\n    paddingTop: 20\r\n  }\r\n};\r\n\r\nconst IconLogoBar = ({ iconStyle, iconGitHubStyle }) => (\r\n  <div style={S.ROOT}>\r\n     <IconGitHub\r\n        style={iconGitHubStyle}\r\n        title=\"GitHub Repository\"\r\n        href=\"https://github.com/zhnzhn/words/\"\r\n     />\r\n     <IconWordsApi\r\n       style={iconStyle}\r\n     />\r\n     <IconReact\r\n       style={iconStyle}\r\n     />\r\n  </div>\r\n);\r\n\r\nexport default IconLogoBar\r\n"],"file":"IconLogoBar.js"}

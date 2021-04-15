@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../../src/components/items/word/WordNyms.js"
- ],
- "file": "../../../../src/components/items/word/WordNyms.js",
- "names": [
-  "WordNyms",
-  "result",
-  "typeOf",
-  "hasTypes",
-  "partOf",
-  "hasParts",
-  "inCategory",
-  "hasCategories"
- ],
- "mappings": ";;;;;;;;;AAAA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AAAA,cAQ3BA,MAAM,IAAI,EARiB;AAAA,MAE7BC,MAF6B,SAE7BA,MAF6B;AAAA,MAG7BC,QAH6B,SAG7BA,QAH6B;AAAA,MAI7BC,MAJ6B,SAI7BA,MAJ6B;AAAA,MAK7BC,QAL6B,SAK7BA,QAL6B;AAAA,MAM7BC,UAN6B,SAM7BA,UAN6B;AAAA,MAO7BC,aAP6B,SAO7BA,aAP6B;;AAS/B,sBACE;AAAA,4BACE,qBAAC,kBAAD,CACE;AADF;AAEE,MAAA,OAAO,EAAC,uBAFV;AAGE,MAAA,KAAK,EAAEL;AAHT,MADF,eAME,qBAAC,kBAAD,CACE;AADF;AAEE,MAAA,OAAO,EAAC,0BAFV;AAGE,MAAA,KAAK,EAAEC;AAHT,MANF,eAWE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,mBADV;AAEE,MAAA,KAAK,EAAEC;AAFT,MAXF,eAeE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,qBADV;AAEE,MAAA,KAAK,EAAEC;AAFT,MAfF,eAmBE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,YADV;AAEE,MAAA,KAAK,EAAEC,UAFT;AAGE,MAAA,OAAO,EAAE;AAHX,MAnBF,eAwBE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,aADV;AAEE,MAAA,KAAK,EAAEC,aAFT;AAGE,MAAA,OAAO,EAAE;AAHX,MAxBF;AAAA,IADF;AAgCD,CAzCD;;eA2CeP,Q"
-}
+{"version":3,"sources":["../../../../src/components/items/word/WordNyms.jsx"],"names":["WordNyms","result","typeOf","hasTypes","partOf","hasParts","inCategory","hasCategories"],"mappings":";;;;;;;AAAA;;;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,OAAgB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AAAA,cAQ3BA,MAAM,IAAI,EARiB;AAAA,MAE7BC,MAF6B,SAE7BA,MAF6B;AAAA,MAG7BC,QAH6B,SAG7BA,QAH6B;AAAA,MAI7BC,MAJ6B,SAI7BA,MAJ6B;AAAA,MAK7BC,QAL6B,SAK7BA,QAL6B;AAAA,MAM7BC,UAN6B,SAM7BA,UAN6B;AAAA,MAO7BC,aAP6B,SAO7BA,aAP6B;;AAS/B,sBACE;AAAA,4BACE,qBAAC,kBAAD,CACE;AADF;AAEE,MAAA,OAAO,EAAC,uBAFV;AAGE,MAAA,KAAK,EAAEL;AAHT,MADF,eAME,qBAAC,kBAAD,CACE;AADF;AAEE,MAAA,OAAO,EAAC,0BAFV;AAGE,MAAA,KAAK,EAAEC;AAHT,MANF,eAWE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,mBADV;AAEE,MAAA,KAAK,EAAEC;AAFT,MAXF,eAeE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,qBADV;AAEE,MAAA,KAAK,EAAEC;AAFT,MAfF,eAmBE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,YADV;AAEE,MAAA,KAAK,EAAEC,UAFT;AAGE,MAAA,OAAO,EAAE;AAHX,MAnBF,eAwBE,qBAAC,kBAAD;AACE,MAAA,OAAO,EAAC,aADV;AAEE,MAAA,KAAK,EAAEC,aAFT;AAGE,MAAA,OAAO,EAAE;AAHX,MAxBF;AAAA,IADF;AAgCD,CAzCD;;eA2CeP,Q","sourcesContent":["import WordOf from './WordOf'\r\n\r\nconst WordNyms = ({ result }) => {\r\n  const {\r\n    typeOf,\r\n    hasTypes,\r\n    partOf,\r\n    hasParts,\r\n    inCategory,\r\n    hasCategories\r\n  } = result || {};\r\n  return (\r\n    <>\r\n      <WordOf\r\n        //hypernyms\r\n        caption=\"typeOf (more generic)\"\r\n        items={typeOf}\r\n      />\r\n      <WordOf\r\n        //hyponyms\r\n        caption=\"hasTypes (more specific)\"\r\n        items={hasTypes}\r\n      />\r\n      <WordOf\r\n        caption=\"partOf (holonyms)\"\r\n        items={partOf}\r\n      />\r\n      <WordOf\r\n        caption=\"hasParts (meronyms)\"\r\n        items={hasParts}\r\n      />\r\n      <WordOf\r\n        caption=\"inCategory\"\r\n        items={inCategory}\r\n        isCount={true}\r\n      />\r\n      <WordOf\r\n        caption=\"hasCategory\"\r\n        items={hasCategories}\r\n        isCount={true}\r\n      />\r\n    </>\r\n  );\r\n};\r\n\r\nexport default WordNyms\r\n"],"file":"WordNyms.js"}

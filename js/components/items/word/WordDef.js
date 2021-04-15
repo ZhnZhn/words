@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../../Comp"));
@@ -16,6 +14,8 @@ var _Comp = _interopRequireDefault(require("../../Comp"));
 var _WordSyn = _interopRequireDefault(require("./WordSyn"));
 
 var _WordNyms = _interopRequireDefault(require("./WordNyms"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   FILL_OPEN: "black",

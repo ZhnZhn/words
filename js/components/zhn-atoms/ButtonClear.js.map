@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/zhn-atoms/ButtonClear.js"
- ],
- "file": "../../../src/components/zhn-atoms/ButtonClear.js",
- "names": [
-  "CL",
-  "ButtonClear",
-  "style",
-  "onClick"
- ],
- "mappings": ";;;;;;;AAAA,IAAMA,EAAE,GAAG,UAAX;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,OAAV,QAAUA,OAAV;AAAA,sBAClB;AACE,IAAA,SAAS,EAAEH,EADb;AAEE,IAAA,KAAK,EAAEE,KAFT;AAGE,IAAA,OAAO,EAAEC,OAHX;AAAA;AAAA,IADkB;AAAA,CAApB;;eAQeF,W"
-}
+{"version":3,"sources":["../../../src/components/zhn-atoms/ButtonClear.jsx"],"names":["CL","ButtonClear","style","onClick"],"mappings":";;;;;;;AAAA,IAAMA,EAAE,GAAG,UAAX;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,OAAV,QAAUA,OAAV;AAAA,sBAClB;AACE,IAAA,SAAS,EAAEH,EADb;AAEE,IAAA,KAAK,EAAEE,KAFT;AAGE,IAAA,OAAO,EAAEC,OAHX;AAAA;AAAA,IADkB;AAAA,CAApB;;eAQeF,W","sourcesContent":["const CL = 'bt-clear';\r\n\r\nconst ButtonClear = ({ style, onClick }) => (\r\n  <button\r\n    className={CL}\r\n    style={style}\r\n    onClick={onClick}\r\n  >x</button>\r\n);\r\n\r\nexport default ButtonClear\r\n"],"file":"ButtonClear.js"}

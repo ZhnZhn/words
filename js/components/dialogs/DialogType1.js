@@ -9,8 +9,6 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
@@ -25,9 +23,11 @@ var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"))
 
 var _withKeyDown = _interopRequireDefault(require("./decorators/withKeyDown"));
 
-var _class, _temp;
+var _jsxRuntime = require("react/jsx-runtime");
 
-var DialogType1 = (0, _withKeyDown["default"])(_class = (_temp = /*#__PURE__*/function (_Component) {
+var _class;
+
+var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType1, _Component);
 
   function DialogType1(props) {
@@ -111,7 +111,7 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = (_temp = /*#__PURE__*/fu
   };
 
   return DialogType1;
-}(_react.Component), _temp)) || _class;
+}(_react.Component)) || _class;
 
 var _default = (0, _withTheme["default"])(DialogType1);
 
