@@ -16,7 +16,6 @@ var _react = require("react");
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropsTypes from 'prop-types'
-//const DB_TOUCH_PERIOD = 500
 var CL = {
   SELECT: 'm-select',
   LABEL: 'm-select__label',
@@ -157,19 +156,7 @@ var TextField = /*#__PURE__*/function (_Component) {
   TextField.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
     var initValue = props.initValue;
     return state.initValue !== initValue ? _crInitialState(props) : null;
-  }
-  /*
-  UNSAFE_componentWillReceiveProps(nextProps){
-    //update new initValue from parent component
-    if (this.props !== nextProps
-      && this.props.initValue !== nextProps.initValue ) {
-        this.setState({
-          value: nextProps.initValue || ''
-        })
-    }
-  }
-  */
-  ;
+  };
 
   var _proto = TextField.prototype;
 

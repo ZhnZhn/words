@@ -1,7 +1,5 @@
-import { Component } from 'react'
+import { Component } from 'react';
 //import PropsTypes from 'prop-types'
-
-//const DB_TOUCH_PERIOD = 500
 
 const CL = {
   SELECT: 'm-select',
@@ -28,7 +26,6 @@ const S = {
 
 };
 
-
 const _isFn = fn => typeof fn === 'function';
 const _isStr = str => typeof str === 'string';
 
@@ -46,6 +43,19 @@ const _crCaption = (caption, accessKey) => {
     cKey: caption.substring(keyIndex, keyIndex+1),
     cTail: caption.substring(keyIndex+1)
   };
+};
+
+const _crValue = initValue => initValue || '';
+
+const _crInitialState = props => {
+  const { initValue, onTest } = props
+  , _value = _crValue(initValue);
+  return {
+    initValue,
+    value: _value,
+    isPassTest: _isFn(onTest)
+       ? onTest(_value) : true
+  }
 };
 
 class TextField extends Component {
@@ -72,53 +82,16 @@ class TextField extends Component {
 
   constructor(props){
     super(props)
-    const { onTest, onEnter, initValue } = props;
-
     this.isFocus = false;
-    this.isOnTest = _isFn(onTest)
-    this.isOnEnter = _isFn(onEnter)
-
-    this._firstTouch = 0;
-
-    const _value = initValue || ''
-    this.state = {
-      value: _value,
-      isPassTest: this.isOnTest
-         ? onTest(_value) : true
-    }
+    this.state = _crInitialState(props)
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps){
-    /* update new initValue from parent component */
-    if (this.props !== nextProps
-      && this.props.initValue !== nextProps.initValue ) {
-        this.setState({
-          value: nextProps.initValue || ''
-        })
-    }
+  static getDerivedStateFromProps(props, state){
+    const { initValue } = props;
+    return state.initValue !== initValue
+     ? _crInitialState(props)
+     : null;
   }
-
-
-  /*
-  _handleClearInput = () => {
-    this.setState({ value: '' })
-  }
-
-
-  _handleDbTouch = (ev) => {
-    const _ms = Date.now();
-    if (this._firstTouch) {
-      if (_ms - this._firstTouch<DB_TOUCH_PERIOD) {
-        this._firstTouch = 0
-        this._handleClearInput()
-      } else {
-        this._firstTouch = _ms
-      }
-    } else {
-      this._firstTouch = _ms
-    }
-  }
-  */
 
   _handleFocusInput = () => {
     this.isFocus = true
@@ -131,52 +104,51 @@ class TextField extends Component {
 
   _handleInputChange = (event) => {
     const { value } = event.target
-        , { onTest  } = this.props;
-    if (this.isOnTest) {
-      this.setState({
-        value, isPassTest: onTest(value)
-      })
-    } else {
-      this.setState({ value })
-    }
+    , { onTest } = this.props
+    , _nextState = _isFn(onTest)
+        ? { value, isPassTest: onTest(value) }
+        : { value };
+    this.setState(_nextState)
   }
  _handleKeyDown = (event) => {
-   const { keyCode } = event;
-   if (keyCode === 46){
-     this.setState({ value: '' })
-   } else if (keyCode === 13 && this.isOnEnter) {
-     this.props.onEnter(event.target.value)
-   }
+    const { keyCode } = event;
+    if (keyCode === 46){
+      this.setState({ value: '' })
+    } else if (keyCode === 13 && _isFn(this.props.onEnter)) {
+      this.props.onEnter(event.target.value)
+    }
  }
 
  _ref = n => this.inputNode = n
 
   render(){
     const {
-            rootStyle, caption,
-            labelStyle, inputStyle,
-            accessKey,
-            errorMsg='',
-            ...restProps
-          } = this.props
-        , { value, isPassTest } = this.state
-        , _labelStyle = (value || this.isFocus)
-            ? void 0
-            : S.LABEL_TO_INPUT
-        , _labelErrStyle = (isPassTest)
-            ? void 0
-            : S.LABEL_ON_ERROR
-        , _lineStyle = (isPassTest)
-            ? void 0
-            : S.LINE_ERROR
-       , { cPrefix, cKey, cTail } = _crCaption(caption, accessKey);
+      rootStyle, caption,
+      labelStyle, inputStyle,
+      accessKey,
+      errorMsg='',
+      /*eslint-disable no-unused-vars*/
+      initValue,
+      onEnter,
+      /*eslint-enable no-unused-vars*/
+      ...restProps
+    } = this.props
+    , { value, isPassTest } = this.state
+    , _labelStyle = (value || this.isFocus)
+        ? void 0
+        : S.LABEL_TO_INPUT
+    , _labelErrStyle = isPassTest
+        ? void 0
+        : S.LABEL_ON_ERROR
+    , _lineStyle = isPassTest
+        ? void 0
+        : S.LINE_ERROR
+    , { cPrefix, cKey, cTail } = _crCaption(caption, accessKey);
 
     return (
       <div
         className={CL.SELECT}
         style={rootStyle}
-        //onDoubleClick={this._handleClearInput}
-        //onTouchStart={this._handleDbTouch}
       >
         <label
           className={CL.LABEL}
@@ -193,7 +165,7 @@ class TextField extends Component {
             className={CL.INPUT}
             style={inputStyle}
             value={value}
-            autoComplete="new-text"
+            autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             translate="false"
