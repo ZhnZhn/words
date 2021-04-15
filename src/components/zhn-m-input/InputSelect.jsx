@@ -1,7 +1,7 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import ArrowCell from './ArrowCell'
-import OptionsPane from './OptionsPane'
+import ArrowCell from './ArrowCell';
+import OptionsPane from './OptionsPane';
 
 const CL = {
   SELECT: 'm-select',
@@ -12,6 +12,12 @@ const CL = {
   INPUT_LINE: 'm-select__line',
   ITEM: 'm-select__item'
 };
+
+const _crInitialState = props => ({
+  isShow: false,
+  initialOptions: props.options,
+  item: props.initItem
+});
 
 class InputSelect extends Component {
   static defaultProps = {
@@ -25,24 +31,13 @@ class InputSelect extends Component {
 
   constructor(props){
     super(props)
-    this.state = {
-      isShow: false,
-      initialOptions: props.options,
-      item: props.initItem
-    }
+    this.state = _crInitialState(props)
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.options !== state.initialOptions) {
-      return {
-        isShow: false,
-        initialOptions: props.options,
-        item: {
-          caption: '',
-          value: ''
-        }
-      };
-    }
+    return props.options !== state.initialOptions
+       ? _crInitialState(props)
+       : null;
   }
 
 

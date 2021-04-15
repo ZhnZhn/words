@@ -7,13 +7,13 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   SELECT: 'm-select',
@@ -23,6 +23,14 @@ var CL = {
   DIV_BT: 'm-select__div__bt',
   INPUT_LINE: 'm-select__line',
   ITEM: 'm-select__item'
+};
+
+var _crInitialState = function _crInitialState(props) {
+  return {
+    isShow: false,
+    initialOptions: props.options,
+    item: props.initItem
+  };
 };
 
 var InputSelect = /*#__PURE__*/function (_Component) {
@@ -56,25 +64,12 @@ var InputSelect = /*#__PURE__*/function (_Component) {
       });
     };
 
-    _this.state = {
-      isShow: false,
-      initialOptions: props.options,
-      item: props.initItem
-    };
+    _this.state = _crInitialState(props);
     return _this;
   }
 
   InputSelect.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
-    if (props.options !== state.initialOptions) {
-      return {
-        isShow: false,
-        initialOptions: props.options,
-        item: {
-          caption: '',
-          value: ''
-        }
-      };
-    }
+    return props.options !== state.initialOptions ? _crInitialState(props) : null;
   };
 
   var _proto = InputSelect.prototype;
