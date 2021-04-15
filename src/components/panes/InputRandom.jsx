@@ -1,4 +1,6 @@
-import A from '../zhn-atoms/Atoms'
+import { forwardRef } from 'react';
+
+import A from '../zhn-atoms/Atoms';
 
 const S = {
   ROOT: {
@@ -14,18 +16,18 @@ const S = {
  }
 };
 
-const InputRandom = ({ TS, onEnter }) => (
+const InputRandom = forwardRef(({ TS, onEnter }, ref) => (
   <div style={S.ROOT}>
     <span style={S.SPAN}>
       Random Word
     </span>
     <A.FlatButton
-      rootStyle={{ ...TS.BT.FLAT, ...S.BT }}
+      rootStyle={{...TS.BT.FLAT, ...S.BT}}
       clDiv={TS.BT.CL_FLAT_DIV}
       caption="Load"
       onClick={onEnter}
     />
   </div>
-)
+));
 
 export default InputRandom

@@ -7,9 +7,11 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   ROOT: {
@@ -24,8 +26,7 @@ var S = {
     marginLeft: 8
   }
 };
-
-var InputRandom = function InputRandom(_ref) {
+var InputRandom = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   var TS = _ref.TS,
       onEnter = _ref.onEnter;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -40,8 +41,7 @@ var InputRandom = function InputRandom(_ref) {
       onClick: onEnter
     })]
   });
-};
-
+});
 var _default = InputRandom;
 exports["default"] = _default;
 //# sourceMappingURL=InputRandom.js.map

@@ -1,11 +1,11 @@
-import { Component } from 'react'
+import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Pane.Style'
-import crModelMore from './crModelMore'
+import withTheme from '../hoc/withTheme';
+import styleConfig from './Pane.Style';
+import crModelMore from './crModelMore';
 
-import A from '../Comp'
+import A from '../Comp';
 
 const CHILD_MARGIN = 36
 , RESIZE_INIT_WIDTH = 635
@@ -59,13 +59,14 @@ const T = {
   R: "Click to remove all items"
 };
 
+const _isFn = fn => typeof fn === 'function';
 const _fnNoop = () => {};
 
 const _getWidth = style => parseInt(style.width, 10)
   || RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
 
-class NewsPane extends Component {
+class PaneType1 extends Component {
   /*
     static propTypes = {
       paneCaption: PropTypes.string,
@@ -126,10 +127,10 @@ class NewsPane extends Component {
 
    _onStore = (actionType, option={}) => {
       const {
-              id,
-              updateAction, showAction, toggleAction,
-              watchAction
-            } = this.props;
+        id,
+        updateAction, showAction, toggleAction,
+        watchAction
+      } = this.props;
 
       if (option.id === id){
         switch(actionType){
@@ -173,8 +174,8 @@ class NewsPane extends Component {
 
    _getRootNodeStyle = () => {
      const { rootDiv } = this
-     , { style={} } = rootDiv || {};
-     return style;
+     , { style } = rootDiv || {};
+     return style || {};
    }
 
    _resizeTo = (width) => {
@@ -183,14 +184,14 @@ class NewsPane extends Component {
 
    _plusToWidth = () => {
      const style = this._getRootNodeStyle()
-         , w = _getWidth(style) + RESIZE_DELTA;
+     , w = _getWidth(style) + RESIZE_DELTA;
      if (w < RESIZE_MAX_WIDTH) {
         style.width = _toStyleWidth(w)
      }
    }
    _minusToWidth = () => {
      const style = this._getRootNodeStyle()
-         , w = _getWidth(style) - RESIZE_DELTA;
+     , w = _getWidth(style) - RESIZE_DELTA;
      if (w > RESIZE_MIN_WIDTH) {
        style.width = _toStyleWidth(w)
      }
@@ -207,13 +208,10 @@ class NewsPane extends Component {
 
    _hLoadItem = () => {
        const { itemConf, onLoad } = this.props
-       , _word = this.iWord
+       , word = this.iWord && _isFn(this.iWord.getValue)
             ? this.iWord.getValue()
             : void 0;
-       onLoad({
-         itemConf,
-         word: _word,
-       })
+       onLoad({ itemConf, word })
    }
 
   _renderConfigs(configs=[]){
@@ -305,4 +303,4 @@ class NewsPane extends Component {
    }
 }
 
-export default withTheme(NewsPane)
+export default withTheme(PaneType1)

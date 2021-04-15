@@ -11,8 +11,6 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
@@ -22,6 +20,8 @@ var _Pane = _interopRequireDefault(require("./Pane.Style"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CHILD_MARGIN = 36,
@@ -74,6 +74,10 @@ var T = {
   R: "Click to remove all items"
 };
 
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+
 var _fnNoop = function _fnNoop() {};
 
 var _getWidth = function _getWidth(style) {
@@ -84,8 +88,8 @@ var _toStyleWidth = function _toStyleWidth(width) {
   return width + 'px';
 };
 
-var NewsPane = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(NewsPane, _Component);
+var PaneType1 = /*#__PURE__*/function (_Component) {
+  (0, _inheritsLoose2["default"])(PaneType1, _Component);
 
   /*
     static propTypes = {
@@ -107,7 +111,7 @@ var NewsPane = /*#__PURE__*/function (_Component) {
       onAddToWatch: PropTypes.func
     }
   */
-  function NewsPane(props) {
+  function PaneType1(props) {
     var _this;
 
     _this = _Component.call(this, props) || this;
@@ -183,10 +187,9 @@ var NewsPane = /*#__PURE__*/function (_Component) {
       var _assertThisInitialize = (0, _assertThisInitialized2["default"])(_this),
           rootDiv = _assertThisInitialize.rootDiv,
           _ref = rootDiv || {},
-          _ref$style = _ref.style,
-          style = _ref$style === void 0 ? {} : _ref$style;
+          style = _ref.style;
 
-      return style;
+      return style || {};
     };
 
     _this._resizeTo = function (width) {
@@ -227,11 +230,10 @@ var NewsPane = /*#__PURE__*/function (_Component) {
       var _this$props2 = _this.props,
           itemConf = _this$props2.itemConf,
           onLoad = _this$props2.onLoad,
-          _word = _this.iWord ? _this.iWord.getValue() : void 0;
-
+          word = _this.iWord && _isFn(_this.iWord.getValue) ? _this.iWord.getValue() : void 0;
       onLoad({
         itemConf: itemConf,
-        word: _word
+        word: word
       });
     };
 
@@ -260,7 +262,7 @@ var NewsPane = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  var _proto = NewsPane.prototype;
+  var _proto = PaneType1.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
     this.unsubscribe = this.props.store.listen(this._onStore);
@@ -344,15 +346,15 @@ var NewsPane = /*#__PURE__*/function (_Component) {
     });
   };
 
-  return NewsPane;
+  return PaneType1;
 }(_react.Component);
 
-NewsPane.defaultProps = {
+PaneType1.defaultProps = {
   onLoad: _fnNoop,
   onClose: _fnNoop
 };
 
-var _default = (0, _withTheme["default"])(NewsPane);
+var _default = (0, _withTheme["default"])(PaneType1);
 
 exports["default"] = _default;
 //# sourceMappingURL=PaneType1.js.map
