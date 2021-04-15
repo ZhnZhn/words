@@ -1,23 +1,26 @@
-import { Component } from 'react'
+import { Component, createRef } from 'react';
 
 class ModalPane extends Component {
   static defaultProps = {
     onClose: () => {}
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if (this.props !== nextProps ){
-      if (nextProps.isShow){
-        document.addEventListener('click', this._handleClickOutside, true)
+  _refNode = createRef()
+
+  componentDidUpdate(prevProps, prevState){
+    if(this.props !== prevProps){
+      if (this.props.isShow){
+        document.addEventListener('click', this._hClickOutside, true)
       } else {
-        document.removeEventListener('click', this._handleClickOutside, true)
+        document.removeEventListener('click', this._hClickOutside, true)
       }
     }
   }
 
-  _handleClickOutside = (event) => {
-    const { onClose } = this.props;
-    if (!this.rootNode.contains(event.target)) {
+  _hClickOutside = (event) => {
+    const { onClose } = this.props
+    , _node = this._refNode.current;
+    if (_node && !_node.contains(event.target)) {
       onClose(event)
     }
   }
@@ -27,7 +30,7 @@ class ModalPane extends Component {
     return (
       <div
         style={style}
-        ref={n => this.rootNode = n}
+        ref={this._refNode}
       >
         {children}
       </div>

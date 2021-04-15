@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var ModalPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalPane, _Component);
@@ -22,11 +22,13 @@ var ModalPane = /*#__PURE__*/function (_Component) {
     }
 
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this._refNode = /*#__PURE__*/(0, _react.createRef)();
 
-    _this._handleClickOutside = function (event) {
-      var onClose = _this.props.onClose;
+    _this._hClickOutside = function (event) {
+      var onClose = _this.props.onClose,
+          _node = _this._refNode.current;
 
-      if (!_this.rootNode.contains(event.target)) {
+      if (_node && !_node.contains(event.target)) {
         onClose(event);
       }
     };
@@ -36,27 +38,23 @@ var ModalPane = /*#__PURE__*/function (_Component) {
 
   var _proto = ModalPane.prototype;
 
-  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps) {
-      if (nextProps.isShow) {
-        document.addEventListener('click', this._handleClickOutside, true);
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    if (this.props !== prevProps) {
+      if (this.props.isShow) {
+        document.addEventListener('click', this._hClickOutside, true);
       } else {
-        document.removeEventListener('click', this._handleClickOutside, true);
+        document.removeEventListener('click', this._hClickOutside, true);
       }
     }
   };
 
   _proto.render = function render() {
-    var _this2 = this;
-
     var _this$props = this.props,
         style = _this$props.style,
         children = _this$props.children;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: style,
-      ref: function ref(n) {
-        return _this2.rootNode = n;
-      },
+      ref: this._refNode,
       children: children
     });
   };
