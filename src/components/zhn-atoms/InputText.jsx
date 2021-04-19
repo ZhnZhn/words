@@ -22,7 +22,6 @@ const S = {
 const C = {
   BLANK: '',
   TEXT: 'text',
-  //NEW_TEXT: 'new-text',
   ON: 'on',
   OFF: 'off'
 }
@@ -45,8 +44,7 @@ class InputText extends Component {
 
   constructor(props){
     super(props)
-    const { initValue, onEnter } = props;
-    this.isOnEnter = _isFn(onEnter)
+    const { initValue } = props;    
     this.state = {
       value: initValue
     }
@@ -59,12 +57,11 @@ class InputText extends Component {
     }
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if (nextProps !== this.props){
+  componentDidUpdate(prevProps){
+    if (prevProps !== this.props){
+      const { initValue } = this.props;
       this.setState({
-        value: nextProps.initValue != null
-           ? nextProps.initValue
-           : C.BLANK
+        value: initValue != null ? initValue : C.BLANK
       })
     }
   }
@@ -79,7 +76,7 @@ class InputText extends Component {
          this.setState({ value: C.BLANK })
          break;
       case 13:
-         if (this.isOnEnter) {
+         if (_isFn(this.props.onEnter)) {
            this.props.onEnter(event.target.value)
          }
          break;

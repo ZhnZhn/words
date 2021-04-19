@@ -65,22 +65,20 @@ var FragmentSelectGroupList = /*#__PURE__*/function (_Component) {
 
   var _proto = FragmentSelectGroupList.prototype;
 
-  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
-      if (nextProps.groupOptions !== this.props.groupOptions) {
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      if (this.props.groupOptions !== prevProps.groupOptions) {
         this.groupCaption = null;
         this.listCaption = null;
         this.setState({
           listOptions: []
         });
-      } else {
-        if (this.groupCaption) {
-          var listOptions = this.props.store.getWatchListsByGroup(this.groupCaption);
-          if (listOptions !== this.state.listOptions) this.listCaption = null;
-          this.setState({
-            listOptions: listOptions
-          });
-        }
+      } else if (this.groupCaption) {
+        var listOptions = this.props.store.getWatchListsByGroup(this.groupCaption);
+        if (listOptions !== this.state.listOptions) this.listCaption = null;
+        this.setState({
+          listOptions: listOptions
+        });
       }
     }
   };

@@ -190,24 +190,29 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
     this.unsubscribe();
   };
 
-  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
-      var groups = nextProps.store.getWatchGroups();
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    //Update group and list options from store
+    var _this$props = this.props,
+        isShow = _this$props.isShow,
+        store = _this$props.store;
 
-      if (groups !== this.state.groupOptions) {
+    if (prevProps !== this.props && isShow) {
+      var groupOptions = store.getWatchGroups();
+
+      if (groupOptions !== this.state.groupOptions) {
         this.groupCaption = null;
         this.listCaption = null;
         this.setState({
-          groupOptions: groups,
+          groupOptions: groupOptions,
           listOptions: []
         });
       } else if (this.groupCaption) {
-        var lists = nextProps.store.getWatchListsByGroup(this.groupCaption);
+        var listOptions = store.getWatchListsByGroup(this.groupCaption);
 
-        if (lists !== this.state.listOptions) {
+        if (listOptions !== this.state.listOptions) {
           this.listCaption = null;
           this.setState({
-            listOptions: lists
+            listOptions: listOptions
           });
         }
       }
@@ -223,10 +228,10 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
   };
 
   _proto.render = function render() {
-    var _this$props = this.props,
-        theme = _this$props.theme,
-        isShow = _this$props.isShow,
-        data = _this$props.data,
+    var _this$props2 = this.props,
+        theme = _this$props2.theme,
+        isShow = _this$props2.isShow,
+        data = _this$props2.data,
         caption = data.caption,
         _this$state = this.state,
         groupOptions = _this$state.groupOptions,

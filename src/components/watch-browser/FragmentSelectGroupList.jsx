@@ -25,20 +25,18 @@ class FragmentSelectGroupList extends Component {
       listOptions : []
     }
   }
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if (nextProps !== this.props){
-      if (nextProps.groupOptions !== this.props.groupOptions){
-          this.groupCaption = null;
+  
+  componentDidUpdate(prevProps){
+    if (this.props !== prevProps){
+      if (this.props.groupOptions !== prevProps.groupOptions) {
+        this.groupCaption = null;
+        this.listCaption = null;
+        this.setState({ listOptions: [] });
+      } else if (this.groupCaption) {
+        const listOptions = this.props.store.getWatchListsByGroup(this.groupCaption);
+        if (listOptions !== this.state.listOptions)
           this.listCaption = null;
-          this.setState({ listOptions: [] });
-      } else {
-        if (this.groupCaption){
-          const listOptions = this.props.store.getWatchListsByGroup(this.groupCaption);
-          if (listOptions !== this.state.listOptions)
-            this.listCaption = null;
-            this.setState({ listOptions });
-        }
+          this.setState({ listOptions });
       }
     }
   }

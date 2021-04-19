@@ -197,8 +197,7 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
     _this._renderItems = function (items, groupCaption, listCaption) {
       var isModeEdit = _this.state.isModeEdit;
       return items.map(function (item, index) {
-        var id = item.id,
-            caption = item.caption;
+        var caption = item.caption;
         return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItem["default"], {
           className: CL_WATCH_ITEM,
           isModeEdit: isModeEdit,
@@ -215,7 +214,7 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
           onDragEnter: _this._handlerDragEnterItem,
           onDragLeave: _this._handlerDragLeaveItem,
           onDrop: _this._handlerDropItem
-        }, id);
+        }, caption);
       });
     };
 

@@ -24,37 +24,43 @@ const STYLE = {
     position: 'absolute',
     right: 0
   }
-
 }
 
+const _isKeyEnter = ({ keyCode }) => keyCode === 13;
 
-const WatchItem = (props) => {
-  const {
-           item, className, isModeEdit, option,
-           onClick, onClose,
-           onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop
-         } = props
-      , { caption } = item
-      , _btClose = isModeEdit
-          ? (
-             <SvgClose
-               style={STYLE.SVG_CLOSE}
-               onClose={onClose.bind(null, option)}
-             />
-            )
-          : null;
+const WatchItem = ({
+  item, className, isModeEdit, option,
+  onClick, onClose,
+  onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop
+}) => {
+  const { caption } = item
+    , _onClick = () => onClick(item)
+    , _onKeyDown = event => {
+      if (_isKeyEnter(event)) {
+        _onClick()
+      }
+    }
+    , _handlers = isModeEdit ? {
+        onDragStart: onDragStart.bind(null, option),
+        onDrop: onDrop.bind(null, option),
+        onDragOver, onDragEnter, onDragLeave
+    } : void 0
+    , _btClose = isModeEdit
+        ? (<SvgClose
+             style={STYLE.SVG_CLOSE}
+             onClose={() => onClose(option)}
+           />)
+        : null;
 return (
      <div
+       tabIndex={0}
+       role="menuitem"
        className={className}
        style={STYLE.ITEM_DIV}
-       onClick={onClick.bind(null, item)}
-       //onClick={ComponentActions.showModalDialog.bind(null, ModalDialog.LOAD_ITEM, item)}
+       onClick={_onClick}
+       onKeyDown={_onKeyDown}
        draggable={isModeEdit}
-       onDragStart={isModeEdit && onDragStart.bind(null, option)}
-       onDrop={isModeEdit && onDrop.bind(null, option)}
-       onDragOver={isModeEdit && onDragOver}
-       onDragEnter={isModeEdit && onDragEnter}
-       onDragLeave={isModeEdit && onDragLeave}
+       {..._handlers}
      >
        <span style={STYLE.ITEM_SPAN}>
          {caption}

@@ -233,10 +233,10 @@ class WatchBrowser extends Component {
   _renderItems = (items, groupCaption, listCaption) => {
       const {isModeEdit} = this.state;
       return items.map((item, index) => {
-        const { id, caption } = item;
+        const { caption } = item;        
         return (
             <WatchItem
-               key={id}
+               key={caption}
                className={CL_WATCH_ITEM}
                isModeEdit={isModeEdit}
                item={item}

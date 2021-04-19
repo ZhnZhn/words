@@ -72,19 +72,21 @@ class AddToWatchDialog extends Component {
        this.setState({ validationMessages:data.messages });
     }
   }
-
-  UNSAFE_componentWillReceiveProps(nextProps){
-    if (nextProps !== this.props && nextProps.isShow !== this.props.isShow) {
-      const groups = nextProps.store.getWatchGroups();
-      if (groups !== this.state.groupOptions){
+  
+  componentDidUpdate(prevProps, prevState){
+    //Update group and list options from store
+    const { isShow, store } = this.props;
+    if (prevProps !== this.props && isShow){
+      const groupOptions = store.getWatchGroups();
+      if (groupOptions !== this.state.groupOptions){
         this.groupCaption = null
         this.listCaption = null
-        this.setState({ groupOptions:groups, listOptions:[] })
-      } else if (this.groupCaption){
-        const lists = nextProps.store.getWatchListsByGroup(this.groupCaption);
-        if (lists !== this.state.listOptions){
+        this.setState({ groupOptions, listOptions: [] })
+      } else if (this.groupCaption) {
+        const listOptions = store.getWatchListsByGroup(this.groupCaption);
+        if (listOptions !== this.state.listOptions){
           this.listCaption = null
-          this.setState({ listOptions:lists })
+          this.setState({ listOptions })
         }
       }
     }

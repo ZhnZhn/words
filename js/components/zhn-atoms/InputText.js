@@ -34,7 +34,6 @@ var S = {
 var C = {
   BLANK: '',
   TEXT: 'text',
-  //NEW_TEXT: 'new-text',
   ON: 'on',
   OFF: 'off'
 };
@@ -78,7 +77,7 @@ var InputText = /*#__PURE__*/function (_Component) {
           break;
 
         case 13:
-          if (_this.isOnEnter) {
+          if (_isFn(_this.props.onEnter)) {
             _this.props.onEnter(event.target.value);
           }
 
@@ -89,9 +88,7 @@ var InputText = /*#__PURE__*/function (_Component) {
       }
     };
 
-    var initValue = props.initValue,
-        onEnter = props.onEnter;
-    _this.isOnEnter = _isFn(onEnter);
+    var initValue = props.initValue;
     _this.state = {
       value: initValue
     };
@@ -108,10 +105,11 @@ var InputText = /*#__PURE__*/function (_Component) {
     }
   };
 
-  _proto.UNSAFE_componentWillReceiveProps = function UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      var initValue = this.props.initValue;
       this.setState({
-        value: nextProps.initValue != null ? nextProps.initValue : C.BLANK
+        value: initValue != null ? initValue : C.BLANK
       });
     }
   };
