@@ -29,6 +29,6 @@
   outline: none;
 }
 
-.row__type2-topic:nth-child(odd) {
+.row__type2-topic:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
