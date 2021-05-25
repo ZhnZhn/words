@@ -72,8 +72,8 @@ var WatchItem = function WatchItem(_ref2) {
   } : void 0,
       _btClose = isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
     style: STYLE.SVG_CLOSE,
-    onClose: function onClose() {
-      return _onClose(option);
+    onClose: function onClose(evt) {
+      return _onClose(option, evt);
     }
   }) : null;
 

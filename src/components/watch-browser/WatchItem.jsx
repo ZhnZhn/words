@@ -48,7 +48,7 @@ const WatchItem = ({
     , _btClose = isModeEdit
         ? (<SvgClose
              style={STYLE.SVG_CLOSE}
-             onClose={() => onClose(option)}
+             onClose={(evt) => onClose(option, evt)}
            />)
         : null;
 return (
