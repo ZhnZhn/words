@@ -1,23 +1,21 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import withTheme from '../../hoc/withTheme'
-import styleConfig from './Word.Style'
+import withTheme from '../../hoc/withTheme';
+import styleConfig from './Word.Style';
 
-import DndOnlyX from '../../zhn-dnd/DndOnlyX'
+import GestureSwipeX from '../../zhn-gesture/GestureSwipeX';
 
-import ItemHeader from '../ItemHeader'
-import WordDef from './WordDef'
-
+import ItemHeader from '../ItemHeader';
+import WordDef from './WordDef';
 
 const D_REMOVE_UNDER = 60;
-const D_REMOVE_ITEM = 35;
 
-const CL_ITEM_HEADER = "article-header"
+const CL_ITEM_HEADER = "article-header";
 
 const S = {
   ROOT: {
-    position : 'relative',
-    lineHeight : 1.5,
+    position: 'relative',
+    lineHeight: 1.5,
     marginBottom: 5,
     marginRight: 25,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
@@ -38,11 +36,11 @@ const S = {
     borderLeft: '6px solid #607d8b'
   },
   CAPTION: {
-    display : 'inline-block',
+    display: 'inline-block',
     color: 'black',
     paddingRight: 8,
     fontSize: '18px',
-    fontWeight : 'bold',
+    fontWeight: 'bold',
     cursor: 'pointer'
   },
   CAPTION_OPEN: {
@@ -53,7 +51,7 @@ const S = {
     top: 8,
     right: 0
   }
-}
+};
 
 class Word extends Component {
 
@@ -65,7 +63,16 @@ class Word extends Component {
     isShow: false
   }
 
-  _hToggle = () => {
+  _setTimeStamp = (timeStamp) => {
+    this._toggleTimeStamp = timeStamp
+  }
+
+  _hToggle = ({ timeStamp }) => {
+    if (this._toggleTimeStamp
+        && timeStamp - this._toggleTimeStamp < 200) {
+       return;
+    }
+    this._toggleTimeStamp = timeStamp
     this.setState(prevState => ({
       isShow: !prevState.isShow
     }))
@@ -79,16 +86,8 @@ class Word extends Component {
     onCloseItem(config)
   }
 
-  _onDragEnd = (dX) => {
-    const { onRemoveUnder, config } = this.props;
-    if (dX > D_REMOVE_UNDER) {
-      onRemoveUnder(config)
-    } else if (dX > D_REMOVE_ITEM){
-      this._hClose()
-    }
-  }
 
-  _onDragTouchEnd = (dX) => {
+  _onGestureSwipeX = (dX) => {
     if (dX > D_REMOVE_UNDER) {
       this._hClose()
       return false;
@@ -96,6 +95,7 @@ class Word extends Component {
       return true;
     }
   }
+
 
   render() {
     const {config, theme, onAddToWatch } = this.props
@@ -109,10 +109,10 @@ class Word extends Component {
              ? { ...S.CAPTION, ...S.CAPTION_OPEN }
              : S.CAPTION;
     return (
-        <DndOnlyX
+        <GestureSwipeX
           style={S.ROOT}
-          onDragEnd={this._onDragEnd}
-          onDragTouchEnd={this._onDragTouchEnd}
+          setTimeStamp= {this._setTimeStamp}
+          onGesture={this._onGestureSwipeX}
         >
           <ItemHeader
              className={CL_ITEM_HEADER}
@@ -131,7 +131,7 @@ class Word extends Component {
             isShow={isShow}
             config={config}
           />
-        </DndOnlyX>
+        </GestureSwipeX>
       );
     }
 }

@@ -15,7 +15,7 @@ var _withTheme = _interopRequireDefault(require("../../hoc/withTheme"));
 
 var _Word = _interopRequireDefault(require("./Word.Style"));
 
-var _DndOnlyX = _interopRequireDefault(require("../../zhn-dnd/DndOnlyX"));
+var _GestureSwipeX = _interopRequireDefault(require("../../zhn-gesture/GestureSwipeX"));
 
 var _ItemHeader = _interopRequireDefault(require("../ItemHeader"));
 
@@ -24,7 +24,6 @@ var _WordDef = _interopRequireDefault(require("./WordDef"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 var D_REMOVE_UNDER = 60;
-var D_REMOVE_ITEM = 35;
 var CL_ITEM_HEADER = "article-header";
 var S = {
   ROOT: {
@@ -82,7 +81,19 @@ var Word = /*#__PURE__*/function (_Component) {
       isShow: false
     };
 
-    _this._hToggle = function () {
+    _this._setTimeStamp = function (timeStamp) {
+      _this._toggleTimeStamp = timeStamp;
+    };
+
+    _this._hToggle = function (_ref) {
+      var timeStamp = _ref.timeStamp;
+
+      if (_this._toggleTimeStamp && timeStamp - _this._toggleTimeStamp < 200) {
+        return;
+      }
+
+      _this._toggleTimeStamp = timeStamp;
+
       _this.setState(function (prevState) {
         return {
           isShow: !prevState.isShow
@@ -97,19 +108,7 @@ var Word = /*#__PURE__*/function (_Component) {
       onCloseItem(config);
     };
 
-    _this._onDragEnd = function (dX) {
-      var _this$props2 = _this.props,
-          onRemoveUnder = _this$props2.onRemoveUnder,
-          config = _this$props2.config;
-
-      if (dX > D_REMOVE_UNDER) {
-        onRemoveUnder(config);
-      } else if (dX > D_REMOVE_ITEM) {
-        _this._hClose();
-      }
-    };
-
-    _this._onDragTouchEnd = function (dX) {
+    _this._onGestureSwipeX = function (dX) {
       if (dX > D_REMOVE_UNDER) {
         _this._hClose();
 
@@ -125,10 +124,10 @@ var Word = /*#__PURE__*/function (_Component) {
   var _proto = Word.prototype;
 
   _proto.render = function render() {
-    var _this$props3 = this.props,
-        config = _this$props3.config,
-        theme = _this$props3.theme,
-        onAddToWatch = _this$props3.onAddToWatch,
+    var _this$props2 = this.props,
+        config = _this$props2.config,
+        theme = _this$props2.theme,
+        onAddToWatch = _this$props2.onAddToWatch,
         title = config.title,
         caption = config.caption,
         TS = theme.createStyle(_Word["default"]),
@@ -136,10 +135,10 @@ var Word = /*#__PURE__*/function (_Component) {
         _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
         _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION;
 
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DndOnlyX["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
       style: S.ROOT,
-      onDragEnd: this._onDragEnd,
-      onDragTouchEnd: this._onDragTouchEnd,
+      setTimeStamp: this._setTimeStamp,
+      onGesture: this._onGestureSwipeX,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
         className: CL_ITEM_HEADER,
         style: (0, _extends2["default"])({}, _headerStyle, TS.HEADER),
