@@ -11,15 +11,12 @@ var _ContainerStyle = _interopRequireDefault(require("../styles/ContainerStyle")
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from 'prop-types'
-var CL_SHOW = 'show-popup';
-var S = {
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+var CL_SHOW_POPUP = 'show-popup',
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
 };
 
 var Browser = function Browser(_ref) {
@@ -27,8 +24,8 @@ var Browser = function Browser(_ref) {
       style = _ref.style,
       children = _ref.children;
 
-  var _styleOpen = isShow ? S.BLOCK : S.NONE,
-      _classOpen = isShow ? CL_SHOW : null;
+  var _styleOpen = isShow ? S_BLOCK : S_NONE,
+      _classOpen = isShow ? CL_SHOW_POPUP : null;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _classOpen,
@@ -36,13 +33,6 @@ var Browser = function Browser(_ref) {
     children: children
   });
 };
-/*
-Browser.propTypes = {
-  isShow: PropTypes.bool,
-  style: PropTypes.object
-}
-*/
-
 
 var _default = Browser;
 exports["default"] = _default;

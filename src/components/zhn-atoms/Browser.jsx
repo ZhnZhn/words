@@ -1,20 +1,17 @@
-//import PropTypes from 'prop-types'
 
-import STYLE from '../styles/ContainerStyle'
+import STYLE from '../styles/ContainerStyle';
 
-const CL_SHOW = 'show-popup';
-const S = {
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
-};
+const CL_SHOW_POPUP = 'show-popup'
+, S_BLOCK = { display: 'block' }
+, S_NONE = { display: 'none' };
 
-const Browser = ({ isShow, style, children }) => {
-  const _styleOpen = isShow ? S.BLOCK : S.NONE
-      , _classOpen = isShow ? CL_SHOW : null;
+const Browser = ({
+  isShow,
+  style,
+  children
+}) => {
+  const _styleOpen = isShow ? S_BLOCK : S_NONE
+  , _classOpen = isShow ? CL_SHOW_POPUP : null;
   return (
      <div
         className={_classOpen}
@@ -24,12 +21,5 @@ const Browser = ({ isShow, style, children }) => {
      </div>
   );
 };
-
-/*
-Browser.propTypes = {
-  isShow: PropTypes.bool,
-  style: PropTypes.object
-}
-*/
 
 export default Browser
