@@ -14,34 +14,32 @@ var _react = require("react");
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL_CAPTION = 'open-close not-selected';
-var STYLE = {
-  ROOT: {
-    backgroundColor: 'inherit',
-    lineHeight: 2.5
-  },
-  SVG: {
-    width: 16,
-    height: 16,
-    display: 'inline-block'
-  },
-  ROOT_CAPTION: {
-    paddingLeft: 12
-  },
-  CAPTION: {
-    color: '#9e9e9e',
-    paddingLeft: 4,
-    verticalAlign: 'top'
-  },
-  INLINE: {
-    display: 'inline-block'
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+var CL_CAPTION = 'open-close not-selected',
+    S_ROOT = {
+  backgroundColor: 'inherit',
+  lineHeight: 2.5
+},
+    S_SVG = {
+  display: 'inline-block',
+  width: 16,
+  height: 16
+},
+    S_ROOT_CAPTION = {
+  paddingLeft: 12
+},
+    S_CAPTION = {
+  color: '#9e9e9e',
+  paddingLeft: 4,
+  verticalAlign: 'top'
+},
+    S_INLINE = {
+  display: 'inline-block'
+},
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
 };
 var FILL_OPEN = '#9e9e9e',
     FILL_CLOSE = 'transparent',
@@ -131,36 +129,36 @@ var OpenClose = /*#__PURE__*/function (_Component) {
     if (this.state.isOpen) {
       _pathV = PATH_OPEN;
       _fillV = fillOpen;
-      _styleCollapse = STYLE.BLOCK;
+      _styleCollapse = S_BLOCK;
       _classShow = 'show-popup';
       _itemStyle = null;
     } else {
       _pathV = PATH_CLOSE;
       _fillV = fillClose;
-      _styleCollapse = STYLE.NONE;
+      _styleCollapse = S_NONE;
       _classShow = null;
       _itemStyle = itemStyle;
     }
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: (0, _extends2["default"])({}, STYLE.ROOT, style),
+      style: (0, _extends2["default"])({}, S_ROOT, style),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
         role: "button",
         className: CL_CAPTION,
         tabIndex: "0",
-        style: (0, _extends2["default"])({}, STYLE.ROOT_CAPTION, _itemStyle),
+        style: (0, _extends2["default"])({}, S_ROOT_CAPTION, _itemStyle),
         onClick: this._handleToggle,
         onKeyDown: this._handleKeyDown
       }, _dndOption, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          style: STYLE.SVG,
+          style: S_SVG,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
             viewBox: "0 0 16 16",
             width: "100%",
             height: "100%",
             preserveAspectRatio: "none",
             xmlns: "http://www.w3.org/2000/svg",
-            style: STYLE.INLINE,
+            style: S_INLINE,
             children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
               d: _pathV,
               fill: _fillV,
@@ -169,7 +167,7 @@ var OpenClose = /*#__PURE__*/function (_Component) {
             })
           })
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: (0, _extends2["default"])({}, STYLE.CAPTION, captionStyle),
+          style: (0, _extends2["default"])({}, S_CAPTION, captionStyle),
           children: caption
         }), afterCaptionComp]
       })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {

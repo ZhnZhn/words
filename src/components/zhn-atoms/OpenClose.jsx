@@ -1,36 +1,25 @@
 import { Component } from 'react'
 //import PropTypes from 'prop-types'
 
-const CL_CAPTION = 'open-close not-selected';
-
-const STYLE = {
-  ROOT: {
-    backgroundColor: 'inherit',
-    lineHeight: 2.5
-  },
-  SVG: {
-    width: 16,
-    height: 16,
-    display: 'inline-block'
-  },
-  ROOT_CAPTION: {
-    paddingLeft: 12
-  },
-  CAPTION: {
-    color: '#9e9e9e',
-    paddingLeft: 4,
-    verticalAlign: 'top'
-  },
-  INLINE : {
-    display: 'inline-block'
-  },
-  BLOCK : {
-    display: 'block'
-  },
-  NONE : {
-    display : 'none'
-  }
-};
+const CL_CAPTION = 'open-close not-selected'
+, S_ROOT = {
+  backgroundColor: 'inherit',
+  lineHeight: 2.5
+}
+, S_SVG = {
+  display: 'inline-block',
+  width: 16,
+  height: 16
+}
+, S_ROOT_CAPTION = { paddingLeft: 12 }
+, S_CAPTION = {
+  color: '#9e9e9e',
+  paddingLeft: 4,
+  verticalAlign: 'top'
+}
+, S_INLINE = { display: 'inline-block' }
+, S_BLOCK = { display: 'block' }
+, S_NONE = { display: 'none' }
 
 const FILL_OPEN = '#9e9e9e'
     , FILL_CLOSE = 'transparent'
@@ -90,58 +79,68 @@ class OpenClose extends Component {
 
   render(){
     const {
-            style, itemStyle,
-            captionStyle,
-            //styleCaption,
-            childrenStyle,
-            caption,
-            fillOpen, fillClose,
-            afterCaptionComp,
-            isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
-            children
-          } = this.props
-          , _dndOption = isDraggable
-               ? {
-                     draggable : true,
-                     onDragStart : onDragStart.bind(null, option),
-                     onDrop : onDrop.bind(null, option),
-                     onDragEnter : onDragEnter,
-                     onDragOver : onDragOver,
-                     onDragLeave : onDragLeave
-                 }
-              : void 0;
+      style,
+      itemStyle,
+      captionStyle,
+      childrenStyle,
+      caption,
+      fillOpen,
+      fillClose,
+      afterCaptionComp,
+      isDraggable,
+      option,
+      onDragStart,
+      onDragEnter,
+      onDragOver,
+      onDragLeave,
+      onDrop,
+      children
+    } = this.props
+    , _dndOption = isDraggable
+         ? {
+             draggable : true,
+             onDragStart : onDragStart.bind(null, option),
+             onDrop : onDrop.bind(null, option),
+             onDragEnter : onDragEnter,
+             onDragOver : onDragOver,
+             onDragLeave : onDragLeave
+           }
+        : void 0;
 
     let _pathV, _fillV, _styleCollapse, _classShow, _itemStyle;
     if (this.state.isOpen){
       _pathV = PATH_OPEN;
       _fillV = fillOpen;
-      _styleCollapse = STYLE.BLOCK;
+      _styleCollapse = S_BLOCK;
       _classShow = 'show-popup';
       _itemStyle = null;
     } else {
       _pathV = PATH_CLOSE;
       _fillV = fillClose;
-      _styleCollapse = STYLE.NONE;
+      _styleCollapse = S_NONE;
       _classShow = null;
       _itemStyle = itemStyle;
     }
 
     return (
-      <div style={{...STYLE.ROOT, ...style}}>
+      <div style={{...S_ROOT, ...style}}>
         <div
            role="button"
            className={CL_CAPTION}
            tabIndex="0"
-           style={{...STYLE.ROOT_CAPTION, ..._itemStyle }}
+           style={{...S_ROOT_CAPTION, ..._itemStyle }}
            onClick={this._handleToggle}
            onKeyDown={this._handleKeyDown}
            {..._dndOption}
          >
-          <div style={STYLE.SVG}>
+          <div style={S_SVG}>
              <svg
-                viewBox="0 0 16 16" width="100%" height="100%"
-                preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-                style={STYLE.INLINE}
+                viewBox="0 0 16 16"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={S_INLINE}
               >
                <path
                   d={_pathV}
@@ -150,7 +149,7 @@ class OpenClose extends Component {
                />
              </svg>
          </div>
-         <span style={{...STYLE.CAPTION, ...captionStyle}} >
+         <span style={{...S_CAPTION, ...captionStyle}} >
             {caption}
          </span>
          {afterCaptionComp}
@@ -162,7 +161,7 @@ class OpenClose extends Component {
         {children}
       </div>
      </div>
-    )
+    );
   }
 }
 
