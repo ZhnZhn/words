@@ -1,1 +1,18 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/SvgClose.jsx"],"names":["CL_ROOT","S","COLOR","SVG","padding","SvgClose","style","tabIndex","onClose","defaultProps"],"mappings":";;;;;;;AAAA;AAEA,IAAMA,OAAO,GAAG,WAAhB;AACA,IAAMC,CAAC,GAAG;AACRC,EAAAA,KAAK,EAAE,SADC;AAERC,EAAAA,GAAG,EAAE;AACHC,IAAAA,OAAO,EAAE;AADN;AAFG,CAAV;;AAOA,IAAMC,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACfC,KADe,QACfA,KADe;AAAA,MAEfC,QAFe,QAEfA,QAFe;AAAA,MAGfC,OAHe,QAGfA,OAHe;AAAA,sBAKd;AACG,IAAA,QAAQ,EAAED,QADb;AAEG,IAAA,SAAS,EAAEP,OAFd;AAGG,IAAA,KAAK,EAAEM,KAHV;AAIG,IAAA,OAAO,EAAEE,OAJZ;AAAA,2BAME;AACG,MAAA,OAAO,EAAC,WADX;AACuB,MAAA,KAAK,EAAC,MAD7B;AACoC,MAAA,MAAM,EAAC,MAD3C;AAEG,MAAA,KAAK,EAAEP,CAAC,CAACE,GAFZ;AAEiB,MAAA,mBAAmB,EAAC,MAFrC;AAE4C,MAAA,KAAK,EAAC,4BAFlD;AAGG,MAAA,WAAW,EAAC,GAHf;AAIG,MAAA,MAAM,EAAEF,CAAC,CAACC,KAJb;AAKG,MAAA,aAAa,EAAC,OALjB;AAAA,8BAOG;AAAM,QAAA,CAAC,EAAC;AAAR,QAPH,eAQG;AAAM,QAAA,CAAC,EAAC;AAAR,QARH;AAAA;AANF,IALc;AAAA,CAAjB;AAwBA;AACA;AACA;AACA;AACA;AACA;;;AACAG,QAAQ,CAACI,YAAT,GAAwB;AACtBD,EAAAA,OAAO,EAAE,mBAAM,CAAE;AADK,CAAxB;eAKeH,Q","sourcesContent":["//import PropTypes from 'prop-types'\r\n\r\nconst CL_ROOT = \"svg-close\"\r\nconst S = {\r\n  COLOR: '#d64336',\r\n  SVG: {\r\n    padding: 3,\r\n  }\r\n};\r\n\r\nconst SvgClose = ({\r\n  style,\r\n  tabIndex,\r\n  onClose\r\n}) => (\r\n   <button\r\n      tabIndex={tabIndex}\r\n      className={CL_ROOT}\r\n      style={style}\r\n      onClick={onClose}\r\n   >\r\n     <svg\r\n        viewBox=\"0 0 12 12\" width=\"100%\" height=\"100%\"\r\n        style={S.SVG} preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"\r\n        strokeWidth=\"2\"\r\n        stroke={S.COLOR}\r\n        strokeLinecap=\"round\"\r\n      >\r\n        <path d=\"M 0,0 L 12,12\" />\r\n        <path d=\"M 12,0 L 0,12\" />\r\n     </svg>\r\n   </button>\r\n);\r\n\r\n/*\r\nSvgClose.propTypes = {\r\n  style: PropTypes.object,\r\n  onClose: PropTypes.func\r\n}\r\n*/\r\nSvgClose.defaultProps = {\r\n  onClose: () => {}\r\n};\r\n\r\n\r\nexport default SvgClose\r\n"],"file":"SvgClose.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/SvgClose.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/SvgClose.js",
+ "names": [
+  "CL_SVG_CLOSE",
+  "STROKE_COLOR",
+  "S_SVG",
+  "padding",
+  "SvgClose",
+  "style",
+  "tabIndex",
+  "onClose"
+ ],
+ "mappings": ";;;;;;;AAAA,IAAMA,YAAY,GAAG,WAArB;AAAA,IACEC,YAAY,GAAG,SADjB;AAAA,IAEEC,KAAK,GAAG;AAAEC,EAAAA,OAAO,EAAE;AAAX,CAFV;;AAIA,IAAMC,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACfC,KADe,QACfA,KADe;AAAA,MAEfC,QAFe,QAEfA,QAFe;AAAA,MAGfC,OAHe,QAGfA,OAHe;AAAA,sBAKd;AACG,IAAA,QAAQ,EAAED,QADb;AAEG,IAAA,SAAS,EAAEN,YAFd;AAGG,IAAA,KAAK,EAAEK,KAHV;AAIG,IAAA,OAAO,EAAEE,OAJZ;AAAA,2BAME;AACG,MAAA,OAAO,EAAC,WADX;AAEG,MAAA,KAAK,EAAC,MAFT;AAGG,MAAA,MAAM,EAAC,MAHV;AAIG,MAAA,KAAK,EAAEL,KAJV;AAKG,MAAA,mBAAmB,EAAC,MALvB;AAMG,MAAA,KAAK,EAAC,4BANT;AAOG,MAAA,WAAW,EAAC,GAPf;AAQG,MAAA,MAAM,EAAED,YARX;AASG,MAAA,aAAa,EAAC,OATjB;AAAA,8BAWG;AAAM,QAAA,CAAC,EAAC;AAAR,QAXH,eAYG;AAAM,QAAA,CAAC,EAAC;AAAR,QAZH;AAAA;AANF,IALc;AAAA,CAAjB;;eA4BeG,Q"
+}
