@@ -14,29 +14,24 @@ var _react = require("react");
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var S = {
-  INPUT_TEXT: {
-    display: 'inline',
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: 26,
-    paddingLeft: 5,
-    color: 'green',
-    width: 40,
-    fontSize: '16px',
-    fontWeight: 'bold',
-    backgroundColor: '#e1e1cb',
-    marginLeft: 5,
-    marginRight: 5
-  }
+var S_INPUT_TEXT = {
+  display: 'inline',
+  color: 'green',
+  width: 40,
+  height: 26,
+  paddingLeft: 5,
+  margin: '0 5px',
+  border: 'medium none',
+  outline: 'medium none',
+  fontSize: '16px',
+  fontWeight: 'bold',
+  backgroundColor: '#e1e1cb',
+  background: 'transparent none repeat scroll 0 0'
 };
-var C = {
-  BLANK: '',
-  TEXT: 'text',
-  ON: 'on',
-  OFF: 'off'
-};
+var C_BLANK = '',
+    C_TEXT = 'text',
+    C_ON = 'on',
+    C_OFF = 'off';
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
@@ -71,7 +66,7 @@ var InputText = /*#__PURE__*/function (_Component) {
           event.preventDefault();
 
           _this.setState({
-            value: C.BLANK
+            value: C_BLANK
           });
 
           break;
@@ -109,7 +104,7 @@ var InputText = /*#__PURE__*/function (_Component) {
     if (prevProps !== this.props) {
       var initValue = this.props.initValue;
       this.setState({
-        value: initValue != null ? initValue : C.BLANK
+        value: initValue != null ? initValue : C_BLANK
       });
     }
   };
@@ -120,15 +115,15 @@ var InputText = /*#__PURE__*/function (_Component) {
         spellCheck = _this$props.spellCheck,
         placeholder = _this$props.placeholder,
         value = this.state.value,
-        _autoCorrect = spellCheck ? C.ON : C.OFF,
+        _autoCorrect = spellCheck ? C_ON : C_OFF,
         _spellCheck = spellCheck ? "true" : "false";
 
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
-      style: (0, _extends2["default"])({}, S.INPUT_TEXT, style),
-      type: C.TEXT,
-      name: C.TEXT,
-      autoCapitalize: C.OFF,
-      autoComplete: C.OFF,
+      style: (0, _extends2["default"])({}, S_INPUT_TEXT, style),
+      type: C_TEXT,
+      name: C_TEXT,
+      autoCapitalize: C_OFF,
+      autoComplete: C_OFF,
       autoCorrect: _autoCorrect,
       spellCheck: _spellCheck,
       translate: "false",
@@ -153,7 +148,7 @@ var InputText = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 InputText.defaultProps = {
-  initValue: C.BLANK
+  initValue: C_BLANK
 };
 var _default = InputText;
 exports["default"] = _default;

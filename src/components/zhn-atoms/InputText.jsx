@@ -1,30 +1,26 @@
 import { Component } from 'react';
 //import PropTypes from "prop-types";
 
-const S = {
-  INPUT_TEXT : {
-    display : 'inline',
-    background: 'transparent none repeat scroll 0 0',
-    border: 'medium none',
-    outline: 'medium none',
-    height: 26,
-    paddingLeft: 5,
+const S_INPUT_TEXT = {
+    display: 'inline',
     color: 'green',
     width: 40,
+    height: 26,
+    paddingLeft: 5,
+    margin: '0 5px',
+    border: 'medium none',
+    outline: 'medium none',
     fontSize: '16px',
     fontWeight: 'bold',
-    backgroundColor : '#e1e1cb',
-    marginLeft : 5,
-    marginRight : 5,
-  }
+    backgroundColor: '#e1e1cb',
+    background: 'transparent none repeat scroll 0 0',
 };
 
-const C = {
-  BLANK: '',
-  TEXT: 'text',
-  ON: 'on',
-  OFF: 'off'
-}
+const C_BLANK = ''
+, C_TEXT = 'text'
+, C_ON = 'on'
+, C_OFF = 'off'
+
 
 const _isFn = fn => typeof fn === 'function';
 
@@ -38,13 +34,13 @@ class InputText extends Component {
   }
   */
   static defaultProps = {
-    initValue: C.BLANK
+    initValue: C_BLANK
   }
 
 
   constructor(props){
     super(props)
-    const { initValue } = props;    
+    const { initValue } = props;
     this.state = {
       value: initValue
     }
@@ -61,7 +57,7 @@ class InputText extends Component {
     if (prevProps !== this.props){
       const { initValue } = this.props;
       this.setState({
-        value: initValue != null ? initValue : C.BLANK
+        value: initValue != null ? initValue : C_BLANK
       })
     }
   }
@@ -73,7 +69,7 @@ class InputText extends Component {
     switch(event.keyCode){
       case 27: case 46:
          event.preventDefault()
-         this.setState({ value: C.BLANK })
+         this.setState({ value: C_BLANK })
          break;
       case 13:
          if (_isFn(this.props.onEnter)) {
@@ -85,21 +81,25 @@ class InputText extends Component {
  }
 
   render(){
-    const { style, spellCheck, placeholder } = this.props
-        , { value } = this.state
-        , _autoCorrect = spellCheck
-             ? C.ON
-             : C.OFF
-        , _spellCheck = spellCheck
-             ? "true"
-             : "false";
+    const {
+      style,
+      spellCheck,
+      placeholder
+    } = this.props
+    , { value } = this.state
+    , _autoCorrect = spellCheck
+         ? C_ON
+         : C_OFF
+    , _spellCheck = spellCheck
+         ? "true"
+         : "false";
     return (
       <input
-        style={{ ...S.INPUT_TEXT, ...style }}
-        type={C.TEXT}
-        name={C.TEXT}
-        autoCapitalize={C.OFF}
-        autoComplete={C.OFF}
+        style={{...S_INPUT_TEXT, ...style}}
+        type={C_TEXT}
+        name={C_TEXT}
+        autoCapitalize={C_OFF}
+        autoComplete={C_OFF}
         autoCorrect={_autoCorrect}
         spellCheck={_spellCheck}
         translate="false"
@@ -108,7 +108,7 @@ class InputText extends Component {
         onChange={this._handleInputChange}
         onKeyDown={this._handleKeyDown}
       />
-    )
+    );
   }
 
   getValue() {
