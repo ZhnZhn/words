@@ -9,15 +9,15 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL_BT = 'bt-raised';
-var CL_BT_SPAN = 'bt-raised__span';
-var S = {
-  PRIMARY_SPAN: {
-    color: '#80c040'
-  }
+var CL_BT = 'bt-raised',
+    CL_BT_SPAN = 'bt-raised__span',
+    S_PRIMARY_SPAN = {
+  color: '#80c040'
 };
 
 var RaisedButton = /*#__PURE__*/function (_Component) {
@@ -50,8 +50,8 @@ var RaisedButton = /*#__PURE__*/function (_Component) {
         tabIndex = _this$props.tabIndex,
         isPrimary = _this$props.isPrimary,
         onClick = _this$props.onClick,
-        _btCl = CL_BT + " " + className,
-        _spanStyle = isPrimary ? S.PRIMARY_SPAN : undefined;
+        _btCl = (0, _crCn["default"])(CL_BT, className),
+        _spanStyle = isPrimary ? S_PRIMARY_SPAN : void 0;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
       ref: this._refNode,
@@ -78,9 +78,7 @@ var RaisedButton = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 RaisedButton.defaultProps = {
-  className: '',
-  tabIndex: 0,
-  onClick: function onClick() {}
+  tabIndex: 0
 };
 var _default = RaisedButton;
 exports["default"] = _default;
