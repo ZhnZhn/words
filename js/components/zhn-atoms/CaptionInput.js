@@ -5,12 +5,10 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  KEY: {
-    textDecoration: 'underline'
-  }
-};
-var EMPTY = '';
+var S_KEY = {
+  textDecoration: 'underline'
+},
+    EMPTY = '';
 
 var _toCaptionIn = function _toCaptionIn(caption, accessKey) {
   var captionIn = caption == null ? EMPTY : EMPTY + caption,
@@ -40,27 +38,22 @@ var CaptionInput = function CaptionInput(_ref) {
       captionIn = _toCaptionIn2.captionIn,
       after = _toCaptionIn2.after,
       key = _toCaptionIn2.key,
-      before = _toCaptionIn2.before;
-
-  if (typeof captionIn !== 'undefined') {
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-      className: className,
-      style: rootStyle,
-      children: [captionIn, children]
-    });
-  }
+      before = _toCaptionIn2.before,
+      _captionEl = captionIn || /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: before
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: S_KEY,
+      children: key
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: after
+    })]
+  });
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
     className: className,
     style: rootStyle,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      children: before
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.KEY,
-      children: key
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      children: after
-    }), children]
+    children: [_captionEl, children]
   });
 };
 

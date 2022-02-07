@@ -1,18 +1,13 @@
-const S = {
-  KEY: {
-    textDecoration: 'underline'
-  }
-};
-
-const EMPTY = '';
+const S_KEY = { textDecoration: 'underline' }
+, EMPTY = '';
 
 const _toCaptionIn = (caption, accessKey) => {
   const captionIn = caption == null
-           ? EMPTY
-           : EMPTY + caption
-      , _index = captionIn
-          .toLowerCase()
-          .indexOf(accessKey);
+       ? EMPTY
+       : EMPTY + caption
+  , _index = captionIn
+      .toLowerCase()
+      .indexOf(accessKey);
   if (accessKey && _index !== -1) {
     return {
       before: captionIn.substring(0, _index),
@@ -24,27 +19,29 @@ const _toCaptionIn = (caption, accessKey) => {
 };
 
 const CaptionInput = ({
-  className, rootStyle,
-  caption, accessKey,
+  className,
+  rootStyle,
+  caption,
+  accessKey,
   children
 }) => {
   const {
-          captionIn,
-          after, key, before
-        } = _toCaptionIn(caption, accessKey);
-  if (typeof captionIn !== 'undefined') {
-    return (
-      <span className={className} style={rootStyle}>
-        {captionIn}
-        {children}
-      </span>
-    );
-  }
+    captionIn,
+    after,
+    key,
+    before
+  } = _toCaptionIn(caption, accessKey)
+  , _captionEl = captionIn || (
+    <>
+      <span>{before}</span>
+      <span style={S_KEY}>{key}</span>
+      <span>{after}</span>
+    </>
+  );
+
   return (
     <span className={className} style={rootStyle}>
-       <span>{before}</span>
-       <span style={S.KEY}>{key}</span>
-       <span>{after}</span>
+       {_captionEl}
        {children}
     </span>
   );
