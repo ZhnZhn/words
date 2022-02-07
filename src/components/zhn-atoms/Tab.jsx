@@ -1,20 +1,22 @@
-const CL = "tab";
-const S = {
-  BT : {
-    color: '#2f7ed8',
-    borderBottom : '3px solid #2f7ed8'
-  },
-  TITLE: {
-    color: '#2f7ed8'
-  }
-};
+const CL_TAB = "tab"
+, TAB_COLOR = '#2f7ed8'
+, S_BT = {
+  color: TAB_COLOR,
+  borderBottom : `3px solid ${TAB_COLOR}`
+}
+, S_TITLE = { color: TAB_COLOR };
 
-const Tab = ({ id, title, isSelected, onClick }) => {
-  const _btStyle = isSelected ? S.BT : null
-  , _titleStyle = isSelected ? S.TITLE : null;
+const Tab = ({
+  isSelected,
+  id,
+  title,
+  onClick
+}) => {
+  const _btStyle = isSelected ? S_BT : null
+  , _titleStyle = isSelected ? S_TITLE : null;
   return (
     <button
-       className={CL}
+       className={CL_TAB}
        style={_btStyle}
        id={`tab-${id}`}
        role="tab"
@@ -26,6 +28,6 @@ const Tab = ({ id, title, isSelected, onClick }) => {
        <span style={_titleStyle}>{title}</span>
     </button>
   );
-}
+};
 
 export default Tab
