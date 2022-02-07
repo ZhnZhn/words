@@ -9,10 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ITEM: {
-    fontWeight: 400
-  }
+var S_ITEM = {
+  fontWeight: 400
 };
 
 var ListSpan = function ListSpan(_ref) {
@@ -33,7 +31,7 @@ var ListSpan = function ListSpan(_ref) {
       style: captionStyle,
       children: caption
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: (0, _extends2["default"])({}, S.ITEM, itemStyle),
+      style: (0, _extends2["default"])({}, S_ITEM, itemStyle),
       children: items.join(', ')
     })]
   });

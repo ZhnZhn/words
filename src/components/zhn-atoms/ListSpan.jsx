@@ -1,13 +1,11 @@
-const S = {
-  ITEM: {
-    fontWeight: 400
-  }
-};
+const S_ITEM = { fontWeight: 400 };
 
 const ListSpan = ({
   rootStyle,
-  caption, captionStyle,
-  items=[], itemStyle
+  caption,
+  captionStyle,
+  items=[],
+  itemStyle
 }) => {
   if (items.length === 0) {
     return null;
@@ -19,7 +17,7 @@ const ListSpan = ({
            {caption}
          </span>
        }
-       <span style={{ ...S.ITEM, ...itemStyle }}>
+       <span style={{...S_ITEM, ...itemStyle}}>
          {items.join(', ')}
        </span>
     </div>
