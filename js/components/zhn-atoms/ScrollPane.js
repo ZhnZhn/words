@@ -5,7 +5,7 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = 'with-scroll';
+var CL_SCROLL = 'with-scroll';
 
 var ScrollPane = function ScrollPane(_ref) {
   var style = _ref.style,
@@ -13,7 +13,7 @@ var ScrollPane = function ScrollPane(_ref) {
       className = _ref$className === void 0 ? "" : _ref$className,
       children = _ref.children;
 
-  var _className = className && className !== CL ? className : CL;
+  var _className = className && className !== CL_SCROLL ? className : CL_SCROLL;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,
