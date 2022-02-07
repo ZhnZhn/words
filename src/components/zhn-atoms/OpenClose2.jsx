@@ -1,39 +1,31 @@
 import { Component } from 'react';
 
-import isKeyEnter from './isKeyEnter'
+import isKeyEnter from './isKeyEnter';
 
-const CL = 'oc-item not-selected';
+const CL = 'oc-item not-selected'
+, S_ROOT = {
+  backgroundColor: '#4d4d4d',
+  lineHeight: 1.5
+}
+, S_DIV_SVG = {
+  display: 'inline-block',
+  width: 16,
+  height: 16,
+  marginLeft: 8
+}
+, S_SVG = { display: 'inline-block' }
+, S_CAPTION = {
+  paddingLeft: 4,
+  verticalAlign: 'top',
+  color: 'rgba(164, 135, 212, 1)',
+  fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  cursor: 'pointer'
+}
+, S_BLOCK = { display: 'block' }
+, S_NONE = { display: 'none' };
 
-const S = {
-  ROOT: {
-    backgroundColor: '#4d4d4d',
-    lineHeight: 1.5
-  },
-  DIV_SVG : {
-    display: 'inline-block',
-    width: 16,
-    height: 16,
-    marginLeft: 8
-  },
-  SVG: {
-    display: 'inline-block'
-  },
-  CAPTION: {
-    paddingLeft: 4,
-    verticalAlign: 'top',
-    color: 'rgba(164, 135, 212, 1)',
-    fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    cursor: 'pointer'
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
-};
 
 const FILL_OPEN = '#9e9e9e'
 , FILL_CLOSE = 'transparent'
@@ -44,20 +36,21 @@ const FILL_OPEN = '#9e9e9e'
 
 const _crStyleConf = ({
   isOpen,
-  fillOpen, fillClose,
+  fillOpen,
+  fillClose,
   styleNotSelected
 }) => isOpen
   ? {
     _pathV: PATH.OPEN,
     _fillV: fillOpen,
-    _divStyle: S.BLOCK,
+    _divStyle: S_BLOCK,
     _classShow: 'show-popup',
     _styleNotSelected: null
    }
  : {
    _pathV: PATH.CLOSE,
    _fillV: fillClose,
-   _divStyle: S.NONE,
+   _divStyle: S_NONE,
    _classShow: null,
    _styleNotSelected: styleNotSelected
  };
@@ -90,8 +83,12 @@ class OpenClose2 extends Component {
 
   render(){
     const {
-      style, styleCaption, caption,
-      fillOpen, fillClose, styleNotSelected,
+      style,
+      styleCaption,
+      caption,
+      fillOpen,
+      fillClose,
+      styleNotSelected,
       draggableOption,
       children
     } = this.props
@@ -104,7 +101,7 @@ class OpenClose2 extends Component {
 
 
     return (
-      <div style={{ ...S.ROOT, ...style }}>
+      <div style={{...S_ROOT, ...style}}>
         <div
            role="menuitem"
            tabIndex="0"
@@ -114,11 +111,11 @@ class OpenClose2 extends Component {
            onKeyDown={this._hKeyDown}
            {...draggableOption}
          >
-          <div style={S.DIV_SVG}>
+          <div style={S_DIV_SVG}>
              <svg
                 viewBox="0 0 16 16" width="100%" height="100%"
                 preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-                style={S.SVG}
+                style={S_SVG}
               >
                <path
                   d={_pathV} fill={_fillV}
@@ -126,7 +123,7 @@ class OpenClose2 extends Component {
                />
              </svg>
          </div>
-         <span style={{...S.CAPTION, ...styleCaption}} >
+         <span style={{...S_CAPTION, ...styleCaption}} >
             {caption}
          </span>
        </div>
@@ -134,7 +131,7 @@ class OpenClose2 extends Component {
         {children}
       </div>
      </div>
-    )
+   );
   }
 }
 

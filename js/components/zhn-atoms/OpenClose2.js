@@ -15,36 +15,34 @@ var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = 'oc-item not-selected';
-var S = {
-  ROOT: {
-    backgroundColor: '#4d4d4d',
-    lineHeight: 1.5
-  },
-  DIV_SVG: {
-    display: 'inline-block',
-    width: 16,
-    height: 16,
-    marginLeft: 8
-  },
-  SVG: {
-    display: 'inline-block'
-  },
-  CAPTION: {
-    paddingLeft: 4,
-    verticalAlign: 'top',
-    color: 'rgba(164, 135, 212, 1)',
-    fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    cursor: 'pointer'
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+var CL = 'oc-item not-selected',
+    S_ROOT = {
+  backgroundColor: '#4d4d4d',
+  lineHeight: 1.5
+},
+    S_DIV_SVG = {
+  display: 'inline-block',
+  width: 16,
+  height: 16,
+  marginLeft: 8
+},
+    S_SVG = {
+  display: 'inline-block'
+},
+    S_CAPTION = {
+  paddingLeft: 4,
+  verticalAlign: 'top',
+  color: 'rgba(164, 135, 212, 1)',
+  fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  cursor: 'pointer'
+},
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
 };
 var FILL_OPEN = '#9e9e9e',
     FILL_CLOSE = 'transparent',
@@ -61,13 +59,13 @@ var _crStyleConf = function _crStyleConf(_ref) {
   return isOpen ? {
     _pathV: PATH.OPEN,
     _fillV: fillOpen,
-    _divStyle: S.BLOCK,
+    _divStyle: S_BLOCK,
     _classShow: 'show-popup',
     _styleNotSelected: null
   } : {
     _pathV: PATH.CLOSE,
     _fillV: fillClose,
-    _divStyle: S.NONE,
+    _divStyle: S_NONE,
     _classShow: null,
     _styleNotSelected: styleNotSelected
   };
@@ -128,7 +126,7 @@ var OpenClose2 = /*#__PURE__*/function (_Component) {
         _styleNotSelected = _crStyleConf2._styleNotSelected;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: (0, _extends2["default"])({}, S.ROOT, style),
+      style: (0, _extends2["default"])({}, S_ROOT, style),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
         role: "menuitem",
         tabIndex: "0",
@@ -138,14 +136,14 @@ var OpenClose2 = /*#__PURE__*/function (_Component) {
         onKeyDown: this._hKeyDown
       }, draggableOption, {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          style: S.DIV_SVG,
+          style: S_DIV_SVG,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
             viewBox: "0 0 16 16",
             width: "100%",
             height: "100%",
             preserveAspectRatio: "none",
             xmlns: "http://www.w3.org/2000/svg",
-            style: S.SVG,
+            style: S_SVG,
             children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
               d: _pathV,
               fill: _fillV,
@@ -154,7 +152,7 @@ var OpenClose2 = /*#__PURE__*/function (_Component) {
             })
           })
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: (0, _extends2["default"])({}, S.CAPTION, styleCaption),
+          style: (0, _extends2["default"])({}, S_CAPTION, styleCaption),
           children: caption
         })]
       })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
