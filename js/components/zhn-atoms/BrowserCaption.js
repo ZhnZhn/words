@@ -13,42 +13,38 @@ var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL_NOT_SELECTED = "not-selected";
-var CL_GAP = "gap-right";
-var S = {
-  ROOT: {
-    position: 'relative',
-    backgroundColor: '#3f5178',
-    color: 'rgba(164, 135, 212, 1)',
-    lineHeight: 1.8,
-    paddingTop: 4,
-    paddingLeft: 10,
-    paddingRight: 42,
-    marginBottom: 10,
-    borderTopLeftRadius: 4,
-    borderTopRightRadius: 4,
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'clip'
-  },
-  CAPTION: {
-    fontSize: '18px',
-    fontWeight: 'bold'
-  },
-  BT_MORE: {
-    marginRight: 6
-  },
-  SVG_MORE: {
-    fill: 'inherit',
-    stroke: 'inherit'
-  },
-  SVG_CLOSE: {
-    position: 'absolute',
-    top: 6,
-    right: 0,
-    width: 24,
-    height: 24
-  }
+var CL_NOT_SELECTED = "not-selected",
+    CL_GAP_RIGHT = "gap-right",
+    S_ROOT = {
+  position: 'relative',
+  backgroundColor: '#3f5178',
+  color: 'rgba(164, 135, 212, 1)',
+  lineHeight: 1.8,
+  padding: '4px 42px 0 10px',
+  marginBottom: 10,
+  borderTopLeftRadius: 4,
+  borderTopRightRadius: 4,
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  textOverflow: 'clip'
+},
+    S_CAPTION = {
+  fontSize: '18px',
+  fontWeight: 'bold'
+},
+    S_BT_MORE = {
+  marginRight: 6
+},
+    S_SVG_MORE = {
+  fill: 'inherit',
+  stroke: 'inherit'
+},
+    S_SVG_CLOSE = {
+  position: 'absolute',
+  top: 6,
+  right: 0,
+  width: 24,
+  height: 24
 };
 
 var _isFn = function _isFn(fn) {
@@ -72,18 +68,18 @@ var BrowserCaption = function BrowserCaption(_ref2) {
       onMore = _ref2.onMore,
       onClose = _ref2.onClose;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: CL_GAP,
-    style: (0, _extends2["default"])({}, S.ROOT, rootStyle),
+    className: CL_GAP_RIGHT,
+    style: (0, _extends2["default"])({}, S_ROOT, rootStyle),
     children: [_isFn(onMore) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
-      style: S.BT_MORE,
-      svgStyle: _extractColorToSvgStyle(rootStyle, S.SVG_MORE),
+      style: S_BT_MORE,
+      svgStyle: _extractColorToSvgStyle(rootStyle, S_SVG_MORE),
       onClick: onMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: CL_NOT_SELECTED,
-      style: S.CAPTION,
+      style: S_CAPTION,
       children: caption
     }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
-      style: S.SVG_CLOSE,
+      style: S_SVG_CLOSE,
       onClose: onClose
     })]
   });
