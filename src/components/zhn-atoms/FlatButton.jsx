@@ -1,20 +1,23 @@
-import CaptionInput from './CaptionInput'
+import CaptionInput from './CaptionInput';
+import crCn from '../zhn-utils/crCn';
 
-const CL = {
-  BT: 'bt-flat',
-  BT_SPAN: 'bt-flat__span'
-};
+
+const CL_BT = 'bt-flat'
+, CL_BT_SPAN = 'bt-flat__span';
 
 const FlatButton = ({
-  className='', rootStyle,
-  clDiv, divStyle,
-  title='', caption,
+  className,
+  rootStyle,
+  clDiv,
+  divStyle,
+  title,
+  caption,
   accessKey,
   children,
   onClick
 }) => (
   <button
-    className={`${CL.BT} ${className}`}
+    className={crCn(CL_BT, className)}
     style={rootStyle}
     tabIndex={0}
     title={title}
@@ -24,7 +27,7 @@ const FlatButton = ({
     <div className={clDiv} style={divStyle}>
       { caption
          ? <CaptionInput
-              className={CL.BT_SPAN}
+              className={CL_BT_SPAN}
               caption={caption}
               accessKey={accessKey}
             />

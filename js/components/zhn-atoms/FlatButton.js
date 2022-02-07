@@ -7,27 +7,25 @@ exports["default"] = void 0;
 
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = {
-  BT: 'bt-flat',
-  BT_SPAN: 'bt-flat__span'
-};
+var CL_BT = 'bt-flat',
+    CL_BT_SPAN = 'bt-flat__span';
 
 var FlatButton = function FlatButton(_ref) {
-  var _ref$className = _ref.className,
-      className = _ref$className === void 0 ? '' : _ref$className,
+  var className = _ref.className,
       rootStyle = _ref.rootStyle,
       clDiv = _ref.clDiv,
       divStyle = _ref.divStyle,
-      _ref$title = _ref.title,
-      title = _ref$title === void 0 ? '' : _ref$title,
+      title = _ref.title,
       caption = _ref.caption,
       accessKey = _ref.accessKey,
       children = _ref.children,
       onClick = _ref.onClick;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    className: CL.BT + " " + className,
+    className: (0, _crCn["default"])(CL_BT, className),
     style: rootStyle,
     tabIndex: 0,
     title: title,
@@ -37,7 +35,7 @@ var FlatButton = function FlatButton(_ref) {
       className: clDiv,
       style: divStyle,
       children: [caption ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionInput["default"], {
-        className: CL.BT_SPAN,
+        className: CL_BT_SPAN,
         caption: caption,
         accessKey: accessKey
       }) : null, children]
