@@ -1,88 +1,65 @@
-import { Component, Fragment } from 'react'
+import MenuAriaItem from './MenuAriaItem';
 
-import MenuAriaItem from './MenuAriaItem'
-
-const SUB_MENU = 'sub';
-
-const S = {
-  ITEM: {
-    position: 'relative'
-  },
-  NEXT_PAGE: {
-    position: 'absolute',
-    display: 'inline-block',
-    top : 0,
-    right: 4,
-    color: 'inherit',
-    padding: '1px 16px 1px 0px',
-    fontWeight: 'bold'
-  }
+const SUB_MENU = 'sub'
+, S_ITEM = { position: 'relative' }
+, S_NEXT_PAGE = {
+   display: 'inline-block',
+   position: 'absolute',
+   top: 0,
+   right: 4,
+   color: 'inherit',
+   padding: '1px 16px 1px 0px',
+   fontWeight: 'bold'
 };
 
-const _fClick = ({ isClose, onClick, onClose }) => {
-  return typeof onClick === 'function'
-    ? isClose
-        ? () => { onClick(); onClose() }
-        : onClick
-    : void 0;
-}
+const _fClick = ({
+  isClose,
+  onClick,
+  onClose
+}) => typeof onClick === 'function'
+  ? isClose
+     ? () => { onClick(); onClose(); }
+     : onClick
+  : void 0;
 
-const NextPageArrow = ({ type }) => {
-  if (type !== SUB_MENU) return null;
-
-  return (
-    <span style={S.NEXT_PAGE}>
-        >
+const NextPageArrow = ({ type }) =>
+  type !== SUB_MENU ? null : (
+    <span style={S_NEXT_PAGE}>
+       >
     </span>
   );
-}
 
-class MenuItemList extends Component {
-  /*
-  static propTypes = {
-    items: PropTypes.array,
-    pageNumber: PropTypes.number,
-    onNextPage: PropTypes.func,
-    onReg: PropTypes.func
-  }
-  */
-
-  _renderItems = () => {
-    const {
-      items, itemCl, pageNumber,
-      onNextPage, onReg,
-      onClose
-    } = this.props;
-    return items.map((item, index) => {
-      const { cn, name, type, id, isClose, onClick } = item
+const MenuItemList = ({
+  items,
+  itemCl,
+  pageNumber,
+  onNextPage,
+  onReg,
+  onClose
+}) => (
+  <>
+    {items.map((item, index) => {
+       const { cn, name, type, id, isClose, onClick } = item
           , _onClick = type === SUB_MENU
-               ? onNextPage.bind(null, id, name, pageNumber)
-               : _fClick({ isClose, onClick, onClose })
+              ? onNextPage.bind(null, id, name, pageNumber)
+              : _fClick({ isClose, onClick, onClose })
           , _onReg = index === 0
-               ? onReg
-               : void 0;
-      return (
-        <MenuAriaItem
-          key={name}
-          className={cn || itemCl}
-          style={S.ITEM}
-          onClick={_onClick}
-          onReg={_onReg}
-        >
-          <span>{name}</span>
-          <NextPageArrow type={type} />
-        </MenuAriaItem>
-      );
-    });
-  }
-
-  render(){
-    return (
-      <Fragment>
-        {this._renderItems()}
-      </Fragment>
-    );
-  }
-}
+              ? onReg
+              : void 0;
+       return (
+         <MenuAriaItem
+           key={name}
+           className={cn || itemCl}
+           style={S_ITEM}
+           onClick={_onClick}
+           onReg={_onReg}
+         >
+           <span>{name}</span>
+           <NextPageArrow type={type} />
+         </MenuAriaItem>
+       );
+     })}
+  </>
+);
 
 export default MenuItemList
