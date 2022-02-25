@@ -1,46 +1,48 @@
-import { Component } from 'react'
+import {
+  useRef,
+  useCallback,
+  useLayoutEffect
+} from '../uiApi';
 
-const _fKeyPressed = (onClick) => (evt) => {
-  evt.preventDefault()
-  const { which } = evt;
-  if (which === 13 || which === 32) {
-    onClick()
-  }
-}
+const MenuAriaItem = ({
+  className,
+  style,
+  onClick,
+  onReg,
+  children
+}) => {
+  const _ref = useRef()
+  , _hKeyDown = useCallback(event => {
+      event.preventDefault()
+      const { keyCode } = event
+      if (keyCode === 13 || keyCode === 32) {
+        onClick()
+      }
+  }, [onClick]);
 
-class MenuAriaItem extends Component {
+ /* eslint-disable react-hooks/exhaustive-deps */
+ useLayoutEffect(() => {
+   const _el = (_ref || {}).current;
+   if (_el && typeof onReg === 'function') {
+     onReg(_el)
+   }
+ }, [])
+ // ref, onReg
+ /* eslint-enable react-hooks/exhaustive-deps */
 
-  /*
-  static propTypes = {
-    onClick: PropTypes.func,
-    onReg: PropTypes.func
-  }
-  */
-
-  componentDidMount(){
-    const { onReg } = this.props
-    if (this._node && typeof onReg === 'function') {
-      onReg(this._node)
-    }
-  }
-
-  _ref = n => this._node = n
-
-  render(){
-    const { children, onClick, onReg, ...rest } = this.props
-    return (
-      <div
-        {...rest}
-        ref={onReg ? this._ref: void 0}
-        role="menuitem"
-        tabIndex="0"
-        onClick={onClick}
-        onKeyPress={_fKeyPressed(onClick)}
-      >
-        {children}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      className={className}
+      style={style}
+      ref={onReg ? _ref : void 0}
+      role="menuitem"
+      tabIndex="0"
+      onClick={onClick}
+      onKeyDown={_hKeyDown}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default MenuAriaItem
