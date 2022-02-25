@@ -1,7 +1,7 @@
 import {
   useRef,
-  useCallback,
-  useLayoutEffect
+  useCallback,  
+  useEffect
 } from '../uiApi';
 
 const MenuAriaItem = ({
@@ -21,7 +21,7 @@ const MenuAriaItem = ({
   }, [onClick]);
 
  /* eslint-disable react-hooks/exhaustive-deps */
- useLayoutEffect(() => {
+ useEffect(() => {
    const _el = (_ref || {}).current;
    if (_el && typeof onReg === 'function') {
      onReg(_el)
