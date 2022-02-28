@@ -100,7 +100,7 @@ class HeaderBar extends Component {
          />
          <span className={CL.BROWSER_BTS}>
            <A.ModalButton
-              rootStyle={S.BT.FLAT_ROOT}
+              style={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
               caption="Topics"
               title="Topics"

@@ -1,49 +1,51 @@
-import { Component } from 'react'
+import { useRef, useEffect } from '../uiApi';
+import CaptionInput from './CaptionInput';
 
-import CaptionInput from './CaptionInput'
+const CL_BT = 'bt-flat'
+, CL_BT_SPAN = 'bt-flat__span';
 
-const CL_BT = 'bt-flat';
-const CL_BT_SPAN = 'bt-flat__span';
+const ModalButton = ({
+  style,
+  clDiv,
+  title,
+  caption,
+  accessKey,
+  children,
+  onClick,
+  onReg
+}) => {
+  const _ref = useRef();
 
-class ModalButton extends Component {
-
- componentDidMount(){
-    const { onReg } = this.props;
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(()=>{
     if (typeof onReg === 'function'){
-      onReg(this.rootNode)
+      onReg(_ref.current)
     }
-  }
+  }, [])
+  // onReg
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _ref = (n) => this.rootNode = n
-
-  render(){
-    const {
-            rootStyle, clDiv, title, caption,
-            accessKey,
-            children, onClick
-          } = this.props;
-    return (
-      <button
-        ref={this._ref}
-        className={CL_BT}
-        style={rootStyle}
-        tabIndex={0}
-        title={title}
-        accessKey={accessKey}
-        onClick={onClick}
-      >
-        <div className={clDiv}>
-          <CaptionInput
-            className={CL_BT_SPAN}
-            caption={caption}
-            accessKey={accessKey}
-          >
-             {children}
-          </CaptionInput>
-        </div>
-      </button>
-    );
-  }
-}
+  return (
+    <button
+      ref={_ref}
+      className={CL_BT}
+      style={style}
+      tabIndex={0}
+      title={title}
+      accessKey={accessKey}
+      onClick={onClick}
+    >
+      <div className={clDiv}>
+        <CaptionInput
+          className={CL_BT_SPAN}
+          caption={caption}
+          accessKey={accessKey}
+        >
+           {children}
+        </CaptionInput>
+      </div>
+    </button>
+  );
+};
 
 export default ModalButton
