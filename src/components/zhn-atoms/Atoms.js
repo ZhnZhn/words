@@ -16,7 +16,6 @@ import ModalButton from './ModalButton'
 import OpenClose from './OpenClose'
 import OpenClose2 from './OpenClose2'
 import ProgressLine from './ProgressLine'
-import RaisedButton from './RaisedButton'
 import ScrollPane from './ScrollPane'
 import ShowHide from './ShowHide'
 import SpinnerLoading from './SpinnerLoading'
@@ -44,7 +43,6 @@ const Atoms = {
   OpenClose,
   OpenClose2,
   ProgressLine,
-  RaisedButton,
   ScrollPane,
   ShowHide,
   SpinnerLoading,

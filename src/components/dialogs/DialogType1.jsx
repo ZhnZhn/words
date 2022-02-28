@@ -36,7 +36,7 @@ class DialogType1 extends Component {
     return [
       <RaisedButton
         key="_load"
-        rootStyle={TS.RAISED_ROOT}
+        style={TS.RAISED_ROOT}
         clDiv={TS.CL_RAISED_DIV}
         caption="Load"
         isPrimary={true}

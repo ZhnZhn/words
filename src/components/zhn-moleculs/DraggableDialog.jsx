@@ -86,14 +86,14 @@ class DraggableDialog extends Component {
         {commandButtons}
         {typeof onShowChart === 'function' &&
           <RaisedButton
-             rootStyle={S.RAISED_ROOT}
+             style={S.RAISED_ROOT}
              clDiv={S.CL_RAISED_DIV}
              caption="Show"
              onClick={onShowChart}
           />
         }
         <RaisedButton
-           rootStyle={S.RAISED_ROOT}
+           style={S.RAISED_ROOT}
            clDiv={S.CL_RAISED_DIV}
            caption="Close"
            onClick={this._handleClose}
