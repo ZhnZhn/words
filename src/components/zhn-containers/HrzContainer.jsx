@@ -1,4 +1,6 @@
-import { Component } from 'react'
+import { useState } from '../uiApi';
+import useListen from '../hooks/useListen';
+import crCn from '../zhn-utils/crCn';
 //import PropTypes from 'prop-types'
 
 const CL_DIV = "hrz-container";
@@ -14,52 +16,39 @@ const _isInCont = (arrComps, comp) => {
   return false;
 };
 
-class HrzContainer extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func
-    }),
-    addAction: PropTypes.string
-  }
-  */
-  static defaultProps = {
-    className: ''
-  }
+const HrzContainer = ({
+  className,
+  store,
+  addAction
+}) => {
+  const [comps, setComps] = useState([]);
 
-  state = {
-    containers: []
-  }
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-
-  _onStore = (actionType, option) => {
-     if (actionType === this.props.addAction && option && option.Comp){
-       this.setState(prevState => {
+  useListen(store, (actionType, option) => {
+     if (actionType === addAction && option && option.Comp){
+       setComps(prevComps => {
          const comp = option.Comp;
-         if (!_isInCont(prevState.containers, comp)) {
-           prevState.containers.unshift(comp)
-         }
-         return prevState;
+         return _isInCont(prevComps, comp)
+           ? prevComps
+           : [comp, ...prevComps];
        })
      }
-  }
+  })
 
-  render(){
-    const { className } = this.props
-        , { containers } = this.state;
-    return (
-       <div className={`${CL_DIV} ${className}`}>
-         {containers}
-       </div>
-    );
-  }
+  return (
+    <div className={crCn(CL_DIV, className)}>
+      {comps}
+    </div>
+  );
+};
+
+/*
+HrzContainer.propTypes = {
+  className: PropTypes.string
+  store: PropTypes.shape({
+    listen: PropTypes.func
+  }),
+  addAction: PropTypes.string
 }
+*/
 
 export default HrzContainer
