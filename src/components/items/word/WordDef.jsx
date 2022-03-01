@@ -1,85 +1,77 @@
-import { Component } from 'react'
+import A from '../../Comp';
+import WordSyn from './WordSyn';
+import WordNyms from './WordNyms';
 
-import A from '../../Comp'
-import WordSyn from './WordSyn'
-import WordNyms from './WordNyms'
+const S_FILL_OPEN = "black"
+, S_OC_CAPTION = { color: 'black' }
+, S_OC_AFTER = {
+  color: '#0c7abf',
+  fontWeight: 800
+}
+, S_OC_CHILDREN = { padding: '0 16px' };
 
-const S = {
-  FILL_OPEN: "black",
-  OC_CAPTION: {
-    color: 'black'
-  },
-  OC_AFTER: {
-    color: '#0c7abf',
-    fontWeight: 800
-  },
-  OC_CHILDREN: {
-    paddingLeft: 16,
-    paddingRight: 16
-  }
-};
-
-const Span = ({ style, text }) => (
+const Span = ({
+  style,
+  text
+}) => (
   <span style={style}>
     &nbsp;{text}
   </span>
 );
 
-
-class WordDef extends Component {
-
-  static defaultProps = {
-    config: {}
-  }
-
-  _renderDefinitions = (results=[], style) => {
-    return results.map((result, index) => {
-      const {
-              definition,
-              partOfSpeech,
-            } = result
-          , _afterComp = (
-               <Span
-                  style={S.OC_AFTER}
-                  text={partOfSpeech}
-                />
-              );
-      return (
-        <A.OpenClose
-          key={index}
-          isClose={true}
-          style={style}
-          caption={definition}
-          fillOpen={S.FILL_OPEN}
-          captionStyle={S.OC_CAPTION}
-          afterCaptionComp={_afterComp}
-          childrenStyle={S.OC_CHILDREN}
-        >
-          <WordSyn
-            result={result}
-          />
-          <WordNyms
-            result={result}
-          />
-        </A.OpenClose>
-      );
-    })
-  }
-
-  render(){
+const DefenitionList = ({
+  style,
+  defItems
+}) => (defItems || [])
+ .map((defItem, index) => {
     const {
-            isShow, style,
-            config
-          } = this.props;
-    return (
-      <A.ShowHide
+      definition,
+      partOfSpeech,
+    } = defItem
+    , _afterComp = (
+       <Span
+          style={S_OC_AFTER}
+          text={partOfSpeech}
+        />
+     );
+  return (
+    <A.OpenClose
+      key={index}
+      isClose={true}
+      style={style}
+      caption={definition}
+      fillOpen={S_FILL_OPEN}
+      captionStyle={S_OC_CAPTION}
+      afterCaptionComp={_afterComp}
+      childrenStyle={S_OC_CHILDREN}
+    >
+      <WordSyn
+        result={defItem}
+      />
+      <WordNyms
+        result={defItem}
+      />
+    </A.OpenClose>
+  );
+});
+
+const WordDef = ({
+  isShow,
+  style,
+  config
+}) => {
+  const { results } = config || {};
+  return (
+    <A.ShowHide
+      style={style}
+      isShow={isShow}
+    >
+      <DefenitionList
         style={style}
-        isShow={isShow}
-      >
-        {this._renderDefinitions(config.results, style)}
-      </A.ShowHide>
-    );
-  }
-}
+        defItems={results}
+      />
+    </A.ShowHide>
+  );
+};
 
 export default WordDef
