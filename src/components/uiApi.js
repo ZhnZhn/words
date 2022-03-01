@@ -1,5 +1,6 @@
 export {
   forwardRef,
+  memo,
   useRef,
   useState,
   useCallback,

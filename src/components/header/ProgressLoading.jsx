@@ -1,54 +1,40 @@
-import { Component } from 'react';
-
+import { memo, useState } from '../uiApi';
+import useListen from '../hooks/useListen';
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
-const C = {
-  LOADING : '#2f7ed8',
-  FAILED : '#ed5813'
+const COLOR_LOADING = '#2f7ed8'
+, COLOR_FAILED = '#ed5813'
+, DF_STATE = {
+  completed: 0,
+  color: COLOR_LOADING
 };
 
-class ProgressLoading extends Component {
-  state = {
-    completed: 0,
-    color: C.LOADING
-  }
+const _isNotShouldRerender = () => true;
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listenLoading(this._onStore);
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
+const ProgressLoading = memo(({
+  store,
+  ACTIONS
+}) => {
+  const [state, setState] = useState(DF_STATE)
+  , { completed, color } = state;
 
-  shouldComponentUpdate(nextProps, nextState){
-    if (this.state.completed === nextState.completed) {
-      return false;
-    }
-    return true;
-  }
-
-  _onStore = (actionType) => {
-      const { ACTIONS } = this.props;
+  useListen(store, (actionType) => {
       if (actionType === ACTIONS.LOADING){
-        this.setState({ completed: 35, color: C.LOADING })
+        setState({ completed: 35, color: COLOR_LOADING })
       } else if (actionType === ACTIONS.LOADING_COMPLETE){
-        this.setState({ completed: 100, color: C.LOADING })
+        setState({ completed: 100, color: COLOR_LOADING })
       } else if (actionType === ACTIONS.LOADING_FAILED){
-        this.setState({ completed: 100, color: C.FAILED })
+        setState({ completed: 100, color: COLOR_FAILED })
       }
-  }
+  }, 'listenLoading')
 
-  render(){
-    const { completed, color } = this.state;
-    return (
-      <ProgressLine
-         height={3}
-         color={color}
-         completed={completed}
-      />
-    );
-  }
-}
+  return (
+    <ProgressLine
+       height={3}
+       color={color}
+       completed={completed}
+    />
+  );
+}, _isNotShouldRerender);
 
 export default ProgressLoading
