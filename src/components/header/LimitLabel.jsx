@@ -1,49 +1,36 @@
-import { Component } from 'react'
+import { useState } from '../uiApi';
+import useListen from '../hooks/useListen';
 
-const S = {
-  LABEL : {
-    position: 'relative',
-    float: 'right',
-    top: 9,
-    display: 'inline-block',
-    color:'#2f7ed8',
-    paddingRight: 10,
-    fontSize: '16px',
-    fontWeight: 'bold'
-  }
-}
+const S_LABEL = {
+  position: 'relative',
+  float: 'right',
+  top: 9,
+  display: 'inline-block',
+  color:'#2f7ed8',
+  paddingRight: 10,
+  fontSize: '16px',
+  fontWeight: 'bold'
+};
 
-class LimitLabel extends Component {
-  state = {
-    value: ''
-  }
+const LimitLabel = ({
+  style,
+  ACTIONS,
+  store
+}) => {
+  const [value, setValue] = useState('');
 
-  componentDidMount() {
-    const { store } = this.props;
-    this.unsubscribe = store.listenLoading(this._onStore)
-  }
-  componentWillUnmount() {
-    this.unsubscribe()
-  }
-
-  _onStore = (actionType, value) => {
-    const { ACTIONS } = this.props;
-    if (actionType === ACTIONS.LOADING_COMPLETE) {
-      if ( !(value == null) ) {
-        this.setState({ value: value })
-      }
+  useListen(store, (actionType, value) => {
+    if (actionType === ACTIONS.LOADING_COMPLETE
+      && !(value == null)) {
+      setValue(value)
     }
-  }
+  }, 'listenLoading')
 
-  render() {
-    const { style } = this.props
-        , { value } = this.state;
-    return (
-       <span style={{ ...S.LABEL, ...style }}>
-         {value}
-       </span>
-    );
-  }
-}
+  return (
+    <span style={{...S_LABEL, ...style}}>
+      {value}
+    </span>
+  );
+};
 
 export default LimitLabel
