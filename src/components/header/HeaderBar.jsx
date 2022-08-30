@@ -1,14 +1,21 @@
-import { Component } from 'react'
+import {
+  useRef,
+  useCallback,
+  useMemo,
+  getRefValue,
+  setRefValue
+} from '../uiApi';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './HeaderBar.Style'
+import styleConfig from './HeaderBar.Style';
+import useTheme from '../hoc/useTheme';
+import useToggle from '../hooks/useToggle'
 
-import A from '../zhn-atoms/Atoms'
-import PaneTopics from './PaneTopics'
-import ProgressLoading from './ProgressLoading'
-import IconAppLogo from './IconAppLogo'
-import AppLabel from './AppLabel'
-import LimitLabel from './LimitLabel'
+import A from '../zhn-atoms/Atoms';
+import PaneTopics from './PaneTopics';
+import ProgressLoading from './ProgressLoading';
+import IconAppLogo from './IconAppLogo';
+import AppLabel from './AppLabel';
+import LimitLabel from './LimitLabel';
 import {
   APP_TITLE
 } from '../titles';
@@ -33,114 +40,102 @@ const CL_HEADER = "header"
   top: -1
 };
 
-
-class HeaderBar extends Component {
-
-  constructor(props){
-    super(props)
-
-    const { onDefinition, onSources, onWatch } = props;
-    this._topicItems = [
-      { caption: 'Words Definition', onClick: onDefinition },
-      { caption: 'Words Sources', onClick: onSources },
-      { caption: 'Watch Lists', onClick: onWatch },
-    ]
-
-    this.state = {
-      isTopics: false
+const HeaderBar = ({
+  LPT,
+  store,
+  onSettings,
+  onAbout,
+  onDefinition,
+  onSources,
+  onWatch
+}) => {
+  const [
+    isTopics,
+    toggleTopics
+  ] = useToggle()
+  , _topicItems = useMemo(() => [
+    { caption: 'Words Definition', onClick: onDefinition },
+    { caption: 'Words Sources', onClick: onSources },
+    { caption: 'Watch Lists', onClick: onWatch }
+  ], [onDefinition, onSources, onWatch])
+  , _refTopicsEl = useRef()
+  , _onRegTopics = useCallback(node => {
+    setRefValue(_refTopicsEl, node)
+  }, [])
+  , _hCloseTopics = useCallback(evt => {
+    const _el = getRefValue(_refTopicsEl);
+    if (_el && !_el.contains(evt.target)) {
+      toggleTopics(false)
     }
-  }
+  }, [toggleTopics])
+  , S = useTheme(styleConfig);
 
-  _onRegTopics = (node) => {
-    this.topicsNode = node
-  }
-  _hClickTopics = () => {
-    this.setState(prevState => ({
-      isTopics: !prevState.isTopics
-    }))
-  }
-  _hCloseTopics = (event) => {
-    if (!this.topicsNode.contains(event.target)){
-      this.setState({ isTopics: false })
-    }
-  }
-
-  render(){
-    const {
-            theme, store,
-            LPT,
-            onSettings,
-            onAbout
-          } = this.props
-        , { isTopics } = this.state
-        , S = theme.createStyle(styleConfig);
-    return (
-      <header className={CL_HEADER} style={S.HEADER}>
-        <PaneTopics
-          paneStyle={S.PANE}
-          className={CL_PANEL_BROWSER}
-          clItem={S.CL_QUERY_ITEM}
-          isShow={isTopics}
-          items={this._topicItems}
-          onClose={this._hCloseTopics}
-        />
-         <ProgressLoading
-           store={store}
-           ACTIONS={LPT}
-         />
-         <IconAppLogo
-           className={CL_ICON_APP}
-           title={APP_TITLE}
-         />
-         <AppLabel
-           className={CL_LABEL_APP}
-           caption={APP_TITLE}
-         />
-         <span className={CL_BROWSER_BTS}>
-           <A.ModalButton
-              style={S.BT.FLAT_ROOT}
+  return (
+    <header className={CL_HEADER} style={S.HEADER}>
+      <PaneTopics
+        paneStyle={S.PANE}
+        className={CL_PANEL_BROWSER}
+        clItem={S.CL_QUERY_ITEM}
+        isShow={isTopics}
+        items={_topicItems}
+        onClose={_hCloseTopics}
+      />
+       <ProgressLoading
+         store={store}
+         ACTIONS={LPT}
+       />
+       <IconAppLogo
+         className={CL_ICON_APP}
+         title={APP_TITLE}
+       />
+       <AppLabel
+         className={CL_LABEL_APP}
+         caption={APP_TITLE}
+       />
+       <span className={CL_BROWSER_BTS}>
+         <A.ModalButton
+            style={S.BT.FLAT_ROOT}
+            clDiv={S.BT.CL_FLAT_DIV}
+            caption="Topics"
+            title="Topics"
+            accessKey="t"
+            onClick={toggleTopics}
+            onReg={_onRegTopics}
+         >
+          <span className={CL_ARROW_DOWN} />
+        </A.ModalButton>
+       </span>
+       <div className={CL_BTS}>
+         <A.FlatButton
+             className={CL_SETTINGS}
+             rootStyle={{ ...S.BT.FLAT_ROOT, ...S.BT_SETTINGS }}
+             clDiv={S.BT.CL_FLAT_DIV}
+             divStyle={S_DIV}
+             title="User Settings Dialog"
+             accessKey="s"
+             onClick={onSettings}
+          >
+            <A.SvgSettings style={S_SETTINGS} />
+          </A.FlatButton>
+          <A.FlatButton
+              className={CL_BT_ABOUT}
+              rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
-              caption="Topics"
-              title="Topics"
-              accessKey="t"
-              onClick={this._hClickTopics}
-              onReg={this._onRegTopics}
-           >
-            <span className={CL_ARROW_DOWN} />
-          </A.ModalButton>
-         </span>
-         <div className={CL_BTS}>
-           <A.FlatButton
-               className={CL_SETTINGS}
-               rootStyle={{ ...S.BT.FLAT_ROOT, ...S.BT_SETTINGS }}
-               clDiv={S.BT.CL_FLAT_DIV}
-               divStyle={S_DIV}
-               title="User Settings Dialog"
-               accessKey="s"
-               onClick={onSettings}
-            >
-              <A.SvgSettings style={S_SETTINGS} />
-            </A.FlatButton>
-            <A.FlatButton
-                className={CL_BT_ABOUT}
-                rootStyle={S.BT.FLAT_ROOT}
-                clDiv={S.BT.CL_FLAT_DIV}
-                divStyle={S_DIV}
-                title="About Words"
-                accessKey="a"
-                onClick={onAbout}
-            >
-              <A.SvgInfo style={S_SETTINGS}/>
-            </A.FlatButton>
-         </div>
-         <LimitLabel
-           store={store}
-           ACTIONS={LPT}
-           style={S.LIMIT}
-         />
-      </header>
-    );
-  }
+              divStyle={S_DIV}
+              title="About Words"
+              accessKey="a"
+              onClick={onAbout}
+          >
+            <A.SvgInfo style={S_SETTINGS}/>
+          </A.FlatButton>
+       </div>
+       <LimitLabel
+         store={store}
+         ACTIONS={LPT}
+         style={S.LIMIT}
+       />
+    </header>
+  );
 }
 
-export default withTheme(HeaderBar)
+export default HeaderBar

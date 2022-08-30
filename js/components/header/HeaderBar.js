@@ -7,13 +7,13 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
+var _uiApi = require("../uiApi");
 
 var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Style"));
+
+var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
+
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
@@ -50,38 +50,20 @@ var CL_HEADER = "header",
   top: -1
 };
 
-var HeaderBar = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(HeaderBar, _Component);
+var HeaderBar = function HeaderBar(_ref) {
+  var LPT = _ref.LPT,
+      store = _ref.store,
+      onSettings = _ref.onSettings,
+      onAbout = _ref.onAbout,
+      onDefinition = _ref.onDefinition,
+      onSources = _ref.onSources,
+      onWatch = _ref.onWatch;
 
-  function HeaderBar(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._onRegTopics = function (node) {
-      _this.topicsNode = node;
-    };
-
-    _this._hClickTopics = function () {
-      _this.setState(function (prevState) {
-        return {
-          isTopics: !prevState.isTopics
-        };
-      });
-    };
-
-    _this._hCloseTopics = function (event) {
-      if (!_this.topicsNode.contains(event.target)) {
-        _this.setState({
-          isTopics: false
-        });
-      }
-    };
-
-    var onDefinition = props.onDefinition,
-        onSources = props.onSources,
-        onWatch = props.onWatch;
-    _this._topicItems = [{
+  var _useToggle = (0, _useToggle2["default"])(),
+      isTopics = _useToggle[0],
+      toggleTopics = _useToggle[1],
+      _topicItems = (0, _uiApi.useMemo)(function () {
+    return [{
       caption: 'Words Definition',
       onClick: onDefinition
     }, {
@@ -91,93 +73,86 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
       caption: 'Watch Lists',
       onClick: onWatch
     }];
-    _this.state = {
-      isTopics: false
-    };
-    return _this;
-  }
+  }, [onDefinition, onSources, onWatch]),
+      _refTopicsEl = (0, _uiApi.useRef)(),
+      _onRegTopics = (0, _uiApi.useCallback)(function (node) {
+    (0, _uiApi.setRefValue)(_refTopicsEl, node);
+  }, []),
+      _hCloseTopics = (0, _uiApi.useCallback)(function (evt) {
+    var _el = (0, _uiApi.getRefValue)(_refTopicsEl);
 
-  var _proto = HeaderBar.prototype;
+    if (_el && !_el.contains(evt.target)) {
+      toggleTopics(false);
+    }
+  }, [toggleTopics]),
+      S = (0, _useTheme["default"])(_HeaderBar["default"]);
 
-  _proto.render = function render() {
-    var _this$props = this.props,
-        theme = _this$props.theme,
-        store = _this$props.store,
-        LPT = _this$props.LPT,
-        onSettings = _this$props.onSettings,
-        onAbout = _this$props.onAbout,
-        isTopics = this.state.isTopics,
-        S = theme.createStyle(_HeaderBar["default"]);
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
-      className: CL_HEADER,
-      style: S.HEADER,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_PaneTopics["default"], {
-        paneStyle: S.PANE,
-        className: CL_PANEL_BROWSER,
-        clItem: S.CL_QUERY_ITEM,
-        isShow: isTopics,
-        items: this._topicItems,
-        onClose: this._hCloseTopics
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLoading["default"], {
-        store: store,
-        ACTIONS: LPT
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
-        className: CL_ICON_APP,
-        title: _titles.APP_TITLE
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
-        className: CL_LABEL_APP,
-        caption: _titles.APP_TITLE
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        className: CL_BROWSER_BTS,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ModalButton, {
-          style: S.BT.FLAT_ROOT,
-          clDiv: S.BT.CL_FLAT_DIV,
-          caption: "Topics",
-          title: "Topics",
-          accessKey: "t",
-          onClick: this._hClickTopics,
-          onReg: this._onRegTopics,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            className: CL_ARROW_DOWN
-          })
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
+    className: CL_HEADER,
+    style: S.HEADER,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_PaneTopics["default"], {
+      paneStyle: S.PANE,
+      className: CL_PANEL_BROWSER,
+      clItem: S.CL_QUERY_ITEM,
+      isShow: isTopics,
+      items: _topicItems,
+      onClose: _hCloseTopics
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLoading["default"], {
+      store: store,
+      ACTIONS: LPT
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
+      className: CL_ICON_APP,
+      title: _titles.APP_TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
+      className: CL_LABEL_APP,
+      caption: _titles.APP_TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: CL_BROWSER_BTS,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ModalButton, {
+        style: S.BT.FLAT_ROOT,
+        clDiv: S.BT.CL_FLAT_DIV,
+        caption: "Topics",
+        title: "Topics",
+        accessKey: "t",
+        onClick: toggleTopics,
+        onReg: _onRegTopics,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          className: CL_ARROW_DOWN
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        className: CL_BTS,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
-          className: CL_SETTINGS,
-          rootStyle: (0, _extends2["default"])({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
-          clDiv: S.BT.CL_FLAT_DIV,
-          divStyle: S_DIV,
-          title: "User Settings Dialog",
-          accessKey: "s",
-          onClick: onSettings,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgSettings, {
-            style: S_SETTINGS
-          })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
-          className: CL_BT_ABOUT,
-          rootStyle: S.BT.FLAT_ROOT,
-          clDiv: S.BT.CL_FLAT_DIV,
-          divStyle: S_DIV,
-          title: "About Words",
-          accessKey: "a",
-          onClick: onAbout,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgInfo, {
-            style: S_SETTINGS
-          })
-        })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitLabel["default"], {
-        store: store,
-        ACTIONS: LPT,
-        style: S.LIMIT
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: CL_BTS,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+        className: CL_SETTINGS,
+        rootStyle: (0, _extends2["default"])({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
+        clDiv: S.BT.CL_FLAT_DIV,
+        divStyle: S_DIV,
+        title: "User Settings Dialog",
+        accessKey: "s",
+        onClick: onSettings,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgSettings, {
+          style: S_SETTINGS
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+        className: CL_BT_ABOUT,
+        rootStyle: S.BT.FLAT_ROOT,
+        clDiv: S.BT.CL_FLAT_DIV,
+        divStyle: S_DIV,
+        title: "About Words",
+        accessKey: "a",
+        onClick: onAbout,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgInfo, {
+          style: S_SETTINGS
+        })
       })]
-    });
-  };
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitLabel["default"], {
+      store: store,
+      ACTIONS: LPT,
+      style: S.LIMIT
+    })]
+  });
+};
 
-  return HeaderBar;
-}(_react.Component);
-
-var _default = (0, _withTheme["default"])(HeaderBar);
-
+var _default = HeaderBar;
 exports["default"] = _default;
 //# sourceMappingURL=HeaderBar.js.map

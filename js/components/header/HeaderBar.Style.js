@@ -8,8 +8,8 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var styleConfig = {
-  themeName: undefined,
-  style: undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle: function createStyle(R) {
     return {
       CL_QUERY_ITEM: R.CL_QUERY_ITEM,
