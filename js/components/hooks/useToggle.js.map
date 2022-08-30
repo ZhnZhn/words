@@ -1,0 +1,19 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useToggle.js"
+ ],
+ "file": "../../../src/components/hooks/useToggle.js",
+ "names": [
+  "_isBool",
+  "v",
+  "_initState",
+  "initialValue",
+  "_reducer",
+  "state",
+  "value",
+  "useToggle",
+  "useReducer"
+ ],
+ "mappings": ";;;;;AAAA;;AAEA,IAAMA,OAAO,GAAG,SAAVA,OAAU,CAAAC,CAAC;EAAA,OAAI,OAAOA,CAAP,KAAa,SAAjB;AAAA,CAAjB;AAAA,IACEC,UAAU,GAAG,SAAbA,UAAa,CAACC,YAAD;EAAA,OAAkB,CAAC,CAACA,YAApB;AAAA,CADf;AAAA,IAEEC,QAAQ,GAAG,SAAXA,QAAW,CACXC,KADW,EAEXC,KAFW;EAAA,OAGRN,OAAO,CAACM,KAAD,CAAP,GACDA,KADC,GAED,CAACD,KALQ;AAAA,CAFb;;AASA,IAAME,SAAS,GAAG,SAAZA,SAAY,CAChBJ,YADgB;EAAA,OAEb,IAAAK,iBAAA,EACHJ,QADG,EAEHD,YAFG,EAGHD,UAHG,CAFa;AAAA,CAAlB;;eAQeK,S"
+}
