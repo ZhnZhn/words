@@ -27,31 +27,28 @@ var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 
 var _LimitLabel = _interopRequireDefault(require("./LimitLabel"));
 
+var _titles = require("../titles");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = {
-  HEADER: "header",
-  PANEL_BROWSER: "header__panel-browser",
-  ICON_APP: "header__icon-app",
-  LABEL_APP: "header__label-app",
-  BROWSER_BTS: "header__browser-bts",
-  BTS: "header__bts",
-  ARROW_DOWN: "arrow-down",
-  SETTINGS: "header__bt-settins",
-  BT_ABOUT: "header__bt-about"
+var CL_HEADER = "header",
+    CL_PANEL_BROWSER = CL_HEADER + "__panel-browser",
+    CL_ICON_APP = CL_HEADER + "__icon-app",
+    CL_LABEL_APP = CL_HEADER + "__label-app",
+    CL_BROWSER_BTS = CL_HEADER + "__browser-bts",
+    CL_BTS = CL_HEADER + "__bts",
+    CL_ARROW_DOWN = "arrow-down",
+    CL_SETTINGS = CL_HEADER + "__bt-settins",
+    CL_BT_ABOUT = CL_HEADER + "__bt-about",
+    S_DIV = {
+  paddingLeft: 6,
+  paddingRight: 6
+},
+    S_SETTINGS = {
+  verticalAlign: 'middle',
+  position: 'relative',
+  top: -1
 };
-var STYLE = {
-  DIV_STYLE: {
-    paddingLeft: 6,
-    paddingRight: 6
-  },
-  SETTINGS: {
-    verticalAlign: 'middle',
-    position: 'relative',
-    top: -1
-  }
-};
-var TITLE = 'Words v0.3.0';
 
 var HeaderBar = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(HeaderBar, _Component);
@@ -112,11 +109,11 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         isTopics = this.state.isTopics,
         S = theme.createStyle(_HeaderBar["default"]);
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("header", {
-      className: CL.HEADER,
+      className: CL_HEADER,
       style: S.HEADER,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_PaneTopics["default"], {
         paneStyle: S.PANE,
-        className: CL.PANEL_BROWSER,
+        className: CL_PANEL_BROWSER,
         clItem: S.CL_QUERY_ITEM,
         isShow: isTopics,
         items: this._topicItems,
@@ -125,15 +122,15 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         store: store,
         ACTIONS: LPT
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
-        className: CL.ICON_APP,
-        title: TITLE
+        className: CL_ICON_APP,
+        title: _titles.APP_TITLE
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
-        className: CL.LABEL_APP,
-        caption: TITLE
+        className: CL_LABEL_APP,
+        caption: _titles.APP_TITLE
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        className: CL.BROWSER_BTS,
+        className: CL_BROWSER_BTS,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ModalButton, {
-          rootStyle: S.BT.FLAT_ROOT,
+          style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           caption: "Topics",
           title: "Topics",
@@ -141,32 +138,32 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
           onClick: this._hClickTopics,
           onReg: this._onRegTopics,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            className: CL.ARROW_DOWN
+            className: CL_ARROW_DOWN
           })
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        className: CL.BTS,
+        className: CL_BTS,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
-          className: CL.SETTINGS,
+          className: CL_SETTINGS,
           rootStyle: (0, _extends2["default"])({}, S.BT.FLAT_ROOT, S.BT_SETTINGS),
           clDiv: S.BT.CL_FLAT_DIV,
-          divStyle: STYLE.DIV_STYLE,
+          divStyle: S_DIV,
           title: "User Settings Dialog",
           accessKey: "s",
           onClick: onSettings,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgSettings, {
-            style: STYLE.SETTINGS
+            style: S_SETTINGS
           })
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
-          className: CL.BT_ABOUT,
+          className: CL_BT_ABOUT,
           rootStyle: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
-          divStyle: STYLE.DIV_STYLE,
+          divStyle: S_DIV,
           title: "About Words",
           accessKey: "a",
           onClick: onAbout,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgInfo, {
-            style: STYLE.SETTINGS
+            style: S_SETTINGS
           })
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitLabel["default"], {
