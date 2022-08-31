@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useThrottleClick.js"
+ ],
+ "file": "../../../src/components/hooks/useThrottleClick.js",
+ "names": [
+  "FN_NOOP",
+  "useThrottleClick",
+  "timeout",
+  "onClick",
+  "_refTimeStamp",
+  "useRef",
+  "useCallback",
+  "evt",
+  "_timeStampPrev",
+  "current",
+  "timeStamp"
+ ],
+ "mappings": ";;;;;AAAA;;AAKA,IAAMA,OAAO,GAAG,SAAVA,OAAU,GAAM,CAAE,CAAxB;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB,CACvBC,OADuB,EAEvBC,OAFuB,EAGpB;EAAA,IAFHD,OAEG;IAFHA,OAEG,GAFK,CAEL;EAAA;;EAAA,IADHC,OACG;IADHA,OACG,GADKH,OACL;EAAA;;EACH,IAAMI,aAAa,GAAG,IAAAC,aAAA,EAAO,IAAP,CAAtB;;EACA,OAAO,IAAAC,kBAAA,EAAY,UAAAC,GAAG,EAAI;IACxB,IAAIL,OAAO,KAAK,CAAhB,EAAmB;MACjBC,OAAO,CAACI,GAAD,CAAP;MACA;IACD;;IACK,IAAAC,cAAc,GAAGJ,aAAa,CAACK,OAA/B;IAAA,IACFC,SADE,GACYH,GADZ,CACFG,SADE;;IAEN,IAAIF,cAAc,IAAI,IAAlB,IACGE,SAAS,GAAGF,cAAZ,GAA6BN,OADpC,EAC6C;MAC3CC,OAAO,CAACI,GAAD,CAAP;MACAH,aAAa,CAACK,OAAd,GAAwBC,SAAxB;IACD;EACF,CAZM,EAYJ,CAACR,OAAD,EAAUC,OAAV,CAZI,CAAP;AAaD,CAlBD;;eAoBeF,gB"
+}
