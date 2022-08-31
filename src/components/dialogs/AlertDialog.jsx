@@ -1,28 +1,25 @@
-import { Component } from 'react'
 //import PropTypes from 'prop-types'
+import memoIsShow from '../hoc/memoIsShow';
+import useTheme from '../hoc/useTheme';
+import styleConfig from './Dialog.Style';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Dialog.Style'
+import A from '../Comp';
 
-import A from '../Comp'
-
-const S = {
-  DIALOG: {
-    left: 'calc(50vw - 152px)'
-  },
-  CAPTION: {
-    color: '#f44336',
-    fontWeight: 'bold'
-  },
-  MSG: {
-    color: 'black',
-    width : 300,
-    paddingTop: 16,
-    paddingLeft : 10,
-    fontWeight: 'bold',
-    lineHeight : 1.4,
-    whiteSpace: 'pre-line'
-  }
+const S_DIALOG = {
+  left: 'calc(50vw - 152px)'
+}
+, S_CAPTION = {
+  color: '#f44336',
+  fontWeight: 'bold'
+}
+, S_MSG = {
+  color: 'black',
+  width: 300,
+  paddingTop: 16,
+  paddingLeft: 10,
+  fontWeight: 'bold',
+  lineHeight: 1.4,
+  whiteSpace: 'pre-line'
 };
 
 const _toMsg = (data) => {
@@ -36,55 +33,47 @@ const _toMsg = (data) => {
     return msg;
   }
   return 'Exception Message';
+};
+
+const DF_DATA = {};
+
+const AlertDialog = memoIsShow(({
+  isShow,
+  data=DF_DATA,
+  onClose
+}) => {
+  const TS = useTheme(styleConfig)
+  , _msg  = _toMsg(data);
+
+  return (
+    <A.ModalDialog
+       STYLE={TS.BT}
+       style={{...TS.R_DIALOG, ...S_DIALOG }}
+       captionStyle={{ ...TS.BROWSER_CAPTION, ...S_CAPTION }}
+       caption="Exception Message"
+       isShow={isShow}
+       isClosePrimary={true}
+       onClose={onClose}
+    >
+       <div>
+          <p style={S_MSG}>
+            {_msg}
+          </p>
+       </div>
+    </A.ModalDialog>
+  );
+});
+
+/*
+AlertDialog.propTypes = {
+  isShow: PropTypes.bool,
+  data: PropTypes.shape({
+    status: PropTypes.string,
+    url: PropTypes.string,
+    msg: PropTypes.string
+  }),
+  onClose: PropTypes.func
 }
+*/
 
-class AlertDialog extends Component{
-
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      status: PropTypes.string,
-      url: PropTypes.string,
-      msg: PropTypes.string
-    }),
-    onClose: PropTypes.func
-  }
-  */
-  static defaultProps = {
-    data: {}
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  }
-
-  render(){
-    const { isShow, data, theme, onClose } = this.props
-        , TS = theme.createStyle(styleConfig)
-        , _msg  = _toMsg(data);
-    return (
-      <A.ModalDialog
-         STYLE={TS.BT}
-         style={{...TS.R_DIALOG, ...S.DIALOG }}
-         captionStyle={{ ...TS.BROWSER_CAPTION, ...S.CAPTION }}
-         //styleButton={TS.BT}
-         caption="Exception Message"
-         isShow={isShow}
-         isClosePrimary={true}
-         onClose={onClose}
-      >
-         <div>
-            <p style={S.MSG}>
-              {_msg}
-            </p>
-         </div>
-      </A.ModalDialog>
-    );
-  }
-}
-
-export default withTheme(AlertDialog)
+export default AlertDialog
