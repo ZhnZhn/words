@@ -55,7 +55,7 @@ var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
 
     if (target === (0, _uiApi.getRefValue)(_refRootNode)) {
       if (keyCode === 13) {
-        onClick();
+        onClick(evt);
       } else if (keyCode === 46) {
         onClose();
       } else if (keyCode === 65) {

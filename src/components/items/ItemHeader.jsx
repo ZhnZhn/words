@@ -44,7 +44,7 @@ const ItemHeader = forwardRef(({
      const { target, keyCode } = evt;
      if (target === getRefValue(_refRootNode)) {
        if (keyCode === 13) {
-         onClick()
+         onClick(evt)
        } else if (keyCode === 46) {
          onClose()
        } else if (keyCode === 65) {
