@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = void 0;
 
 var _react = require("react");
 
@@ -14,6 +14,7 @@ exports.useCallback = _react.useCallback;
 exports.useMemo = _react.useMemo;
 exports.useLayoutEffect = _react.useLayoutEffect;
 exports.useEffect = _react.useEffect;
+exports.useImperativeHandle = _react.useImperativeHandle;
 
 var getRefValue = function getRefValue(ref) {
   return (ref || {}).current;

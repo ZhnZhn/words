@@ -1,43 +1,50 @@
-import { Component } from 'react'
+import {
+  forwardRef,
+  useRef,
+  useCallback,
+  useImperativeHandle,
+  getRefValue
+} from '../uiApi';
 
-const _fnNoop = () => {};
+const FN_NOOP = () => {};
 
-class MenuItem extends Component {
-   static defaultProps = {
-     onClick: _fnNoop,
-     onClose: _fnNoop
-   }
-
-  _hKeyDown = (event) => {
+const MenuItem = forwardRef(({
+  className,
+  caption,
+  onClick=FN_NOOP,
+  onClose=FN_NOOP
+}, ref) => {
+  const _refDiv = useRef()
+  , _hKeyDown = useCallback((evt) => {
     const { keyCode } = event;
     if (keyCode === 13 ) {
-      this.props.onClick()
+      onClick()
     } else if (keyCode === 27 ) {
-      this.props.onClose({ target: this.divNode })
+      onClose({ target: getRefValue(_refDiv) })
     }
-  }
+  }, [onClick, onClose]);
 
-  _ref = (n) => this.divNode = n
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      const _el = getRefValue(_refDiv);
+      if (_el) {
+        _el.focus()
+      }
+    }
+  }), [])
 
-  render(){
-    const { className, caption, onClick } = this.props;
-    return (
-      <div
-        role="button"
-        ref={this._ref}
-        className={className}
-        tabIndex="0"
-        onClick={onClick}
-        onKeyDown={this._hKeyDown}
-      >
-        {caption}
-      </div>
-    );
-  }
-
-  focus(){
-    this.divNode.focus()
-  }
-}
+  return (
+    <div
+      role="button"
+      ref={_refDiv}
+      className={className}
+      tabIndex="0"
+      onClick={onClick}
+      onKeyDown={_hKeyDown}
+    >
+      {caption}
+    </div>
+  );
+});
 
 export default MenuItem

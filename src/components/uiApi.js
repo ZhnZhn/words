@@ -7,7 +7,8 @@ export {
   useCallback,
   useMemo,
   useLayoutEffect,
-  useEffect
+  useEffect,
+  useImperativeHandle
 } from 'react';
 
 export const getRefValue = ref => (ref || {}).current
