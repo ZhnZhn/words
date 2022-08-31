@@ -1,1 +1,46 @@
-{"version":3,"sources":["../../../src/components/items/ItemHeader.jsx"],"names":["CL_NOT_SELECTED","T","A","_fnNoop","_setPrevFocused","element","document","_prevFocusedZhn","ItemHeader","props","_hAddToWatch","event","stopPropagation","_refBtAdd","current","caption","onAddToWatch","_hClose","onClose","_hKeyDown","target","keyCode","_refRootNode","onClick","componentDidMount","focus","render","className","style","captionStyle","svgCloseStyle","title","Component","defaultProps"],"mappings":"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","sourcesContent":["import { Component, createRef } from 'react'\r\n\r\nimport A from '../Comp'\r\n\r\nconst CL_NOT_SELECTED = \"not-selected\";\r\n\r\nconst T = {\r\n  A: \"Click to open add to watch list dialog\"\r\n};\r\n\r\nconst _fnNoop = () => {};\r\n\r\nconst _setPrevFocused = element => {\r\n  document._prevFocusedZhn = element\r\n};\r\n\r\nclass ItemHeader extends Component {\r\n\r\n  /*\r\n  static propTypes = {\r\n    title: PropTypes.string,\r\n    className: PropTypes.string,\r\n    style: PropTypes.object,\r\n    captionStyle: PropTypes.object,\r\n    svgCloseStyle: PropTypes.object,\r\n\r\n    caption: PropTypes.string,\r\n\r\n    onClick: PropTypes.func,\r\n    onClose: PropTypes.func,\r\n    onAddToWatch: PropTypes.func\r\n  }\r\n  */\r\n\r\n  static defaultProps = {\r\n    onClick: _fnNoop,\r\n    onClose: _fnNoop,\r\n    onAddToWatch: _fnNoop\r\n  }\r\n\r\n  constructor(props){\r\n    super(props)\r\n    this._refRootNode = createRef()\r\n    this._refBtAdd = createRef()\r\n  }\r\n\r\n\r\n  componentDidMount(){\r\n    if (this._refRootNode.current) {\r\n      this._refRootNode.current.focus()\r\n    }\r\n  }\r\n\r\n  _hAddToWatch = (event) => {\r\n    event.stopPropagation()\r\n    _setPrevFocused(this._refBtAdd.current)\r\n    const { caption, onAddToWatch } = this.props\r\n    onAddToWatch({ caption })\r\n  }\r\n\r\n  _hClose = (event) => {\r\n    event.stopPropagation()\r\n    this.props.onClose()\r\n  }\r\n\r\n  _hKeyDown = (event) => {\r\n    const { target, keyCode } = event;\r\n    if (target === this._refRootNode.current) {\r\n      const { onClick, onClose } = this.props;\r\n      if (keyCode === 13) {\r\n        onClick()\r\n      } else if (keyCode === 46) {\r\n        onClose()\r\n      } else if (keyCode === 65) {\r\n        this._hAddToWatch(event)\r\n      }\r\n    }\r\n  }\r\n\r\n  render(){\r\n    const {\r\n            className,\r\n            style, captionStyle, svgCloseStyle,\r\n            title,\r\n            onClick\r\n          } = this.props;\r\n    return (\r\n      <div\r\n        tabIndex=\"0\"\r\n        role=\"button\"\r\n        ref={this._refRootNode}\r\n        className={className}\r\n        style={style}\r\n        onClick={onClick}\r\n        onKeyDown={this._hKeyDown}\r\n      >\r\n        <span\r\n           className={CL_NOT_SELECTED}\r\n           style={captionStyle}\r\n        >\r\n           {title}\r\n        </span>\r\n        <A.CircleButton\r\n          ref={this._refBtAdd}\r\n          caption=\"A\"\r\n          title={T.A}\r\n          onClick={this._hAddToWatch}\r\n        />\r\n        <A.SvgClose\r\n            tabIndex=\"-1\"\r\n            style={svgCloseStyle}\r\n            onClose={this._hClose}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n\r\n  focus() {\r\n    this._refRootNode.current.focus()\r\n  }\r\n}\r\n\r\nexport default ItemHeader\r\n"],"file":"ItemHeader.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/ItemHeader.js"
+ ],
+ "file": "../../../src/components/items/ItemHeader.js",
+ "names": [
+  "CL_NOT_SELECTED",
+  "TITLE",
+  "_setPrevFocused",
+  "element",
+  "document",
+  "_prevFocusedZhn",
+  "FN_NOOP",
+  "ItemHeader",
+  "forwardRef",
+  "ref",
+  "className",
+  "style",
+  "captionStyle",
+  "svgCloseStyle",
+  "title",
+  "caption",
+  "onAddToWatch",
+  "onClose",
+  "onClick",
+  "_refRootNode",
+  "useRef",
+  "_refBtAdd",
+  "_hAddToWatch",
+  "useCallback",
+  "evt",
+  "stopPropagation",
+  "getRefValue",
+  "_hClose",
+  "_hKeyDown",
+  "target",
+  "keyCode",
+  "event",
+  "focus",
+  "_elRoot",
+  "useEffect",
+  "useImperativeHandle"
+ ],
+ "mappings": "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"
+}
