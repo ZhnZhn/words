@@ -5,9 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = require("react");
 
@@ -16,6 +16,23 @@ var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
 var _jsxRuntime = require("react/jsx-runtime");
+
+var ItemsStack = function ItemsStack(_ref2) {
+  var ref = _ref2.ref,
+      items = _ref2.items,
+      clItem = _ref2.clItem,
+      onClose = _ref2.onClose;
+  return items.map(function (item, index) {
+    var _ref = index === 0 ? ref : void 0;
+
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].MenuItem, (0, _extends2["default"])({
+      ref: _ref,
+      className: clItem
+    }, item, {
+      onClose: onClose
+    }), item.caption);
+  });
+};
 
 var PaneTopics = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PaneTopics, _Component);
@@ -28,27 +45,7 @@ var PaneTopics = /*#__PURE__*/function (_Component) {
     }
 
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
-    _this._ref = function (n) {
-      return _this.firstItem = n;
-    };
-
-    _this._renderItems = function (_ref2) {
-      var clItem = _ref2.clItem,
-          items = _ref2.items,
-          onClose = _ref2.onClose;
-      return items.map(function (item, index) {
-        var _ref = index === 0 ? _this._ref : undefined;
-
-        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].MenuItem, (0, _extends2["default"])({
-          ref: _ref,
-          className: clItem
-        }, item, {
-          onClose: onClose
-        }), item.caption);
-      });
-    };
-
+    _this._ref = /*#__PURE__*/(0, _react.createRef)();
     return _this;
   }
 
@@ -60,7 +57,11 @@ var PaneTopics = /*#__PURE__*/function (_Component) {
 
       if (isShow && !prevProps.isShow) {
         this.prevFocused = document.activeElement;
-        this.firstItem.focus();
+        var _el = this.ref.current;
+
+        if (_el) {
+          _el.focus();
+        }
       } else if (!isShow && prevProps.isShow) {
         if (this.prevFocused) {
           this.prevFocused.focus();
@@ -84,9 +85,10 @@ var PaneTopics = /*#__PURE__*/function (_Component) {
         className: className,
         style: paneStyle,
         isShow: isShow,
-        children: this._renderItems({
-          clItem: clItem,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemsStack, {
+          ref: this._ref,
           items: items,
+          clItem: clItem,
           onClose: onClose
         })
       })
