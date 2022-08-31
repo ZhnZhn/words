@@ -1,8 +1,9 @@
-import { Component } from 'react';
+import { useCallback } from '../uiApi';
 
+import useToggle from '../hooks/useToggle';
 import isKeyEnter from './isKeyEnter';
 
-const CL = 'oc-item not-selected'
+const CL_MENU_ITEM = 'oc-item not-selected'
 , S_ROOT = {
   backgroundColor: '#4d4d4d',
   lineHeight: 1.5
@@ -26,13 +27,10 @@ const CL = 'oc-item not-selected'
 , S_BLOCK = { display: 'block' }
 , S_NONE = { display: 'none' };
 
-
-const FILL_OPEN = '#9e9e9e'
-, FILL_CLOSE = 'transparent'
-, PATH = {
-  OPEN: "M 2,14 L 14,14 14,2 2,14",
-  CLOSE: "M 2,2 L 14,8 2,14 2,2"
-};
+const DF_FILL_OPEN = '#9e9e9e'
+, DF_FILL_CLOSE = 'transparent'
+, D_OPEN = "M 2,14 L 14,14 14,2 2,14"
+, D_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 const _crStyleConf = ({
   isOpen,
@@ -40,99 +38,91 @@ const _crStyleConf = ({
   fillClose,
   styleNotSelected
 }) => isOpen
-  ? {
-    _pathV: PATH.OPEN,
-    _fillV: fillOpen,
-    _divStyle: S_BLOCK,
-    _classShow: 'show-popup',
-    _styleNotSelected: null
-   }
- : {
-   _pathV: PATH.CLOSE,
-   _fillV: fillClose,
-   _divStyle: S_NONE,
-   _classShow: null,
-   _styleNotSelected: styleNotSelected
- };
+  ? [
+    D_OPEN,
+    fillOpen,
+    S_BLOCK,
+    'show-popup',
+    null
+  ]
+ : [
+   D_CLOSE,
+   fillClose,
+   S_NONE,
+   null,
+   styleNotSelected
+ ];
 
-class OpenClose2 extends Component {
-   static defaultProps = {
-     fillOpen: FILL_OPEN,
-     fillClose: FILL_CLOSE
-   }
+const OpenClose2 = ({
+  isInitialOpen,
+  style,
+  styleCaption,
+  caption,
+  fillOpen=DF_FILL_OPEN,
+  fillClose=DF_FILL_CLOSE,
+  styleNotSelected,
+  draggableOption,
+  children
+}) => {
+  const [
+    isOpen,
+    toggleIsOpen
+  ] = useToggle(isInitialOpen)
+  , _hKeyDown = useCallback(evt => {
+     if (isKeyEnter(evt)) {
+       toggleIsOpen()
+     }
+  }, [toggleIsOpen])
+  , [
+     _d,
+     _fill,
+     _divStyle,
+     _classShow,
+     _styleNotSelected
+  ] = _crStyleConf({
+    isOpen,
+    fillOpen,
+    fillClose,
+    styleNotSelected
+  });
 
-   constructor(props){
-     super(props);
-     const { isInitialOpen } = props;
-      this.state = {
-        isOpen: Boolean(isInitialOpen)
-      }
-   }
-
-  _hClick = () => {
-    this.setState(prev => ({
-      isOpen: !prev.isOpen
-    }));
-  }
-
-  _hKeyDown = (event) => {
-    if (isKeyEnter(event)){
-      this._hClick()
-    }
-  }
-
-  render(){
-    const {
-      style,
-      styleCaption,
-      caption,
-      fillOpen,
-      fillClose,
-      styleNotSelected,
-      draggableOption,
-      children
-    } = this.props
-    , { isOpen } = this.state
-    , {
-        _pathV, _fillV,
-        _divStyle, _classShow,
-        _styleNotSelected
-    } = _crStyleConf({ isOpen, fillOpen, fillClose, styleNotSelected });
-
-
-    return (
-      <div style={{...S_ROOT, ...style}}>
-        <div
-           role="menuitem"
-           tabIndex="0"
-           className={CL}
-           style={_styleNotSelected}
-           onClick={this._hClick}
-           onKeyDown={this._hKeyDown}
-           {...draggableOption}
-         >
-          <div style={S_DIV_SVG}>
-             <svg
-                viewBox="0 0 16 16" width="100%" height="100%"
-                preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-                style={S_SVG}
-              >
-               <path
-                  d={_pathV} fill={_fillV}
-                  strokeWidth="1" stroke={fillOpen}
-               />
-             </svg>
-         </div>
-         <span style={{...S_CAPTION, ...styleCaption}} >
-            {caption}
-         </span>
+  return (
+    <div style={{...S_ROOT, ...style}}>
+      <div
+         role="menuitem"
+         tabIndex="0"
+         className={CL_MENU_ITEM}
+         style={_styleNotSelected}
+         onClick={toggleIsOpen}
+         onKeyDown={_hKeyDown}
+         {...draggableOption}
+       >
+        <div style={S_DIV_SVG}>
+           <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="none"
+              style={S_SVG}
+            >
+             <path
+                d={_d}
+                fill={_fill}
+                strokeWidth="1"
+                stroke={fillOpen}
+             />
+           </svg>
        </div>
-      <div className={_classShow} style={_divStyle}>
-        {children}
-      </div>
+       <span style={{...S_CAPTION, ...styleCaption}} >
+          {caption}
+       </span>
      </div>
-   );
-  }
-}
+    <div className={_classShow} style={_divStyle}>
+      {children}
+    </div>
+   </div>
+  );
+};
 
-export default OpenClose2;
+export default OpenClose2

@@ -7,15 +7,15 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _uiApi = require("../uiApi");
 
-var _react = require("react");
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = 'oc-item not-selected',
+var CL_MENU_ITEM = 'oc-item not-selected',
     S_ROOT = {
   backgroundColor: '#4d4d4d',
   lineHeight: 1.5
@@ -44,132 +44,90 @@ var CL = 'oc-item not-selected',
     S_NONE = {
   display: 'none'
 };
-var FILL_OPEN = '#9e9e9e',
-    FILL_CLOSE = 'transparent',
-    PATH = {
-  OPEN: "M 2,14 L 14,14 14,2 2,14",
-  CLOSE: "M 2,2 L 14,8 2,14 2,2"
-};
+var DF_FILL_OPEN = '#9e9e9e',
+    DF_FILL_CLOSE = 'transparent',
+    D_OPEN = "M 2,14 L 14,14 14,2 2,14",
+    D_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 var _crStyleConf = function _crStyleConf(_ref) {
   var isOpen = _ref.isOpen,
       fillOpen = _ref.fillOpen,
       fillClose = _ref.fillClose,
       styleNotSelected = _ref.styleNotSelected;
-  return isOpen ? {
-    _pathV: PATH.OPEN,
-    _fillV: fillOpen,
-    _divStyle: S_BLOCK,
-    _classShow: 'show-popup',
-    _styleNotSelected: null
-  } : {
-    _pathV: PATH.CLOSE,
-    _fillV: fillClose,
-    _divStyle: S_NONE,
-    _classShow: null,
-    _styleNotSelected: styleNotSelected
-  };
+  return isOpen ? [D_OPEN, fillOpen, S_BLOCK, 'show-popup', null] : [D_CLOSE, fillClose, S_NONE, null, styleNotSelected];
 };
 
-var OpenClose2 = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(OpenClose2, _Component);
+var OpenClose2 = function OpenClose2(_ref2) {
+  var isInitialOpen = _ref2.isInitialOpen,
+      style = _ref2.style,
+      styleCaption = _ref2.styleCaption,
+      caption = _ref2.caption,
+      _ref2$fillOpen = _ref2.fillOpen,
+      fillOpen = _ref2$fillOpen === void 0 ? DF_FILL_OPEN : _ref2$fillOpen,
+      _ref2$fillClose = _ref2.fillClose,
+      fillClose = _ref2$fillClose === void 0 ? DF_FILL_CLOSE : _ref2$fillClose,
+      styleNotSelected = _ref2.styleNotSelected,
+      draggableOption = _ref2.draggableOption,
+      children = _ref2.children;
 
-  function OpenClose2(props) {
-    var _this;
+  var _useToggle = (0, _useToggle2["default"])(isInitialOpen),
+      isOpen = _useToggle[0],
+      toggleIsOpen = _useToggle[1],
+      _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
+    if ((0, _isKeyEnter["default"])(evt)) {
+      toggleIsOpen();
+    }
+  }, [toggleIsOpen]),
+      _crStyleConf2 = _crStyleConf({
+    isOpen: isOpen,
+    fillOpen: fillOpen,
+    fillClose: fillClose,
+    styleNotSelected: styleNotSelected
+  }),
+      _d = _crStyleConf2[0],
+      _fill = _crStyleConf2[1],
+      _divStyle = _crStyleConf2[2],
+      _classShow = _crStyleConf2[3],
+      _styleNotSelected = _crStyleConf2[4];
 
-    _this = _Component.call(this, props) || this;
-
-    _this._hClick = function () {
-      _this.setState(function (prev) {
-        return {
-          isOpen: !prev.isOpen
-        };
-      });
-    };
-
-    _this._hKeyDown = function (event) {
-      if ((0, _isKeyEnter["default"])(event)) {
-        _this._hClick();
-      }
-    };
-
-    var isInitialOpen = props.isInitialOpen;
-    _this.state = {
-      isOpen: Boolean(isInitialOpen)
-    };
-    return _this;
-  }
-
-  var _proto = OpenClose2.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        style = _this$props.style,
-        styleCaption = _this$props.styleCaption,
-        caption = _this$props.caption,
-        fillOpen = _this$props.fillOpen,
-        fillClose = _this$props.fillClose,
-        styleNotSelected = _this$props.styleNotSelected,
-        draggableOption = _this$props.draggableOption,
-        children = _this$props.children,
-        isOpen = this.state.isOpen,
-        _crStyleConf2 = _crStyleConf({
-      isOpen: isOpen,
-      fillOpen: fillOpen,
-      fillClose: fillClose,
-      styleNotSelected: styleNotSelected
-    }),
-        _pathV = _crStyleConf2._pathV,
-        _fillV = _crStyleConf2._fillV,
-        _divStyle = _crStyleConf2._divStyle,
-        _classShow = _crStyleConf2._classShow,
-        _styleNotSelected = _crStyleConf2._styleNotSelected;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: (0, _extends2["default"])({}, S_ROOT, style),
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
-        role: "menuitem",
-        tabIndex: "0",
-        className: CL,
-        style: _styleNotSelected,
-        onClick: this._hClick,
-        onKeyDown: this._hKeyDown
-      }, draggableOption, {
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          style: S_DIV_SVG,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
-            viewBox: "0 0 16 16",
-            width: "100%",
-            height: "100%",
-            preserveAspectRatio: "none",
-            xmlns: "http://www.w3.org/2000/svg",
-            style: S_SVG,
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-              d: _pathV,
-              fill: _fillV,
-              strokeWidth: "1",
-              stroke: fillOpen
-            })
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: (0, _extends2["default"])({}, S_ROOT, style),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
+      role: "menuitem",
+      tabIndex: "0",
+      className: CL_MENU_ITEM,
+      style: _styleNotSelected,
+      onClick: toggleIsOpen,
+      onKeyDown: _hKeyDown
+    }, draggableOption, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S_DIV_SVG,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 16 16",
+          width: "100%",
+          height: "100%",
+          preserveAspectRatio: "none",
+          style: S_SVG,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: _d,
+            fill: _fill,
+            strokeWidth: "1",
+            stroke: fillOpen
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: (0, _extends2["default"])({}, S_CAPTION, styleCaption),
-          children: caption
-        })]
-      })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: _classShow,
-        style: _divStyle,
-        children: children
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: (0, _extends2["default"])({}, S_CAPTION, styleCaption),
+        children: caption
       })]
-    });
-  };
-
-  return OpenClose2;
-}(_react.Component);
-
-OpenClose2.defaultProps = {
-  fillOpen: FILL_OPEN,
-  fillClose: FILL_CLOSE
+    })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: _classShow,
+      style: _divStyle,
+      children: children
+    })]
+  });
 };
+
 var _default = OpenClose2;
 exports["default"] = _default;
 //# sourceMappingURL=OpenClose2.js.map
