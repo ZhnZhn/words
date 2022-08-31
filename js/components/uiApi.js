@@ -1,12 +1,13 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = void 0;
 
 var _react = require("react");
 
 exports.forwardRef = _react.forwardRef;
 exports.memo = _react.memo;
+exports.useContext = _react.useContext;
 exports.useRef = _react.useRef;
 exports.useState = _react.useState;
 exports.useReducer = _react.useReducer;
