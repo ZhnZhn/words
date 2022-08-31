@@ -7,23 +7,21 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var S = {
-  BROWSER_CAPTION: {
-    paddingTop: 5,
-    color: '#303030',
-    backgroundColor: '#3f5178',
-    textAlign: 'center',
-    fontSize: '18px',
-    marginBottom: 0
-  },
-  BT_RAISED_ROOT: {
-    marginRight: 2,
-    marginLeft: 2
-  },
-  INPUT_ROOT: {
-    width: 280,
-    display: 'block'
-  }
+var S_BROWSER_CAPTION = {
+  color: '#303030',
+  paddingTop: 5,
+  backgroundColor: '#3f5178',
+  textAlign: 'center',
+  fontSize: '18px',
+  marginBottom: 0
+},
+    S_BT_RAISED_ROOT = {
+  marginRight: 2,
+  marginLeft: 2
+},
+    S_INPUT_ROOT = {
+  display: 'block',
+  width: 280
 };
 var styleConfig = {
   themeName: void 0,
@@ -33,11 +31,11 @@ var styleConfig = {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
       R_DIALOG: (0, _extends2["default"])({}, R.R_DIALOG),
       CHB_STROKE: R.R_DIALOG.backgroundColor,
-      BROWSER_CAPTION: (0, _extends2["default"])({}, S.BROWSER_CAPTION, R.BG_HEADER),
-      INPUT_ROOT: (0, _extends2["default"])({}, S.INPUT_ROOT),
+      BROWSER_CAPTION: (0, _extends2["default"])({}, S_BROWSER_CAPTION, R.BG_HEADER),
+      INPUT_ROOT: (0, _extends2["default"])({}, S_INPUT_ROOT),
       BT: {
         CL_RAISED_DIV: R.CL_BT_RAISED_DIV,
-        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, R.BG_HEADER),
+        RAISED_ROOT: (0, _extends2["default"])({}, S_BT_RAISED_ROOT, R.BG_HEADER),
         FLAT_ROOT: (0, _extends2["default"])({}, R.BT_FLAT)
       },
       SELECT: {

@@ -1,22 +1,20 @@
 
-const S = {
-  BROWSER_CAPTION: {
-    paddingTop: 5,
-    color: '#303030',
-    backgroundColor: '#3f5178',
-    textAlign: 'center',
-    fontSize: '18px',
-    marginBottom: 0
-  },
-  BT_RAISED_ROOT: {
-    marginRight: 2,
-    marginLeft: 2
-  },
-  INPUT_ROOT: {
-    width: 280,
-    display: 'block'
-  }
+const S_BROWSER_CAPTION = {
+  color: '#303030',
+  paddingTop: 5,
+  backgroundColor: '#3f5178',
+  textAlign: 'center',
+  fontSize: '18px',
+  marginBottom: 0
 }
+, S_BT_RAISED_ROOT = {
+  marginRight: 2,
+  marginLeft: 2
+}
+, S_INPUT_ROOT = {
+  display: 'block',
+  width: 280
+};
 
 const styleConfig = {
   themeName: void 0,
@@ -29,16 +27,16 @@ const styleConfig = {
       },
       CHB_STROKE: R.R_DIALOG.backgroundColor,
       BROWSER_CAPTION: {
-        ...S.BROWSER_CAPTION,
+        ...S_BROWSER_CAPTION,
         ...R.BG_HEADER
       },
       INPUT_ROOT: {
-        ...S.INPUT_ROOT
+        ...S_INPUT_ROOT
       },
       BT: {
         CL_RAISED_DIV: R.CL_BT_RAISED_DIV,
         RAISED_ROOT: {
-          ...S.BT_RAISED_ROOT,
+          ...S_BT_RAISED_ROOT,
           ...R.BG_HEADER
         },
         FLAT_ROOT: {
