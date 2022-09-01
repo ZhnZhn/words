@@ -75,7 +75,7 @@
     <% } else if (fileName.indexOf('lib_') !== -1) { %>
       <script src="<%=fileName %>"></script>
     <% } else if (fileName.indexOf('words_') !== -1) { %>
-      <script src="<%=fileName %>"></script>
+      <script src="<%=fileName %>" defer></script>
     <% }
  } %>
 

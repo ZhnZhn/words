@@ -39,7 +39,7 @@
       }
     })()
   </script>
-  <link rel="stylesheet" href="css/app-34b07fb4d0.min.css">    
+  <link rel="stylesheet" href="css/app-97b5639159.min.css">    
 
 </head>
 <body>
@@ -70,8 +70,10 @@
   <%
  for (var index in htmlWebpackPlugin.files.js ) {
     var fileName = htmlWebpackPlugin.files.js[index];
-    if (fileName.indexOf('lib_') !== -1) { %>
-      <script src="<%=fileName %>" defer></script>
+    if (fileName.indexOf('manifest_') !== -1){ %>
+      <script src="<%=fileName %>"></script>
+    <% } else if (fileName.indexOf('lib_') !== -1) { %>
+      <script src="<%=fileName %>"></script>
     <% } else if (fileName.indexOf('words_') !== -1) { %>
       <script src="<%=fileName %>" defer></script>
     <% }
