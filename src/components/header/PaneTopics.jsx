@@ -1,20 +1,22 @@
 import {
-  Component,
-  createRef
-} from 'react';
+  useRef,
+  useEffect,
+  setRefValue,
+  focusRefElement
+} from '../uiApi';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
 import A from '../zhn-atoms/Atoms';
 
 const ItemsStack = ({
-  ref,
+  refItem,
   items,
   clItem,
   onClose
 }) => items
  .map((item, index) => {
     const _ref = index === 0
-      ? ref
+      ? refItem
       : void 0;
     return (
       <A.MenuItem
@@ -27,56 +29,45 @@ const ItemsStack = ({
     );
  })
 
-class PaneTopics extends Component {
-  _ref = createRef()
+const PaneTopics = ({
+  isShow,
+  className,
+  paneStyle,
+  clItem,
+  items,
+  onClose
+}) => {
+  const _refItem = useRef()
+  , _refPrevEl = useRef();
 
-  componentDidUpdate(prevProps, prevState){
-    if (this.props !== prevProps){
-      const { isShow } = this.props;
-      if (isShow && !prevProps.isShow) {
-        this.prevFocused = document.activeElement
-        const _el = this.ref.current;
-        if (_el) {
-          _el.focus()
-        }
-      } else if (!isShow && prevProps.isShow) {
-        if (this.prevFocused) {
-          this.prevFocused.focus()
-        }
-      }
+  useEffect(() => {
+    if (isShow) {
+      setRefValue(_refPrevEl, document.activeElement)
+      focusRefElement(_refItem)
+    } else {
+      focusRefElement(_refPrevEl)
     }
-  }
+  }, [isShow])
 
-  render(){
-    const {
-      className,
-      paneStyle,
-      isShow,
-      clItem,
-      items,
-      onClose
-    } = this.props;
-
-    return (
-      <ModalPane
+  return (
+    <ModalPane
+      isShow={isShow}
+      onClose={onClose}
+    >
+      <A.ShowHide
+        className={className}
+        style={paneStyle}
         isShow={isShow}
-        onClose={onClose}
       >
-        <A.ShowHide
-          className={className}
-          style={paneStyle}
-          isShow={isShow}
-        >
-          <ItemsStack
-            ref={this._ref}
-            items={items}
-            clItem={clItem}
-            onClose={onClose}
-          />
-        </A.ShowHide>
-     </ModalPane>
-    );
-  }
-}
+        <ItemsStack
+          refItem={_refItem}
+          items={items}
+          clItem={clItem}
+          onClose={onClose}
+        />
+      </A.ShowHide>
+   </ModalPane>
+  );
+};
 
 export default PaneTopics
