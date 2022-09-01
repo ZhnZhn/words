@@ -7,16 +7,14 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var S = {
-  INPUT_ROOT: {
-    width: 250,
-    marginLeft: 8
-  },
-  BT_RAISED_ROOT: {
-    position: 'relative',
-    top: 12,
-    marginLeft: 16
-  }
+var S_INPUT_ROOT = {
+  width: 250,
+  marginLeft: 8
+},
+    S_BT_RAISED_ROOT = {
+  position: 'relative',
+  top: 12,
+  marginLeft: 16
 };
 
 var _crBgColorStyle = function _crBgColorStyle(color) {
@@ -48,10 +46,10 @@ var styleConfig = {
       PANE_CAPTION: (0, _extends2["default"])({}, R.BG_HEADER),
       SVG_RESIZE: (0, _extends2["default"])({}, R.SVG_RESIZE),
       BG_COLOR: (0, _extends2["default"])({}, _paneRoot),
-      INPUT_ROOT: (0, _extends2["default"])({}, S.INPUT_ROOT),
+      INPUT_ROOT: (0, _extends2["default"])({}, S_INPUT_ROOT),
       BT: {
         CL_RAISED_DIV: R.CL_BT_RAISED_DIV,
-        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, R.BG_HEADER),
+        RAISED_ROOT: (0, _extends2["default"])({}, S_BT_RAISED_ROOT, R.BG_HEADER),
         CL_FLAT_DIV: R.CL_BT_FLAT_DIV,
         FLAT: {
           color: R.BG_HEADER.backgroundColor

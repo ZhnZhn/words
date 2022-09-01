@@ -29,63 +29,70 @@ var CHILD_MARGIN = 36,
     RESIZE_MIN_WIDTH = 375,
     RESIZE_MAX_WIDTH = 1200,
     RESIZE_DELTA = 10,
-    CL = {
-  SHOW_POPUP: "show-popup",
-  MENU_MORE: "popup-menu items__menu-more"
-};
-var S = {
-  ROOT_DIV: {
-    backgroundColor: '#4d4d4d',
-    padding: '0px 0px 3px 0px',
-    position: 'relative',
-    borderRadius: 4,
-    width: 635,
-    height: 'calc(100vh - 71px)',
-    minHeight: 500,
-    marginLeft: 16,
-    boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-    overflowY: 'hidden',
-    overflowX: 'hidden'
-  },
-  BR_CAPTION: {
-    marginRight: -2
-  },
-  BT_CIRCLE: {
-    position: 'relative',
-    top: -3,
-    marginLeft: 16,
-    marginRight: 6
-  },
-  SCROLL_PANE: {
-    overflowY: 'auto',
-    overflowX: 'hidden',
-    //height: '92%',
-    height: 'calc(100% - 120px)',
-    paddingRight: 10
-  },
-  INLINE_BLOCK: {
-    display: 'inline-block'
-  },
-  NONE: {
-    display: 'none'
-  }
-};
-var T = {
-  R: "Click to remove all items"
-};
+    CL_SHOW_POPUP = "show-popup",
+    CL_MENU_MORE = "popup-menu items__menu-more";
+var S_ROOT_DIV = {
+  backgroundColor: '#4d4d4d',
+  padding: '0px 0px 3px 0px',
+  position: 'relative',
+  borderRadius: 4,
+  width: 635,
+  height: 'calc(100vh - 71px)',
+  minHeight: 500,
+  marginLeft: 16,
+  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
+  overflowY: 'hidden',
+  overflowX: 'hidden'
+},
+    S_BR_CAPTION = {
+  marginRight: -2
+},
+    S_BT_CIRCLE = {
+  position: 'relative',
+  top: -3,
+  marginLeft: 16,
+  marginRight: 6
+},
+    S_SCROLL_PANE = {
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  //height: '92%',
+  height: 'calc(100% - 120px)',
+  paddingRight: 10
+},
+    S_INLINE_BLOCK = {
+  display: 'inline-block'
+},
+    S_NONE = {
+  display: 'none'
+},
+    R_TITLE = "Click to remove all items";
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
-};
-
-var _fnNoop = function _fnNoop() {};
-
-var _getWidth = function _getWidth(style) {
+},
+    FN_NOOP = function FN_NOOP() {},
+    _getWidth = function _getWidth(style) {
   return parseInt(style.width, 10) || RESIZE_INIT_WIDTH;
+},
+    _toStyleWidth = function _toStyleWidth(width) {
+  return width + 'px';
 };
 
-var _toStyleWidth = function _toStyleWidth(width) {
-  return width + 'px';
+var ConfigsStack = function ConfigsStack(_ref) {
+  var configs = _ref.configs,
+      Item = _ref.Item,
+      onCloseItem = _ref.onCloseItem,
+      onRemoveUnder = _ref.onRemoveUnder,
+      onAddToWatch = _ref.onAddToWatch;
+  return (configs || []).map(function (config) {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(Item, {
+      config: config,
+      onCloseItem: onCloseItem,
+      onRemoveUnder: onRemoveUnder,
+      onAddToWatch: onAddToWatch
+    }, config.id);
+  });
 };
 
 var PaneType1 = /*#__PURE__*/function (_Component) {
@@ -184,10 +191,8 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
     };
 
     _this._getRootNodeStyle = function () {
-      var _assertThisInitialize = (0, _assertThisInitialized2["default"])(_this),
-          rootDiv = _assertThisInitialize.rootDiv,
-          _ref = rootDiv || {},
-          style = _ref.style;
+      var _ref2 = _this.rootDiv || {},
+          style = _ref2.style;
 
       return style || {};
     };
@@ -272,60 +277,45 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
     this.unsubscribe();
   };
 
-  _proto._renderConfigs = function _renderConfigs(configs) {
-    if (configs === void 0) {
-      configs = [];
-    }
-
+  _proto.render = function render() {
     var _this$props3 = this.props,
+        paneCaption = _this$props3.paneCaption,
+        theme = _this$props3.theme,
+        Input = _this$props3.Input,
+        onRemoveItems = _this$props3.onRemoveItems,
         Item = _this$props3.Item,
         onCloseItem = _this$props3.onCloseItem,
         onRemoveUnder = _this$props3.onRemoveUnder,
-        onAddToWatch = _this$props3.onAddToWatch;
-    return configs.map(function (config) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(Item, {
-        config: config,
-        onCloseItem: onCloseItem,
-        onRemoveUnder: onRemoveUnder,
-        onAddToWatch: onAddToWatch
-      }, config.id);
-    });
-  };
-
-  _proto.render = function render() {
-    var _this$props4 = this.props,
-        paneCaption = _this$props4.paneCaption,
-        theme = _this$props4.theme,
-        Input = _this$props4.Input,
-        onRemoveItems = _this$props4.onRemoveItems,
+        onAddToWatch = _this$props3.onAddToWatch,
         _this$state = this.state,
         isShow = _this$state.isShow,
         isMore = _this$state.isMore,
         word = _this$state.word,
         configs = _this$state.configs,
         TS = theme.createStyle(_Pane["default"]),
-        _showStyle = isShow ? S.INLINE_BLOCK : S.NONE,
-        _showCl = isShow ? CL.SHOW_POPUP : void 0;
+        _ref3 = isShow ? [S_INLINE_BLOCK, CL_SHOW_POPUP] : [S_NONE],
+        _showStyle = _ref3[0],
+        _showCl = _ref3[1];
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       ref: this._refRootDiv,
       className: _showCl,
-      style: (0, _extends2["default"])({}, S.ROOT_DIV, TS.BG_COLOR, _showStyle),
+      style: (0, _extends2["default"])({}, S_ROOT_DIV, TS.BG_COLOR, _showStyle),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
         isShow: isMore,
-        className: CL.MENU_MORE,
+        className: CL_MENU_MORE,
         style: TS.BG_COLOR,
         model: this._MODEL,
         onClose: this._hToggleMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
-        rootStyle: (0, _extends2["default"])({}, S.BR_CAPTION, TS.PANE_CAPTION),
+        rootStyle: (0, _extends2["default"])({}, S_BR_CAPTION, TS.PANE_CAPTION),
         caption: paneCaption,
         onMore: this._showMore,
         onClose: this._hHide,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
           caption: "R",
-          title: T.R,
-          style: S.BT_CIRCLE,
+          title: R_TITLE,
+          style: S_BT_CIRCLE,
           onClick: onRemoveItems
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgHrzResize, {
           svgStyle: TS.SVG_RESIZE,
@@ -340,8 +330,14 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
         onEnter: this._hLoadItem
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
         className: TS.CL_SCROLL_PANE,
-        style: S.SCROLL_PANE,
-        children: this._renderConfigs(configs)
+        style: S_SCROLL_PANE,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ConfigsStack, {
+          configs: configs,
+          Item: Item,
+          onCloseItem: onCloseItem,
+          onRemoveUnder: onRemoveUnder,
+          onAddToWatch: onAddToWatch
+        })
       })]
     });
   };
@@ -350,8 +346,8 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 PaneType1.defaultProps = {
-  onLoad: _fnNoop,
-  onClose: _fnNoop
+  onLoad: FN_NOOP,
+  onClose: FN_NOOP
 };
 
 var _default = (0, _withTheme["default"])(PaneType1);

@@ -1,5 +1,5 @@
-import { Component } from 'react';
 //import PropTypes from 'prop-types'
+import { Component } from 'react';
 
 import withTheme from '../hoc/withTheme';
 import styleConfig from './Pane.Style';
@@ -12,59 +12,67 @@ const CHILD_MARGIN = 36
 , RESIZE_MIN_WIDTH = 375
 , RESIZE_MAX_WIDTH = 1200
 , RESIZE_DELTA = 10
-, CL = {
-   SHOW_POPUP: "show-popup",
-   MENU_MORE: "popup-menu items__menu-more"
-};
+, CL_SHOW_POPUP = "show-popup"
+, CL_MENU_MORE = "popup-menu items__menu-more";
 
-const S = {
-  ROOT_DIV : {
-    backgroundColor: '#4d4d4d',
-    padding : '0px 0px 3px 0px',
-    position: 'relative',
-    borderRadius: 4,
-    width: 635,
-    height: 'calc(100vh - 71px)',
-    minHeight: 500,
-    marginLeft: 16,
-    boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-    overflowY: 'hidden',
-    overflowX : 'hidden'
-  },
-  BR_CAPTION: {
-    marginRight: -2
-  },
-  BT_CIRCLE: {
-    position: 'relative',
-    top: -3,
-    marginLeft: 16,
-    marginRight: 6
-  },
-  SCROLL_PANE : {
-    overflowY: 'auto',
-    overflowX: 'hidden',
-    //height: '92%',
-    height: 'calc(100% - 120px)',
-    paddingRight: 10
-  },
-  INLINE_BLOCK : {
-    display : 'inline-block'
-  },
-  NONE : {
-    display: 'none'
-  }
-};
+const S_ROOT_DIV = {
+  backgroundColor: '#4d4d4d',
+  padding : '0px 0px 3px 0px',
+  position: 'relative',
+  borderRadius: 4,
+  width: 635,
+  height: 'calc(100vh - 71px)',
+  minHeight: 500,
+  marginLeft: 16,
+  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
+  overflowY: 'hidden',
+  overflowX : 'hidden'
+}
+, S_BR_CAPTION = {
+  marginRight: -2
+}
+, S_BT_CIRCLE = {
+  position: 'relative',
+  top: -3,
+  marginLeft: 16,
+  marginRight: 6
+}
+, S_SCROLL_PANE = {
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  //height: '92%',
+  height: 'calc(100% - 120px)',
+  paddingRight: 10
+}
+, S_INLINE_BLOCK = {
+  display: 'inline-block'
+}
+, S_NONE = {
+  display: 'none'
+}
 
-const T = {
-  R: "Click to remove all items"
-};
+, R_TITLE = "Click to remove all items";
 
-const _isFn = fn => typeof fn === 'function';
-const _fnNoop = () => {};
+const _isFn = fn => typeof fn === 'function'
+, FN_NOOP = () => {}
+, _getWidth = style => parseInt(style.width, 10)
+   || RESIZE_INIT_WIDTH
+, _toStyleWidth = width => width + 'px';
 
-const _getWidth = style => parseInt(style.width, 10)
-  || RESIZE_INIT_WIDTH;
-const _toStyleWidth = width => width + 'px';
+const ConfigsStack = ({
+  configs,
+  Item,
+  onCloseItem,
+  onRemoveUnder,
+  onAddToWatch
+}) => (configs || [])
+  .map(config => (<Item
+     key={config.id}
+     config={config}
+     onCloseItem={onCloseItem}
+     onRemoveUnder={onRemoveUnder}
+     onAddToWatch={onAddToWatch}
+  />));
 
 class PaneType1 extends Component {
   /*
@@ -92,8 +100,8 @@ class PaneType1 extends Component {
   */
 
   static defaultProps = {
-    onLoad: _fnNoop,
-    onClose: _fnNoop
+    onLoad: FN_NOOP,
+    onClose: FN_NOOP
   }
 
   constructor(props){
@@ -124,11 +132,12 @@ class PaneType1 extends Component {
     this.unsubscribe()
   }
 
-
-   _onStore = (actionType, option={}) => {
+  _onStore = (actionType, option={}) => {
       const {
         id,
-        updateAction, showAction, toggleAction,
+        updateAction,
+        showAction,
+        toggleAction,
         watchAction
       } = this.props;
 
@@ -173,8 +182,7 @@ class PaneType1 extends Component {
    }
 
    _getRootNodeStyle = () => {
-     const { rootDiv } = this
-     , { style } = rootDiv || {};
+     const { style } = this.rootDiv || {};
      return style || {};
    }
 
@@ -214,69 +222,61 @@ class PaneType1 extends Component {
        onLoad({ itemConf, word })
    }
 
-  _renderConfigs(configs=[]){
-     const {
-       Item,
-       onCloseItem,
-       onRemoveUnder,
-       onAddToWatch
-     } = this.props;
-     return configs
-       .map(config => (<Item
-          key={config.id}
-          config={config}
-          onCloseItem={onCloseItem}
-          onRemoveUnder={onRemoveUnder}
-          onAddToWatch={onAddToWatch}
-     />));
-  }
-
-
    _refRootDiv = node => this.rootDiv = node
    _refIWord = comp => this.iWord = comp
 
    render(){
       const {
-              paneCaption,
-              theme,
-              Input,
-              onRemoveItems
-            } = this.props
-          , { isShow, isMore, word, configs } = this.state
-          , TS = theme.createStyle(styleConfig)
-          , _showStyle = isShow
-               ? S.INLINE_BLOCK
-               : S.NONE
-         , _showCl = isShow
-               ? CL.SHOW_POPUP
-               : void 0;
+        paneCaption,
+        theme,
+        Input,
+        onRemoveItems,
+        Item,
+        onCloseItem,
+        onRemoveUnder,
+        onAddToWatch
+      } = this.props
+      , {
+        isShow,
+        isMore,
+        word, 
+        configs
+      } = this.state
+      , TS = theme.createStyle(styleConfig)
+      , [
+        _showStyle,
+        _showCl
+      ] = isShow
+        ? [S_INLINE_BLOCK, CL_SHOW_POPUP]
+        : [S_NONE];
+
      return(
         <div
            ref={this._refRootDiv}
            className={_showCl}
            style={{
-             ...S.ROOT_DIV,
+             ...S_ROOT_DIV,
              ...TS.BG_COLOR,
              ..._showStyle
            }}
         >
           <A.ModalSlider
             isShow={isMore}
-            className={CL.MENU_MORE}
+            className={CL_MENU_MORE}
             style={TS.BG_COLOR}
             model={this._MODEL}
             onClose={this._hToggleMore}
           />
           <A.BrowserCaption
-             rootStyle={{ ...S.BR_CAPTION, ...TS.PANE_CAPTION }}
+             rootStyle={{...S_BR_CAPTION, ...TS.PANE_CAPTION}}
              caption={paneCaption}
              onMore={this._showMore}
              onClose={this._hHide}
           >
             <A.CircleButton
               caption="R"
-              title={T.R}
-              style={S.BT_CIRCLE}
+              title={R_TITLE}
+              style={S_BT_CIRCLE}
               onClick={onRemoveItems}
             />
             <A.SvgHrzResize
@@ -293,10 +293,16 @@ class PaneType1 extends Component {
             onEnter={this._hLoadItem}
           />
           <A.ScrollPane
-              className={TS.CL_SCROLL_PANE}
-              style={S.SCROLL_PANE}
+            className={TS.CL_SCROLL_PANE}
+            style={S_SCROLL_PANE}
           >
-            { this._renderConfigs(configs) }
+            <ConfigsStack
+               configs={configs}
+               Item={Item}
+               onCloseItem={onCloseItem}
+               onRemoveUnder={onRemoveUnder}
+               onAddToWatch={onAddToWatch}
+            />
           </A.ScrollPane>
         </div>
      )
