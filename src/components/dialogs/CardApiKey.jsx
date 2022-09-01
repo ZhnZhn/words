@@ -1,89 +1,70 @@
-import { Component } from 'react'
-//import PropTypes from "prop-types";
+import {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  getRefInputValue
+} from '../uiApi';
 
-import A from '../Comp'
+import A from '../Comp';
 
-const CL_DIV = 'bt-flat__div';
-
-const S  = {
-  ROOT: {
-    position: 'relative',
-    height: 200
-  },
-  SECRET: {
-    width: 320,
-    marginLeft: 12
-  },
-  BUTTONS: {
-    position: 'absolute',
-    right: 4,
-    bottom: 0,
-    cursor: 'default'
-  },
-  BT_ROOT: {
-    color: 'rgb(35, 47, 59)'
-  }
+const CL_DIV = 'bt-flat__div'
+, S_PF = {
+  width: 320,
+  marginLeft: 12
+}
+, S_BT = {
+  color: '#3270b4'
 };
 
-class CardApiKey extends Component {
+const CardApiKey = forwardRef(({
+  isShow,
+  isSelected,
+  style,
+  buttonsStyle,
+  btStyle,
+  onClose,
+  onSet
+}, ref) => {
+  const _refInput = useRef()
+  , _btStyle = {
+    ...S_BT,
+    ...btStyle
+  };
 
-  /*
-  static propTypes = {
-    style: PropTypes.object,
-    buttonsStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-    onClose: PropTypes.func,
-    onSet: PropTypes.func
-  }
-  */
+  useImperativeHandle(ref, () => ({
+    getValue: () => getRefInputValue(_refInput)
+  }), [])
 
-  _refInput = c => this._input = c
-
-  render(){
-    const {
-      isShow, isSelected,
-      style,
-      buttonsStyle, btStyle,
-      onClose, onSet
-    } = this.props;
-    if (!(isShow && isSelected)) {
-      return null;
-    }
-    return(
-      <div style={style}>
-        <form>
-          <A.PasswordField
-            ref={this._refInput}
-            rootStyle={S.SECRET}
-            caption="Words API Key"
-            name="wordsapi"
-            maxLength="50"
-            onEnter={onSet}
-          />
-        </form>
-        <div style={buttonsStyle}>
-          <A.FlatButton
-            rootStyle={{ ...S.BT_ROOT, ...btStyle }}
-            clDiv={CL_DIV}
-            caption="Set & Close"
-            title="Set & Close Dialog"
-            onClick={onSet}
-          />
-          <A.FlatButton
-            rootStyle={{ ...S.BT_ROOT, ...btStyle }}
-            clDiv={CL_DIV}
-            caption="Close"
-            title="Close Dialog"
-            onClick={onClose}
-          />
-        </div>
+  return !(isShow && isSelected) ? null : (
+    <div style={style}>
+      <form>
+        <A.PasswordField
+          ref={_refInput}
+          rootStyle={S_PF}
+          caption="Words API Key"
+          name="wordsapi"
+          maxLength="50"
+          onEnter={onSet}
+        />
+      </form>
+      <div style={buttonsStyle}>
+        <A.FlatButton
+          rootStyle={_btStyle}
+          clDiv={CL_DIV}
+          caption="Set & Close"
+          title="Set & Close Dialog"
+          onClick={onSet}
+        />
+        <A.FlatButton
+          rootStyle={_btStyle}
+          clDiv={CL_DIV}
+          caption="Close"
+          title="Close Dialog"
+          onClick={onClose}
+        />
       </div>
-    );
-  }
-
-  getValue(){
-    return this._input.getValue();
-  }
-}
+    </div>
+  );
+});
 
 export default CardApiKey

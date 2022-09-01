@@ -30,3 +30,10 @@ export const focusRefElement = ref => {
     _el.focus()
   }
 }
+
+export const getRefInputValue = ref => {
+  const _el = getRefValue(ref);
+  return _el && _isFn(_el.getValue)
+   ? _el.getValue()
+   : void 0
+}

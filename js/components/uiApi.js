@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = exports.focusRefElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.forwardRef = exports.focusRefElement = void 0;
 
 var _react = require("react");
 
@@ -44,4 +44,12 @@ var focusRefElement = function focusRefElement(ref) {
 };
 
 exports.focusRefElement = focusRefElement;
+
+var getRefInputValue = function getRefInputValue(ref) {
+  var _el = getRefValue(ref);
+
+  return _el && _isFn(_el.getValue) ? _el.getValue() : void 0;
+};
+
+exports.getRefInputValue = getRefInputValue;
 //# sourceMappingURL=uiApi.js.map
