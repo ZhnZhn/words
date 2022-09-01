@@ -1,4 +1,5 @@
 export {
+  cloneElement,
   forwardRef,
   memo,
   useContext,

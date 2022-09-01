@@ -1,14 +1,15 @@
 import {
   useRef,
   useCallback,
-  useEffect
+  useEffect,
+  getRefValue
 } from '../uiApi';
 
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
 const DF_ITEMS = []
-, _getRefValue = ref => ref.current;
+, MLS_FOCUS_TIMEOUT = 1000;
 
 const useRegRef = () => {
   const ref = useRef()
@@ -22,7 +23,7 @@ const MenuPage = ({
   style,
   title,
   items=DF_ITEMS,
-  baseTitleCl,
+  titleCl,
   itemCl,
   pageCurrent,
   pageNumber,
@@ -42,12 +43,12 @@ const MenuPage = ({
 
   useEffect(() => {
     if (pageCurrent === pageNumber){
-      const _elTitle = _getRefValue(_refTitle)
-      , _elFirstItem = _getRefValue(_refFirstItem);
+      const _elTitle = getRefValue(_refTitle)
+      , _elFirstItem = getRefValue(_refFirstItem);
       if (_elTitle) {
-         setTimeout(() => _elTitle.focus(), 1000)
+         setTimeout(() => _elTitle.focus(), MLS_FOCUS_TIMEOUT)
       } else if (_elFirstItem) {
-         setTimeout(() => _elFirstItem.focus(), 1000)
+         setTimeout(() => _elFirstItem.focus(), MLS_FOCUS_TIMEOUT)
       }
     }
   })
@@ -55,7 +56,7 @@ const MenuPage = ({
   return (
     <div style={style}>
       <MenuTitle
-        baseTitleCl={baseTitleCl}
+        titleCl={titleCl}
         title={title}
         pageNumber={pageNumber}
         onPrevPage={onPrevPage}
@@ -63,7 +64,7 @@ const MenuPage = ({
       />
       <MenuItemList
         items={items}
-        itemCl={itemCl || baseTitleCl}
+        itemCl={itemCl || titleCl}
         pageNumber={pageNumber}
         onNextPage={onNextPage}
         onReg={_onRegFirstItem}
@@ -88,7 +89,7 @@ MenuPage.propTypes = {
         onClick: PropTypes.func
      })
   ),
-  baseTitleCl: PropTypes.string,
+  titleCl: PropTypes.string,
   itemCl: PropTypes.string,
   onNextPage: PropTypes.func,
   onPrevPage: PropTypes.func,

@@ -2,12 +2,13 @@
 const CL_ROW = 'menu-more__item not-selected';
 
 const crModelMore = ({
-  onMinWidth, onInitWidth,
-  onPlusWidth, onMinusWidth,
+  onMinWidth,
+  onInitWidth,
+  onPlusWidth,
+  onMinusWidth,
   onRemoveItems
-}) => {
-  return {
-    baseTitleCl: CL_ROW,
+}) => ({
+    titleCl: CL_ROW,
     pageWidth: 180,
     maxPages: 2,
     p0: [
@@ -42,7 +43,6 @@ const crModelMore = ({
         onClick: onMinusWidth
       }
     ]
-  };
-}
+})
 
 export default crModelMore

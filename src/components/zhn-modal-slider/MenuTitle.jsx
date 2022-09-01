@@ -1,4 +1,6 @@
-import { useCallback } from '../uiApi';
+import {
+  useCallback
+} from '../uiApi';
 
 import MenuAriaItem from './MenuAriaItem';
 
@@ -11,7 +13,7 @@ const S_ITEM = { position: 'relative' }
 , S_TITLE = { paddingLeft: 16 };
 
 const MenuTitle = ({
-  baseTitleCl,
+  titleCl,
   title,
   pageNumber,
   onPrevPage,
@@ -23,7 +25,7 @@ const MenuTitle = ({
 
   return !title ? null : (
     <MenuAriaItem
-      className={baseTitleCl}
+      className={titleCl}
       style={S_ITEM}
       onClick={_hClick}
       onReg={onReg}

@@ -1,1 +1,41 @@
-{"version":3,"sources":["../../../src/components/zhn-modal-slider/MenuPage.jsx"],"names":["MenuPage","_onRegTitle","n","_titleNode","_onRegFirst","_firstNode","_focusTitle","focus","_focusFirst","_focus","props","pageCurrent","pageNumber","setTimeout","componentDidMount","render","style","title","items","baseTitleCl","itemCl","onNextPage","onPrevPage","onClose","children","componentDidUpdate","prevProps","Component","defaultProps"],"mappings":";;;;;;;;;AAAA;;AAEA;;AACA;;;;IAEMA,Q;;;;;;;;;;;;UA2BJC,W,GAAc,UAACC,CAAD;AAAA,aAAO,MAAKC,UAAL,GAAkBD,CAAzB;AAAA,K;;UACdE,W,GAAc,UAACF,CAAD;AAAA,aAAO,MAAKG,UAAL,GAAkBH,CAAzB;AAAA,K;;UAmCdI,W,GAAc;AAAA,aAAM,MAAKH,UAAL,CAAgBI,KAAhB,EAAN;AAAA,K;;UACdC,W,GAAc;AAAA,aAAM,MAAKH,UAAL,CAAgBE,KAAhB,EAAN;AAAA,K;;UAEdE,M,GAAS,YAAM;AAAA,wBACuB,MAAKC,KAD5B;AAAA,UACLC,WADK,eACLA,WADK;AAAA,UACQC,UADR,eACQA,UADR;;AAEb,UAAID,WAAW,KAAKC,UAApB,EAA+B;AAC7B,YAAI,MAAKT,UAAT,EAAqB;AAClBU,UAAAA,UAAU,CAAC,MAAKP,WAAN,EAAmB,IAAnB,CAAV;AACF,SAFD,MAEO,IAAI,MAAKD,UAAT,EAAqB;AACzBQ,UAAAA,UAAU,CAAC,MAAKL,WAAN,EAAmB,IAAnB,CAAV;AACF;AACF;AACH,K;;;;;;;SApDAM,iB,GAAA,6BAAmB;AACjB,SAAKL,MAAL;AACD,G;;SAKDM,M,GAAA,kBAAQ;AAAA,uBAUD,KAAKL,KAVJ;AAAA,QAEHM,KAFG,gBAEHA,KAFG;AAAA,QAGHC,KAHG,gBAGHA,KAHG;AAAA,QAIHC,KAJG,gBAIHA,KAJG;AAAA,QAKHC,WALG,gBAKHA,WALG;AAAA,QAKUC,MALV,gBAKUA,MALV;AAAA,QAMHR,UANG,gBAMHA,UANG;AAAA,QAOHS,UAPG,gBAOHA,UAPG;AAAA,QAOSC,UAPT,gBAOSA,UAPT;AAAA,QAQHC,OARG,gBAQHA,OARG;AAAA,QASHC,QATG,gBASHA,QATG;AAWN,wBACE;AAAK,MAAA,KAAK,EAAER,KAAZ;AAAA,8BACE,qBAAC,qBAAD;AACE,QAAA,WAAW,EAAEG,WADf;AAEE,QAAA,KAAK,EAAEF,KAFT;AAGE,QAAA,UAAU,EAAEL,UAHd;AAIE,QAAA,UAAU,EAAEU,UAJd;AAKE,QAAA,KAAK,EAAE,KAAKrB;AALd,QADF,eAQE,qBAAC,wBAAD;AACE,QAAA,KAAK,EAAEiB,KADT;AAEE,QAAA,MAAM,EAAEE,MAAM,IAAID,WAFpB;AAGE,QAAA,UAAU,EAAEP,UAHd;AAIE,QAAA,UAAU,EAAES,UAJd;AAKE,QAAA,KAAK,EAAE,KAAKjB,WALd;AAME,QAAA,OAAO,EAAEmB;AANX,QARF,EAgBGC,QAhBH;AAAA,MADF;AAoBD,G;;SAgBDC,kB,GAAA,4BAAmBC,SAAnB,EAA6B;AAC3B,QAAI,KAAKhB,KAAL,KAAegB,SAAnB,EAA8B;AAC5B,WAAKjB,MAAL;AACD;AACF,G;;;EAjFoBkB,gB;;AAAjB3B,Q,CAmBG4B,Y,GAAe;AACpBV,EAAAA,KAAK,EAAE;AADa,C;eAiETlB,Q","sourcesContent":["import { Component } from 'react'\r\n\r\nimport MenuTitle from './MenuTitle'\r\nimport MenuItemList from './MenuItemList'\r\n\r\nclass MenuPage extends Component {\r\n  /*\r\n  static propTypes = {\r\n    title: PropTypes.string,\r\n    pageNumber: PropTypes.number,\r\n    items: PropTypes.arrayOf(\r\n       PropTypes.shapeOf({\r\n          name: PropTypes.string,\r\n          type: PropTypes.string,\r\n          id: PropTypes.string,\r\n          onClick: PropTypes.func\r\n       })\r\n    ),\r\n    onNextPage: PropTypes.func,\r\n    onPrevPage: PropTypes.func,\r\n    onClose: PropTypes.func\r\n  }\r\n  */\r\n\r\n  static defaultProps = {\r\n    items: []\r\n  }\r\n\r\n  componentDidMount(){\r\n    this._focus()\r\n  }\r\n\r\n  _onRegTitle = (n) => this._titleNode = n\r\n  _onRegFirst = (n) => this._firstNode = n\r\n\r\n  render(){\r\n    const {\r\n       style,\r\n       title,\r\n       items,\r\n       baseTitleCl, itemCl,\r\n       pageNumber,\r\n       onNextPage, onPrevPage,\r\n       onClose,\r\n       children\r\n     } = this.props;\r\n    return(\r\n      <div style={style}>\r\n        <MenuTitle\r\n          baseTitleCl={baseTitleCl}\r\n          title={title}\r\n          pageNumber={pageNumber}\r\n          onPrevPage={onPrevPage}\r\n          onReg={this._onRegTitle}\r\n        />\r\n        <MenuItemList\r\n          items={items}\r\n          itemCl={itemCl || baseTitleCl}\r\n          pageNumber={pageNumber}\r\n          onNextPage={onNextPage}\r\n          onReg={this._onRegFirst}\r\n          onClose={onClose}\r\n        />\r\n        {children}\r\n      </div>\r\n    );\r\n  }\r\n\r\n  _focusTitle = () => this._titleNode.focus()\r\n  _focusFirst = () => this._firstNode.focus()\r\n\r\n  _focus = () => {\r\n    const { pageCurrent, pageNumber } = this.props;\r\n    if (pageCurrent === pageNumber){\r\n      if (this._titleNode) {\r\n         setTimeout(this._focusTitle, 1000)\r\n      } else if (this._firstNode) {\r\n         setTimeout(this._focusFirst, 1000)\r\n      }\r\n    }\r\n }\r\n\r\n  componentDidUpdate(prevProps){\r\n    if (this.props !== prevProps) {\r\n      this._focus()\r\n    }\r\n  }\r\n}\r\n\r\nexport default MenuPage\r\n"],"file":"MenuPage.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-modal-slider/MenuPage.js"
+ ],
+ "file": "../../../src/components/zhn-modal-slider/MenuPage.js",
+ "names": [
+  "DF_ITEMS",
+  "MLS_FOCUS_TIMEOUT",
+  "useRegRef",
+  "ref",
+  "useRef",
+  "onReg",
+  "useCallback",
+  "el",
+  "current",
+  "MenuPage",
+  "style",
+  "title",
+  "items",
+  "titleCl",
+  "itemCl",
+  "pageCurrent",
+  "pageNumber",
+  "onNextPage",
+  "onPrevPage",
+  "onClose",
+  "children",
+  "_refTitle",
+  "_onRegTitle",
+  "_refFirstItem",
+  "_onRegFirstItem",
+  "useEffect",
+  "_elTitle",
+  "getRefValue",
+  "_elFirstItem",
+  "setTimeout",
+  "focus"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAOA;;AACA;;;;AAEA,IAAMA,QAAQ,GAAG,EAAjB;AAAA,IACEC,iBAAiB,GAAG,IADtB;;AAGA,IAAMC,SAAS,GAAG,SAAZA,SAAY,GAAM;EACtB,IAAMC,GAAG,GAAG,IAAAC,aAAA,GAAZ;EAAA,IACEC,KAAK,GAAG,IAAAC,kBAAA,EAAY,UAAAC,EAAE,EAAI;IAC1BJ,GAAG,CAACK,OAAJ,GAAcD,EAAd;EACD,CAFS,EAEP,EAFO,CADV;EAIA,OAAO,CAACJ,GAAD,EAAME,KAAN,CAAP;AACD,CAND;;AAQA,IAAMI,QAAQ,GAAG,SAAXA,QAAW,OAYX;EAAA,IAXJC,KAWI,QAXJA,KAWI;EAAA,IAVJC,KAUI,QAVJA,KAUI;EAAA,sBATJC,KASI;EAAA,IATJA,KASI,2BATEZ,QASF;EAAA,IARJa,OAQI,QARJA,OAQI;EAAA,IAPJC,MAOI,QAPJA,MAOI;EAAA,IANJC,WAMI,QANJA,WAMI;EAAA,IALJC,UAKI,QALJA,UAKI;EAAA,IAJJC,UAII,QAJJA,UAII;EAAA,IAHJC,UAGI,QAHJA,UAGI;EAAA,IAFJC,OAEI,QAFJA,OAEI;EAAA,IADJC,QACI,QADJA,QACI;;EACJ,iBAGIlB,SAAS,EAHb;EAAA,IACEmB,SADF;EAAA,IAEEC,WAFF;EAAA,kBAOIpB,SAAS,EAPb;EAAA,IAKEqB,aALF;EAAA,IAMEC,eANF;;EASA,IAAAC,gBAAA,EAAU,YAAM;IACd,IAAIV,WAAW,KAAKC,UAApB,EAA+B;MAC7B,IAAMU,QAAQ,GAAG,IAAAC,kBAAA,EAAYN,SAAZ,CAAjB;MAAA,IACEO,YAAY,GAAG,IAAAD,kBAAA,EAAYJ,aAAZ,CADjB;;MAEA,IAAIG,QAAJ,EAAc;QACXG,UAAU,CAAC;UAAA,OAAMH,QAAQ,CAACI,KAAT,EAAN;QAAA,CAAD,EAAyB7B,iBAAzB,CAAV;MACF,CAFD,MAEO,IAAI2B,YAAJ,EAAkB;QACtBC,UAAU,CAAC;UAAA,OAAMD,YAAY,CAACE,KAAb,EAAN;QAAA,CAAD,EAA6B7B,iBAA7B,CAAV;MACF;IACF;EACF,CAVD;EAYA,oBACE;IAAK,KAAK,EAAES,KAAZ;IAAA,wBACE,qBAAC,qBAAD;MACE,OAAO,EAAEG,OADX;MAEE,KAAK,EAAEF,KAFT;MAGE,UAAU,EAAEK,UAHd;MAIE,UAAU,EAAEE,UAJd;MAKE,KAAK,EAAEI;IALT,EADF,eAQE,qBAAC,wBAAD;MACE,KAAK,EAAEV,KADT;MAEE,MAAM,EAAEE,MAAM,IAAID,OAFpB;MAGE,UAAU,EAAEG,UAHd;MAIE,UAAU,EAAEC,UAJd;MAKE,KAAK,EAAEO,eALT;MAME,OAAO,EAAEL;IANX,EARF,EAgBGC,QAhBH;EAAA,EADF;AAoBD,CAtDD;AAwDA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeX,Q"
+}
