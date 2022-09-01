@@ -1,98 +1,93 @@
-import { Component } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect
+} from '../uiApi';
+
+import useBool from '../hooks/useBool';
 
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 
-const CL = {
-  SELECT: 'm-select',
-  LABEL: 'm-select__label',
-  DIV: 'm-select__div',
-  DIV_VALUE: 'm-select__div__value',
-  DIV_BT: 'm-select__div__bt',
-  INPUT_LINE: 'm-select__line',
-  ITEM: 'm-select__item'
+const CL_SELECT = 'm-select'
+, CL_LABEL = `${CL_SELECT}__label`
+, CL_DIV = `${CL_SELECT}__div`
+, CL_DIV_VALUE = `${CL_DIV}__value`
+, CL_DIV_BT = `${CL_DIV}__bt`
+, CL_INPUT_LINE = `${CL_SELECT}__line`
+, CL_ITEM = `${CL_SELECT}__item`;
+
+const FN_NOOP = () => {}
+, DF_STYLE_CONFIG = {}
+, DF_INITIAL_ITEM = {
+  caption: '',
+  value: ''
 };
 
-const _crInitialState = props => ({
-  isShow: false,
-  initialOptions: props.options,
-  item: props.initItem
-});
-
-class InputSelect extends Component {
-  static defaultProps = {
-    initItem: {
-      caption: '',
-      value: ''
-    },
-    styleConfig: {},
-    onSelect: () => {}
-  }
-
-  constructor(props){
-    super(props)
-    this.state = _crInitialState(props)
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    return props.options !== state.initialOptions
-       ? _crInitialState(props)
-       : null;
-  }
-
-
-  _handleOpen = () => {
-    this.setState({ isShow: true })
-  }
-  _handleClose = () => {
-    this.setState({ isShow: false })
-  }
-  _handleSelect = (item, event) => {
+const InputSelect = ({
+  caption,
+  initItem=DF_INITIAL_ITEM,
+  options,
+  styleConfig:TS=DF_STYLE_CONFIG,
+  onSelect=FN_NOOP
+}) => {
+  const [item, setItem] = useState(initItem)
+  , [
+    isShow,
+    _hOpen,
+    _hClose
+  ] = useBool()
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hSelect = useCallback((item, event) => {
     event.stopPropagation()
-    this.props.onSelect(item)
-    this.setState({
-      isShow: false,
-      item: item
-    })
-  }
+    onSelect(item)
+    _hClose()
+    setItem(item)
+  }, [onSelect])
+  // _hClose
+  /*eslint-enable react-hooks/exhaustive-deps */
 
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    _hClose()
+    setItem(initItem)
+  }, [options])
+  // _hClose, initItem
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  render(){
-    const { caption, options, styleConfig:TS } = this.props
-        , { isShow, item } = this.state;
-    return (
-      <div
-        className={CL.SELECT}
-        style={TS.ROOT}
-        onClick={this._handleOpen}
-      >
-        <OptionsPane
-           rootStyle={TS.MODAL_PANE}
-           isShow={isShow}
-           item={item}
-           options={options}
-           clItem={TS.CL_ITEM || CL.ITEM}
-           itemStyle={TS.ITEM}
-           onSelect={this._handleSelect}
-           onClose={this._handleClose}
-         />
-        <label className={CL.LABEL}>
-          {caption}
-        </label>
-        <div className={CL.DIV}>
-          <div className={CL.DIV_VALUE}>
-             {item.caption}
-          </div>
-          <button className={CL.DIV_BT} tabIndex="0">
-            <div>
-              <ArrowCell />
-            </div>
-          </button>
-          <div className={CL.INPUT_LINE} />
+  return (
+    <div
+      role="presentation"
+      className={CL_SELECT}
+      style={TS.ROOT}
+      onClick={_hOpen}
+    >
+      <OptionsPane
+         rootStyle={TS.MODAL_PANE}
+         isShow={isShow}
+         item={item}
+         options={options}
+         clItem={TS.CL_ITEM || CL_ITEM}
+         itemStyle={TS.ITEM}
+         onSelect={_hSelect}
+         onClose={_hClose}
+       />
+      <label className={CL_LABEL}>
+        {caption}
+      </label>
+      <div className={CL_DIV}>
+        <div className={CL_DIV_VALUE}>
+           {item.caption}
         </div>
+        <button className={CL_DIV_BT} tabIndex="0">
+          <div>
+            <ArrowCell />
+          </div>
+        </button>
+        <div className={CL_INPUT_LINE} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default InputSelect

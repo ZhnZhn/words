@@ -1,0 +1,23 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useBool.js"
+ ],
+ "file": "../../../src/components/hooks/useBool.js",
+ "names": [
+  "_initState",
+  "initialValue",
+  "_reducer",
+  "state",
+  "boolValue",
+  "useBool",
+  "useReducer",
+  "is",
+  "setIs",
+  "_refSetTrue",
+  "useRef",
+  "_refSetFalse",
+  "getRefValue"
+ ],
+ "mappings": ";;;;;AAAA;;AAMA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAAAC,YAAY;EAAA,OAAI,CAAC,CAACA,YAAN;AAAA,CAA/B;AAAA,IACEC,QAAQ,GAAG,SAAXA,QAAW,CAACC,KAAD,EAAQC,SAAR;EAAA,OAAsBA,SAAtB;AAAA,CADb;;AAGA,IAAMC,OAAO,GAAG,SAAVA,OAAU,CACdJ,YADc,EAEX;EACH,kBAGI,IAAAK,iBAAA,EACFJ,QADE,EAEFD,YAFE,EAGFD,UAHE,CAHJ;EAAA,IACEO,EADF;EAAA,IAEEC,KAFF;EAAA,IAQEC,WARF,GAQgB,IAAAC,aAAA,EAAO;IAAA,OAAMF,KAAK,CAAC,IAAD,CAAX;EAAA,CAAP,CARhB;EAAA,IASEG,YATF,GASiB,IAAAD,aAAA,EAAO;IAAA,OAAMF,KAAK,CAAC,KAAD,CAAX;EAAA,CAAP,CATjB;;EAUA,OAAO,CACLD,EADK,EAEL,IAAAK,kBAAA,EAAYH,WAAZ,CAFK,EAGL,IAAAG,kBAAA,EAAYD,YAAZ,CAHK,CAAP;AAKD,CAlBD;;eAoBeN,O"
+}
