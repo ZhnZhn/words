@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../../src/components/watch-browser/RowButtons.jsx"],"names":["RowButtons","btStyle","Primary","withoutClear","onClear","onClose","S","COMMAND_DIV"],"mappings":";;;;;;;AAAA;;AACA;;;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa;AAAA,MAAGC,OAAH,QAAGA,OAAH;AAAA,MAAYC,OAAZ,QAAYA,OAAZ;AAAA,MAAqBC,YAArB,QAAqBA,YAArB;AAAA,MAAmCC,OAAnC,QAAmCA,OAAnC;AAAA,MAA4CC,OAA5C,QAA4CA,OAA5C;AAAA,sBACjB;AAAK,IAAA,KAAK,EAAEC,iBAAEC,WAAd;AAAA,eACGL,OADH,EAEG,CAACC,YAAD,iBACC,qBAAC,kBAAD,CAAQ,KAAR;AACG,MAAA,KAAK,EAAEF,OADV;AAEG,MAAA,OAAO,EAAEG;AAFZ,MAHJ,eAQE,qBAAC,kBAAD,CAAQ,KAAR;AACG,MAAA,KAAK,EAAEH,OADV;AAEG,MAAA,OAAO,EAAEI;AAFZ,MARF;AAAA,IADiB;AAAA,CAAnB;;eAiBeL,U","sourcesContent":["import Button from './Button'\r\nimport S from './Pane.Style'\r\n\r\nconst RowButtons = ({ btStyle, Primary, withoutClear, onClear, onClose }) => (\r\n  <div style={S.COMMAND_DIV}>\r\n    {Primary}\r\n    {!withoutClear &&\r\n      <Button.Clear\r\n         style={btStyle}\r\n         onClick={onClear}\r\n      />\r\n    }\r\n    <Button.Close\r\n       style={btStyle}\r\n       onClick={onClose}\r\n    />\r\n  </div>\r\n)\r\n\r\n\r\nexport default RowButtons\r\n"],"file":"RowButtons.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/watch-browser/RowButtons.js"
+ ],
+ "file": "../../../src/components/watch-browser/RowButtons.js",
+ "names": [
+  "S_DIV",
+  "S_FLEX_ROW_END",
+  "margin",
+  "RowButtons",
+  "btStyle",
+  "Primary",
+  "withoutClear",
+  "onClear",
+  "onClose"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AACA;;;;AAIA,IAAMA,KAAK,iCACNC,6BADM;EAETC,MAAM,EAAE;AAFC,EAAX;;AAKA,IAAMC,UAAU,GAAG,SAAbA,UAAa;EAAA,IACjBC,OADiB,QACjBA,OADiB;EAAA,IAEjBC,OAFiB,QAEjBA,OAFiB;EAAA,IAGjBC,YAHiB,QAGjBA,YAHiB;EAAA,IAIjBC,OAJiB,QAIjBA,OAJiB;EAAA,IAKjBC,OALiB,QAKjBA,OALiB;EAAA,oBAOjB;IAAK,KAAK,EAAER,KAAZ;IAAA,WACGK,OADH,EAEG,CAACC,YAAD,iBACA,qBAAC,kBAAD,CAAQ,KAAR;MACG,KAAK,EAAEF,OADV;MAEG,OAAO,EAAEG;IAFZ,EAHH,eAQE,qBAAC,kBAAD,CAAQ,KAAR;MACG,KAAK,EAAEH,OADV;MAEG,OAAO,EAAEI;IAFZ,EARF;EAAA,EAPiB;AAAA,CAAnB;;eAsBeL,U"
+}
