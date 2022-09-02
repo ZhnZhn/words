@@ -5,91 +5,46 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _uiApi = require("../uiApi");
 
-var _react = require("react");
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var C = {
-  LOADING: '#2f7ed8',
-  FAILED: '#ed5813'
+var COLOR_LOADING = '#2f7ed8',
+    COLOR_FAILED = '#ed5813',
+    DF_STATE = [0, COLOR_LOADING];
+
+var _isNotShouldRerender = function _isNotShouldRerender() {
+  return true;
 };
 
-var ProgressLoading = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(ProgressLoading, _Component);
+var ProgressLoading = (0, _uiApi.memo)(function (_ref) {
+  var store = _ref.store,
+      ACTIONS = _ref.ACTIONS;
 
-  function ProgressLoading() {
-    var _this;
+  var _useState = (0, _uiApi.useState)(DF_STATE),
+      state = _useState[0],
+      setState = _useState[1],
+      completed = state[0],
+      color = state[1];
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+  (0, _useListen["default"])(store, function (actionType) {
+    if (actionType === ACTIONS.LOADING) {
+      setState([35, COLOR_LOADING]);
+    } else if (actionType === ACTIONS.LOADING_COMPLETE) {
+      setState([100, COLOR_LOADING]);
+    } else if (actionType === ACTIONS.LOADING_FAILED) {
+      setState([100, COLOR_FAILED]);
     }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      completed: 0,
-      color: C.LOADING
-    };
-
-    _this._onStore = function (actionType) {
-      var ACTIONS = _this.props.ACTIONS;
-
-      if (actionType === ACTIONS.LOADING) {
-        _this.setState({
-          completed: 35,
-          color: C.LOADING
-        });
-      } else if (actionType === ACTIONS.LOADING_COMPLETE) {
-        _this.setState({
-          completed: 100,
-          color: C.LOADING
-        });
-      } else if (actionType === ACTIONS.LOADING_FAILED) {
-        _this.setState({
-          completed: 100,
-          color: C.FAILED
-        });
-      }
-    };
-
-    return _this;
-  }
-
-  var _proto = ProgressLoading.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = this.props.store.listenLoading(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.completed === nextState.completed) {
-      return false;
-    }
-
-    return true;
-  };
-
-  _proto.render = function render() {
-    var _this$state = this.state,
-        completed = _this$state.completed,
-        color = _this$state.color;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLine["default"], {
-      height: 3,
-      color: color,
-      completed: completed
-    });
-  };
-
-  return ProgressLoading;
-}(_react.Component);
-
+  }, 'listenLoading');
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLine["default"], {
+    completed: completed,
+    color: color
+  });
+}, _isNotShouldRerender);
 var _default = ProgressLoading;
 exports["default"] = _default;
 //# sourceMappingURL=ProgressLoading.js.map
