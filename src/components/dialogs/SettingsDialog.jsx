@@ -12,6 +12,8 @@ import Actions from '../../flux/actions/ComponentActions';
 import SA from '../../flux/actions/SettingActions';
 
 import A from '../Comp';
+import TabPane from '../zhn-tabpane/TabPane';
+import Tab from '../zhn-tabpane/Tab';
 
 import CardApiKey from './CardApiKey';
 import CardUi from './CardUi';
@@ -36,7 +38,7 @@ const S_MODAL = {
 , S_CARD_BUTTONS = {
   position: 'absolute',
   right: 4,
-  bottom: 0,
+  bottom: 4,
   cursor: 'default'
 };
 
@@ -72,8 +74,8 @@ const SettingsDialog = ({
        isWithButton={false}
        onClose={onClose}
     >
-      <A.TabPane style={S_TAB_PANE} >
-        <A.Tab title="API Key" style={TS.TAB}>
+      <TabPane style={S_TAB_PANE} >
+        <Tab title="API Key" style={TS.TAB}>
            <CardApiKey
              ref={_ref1}
              style={S_CARD_ROOT}
@@ -83,8 +85,8 @@ const SettingsDialog = ({
              onSet={_hSetAndClose}
              onClose={onClose}
            />
-        </A.Tab>
-        <A.Tab title="UI Theme" style={TS.TAB}>
+        </Tab>
+        <Tab title="UI Theme" style={TS.TAB}>
            <CardUi
              style={S_CARD_ROOT}
              buttonsStyle={S_CARD_BUTTONS}
@@ -95,8 +97,8 @@ const SettingsDialog = ({
              onUncheckAutoSave={SA.uncheckAutoSave}
              onClose={onClose}
            />
-        </A.Tab>
-      </A.TabPane>
+        </Tab>
+      </TabPane>
     </A.ModalDialog>
   );
 };

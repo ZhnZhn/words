@@ -39,8 +39,6 @@ var _OpenClose2 = _interopRequireDefault(require("./OpenClose2"));
 
 var _ProgressLine = _interopRequireDefault(require("./ProgressLine"));
 
-var _RaisedButton = _interopRequireDefault(require("./RaisedButton"));
-
 var _ScrollPane = _interopRequireDefault(require("./ScrollPane"));
 
 var _ShowHide = _interopRequireDefault(require("./ShowHide"));
@@ -52,10 +50,6 @@ var _SvgCheckBox = _interopRequireDefault(require("./SvgCheckBox"));
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 
 var _SvgHrzResize = _interopRequireDefault(require("./SvgHrzResize"));
-
-var _Tab = _interopRequireDefault(require("./Tab"));
-
-var _TabPane = _interopRequireDefault(require("./TabPane"));
 
 var _ValidationMessages = _interopRequireDefault(require("./ValidationMessages"));
 
@@ -74,15 +68,12 @@ var Atoms = (0, _extends2["default"])({}, _A["default"], _SvgIcons["default"], {
   OpenClose: _OpenClose["default"],
   OpenClose2: _OpenClose2["default"],
   ProgressLine: _ProgressLine["default"],
-  RaisedButton: _RaisedButton["default"],
   ScrollPane: _ScrollPane["default"],
   ShowHide: _ShowHide["default"],
   SpinnerLoading: _SpinnerLoading["default"],
   SvgCheckBox: _SvgCheckBox["default"],
   SvgClose: _SvgClose["default"],
   SvgHrzResize: _SvgHrzResize["default"],
-  Tab: _Tab["default"],
-  TabPane: _TabPane["default"],
   ValidationMessages: _ValidationMessages["default"]
 });
 var _default = Atoms;

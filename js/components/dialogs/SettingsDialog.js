@@ -19,6 +19,10 @@ var _SettingActions = _interopRequireDefault(require("../../flux/actions/Setting
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
+
+var _Tab = _interopRequireDefault(require("../zhn-tabpane/Tab"));
+
 var _CardApiKey = _interopRequireDefault(require("./CardApiKey"));
 
 var _CardUi = _interopRequireDefault(require("./CardUi"));
@@ -45,7 +49,7 @@ var S_MODAL = {
     S_CARD_BUTTONS = {
   position: 'absolute',
   right: 4,
-  bottom: 0,
+  bottom: 4,
   cursor: 'default'
 };
 
@@ -80,9 +84,9 @@ var SettingsDialog = function SettingsDialog(_ref) {
     isShow: isShow,
     isWithButton: false,
     onClose: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_TabPane["default"], {
       style: S_TAB_PANE,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
         title: "API Key",
         style: TS.TAB,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardApiKey["default"], {
@@ -94,7 +98,7 @@ var SettingsDialog = function SettingsDialog(_ref) {
           onSet: _hSetAndClose,
           onClose: onClose
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
         title: "UI Theme",
         style: TS.TAB,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardUi["default"], {

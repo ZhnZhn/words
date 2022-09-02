@@ -22,8 +22,6 @@ import SpinnerLoading from './SpinnerLoading'
 import SvgCheckBox from './SvgCheckBox'
 import SvgClose from './SvgClose'
 import SvgHrzResize from './SvgHrzResize'
-import Tab from './Tab'
-import TabPane from './TabPane'
 import ValidationMessages from './ValidationMessages'
 
 const Atoms = {
@@ -48,9 +46,7 @@ const Atoms = {
   SpinnerLoading,
   SvgCheckBox,
   SvgClose,
-  SvgHrzResize,
-  Tab,
-  TabPane,
+  SvgHrzResize,  
   ValidationMessages
 };
 

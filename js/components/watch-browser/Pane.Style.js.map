@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../../src/components/watch-browser/Pane.Style.js"],"names":["STYLE","COMMAND_DIV","marginTop","marginBottom","marginRight","cursor"],"mappings":";;;;AACA,IAAMA,KAAK,GAAG;AACZC,EAAAA,WAAW,EAAG;AACX,aAAO,OADI;AAEXC,IAAAA,SAAS,EAAE,CAFA;AAGXC,IAAAA,YAAY,EAAE,EAHH;AAIXC,IAAAA,WAAW,EAAE,CAJF;AAKXC,IAAAA,MAAM,EAAE;AALG;AADF,CAAd;eAUeL,K","sourcesContent":["\r\nconst STYLE = {\r\n  COMMAND_DIV : {     \r\n     float: 'right',\r\n     marginTop: 8,\r\n     marginBottom: 10,\r\n     marginRight: 4,\r\n     cursor: 'default'\r\n  }\r\n}\r\n\r\nexport default STYLE\r\n"],"file":"Pane.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/watch-browser/Pane.Style.js"
+ ],
+ "file": "../../../src/components/watch-browser/Pane.Style.js",
+ "names": [
+  "STYLE",
+  "COMMAND_DIV",
+  "marginTop",
+  "marginBottom",
+  "marginRight",
+  "cursor"
+ ],
+ "mappings": ";;;;AACA,IAAMA,KAAK,GAAG;EACZC,WAAW,EAAG;IACX,SAAO,OADI;IAEXC,SAAS,EAAE,CAFA;IAGXC,YAAY,EAAE,CAHH;IAIXC,WAAW,EAAE,CAJF;IAKXC,MAAM,EAAE;EALG;AADF,CAAd;eAUeL,K"
+}

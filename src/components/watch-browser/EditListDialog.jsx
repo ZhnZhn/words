@@ -1,27 +1,38 @@
-import { Component } from 'react';
 //import PropTypes from "prop-types";
+import { Component } from 'react';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from '../dialogs/Dialog.Style'
+import withTheme from '../hoc/withTheme';
+import styleConfig from '../dialogs/Dialog.Style';
 
 import Actions, { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
 
 import Msg from '../../constants/MsgWatch';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
-import A from '../zhn-atoms/Atoms';
+import TabPane from '../zhn-tabpane/TabPane';
+import Tab from '../zhn-tabpane/Tab';
 import ListCreatePane from './ListCreatePane';
 import ListEditPane from './ListEditPane';
 import ListDeletePane from './ListDeletePane';
 
-import S from './Dialog.Style'
+import S from './Dialog.Style';
 
-const { createList, renameList, deleteList } = Actions
 const {
-  EDIT_WATCH_COMPLETED, EDIT_WATCH_FAILED,
-  CREATE_LIST, RENAME_LIST, DELETE_LIST
+  createList,
+  renameList,
+  deleteList
+} = Actions
+const {
+  EDIT_WATCH_COMPLETED,
+  EDIT_WATCH_FAILED,
+  CREATE_LIST,
+  RENAME_LIST,
+  DELETE_LIST
 } = WAT;
-const { notSelected, emptyName } = Msg;
+const {
+  notSelected,
+  emptyName
+} = Msg;
 
 class EditListDialog extends Component {
   /*
@@ -43,22 +54,23 @@ class EditListDialog extends Component {
 
   render(){
     const {
-            theme,
-            isShow, store, onClose
-          } = this.props
-        , TS = theme.createStyle(styleConfig);
+        theme,
+        isShow,
+        store,
+        onClose
+      } = this.props
+    , TS = theme.createStyle(styleConfig);
     return (
       <ModalDialog
-        //STYLE={TS.BT}
-         style={{...TS.R_DIALOG, ...S.DIALOG }}
+         style={{...TS.R_DIALOG, ...S.DIALOG}}
          captionStyle={TS.BROWSER_CAPTION}
          caption="Watch Lists Edit"
          isShow={isShow}
          isWithButton={false}
          onClose={onClose}
       >
-        <A.TabPane style={S.TAB_PANE} tabStyle={S.TABS}>
-           <A.Tab title="Create" style={TS.TAB}>
+        <TabPane width={S.TAB_PANE_WIDTH} tabStyle={S.TABS}>
+           <Tab title="Create" style={TS.TAB}>
              <ListCreatePane
                 store={store}
                 inputStyle={TS.INPUT}
@@ -70,8 +82,8 @@ class EditListDialog extends Component {
                 msgOnIsEmptyName={emptyName}
                 onCreate={createList}
                 onClose={onClose} />
-           </A.Tab>
-           <A.Tab title="Rename" style={TS.TAB}>
+           </Tab>
+           <Tab title="Rename" style={TS.TAB}>
              <ListEditPane
                 store={store}
                 inputStyle={TS.INPUT}
@@ -84,8 +96,8 @@ class EditListDialog extends Component {
                 onRename={renameList}
                 onClose={onClose}
              />
-           </A.Tab>
-           <A.Tab title="Delete" style={TS.TAB}>
+           </Tab>
+           <Tab title="Delete" style={TS.TAB}>
              <ListDeletePane
                 store={store}
                 inputStyle={TS.INPUT}
@@ -97,8 +109,8 @@ class EditListDialog extends Component {
                 onDelete={deleteList}
                 onClose={onClose}
              />
-           </A.Tab>
-        </A.TabPane>
+           </Tab>
+        </TabPane>
       </ModalDialog>
     )
   }

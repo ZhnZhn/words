@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -23,7 +21,9 @@ var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
 
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
+
+var _Tab = _interopRequireDefault(require("../zhn-tabpane/Tab"));
 
 var _GroupAddPane = _interopRequireDefault(require("./GroupAddPane"));
 
@@ -34,6 +34,10 @@ var _GroupDeletePane = _interopRequireDefault(require("./GroupDeletePane"));
 var _Dialog2 = _interopRequireDefault(require("./Dialog.Style"));
 
 var _jsxRuntime = require("react/jsx-runtime");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 //import PropTypes from "prop-types";
 var addGroup = _WatchActions["default"].addGroup,
@@ -80,18 +84,17 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
         store = _this$props.store,
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"] //STYLE={TS.BT}
-    , {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
       style: (0, _extends2["default"])({}, TS.R_DIALOG, _Dialog2["default"].DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Watch Groups Edit",
       isShow: isShow,
       isWithButton: false,
       onClose: onClose,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].TabPane, {
-        style: _Dialog2["default"].TAB_PANE,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_TabPane["default"], {
+        width: _Dialog2["default"].TAB_PANE_WIDTH,
         tabStyle: _Dialog2["default"].TABS,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
           title: "Create",
           style: TS.TAB,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupAddPane["default"], {
@@ -105,7 +108,7 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
             onCreate: addGroup,
             onClose: onClose
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
           title: "Rename",
           style: TS.TAB,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupEditPane["default"], {
@@ -120,7 +123,7 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
             onRename: renameGroup,
             onClose: onClose
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Tab, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
           title: "Delete",
           style: TS.TAB,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_GroupDeletePane["default"], (_jsx2 = {

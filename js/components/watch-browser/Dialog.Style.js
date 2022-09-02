@@ -3,11 +3,9 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 var S = {
-  TAB_PANE: {
-    width: 300
-  },
+  TAB_PANE_WIDTH: 300,
   TABS: {
-    paddingLeft: 22
+    marginLeft: 24
   },
   DIALOG: {
     left: 'calc(50vw - 152px)'

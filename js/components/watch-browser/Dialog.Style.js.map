@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../../src/components/watch-browser/Dialog.Style.js"],"names":["S","TAB_PANE","width","TABS","paddingLeft","DIALOG","left"],"mappings":";;;;AACA,IAAMA,CAAC,GAAG;AACRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,KAAK,EAAE;AADC,GADF;AAIRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,WAAW,EAAE;AADT,GAJE;AAORC,EAAAA,MAAM,EAAE;AACNC,IAAAA,IAAI,EAAE;AADA;AAPA,CAAV;eAYeN,C","sourcesContent":["\r\nconst S = {\r\n  TAB_PANE: {\r\n    width: 300\r\n  },\r\n  TABS: {\r\n    paddingLeft: 22\r\n  },\r\n  DIALOG: {\r\n    left: 'calc(50vw - 152px)'\r\n  }\r\n};\r\n\r\nexport default S\r\n"],"file":"Dialog.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/watch-browser/Dialog.Style.js"
+ ],
+ "file": "../../../src/components/watch-browser/Dialog.Style.js",
+ "names": [
+  "S",
+  "TAB_PANE_WIDTH",
+  "TABS",
+  "marginLeft",
+  "DIALOG",
+  "left"
+ ],
+ "mappings": ";;;;AACA,IAAMA,CAAC,GAAG;EACRC,cAAc,EAAE,GADR;EAERC,IAAI,EAAE;IACJC,UAAU,EAAE;EADR,CAFE;EAKRC,MAAM,EAAE;IACNC,IAAI,EAAE;EADA;AALA,CAAV;eAUeL,C"
+}
