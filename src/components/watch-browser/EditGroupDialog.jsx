@@ -15,7 +15,11 @@ import GroupAddPane from './GroupAddPane';
 import GroupEditPane from './GroupEditPane';
 import GroupDeletePane from './GroupDeletePane';
 
-import S from './Dialog.Style';
+import {
+  S_DIALOG,
+  TAB_PANE_WIDTH,
+  S_TABS
+} from './Dialog.Style';
 
 const {
   addGroup,
@@ -63,14 +67,14 @@ class EditGroupDialog extends Component {
 
     return (
       <ModalDialog
-         style={{...TS.R_DIALOG, ...S.DIALOG}}
+         style={{...TS.R_DIALOG, ...S_DIALOG}}
          captionStyle={TS.BROWSER_CAPTION}
          caption="Watch Groups Edit"
          isShow={isShow}
          isWithButton={false}
          onClose={onClose}
       >
-        <TabPane width={S.TAB_PANE_WIDTH} tabStyle={S.TABS}>
+        <TabPane width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
            <Tab title="Create" style={TS.TAB}>
              <GroupAddPane
                 store={store}

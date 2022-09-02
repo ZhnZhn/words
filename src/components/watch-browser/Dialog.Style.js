@@ -1,12 +1,8 @@
+export const S_DIALOG = {
+  left: 'calc(50vw - 152px)'
+}
 
-const S = {
-  TAB_PANE_WIDTH: 300,
-  TABS: {
-    marginLeft: 24
-  },
-  DIALOG: {
-    left: 'calc(50vw - 152px)'
-  }
-};
-
-export default S
+export const TAB_PANE_WIDTH = 300
+export const S_TABS = {
+  marginLeft: 24
+}

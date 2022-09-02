@@ -15,7 +15,11 @@ import ListCreatePane from './ListCreatePane';
 import ListEditPane from './ListEditPane';
 import ListDeletePane from './ListDeletePane';
 
-import S from './Dialog.Style';
+import {
+  S_DIALOG,
+  TAB_PANE_WIDTH,
+  S_TABS
+} from './Dialog.Style';
 
 const {
   createList,
@@ -62,14 +66,14 @@ class EditListDialog extends Component {
     , TS = theme.createStyle(styleConfig);
     return (
       <ModalDialog
-         style={{...TS.R_DIALOG, ...S.DIALOG}}
+         style={{...TS.R_DIALOG, ...S_DIALOG}}
          captionStyle={TS.BROWSER_CAPTION}
          caption="Watch Lists Edit"
          isShow={isShow}
          isWithButton={false}
          onClose={onClose}
       >
-        <TabPane width={S.TAB_PANE_WIDTH} tabStyle={S.TABS}>
+        <TabPane width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
            <Tab title="Create" style={TS.TAB}>
              <ListCreatePane
                 store={store}

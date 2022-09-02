@@ -31,7 +31,7 @@ var _GroupEditPane = _interopRequireDefault(require("./GroupEditPane"));
 
 var _GroupDeletePane = _interopRequireDefault(require("./GroupDeletePane"));
 
-var _Dialog2 = _interopRequireDefault(require("./Dialog.Style"));
+var _Dialog2 = require("./Dialog.Style");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -85,15 +85,15 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
-      style: (0, _extends2["default"])({}, TS.R_DIALOG, _Dialog2["default"].DIALOG),
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, _Dialog2.S_DIALOG),
       captionStyle: TS.BROWSER_CAPTION,
       caption: "Watch Groups Edit",
       isShow: isShow,
       isWithButton: false,
       onClose: onClose,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_TabPane["default"], {
-        width: _Dialog2["default"].TAB_PANE_WIDTH,
-        tabStyle: _Dialog2["default"].TABS,
+        width: _Dialog2.TAB_PANE_WIDTH,
+        tabStyle: _Dialog2.S_TABS,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Tab["default"], {
           title: "Create",
           style: TS.TAB,

@@ -5,12 +5,11 @@
  ],
  "file": "../../../src/components/watch-browser/Dialog.Style.js",
  "names": [
-  "S",
+  "S_DIALOG",
+  "left",
   "TAB_PANE_WIDTH",
-  "TABS",
-  "marginLeft",
-  "DIALOG",
-  "left"
+  "S_TABS",
+  "marginLeft"
  ],
- "mappings": ";;;;AACA,IAAMA,CAAC,GAAG;EACRC,cAAc,EAAE,GADR;EAERC,IAAI,EAAE;IACJC,UAAU,EAAE;EADR,CAFE;EAKRC,MAAM,EAAE;IACNC,IAAI,EAAE;EADA;AALA,CAAV;eAUeL,C"
+ "mappings": ";;;;AAAO,IAAMA,QAAQ,GAAG;EACtBC,IAAI,EAAE;AADgB,CAAjB;;AAIA,IAAMC,cAAc,GAAG,GAAvB;;AACA,IAAMC,MAAM,GAAG;EACpBC,UAAU,EAAE;AADQ,CAAf"
 }
