@@ -13,6 +13,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
+var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
+
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Pane = _interopRequireDefault(require("./Pane.Style"));
@@ -25,7 +27,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CHILD_MARGIN = 36,
-    RESIZE_INIT_WIDTH = 635,
+    RESIZE_INIT_WIDTH = 535,
     RESIZE_MIN_WIDTH = 375,
     RESIZE_MAX_WIDTH = 1200,
     RESIZE_DELTA = 10,
@@ -36,7 +38,7 @@ var S_ROOT_DIV = {
   padding: '0px 0px 3px 0px',
   position: 'relative',
   borderRadius: 4,
-  width: 635,
+  width: RESIZE_INIT_WIDTH,
   height: 'calc(100vh - 71px)',
   minHeight: 500,
   marginLeft: 16,
@@ -191,7 +193,7 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
     };
 
     _this._getRootNodeStyle = function () {
-      var _ref2 = _this.rootDiv || {},
+      var _ref2 = _this._refRootEl.current || {},
           style = _ref2.style;
 
       return style || {};
@@ -227,29 +229,20 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
       });
     };
 
-    _this._getRootDiv = function () {
-      return _this.rootDiv;
-    };
-
     _this._hLoadItem = function () {
       var _this$props2 = _this.props,
           itemConf = _this$props2.itemConf,
           onLoad = _this$props2.onLoad,
-          word = _this.iWord && _isFn(_this.iWord.getValue) ? _this.iWord.getValue() : void 0;
+          _wordInst = _this._refWord.current,
+          word = _wordInst && _isFn(_wordInst.getValue) ? _wordInst.getValue() : void 0;
       onLoad({
         itemConf: itemConf,
         word: word
       });
     };
 
-    _this._refRootDiv = function (node) {
-      return _this.rootDiv = node;
-    };
-
-    _this._refIWord = function (comp) {
-      return _this.iWord = comp;
-    };
-
+    _this._refRootEl = /*#__PURE__*/(0, _react.createRef)();
+    _this._refWord = /*#__PURE__*/(0, _react.createRef)();
     _this.childMargin = CHILD_MARGIN;
     _this._MODEL = (0, _crModelMore["default"])({
       onMinWidth: _this._resizeTo.bind((0, _assertThisInitialized2["default"])(_this), RESIZE_MIN_WIDTH),
@@ -298,7 +291,7 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
         _showCl = _ref3[1];
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      ref: this._refRootDiv,
+      ref: this._refRootEl,
       className: _showCl,
       style: (0, _extends2["default"])({}, S_ROOT_DIV, TS.BG_COLOR, _showStyle),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
@@ -317,14 +310,16 @@ var PaneType1 = /*#__PURE__*/function (_Component) {
           title: R_TITLE,
           style: S_BT_CIRCLE,
           onClick: onRemoveItems
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgHrzResize, {
-          svgStyle: TS.SVG_RESIZE,
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
+          elementRef: this._refRootEl //svgStyle={TS.SVG_RESIZE}
+          ,
+          initWidth: RESIZE_INIT_WIDTH,
           minWidth: RESIZE_MIN_WIDTH,
-          maxWidth: RESIZE_MAX_WIDTH,
-          getDomNode: this._getRootDiv
+          maxWidth: RESIZE_MAX_WIDTH
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Input, {
-        ref: this._refIWord,
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Input //ref={this._refIWord}
+      , {
+        ref: this._refWord,
         TS: TS,
         initValue: word,
         onEnter: this._hLoadItem

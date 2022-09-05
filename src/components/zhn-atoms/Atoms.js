@@ -21,7 +21,6 @@ import ShowHide from './ShowHide'
 import SpinnerLoading from './SpinnerLoading'
 import SvgCheckBox from './SvgCheckBox'
 import SvgClose from './SvgClose'
-import SvgHrzResize from './SvgHrzResize'
 import ValidationMessages from './ValidationMessages'
 
 const Atoms = {
@@ -45,8 +44,7 @@ const Atoms = {
   ShowHide,
   SpinnerLoading,
   SvgCheckBox,
-  SvgClose,
-  SvgHrzResize,  
+  SvgClose,  
   ValidationMessages
 };
 

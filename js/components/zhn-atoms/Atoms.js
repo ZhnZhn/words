@@ -49,8 +49,6 @@ var _SvgCheckBox = _interopRequireDefault(require("./SvgCheckBox"));
 
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 
-var _SvgHrzResize = _interopRequireDefault(require("./SvgHrzResize"));
-
 var _ValidationMessages = _interopRequireDefault(require("./ValidationMessages"));
 
 var Atoms = (0, _extends2["default"])({}, _A["default"], _SvgIcons["default"], {
@@ -73,7 +71,6 @@ var Atoms = (0, _extends2["default"])({}, _A["default"], _SvgIcons["default"], {
   SpinnerLoading: _SpinnerLoading["default"],
   SvgCheckBox: _SvgCheckBox["default"],
   SvgClose: _SvgClose["default"],
-  SvgHrzResize: _SvgHrzResize["default"],
   ValidationMessages: _ValidationMessages["default"]
 });
 var _default = Atoms;

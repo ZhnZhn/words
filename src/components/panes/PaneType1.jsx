@@ -1,6 +1,10 @@
 //import PropTypes from 'prop-types'
-import { Component } from 'react';
+import {
+  Component,
+  createRef
+} from 'react';
 
+import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 import withTheme from '../hoc/withTheme';
 import styleConfig from './Pane.Style';
 import crModelMore from './crModelMore';
@@ -8,7 +12,7 @@ import crModelMore from './crModelMore';
 import A from '../Comp';
 
 const CHILD_MARGIN = 36
-, RESIZE_INIT_WIDTH = 635
+, RESIZE_INIT_WIDTH = 535
 , RESIZE_MIN_WIDTH = 375
 , RESIZE_MAX_WIDTH = 1200
 , RESIZE_DELTA = 10
@@ -20,7 +24,7 @@ const S_ROOT_DIV = {
   padding : '0px 0px 3px 0px',
   position: 'relative',
   borderRadius: 4,
-  width: 635,
+  width: RESIZE_INIT_WIDTH,
   height: 'calc(100vh - 71px)',
   minHeight: 500,
   marginLeft: 16,
@@ -106,6 +110,10 @@ class PaneType1 extends Component {
 
   constructor(props){
     super(props);
+
+    this._refRootEl = createRef()
+    this._refWord = createRef()
+
     this.childMargin = CHILD_MARGIN;
 
     this._MODEL = crModelMore({
@@ -182,7 +190,7 @@ class PaneType1 extends Component {
    }
 
    _getRootNodeStyle = () => {
-     const { style } = this.rootDiv || {};
+     const { style } = this._refRootEl.current || {};
      return style || {};
    }
 
@@ -210,20 +218,16 @@ class PaneType1 extends Component {
       this.setState({ isShow: false })
    }
 
-   _getRootDiv = () => {
-     return this.rootDiv;
-   }
 
    _hLoadItem = () => {
        const { itemConf, onLoad } = this.props
-       , word = this.iWord && _isFn(this.iWord.getValue)
-            ? this.iWord.getValue()
+       , _wordInst = this._refWord.current
+       , word = _wordInst && _isFn(_wordInst.getValue)
+            ? _wordInst.getValue()
             : void 0;
+
        onLoad({ itemConf, word })
    }
-
-   _refRootDiv = node => this.rootDiv = node
-   _refIWord = comp => this.iWord = comp
 
    render(){
       const {
@@ -239,7 +243,7 @@ class PaneType1 extends Component {
       , {
         isShow,
         isMore,
-        word, 
+        word,
         configs
       } = this.state
       , TS = theme.createStyle(styleConfig)
@@ -252,7 +256,7 @@ class PaneType1 extends Component {
 
      return(
         <div
-           ref={this._refRootDiv}
+           ref={this._refRootEl}
            className={_showCl}
            style={{
              ...S_ROOT_DIV,
@@ -279,15 +283,17 @@ class PaneType1 extends Component {
               style={S_BT_CIRCLE}
               onClick={onRemoveItems}
             />
-            <A.SvgHrzResize
-              svgStyle={TS.SVG_RESIZE}
+            <SvgHrzResize
+              elementRef={this._refRootEl}
+              //svgStyle={TS.SVG_RESIZE}
+              initWidth={RESIZE_INIT_WIDTH}
               minWidth={RESIZE_MIN_WIDTH}
               maxWidth={RESIZE_MAX_WIDTH}
-              getDomNode={this._getRootDiv}
             />
           </A.BrowserCaption>
           <Input
-            ref={this._refIWord}
+            //ref={this._refIWord}
+            ref={this._refWord}
             TS={TS}
             initValue={word}
             onEnter={this._hLoadItem}

@@ -75,7 +75,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.svg-resize{
+.bt-resize{
   width: 26px;
   height: 26px;
   padding: 2px;
@@ -85,7 +85,8 @@
   stroke : gray;
   cursor: pointer;
 }
-.svg-resize:hover{
+.bt-resize:hover,
+.bt-resize:focus {
   border : 2px solid rgba(164, 135, 212, 1) !important;
   stroke : rgba(164, 135, 212, 1) !important;
 }
