@@ -1,8 +1,31 @@
-import { Component, createElement } from 'react';
 //import PropTypes from "prop-types";
+import {
+  Component,
+  createElement
+} from 'react';
 
 import Router from '../dialogs/RouterModal';
 import ModalContainer from './ModalContainer';
+
+const DialogsStack = ({
+  store,
+  shows,
+  data,
+  dialogs,
+  onClose
+}) => dialogs.map(({
+  type,
+  comp
+}) => createElement(comp, {
+   key: type,
+   isShow: shows[type],
+   data: data[type],
+   onClose: onClose.bind(null, type),
+   store
+  })
+)
+
+
 
 class WrapperContainer extends Component {
   /*
@@ -15,12 +38,12 @@ class WrapperContainer extends Component {
   */
 
   state = {
-    isShow : false,
-    inits : {},
-    shows : {},
-    data : {},
-    dialogs : [],
-    currentDialog : null
+    isShow: false,
+    inits: {},
+    shows: {},
+    data: {},
+    dialogs: [],
+    currentDialog: null
   }
 
   componentDidMount(){
@@ -34,14 +57,21 @@ class WrapperContainer extends Component {
      const { SHOW_ACTION } = this.props;
      if (actionType === SHOW_ACTION){
        const type = option.modalDialogType
-           , { inits, shows, data, dialogs } = this.state;
+       , {
+         inits,
+         shows,
+         data,
+         dialogs
+       } = this.state;
 
        data[type] = option
        shows[type] = true
        if (inits[type]){
          this.setState({
-           isShow: true, currentDialog: type,
-           shows, data
+           isShow: true,
+           currentDialog: type,
+           shows,
+           data
          })
        } else {
          Router.getDialog(type)
@@ -50,8 +80,11 @@ class WrapperContainer extends Component {
                dialogs.push({ type, comp })
                inits[type] = true
                this.setState({
-                 isShow: true, currentDialog: type,
-                 shows, data, dialogs
+                 isShow: true,
+                 currentDialog: type,
+                 shows,
+                 data,
+                 dialogs
                });
              }
            })
@@ -59,42 +92,41 @@ class WrapperContainer extends Component {
      }
   }
 
-  _handleClose = (type) => {
+  _hClose = (type) => {
     this.state.shows[type] = false;
     this.setState({
-      isShow : false,
+      isShow: false,
       currentDialog: null,
-      shows : this.state.shows
-    })
-  }
-
-  _renderDialogs = () => {
-    const { store } = this.props
-        , { shows, data, dialogs } = this.state;
-
-    return dialogs.map((dialog, index) => {
-      const { type, comp } = dialog;
-      return createElement(comp, {
-         key: type,
-         isShow: shows[type],
-         data: data[type],
-         store : store,
-         onClose: this._handleClose.bind(null, type)
-      })
+      shows: this.state.shows
     })
   }
 
   render(){
-    const { isShow, currentDialog } = this.state;
+    const {
+      store
+    } = this.props
+    , {
+      isShow,
+      currentDialog,
+      shows,
+      data,
+      dialogs
+    } = this.state;
 
     return (
       <ModalContainer
           isShow={isShow}
-          onClose={this._handleClose.bind(null, currentDialog)}
+          onClose={this._hClose.bind(null, currentDialog)}
       >
-         {this._renderDialogs()}
+         <DialogsStack
+           store={store}
+           shows={shows}
+           data={data}
+           dialogs={dialogs}
+           onClose={this._hClose}
+         />
      </ModalContainer>
-    )
+    );
   }
 }
 

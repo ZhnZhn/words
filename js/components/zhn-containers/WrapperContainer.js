@@ -16,6 +16,25 @@ var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
+var DialogsStack = function DialogsStack(_ref) {
+  var store = _ref.store,
+      shows = _ref.shows,
+      data = _ref.data,
+      dialogs = _ref.dialogs,
+      onClose = _ref.onClose;
+  return dialogs.map(function (_ref2) {
+    var type = _ref2.type,
+        comp = _ref2.comp;
+    return /*#__PURE__*/(0, _react.createElement)(comp, {
+      key: type,
+      isShow: shows[type],
+      data: data[type],
+      onClose: onClose.bind(null, type),
+      store: store
+    });
+  });
+};
+
 var WrapperContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WrapperContainer, _Component);
 
@@ -78,32 +97,13 @@ var WrapperContainer = /*#__PURE__*/function (_Component) {
       }
     };
 
-    _this._handleClose = function (type) {
+    _this._hClose = function (type) {
       _this.state.shows[type] = false;
 
       _this.setState({
         isShow: false,
         currentDialog: null,
         shows: _this.state.shows
-      });
-    };
-
-    _this._renderDialogs = function () {
-      var store = _this.props.store,
-          _this$state2 = _this.state,
-          shows = _this$state2.shows,
-          data = _this$state2.data,
-          dialogs = _this$state2.dialogs;
-      return dialogs.map(function (dialog, index) {
-        var type = dialog.type,
-            comp = dialog.comp;
-        return /*#__PURE__*/(0, _react.createElement)(comp, {
-          key: type,
-          isShow: shows[type],
-          data: data[type],
-          store: store,
-          onClose: _this._handleClose.bind(null, type)
-        });
       });
     };
 
@@ -121,13 +121,23 @@ var WrapperContainer = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    var _this$state3 = this.state,
-        isShow = _this$state3.isShow,
-        currentDialog = _this$state3.currentDialog;
+    var store = this.props.store,
+        _this$state2 = this.state,
+        isShow = _this$state2.isShow,
+        currentDialog = _this$state2.currentDialog,
+        shows = _this$state2.shows,
+        data = _this$state2.data,
+        dialogs = _this$state2.dialogs;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalContainer["default"], {
       isShow: isShow,
-      onClose: this._handleClose.bind(null, currentDialog),
-      children: this._renderDialogs()
+      onClose: this._hClose.bind(null, currentDialog),
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogsStack, {
+        store: store,
+        shows: shows,
+        data: data,
+        dialogs: dialogs,
+        onClose: this._hClose
+      })
     });
   };
 
