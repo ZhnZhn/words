@@ -9,186 +9,147 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _uiApi = require("../uiApi");
 
-var _react = require("react");
+var _useBool4 = _interopRequireDefault(require("../hooks/useBool"));
+
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 
+var _react = require("react");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  BROWSER: {
-    paddingRight: 0
-  },
-  SCROLL_PANE: {
-    overflowY: 'auto',
-    height: '92%',
-    paddingRight: 10
-  },
-  SPINNER_LOADING: {
-    position: 'relative',
-    display: 'block',
-    width: 32,
-    height: 32,
-    margin: '0 auto',
-    marginTop: 32,
-    textAlign: 'middle'
-  },
-  ROOT_MENU: {
-    paddingLeft: 4
-  }
+var _excluded = ["store", "url", "showAction", "browserId", "styleConfig", "caption", "children", "onError"];
+var S_BROWSER = {
+  paddingRight: 0
+},
+    S_SCROLL_PANE = {
+  overflowY: 'auto',
+  height: '92%',
+  paddingRight: 10
+},
+    S_SPINNER_LOADING = {
+  position: 'relative',
+  display: 'block',
+  width: 32,
+  height: 32,
+  margin: '0 auto',
+  marginTop: 32,
+  textAlign: 'middle'
 };
 
-var DynamicMenuBrowser = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DynamicMenuBrowser, _Component);
+var FN_NOOP = function FN_NOOP() {},
+    DF_MENU_MODEL = {},
+    DF_STYLE_CONFIG = {};
 
-  function DynamicMenuBrowser() {
-    var _this;
+var MenuParts = function MenuParts(_ref) {
+  var styleConfig = _ref.styleConfig,
+      menuModel = _ref.menuModel,
+      restProps = _ref.restProps;
+  var menu = menuModel.menu,
+      _menuModel$items = menuModel.items,
+      items = _menuModel$items === void 0 ? {} : _menuModel$items;
+  return (menu || []).map(function (menuPart, index) {
+    return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
+      key: index,
+      hmItems: items,
+      styleConfig: styleConfig
+    }, restProps));
+  });
+};
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+var DynamicMenuBrowser = function DynamicMenuBrowser(_ref2) {
+  var store = _ref2.store,
+      url = _ref2.url,
+      showAction = _ref2.showAction,
+      browserId = _ref2.browserId,
+      _ref2$styleConfig = _ref2.styleConfig,
+      TS = _ref2$styleConfig === void 0 ? DF_STYLE_CONFIG : _ref2$styleConfig,
+      caption = _ref2.caption,
+      children = _ref2.children,
+      _ref2$onError = _ref2.onError,
+      onError = _ref2$onError === void 0 ? FN_NOOP : _ref2$onError,
+      restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref2, _excluded);
+
+  var _useState = (0, _uiApi.useState)(DF_MENU_MODEL),
+      menuModel = _useState[0],
+      setMenuModel = _useState[1],
+      _useBool = (0, _useBool4["default"])(),
+      isShow = _useBool[0],
+      openMenuBrowser = _useBool[1],
+      closeMenuBrowser = _useBool[2],
+      _useBool2 = (0, _useBool4["default"])(true),
+      isLoading = _useBool2[0],
+
+  /*eslint-disable no-unused-vars */
+  setLoading = _useBool2[1],
+
+  /*eslint-enable no-unused-vars */
+  setNotLoading = _useBool2[2],
+      _useBool3 = (0, _useBool4["default"])(),
+      isLoadingFailed = _useBool3[0],
+      setLoadingFailed = _useBool3[1];
+
+  (0, _useListen["default"])(store, function (actionType, id) {
+    if (actionType === showAction && id === browserId) {
+      openMenuBrowser();
     }
+  });
+  /*eslint-disable react-hooks/exhaustive-deps */
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      isShow: true,
-      isLoading: true,
-      isLoadingFailed: false,
-      menuModel: {}
-    };
+  (0, _uiApi.useEffect)(function () {
+    fetch(url).then(function (response) {
+      var status = response.status;
 
-    _this._onStore = function (actionType, id) {
-      var _this$props = _this.props,
-          showAction = _this$props.showAction,
-          browserId = _this$props.browserId;
-
-      if (actionType === showAction && id === browserId) {
-        _this.setState({
-          isShow: true
-        });
+      if (status >= 200 && status < 400) {
+        return response.json();
+      } else {
+        throw {
+          status: status,
+          url: url
+        };
       }
-    };
-
-    _this._loadMenu = function () {
-      var _this$props2 = _this.props,
-          url = _this$props2.url,
-          onError = _this$props2.onError;
-      fetch(url).then(function (response) {
-        var status = response.status;
-
-        if (status >= 200 && status < 400) {
-          return response.json();
-        } else {
-          throw {
-            status: status,
-            url: url
-          };
-        }
-      }).then(function (json) {
-        _this.setState({
-          isLoading: false,
-          menuModel: json
-        });
-      })["catch"](function (err) {
-        _this.setState({
-          isLoadingFailed: true,
-          isLoading: false
-        });
-
-        onError(err);
-      });
-    };
-
-    _this._handleHide = function () {
-      _this.setState({
-        isShow: false
-      });
-    };
-
-    return _this;
-  }
-
-  var _proto = DynamicMenuBrowser.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    var _this$props$store = this.props.store,
-        store = _this$props$store === void 0 ? {} : _this$props$store;
-
-    if (typeof store.listen === 'function') {
-      this.unsubscribe = store.listen(this._onStore);
-    }
-
-    this._loadMenu();
-  };
-
-  _proto.componetWillUnmaount = function componetWillUnmaount() {
-    if (this.unsubscribe) {
-      this.unsubscribe();
-    }
-  };
-
-  _proto._renderMenuParts = function _renderMenuParts(_ref) {
-    var styleConfig = _ref.styleConfig,
-        menuModel = _ref.menuModel,
-        restProps = _ref.restProps;
-    var _menuModel$menu = menuModel.menu,
-        menu = _menuModel$menu === void 0 ? [] : _menuModel$menu,
-        _menuModel$items = menuModel.items,
-        items = _menuModel$items === void 0 ? {} : _menuModel$items;
-    return menu.map(function (menuPart, index) {
-      return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
-        key: index,
-        hmItems: items,
-        styleConfig: styleConfig
-      }, restProps));
+    }).then(function (json) {
+      setNotLoading();
+      setMenuModel(json);
+    })["catch"](function (err) {
+      setLoadingFailed();
+      setNotLoading();
+      onError(err);
     });
-  };
+  }, []); // url, onError
+  // setNotLoading, setLoadingFailed
 
-  _proto.render = function render() {
-    var _this$props3 = this.props,
-        _this$props3$styleCon = _this$props3.styleConfig,
-        TS = _this$props3$styleCon === void 0 ? {} : _this$props3$styleCon,
-        caption = _this$props3.caption,
-        children = _this$props3.children,
-        restProps = (0, _objectWithoutPropertiesLoose2["default"])(_this$props3, ["styleConfig", "caption", "children"]),
-        _this$state = this.state,
-        isShow = _this$state.isShow,
-        isLoading = _this$state.isLoading,
-        isLoadingFailed = _this$state.isLoadingFailed,
-        menuModel = _this$state.menuModel;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].Browser, {
-      isShow: isShow,
-      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER),
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].BrowserCaption, {
-        rootStyle: TS.BROWSER_CAPTION,
-        caption: caption,
-        onClose: this._handleHide
-      }), isLoading && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SpinnerLoading, {
-        style: S.SPINNER_LOADING
-      }), isLoadingFailed && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SpinnerLoading, {
-        style: S.SPINNER_LOADING,
-        isFailed: true
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].ScrollPane, {
-        className: TS.CL_SCROLL_PANE,
-        style: S.SCROLL_PANE,
-        children: [this._renderMenuParts({
-          styleConfig: TS,
-          menuModel: menuModel,
-          restProps: restProps
-        }), children]
-      })]
-    });
-  };
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  return DynamicMenuBrowser;
-}(_react.Component);
-
-DynamicMenuBrowser.defaultProps = {
-  onError: function onError() {}
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].Browser, {
+    isShow: isShow,
+    style: (0, _extends2["default"])({}, S_BROWSER, TS.BROWSER),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].BrowserCaption, {
+      rootStyle: TS.BROWSER_CAPTION,
+      caption: caption,
+      onClose: closeMenuBrowser
+    }), isLoading && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SpinnerLoading, {
+      style: S_SPINNER_LOADING
+    }), isLoadingFailed && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SpinnerLoading, {
+      style: S_SPINNER_LOADING,
+      isFailed: true
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Atoms["default"].ScrollPane, {
+      className: TS.CL_SCROLL_PANE,
+      style: S_SCROLL_PANE,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(MenuParts, {
+        styleConfig: TS,
+        menuModel: menuModel,
+        restProps: restProps
+      }), children]
+    })]
+  });
 };
+
 var _default = DynamicMenuBrowser;
 exports["default"] = _default;
 //# sourceMappingURL=DynamicMenuBrowser.js.map
