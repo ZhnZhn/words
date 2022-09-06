@@ -7,30 +7,25 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
-var _useClassAnimation2 = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
+var _useClassAnimation2 = _interopRequireDefault(require("../hooks/useClassAnimation"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from "prop-types";
-var CL = {
-  D: 'modal-dialog',
-  D_ACTIONS: 'modal-dialog__actions',
-  BT_DIV: 'bt-flat__div'
-};
-var S = {
-  BT_ROOT: {
-    color: '#3270b4'
-  }
-};
-var CL2 = {
+var CL_MD = 'modal-dialog',
+    CL_MD_ACTIONS = CL_MD + "__actions",
+    CL_BT_DIV = 'bt-flat__div',
+    S_BT = {
+  color: '#3270b4'
+},
+    CL = {
   SHOWING: 'dialog show-popup',
   HIDING: 'hide-popup'
-};
-var S2 = {
+},
+    S = {
   INIT: {
     display: 'none'
   },
@@ -64,7 +59,7 @@ var _hClickDialog = function _hClickDialog(event) {
 var ModalDialog = function ModalDialog(_ref) {
   var isShow = _ref.isShow,
       _ref$className = _ref.className,
-      className = _ref$className === void 0 ? CL.D : _ref$className,
+      className = _ref$className === void 0 ? CL_MD : _ref$className,
       style = _ref.style,
       _ref$isWithButton = _ref.isWithButton,
       isWithButton = _ref$isWithButton === void 0 ? true : _ref$isWithButton,
@@ -75,35 +70,35 @@ var ModalDialog = function ModalDialog(_ref) {
       children = _ref.children,
       onClose = _ref.onClose;
 
-  var _refRootDiv = (0, _react.useRef)(),
-      _refPrevFocused = (0, _react.useRef)(),
-      _hKeyDown = (0, _react.useCallback)(function (event) {
+  var _refRootDiv = (0, _uiApi.useRef)(),
+      _refPrevFocused = (0, _uiApi.useRef)(),
+      _hKeyDown = (0, _uiApi.useCallback)(function (event) {
     if (_refRootDiv && event.target === _refRootDiv.current && event.keyCode === 27) {
       onClose(event);
     }
   }, []),
       _useClassAnimation = (0, _useClassAnimation2["default"])({
     isShow: isShow,
-    CL: CL2,
-    S: S2,
+    CL: CL,
+    S: S,
     initialWasClosed: false
   }),
       _className = _useClassAnimation.className,
       _style = _useClassAnimation.style,
       _className2 = _className ? className + " " + _className : className;
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (isShow) {
       _refPrevFocused.current = _getPrevFocusedElement();
     }
   }, [isShow]);
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (isShow && _hasFocusFn(_refRootDiv)) {
       _refRootDiv.current.focus();
     }
   }, [isShow]);
-  (0, _react.useEffect)(function () {
-    if (_style === S2.HIDING && _hasFocusFn(_refPrevFocused)) {
+  (0, _uiApi.useEffect)(function () {
+    if (_style === S.HIDING && _hasFocusFn(_refPrevFocused)) {
       _refPrevFocused.current.focus();
     }
   });
@@ -121,11 +116,10 @@ var ModalDialog = function ModalDialog(_ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       children: children
     }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL.D_ACTIONS,
+      className: CL_MD_ACTIONS,
       children: [commandButtons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-        //ref={_refBtClose}
-        rootStyle: S.BT_ROOT,
-        clDiv: CL.BT_DIV,
+        rootStyle: S_BT,
+        clDiv: CL_BT_DIV,
         caption: "Close",
         isPrimary: true,
         onClick: onClose

@@ -1,26 +1,23 @@
-import { useRef, useCallback, useEffect } from 'react';
-//import PropTypes from "prop-types";
+import {
+  useRef,
+  useCallback,
+  useEffect
+} from '../uiApi';
 
-import useClassAnimation from '../zhn-hooks/useClassAnimation'
+import useClassAnimation from '../hooks/useClassAnimation';
 
-import A from '../Comp'
+import A from '../Comp';
 
-const CL = {
-  D: 'modal-dialog',
-  D_ACTIONS: 'modal-dialog__actions',
-  BT_DIV: 'bt-flat__div'
-};
-const S = {
-  BT_ROOT: {
-    color: '#3270b4'
-  }
-};
+const CL_MD = 'modal-dialog'
+, CL_MD_ACTIONS = `${CL_MD}__actions`
+, CL_BT_DIV = 'bt-flat__div'
+, S_BT = { color: '#3270b4' }
 
-const CL2 = {
-  SHOWING : 'dialog show-popup',
-  HIDING : 'hide-popup'
-};
-const S2 = {
+, CL = {
+  SHOWING: 'dialog show-popup',
+  HIDING: 'hide-popup'
+}
+, S = {
   INIT: {
     display: 'none'
   },
@@ -50,16 +47,19 @@ const _hClickDialog = (event) => {
 
 const ModalDialog = ({
   isShow,
-  className=CL.D,
+  className=CL_MD,
   style,
   isWithButton=true,
-  //isFocusClose=true,
-  caption, captionStyle,
-  commandButtons, withoutClose,
-  children, onClose
+  caption,
+  captionStyle,
+  commandButtons,
+  withoutClose,
+  children,
+  onClose
 }) => {
   const _refRootDiv = useRef()
   , _refPrevFocused = useRef()
+  /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback((event) => {
        if (_refRootDiv
          && event.target === _refRootDiv.current
@@ -67,10 +67,15 @@ const ModalDialog = ({
            onClose(event)
        }
      }, [])
+  // onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
   , {
-    className:_className, style:_style
+    className:_className,
+    style:_style
   } = useClassAnimation({
-    isShow, CL: CL2, S: S2,
+    isShow,
+    CL,
+    S,
     initialWasClosed: false
   })
   , _className2 = _className
@@ -88,10 +93,11 @@ const ModalDialog = ({
     }
   }, [isShow])
   useEffect(() => {
-    if (_style === S2.HIDING && _hasFocusFn(_refPrevFocused) ) {
+    if (_style === S.HIDING && _hasFocusFn(_refPrevFocused) ) {
       _refPrevFocused.current.focus()
     }
   })
+
   return (
     <div
        ref={_refRootDiv}
@@ -109,13 +115,12 @@ const ModalDialog = ({
        <div>
          {children}
        </div>
-       {isWithButton && <div className={CL.D_ACTIONS}>
+       {isWithButton && <div className={CL_MD_ACTIONS}>
          {commandButtons}
          { !withoutClose &&
             <A.FlatButton
-              //ref={_refBtClose}
-              rootStyle={S.BT_ROOT}
-              clDiv={CL.BT_DIV}
+              rootStyle={S_BT}
+              clDiv={CL_BT_DIV}
               caption="Close"
               isPrimary={true}
               onClick={onClose}

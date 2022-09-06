@@ -7,17 +7,17 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _useClassAnimation = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
+var _useClassAnimation = _interopRequireDefault(require("../hooks/useClassAnimation"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from 'prop-types'
-var CL = {
-  INIT: 'modal-root',
-  SHOWING: 'modal-root show-modal',
-  HIDING: 'modal-root hide-modal'
-};
-var S = {
+var CL_INIT = 'modal-root',
+    CL = {
+  INIT: CL_INIT,
+  SHOWING: CL_INIT + " show-modal",
+  HIDING: CL_INIT + " hide-modal"
+},
+    S = {
   INIT: {
     display: 'none'
   },
