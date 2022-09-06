@@ -7,42 +7,36 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
+var _MsgWatch = require("../../constants/MsgWatch");
 
 var _fnUtil = _interopRequireDefault(require("../../utils/fnUtil"));
 
 var CAPTION = 'caption',
     GROUPS = 'groups',
     LISTS = 'lists';
-var notFoundItem = _MsgWatch["default"].notFoundItem,
-    groupExisted = _MsgWatch["default"].groupExisted,
-    listExisted = _MsgWatch["default"].listExisted,
-    itemExisted = _MsgWatch["default"].itemExisted,
-    ALERT_DND_LIST = _MsgWatch["default"].ALERT_DND_LIST,
-    ALERT_DND_ITEM = _MsgWatch["default"].ALERT_DND_ITEM;
 var LogicFn = {
   crMsgNotFound: function crMsgNotFound(itemType, name) {
     return {
       isDone: false,
-      message: notFoundItem(itemType, name)
+      message: (0, _MsgWatch.notFoundItem)(itemType, name)
     };
   },
   crMsgGroupExisted: function crMsgGroupExisted(caption) {
     return {
       isDone: false,
-      message: groupExisted(caption)
+      message: (0, _MsgWatch.groupExisted)(caption)
     };
   },
   crMsgListExisted: function crMsgListExisted(captionList, captionGroup) {
     return {
       isDone: false,
-      message: listExisted(captionList, captionGroup)
+      message: (0, _MsgWatch.listExisted)(captionList, captionGroup)
     };
   },
   crMsgItemExisted: function crMsgItemExisted(caption, captionList) {
     return {
       isDone: false,
-      message: itemExisted(caption, captionList)
+      message: (0, _MsgWatch.itemExisted)(caption, captionList)
     };
   },
 
@@ -51,13 +45,13 @@ var LogicFn = {
     return (0, _extends2["default"])({
       isDone: false,
       itemId: dropId + ":" + dragId
-    }, ALERT_DND_ITEM);
+    }, _MsgWatch.ALERT_DND_ITEM);
   },
   crAlertListExisted: function crAlertListExisted(dropGroupCaption, dragListCaption) {
     return (0, _extends2["default"])({
       isDone: false,
       itemId: dropGroupCaption + ":" + dragListCaption
-    }, ALERT_DND_LIST);
+    }, _MsgWatch.ALERT_DND_LIST);
   },
 
   /* for DragDrop */

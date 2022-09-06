@@ -17,7 +17,7 @@ var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
 var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
 
-var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
+var _MsgWatch = require("../../constants/MsgWatch");
 
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
@@ -48,8 +48,6 @@ var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     ADD_GROUP = _WatchActions.WatchActionTypes.ADD_GROUP,
     RENAME_GROUP = _WatchActions.WatchActionTypes.RENAME_GROUP,
     DELETE_GROUP = _WatchActions.WatchActionTypes.DELETE_GROUP;
-var notSelected = _MsgWatch["default"].notSelected,
-    emptyName = _MsgWatch["default"].emptyName;
 
 var EditGroupDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(EditGroupDialog, _Component);
@@ -104,7 +102,7 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
             actionCompleted: EDIT_WATCH_COMPLETED,
             actionFailed: EDIT_WATCH_FAILED,
             forActionType: ADD_GROUP,
-            msgOnIsEmptyName: emptyName,
+            msgOnIsEmptyName: _MsgWatch.emptyName,
             onCreate: addGroup,
             onClose: onClose
           })
@@ -118,8 +116,8 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
             actionCompleted: EDIT_WATCH_COMPLETED,
             actionFailed: EDIT_WATCH_FAILED,
             forActionType: RENAME_GROUP,
-            msgOnNotSelect: notSelected,
-            msgOnIsEmptyName: emptyName,
+            msgOnNotSelect: _MsgWatch.notSelected,
+            msgOnIsEmptyName: _MsgWatch.emptyName,
             onRename: renameGroup,
             onClose: onClose
           })
@@ -130,7 +128,7 @@ var EditGroupDialog = /*#__PURE__*/function (_Component) {
             store: store,
             inputStyle: TS.INPUT,
             btStyle: TS.BT.FLAT_ROOT
-          }, _jsx2["store"] = store, _jsx2.actionCompleted = EDIT_WATCH_COMPLETED, _jsx2.forActionType = DELETE_GROUP, _jsx2.msgOnNotSelect = notSelected, _jsx2.onDelete = deleteGroup, _jsx2.onClose = onClose, _jsx2))
+          }, _jsx2["store"] = store, _jsx2.actionCompleted = EDIT_WATCH_COMPLETED, _jsx2.forActionType = DELETE_GROUP, _jsx2.msgOnNotSelect = _MsgWatch.notSelected, _jsx2.onDelete = deleteGroup, _jsx2.onClose = onClose, _jsx2))
         })]
       })
     });

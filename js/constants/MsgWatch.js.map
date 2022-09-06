@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../src/constants/MsgWatch.js"],"names":["MsgWatch","WATCH_SAVED","WATCH_PREV","notFoundItem","itemType","captionGroup","groupExisted","caption","listExisted","captionList","itemExisted","emptyName","item","notSelected","ALERT_DND_ITEM","descr","ALERT_DND_LIST"],"mappings":";;;;AACA,IAAMA,QAAQ,GAAG;AACfC,EAAAA,WAAW,EAAE,4BADE;AAEfC,EAAAA,UAAU,EAAE,qDAFG;AAIfC,EAAAA,YAAY,EAAE,sBAACC,QAAD,EAAWC,YAAX;AAAA,oBAAmCD,QAAnC,mBAAyDC,YAAzD;AAAA,GAJC;AAKfC,EAAAA,YAAY,EAAE,sBAACC,OAAD;AAAA,gCAAgCA,OAAhC;AAAA,GALC;AAMfC,EAAAA,WAAW,EAAE,qBAACC,WAAD,EAAcJ,YAAd;AAAA,+BAAiDI,WAAjD,yBAAgFJ,YAAhF;AAAA,GANE;AAOfK,EAAAA,WAAW,EAAE,qBAACH,OAAD,EAAUE,WAAV;AAAA,+BAA4CF,OAA5C,wBAAsEE,WAAtE;AAAA,GAPE;AASfE,EAAAA,SAAS,EAAE,mBAACC,IAAD;AAAA,WAAaA,IAAb;AAAA,GATI;AAUfC,EAAAA,WAAW,EAAE,qBAACD,IAAD;AAAA,WAAaA,IAAb;AAAA,GAVE;AAYfE,EAAAA,cAAc,EAAE;AACbP,IAAAA,OAAO,EAAE,gBADI;AAEbQ,IAAAA,KAAK,EAAE;AAFM,GAZD;AAgBfC,EAAAA,cAAc,EAAE;AACbT,IAAAA,OAAO,EAAE,gBADI;AAEbQ,IAAAA,KAAK,EAAE;AAFM;AAhBD,CAAjB;eAsBef,Q","sourcesContent":["\r\nconst MsgWatch = {\r\n  WATCH_SAVED: 'Watch List has been saved.',\r\n  WATCH_PREV: 'Watch List has not been edited\\nfrom previous save.',\r\n\r\n  notFoundItem: (itemType, captionGroup) => `The ${itemType} witn name ${captionGroup} not found.`,\r\n  groupExisted: (caption) => `Group with name ${caption} is already existed.`,\r\n  listExisted: (captionList, captionGroup) => `List with name ${captionList}\\n      In Group ${captionGroup} is already existed.`,\r\n  itemExisted: (caption, captionList) => `Item with name ${caption}\\n      In List ${captionList} is already existed.`,\r\n\r\n  emptyName: (item) => `${item} name can not be empty.`,\r\n  notSelected: (item) => `${item} is not selected.`,\r\n\r\n  ALERT_DND_ITEM: {\r\n     caption: 'Drag Drop Item',\r\n     descr: 'Item in List already has been existed.'\r\n  },\r\n  ALERT_DND_LIST: {\r\n     caption: 'Drag Drop List',\r\n     descr: 'List in Group already has been existed.'\r\n  }\r\n};\r\n\r\nexport default MsgWatch\r\n"],"file":"MsgWatch.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/constants/MsgWatch.js"
+ ],
+ "file": "../../src/constants/MsgWatch.js",
+ "names": [
+  "WATCH_SAVED",
+  "WATCH_PREV",
+  "notFoundItem",
+  "itemType",
+  "captionGroup",
+  "groupExisted",
+  "caption",
+  "listExisted",
+  "captionList",
+  "itemExisted",
+  "emptyName",
+  "item",
+  "notSelected",
+  "ALERT_DND_ITEM",
+  "descr",
+  "ALERT_DND_LIST"
+ ],
+ "mappings": ";;;;AACO,IAAMA,WAAW,GAAG,4BAApB;;AACA,IAAMC,UAAU,GAAG,qDAAnB;;;AAEA,IAAMC,YAAY,GAAG,SAAfA,YAAe,CAC1BC,QAD0B,EAE1BC,YAF0B;EAAA,gBAGhBD,QAHgB,mBAGMC,YAHN;AAAA,CAArB;;;;AAIA,IAAMC,YAAY,GAAG,SAAfA,YAAe,CAC1BC,OAD0B;EAAA,4BAEJA,OAFI;AAAA,CAArB;;;;AAGA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CACzBC,WADyB,EAEzBJ,YAFyB;EAAA,2BAGJI,WAHI,yBAG2BJ,YAH3B;AAAA,CAApB;;;;AAIA,IAAMK,WAAW,GAAG,SAAdA,WAAc,CACzBH,OADyB,EAEzBE,WAFyB;EAAA,2BAGJF,OAHI,wBAGsBE,WAHtB;AAAA,CAApB;;;;AAKA,IAAME,SAAS,GAAG,SAAZA,SAAY,CACvBC,IADuB;EAAA,OAEjBA,IAFiB;AAAA,CAAlB;;;;AAGA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CACzBD,IADyB;EAAA,OAEnBA,IAFmB;AAAA,CAApB;;;AAIA,IAAME,cAAc,GAAG;EAC5BP,OAAO,EAAE,gBADmB;EAE5BQ,KAAK,EAAE;AAFqB,CAAvB;;AAIA,IAAMC,cAAc,GAAG;EAC5BT,OAAO,EAAE,gBADmB;EAE5BQ,KAAK,EAAE;AAFqB,CAAvB"
+}

@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -21,7 +19,7 @@ var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
 var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
 
-var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
+var _MsgWatch = require("../../constants/MsgWatch");
 
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
@@ -37,10 +35,13 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 var _class;
 
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 var actionCompleted = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     actionFailed = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
     forActionType = _WatchActions.WatchActionTypes.ADD_ITEM;
-var notSelected = _MsgWatch["default"].notSelected;
 var CL_BT_DIV = 'bt-flat__div';
 var S2 = {
   DIALOG: {
@@ -139,11 +140,11 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
       var msg = [];
 
       if (!_this.groupCaption) {
-        msg.push(notSelected('Group'));
+        msg.push((0, _MsgWatch.notSelected)('Group'));
       }
 
       if (!_this.listCaption) {
-        msg.push(notSelected('List'));
+        msg.push((0, _MsgWatch.notSelected)('List'));
       }
 
       msg.isValid = msg.length === 0 ? true : false;

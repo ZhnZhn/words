@@ -15,14 +15,12 @@ var _WatchDefault = _interopRequireDefault(require("../../constants/WatchDefault
 
 var _Type = require("../../constants/Type");
 
-var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
+var _MsgWatch = require("../../constants/MsgWatch");
 
 var _Logic = _interopRequireDefault(require("./Logic"));
 
 var STORAGE_KEY = 'WATCH_LIST_WORDS',
     DIALOG_CAPTION = 'Watch List:';
-var WATCH_SAVED = _MsgWatch["default"].WATCH_SAVED,
-    WATCH_PREV = _MsgWatch["default"].WATCH_PREV;
 var findGroup = _Logic["default"].findGroup,
     addItem = _Logic["default"].addItem,
     removeItem = _Logic["default"].removeItem,
@@ -111,7 +109,7 @@ var WatchListSlice = {
         if (isShowDialog) {
           _this2.onShowModalDialog(_Type.MD_MSG, {
             caption: DIALOG_CAPTION,
-            descr: WATCH_SAVED
+            descr: _MsgWatch.WATCH_SAVED
           });
         }
       })["catch"](function (error) {
@@ -122,7 +120,7 @@ var WatchListSlice = {
     } else {
       this.onShowModalDialog(_Type.MD_MSG, {
         caption: DIALOG_CAPTION,
-        descr: WATCH_PREV
+        descr: _MsgWatch.WATCH_PREV
       });
     }
   },

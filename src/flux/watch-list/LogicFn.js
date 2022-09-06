@@ -1,21 +1,18 @@
 
-import MsgWatch from '../../constants/MsgWatch'
-
-import ut from '../../utils/fnUtil';
-
-const CAPTION = 'caption'
-    , GROUPS = 'groups'
-    , LISTS = 'lists';
-
-const  {
+import {
   notFoundItem,
   groupExisted,
   listExisted,
   itemExisted,
   ALERT_DND_LIST,
   ALERT_DND_ITEM
-} = MsgWatch;
+} from '../../constants/MsgWatch';
 
+import ut from '../../utils/fnUtil';
+
+const CAPTION = 'caption'
+, GROUPS = 'groups'
+, LISTS = 'lists';
 
 const LogicFn = {
 
@@ -60,7 +57,7 @@ const LogicFn = {
    };
  },
 
- 
+
 
  /* for DragDrop */
   filter : ut.imArr.filterByPropFn(CAPTION),

@@ -5,7 +5,9 @@ import withTheme from '../hoc/withTheme'
 import styleConfig from '../dialogs/Dialog.Style'
 
 import WatchActions, { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
-import Msg from '../../constants/MsgWatch';
+import {
+  notSelected
+} from '../../constants/MsgWatch';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import RowInputSelect from './RowInputSelect'
@@ -16,8 +18,6 @@ import A from './Atoms';
 const actionCompleted = WAT.EDIT_WATCH_COMPLETED
     , actionFailed =  WAT.EDIT_WATCH_FAILED
     , forActionType = WAT.ADD_ITEM;
-
-const { notSelected } = Msg;
 
 const CL_BT_DIV = 'bt-flat__div';
 
@@ -72,7 +72,7 @@ class AddToWatchDialog extends Component {
        this.setState({ validationMessages:data.messages });
     }
   }
-  
+
   componentDidUpdate(prevProps, prevState){
     //Update group and list options from store
     const { isShow, store } = this.props;

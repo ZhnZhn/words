@@ -7,17 +7,16 @@ import WatchDefault from '../../constants/WatchDefault';
 import {
   MD_MSG
 }  from '../../constants/Type';
-import MsgWatch from '../../constants/MsgWatch';
+import {
+  WATCH_SAVED,
+  WATCH_PREV
+} from '../../constants/MsgWatch';
 
 import Logic from './Logic';
 
 const STORAGE_KEY = 'WATCH_LIST_WORDS'
 , DIALOG_CAPTION ='Watch List:';
 
-const {
-  WATCH_SAVED,
-  WATCH_PREV
-} = MsgWatch;
 const {
   findGroup,
   addItem,

@@ -6,7 +6,10 @@ import styleConfig from '../dialogs/Dialog.Style';
 
 import Actions, { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
 
-import Msg from '../../constants/MsgWatch';
+import {
+  notSelected,
+  emptyName
+} from '../../constants/MsgWatch';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-tabpane/TabPane';
@@ -33,10 +36,6 @@ const {
   RENAME_LIST,
   DELETE_LIST
 } = WAT;
-const {
-  notSelected,
-  emptyName
-} = Msg;
 
 class EditListDialog extends Component {
   /*

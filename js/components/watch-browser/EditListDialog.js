@@ -17,7 +17,7 @@ var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
 var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
 
-var _MsgWatch = _interopRequireDefault(require("../../constants/MsgWatch"));
+var _MsgWatch = require("../../constants/MsgWatch");
 
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
@@ -48,8 +48,6 @@ var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
     CREATE_LIST = _WatchActions.WatchActionTypes.CREATE_LIST,
     RENAME_LIST = _WatchActions.WatchActionTypes.RENAME_LIST,
     DELETE_LIST = _WatchActions.WatchActionTypes.DELETE_LIST;
-var notSelected = _MsgWatch["default"].notSelected,
-    emptyName = _MsgWatch["default"].emptyName;
 
 var EditListDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(EditListDialog, _Component);
@@ -102,8 +100,8 @@ var EditListDialog = /*#__PURE__*/function (_Component) {
             actionCompleted: EDIT_WATCH_COMPLETED,
             actionFailed: EDIT_WATCH_FAILED,
             forActionType: CREATE_LIST,
-            msgOnNotSelect: notSelected,
-            msgOnIsEmptyName: emptyName,
+            msgOnNotSelect: _MsgWatch.notSelected,
+            msgOnIsEmptyName: _MsgWatch.emptyName,
             onCreate: createList,
             onClose: onClose
           })
@@ -117,8 +115,8 @@ var EditListDialog = /*#__PURE__*/function (_Component) {
             actionCompleted: EDIT_WATCH_COMPLETED,
             actionFailed: EDIT_WATCH_FAILED,
             forActionType: RENAME_LIST,
-            msgOnNotSelect: notSelected,
-            msgOnIsEmptyName: emptyName,
+            msgOnNotSelect: _MsgWatch.notSelected,
+            msgOnIsEmptyName: _MsgWatch.emptyName,
             onRename: renameList,
             onClose: onClose
           })
@@ -132,7 +130,7 @@ var EditListDialog = /*#__PURE__*/function (_Component) {
             actionCompleted: EDIT_WATCH_COMPLETED,
             actionFailed: EDIT_WATCH_FAILED,
             forActionType: DELETE_LIST,
-            msgOnNotSelect: notSelected,
+            msgOnNotSelect: _MsgWatch.notSelected,
             onDelete: deleteList,
             onClose: onClose
           })
