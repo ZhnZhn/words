@@ -7,17 +7,15 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _has = _interopRequireDefault(require("../has"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var BORDER_LEFT = 'border-left';
-var DRAG_START_BORDER_LEFT = "4px solid #d64336";
-var LONG_TOUCH = 1000;
+var BORDER_LEFT = 'border-left',
+    DRAG_START_BORDER_LEFT = "4px solid #d64336",
+    LONG_TOUCH = 1000;
 var _assign = Object.assign;
 
 var _getTouchClietX = function _getTouchClietX(touches) {
@@ -34,147 +32,124 @@ var _getClientX = function _getClientX(ev) {
   return _getTouchClietX(targetTouches) || _getTouchClietX(changedTouches) || 0;
 };
 
-var _styleNode = function _styleNode(node) {
-  node.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT);
-};
-
-var _setMoveStyle = function _setMoveStyle(node, dX) {
-  _assign(node.style, {
+var _setMoveStyle = function _setMoveStyle(el, dX) {
+  _assign(el.style, {
     right: dX + 'px',
     opacity: 1 - 0.5 * Math.abs(dX) / 60
   });
 };
 
-var _setEndStyle = function _setEndStyle(node, isInitialStyle) {
-  node.style.removeProperty(BORDER_LEFT);
+var _setEndStyle = function _setEndStyle(el, isInitialStyle) {
+  el.style.removeProperty(BORDER_LEFT);
 
   if (isInitialStyle) {
-    _assign(node.style, {
+    _assign(el.style, {
       right: 0,
       opacity: 1
     });
   }
 };
 
-var _noopFn = function _noopFn() {};
+var _gestureStartImpl = function _gestureStartImpl(refIs, el) {
+  (0, _uiApi.setRefValue)(refIs, true);
+  el.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT);
+};
 
-var GestureSwipeX = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(GestureSwipeX, _Component);
+var HAS_TOUCH = _has["default"].HAS_TOUCH;
 
-  /*
-  static propTypes = {
-    style: PropTypes.object,
-    setTimeStamp: PropTypes.func,
-    onGesture: PropTypes.func
-  }
-  */
-  //_clientX = 0
-  //_isGestureStart = false
-  //_isMoveStart = false
-  function GestureSwipeX(props) {
-    var _this;
+var FN_NOOP = function FN_NOOP() {};
 
-    _this = _Component.call(this, props) || this;
+var GestureSwipeX = function GestureSwipeX(_ref) {
+  var style = _ref.style,
+      _ref$setTimeStamp = _ref.setTimeStamp,
+      setTimeStamp = _ref$setTimeStamp === void 0 ? FN_NOOP : _ref$setTimeStamp,
+      onGesture = _ref.onGesture,
+      children = _ref.children;
 
-    _this._gestureStartImpl = function (node) {
-      _this._isGestureStart = true;
+  var _refIsGestureStart = (0, _uiApi.useRef)(false),
+      _refGestureId = (0, _uiApi.useRef)(),
+      _refIsMoveStart = (0, _uiApi.useRef)(false),
+      _refClientX = (0, _uiApi.useRef)(0),
+      _useMemo = (0, _uiApi.useMemo)(function () {
+    return [//_gestureStart,
+    function (evt) {
+      var _el = evt.currentTarget;
 
-      _styleNode(node);
-    };
-
-    _this._gestureStart = function (ev) {
-      var node = ev.currentTarget;
-
-      if (!_this._isGestureStart) {
-        _this._gestureId = setTimeout(function () {
-          return _this._gestureStartImpl(node);
-        }, LONG_TOUCH);
+      if (!(0, _uiApi.getRefValue)(_refIsGestureStart)) {
+        (0, _uiApi.setRefValue)(_refGestureId, setTimeout(function () {
+          return _gestureStartImpl(_refIsGestureStart, _el);
+        }, LONG_TOUCH));
       } else {
-        clearTimeout(_this._gestureId);
-        _this._isGestureStart = false;
+        clearTimeout((0, _uiApi.getRefValue)(_refGestureId));
+        (0, _uiApi.setRefValue)(_refIsGestureStart, false);
 
-        _setEndStyle(node, true);
+        _setEndStyle(_el, true);
       }
-    };
-
-    _this._gestureMove = function (ev) {
-      if (_this._isGestureStart) {
-        var _clientX = _getClientX(ev);
+    }, // _gestureMove
+    function (evt) {
+      if ((0, _uiApi.getRefValue)(_refIsGestureStart)) {
+        var _clientX = _getClientX(evt);
 
         if (_clientX) {
-          if (!_this._isMoveStart) {
-            _this._clientX = _clientX;
-            _this._isMoveStart = true;
+          if (!(0, _uiApi.getRefValue)(_refIsMoveStart)) {
+            (0, _uiApi.setRefValue)(_refClientX, _clientX);
+            (0, _uiApi.setRefValue)(_refIsMoveStart, true);
           } else {
-            var _dX = _this._clientX - _clientX;
+            var _dX = (0, _uiApi.getRefValue)(_refClientX) - _clientX;
 
             if (_dX < 0) {
-              _setMoveStyle(ev.currentTarget, _dX);
+              _setMoveStyle(evt.currentTarget, _dX);
             }
           }
         }
       }
-    };
+    }, // _gestureEnd
 
-    _this._gestureEnd = function (ev) {
-      var _this$props = _this.props,
-          setTimeStamp = _this$props.setTimeStamp,
-          onGesture = _this$props.onGesture;
-
-      if (_this._isGestureStart) {
+    /*eslint-disable react-hooks/exhaustive-deps */
+    function (evt) {
+      if ((0, _uiApi.getRefValue)(_refIsGestureStart)) {
         var _isInitialStyle = false;
 
-        if (_this._isMoveStart) {
-          ev.preventDefault();
-          setTimeStamp(ev.timeStamp);
+        if ((0, _uiApi.getRefValue)(_refIsMoveStart)) {
+          evt.preventDefault();
+          setTimeStamp(evt.timeStamp);
 
-          var _clientX = _getClientX(ev),
-              _dX = _this._clientX - _clientX;
+          var _clientX = _getClientX(evt),
+              _dX = (0, _uiApi.getRefValue)(_refClientX) - _clientX;
 
           _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
-          _this._isMoveStart = false;
+          (0, _uiApi.setRefValue)(_refIsMoveStart, false);
         }
 
-        _this._isGestureStart = false;
+        (0, _uiApi.setRefValue)(_refIsGestureStart, false);
 
-        _setEndStyle(ev.currentTarget, _isInitialStyle);
+        _setEndStyle(evt.currentTarget, _isInitialStyle);
       } else {
-        clearTimeout(_this._gestureId);
+        clearTimeout((0, _uiApi.getRefValue)(_refGestureId));
       }
-    };
+    }];
+  }, []),
+      _gestureStart = _useMemo[0],
+      _gestureMove = _useMemo[1],
+      _gestureEnd = _useMemo[2],
+      _handlers = (0, _uiApi.getRefValue)((0, _uiApi.useRef)(HAS_TOUCH ? {
+    onTouchStart: _gestureStart,
+    onTouchMove: _gestureMove,
+    onTouchEnd: _gestureEnd
+  } : {
+    onMouseDown: _gestureStart,
+    onMouseMove: _gestureMove,
+    onMouseUp: _gestureEnd
+  }));
 
-    _this._handlers = _has["default"].HAS_TOUCH ? {
-      onTouchStart: _this._gestureStart,
-      onTouchMove: _this._gestureMove,
-      onTouchEnd: _this._gestureEnd
-    } : {
-      onMouseDown: _this._gestureStart,
-      onMouseMove: _this._gestureMove,
-      onMouseUp: _this._gestureEnd
-    };
-    return _this;
-  }
-
-  var _proto = GestureSwipeX.prototype;
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        style = _this$props2.style,
-        children = _this$props2.children;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
-      role: "presentation",
-      style: style
-    }, this._handlers, {
-      children: children
-    }));
-  };
-
-  return GestureSwipeX;
-}(_react.Component);
-
-GestureSwipeX.defaultProps = {
-  setTimeStamp: _noopFn
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
+    role: "presentation",
+    style: style
+  }, _handlers, {
+    children: children
+  }));
 };
+
 var _default = GestureSwipeX;
 exports["default"] = _default;
 //# sourceMappingURL=GestureSwipeX.js.map

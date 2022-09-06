@@ -1,10 +1,15 @@
-import { Component } from 'react';
+import {
+  useRef,
+  useMemo,
+  getRefValue,
+  setRefValue
+} from '../uiApi';
+
 import has from '../has';
 
-const BORDER_LEFT = 'border-left';
-const DRAG_START_BORDER_LEFT = "4px solid #d64336";
-
-const LONG_TOUCH = 1000;
+const BORDER_LEFT = 'border-left'
+, DRAG_START_BORDER_LEFT = "4px solid #d64336"
+, LONG_TOUCH = 1000;
 
 const _assign = Object.assign;
 
@@ -19,125 +24,122 @@ const _getClientX = (ev) => {
     || _getTouchClietX(changedTouches)
     || 0;
 };
-
-const _styleNode = (node) => {
-  node.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT)
-};
-const _setMoveStyle = (node, dX) => {
-  _assign(node.style, {
+const _setMoveStyle = (el, dX) => {
+  _assign(el.style, {
     right: dX + 'px',
     opacity: (1 - (0.5*Math.abs(dX))/60)
   })
 };
-const _setEndStyle = (node, isInitialStyle) => {
-  node.style.removeProperty(BORDER_LEFT)
+const _setEndStyle = (el, isInitialStyle) => {
+  el.style.removeProperty(BORDER_LEFT)
   if (isInitialStyle) {
-    _assign(node.style, {
+    _assign(el.style, {
       right: 0,
       opacity: 1
     })
   }
 };
 
-const _noopFn = () => {};
+const _gestureStartImpl = (
+  refIs,
+  el
+) => {
+  setRefValue(refIs, true)
+  el.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT)
+}
 
-class GestureSwipeX extends Component {
-  /*
-  static propTypes = {
-    style: PropTypes.object,
-    setTimeStamp: PropTypes.func,
-    onGesture: PropTypes.func
-  }
-  */
+const { HAS_TOUCH } = has;
+const FN_NOOP = () => {};
 
-  static defaultProps = {
-    setTimeStamp: _noopFn
-  }
+const GestureSwipeX = ({
+  style,
+  setTimeStamp=FN_NOOP,
+  onGesture,
+  children
+}) => {
+  const _refIsGestureStart = useRef(false)
+  , _refGestureId = useRef()
+  , _refIsMoveStart = useRef(false)
+  , _refClientX = useRef(0)
+  , [
+    _gestureStart,
+    _gestureMove,
+    _gestureEnd
+  ] = useMemo(() => [
+    //_gestureStart,
+    (evt) => {
+      const _el = evt.currentTarget;
+      if (!getRefValue(_refIsGestureStart)) {
+       setRefValue(
+         _refGestureId,
+         setTimeout(
+           () => _gestureStartImpl(_refIsGestureStart, _el),
+           LONG_TOUCH
+         ))
+      } else {
+        clearTimeout(getRefValue(_refGestureId))
+        setRefValue(_refIsGestureStart, false)
+        _setEndStyle(_el, true)
+      }
+    },
+    // _gestureMove
+    (evt) => {
+      if (getRefValue(_refIsGestureStart)) {
+        const _clientX = _getClientX(evt);
+        if (_clientX) {
+          if (!getRefValue(_refIsMoveStart)){
+            setRefValue(_refClientX, _clientX)
+            setRefValue(_refIsMoveStart, true)
+          } else {
+            const _dX = getRefValue(_refClientX) - _clientX;
+            if (_dX < 0) {
+              _setMoveStyle(evt.currentTarget, _dX)
+            }
+          }
+        }
+      }
+    },
+    // _gestureEnd
+    /*eslint-disable react-hooks/exhaustive-deps */
+    (evt) => {
+      if (getRefValue(_refIsGestureStart)) {
+        let _isInitialStyle = false;
+        if (getRefValue(_refIsMoveStart)) {
+          evt.preventDefault()
+          setTimeStamp(evt.timeStamp)
+          const _clientX = _getClientX(evt)
+          , _dX = getRefValue(_refClientX) - _clientX;
+          _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
+          setRefValue(_refIsMoveStart, false)
+        }
+        setRefValue(_refIsGestureStart, false)
+        _setEndStyle(evt.currentTarget, _isInitialStyle)
+      } else {
+        clearTimeout(getRefValue(_refGestureId))
+      }
+    }
+  ], [])
+  // onGesture, setTimeStamp
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , _handlers = getRefValue(useRef(HAS_TOUCH ? {
+    onTouchStart: _gestureStart,
+    onTouchMove: _gestureMove,
+    onTouchEnd: _gestureEnd
+  } : {
+    onMouseDown: _gestureStart,
+    onMouseMove: _gestureMove,
+    onMouseUp: _gestureEnd
+  }));
 
-  //_clientX = 0
-  //_isGestureStart = false
-  //_isMoveStart = false
-
-  constructor(props){
-    super(props)
-    this._handlers = has.HAS_TOUCH ? {
-        onTouchStart: this._gestureStart,
-        onTouchMove: this._gestureMove,
-        onTouchEnd: this._gestureEnd
-      } : {
-        onMouseDown: this._gestureStart,
-        onMouseMove: this._gestureMove,
-        onMouseUp: this._gestureEnd
-     }
-  }
-
-
-  _gestureStartImpl = (node) => {
-    this._isGestureStart = true
-    _styleNode(node)
-  }
-   _gestureStart = (ev) => {
-     const node = ev.currentTarget;
-     if (!this._isGestureStart) {
-      this._gestureId = setTimeout(
-        () => this._gestureStartImpl(node),
-        LONG_TOUCH
-      )
-     } else {
-       clearTimeout(this._gestureId)
-       this._isGestureStart = false
-       _setEndStyle(node, true)
-     }
-   }
-
-   _gestureMove = (ev) => {
-     if (this._isGestureStart) {
-       const _clientX = _getClientX(ev);
-       if (_clientX) {
-         if (!this._isMoveStart){
-           this._clientX = _clientX
-           this._isMoveStart = true
-         } else {
-           const _dX = this._clientX - _clientX;
-           if (_dX < 0) {
-             _setMoveStyle(ev.currentTarget, _dX)
-           }
-         }
-       }
-     }
-   }
-
-   _gestureEnd = (ev) => {
-     const { setTimeStamp, onGesture } = this.props;
-     if (this._isGestureStart) {
-       let _isInitialStyle = false;
-       if (this._isMoveStart) {
-         ev.preventDefault()
-         setTimeStamp(ev.timeStamp)
-         const _clientX = _getClientX(ev)
-         , _dX = this._clientX - _clientX;
-         _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
-         this._isMoveStart = false
-       }
-       this._isGestureStart = false
-       _setEndStyle(ev.currentTarget, _isInitialStyle)
-     } else {
-       clearTimeout(this._gestureId)
-     }
-   }
-
-  render(){
-    const { style, children } = this.props;
-    return (
-      <div
-        role="presentation"
-        style={style}
-        {...this._handlers}
-      >
-        {children}
-      </div>
-    );
-  }
+  return (
+    <div
+      role="presentation"
+      style={style}
+      {..._handlers}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default GestureSwipeX
