@@ -1,97 +1,88 @@
-import { Component } from 'react'
+import {
+  forwardRef,
+  useRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  getRefValue,
+  focusRefElement,
+  getRefInputValue
+} from '../uiApi';
 
-import has from '../has'
+import has from '../has';
+import A from '../Comp';
 
-import Comp from '../Comp'
+const { HAS_TOUCH } = has;
 
-const {
-  ButtonClear,
-  FlatButton,
-  TextField
-} = Comp;
-
-const S = {
-  TF_LABEL: {
-    top: 28
-  },
-  TF_INPUT: {
-    fontSize: '24px'
-  },
-  BT_CLEAR: {
-    position: 'relative',
-    top: 18,
-    left: 6
-  },
-  BT_LOAD: {
-    position: 'relative',
-    top: 22,
-    marginLeft: 8
-  }
+const S_TF_LABEL = {
+  top: 28
+}
+, S_TF_INPUT = {
+  fontSize: '24px'
+}
+, S_BT_CLEAR = {
+  position: 'relative',
+  top: 18,
+  left: 6
+}
+, S_BT_LOAD = {
+  position: 'relative',
+  top: 22,
+  marginLeft: 8
 };
 
-class InputWord extends Component {
+const DF_INITIAL_VALUE = 'example';
 
-  static defaultProps = {
-    initValue: 'example'
-  }
+const InputWord = forwardRef(({
+  initValue=DF_INITIAL_VALUE,
+  TS,
+  onEnter
+}, ref) => {
+  const _refTextField = useRef()
+  , _hClear = useCallback(() => {
+     const _tfInst = getRefValue(_refTextField);
+     if (_tfInst) {
+       _tfInst.setValue('')
+     }
+  }, []);
 
-  componentDidMount(){
-    if (this.iWord) {
-      this.iWord.focus()
-    }
-  }
+  useEffect(() => {
+    focusRefElement(_refTextField)
+  }, [])
 
-  _hClear = () => {
-    if (this.iWord) {
-      this.iWord.setValue('')
-    }
-  }
+  useImperativeHandle(ref, () => ({
+    getValue: () => getRefInputValue(_refTextField)
+  }), [])
 
-  _ref = n => this.iWord = n
-
-  render(){
-    const {
-        TS,
-        initValue,
-        onEnter
-      } = this.props
-    , _elBt = has.HAS_TOUCH
-       ? (<ButtonClear
-           style={S.BT_CLEAR}
-           onClick={this._hClear}
-         />)
-       : (<FlatButton
-            caption="Load"
-            tabIndex={-1}
-            rootStyle={{ ...TS.BT.FLAT, ...S.BT_LOAD}}
-            clDiv={TS.BT.CL_FLAT_DIV}
-            isPrimary={true}
-            onClick={onEnter}
-          />);
-
-    return (
-      <>
-        <TextField
-          ref={this._ref}
-          rootStyle={TS.INPUT_ROOT}
-          labelStyle={S.TF_LABEL}
-          inputStyle={S.TF_INPUT}
-          caption="Word"
-          accessKey="W"
-          spellCheck={true}
-          initValue={initValue}
-          onEnter={onEnter}
-        />
-        {_elBt}
-      </>
-    );
-  }
-
-  getValue(){
-    return this.iWord
-      ? this.iWord.getValue()
-      : void 0;
-  }
-}
+  return (
+    <>
+      <A.TextField
+        ref={_refTextField}
+        rootStyle={TS.INPUT_ROOT}
+        labelStyle={S_TF_LABEL}
+        inputStyle={S_TF_INPUT}
+        caption="Word"
+        accessKey="W"
+        spellCheck={true}
+        initValue={initValue}
+        onEnter={onEnter}
+      />
+      { HAS_TOUCH
+           ? (<A.ButtonClear
+               style={S_BT_CLEAR}
+               onClick={_hClear}
+             />)
+           : (<A.FlatButton
+                caption="Load"
+                tabIndex={-1}
+                rootStyle={{...TS.BT.FLAT, ...S_BT_LOAD}}
+                clDiv={TS.BT.CL_FLAT_DIV}
+                isPrimary={true}
+                onClick={onEnter}
+              />)
+        }
+    </>
+  );
+})
 
 export default InputWord
