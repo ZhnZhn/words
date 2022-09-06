@@ -49,14 +49,6 @@ var PaneLogic = {
       };
     }
   }
-  /*
-  togglePane(itemConf){
-    return {
-      id: itemConf.paneId
-    };
-  }
-  */
-
 };
 var CompLogic = {
   crAbout: function crAbout(store) {
@@ -75,7 +67,7 @@ var ComponentSlice = {
       option = {};
     }
 
-    option.modalDialogType = _Type.ModalDialog.EXCEPTION;
+    option.modalDialogType = _Type.MD_EXCEPTION;
     this.trigger(_ComponentActions.T.SHOW_MODAL_DIALOG, option);
   },
   onShowBrowser: function onShowBrowser(browserId) {

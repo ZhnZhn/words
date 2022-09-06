@@ -23,7 +23,7 @@ var _AddToWatchDialog = _interopRequireDefault(require("../watch-browser/AddToWa
 
 var _r2;
 
-var _r = (_r2 = {}, _r2[_Type.ModalDialog.SETTINGS] = _SettingsDialog["default"], _r2[_Type.ModalDialog.ALERT_DIALOG] = _AlertDialog["default"], _r2[_Type.ModalDialog.EXCEPTION] = _AlertDialog2["default"], _r2[_Type.ModalDialog.MSG] = _MsgDialog["default"], _r2[_Type.ModalDialog.EDIT_WATCH_GROUP] = _EditGroupDialog["default"], _r2[_Type.ModalDialog.EDIT_WATCH_LIST] = _EditListDialog["default"], _r2[_Type.ModalDialog.ADD_TO_WATCH] = _AddToWatchDialog["default"], _r2);
+var _r = (_r2 = {}, _r2[_Type.MD_SETTINGS] = _SettingsDialog["default"], _r2[_Type.MD_ALERT_DIALOG] = _AlertDialog["default"], _r2[_Type.MD_EXCEPTION] = _AlertDialog2["default"], _r2[_Type.MD_MSG] = _MsgDialog["default"], _r2[_Type.MD_EDIT_WATCH_GROUP] = _EditGroupDialog["default"], _r2[_Type.MD_EDIT_WATCH_LIST] = _EditListDialog["default"], _r2[_Type.MD_ADD_TO_WATCH] = _AddToWatchDialog["default"], _r2);
 
 var RouterModal = {
   getDialog: function getDialog(type) {

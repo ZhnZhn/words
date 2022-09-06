@@ -1,10 +1,14 @@
 import { Component } from 'react';
 //import PropTypes from 'prop-types'
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from '../styles/MenuBrowserStyle'
+import withTheme from '../hoc/withTheme';
+import styleConfig from '../styles/MenuBrowserStyle';
 
-import { ModalDialog } from '../../constants/Type';
+import {
+  MD_EDIT_WATCH_GROUP,
+  MD_EDIT_WATCH_LIST
+} from '../../constants/Type';
+
 import ComponentActions from '../../flux/actions/ComponentActions';
 import WatchActions from '../../flux/actions/WatchActions';
 
@@ -18,9 +22,9 @@ const C_FILL_OPEN = '#80c040';
 const CL_WATCH_ITEM = 'row__type2-topic not-selected';
 
 const DRAG = {
-  GROUP : 'GROUP',
-  LIST : 'LIST',
-  ITEM : 'ITEM'
+  GROUP: 'GROUP',
+  LIST: 'LIST',
+  ITEM: 'ITEM'
 };
 
 const COLOR_CAPTION = '#9e9e9e';
@@ -146,10 +150,10 @@ class WatchBrowser extends Component {
   }
 
   _handlerEditGroup() {
-    ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_GROUP)
+    ComponentActions.showModalDialog(MD_EDIT_WATCH_GROUP)
   }
   _handlerEditList() {
-    ComponentActions.showModalDialog(ModalDialog.EDIT_WATCH_LIST)
+    ComponentActions.showModalDialog(MD_EDIT_WATCH_LIST)
   }
 
   _crGroupDraggableOption = (isModeEdit, option) => {
@@ -233,7 +237,7 @@ class WatchBrowser extends Component {
   _renderItems = (items, groupCaption, listCaption) => {
       const {isModeEdit} = this.state;
       return items.map((item, index) => {
-        const { caption } = item;        
+        const { caption } = item;
         return (
             <WatchItem
                key={caption}

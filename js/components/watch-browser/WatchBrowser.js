@@ -33,7 +33,7 @@ var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _dec, _dec2, _dec3, _dec4, _class, _class2, _temp;
+var _dec, _dec2, _dec3, _dec4, _class, _class2;
 
 var C_FILL_OPEN = '#80c040';
 var CL_WATCH_ITEM = 'row__type2-topic not-selected';
@@ -83,7 +83,7 @@ var T = {
 };
 var saveWatch = _WatchActions["default"].saveWatch,
     removeWatchItem = _WatchActions["default"].removeWatchItem;
-var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorators["default"].withDnDGroup(DRAG, _WatchActions["default"]), _dec3 = _Decorators["default"].withDnDList(DRAG, _WatchActions["default"]), _dec4 = _Decorators["default"].withDnDItem(DRAG, _WatchActions["default"]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
+var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorators["default"].withDnDGroup(DRAG, _WatchActions["default"]), _dec3 = _Decorators["default"].withDnDList(DRAG, _WatchActions["default"]), _dec4 = _Decorators["default"].withDnDItem(DRAG, _WatchActions["default"]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WatchBrowser, _Component);
 
   /*
@@ -256,11 +256,11 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
   };
 
   _proto._handlerEditGroup = function _handlerEditGroup() {
-    _ComponentActions["default"].showModalDialog(_Type.ModalDialog.EDIT_WATCH_GROUP);
+    _ComponentActions["default"].showModalDialog(_Type.MD_EDIT_WATCH_GROUP);
   };
 
   _proto._handlerEditList = function _handlerEditList() {
-    _ComponentActions["default"].showModalDialog(_Type.ModalDialog.EDIT_WATCH_LIST);
+    _ComponentActions["default"].showModalDialog(_Type.MD_EDIT_WATCH_LIST);
   };
 
   _proto._handlerClickItem = function _handlerClickItem(item) {
@@ -317,7 +317,7 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
   return WatchBrowser;
 }(_react.Component), _class2.defaultProps = {
   onClickItem: function onClickItem() {}
-}, _temp)) || _class) || _class) || _class) || _class);
+}, _class2)) || _class) || _class) || _class) || _class);
 
 var _default = (0, _withTheme["default"])(WatchBrowser);
 

@@ -109,7 +109,7 @@ var WatchListSlice = {
         _this2.isWatchEdited = false;
 
         if (isShowDialog) {
-          _this2.onShowModalDialog(_Type.ModalDialog.MSG, {
+          _this2.onShowModalDialog(_Type.MD_MSG, {
             caption: DIALOG_CAPTION,
             descr: WATCH_SAVED
           });
@@ -120,7 +120,7 @@ var WatchListSlice = {
         /*eslint-enable no-console*/
       });
     } else {
-      this.onShowModalDialog(_Type.ModalDialog.MSG, {
+      this.onShowModalDialog(_Type.MD_MSG, {
         caption: DIALOG_CAPTION,
         descr: WATCH_PREV
       });

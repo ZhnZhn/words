@@ -1,7 +1,9 @@
-import { T } from '../actions/ComponentActions'
+import { T } from '../actions/ComponentActions';
 
-import Factory from '../logic/Factory'
-import { ModalDialog as MD } from '../../constants/Type'
+import Factory from '../logic/Factory';
+import {
+  MD_EXCEPTION
+} from '../../constants/Type';
 
 const DF_WATCH_PANE_ID = 'P_WD_W';
 
@@ -28,31 +30,22 @@ const PaneLogic = {
       slice[type] = true;
       return { Comp };
     }
-  },
-
-  /*
-  togglePane(itemConf){
-    return {
-      id: itemConf.paneId
-    };
   }
-  */
-
-}
+};
 
 const CompLogic = {
   crAbout(store) {
     const Comp = Factory.crAbout(store)
     return { Comp };
   }
-}
+};
 
 const ComponentSlice = {
   dialogInit: {},
   paneInit: {},
 
   showAlertDialog(option={}){
-   option.modalDialogType = MD.EXCEPTION;
+   option.modalDialogType = MD_EXCEPTION;
    this.trigger(T.SHOW_MODAL_DIALOG, option);
  },
 

@@ -4,20 +4,33 @@ import { T as CAT } from '../actions/ComponentActions';
 
 import { WatchActionTypes as WAT } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
-import { ModalDialog as MD }  from '../../constants/Type';
+import {
+  MD_MSG
+}  from '../../constants/Type';
 import MsgWatch from '../../constants/MsgWatch';
 
 import Logic from './Logic';
 
 const STORAGE_KEY = 'WATCH_LIST_WORDS'
-    , DIALOG_CAPTION ='Watch List:';
+, DIALOG_CAPTION ='Watch List:';
 
-const { WATCH_SAVED, WATCH_PREV } = MsgWatch;
 const {
-  findGroup, addItem, removeItem,
-  dragDropItem, dragDropList, dragDropGroup,
-  addGroup, renameGroup, deleteGroup,
-  createList, renameList, deleteList
+  WATCH_SAVED,
+  WATCH_PREV
+} = MsgWatch;
+const {
+  findGroup,
+  addItem,
+  removeItem,
+  dragDropItem,
+  dragDropList,
+  dragDropGroup,
+  addGroup,
+  renameGroup,
+  deleteGroup,
+  createList,
+  renameList,
+  deleteList
 } = Logic;
 
 const WatchListSlice = {
@@ -88,7 +101,7 @@ const WatchListSlice = {
           .then(()=>{
              this.isWatchEdited = false;
              if (isShowDialog) {
-               this.onShowModalDialog(MD.MSG, {
+               this.onShowModalDialog(MD_MSG, {
                   caption: DIALOG_CAPTION,
                   descr: WATCH_SAVED
                })
@@ -100,7 +113,7 @@ const WatchListSlice = {
              /*eslint-enable no-console*/
           })
     } else {
-       this.onShowModalDialog(MD.MSG, {
+       this.onShowModalDialog(MD_MSG, {
           caption: DIALOG_CAPTION,
           descr: WATCH_PREV
        })

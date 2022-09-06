@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/constants/Msg.js"],"names":["Msg","ITEM_EXISTED"],"mappings":";;;;AACA,IAAMA,GAAG,GAAG;AACVC,EAAAA,YAAY,EAAE;AAAA,WAAM,uCAAN;AAAA;AADJ,CAAZ;eAIeD,G","sourcesContent":["\r\nconst Msg = {\r\n  ITEM_EXISTED: () => 'Item in selected List already existed'\r\n};\r\n\r\nexport default Msg\r\n"],"file":"Msg.js"}
