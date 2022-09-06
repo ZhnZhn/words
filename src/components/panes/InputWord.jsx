@@ -64,7 +64,7 @@ const InputWord = forwardRef(({
         caption="Word"
         accessKey="W"
         spellCheck={true}
-        initValue={initValue}
+        initialValue={initValue}        
         onEnter={onEnter}
       />
       { HAS_TOUCH

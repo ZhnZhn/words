@@ -9,42 +9,31 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _uiApi = require("../uiApi");
 
-var _react = require("react");
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropsTypes from 'prop-types'
-var CL = {
-  SELECT: 'm-select',
-  LABEL: 'm-select__label',
-  DIV: 'm-textfield-input__div',
-  INPUT: 'm-textfield-input',
-  INPUT_LINE: 'm-input__line',
-  INPUT_MSG_ERR: 'm-input__msg-err'
-};
-var S = {
-  LABEL_TO_INPUT: {
-    transform: 'scale(1) translate(0px, -6px)'
-  },
-  LABEL_ON_ERROR: {
-    color: '#f44336'
-  },
-  LINE_ERROR: {
-    borderBottom: '2px solid #F44336'
-  },
-  KEY: {
-    textDecoration: 'underline'
-  }
-};
-
-var _isFn = function _isFn(fn) {
-  return typeof fn === 'function';
-};
-
-var _isStr = function _isStr(str) {
-  return typeof str === 'string';
+var _excluded = ["caption", "accessKey", "spellCheck", "initialValue", "rootStyle", "labelStyle", "inputStyle", "errorMsg", "maxLength", "onTest", "onEnter"];
+var CL_SELECT = 'm-select',
+    CL_LABEL = CL_SELECT + "__label",
+    CL_INPUT = 'm-textfield-input',
+    CL_INPUT_DIV = CL_INPUT + "__div",
+    M_INPUT = 'm-input',
+    CL_INPUT_LINE = M_INPUT + "__line",
+    CL_INPUT_MSG_ERR = M_INPUT + "__msg-err",
+    S_LABEL_TO_INPUT = {
+  transform: 'scale(1) translate(0px, -6px)'
+},
+    S_LABEL_ON_ERROR = {
+  color: '#f44336'
+},
+    S_LINE_ERROR = {
+  borderBottom: '2px solid #F44336'
+},
+    S_KEY = {
+  textDecoration: 'underline'
 };
 
 var _crCaption = function _crCaption(caption, accessKey) {
@@ -71,188 +60,125 @@ var _crCaption = function _crCaption(caption, accessKey) {
 
 var _crValue = function _crValue(initValue) {
   return initValue || '';
-};
+},
+    DF_ON_TEST = function DF_ON_TEST() {
+  return true;
+},
+    FN_NOOP = function FN_NOOP() {};
 
-var _crInitialState = function _crInitialState(props) {
-  var initValue = props.initValue,
-      onTest = props.onTest,
-      _value = _crValue(initValue);
+var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
+  var _ref$caption = _ref.caption,
+      caption = _ref$caption === void 0 ? '' : _ref$caption,
+      _ref$accessKey = _ref.accessKey,
+      accessKey = _ref$accessKey === void 0 ? '' : _ref$accessKey,
+      _ref$spellCheck = _ref.spellCheck,
+      spellCheck = _ref$spellCheck === void 0 ? false : _ref$spellCheck,
+      initialValue = _ref.initialValue,
+      rootStyle = _ref.rootStyle,
+      labelStyle = _ref.labelStyle,
+      inputStyle = _ref.inputStyle,
+      _ref$errorMsg = _ref.errorMsg,
+      errorMsg = _ref$errorMsg === void 0 ? '' : _ref$errorMsg,
+      _ref$maxLength = _ref.maxLength,
+      maxLength = _ref$maxLength === void 0 ? 18 : _ref$maxLength,
+      _ref$onTest = _ref.onTest,
+      onTest = _ref$onTest === void 0 ? DF_ON_TEST : _ref$onTest,
+      _ref$onEnter = _ref.onEnter,
+      onEnter = _ref$onEnter === void 0 ? FN_NOOP : _ref$onEnter,
+      restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded);
 
-  return {
-    initValue: initValue,
-    value: _value,
-    isPassTest: _isFn(onTest) ? onTest(_value) : true
-  };
-};
+  var _refInput = (0, _uiApi.useRef)(),
+      _useBool = (0, _useBool2["default"])(),
+      isFocus = _useBool[0],
+      setFocused = _useBool[1],
+      setNotFocused = _useBool[2],
+      _useState = (0, _uiApi.useState)(function () {
+    return _crValue(initialValue);
+  }),
+      value = _useState[0],
+      _setValue = _useState[1],
+      _hInputChange = (0, _uiApi.useCallback)(function (evt) {
+    _setValue(evt.target.value);
+  }, []),
+      _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
+    var _event = event,
+        keyCode = _event.keyCode;
 
-var TextField = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(TextField, _Component);
+    if (keyCode === 46) {
+      _setValue('');
+    } else if (keyCode === 13) {
+      onEnter(event.target.value);
+    }
+  }, [onEnter]);
 
-  /*
-  static propTypes = {
-    rootStyle: PropTypes.object,
-    caption: PropTypes.string,
-    labelStyle: PropTypes.object,
-    inputStyle: PropTypes.object,
-    errorMsg: PropTypes.string,
-    initValue: PropTypes.string,
-    accessKey: PropTypes.string,
-    spellCheck: PropTypes.bool,
-    onTest: PropTypes.func,
-    onEnter: PropTypes.func,
-  }
-  */
-  function TextField(props) {
-    var _this;
+  (0, _uiApi.useEffect)(function () {
+    _setValue(initialValue);
+  }, [initialValue]);
+  (0, _uiApi.useImperativeHandle)(ref, function () {
+    return {
+      getValue: function getValue() {
+        var _elInput = (0, _uiApi.getRefValue)(_refInput);
 
-    _this = _Component.call(this, props) || this;
-
-    _this._handleFocusInput = function () {
-      _this.isFocus = true;
-
-      _this.forceUpdate();
+        return _elInput ? _elInput.value : void 0;
+      },
+      setValue: function setValue(value) {
+        return _setValue(String(value));
+      },
+      focus: function focus() {
+        return (0, _uiApi.focusRefElement)(_refInput);
+      }
     };
+  }, []);
 
-    _this._handleBlurInput = function () {
-      _this.isFocus = false;
+  var _isPassTest = onTest(value),
+      _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
+      _ref2 = _isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
+      _labelErrStyle = _ref2[0],
+      _lineStyle = _ref2[1],
+      _crCaption2 = _crCaption(caption, accessKey),
+      cPrefix = _crCaption2.cPrefix,
+      cKey = _crCaption2.cKey,
+      cTail = _crCaption2.cTail;
 
-      _this.forceUpdate();
-    };
-
-    _this._handleInputChange = function (event) {
-      var value = event.target.value,
-          onTest = _this.props.onTest,
-          _nextState = _isFn(onTest) ? {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: CL_SELECT,
+    style: rootStyle,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
+      className: CL_LABEL,
+      style: (0, _extends2["default"])({}, labelStyle, _labelStyle, _labelErrStyle),
+      children: [cPrefix, /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S_KEY,
+        children: cKey
+      }), cTail]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: CL_INPUT_DIV,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", (0, _extends2["default"])({
+        ref: _refInput,
+        type: "text",
+        className: CL_INPUT,
+        style: inputStyle,
         value: value,
-        isPassTest: onTest(value)
-      } : {
-        value: value
-      };
-
-      _this.setState(_nextState);
-    };
-
-    _this._handleKeyDown = function (event) {
-      var keyCode = event.keyCode;
-
-      if (keyCode === 46) {
-        _this.setState({
-          value: ''
-        });
-      } else if (keyCode === 13 && _isFn(_this.props.onEnter)) {
-        _this.props.onEnter(event.target.value);
-      }
-    };
-
-    _this._ref = function (n) {
-      return _this.inputNode = n;
-    };
-
-    _this.isFocus = false;
-    _this.state = _crInitialState(props);
-    return _this;
-  }
-
-  TextField.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
-    var initValue = props.initValue;
-    return state.initValue !== initValue ? _crInitialState(props) : null;
-  };
-
-  var _proto = TextField.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        rootStyle = _this$props.rootStyle,
-        caption = _this$props.caption,
-        labelStyle = _this$props.labelStyle,
-        inputStyle = _this$props.inputStyle,
-        accessKey = _this$props.accessKey,
-        _this$props$errorMsg = _this$props.errorMsg,
-        errorMsg = _this$props$errorMsg === void 0 ? '' : _this$props$errorMsg,
-        initValue = _this$props.initValue,
-        onEnter = _this$props.onEnter,
-        restProps = (0, _objectWithoutPropertiesLoose2["default"])(_this$props, ["rootStyle", "caption", "labelStyle", "inputStyle", "accessKey", "errorMsg", "initValue", "onEnter"]),
-        _this$state = this.state,
-        value = _this$state.value,
-        isPassTest = _this$state.isPassTest,
-        _labelStyle = value || this.isFocus ? void 0 : S.LABEL_TO_INPUT,
-        _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
-        _lineStyle = isPassTest ? void 0 : S.LINE_ERROR,
-        _crCaption2 = _crCaption(caption, accessKey),
-        cPrefix = _crCaption2.cPrefix,
-        cKey = _crCaption2.cKey,
-        cTail = _crCaption2.cTail;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL.SELECT,
-      style: rootStyle,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
-        className: CL.LABEL,
-        style: (0, _extends2["default"])({}, labelStyle, _labelStyle, _labelErrStyle),
-        children: [cPrefix, /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: S.KEY,
-          children: cKey
-        }), cTail]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        className: CL.DIV,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", (0, _extends2["default"])({
-          ref: this._ref,
-          type: "text",
-          className: CL.INPUT,
-          style: inputStyle,
-          value: value,
-          autoComplete: "off",
-          autoCorrect: "off",
-          autoCapitalize: "off",
-          translate: "false",
-          accessKey: accessKey
-        }, restProps, {
-          onFocus: this._handleFocusInput,
-          onBlur: this._handleBlurInput,
-          onChange: this._handleInputChange,
-          onKeyDown: this._handleKeyDown
-        })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          className: CL.INPUT_LINE,
-          style: _lineStyle
-        }), _lineStyle && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          className: CL.INPUT_MSG_ERR,
-          children: errorMsg
-        })]
+        autoComplete: "off",
+        autoCorrect: "off",
+        autoCapitalize: "off",
+        translate: "false",
+        accessKey: accessKey,
+        maxLength: maxLength
+      }, restProps, {
+        onFocus: setFocused,
+        onBlur: setNotFocused,
+        onChange: _hInputChange,
+        onKeyDown: _hKeyDown
+      })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: CL_INPUT_LINE,
+        style: _lineStyle
+      }), _lineStyle && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: CL_INPUT_MSG_ERR,
+        children: errorMsg
       })]
-    });
-  };
-
-  _proto.getValue = function getValue() {
-    return String(this.state.value).trim();
-  };
-
-  _proto.setValue = function setValue(str) {
-    if (_isStr(str)) {
-      this.setState({
-        value: str
-      });
-    }
-  };
-
-  _proto.focus = function focus() {
-    if (this.inputNode) {
-      this.inputNode.focus();
-
-      if (_isFn(this.inputNode.setSelectionRange)) {
-        var len = this.state.value.length;
-        this.inputNode.setSelectionRange(len, len);
-      }
-    }
-  };
-
-  return TextField;
-}(_react.Component);
-
-TextField.defaultProps = {
-  caption: '',
-  accessKey: '',
-  spellCheck: false
-};
+    })]
+  });
+});
 var _default = TextField;
 exports["default"] = _default;
 //# sourceMappingURL=TextField.js.map

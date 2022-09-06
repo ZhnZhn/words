@@ -59,7 +59,7 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_
 
     _this._createCommandButtons = function (TS) {
       return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-        rootStyle: TS.RAISED_ROOT,
+        style: TS.RAISED_ROOT,
         clDiv: TS.CL_RAISED_DIV,
         caption: "Load",
         isPrimary: true,
@@ -105,7 +105,7 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_
         ref: this._refInputWord,
         rootStyle: TS.INPUT_ROOT,
         caption: "Word (Default: Example)",
-        initValue: "Example"
+        initialValue: "Example"
       })
     });
   };

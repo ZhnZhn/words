@@ -75,7 +75,7 @@ class DialogType1 extends Component {
            ref={this._refInputWord}
            rootStyle={TS.INPUT_ROOT}
            caption="Word (Default: Example)"
-           initValue="Example"
+           initialValue="Example"
          />
       </DraggableDialog>
     );

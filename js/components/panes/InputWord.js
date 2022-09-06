@@ -67,7 +67,7 @@ var InputWord = (0, _uiApi.forwardRef)(function (_ref, ref) {
       caption: "Word",
       accessKey: "W",
       spellCheck: true,
-      initValue: initValue,
+      initialValue: initValue,
       onEnter: onEnter
     }), HAS_TOUCH ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ButtonClear, {
       style: S_BT_CLEAR,
