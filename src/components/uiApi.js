@@ -1,8 +1,10 @@
 export {
   cloneElement,
+  createElement,
   forwardRef,
   memo,
   createContext,
+  Component,
   useContext,
   useRef,
   useState,

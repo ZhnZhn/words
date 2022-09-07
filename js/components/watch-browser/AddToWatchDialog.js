@@ -11,7 +11,7 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -273,7 +273,7 @@ var AddToWatchDialog = (0, _withValidationLoad["default"])(_class = /*#__PURE__*
   };
 
   return AddToWatchDialog;
-}(_react.Component)) || _class;
+}(_uiApi.Component)) || _class;
 
 var _default = (0, _withTheme["default"])(AddToWatchDialog);
 

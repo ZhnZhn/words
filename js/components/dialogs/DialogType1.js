@@ -9,7 +9,7 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -111,7 +111,7 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_
   };
 
   return DialogType1;
-}(_react.Component)) || _class;
+}(_uiApi.Component)) || _class;
 
 var _default = (0, _withTheme["default"])(DialogType1);
 

@@ -7,18 +7,16 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var MAX_LENGTH = 24;
-var S = {
-  INPUT_TEXT: {
-    width: 250
-  }
+var MAX_LENGTH = 24,
+    S_INPUT_TEXT = {
+  width: 250
 };
 
 var RowInputText = /*#__PURE__*/function (_Component) {
@@ -46,7 +44,7 @@ var RowInputText = /*#__PURE__*/function (_Component) {
     var caption = this.props.caption;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextField["default"], {
       ref: this._refInputText,
-      rootStyle: S.INPUT_TEXT,
+      rootStyle: S_INPUT_TEXT,
       caption: caption,
       maxLength: MAX_LENGTH
     });
@@ -61,7 +59,7 @@ var RowInputText = /*#__PURE__*/function (_Component) {
   };
 
   return RowInputText;
-}(_react.Component);
+}(_uiApi.Component);
 
 var _default = RowInputText;
 exports["default"] = _default;

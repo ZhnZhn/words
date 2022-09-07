@@ -2,7 +2,7 @@
 import {
   Component,
   createElement
-} from 'react';
+} from '../uiApi';
 
 import Router from '../dialogs/RouterModal';
 import ModalContainer from './ModalContainer';
@@ -24,8 +24,6 @@ const DialogsStack = ({
    store
   })
 )
-
-
 
 class WrapperContainer extends Component {
   /*

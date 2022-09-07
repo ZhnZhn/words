@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import { Component } from '../uiApi';
 
 const CL = "progress-line";
 
 const Transitions = {
-  WIDTH : 'width 500ms ease-out',
-  OPACITY : 'opacity 400ms linear'
+  WIDTH: 'width 500ms ease-out',
+  OPACITY: 'opacity 400ms linear'
 };
 
 class ProgressLine extends Component {

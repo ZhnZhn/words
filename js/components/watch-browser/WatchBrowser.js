@@ -11,7 +11,7 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -315,7 +315,7 @@ var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorat
   };
 
   return WatchBrowser;
-}(_react.Component), _class2.defaultProps = {
+}(_uiApi.Component), _class2.defaultProps = {
   onClickItem: function onClickItem() {}
 }, _class2)) || _class) || _class) || _class) || _class);
 

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _RouterModal = _interopRequireDefault(require("../dialogs/RouterModal"));
 
@@ -25,7 +25,7 @@ var DialogsStack = function DialogsStack(_ref) {
   return dialogs.map(function (_ref2) {
     var type = _ref2.type,
         comp = _ref2.comp;
-    return /*#__PURE__*/(0, _react.createElement)(comp, {
+    return (0, _uiApi.createElement)(comp, {
       key: type,
       isShow: shows[type],
       data: data[type],
@@ -142,7 +142,7 @@ var WrapperContainer = /*#__PURE__*/function (_Component) {
   };
 
   return WrapperContainer;
-}(_react.Component);
+}(_uiApi.Component);
 
 var _default = WrapperContainer;
 exports["default"] = _default;

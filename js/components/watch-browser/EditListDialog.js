@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -140,7 +140,7 @@ var EditListDialog = /*#__PURE__*/function (_Component) {
   };
 
   return EditListDialog;
-}(_react.Component);
+}(_uiApi.Component);
 
 var _default = (0, _withTheme["default"])(EditListDialog);
 

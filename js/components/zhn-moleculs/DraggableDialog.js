@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
@@ -20,33 +20,31 @@ var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from 'prop-types'
 var CL_DIALOG = 'dialog';
 var CL_DIALOG_OPEN = 'dialog show-popup';
-var STYLE = {
-  ROOT: {
-    zIndex: 10,
-    position: 'absolute',
-    top: 30,
-    left: 50,
-    backgroundColor: '#4D4D4D',
-    border: 'solid 2px #3f5178',
-    borderRadius: 5,
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
-  },
-  CHILDREN: {
-    cursor: 'default'
-  },
-  COMMAND: {
-    cursor: 'default',
-    "float": 'right',
-    marginTop: 16,
-    marginBottom: 10,
-    marginRight: 4
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+var S_ROOT = {
+  zIndex: 10,
+  position: 'absolute',
+  top: 30,
+  left: 50,
+  backgroundColor: '#4D4D4D',
+  border: 'solid 2px #3f5178',
+  borderRadius: 5,
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
+},
+    S_CHILDREN = {
+  cursor: 'default'
+},
+    S_COMMAND = {
+  cursor: 'default',
+  "float": 'right',
+  marginTop: 16,
+  marginBottom: 10,
+  marginRight: 4
+},
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
 };
 
 var DraggableDialog = /*#__PURE__*/function (_Component) {
@@ -84,14 +82,14 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
           onShowChart = _ref.onShowChart,
           onClose = _ref.onClose;
       return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: STYLE.COMMAND,
+        style: S_COMMAND,
         children: [commandButtons, typeof onShowChart === 'function' && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-          rootStyle: S.RAISED_ROOT,
+          style: S.RAISED_ROOT,
           clDiv: S.CL_RAISED_DIV,
           caption: "Show",
           onClick: onShowChart
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-          rootStyle: S.RAISED_ROOT,
+          style: S.RAISED_ROOT,
           clDiv: S.CL_RAISED_DIV,
           caption: "Close",
           onClick: _this._handleClose
@@ -143,7 +141,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         children = _this$props.children,
         onShowChart = _this$props.onShowChart,
         onClose = _this$props.onClose,
-        _styleShow = isShow ? STYLE.BLOCK : STYLE.NONE,
+        _styleShow = isShow ? S_BLOCK : S_NONE,
         _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -151,7 +149,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         return _this2.rootDiv = c;
       },
       className: _classShow,
-      style: Object.assign({}, STYLE.ROOT, rootStyle, _styleShow),
+      style: Object.assign({}, S_ROOT, rootStyle, _styleShow),
       tabIndex: "0",
       onKeyDown: this._handleKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
@@ -159,7 +157,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         caption: caption,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: STYLE.CHILDREN,
+        style: S_CHILDREN,
         children: children
       }), this._renderCommandButton({
         commandButtons: commandButtons,
@@ -177,7 +175,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
   };
 
   return DraggableDialog;
-}(_react.Component);
+}(_uiApi.Component);
 
 var _default = DraggableDialog;
 exports["default"] = _default;

@@ -3,12 +3,12 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../../uiApi");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = 'bt-circle';
-var CircleButton = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var CircleButton = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var style = _ref.style,
       _ref$tabIndex = _ref.tabIndex,
       tabIndex = _ref$tabIndex === void 0 ? '-1' : _ref$tabIndex,

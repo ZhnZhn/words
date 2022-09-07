@@ -1,26 +1,25 @@
-import { Component } from 'react';
 //import PropTypes from "prop-types";
+import { Component } from '../uiApi';
 
 const S_INPUT_TEXT = {
-    display: 'inline',
-    color: 'green',
-    width: 40,
-    height: 26,
-    paddingLeft: 5,
-    margin: '0 5px',
-    border: 'medium none',
-    outline: 'medium none',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    backgroundColor: '#e1e1cb',
-    background: 'transparent none repeat scroll 0 0',
+  display: 'inline',
+  color: 'green',
+  width: 40,
+  height: 26,
+  paddingLeft: 5,
+  margin: '0 5px',
+  border: 'medium none',
+  outline: 'medium none',
+  fontSize: '16px',
+  fontWeight: 'bold',
+  backgroundColor: '#e1e1cb',
+  background: 'transparent none repeat scroll 0 0',
 };
 
 const C_BLANK = ''
 , C_TEXT = 'text'
 , C_ON = 'on'
 , C_OFF = 'off'
-
 
 const _isFn = fn => typeof fn === 'function';
 

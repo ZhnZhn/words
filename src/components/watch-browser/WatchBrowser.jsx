@@ -1,5 +1,5 @@
-import { Component } from 'react';
 //import PropTypes from 'prop-types'
+import { Component } from '../uiApi';
 
 import withTheme from '../hoc/withTheme';
 import styleConfig from '../styles/MenuBrowserStyle';

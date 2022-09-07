@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component } from '../uiApi';
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'

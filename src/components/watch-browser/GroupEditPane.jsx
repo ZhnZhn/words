@@ -1,7 +1,7 @@
-import { Component } from 'react';
 //import PropTypes from "prop-types";
+import { Component } from '../uiApi';
 
-import A from './Atoms'
+import A from './Atoms';
 
 class GroupEditPane extends Component {
   /*

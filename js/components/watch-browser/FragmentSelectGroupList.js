@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 
@@ -118,7 +118,7 @@ var FragmentSelectGroupList = /*#__PURE__*/function (_Component) {
   };
 
   return FragmentSelectGroupList;
-}(_react.Component);
+}(_uiApi.Component);
 
 var _default = FragmentSelectGroupList;
 exports["default"] = _default;

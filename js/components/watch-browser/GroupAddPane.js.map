@@ -1,1 +1,44 @@
-{"version":3,"sources":["../../../src/components/watch-browser/GroupAddPane.jsx"],"names":["GroupAddPane","state","validationMessages","_onStore","actionType","data","props","actionCompleted","actionFailed","forActionType","_handleClear","setState","messages","inputText","setValue","length","_handleCreate","onCreate","msgOnIsEmptyName","caption","getValue","_crPrimaryBt","btStyle","_refInputText","c","componentDidMount","unsubscribe","store","listen","componentWillUnmount","render","inputStyle","onClose","Component"],"mappings":"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","sourcesContent":["import { Component } from 'react';\r\n//import PropTypes from \"prop-types\";\r\n\r\nimport A from './Atoms'\r\n\r\nclass GroupAddPane extends Component {\r\n  /*\r\n  static propTypes = {\r\n    store: PropTypes.shape({\r\n      listen: PropTypes.func\r\n    }),\r\n    actionCompleted: PropTypes.string,\r\n    actionFailed: PropTypes.string,\r\n    forActionType: PropTypes.string,\r\n    msgOnIsEmptyName: PropTypes.func,\r\n\r\n    inputStyle: PropTypes.object,\r\n    btStyle: PropTypes.object,\r\n\r\n    onCreate: PropTypes.func,\r\n    onClose: PropTypes.func\r\n  }\r\n  */\r\n\r\n  state = {\r\n    validationMessages: []\r\n  }\r\n\r\n  componentDidMount(){\r\n    this.unsubscribe = this.props.store\r\n      .listen(this._onStore)\r\n  }\r\n  componentWillUnmount(){\r\n    this.unsubscribe()\r\n  }\r\n  _onStore = (actionType, data) => {\r\n    const { actionCompleted, actionFailed, forActionType } = this.props;\r\n    if (actionType === actionCompleted && data.forActionType === forActionType){\r\n       this._handleClear()\r\n    } else if (actionType === actionFailed && data.forActionType === forActionType){\r\n       this.setState({ validationMessages: data.messages })\r\n    }\r\n  }\r\n\r\n  _handleClear = () => {\r\n    this.inputText.setValue('')\r\n    if (this.state.validationMessages.length>0){\r\n       this.setState({ validationMessages: [] })\r\n    }\r\n  }\r\n\r\n  _handleCreate = () => {\r\n     const { onCreate, msgOnIsEmptyName } = this.props\r\n          , caption = this.inputText.getValue();\r\n     if (caption){\r\n       onCreate({ caption })\r\n     } else {\r\n       this.inputText.setValue('')\r\n       this.setState({ validationMessages:[msgOnIsEmptyName('Group')] })\r\n     }\r\n  }\r\n\r\n\r\n  _crPrimaryBt = (btStyle) => {\r\n    return (\r\n      <A.Button.Primary\r\n         style={btStyle}\r\n         caption=\"Create\"\r\n         title=\"Create New Group\"\r\n         onClick={this._handleCreate}\r\n     />\r\n    );\r\n  }\r\n\r\n\r\n  _refInputText = c => this.inputText = c\r\n\r\n  render(){\r\n    const { inputStyle, btStyle, onClose } = this.props\r\n        , { validationMessages } = this.state;\r\n    return (\r\n      <div>\r\n        <A.RowInputText\r\n           ref={this._refInputText}\r\n           caption=\"Group:\"\r\n           inputStyle={inputStyle}\r\n        />\r\n        <A.ValidationMessages\r\n           validationMessages={validationMessages}\r\n         />\r\n         <A.RowButtons\r\n            btStyle={btStyle}\r\n            Primary={this._crPrimaryBt(btStyle)}\r\n            onClear={this._handleClear}\r\n            onClose={onClose}\r\n         />\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\nexport default GroupAddPane\r\n"],"file":"GroupAddPane.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/watch-browser/GroupAddPane.js"
+ ],
+ "file": "../../../src/components/watch-browser/GroupAddPane.js",
+ "names": [
+  "GroupAddPane",
+  "state",
+  "validationMessages",
+  "_onStore",
+  "actionType",
+  "data",
+  "props",
+  "actionCompleted",
+  "actionFailed",
+  "forActionType",
+  "_handleClear",
+  "setState",
+  "messages",
+  "inputText",
+  "setValue",
+  "length",
+  "_handleCreate",
+  "onCreate",
+  "msgOnIsEmptyName",
+  "caption",
+  "getValue",
+  "_crPrimaryBt",
+  "btStyle",
+  "_refInputText",
+  "c",
+  "componentDidMount",
+  "unsubscribe",
+  "store",
+  "listen",
+  "componentWillUnmount",
+  "render",
+  "inputStyle",
+  "onClose",
+  "Component"
+ ],
+ "mappings": "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"
+}

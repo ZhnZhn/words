@@ -1,14 +1,15 @@
-import { Component, cloneElement } from 'react';
+import {
+  Component,
+  cloneElement
+} from '../uiApi';
 
-const S = {
-  ROOT: {
-    zIndex: 1030,
-    position: 'absolute',
-    top: 70,
-    left: 10,
-    width: '99%'
-  }
-};
+const S_ROOT = {
+  zIndex: 1030,
+  position: 'absolute',
+  top: 70,
+  left: 10,
+  width: '99%'
+}
 
 const _doVisible = function(arr, keyValue){
   let index
@@ -90,16 +91,16 @@ class DialogContainer extends Component {
     return compDialogs.map(Comp => {
        const key = Comp.key;
        return cloneElement(Comp, {
-             key : key,
-             isShow  : hmIs[key],
-             onClose : this._handleToggleDialog.bind(this, key)
+             key,
+             isShow: hmIs[key],
+             onClose: this._handleToggleDialog.bind(this, key)
        });
     });
   }
 
   render(){
     return (
-      <div style={S.ROOT}>
+      <div style={S_ROOT}>
         {this._renderDialogs()}
       </div>
     );

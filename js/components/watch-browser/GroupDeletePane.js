@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
@@ -139,7 +139,7 @@ var GroupDeletePane = /*#__PURE__*/function (_Component) {
   };
 
   return GroupDeletePane;
-}(_react.Component);
+}(_uiApi.Component);
 
 var _default = GroupDeletePane;
 exports["default"] = _default;

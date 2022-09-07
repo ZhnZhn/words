@@ -9,18 +9,16 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ROOT: {
-    zIndex: 1030,
-    position: 'absolute',
-    top: 70,
-    left: 10,
-    width: '99%'
-  }
+var S_ROOT = {
+  zIndex: 1030,
+  position: 'absolute',
+  top: 70,
+  left: 10,
+  width: '99%'
 };
 
 var _doVisible = function _doVisible(arr, keyValue) {
@@ -105,7 +103,7 @@ var DialogContainer = /*#__PURE__*/function (_Component) {
           compDialogs = _this$state.compDialogs;
       return compDialogs.map(function (Comp) {
         var key = Comp.key;
-        return /*#__PURE__*/(0, _react.cloneElement)(Comp, {
+        return (0, _uiApi.cloneElement)(Comp, {
           key: key,
           isShow: hmIs[key],
           onClose: _this._handleToggleDialog.bind((0, _assertThisInitialized2["default"])(_this), key)
@@ -134,13 +132,13 @@ var DialogContainer = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: S.ROOT,
+      style: S_ROOT,
       children: this._renderDialogs()
     });
   };
 
   return DialogContainer;
-}(_react.Component);
+}(_uiApi.Component);
 
 var _default = DialogContainer;
 exports["default"] = _default;

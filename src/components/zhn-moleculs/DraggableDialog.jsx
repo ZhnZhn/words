@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component } from '../uiApi';
 //import PropTypes from 'prop-types'
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
@@ -9,34 +9,33 @@ import Interact from '../../utils/Interact'
 const CL_DIALOG = 'dialog';
 const CL_DIALOG_OPEN = 'dialog show-popup';
 
-const STYLE = {
-  ROOT: {
-    zIndex: 10,
-    position: 'absolute',
-    top: 30,
-    left: 50,
-    backgroundColor: '#4D4D4D',
-    border: 'solid 2px #3f5178',
-    borderRadius: 5,
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
-  },
-  CHILDREN: {
-    cursor: 'default'
-  },
-  COMMAND : {
-     cursor: 'default',
-     float: 'right',
-     marginTop: 16,
-     marginBottom: 10,
-     marginRight: 4
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+const S_ROOT = {
+  zIndex: 10,
+  position: 'absolute',
+  top: 30,
+  left: 50,
+  backgroundColor: '#4D4D4D',
+  border: 'solid 2px #3f5178',
+  borderRadius: 5,
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
+}
+, S_CHILDREN = {
+  cursor: 'default'
+}
+, S_COMMAND = {
+   cursor: 'default',
+   float: 'right',
+   marginTop: 16,
+   marginBottom: 10,
+   marginRight: 4
+}
+, S_BLOCK = {
+  display: 'block'
+}
+, S_NONE = {
+  display: 'none'
 };
+
 
 class DraggableDialog extends Component {
   /*
@@ -82,7 +81,7 @@ class DraggableDialog extends Component {
     commandButtons, styleButton:S={}, onShowChart, onClose
   }) => {
     return (
-      <div style={STYLE.COMMAND}>
+      <div style={S_COMMAND}>
         {commandButtons}
         {typeof onShowChart === 'function' &&
           <RaisedButton
@@ -110,13 +109,13 @@ class DraggableDialog extends Component {
            children,
            onShowChart, onClose
          } = this.props
-        , _styleShow = isShow ? STYLE.BLOCK : STYLE.NONE
+        , _styleShow = isShow ? S_BLOCK : S_NONE
         , _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
     return (
       <div
            ref={c => this.rootDiv = c}
            className={_classShow}
-           style={Object.assign({}, STYLE.ROOT, rootStyle, _styleShow)}
+           style={Object.assign({}, S_ROOT, rootStyle, _styleShow)}
            tabIndex="0"
            onKeyDown={this._handleKeyDown}
       >
@@ -125,7 +124,7 @@ class DraggableDialog extends Component {
            caption={caption}
            onClose={onClose}
         />
-        <div style={STYLE.CHILDREN}>
+        <div style={S_CHILDREN}>
            {children}
         </div>
         {this._renderCommandButton({ commandButtons, styleButton, onShowChart, onClose })}

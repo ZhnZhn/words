@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from '../uiApi';
 //import PropTypes from "prop-types";
 
 import RowInputSelect from './RowInputSelect';
@@ -25,7 +25,7 @@ class FragmentSelectGroupList extends Component {
       listOptions : []
     }
   }
-  
+
   componentDidUpdate(prevProps){
     if (this.props !== prevProps){
       if (this.props.groupOptions !== prevProps.groupOptions) {
