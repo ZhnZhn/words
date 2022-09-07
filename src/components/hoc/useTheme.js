@@ -1,10 +1,10 @@
-import { useContext } from 'react'
+import { useContext } from '../uiApi';
 
-import ThemeContext from './ThemeContext'
+import ThemeContext from './ThemeContext';
 
-const useTheme = (styleConfig) => {
-  return useContext(ThemeContext)
-    .createStyle(styleConfig);
-}
+const useTheme = (
+  styleConfig
+) => useContext(ThemeContext)
+  .createStyle(styleConfig);
 
 export default useTheme

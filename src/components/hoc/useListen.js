@@ -1,12 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect } from '../uiApi';
 
-const useListen = (store, onStore) => {
-  useEffect(() => {
-    const _unsubscribe = store.listen(onStore)
-    return () => {
-      _unsubscribe()
-    }
-  }, [])
+const useListen = (
+  store,
+  onStore
+) => {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => store.listen(onStore), [])
+  // store, onStore
+  /*eslint-enable react-hooks/exhaustive-deps */
 }
 
 export default useListen

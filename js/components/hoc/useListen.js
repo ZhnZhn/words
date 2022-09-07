@@ -3,16 +3,15 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var useListen = function useListen(store, onStore) {
-  (0, _react.useEffect)(function () {
-    var _unsubscribe = store.listen(onStore);
+  /*eslint-disable react-hooks/exhaustive-deps */
+  (0, _uiApi.useEffect)(function () {
+    return store.listen(onStore);
+  }, []); // store, onStore
 
-    return function () {
-      _unsubscribe();
-    };
-  }, []);
+  /*eslint-enable react-hooks/exhaustive-deps */
 };
 
 var _default = useListen;
