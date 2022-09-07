@@ -1,93 +1,82 @@
-import { Component, StrictMode } from 'react'
+import {
+  useState,
+  useEffect
+} from './uiApi';
 
-import ThemeContext from './hoc/ThemeContext'
-import initTheme  from './styles/theme'
+import useListen from './hooks/useListen';
 
-import HeaderBar from './header/HeaderBar'
-import Container from './zhn-containers/Container'
+import ThemeContext from './hoc/ThemeContext';
+import initialUiTheme  from './styles/theme';
 
-const CL_COMP = "component-container";
-const CL_ITEMS = "items-container";
-const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
+import HeaderBar from './header/HeaderBar';
+import Container from './zhn-containers/Container';
 
-class AppWords extends Component {
+const CL_COMP = "component-container"
+, CL_ITEMS = "items-container"
+, WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 
-  state = {
-    theme: initTheme
-  }
+const AppWords = ({
+  store,
+  action,
+  CAT,
+  LPT
+}) => {
+  const [
+    uiTheme,
+    setUiTheme
+  ] = useState(initialUiTheme);
 
-  componentDidCatch(error, info){
-    /*eslint-disable no-console*/
-    console.warn(error, info)
-    /*eslint-enable no-console*/
-  }
-
-  componentDidMount(){
-    const { store, action } = this.props
-    this.unsubscribe = store.listen(this._onStore)
-    action.showAbout()
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-
-  _onStore = (actionType, themeName) => {
+  useListen(store, (actionType, uiThemeName) => {
     if (actionType === "changeTheme"){
-      this.setState(({ theme }) => {
-          theme.setThemeName(themeName)
-          return {
-            theme: {...theme}
-          };
+      setUiTheme(prevUiTheme => {
+        prevUiTheme.setThemeName(uiThemeName)
+        return {...prevUiTheme};
       })
     }
-  }
+  })
 
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    action.showAbout()
+  }, [])
+  // action
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  render(){
-    const {
-      store,
-      CAT, LPT,
-      action,
-    } = this.props
-  , {
-      headerActions,
-      browserActions
-    } = action
-  , { theme } = this.state;
+  const {
+    headerActions,
+    browserActions
+  } = action;
 
-    return (
-      <StrictMode>
-      <ThemeContext.Provider value={theme}>
-        <div>
-          <HeaderBar
-            store={store}
-            LPT={LPT}
-            {...headerActions}
-          />
-          <div className={CL_COMP}>
-             <Container.Browser
-               store={store}
-               showBrowserAction={CAT.SHOW_BROWSER}
-               showDialogAction={CAT.SHOW_DIALOG}
-               browserId={WORDS_BROWSER_ID}
-               updateWatchAction={CAT.UPDATE_WATCH_BROWSER}
-               {...browserActions}
-             />
-             <Container.Hrz
-               className={CL_ITEMS}
-               store={store}
-               addAction={CAT.SHOW_PANE}
-             />
-          </div>
-          <Container.Wrapper
+  return (
+    <ThemeContext.Provider value={uiTheme}>
+      <div>
+        <HeaderBar
+          store={store}
+          LPT={LPT}
+          {...headerActions}
+        />
+        <div className={CL_COMP}>
+           <Container.Browser
              store={store}
-             SHOW_ACTION={CAT.SHOW_MODAL_DIALOG}
-          />
+             showBrowserAction={CAT.SHOW_BROWSER}
+             showDialogAction={CAT.SHOW_DIALOG}
+             browserId={WORDS_BROWSER_ID}
+             updateWatchAction={CAT.UPDATE_WATCH_BROWSER}
+             {...browserActions}
+           />
+           <Container.Hrz
+             className={CL_ITEMS}
+             store={store}
+             addAction={CAT.SHOW_PANE}
+           />
         </div>
-      </ThemeContext.Provider>
-      </StrictMode>
-    );
-  }
-}
+        <Container.Wrapper
+           store={store}
+           SHOW_ACTION={CAT.SHOW_MODAL_DIALOG}
+        />
+      </div>
+    </ThemeContext.Provider>
+  );
+};
 
 export default AppWords
