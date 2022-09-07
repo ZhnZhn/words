@@ -38,3 +38,8 @@ export const getRefInputValue = ref => {
    ? _el.getValue()
    : void 0
 }
+
+export const getRefElementStyle = ref => {
+  const element = getRefValue(ref);
+  return (element || {}).style;
+}
