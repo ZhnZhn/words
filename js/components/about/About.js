@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
 var _useListen = _interopRequireDefault(require("../hoc/useListen"));
 
@@ -32,21 +32,19 @@ var About = function About(_ref) {
       showAction = _ref.showAction,
       closeAction = _ref.closeAction;
 
-  var _useState = (0, _react.useState)(true),
-      isShow = _useState[0],
-      setIsShow = _useState[1],
-      _hClose = (0, _react.useCallback)(function () {
-    setIsShow(false);
-  }, []);
+  var _useBool = (0, _useBool2["default"])(true),
+      isShow = _useBool[0],
+      showAbout = _useBool[1],
+      closeAbout = _useBool[2];
 
   (0, _useListen["default"])(store, function (actionType, data) {
     switch (actionType) {
       case showAction:
-        setIsShow(true);
+        showAbout();
         break;
 
       case closeAction:
-        setIsShow(false);
+        closeAbout();
         break;
 
       default:
@@ -55,16 +53,17 @@ var About = function About(_ref) {
   });
 
   var TS = (0, _useTheme["default"])(_About["default"]),
-      _cn = isShow ? CL_SHOW : null,
-      _style = isShow ? TS.BLOCK : TS.NONE;
+      _ref2 = isShow ? [TS.BLOCK, CL_SHOW] : [TS.NONE],
+      _style = _ref2[0],
+      _className = _ref2[1];
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: _cn,
+    className: _className,
     style: (0, _extends2["default"])({}, _ContainerStyle["default"].ABOUT_ROOT, _style, TS.ROOT),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].BrowserCaption, {
       rootStyle: TS.BROWSER_CAPTION,
       caption: "About",
-      onClose: _hClose
+      onClose: closeAbout
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ScrollPane, {
       className: TS.CL_SCROLL_PANE,
       style: TS.SCROLL_DIV,

@@ -1,48 +1,57 @@
-import { useState, useCallback } from 'react'
+import useBool from '../hooks/useBool';
 
-import useListen from '../hoc/useListen'
-import useTheme from '../hoc/useTheme'
-import styleConfig from './About.Style'
+import useListen from '../hoc/useListen';
+import useTheme from '../hoc/useTheme';
+import styleConfig from './About.Style';
 
-import A from '../zhn-atoms/Atoms'
-import Link from '../links/Links'
-import IconLogoBar from './IconLogoBar'
+import A from '../zhn-atoms/Atoms';
+import Link from '../links/Links';
+import IconLogoBar from './IconLogoBar';
 
-import STYLE from '../styles/ContainerStyle'
+import STYLE from '../styles/ContainerStyle';
 
 const CL_SHOW = "show-popup";
 
-const About = ({ store, showAction, closeAction }) => {
-  const [isShow, setIsShow] = useState(true)
-  , _hClose = useCallback(() => {
-    setIsShow(false)
-  }, [])
+const About = ({
+  store,
+  showAction,
+  closeAction
+}) => {
+  const [
+    isShow,
+    showAbout,
+    closeAbout
+  ] = useBool(true);
 
   useListen(store, (actionType, data) => {
     switch(actionType){
       case showAction:
-         setIsShow(true)
+         showAbout()
          break;
       case closeAction:
-         setIsShow(false)
+         closeAbout()
          break;
       default: return;
     }
   })
 
   const TS = useTheme(styleConfig)
-  , _cn = isShow ? CL_SHOW : null
-  , _style = isShow ? TS.BLOCK : TS.NONE;
+  , [
+    _style,
+    _className,
+  ] = isShow
+    ? [TS.BLOCK, CL_SHOW]
+    : [TS.NONE];
 
   return (
     <div
-      className={_cn}
+      className={_className}
       style={{...STYLE.ABOUT_ROOT, ..._style, ...TS.ROOT}}
      >
        <A.BrowserCaption
           rootStyle={TS.BROWSER_CAPTION}
           caption="About"
-          onClose={_hClose}
+          onClose={closeAbout}
        />
        <A.ScrollPane
           className={TS.CL_SCROLL_PANE}
