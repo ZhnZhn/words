@@ -5,141 +5,117 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _uiApi = require("../uiApi");
+
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var GroupDeletePane = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(GroupDeletePane, _Component);
+var GroupDeletePane = function GroupDeletePane(_ref) {
+  var store = _ref.store,
+      actionCompleted = _ref.actionCompleted,
+      forActionType = _ref.forActionType,
+      inputStyle = _ref.inputStyle,
+      btStyle = _ref.btStyle,
+      msgOnNotSelect = _ref.msgOnNotSelect,
+      onDelete = _ref.onDelete,
+      onClose = _ref.onClose;
 
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    forActionType: PropTypes.string,
-    msgOnNotSelect: PropTypes.func,
-      inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-      onDelete: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-  function GroupDeletePane(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._onStore = function (actionType, data) {
-      var _this$props = _this.props,
-          actionCompleted = _this$props.actionCompleted,
-          forActionType = _this$props.forActionType,
-          store = _this$props.store;
-
-      if (actionType === actionCompleted) {
-        if (data.forActionType === forActionType) {
-          _this._handleClear();
-        }
-
-        _this.setState({
-          groupOptions: store.getWatchGroups()
-        });
-      }
-    };
-
-    _this._handleSelectGroup = function (item) {
-      if (item && item.caption) {
-        _this.caption = item.caption;
-      } else {
-        _this.caption = null;
-      }
-    };
-
-    _this._handleClear = function () {
-      if (_this.state.validationMessages.length > 0) {
-        _this.setState({
-          validationMessages: []
-        });
-      }
-    };
-
-    _this._handleDeleteGroup = function () {
-      var _this$props2 = _this.props,
-          onDelete = _this$props2.onDelete,
-          msgOnNotSelect = _this$props2.msgOnNotSelect;
-
-      if (_this.caption) {
-        onDelete({
-          caption: _this.caption
-        });
-      } else {
-        _this.setState({
-          validationMessages: [msgOnNotSelect('Group')]
-        });
-      }
-    };
-
-    _this._crPrimaryBt = function (btStyle) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
-        style: btStyle,
-        caption: "Delete",
-        title: "Delete Group",
-        onClick: _this._handleDeleteGroup
+  var _refCaption = (0, _uiApi.useRef)(),
+      _useState = (0, _uiApi.useState)([]),
+      validationMessages = _useState[0],
+      setValidationMessages = _useState[1],
+      _useState2 = (0, _uiApi.useState)(function () {
+    return store.getWatchGroups();
+  }),
+      groupOptions = _useState2[0],
+      setGroupOptions = _useState2[1],
+      _hClear = (0, _uiApi.useMemo)(function () {
+    return function () {
+      setValidationMessages(function (prevMsg) {
+        return prevMsg.length === 0 ? prevMsg : [];
       });
     };
+  }, []),
+      _hSelectGroup = (0, _uiApi.useMemo)(function () {
+    return function (item) {
+      var _ref2 = item || {},
+          caption = _ref2.caption;
 
-    _this.caption = null;
-    _this.state = {
-      groupOptions: props.store.getWatchGroups(),
-      validationMessages: []
+      (0, _uiApi.setRefValue)(_refCaption, caption || null);
     };
-    return _this;
-  }
+  }, []),
+      _hDeleteGroup = (0, _uiApi.useMemo)(function () {
+    return function () {
+      var caption = (0, _uiApi.getRefValue)(_refCaption);
 
-  var _proto = GroupDeletePane.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var _this$props3 = this.props,
-        inputStyle = _this$props3.inputStyle,
-        btStyle = _this$props3.btStyle,
-        onClose = _this$props3.onClose,
-        _this$state = this.state,
-        groupOptions = _this$state.groupOptions,
-        validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowInputSelect, {
-        inputStyle: inputStyle,
-        caption: "Group:",
-        options: groupOptions,
-        onSelect: this._handleSelectGroup
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ValidationMessages, {
-        validationMessages: validationMessages
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
-        btStyle: btStyle,
-        Primary: this._crPrimaryBt(btStyle),
-        withoutClear: true,
-        onClose: onClose
-      })]
+      if (caption) {
+        onDelete({
+          caption: caption
+        });
+      } else {
+        setValidationMessages([msgOnNotSelect('Group')]);
+      }
+    };
+  }, []),
+      _btPrimaryEl = (0, _uiApi.useMemo)(function () {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
+      style: btStyle,
+      caption: "Delete",
+      title: "Delete Group",
+      onClick: _hDeleteGroup
     });
-  };
+  }, []); // btStyle, _hDeleteGroup
 
-  return GroupDeletePane;
-}(_uiApi.Component);
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+
+  (0, _useListen["default"])(store, function (actionType, data) {
+    if (actionType === actionCompleted) {
+      if (data.forActionType === forActionType) {
+        _hClear();
+      }
+
+      setGroupOptions(store.getWatchGroups());
+    }
+  });
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowInputSelect, {
+      inputStyle: inputStyle,
+      caption: "Group:",
+      options: groupOptions,
+      onSelect: _hSelectGroup
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ValidationMessages, {
+      validationMessages: validationMessages
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
+      btStyle: btStyle,
+      Primary: _btPrimaryEl,
+      withoutClear: true,
+      onClose: onClose
+    })]
+  });
+};
+/*
+GroupDeletePane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  forActionType: PropTypes.string,
+  msgOnNotSelect: PropTypes.func,
+
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onDelete: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
+
 
 var _default = GroupDeletePane;
 exports["default"] = _default;

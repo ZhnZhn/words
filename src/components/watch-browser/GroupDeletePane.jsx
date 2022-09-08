@@ -1,116 +1,116 @@
 //import PropTypes from "prop-types";
-import { Component } from '../uiApi';
+import {
+  useRef,
+  useState,
+  useMemo,
+  getRefValue,
+  setRefValue
+} from '../uiApi';
 
-import A from './Atoms'
+import useListen from '../hooks/useListen';
 
-class GroupDeletePane extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    forActionType: PropTypes.string,
-    msgOnNotSelect: PropTypes.func,
+import A from './Atoms';
 
-    inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
+const GroupDeletePane = ({
+  store,
+  actionCompleted,
+  forActionType,
+  inputStyle,
+  btStyle,
+  msgOnNotSelect,
+  onDelete,
+  onClose
+}) => {
+  const _refCaption = useRef()
+  , [
+    validationMessages,
+    setValidationMessages
+  ] = useState([])
+  , [
+    groupOptions,
+    setGroupOptions
+  ] = useState(() => store.getWatchGroups())
+  , _hClear = useMemo(() => () => {
+    setValidationMessages(prevMsg => prevMsg.length === 0
+      ? prevMsg
+      : [])
+  }, [])
+  , _hSelectGroup = useMemo(() => (item) => {
+     const { caption } = item || {};
+     setRefValue(_refCaption, caption || null)
+  }, [])
 
-    onDelete: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hDeleteGroup = useMemo(() => () => {
+     const caption = getRefValue(_refCaption)
+     if (caption){
+       onDelete({ caption })
+     } else {
+       setValidationMessages([msgOnNotSelect('Group')])
+     }
+  }, [])
+  // msgOnNotSelect, onDelete
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  constructor(props){
-    super(props)
-    this.caption = null
-    this.state = {
-      groupOptions: props.store.getWatchGroups(),
-      validationMessages: []
-    }
-  }
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _btPrimaryEl = useMemo(() => (
+    <A.Button.Primary
+       style={btStyle}
+       caption="Delete"
+       title="Delete Group"
+       onClick={_hDeleteGroup}
+    />
+  ), [])
+  // btStyle, _hDeleteGroup
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    const { actionCompleted, forActionType, store } = this.props;
+
+  useListen(store, (actionType, data) => {
     if (actionType === actionCompleted) {
       if (data.forActionType === forActionType){
-        this._handleClear()
+        _hClear()
       }
-      this.setState({ groupOptions : store.getWatchGroups() })
+      setGroupOptions(store.getWatchGroups())
     }
-  }
+  })
 
-  _handleSelectGroup = (item) => {
-     if (item && item.caption){
-       this.caption = item.caption
-     } else {
-       this.caption = null
-     }
-  }
-
-  _handleClear = () => {
-    if (this.state.validationMessages.length>0){
-      this.setState({ validationMessages:[] })
-    }
-  }
-
-  _handleDeleteGroup = () => {
-     const { onDelete, msgOnNotSelect } = this.props;
-     if (this.caption){
-       onDelete({ caption:this.caption })
-     } else {
-       this.setState({ validationMessages:[msgOnNotSelect('Group')] })
-     }
-  }
-
-  _crPrimaryBt = (btStyle) => {
-    return (
-      <A.Button.Primary
-         style={btStyle}
-         caption="Delete"
-         title="Delete Group"
-         onClick={this._handleDeleteGroup}
+  return (
+    <>
+      <A.RowInputSelect
+        inputStyle={inputStyle}
+        caption="Group:"
+        options={groupOptions}
+        onSelect={_hSelectGroup}
       />
-    );
-  }
+      <A.ValidationMessages
+        validationMessages={validationMessages}
+      />
+      <A.RowButtons
+        btStyle={btStyle}
+        Primary={_btPrimaryEl}
+        withoutClear={true}
+        onClose={onClose}
+      />
+   </>
+  );
+};
 
-  render(){
-      const {
-              inputStyle, btStyle,
-              onClose
-            } = this.props
-          , {
-              groupOptions, validationMessages
-            } = this.state;
+/*
+GroupDeletePane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  forActionType: PropTypes.string,
+  msgOnNotSelect: PropTypes.func,
 
-      return (
-         <div>
-           <A.RowInputSelect
-             inputStyle={inputStyle}
-             caption="Group:"
-             options={groupOptions}
-             onSelect={this._handleSelectGroup}
-           />
-           <A.ValidationMessages
-             validationMessages={validationMessages}
-           />
-           <A.RowButtons
-             btStyle={btStyle}
-             Primary={this._crPrimaryBt(btStyle)}
-             withoutClear={true}
-             onClose={onClose}
-           />
-        </div>
-    );
-  }
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onDelete: PropTypes.func,
+  onClose: PropTypes.func
 }
+*/
 
 export default GroupDeletePane
