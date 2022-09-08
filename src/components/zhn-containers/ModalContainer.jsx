@@ -19,6 +19,7 @@ const ModalContainer = ({
   onClose
 }) => (
    <div
+     role="presentation"
      {...useClassAnimation({ isShow, CL, S, timeout })}
      onClick={onClose}
    >

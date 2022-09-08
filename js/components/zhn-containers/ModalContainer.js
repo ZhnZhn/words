@@ -34,7 +34,9 @@ var ModalContainer = function ModalContainer(_ref) {
       timeout = _ref.timeout,
       children = _ref.children,
       onClose = _ref.onClose;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({}, (0, _useClassAnimation["default"])({
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
+    role: "presentation"
+  }, (0, _useClassAnimation["default"])({
     isShow: isShow,
     CL: CL,
     S: S,

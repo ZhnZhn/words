@@ -7,7 +7,6 @@ import BrowserCaption from './BrowserCaption'
 import CaptionInput from './CaptionInput'
 import FlatButton from './FlatButton'
 import ButtonClear from './ButtonClear'
-import InputText from './InputText'
 import Link from './Link'
 import ListDiv from './ListDiv'
 import ListSpan from './ListSpan'
@@ -31,7 +30,6 @@ const Atoms = {
   CaptionInput,
   FlatButton,
   ButtonClear,
-  InputText,
   Link,
   ListDiv,
   ListSpan,
@@ -44,7 +42,7 @@ const Atoms = {
   ShowHide,
   SpinnerLoading,
   SvgCheckBox,
-  SvgClose,  
+  SvgClose,
   ValidationMessages
 };
 

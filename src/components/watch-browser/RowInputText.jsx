@@ -1,5 +1,10 @@
-//import PropTypes from "prop-types";
-import { Component } from '../uiApi';
+import {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  getRefValue,
+  getRefInputValue
+} from '../uiApi';
 
 import TextField from '../zhn-m-input/TextField';
 
@@ -8,32 +13,34 @@ const MAX_LENGTH = 24
   width: 250
 };
 
-class RowInputText extends Component {
-  /*
-  static propTypes = {
-    caption: PropTypes.string
-  }
-  */
-  _refInputText = c => this.inputText = c
+const RowInputText = forwardRef(({
+  caption
+}, ref) => {
+  const _refInput = useRef();
 
-  render(){
-    const { caption } = this.props;
-    return (
-      <TextField
-        ref={this._refInputText}
-        rootStyle={S_INPUT_TEXT}
-        caption={caption}
-        maxLength={MAX_LENGTH}
-      />
-    );
-  }
+  useImperativeHandle(ref, () => ({
+    getValue: () => {
+      const _value = getRefInputValue(_refInput);
+      return _value
+        ? _value.trim()
+        : _value;
+    },
+    setValue: (value) => {
+      const _elInput = getRefValue(_refInput);
+      if (_elInput) {
+        _elInput.setValue('' + value)
+      }
+    }
+  }))
 
-  getValue(){
-    return this.inputText.getValue().trim();
-  }
-  setValue(value){
-    this.inputText.setValue(value)
-  }
-}
+  return (
+    <TextField
+      ref={_refInput}
+      caption={caption}
+      rootStyle={S_INPUT_TEXT}
+      maxLength={MAX_LENGTH}
+    />
+  );
+});
 
 export default RowInputText
