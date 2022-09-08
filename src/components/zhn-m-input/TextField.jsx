@@ -51,15 +51,14 @@ const _crCaption = (
   };
 };
 
-const _crValue = initValue => initValue || ''
-, DF_ON_TEST = () => true
+const DF_ON_TEST = () => true
 , FN_NOOP = () => {};
 
 const TextField = forwardRef(({
   caption='',
   accessKey='',
   spellCheck=false,
-  initialValue,
+  initialValue='',
   rootStyle,
   labelStyle,
   inputStyle,
@@ -78,7 +77,7 @@ const TextField = forwardRef(({
   , [
     value,
     setValue
-  ] = useState(() => _crValue(initialValue))
+  ] = useState(initialValue)
   , _hInputChange = useCallback(evt => {
     setValue(evt.target.value)
   }, [])
@@ -98,9 +97,10 @@ const TextField = forwardRef(({
   useImperativeHandle(ref, () => ({
     getValue: () => {
       const _elInput = getRefValue(_refInput)
-      return _elInput
-        ? _elInput.value
-        : void 0
+      , { value } = _elInput || {};
+      return value
+        ? value.trim()
+        : void 0;
     },
     setValue: (value) => setValue(String(value)),
     focus: () => focusRefElement(_refInput)

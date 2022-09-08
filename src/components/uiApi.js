@@ -42,6 +42,16 @@ export const getRefInputValue = ref => {
    : void 0
 }
 
+export const setRefInputValue = (
+  ref,
+  value
+) => {
+  const _el = getRefValue(ref);
+  if (_el && _isFn(_el.setValue)) {
+    _el.setValue(value)
+  }
+}
+
 export const getRefElementStyle = ref => {
   const element = getRefValue(ref);
   return (element || {}).style;

@@ -58,10 +58,7 @@ var _crCaption = function _crCaption(caption, accessKey) {
   };
 };
 
-var _crValue = function _crValue(initValue) {
-  return initValue || '';
-},
-    DF_ON_TEST = function DF_ON_TEST() {
+var DF_ON_TEST = function DF_ON_TEST() {
   return true;
 },
     FN_NOOP = function FN_NOOP() {};
@@ -73,7 +70,8 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
       accessKey = _ref$accessKey === void 0 ? '' : _ref$accessKey,
       _ref$spellCheck = _ref.spellCheck,
       spellCheck = _ref$spellCheck === void 0 ? false : _ref$spellCheck,
-      initialValue = _ref.initialValue,
+      _ref$initialValue = _ref.initialValue,
+      initialValue = _ref$initialValue === void 0 ? '' : _ref$initialValue,
       rootStyle = _ref.rootStyle,
       labelStyle = _ref.labelStyle,
       inputStyle = _ref.inputStyle,
@@ -92,9 +90,7 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
       isFocus = _useBool[0],
       setFocused = _useBool[1],
       setNotFocused = _useBool[2],
-      _useState = (0, _uiApi.useState)(function () {
-    return _crValue(initialValue);
-  }),
+      _useState = (0, _uiApi.useState)(initialValue),
       value = _useState[0],
       _setValue = _useState[1],
       _hInputChange = (0, _uiApi.useCallback)(function (evt) {
@@ -117,9 +113,11 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
   (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       getValue: function getValue() {
-        var _elInput = (0, _uiApi.getRefValue)(_refInput);
+        var _elInput = (0, _uiApi.getRefValue)(_refInput),
+            _ref2 = _elInput || {},
+            value = _ref2.value;
 
-        return _elInput ? _elInput.value : void 0;
+        return value ? value.trim() : void 0;
       },
       setValue: function setValue(value) {
         return _setValue(String(value));
@@ -132,9 +130,9 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
 
   var _isPassTest = onTest(value),
       _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
-      _ref2 = _isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
-      _labelErrStyle = _ref2[0],
-      _lineStyle = _ref2[1],
+      _ref3 = _isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
+      _labelErrStyle = _ref3[0],
+      _lineStyle = _ref3[1],
       _crCaption2 = _crCaption(caption, accessKey),
       cPrefix = _crCaption2.cPrefix,
       cKey = _crCaption2.cKey,

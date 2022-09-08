@@ -1,102 +1,109 @@
-//import PropTypes from "prop-types";
-import { Component } from '../uiApi';
+import {
+  useRef,
+  useState,
+  useMemo,
+  getRefInputValue,
+  setRefInputValue
+} from '../uiApi';
 
-import A from './Atoms'
+import useListen from '../hooks/useListen';
 
-class GroupAddPane extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    actionFailed: PropTypes.string,
-    forActionType: PropTypes.string,
-    msgOnIsEmptyName: PropTypes.func,
+import A from './Atoms';
 
-    inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-
-    onCreate: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-
-  state = {
-    validationMessages: []
-  }
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    const { actionCompleted, actionFailed, forActionType } = this.props;
-    if (actionType === actionCompleted && data.forActionType === forActionType){
-       this._handleClear()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-       this.setState({ validationMessages: data.messages })
-    }
-  }
-
-  _handleClear = () => {
-    this.inputText.setValue('')
-    if (this.state.validationMessages.length>0){
-       this.setState({ validationMessages: [] })
-    }
-  }
-
-  _handleCreate = () => {
-     const { onCreate, msgOnIsEmptyName } = this.props
-          , caption = this.inputText.getValue();
-     if (caption){
-       onCreate({ caption })
-     } else {
-       this.inputText.setValue('')
-       this.setState({ validationMessages:[msgOnIsEmptyName('Group')] })
-     }
-  }
-
-
-  _crPrimaryBt = (btStyle) => {
-    return (
-      <A.Button.Primary
-         style={btStyle}
-         caption="Create"
-         title="Create New Group"
-         onClick={this._handleCreate}
-     />
-    );
-  }
-
-
-  _refInputText = c => this.inputText = c
-
-  render(){
-    const { inputStyle, btStyle, onClose } = this.props
-        , { validationMessages } = this.state;
-    return (
-      <div>
-        <A.RowInputText
-           ref={this._refInputText}
-           caption="Group:"
-           inputStyle={inputStyle}
-        />
-        <A.ValidationMessages
-           validationMessages={validationMessages}
-         />
-         <A.RowButtons
-            btStyle={btStyle}
-            Primary={this._crPrimaryBt(btStyle)}
-            onClear={this._handleClear}
-            onClose={onClose}
-         />
-      </div>
+const GroupAddPane = ({
+  store,
+  actionCompleted,
+  actionFailed,
+  forActionType,
+  inputStyle,
+  btStyle,
+  msgOnIsEmptyName,
+  onCreate,
+  onClose
+}) => {
+  const _refInput = useRef()
+  , [
+    validationMessages,
+    setValidationMessages
+  ] = useState([])
+  , _hClear = useMemo(() => () => {
+    setRefInputValue(_refInput, '')
+    setValidationMessages(
+        prevMsg => prevMsg.length === 0
+          ? prevMsg
+          : []
     )
-  }
+  }, [])
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hCreate = useMemo(() => () => {
+    const caption = getRefInputValue(_refInput);
+    if (caption){
+      onCreate({ caption })
+    } else {
+      setRefInputValue(_refInput, '')
+      setValidationMessages([msgOnIsEmptyName('Group')])
+    }
+  }, [])
+  // msgOnIsEmptyName, onCreate
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _btPrimaryEl = useMemo(() => (
+    <A.Button.Primary
+       style={btStyle}
+       caption="Create"
+       title="Create New Group"
+       onClick={_hCreate}
+   />
+ ), [])
+  // btStyle, _hCreate
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  useListen(store, (actionType, data) => {
+    if (actionType === actionCompleted && data.forActionType === forActionType){
+       _hClear()
+    } else if (actionType === actionFailed && data.forActionType === forActionType){
+       setValidationMessages(data.messages)
+    }
+  })
+
+  return (
+    <>
+      <A.RowInputText
+         ref={_refInput}
+         caption="Group:"
+         inputStyle={inputStyle}
+      />
+      <A.ValidationMessages
+         validationMessages={validationMessages}
+       />
+       <A.RowButtons
+          btStyle={btStyle}
+          Primary={_btPrimaryEl}
+          onClear={_hClear}
+          onClose={onClose}
+       />
+    </>
+  );
 }
+
+/*
+GroupAddPane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  actionFailed: PropTypes.string,
+  forActionType: PropTypes.string,
+  msgOnIsEmptyName: PropTypes.func,
+
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onCreate: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
 
 export default GroupAddPane
