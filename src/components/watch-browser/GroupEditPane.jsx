@@ -1,134 +1,145 @@
 //import PropTypes from "prop-types";
-import { Component } from '../uiApi';
+import {
+  useRef,
+  useState,
+  useMemo,
+  getRefValue,
+  setRefValue,
+  getRefInputValue,
+  setRefInputValue
+} from '../uiApi';
+
+import useListen from '../hooks/useListen';
 
 import A from './Atoms';
 
-class GroupEditPane extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    actionFailed: PropTypes.string,
-    forActionType: PropTypes.string,
-    msgOnIsEmptyName: PropTypes.func,
-    msgOnNotSelect: PropTypes.func,
+const GroupEditPane = ({
+  store,
+  actionCompleted,
+  actionFailed,
+  forActionType,
 
-    inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
+  inputStyle,
+  btStyle,
 
-    onRename: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
+  msgOnNotSelect,
+  msgOnIsEmptyName,
+  onRename,
+  onClose
+}) => {
+  const _refInputText = useRef()
+  , _refCaptionFrom = useRef()
+  , [
+    groupOptions,
+    setGroupOptions
+  ] = useState(() => store.getWatchGroups())
+  , [
+    validationMessages,
+    setValidationMessages
+  ] = useState([])
+  , _hSelectGroup = useMemo(() => (item) => {
+    const { caption } = item || {};
+    setRefValue(_refCaptionFrom, caption || null)
+  }, [])
+  , _hClear = useMemo(() => () => {
+    setRefInputValue(_refInputText, '')
+    setValidationMessages(
+      prevMsg => prevMsg.length === 0
+        ? prevMsg
+        : []
+    )
+  }, [])
 
-  constructor(props){
-    super(props)
-    this.captionFrom = null
-    this.state = {
-      groupOptions: props.store.getWatchGroups(),
-      validationMessages: []
-    }
-  }
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    const { actionCompleted, actionFailed, forActionType, store } = this.props
-    if (actionType === actionCompleted){
-      if (data.forActionType === forActionType){
-        this._handleClear()
-      }
-      this.setState({ groupOptions : store.getWatchGroups() })
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      this.setState({ validationMessages: data.messages })
-    }
-  }
-
-  _handleSelectGroup = (item) => {
-     if (item && item.caption){
-       this.captionFrom = item.caption
-     } else {
-       this.captionFrom = null
-     }
-  }
-
-  _handleClear = () => {
-    this.inputText.setValue('')
-    if (this.state.validationMessages.length>0){
-      this.setState({ validationMessages:[] })
-    }
-  }
-  _handleRename = () => {
-     const { onRename, msgOnNotSelect, msgOnIsEmptyName } = this.props
-         , captionTo = this.inputText.getValue();
-     if (captionTo && this.captionFrom) {
-       onRename({ captionFrom: this.captionFrom, captionTo })
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hRename = useMemo(() => () => {
+     const captionTo = getRefInputValue(_refInputText)
+     , captionFrom = getRefValue(_refCaptionFrom)
+     if (captionTo && captionFrom) {
+       onRename({
+         captionFrom,
+         captionTo
+       })
      } else {
        const msg = [];
-       if (!this.captionFrom){
+       if (!captionFrom){
          msg.push(msgOnNotSelect('Group From'))
        }
        if (!captionTo){
          msg.push(msgOnIsEmptyName('Group To'))
        }
-       this.setState({ validationMessages:msg })
+       setValidationMessages(msg)
      }
-  }
+  }, [])
+  // msgOnNotSelect, msgOnIsEmptyName, onRename
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _crPrimaryBt = (btStyle) => {
-    return (
-      <A.Button.Primary
-         style={btStyle}
-         caption="Edit"
-         title="Edit Group Name"
-         onClick={this._handleRename}
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _btPrimaryEl = useMemo(() => (
+    <A.Button.Primary
+       style={btStyle}
+       caption="Edit"
+       title="Edit Group Name"
+       onClick={_hRename}
+    />
+  ), [])
+  // _hRename
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  useListen(store, (actionType, data) => {
+    if (actionType === actionCompleted){
+      if (data.forActionType === forActionType){
+        _hClear()
+      }
+      setGroupOptions(store.getWatchGroups())
+    } else if (actionType === actionFailed && data.forActionType === forActionType){
+      setValidationMessages(data.messages)
+    }
+  })
+
+  return (
+    <>
+       <A.RowInputSelect
+          caption="Group From:"
+          inputStyle={inputStyle}
+          options={groupOptions}
+          onSelect={_hSelectGroup}
+       />
+      <A.RowInputText
+        ref={_refInputText}
+        caption="Group To:"
+        inputStyle={inputStyle}
       />
-    );
-  }
-
-  _refInputText = c => this.inputText = c
-
-  render(){
-    const {
-            inputStyle, btStyle,
-            onClose
-          } = this.props
-        , {
-            groupOptions, validationMessages
-          } = this.state;
-    return (
-       <div>
-          <A.RowInputSelect
-             caption="Group From:"
-             inputStyle={inputStyle}
-             options={groupOptions}
-             onSelect={this._handleSelectGroup}
-          />
-         <A.RowInputText
-           ref={this._refInputText}
-           caption="Group To:"
-           inputStyle={inputStyle}
-         />
-         <A.ValidationMessages
-           validationMessages={validationMessages}
-         />
-         <A.RowButtons
-            btStyle={btStyle}
-            Primary={this._crPrimaryBt(btStyle)}
-            onClear={this._handleClear}
-            onClose={onClose}
-         />
-       </div>
-    );
-  }
+      <A.ValidationMessages
+        validationMessages={validationMessages}
+      />
+      <A.RowButtons
+         btStyle={btStyle}
+         Primary={_btPrimaryEl}
+         onClear={_hClear}
+         onClose={onClose}
+      />
+    </>
+  );
 }
+
+/*
+GroupEditPane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  actionFailed: PropTypes.string,
+  forActionType: PropTypes.string,
+  msgOnIsEmptyName: PropTypes.func,
+  msgOnNotSelect: PropTypes.func,
+
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onRename: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
 
 export default GroupEditPane
