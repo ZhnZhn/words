@@ -1,132 +1,127 @@
 //import PropTypes from "prop-types";
-import { Component } from '../uiApi';
+import {
+  useRef,
+  useState,
+  useCallback,
+  getRefValue,
+  getRefInputValue,
+  setRefInputValue
+} from '../uiApi';
+
+import useListen from '../hooks/useListen';
+import useRefItemCaption from './useRefItemCaption';
+import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
-class ListCreatePane extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    actionFailed: PropTypes.string,
-    forActionType: PropTypes.string,
-    msgOnNotSelect: PropTypes.func,
-    msgOnIsEmptyName: PropTypes.func,
+const ListCreatePane = ({
+  store,
+  inputStyle,
+  btStyle,
 
-    inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
+  actionCompleted,
+  actionFailed,
+  forActionType,
 
-    onCreate: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
+  msgOnNotSelect,
+  msgOnIsEmptyName,
+  onCreate,
 
-  constructor(props){
-    super(props)
-    this.captionGroup = null
-    this.state = {
-      groupOptions: props.store.getWatchGroups(),
-      isUpdateGroup: false,
-      validationMessages: []
-    }
-  }
+  onClose
+}) => {
+  const _refInputText = useRef()
+  , [
+    _refGroupCaption,
+    _hSelectGroup
+  ] = useRefItemCaption()
+  , [
+    groupOptions,
+    setGroupOptions
+  ] = useState(() => store.getWatchGroups())
+  , [
+    validationMessages,
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages()
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-       .listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    const { actionCompleted, actionFailed, forActionType, store } = this.props;
-    if (actionType === actionCompleted){
-        let isUpdateGroup = true;
-        if (data.forActionType === forActionType){
-          this._handleClear()
-          isUpdateGroup = false
-        }
-        this.setState({
-           groupOptions: store.getWatchGroups(),
-           isUpdateGroup
-        });
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      this.setState({
-        validationMessages: data.messages,
-        isUpdateGroup:false
-      })
-    }
-  }
-
-  _handleSelectGroup = (item) => {
-    if (item && item.caption){
-      this.captionGroup = item.caption
-    } else {
-      this.captionGroup = null
-    }
-  }
-
-  _handleClear = () => {
-     this.inputText.setValue('')
-     if (this.state.validationMessages.length>0){
-       this.setState({ validationMessages: [], isUpdateGroup:false })
-     }
-  }
-
-  _handleCreate = () => {
-     const { onCreate, msgOnNotSelect, msgOnIsEmptyName } = this.props
-         , captionList = this.inputText.getValue();
-     if (this.captionGroup && captionList){
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hCreate = useCallback(() => {
+     const captionGroup = getRefValue(_refGroupCaption)
+     , captionList = getRefInputValue(_refInputText);
+     if (captionGroup && captionList){
        onCreate({
-          captionGroup : this.captionGroup,
-          captionList : captionList
+          captionGroup,
+          captionList
        });
+       setRefInputValue(_refInputText, '')
      } else {
        const msg = [];
-       if (!this.captionGroup) { msg.push(msgOnNotSelect('In Group')); }
-       if (!captionList)       { msg.push(msgOnIsEmptyName('List')); }
-       this.setState({ validationMessages:msg, isUpdateGroup:false });
+       if (!captionGroup) { msg.push(msgOnNotSelect('In Group')); }
+       if (!captionList)  { msg.push(msgOnIsEmptyName('List')); }
+       setValidationMessages(msg)
      }
-  }
-  
-  _refInputText = c => this.inputText = c
+  }, [])
+  // _refGroupCaption, setValidationMessages
+  // onCreate, msgOnNotSelect, msgOnIsEmptyName
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  render(){
-    const {
-            inputStyle, btStyle,
-            onClose
-          } = this.props
-        , { groupOptions, validationMessages } = this.state;
-    return (
-      <div>
-        <A.RowInputSelect
-           inputStyle={inputStyle}
-           caption="In Group:"
-           options={groupOptions}
-           onSelect={this._handleSelectGroup}
-        />
-        <A.RowInputText
-           ref={this._refInputText}
-           inputStyle={inputStyle}
-           caption="List:"
-        />
-        <A.ValidationMessages
-          validationMessages={validationMessages}
-        />
-        <A.RowButtons
-           btStyle={btStyle}
-           caption="Create"
-           title="Create New List"
-           onClick={this._handleCreate}
-           onClear={this._handleClear}
-           onClose={onClose}
-        />
-      </div>
-    )
-  }
+  useListen(store, (actionType, data) => {
+    if (actionType === actionCompleted){
+        if (data.forActionType === forActionType){
+          _hClear()
+        }
+        setGroupOptions(store.getWatchGroups())
+    } else if (actionType === actionFailed && data.forActionType === forActionType){
+      setValidationMessages(data.messages)
+    }
+  })
+
+  return (
+    <>
+      <A.RowInputSelect
+         inputStyle={inputStyle}
+         caption="In Group:"
+         options={groupOptions}
+         onSelect={_hSelectGroup}
+      />
+      <A.RowInputText
+         ref={_refInputText}
+         inputStyle={inputStyle}
+         caption="List:"
+      />
+      <A.ValidationMessages
+        validationMessages={validationMessages}
+      />
+      <A.RowButtons
+         btStyle={btStyle}
+         caption="Create"
+         title="Create New List"
+         onClick={_hCreate}
+         onClear={_hClear}
+         onClose={onClose}
+      />
+    </>
+  );
+};
+
+/*
+ListCreatePane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  actionFailed: PropTypes.string,
+  forActionType: PropTypes.string,
+  msgOnNotSelect: PropTypes.func,
+  msgOnIsEmptyName: PropTypes.func,
+
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onCreate: PropTypes.func,
+  onClose: PropTypes.func
 }
+*/
 
 export default ListCreatePane
