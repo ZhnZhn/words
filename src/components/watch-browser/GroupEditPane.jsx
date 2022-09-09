@@ -10,6 +10,7 @@ import {
 } from '../uiApi';
 
 import useListen from '../hooks/useListen';
+import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
@@ -35,20 +36,15 @@ const GroupEditPane = ({
   ] = useState(() => store.getWatchGroups())
   , [
     validationMessages,
-    setValidationMessages
-  ] = useState([])
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages(
+    () => setRefInputValue(_refInputText, '')
+  )
   , _hSelectGroup = useMemo(() => (item) => {
     const { caption } = item || {};
     setRefValue(_refCaptionFrom, caption || null)
-  }, [])
-  , _hClear = useMemo(() => () => {
-    setRefInputValue(_refInputText, '')
-    setValidationMessages(
-      prevMsg => prevMsg.length === 0
-        ? prevMsg
-        : []
-    )
-  }, [])
+  }, [])  
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useMemo(() => () => {

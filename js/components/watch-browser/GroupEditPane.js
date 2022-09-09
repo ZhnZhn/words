@@ -9,6 +9,8 @@ var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
+var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -33,23 +35,18 @@ var GroupEditPane = function GroupEditPane(_ref) {
   }),
       groupOptions = _useState[0],
       setGroupOptions = _useState[1],
-      _useState2 = (0, _uiApi.useState)([]),
-      validationMessages = _useState2[0],
-      setValidationMessages = _useState2[1],
+      _useValidationMessage = (0, _useValidationMessages["default"])(function () {
+    return (0, _uiApi.setRefInputValue)(_refInputText, '');
+  }),
+      validationMessages = _useValidationMessage[0],
+      setValidationMessages = _useValidationMessage[1],
+      _hClear = _useValidationMessage[2],
       _hSelectGroup = (0, _uiApi.useMemo)(function () {
     return function (item) {
       var _ref2 = item || {},
           caption = _ref2.caption;
 
       (0, _uiApi.setRefValue)(_refCaptionFrom, caption || null);
-    };
-  }, []),
-      _hClear = (0, _uiApi.useMemo)(function () {
-    return function () {
-      (0, _uiApi.setRefInputValue)(_refInputText, '');
-      setValidationMessages(function (prevMsg) {
-        return prevMsg.length === 0 ? prevMsg : [];
-      });
     };
   }, []),
       _hRename = (0, _uiApi.useMemo)(function () {

@@ -9,6 +9,8 @@ var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
+var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -25,17 +27,12 @@ var GroupAddPane = function GroupAddPane(_ref) {
       onClose = _ref.onClose;
 
   var _refInput = (0, _uiApi.useRef)(),
-      _useState = (0, _uiApi.useState)([]),
-      validationMessages = _useState[0],
-      setValidationMessages = _useState[1],
-      _hClear = (0, _uiApi.useMemo)(function () {
-    return function () {
-      (0, _uiApi.setRefInputValue)(_refInput, '');
-      setValidationMessages(function (prevMsg) {
-        return prevMsg.length === 0 ? prevMsg : [];
-      });
-    };
-  }, []),
+      _useValidationMessage = (0, _useValidationMessages["default"])(function () {
+    return (0, _uiApi.setRefInputValue)(_refInput, '');
+  }),
+      validationMessages = _useValidationMessage[0],
+      setValidationMessages = _useValidationMessage[1],
+      _hClear = _useValidationMessage[2],
       _hCreate = (0, _uiApi.useMemo)(function () {
     return function () {
       var caption = (0, _uiApi.getRefInputValue)(_refInput);

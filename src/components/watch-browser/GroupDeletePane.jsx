@@ -8,6 +8,7 @@ import {
 } from '../uiApi';
 
 import useListen from '../hooks/useListen';
+import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
@@ -24,17 +25,13 @@ const GroupDeletePane = ({
   const _refCaption = useRef()
   , [
     validationMessages,
-    setValidationMessages
-  ] = useState([])
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages()
   , [
     groupOptions,
     setGroupOptions
-  ] = useState(() => store.getWatchGroups())
-  , _hClear = useMemo(() => () => {
-    setValidationMessages(prevMsg => prevMsg.length === 0
-      ? prevMsg
-      : [])
-  }, [])
+  ] = useState(() => store.getWatchGroups())  
   , _hSelectGroup = useMemo(() => (item) => {
      const { caption } = item || {};
      setRefValue(_refCaption, caption || null)

@@ -9,6 +9,8 @@ var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
+var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -25,21 +27,15 @@ var GroupDeletePane = function GroupDeletePane(_ref) {
       onClose = _ref.onClose;
 
   var _refCaption = (0, _uiApi.useRef)(),
-      _useState = (0, _uiApi.useState)([]),
-      validationMessages = _useState[0],
-      setValidationMessages = _useState[1],
-      _useState2 = (0, _uiApi.useState)(function () {
+      _useValidationMessage = (0, _useValidationMessages["default"])(),
+      validationMessages = _useValidationMessage[0],
+      setValidationMessages = _useValidationMessage[1],
+      _hClear = _useValidationMessage[2],
+      _useState = (0, _uiApi.useState)(function () {
     return store.getWatchGroups();
   }),
-      groupOptions = _useState2[0],
-      setGroupOptions = _useState2[1],
-      _hClear = (0, _uiApi.useMemo)(function () {
-    return function () {
-      setValidationMessages(function (prevMsg) {
-        return prevMsg.length === 0 ? prevMsg : [];
-      });
-    };
-  }, []),
+      groupOptions = _useState[0],
+      setGroupOptions = _useState[1],
       _hSelectGroup = (0, _uiApi.useMemo)(function () {
     return function (item) {
       var _ref2 = item || {},

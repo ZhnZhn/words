@@ -1,12 +1,12 @@
 import {
   useRef,
-  useState,
   useMemo,
   getRefInputValue,
   setRefInputValue
 } from '../uiApi';
 
 import useListen from '../hooks/useListen';
+import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
@@ -24,16 +24,11 @@ const GroupAddPane = ({
   const _refInput = useRef()
   , [
     validationMessages,
-    setValidationMessages
-  ] = useState([])
-  , _hClear = useMemo(() => () => {
-    setRefInputValue(_refInput, '')
-    setValidationMessages(
-        prevMsg => prevMsg.length === 0
-          ? prevMsg
-          : []
-    )
-  }, [])
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages(
+    () => setRefInputValue(_refInput, '')
+  )
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCreate = useMemo(() => () => {
