@@ -11,8 +11,11 @@ var useGroupOptions = function useGroupOptions(store) {
   }),
       groupOpions = _useState[0],
       setGroupOptions = _useState[1],
-      _updateGroupOptions = (0, _uiApi.useCallback)(function () {
-    setGroupOptions(store.getWatchGroups());
+      _updateGroupOptions = (0, _uiApi.useCallback)(function (isImmutableUpdate) {
+    var _nextGroupOptions = store.getWatchGroups(),
+        _groupOptions = isImmutableUpdate ? [].concat(_nextGroupOptions) : _nextGroupOptions;
+
+    setGroupOptions(_groupOptions);
   }, []); // store
 
   /*eslint-enable react-hooks/exhaustive-deps */

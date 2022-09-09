@@ -1,114 +1,111 @@
 //import PropTypes from "prop-types";
-import { Component } from '../uiApi';
+import {
+  useRef,
+  useCallback,
+  getRefInputValue
+} from '../uiApi';
+
+import useListen from '../hooks/useListen';
+import useGroupOptions from './useGroupOptions';
+import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
-class ListDeletePane extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    forActionType: PropTypes.string,
+const ListDeletePane = ({
+  store,
+  inputStyle,
+  btStyle,
 
-    inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
+  actionCompleted,
+  forActionType,
 
-    onRename: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
+  msgOnNotSelect,
+  onDelete,
 
-  constructor(props){
-    super(props)
-    this.state = {
-      groupOptions: props.store.getWatchGroups(),
-      validationMessages: []
-    }
-  }
+  onClose
+}) => {
+  const _refGroupList = useRef()
+  , [
+    groupOptions,
+    updateGroupOptions
+  ] = useGroupOptions(store)
+  , [
+    validationMessages,
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages()
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    const { actionCompleted, forActionType, store } = this.props;
-    if (actionType === actionCompleted){
-        if (data.forActionType === forActionType) {
-          this._handleClear()
-        }
-        this.setState({ groupOptions : store.getWatchGroups() })
-    }
-  }
-
-  _handleClear = () => {
-    if (this.state.validationMessages.length>0){
-      this.setState({ validationMessages: [] })
-    }
-  }
-
-  _handleDelete = () => {
-      const { onDelete, msgOnNotSelect } = this.props
-          , { captionGroup, captionList } = this.selectGroupList.getValue();
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hDelete = useCallback(() => {
+      const {
+        captionGroup,
+        captionList
+      } = getRefInputValue(_refGroupList);
       if (captionGroup && captionList){
-        onDelete({ captionGroup, captionList })
+        onDelete({
+          captionGroup,
+          captionList
+        })
       } else {
         const msg = [];
         if (!captionGroup) { msg.push(msgOnNotSelect('Group')) }
         if (!captionList)  { msg.push(msgOnNotSelect('List'))  }
-        this.setState({ validationMessages: msg })
+        setValidationMessages(msg)
       }
-  }
+  }, [])
+  // setValidationMessages
+  // msgOnNotSelect, onDelete
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _crPrimaryBt = (btStyle) => {
-    return (
-      <A.Button.Primary
-         style={btStyle}
-         caption="Delete"
-         title="Delete List"
-         onClick={this._handleDelete}
+  useListen(store, (actionType, data) => {
+    if (actionType === actionCompleted){
+      if (data.forActionType === forActionType) {
+        _hClear()
+      }
+      updateGroupOptions(true)
+    }
+  })
+
+  return (
+    <>
+      <A.FragmentSelectGroupList
+        ref={_refGroupList}
+        store={store}
+        inputStyle={inputStyle}
+        groupCaption="In Group:"
+        groupOptions={groupOptions}
+        listCaption="List:"
       />
-    );
-  }
-
-  _ref = c => this.selectGroupList = c
-
-  render(){
-    const {
-            store,
-            inputStyle, btStyle,
-            onClose
-          } = this.props
-        , { groupOptions, validationMessages } = this.state;
-    return (
-      <div>
-         <A.FragmentSelectGroupList
-           ref={this._ref}
-           store={store}
-           inputStyle={inputStyle}
-           groupCaption="In Group:"
-           groupOptions={groupOptions}
-           listCaption="List:"
-         />
-         <A.ValidationMessages
-            validationMessages={validationMessages}
-         />
-         <A.RowButtons
-           btStyle={btStyle}           
-           caption="Delete"
-           title="Delete List"
-           onClick={this._handleDelete}
-           onClear={this._handleClear}
-           onClose={onClose}
-         />
-      </div>
-    );
-  }
+      <A.ValidationMessages
+         validationMessages={validationMessages}
+      />
+      <A.RowButtons
+        btStyle={btStyle}
+        caption="Delete"
+        title="Delete List"
+        onClick={_hDelete}
+        onClear={_hClear}
+        onClose={onClose}
+      />
+    </>
+  );
 }
+
+/*
+ListDeletePane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  forActionType: PropTypes.string,
+
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onRename: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
 
 export default ListDeletePane

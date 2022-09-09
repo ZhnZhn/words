@@ -12,12 +12,16 @@ const useGroupOptions = (
   ] = useState(() => store.getWatchGroups())
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _updateGroupOptions = useCallback(() => {
-    setGroupOptions(store.getWatchGroups())
+  , _updateGroupOptions = useCallback((isImmutableUpdate) => {
+    const _nextGroupOptions = store.getWatchGroups()
+    , _groupOptions = isImmutableUpdate
+        ? [..._nextGroupOptions]
+        : _nextGroupOptions;
+    setGroupOptions(_groupOptions)
   }, [])
   // store
   /*eslint-enable react-hooks/exhaustive-deps */
-  
+
   return [
     groupOpions,
     _updateGroupOptions
