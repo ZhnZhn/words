@@ -9,6 +9,8 @@ var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
+var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"));
+
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
@@ -29,7 +31,9 @@ var GroupEditPane = function GroupEditPane(_ref) {
       onClose = _ref.onClose;
 
   var _refInputText = (0, _uiApi.useRef)(),
-      _refCaptionFrom = (0, _uiApi.useRef)(),
+      _useRefItemCaption = (0, _useRefItemCaption2["default"])(),
+      _refCaptionFrom = _useRefItemCaption[0],
+      _hSelectGroup = _useRefItemCaption[1],
       _useState = (0, _uiApi.useState)(function () {
     return store.getWatchGroups();
   }),
@@ -41,14 +45,6 @@ var GroupEditPane = function GroupEditPane(_ref) {
       validationMessages = _useValidationMessage[0],
       setValidationMessages = _useValidationMessage[1],
       _hClear = _useValidationMessage[2],
-      _hSelectGroup = (0, _uiApi.useMemo)(function () {
-    return function (item) {
-      var _ref2 = item || {},
-          caption = _ref2.caption;
-
-      (0, _uiApi.setRefValue)(_refCaptionFrom, caption || null);
-    };
-  }, []),
       _hRename = (0, _uiApi.useMemo)(function () {
     return function () {
       var captionTo = (0, _uiApi.getRefInputValue)(_refInputText),
@@ -103,8 +99,8 @@ var GroupEditPane = function GroupEditPane(_ref) {
       validationMessages: validationMessages
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
       btStyle: btStyle,
-      caption: "Edit",
-      title: "Edit Group Name",
+      caption: "Rename",
+      title: "Rename Group Name",
       onClick: _hRename,
       onClear: _hClear,
       onClose: onClose

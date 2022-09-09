@@ -9,6 +9,8 @@ var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
+var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"));
+
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
@@ -26,7 +28,9 @@ var GroupDeletePane = function GroupDeletePane(_ref) {
       onDelete = _ref.onDelete,
       onClose = _ref.onClose;
 
-  var _refCaption = (0, _uiApi.useRef)(),
+  var _useRefItemCaption = (0, _useRefItemCaption2["default"])(),
+      _refCaption = _useRefItemCaption[0],
+      _hSelectGroup = _useRefItemCaption[1],
       _useValidationMessage = (0, _useValidationMessages["default"])(),
       validationMessages = _useValidationMessage[0],
       setValidationMessages = _useValidationMessage[1],
@@ -36,14 +40,6 @@ var GroupDeletePane = function GroupDeletePane(_ref) {
   }),
       groupOptions = _useState[0],
       setGroupOptions = _useState[1],
-      _hSelectGroup = (0, _uiApi.useMemo)(function () {
-    return function (item) {
-      var _ref2 = item || {},
-          caption = _ref2.caption;
-
-      (0, _uiApi.setRefValue)(_refCaption, caption || null);
-    };
-  }, []),
       _hDeleteGroup = (0, _uiApi.useMemo)(function () {
     return function () {
       var caption = (0, _uiApi.getRefValue)(_refCaption);

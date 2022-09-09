@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/watch-browser/useRefItemCaption.js"
+ ],
+ "file": "../../../src/components/watch-browser/useRefItemCaption.js",
+ "names": [
+  "useRefItemCaption",
+  "refCaption",
+  "useRef",
+  "setCaption",
+  "useCallback",
+  "item",
+  "caption",
+  "setRefValue"
+ ],
+ "mappings": ";;;;;AAAA;;AAMA,IAAMA,iBAAiB,GAAG,SAApBA,iBAAoB,GAAM;EAC9B,IAAMC,UAAU,GAAG,IAAAC,aAAA,GAAnB;EAAA,IACEC,UAAU,GAAG,IAAAC,kBAAA,EAAY,UAAAC,IAAI,EAAI;IACjC,WAAoBA,IAAI,IAAI,EAA5B;IAAA,IAAQC,OAAR,QAAQA,OAAR;;IACA,IAAAC,kBAAA,EAAYN,UAAZ,EAAwBK,OAAO,IAAI,IAAnC;EACD,CAHc,EAGZ,EAHY,CADf;EAMA,OAAO,CACLL,UADK,EAELE,UAFK,CAAP;AAID,CAXD;;eAaeH,iB"
+}

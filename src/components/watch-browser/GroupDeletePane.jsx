@@ -1,13 +1,12 @@
 //import PropTypes from "prop-types";
-import {
-  useRef,
+import {  
   useState,
   useMemo,
-  getRefValue,
-  setRefValue
+  getRefValue
 } from '../uiApi';
 
 import useListen from '../hooks/useListen';
+import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
@@ -22,7 +21,10 @@ const GroupDeletePane = ({
   onDelete,
   onClose
 }) => {
-  const _refCaption = useRef()
+  const [
+    _refCaption,
+    _hSelectGroup
+  ] = useRefItemCaption()
   , [
     validationMessages,
     setValidationMessages,
@@ -32,10 +34,6 @@ const GroupDeletePane = ({
     groupOptions,
     setGroupOptions
   ] = useState(() => store.getWatchGroups())
-  , _hSelectGroup = useMemo(() => (item) => {
-     const { caption } = item || {};
-     setRefValue(_refCaption, caption || null)
-  }, [])
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useMemo(() => () => {
@@ -47,7 +45,7 @@ const GroupDeletePane = ({
      }
   }, [])
   // msgOnNotSelect, onDelete
-  /*eslint-enable react-hooks/exhaustive-deps */  
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   useListen(store, (actionType, data) => {
     if (actionType === actionCompleted) {
