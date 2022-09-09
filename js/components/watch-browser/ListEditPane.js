@@ -5,177 +5,129 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _uiApi = require("../uiApi");
+
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
+
+var _useGroupOptions2 = _interopRequireDefault(require("./useGroupOptions"));
+
+var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from "prop-types";
-var ListEditPane = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(ListEditPane, _Component);
+var ListEditPane = function ListEditPane(_ref) {
+  var store = _ref.store,
+      inputStyle = _ref.inputStyle,
+      btStyle = _ref.btStyle,
+      actionCompleted = _ref.actionCompleted,
+      actionFailed = _ref.actionFailed,
+      forActionType = _ref.forActionType,
+      msgOnIsEmptyName = _ref.msgOnIsEmptyName,
+      msgOnNotSelect = _ref.msgOnNotSelect,
+      onRename = _ref.onRename,
+      onClose = _ref.onClose;
 
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    forActionType: PropTypes.string,
-      inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
-      onRename: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-  function ListEditPane(props) {
-    var _this;
+  var _refGroupList = (0, _uiApi.useRef)(),
+      _refInputText = (0, _uiApi.useRef)(),
+      _useGroupOptions = (0, _useGroupOptions2["default"])(store),
+      groupOptions = _useGroupOptions[0],
+      updateGroupOptions = _useGroupOptions[1],
+      _useValidationMessage = (0, _useValidationMessages["default"])(function () {
+    return (0, _uiApi.setRefInputValue)(_refInputText, '');
+  }),
+      validationMessages = _useValidationMessage[0],
+      setValidationMessages = _useValidationMessage[1],
+      _hClear = _useValidationMessage[2],
+      _hRename = (0, _uiApi.useCallback)(function () {
+    var _getRefInputValue = (0, _uiApi.getRefInputValue)(_refGroupList),
+        captionGroup = _getRefInputValue.captionGroup,
+        captionList = _getRefInputValue.captionList,
+        captionListTo = (0, _uiApi.getRefInputValue)(_refInputText);
 
-    _this = _Component.call(this, props) || this;
-
-    _this._onStore = function (actionType, data) {
-      var _this$props = _this.props,
-          actionCompleted = _this$props.actionCompleted,
-          actionFailed = _this$props.actionFailed,
-          forActionType = _this$props.forActionType,
-          store = _this$props.store;
-
-      if (actionType === actionCompleted) {
-        if (data.forActionType === forActionType) {
-          _this._handleClear();
-        }
-
-        _this.setState({
-          groupOptions: store.getWatchGroups()
-        });
-      } else if (actionType === actionFailed && data.forActionType === forActionType) {
-        _this.setState({
-          validationMessages: data.messages
-        });
-      }
-    };
-
-    _this._handleClear = function () {
-      _this.inputText.setValue('');
-
-      if (_this.state.validationMessages.length > 0) {
-        _this.setState({
-          validationMessages: []
-        });
-      }
-    };
-
-    _this._handleRename = function () {
-      var _this$props2 = _this.props,
-          onRename = _this$props2.onRename,
-          msgOnIsEmptyName = _this$props2.msgOnIsEmptyName,
-          msgOnNotSelect = _this$props2.msgOnNotSelect,
-          _this$selectGroupList = _this.selectGroupList.getValue(),
-          captionGroup = _this$selectGroupList.captionGroup,
-          captionList = _this$selectGroupList.captionList,
-          captionListTo = _this.inputText.getValue();
-
-      if (captionGroup && captionList && captionListTo) {
-        onRename({
-          captionGroup: captionGroup,
-          captionListFrom: captionList,
-          captionListTo: captionListTo
-        });
-      } else {
-        var msg = [];
-
-        if (!captionGroup) {
-          msg.push(msgOnNotSelect('Group'));
-        }
-
-        if (!captionList) {
-          msg.push(msgOnNotSelect('List From'));
-        }
-
-        if (!captionListTo) {
-          msg.push(msgOnIsEmptyName('List To'));
-        }
-
-        _this.setState({
-          validationMessages: msg
-        });
-      }
-    };
-
-    _this._crPrimaryBt = function (btStyle) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
-        style: btStyle,
-        caption: "Edit",
-        title: "Edit List Name",
-        onClick: _this._handleRename
+    if (captionGroup && captionList && captionListTo) {
+      onRename({
+        captionGroup: captionGroup,
+        captionListFrom: captionList,
+        captionListTo: captionListTo
       });
-    };
+    } else {
+      var msg = [];
 
-    _this._refGroup = function (c) {
-      return _this.selectGroupList = c;
-    };
+      if (!captionGroup) {
+        msg.push(msgOnNotSelect('Group'));
+      }
 
-    _this._refText = function (c) {
-      return _this.inputText = c;
-    };
+      if (!captionList) {
+        msg.push(msgOnNotSelect('List From'));
+      }
 
-    _this.state = {
-      groupOptions: props.store.getWatchGroups(),
-      listOptions: [],
-      validationMessages: []
-    };
-    return _this;
-  }
+      if (!captionListTo) {
+        msg.push(msgOnIsEmptyName('List To'));
+      }
 
-  var _proto = ListEditPane.prototype;
+      setValidationMessages(msg);
+    }
+  }, []); // setValidationMessages
+  // msgOnIsEmptyName, msgOnNotSelect, onRename
 
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  };
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
 
-  _proto.render = function render() {
-    var _this$props3 = this.props,
-        store = _this$props3.store,
-        inputStyle = _this$props3.inputStyle,
-        btStyle = _this$props3.btStyle,
-        onClose = _this$props3.onClose,
-        _this$state = this.state,
-        groupOptions = _this$state.groupOptions,
-        validationMessages = _this$state.validationMessages;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FragmentSelectGroupList, {
-        ref: this._refGroup,
-        inputStyle: inputStyle,
-        store: store,
-        groupCaption: "In Group:",
-        groupOptions: groupOptions,
-        listCaption: "List From:"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowInputText, {
-        ref: this._refText,
-        inputStyle: inputStyle,
-        caption: "List To:"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ValidationMessages, {
-        validationMessages: validationMessages
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
-        btStyle: btStyle,
-        caption: "Edit",
-        title: "Edit List Name",
-        onClick: this._handleRename,
-        onClear: this._handleClear,
-        onClose: onClose
-      })]
-    });
-  };
+  (0, _useListen["default"])(store, function (actionType, data) {
+    if (actionType === actionCompleted) {
+      if (data.forActionType === forActionType) {
+        _hClear();
+      }
 
-  return ListEditPane;
-}(_uiApi.Component);
+      updateGroupOptions(true);
+    } else if (actionType === actionFailed && data.forActionType === forActionType) {
+      setValidationMessages(data.messages);
+    }
+  });
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FragmentSelectGroupList, {
+      ref: _refGroupList,
+      inputStyle: inputStyle,
+      store: store,
+      groupCaption: "In Group:",
+      groupOptions: groupOptions,
+      listCaption: "List From:"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowInputText, {
+      ref: _refInputText,
+      inputStyle: inputStyle,
+      caption: "List To:"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ValidationMessages, {
+      validationMessages: validationMessages
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
+      btStyle: btStyle,
+      caption: "Rename",
+      title: "Rename List Name",
+      onClick: _hRename,
+      onClear: _hClear,
+      onClose: onClose
+    })]
+  });
+};
+/*
+ListEditPane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  forActionType: PropTypes.string,
+
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onRename: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
+
 
 var _default = ListEditPane;
 exports["default"] = _default;

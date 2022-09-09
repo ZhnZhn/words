@@ -1,130 +1,128 @@
 //import PropTypes from "prop-types";
-import { Component } from '../uiApi';
+import {
+  useRef,
+  useCallback,
+  getRefInputValue,
+  setRefInputValue
+} from '../uiApi';
+
+import useListen from '../hooks/useListen';
+import useGroupOptions from './useGroupOptions';
+import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
-class ListEditPane extends Component {
-  /*
-  static propTypes = {
-    store: PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func
-    }),
-    actionCompleted: PropTypes.string,
-    forActionType: PropTypes.string,
+const ListEditPane = ({
+  store,
 
-    inputStyle: PropTypes.object,
-    btStyle: PropTypes.object,
+  inputStyle,
+  btStyle,
 
-    onRename: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
+  actionCompleted,
+  actionFailed,
+  forActionType,
 
-  constructor(props){
-    super(props)
-    this.state = {
-      groupOptions: props.store.getWatchGroups(),
-      listOptions: [],
-      validationMessages: []
-    }
-  }
+  msgOnIsEmptyName,
+  msgOnNotSelect,
+  onRename,
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store
-      .listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    const { actionCompleted, actionFailed, forActionType, store } = this.props;
-    if (actionType === actionCompleted){
-        if (data.forActionType === forActionType){
-          this._handleClear()
-        }
-        this.setState({ groupOptions : store.getWatchGroups() })
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      this.setState({ validationMessages:data.messages })
-    }
-  }
+  onClose
+}) => {
+  const _refGroupList = useRef()
+  , _refInputText = useRef()
+  , [
+    groupOptions,
+    updateGroupOptions
+  ] = useGroupOptions(store)
+  , [
+    validationMessages,
+    setValidationMessages,
+    _hClear
+  ] = useValidationMessages(
+    () => setRefInputValue(_refInputText, '')
+  )
 
-  _handleClear = () => {
-     this.inputText.setValue('');
-     if (this.state.validationMessages.length>0){
-       this.setState({ validationMessages:[] })
-     }
-  }
-
-  _handleRename = () => {
-    const { onRename, msgOnIsEmptyName, msgOnNotSelect } = this.props
-        , { captionGroup, captionList } = this.selectGroupList.getValue()
-        , captionListTo = this.inputText.getValue();
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hRename = useCallback(() => {
+    const {
+      captionGroup,
+      captionList
+    } = getRefInputValue(_refGroupList)
+    , captionListTo = getRefInputValue(_refInputText)
     if (captionGroup && captionList && captionListTo){
       onRename({
-        captionGroup: captionGroup,
+        captionGroup,
         captionListFrom: captionList,
-        captionListTo: captionListTo
+        captionListTo
       })
     } else {
       const msg = [];
       if (!captionGroup) { msg.push(msgOnNotSelect('Group')) }
       if (!captionList)  { msg.push(msgOnNotSelect('List From')) }
       if (!captionListTo){ msg.push(msgOnIsEmptyName('List To')) }
-      this.setState({ validationMessages:msg })
+      setValidationMessages(msg)
     }
-  }
+  }, []);
+  // setValidationMessages
+  // msgOnIsEmptyName, msgOnNotSelect, onRename
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _crPrimaryBt = (btStyle) => {
-    return (
-      <A.Button.Primary
-         style={btStyle}
-         caption="Edit"
-         title="Edit List Name"
-         onClick={this._handleRename}
-      />
-    );
-  }
+  useListen(store, (actionType, data) => {
+    if (actionType === actionCompleted){
+        if (data.forActionType === forActionType){
+          _hClear()
+        }
+        updateGroupOptions(true)
+    } else if (actionType === actionFailed && data.forActionType === forActionType){
+      setValidationMessages(data.messages)
+    }
+  })
 
-  _refGroup = c => this.selectGroupList = c
-  _refText = c => this.inputText = c
+  return (
+    <>
+       <A.FragmentSelectGroupList
+         ref={_refGroupList}
+         inputStyle={inputStyle}
+         store={store}
+         groupCaption="In Group:"
+         groupOptions={groupOptions}
+         listCaption="List From:"
+       />
+       <A.RowInputText
+          ref={_refInputText}
+          inputStyle={inputStyle}
+          caption="List To:"
+       />
+       <A.ValidationMessages
+          validationMessages={validationMessages}
+       />
+       <A.RowButtons
+          btStyle={btStyle}
+          caption="Rename"
+          title="Rename List Name"
+          onClick={_hRename}
+          onClear={_hClear}
+          onClose={onClose}
+       />
+    </>
+  );
+};
 
-  render(){
-    const {
-            store,
-            inputStyle, btStyle,
-            onClose
-          } = this.props
-        , { groupOptions, validationMessages } = this.state;
-    return (
-      <div>
-         <A.FragmentSelectGroupList
-           ref={this._refGroup}
-           inputStyle={inputStyle}
-           store={store}
-           groupCaption="In Group:"
-           groupOptions={groupOptions}
-           listCaption="List From:"
-         />
-         <A.RowInputText
-            ref={this._refText}
-            inputStyle={inputStyle}
-            caption="List To:"
-         />
-         <A.ValidationMessages
-           validationMessages={validationMessages}
-         />
-         <A.RowButtons
-            btStyle={btStyle}          
-            caption="Edit"
-            title="Edit List Name"
-            onClick={this._handleRename}
-            onClear={this._handleClear}
-            onClose={onClose}
-         />
-      </div>
-    );
-  }
+/*
+ListEditPane.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func
+  }),
+  actionCompleted: PropTypes.string,
+  forActionType: PropTypes.string,
+
+  inputStyle: PropTypes.object,
+  btStyle: PropTypes.object,
+
+  onRename: PropTypes.func,
+  onClose: PropTypes.func
 }
+*/
 
 export default ListEditPane
