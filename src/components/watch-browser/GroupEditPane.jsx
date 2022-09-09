@@ -1,7 +1,6 @@
 //import PropTypes from "prop-types";
 import {
-  useRef,
-  useState,
+  useRef,  
   useMemo,
   getRefValue,
   getRefInputValue,
@@ -10,6 +9,7 @@ import {
 
 import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
+import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
@@ -35,8 +35,8 @@ const GroupEditPane = ({
   ] = useRefItemCaption()
   , [
     groupOptions,
-    setGroupOptions
-  ] = useState(() => store.getWatchGroups())
+    updateGroupOptions
+  ] = useGroupOptions(store)
   , [
     validationMessages,
     setValidationMessages,
@@ -73,7 +73,7 @@ const GroupEditPane = ({
       if (data.forActionType === forActionType){
         _hClear()
       }
-      setGroupOptions(store.getWatchGroups())
+      updateGroupOptions()
     } else if (actionType === actionFailed && data.forActionType === forActionType){
       setValidationMessages(data.messages)
     }

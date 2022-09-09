@@ -11,6 +11,8 @@ var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"));
 
+var _useGroupOptions2 = _interopRequireDefault(require("./useGroupOptions"));
+
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
@@ -34,11 +36,9 @@ var ListCreatePane = function ListCreatePane(_ref) {
       _useRefItemCaption = (0, _useRefItemCaption2["default"])(),
       _refGroupCaption = _useRefItemCaption[0],
       _hSelectGroup = _useRefItemCaption[1],
-      _useState = (0, _uiApi.useState)(function () {
-    return store.getWatchGroups();
-  }),
-      groupOptions = _useState[0],
-      setGroupOptions = _useState[1],
+      _useGroupOptions = (0, _useGroupOptions2["default"])(store),
+      groupOptions = _useGroupOptions[0],
+      updateGroupOptions = _useGroupOptions[1],
       _useValidationMessage = (0, _useValidationMessages["default"])(),
       validationMessages = _useValidationMessage[0],
       setValidationMessages = _useValidationMessage[1],
@@ -78,7 +78,7 @@ var ListCreatePane = function ListCreatePane(_ref) {
         _hClear();
       }
 
-      setGroupOptions(store.getWatchGroups());
+      updateGroupOptions();
     } else if (actionType === actionFailed && data.forActionType === forActionType) {
       setValidationMessages(data.messages);
     }

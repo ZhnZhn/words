@@ -1,12 +1,12 @@
 //import PropTypes from "prop-types";
-import {  
-  useState,
+import {
   useMemo,
   getRefValue
 } from '../uiApi';
 
 import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
+import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
@@ -32,8 +32,8 @@ const GroupDeletePane = ({
   ] = useValidationMessages()
   , [
     groupOptions,
-    setGroupOptions
-  ] = useState(() => store.getWatchGroups())
+    updateGroupOptions
+  ] = useGroupOptions(store)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useMemo(() => () => {
@@ -52,7 +52,7 @@ const GroupDeletePane = ({
       if (data.forActionType === forActionType){
         _hClear()
       }
-      setGroupOptions(store.getWatchGroups())
+      updateGroupOptions()
     }
   })
 

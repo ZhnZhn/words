@@ -11,6 +11,8 @@ var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"));
 
+var _useGroupOptions2 = _interopRequireDefault(require("./useGroupOptions"));
+
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 
 var _Atoms = _interopRequireDefault(require("./Atoms"));
@@ -35,11 +37,9 @@ var GroupDeletePane = function GroupDeletePane(_ref) {
       validationMessages = _useValidationMessage[0],
       setValidationMessages = _useValidationMessage[1],
       _hClear = _useValidationMessage[2],
-      _useState = (0, _uiApi.useState)(function () {
-    return store.getWatchGroups();
-  }),
-      groupOptions = _useState[0],
-      setGroupOptions = _useState[1],
+      _useGroupOptions = (0, _useGroupOptions2["default"])(store),
+      groupOptions = _useGroupOptions[0],
+      updateGroupOptions = _useGroupOptions[1],
       _hDeleteGroup = (0, _uiApi.useMemo)(function () {
     return function () {
       var caption = (0, _uiApi.getRefValue)(_refCaption);
@@ -63,7 +63,7 @@ var GroupDeletePane = function GroupDeletePane(_ref) {
         _hClear();
       }
 
-      setGroupOptions(store.getWatchGroups());
+      updateGroupOptions();
     }
   });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
