@@ -44,7 +44,7 @@ const GroupEditPane = ({
   , _hSelectGroup = useMemo(() => (item) => {
     const { caption } = item || {};
     setRefValue(_refCaptionFrom, caption || null)
-  }, [])  
+  }, [])
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useMemo(() => () => {
@@ -67,19 +67,7 @@ const GroupEditPane = ({
      }
   }, [])
   // msgOnNotSelect, msgOnIsEmptyName, onRename
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _btPrimaryEl = useMemo(() => (
-    <A.Button.Primary
-       style={btStyle}
-       caption="Edit"
-       title="Edit Group Name"
-       onClick={_hRename}
-    />
-  ), [])
-  // _hRename
-  /*eslint-enable react-hooks/exhaustive-deps */
+  /*eslint-enable react-hooks/exhaustive-deps */  
 
   useListen(store, (actionType, data) => {
     if (actionType === actionCompleted){
@@ -110,7 +98,9 @@ const GroupEditPane = ({
       />
       <A.RowButtons
          btStyle={btStyle}
-         Primary={_btPrimaryEl}
+         caption="Edit"
+         title="Edit Group Name"
+         onClick={_hRename}
          onClear={_hClear}
          onClose={onClose}
       />

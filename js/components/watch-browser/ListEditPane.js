@@ -165,7 +165,9 @@ var ListEditPane = /*#__PURE__*/function (_Component) {
         validationMessages: validationMessages
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
         btStyle: btStyle,
-        Primary: this._crPrimaryBt(btStyle),
+        caption: "Edit",
+        title: "Edit List Name",
+        onClick: this._handleRename,
         onClear: this._handleClear,
         onClose: onClose
       })]

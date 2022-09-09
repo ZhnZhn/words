@@ -56,15 +56,7 @@ var GroupDeletePane = function GroupDeletePane(_ref) {
         setValidationMessages([msgOnNotSelect('Group')]);
       }
     };
-  }, []),
-      _btPrimaryEl = (0, _uiApi.useMemo)(function () {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
-      style: btStyle,
-      caption: "Delete",
-      title: "Delete Group",
-      onClick: _hDeleteGroup
-    });
-  }, []); // btStyle, _hDeleteGroup
+  }, []); // msgOnNotSelect, onDelete
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -88,8 +80,9 @@ var GroupDeletePane = function GroupDeletePane(_ref) {
       validationMessages: validationMessages
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
       btStyle: btStyle,
-      Primary: _btPrimaryEl,
-      withoutClear: true,
+      caption: "Delete",
+      title: "Delete Group",
+      onClick: _hDeleteGroup,
       onClose: onClose
     })]
   });

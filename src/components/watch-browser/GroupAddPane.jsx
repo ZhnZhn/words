@@ -41,19 +41,7 @@ const GroupAddPane = ({
     }
   }, [])
   // msgOnIsEmptyName, onCreate
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _btPrimaryEl = useMemo(() => (
-    <A.Button.Primary
-       style={btStyle}
-       caption="Create"
-       title="Create New Group"
-       onClick={_hCreate}
-   />
- ), [])
-  // btStyle, _hCreate
-  /*eslint-enable react-hooks/exhaustive-deps */
+  /*eslint-enable react-hooks/exhaustive-deps */  
 
   useListen(store, (actionType, data) => {
     if (actionType === actionCompleted && data.forActionType === forActionType){
@@ -75,7 +63,9 @@ const GroupAddPane = ({
        />
        <A.RowButtons
           btStyle={btStyle}
-          Primary={_btPrimaryEl}
+          caption="Create"
+          title="Create New Group"
+          onClick={_hCreate}
           onClear={_hClear}
           onClose={onClose}
        />

@@ -116,15 +116,6 @@ var ListCreatePane = /*#__PURE__*/function (_Component) {
       }
     };
 
-    _this._crPrimaryBt = function (btStyle) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
-        style: btStyle,
-        caption: "Create",
-        title: "Create New List",
-        onClick: _this._handleCreate
-      });
-    };
-
     _this._refInputText = function (c) {
       return _this.inputText = c;
     };
@@ -170,7 +161,9 @@ var ListCreatePane = /*#__PURE__*/function (_Component) {
         validationMessages: validationMessages
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
         btStyle: btStyle,
-        Primary: this._crPrimaryBt(btStyle),
+        caption: "Create",
+        title: "Create New List",
+        onClick: this._handleCreate,
         onClear: this._handleClear,
         onClose: onClose
       })]

@@ -142,7 +142,9 @@ var ListDeletePane = /*#__PURE__*/function (_Component) {
         validationMessages: validationMessages
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
         btStyle: btStyle,
-        Primary: this._crPrimaryBt(btStyle),
+        caption: "Delete",
+        title: "Delete List",
+        onClick: this._handleDelete,
         onClear: this._handleClear,
         onClose: onClose
       })]

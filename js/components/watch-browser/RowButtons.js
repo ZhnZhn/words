@@ -19,13 +19,19 @@ var S_DIV = (0, _extends2["default"])({}, _GeneralStyles.S_FLEX_ROW_END, {
 
 var RowButtons = function RowButtons(_ref) {
   var btStyle = _ref.btStyle,
-      Primary = _ref.Primary,
-      withoutClear = _ref.withoutClear,
+      caption = _ref.caption,
+      title = _ref.title,
+      onClick = _ref.onClick,
       onClear = _ref.onClear,
       onClose = _ref.onClose;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_DIV,
-    children: [Primary, !withoutClear && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Button["default"].Clear, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Button["default"].Primary, {
+      style: btStyle,
+      caption: caption,
+      title: title,
+      onClick: onClick
+    }), onClear && /*#__PURE__*/(0, _jsxRuntime.jsx)(_Button["default"].Clear, {
       style: btStyle,
       onClick: onClear
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Button["default"].Close, {

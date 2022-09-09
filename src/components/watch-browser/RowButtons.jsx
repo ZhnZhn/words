@@ -10,17 +10,22 @@ const S_DIV = {
 
 const RowButtons = ({
   btStyle,
-  Primary,
-  withoutClear,
+  caption,
+  title,
+  onClick,
   onClear,
   onClose
 }) => (
   <div style={S_DIV}>
-    {Primary}
-    {!withoutClear &&
-     <Button.Clear
-        style={btStyle}
-        onClick={onClear}
+     <Button.Primary
+       style={btStyle}
+       caption={caption}
+       title={title}
+       onClick={onClick}
+    />
+    {onClear && <Button.Clear
+       style={btStyle}
+       onClick={onClear}
      />
     }
     <Button.Close

@@ -99,8 +99,10 @@ class ListDeletePane extends Component {
             validationMessages={validationMessages}
          />
          <A.RowButtons
-           btStyle={btStyle}
-           Primary={this._crPrimaryBt(btStyle)}
+           btStyle={btStyle}           
+           caption="Delete"
+           title="Delete List"
+           onClick={this._handleDelete}
            onClear={this._handleClear}
            onClose={onClose}
          />

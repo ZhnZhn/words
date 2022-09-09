@@ -73,15 +73,7 @@ var GroupEditPane = function GroupEditPane(_ref) {
         setValidationMessages(msg);
       }
     };
-  }, []),
-      _btPrimaryEl = (0, _uiApi.useMemo)(function () {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
-      style: btStyle,
-      caption: "Edit",
-      title: "Edit Group Name",
-      onClick: _hRename
-    });
-  }, []); // _hRename
+  }, []); // msgOnNotSelect, msgOnIsEmptyName, onRename
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -111,7 +103,9 @@ var GroupEditPane = function GroupEditPane(_ref) {
       validationMessages: validationMessages
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
       btStyle: btStyle,
-      Primary: _btPrimaryEl,
+      caption: "Edit",
+      title: "Edit Group Name",
+      onClick: _hRename,
       onClear: _hClear,
       onClose: onClose
     })]

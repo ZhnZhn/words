@@ -46,15 +46,7 @@ var GroupAddPane = function GroupAddPane(_ref) {
         setValidationMessages([msgOnIsEmptyName('Group')]);
       }
     };
-  }, []),
-      _btPrimaryEl = (0, _uiApi.useMemo)(function () {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button.Primary, {
-      style: btStyle,
-      caption: "Create",
-      title: "Create New Group",
-      onClick: _hCreate
-    });
-  }, []); // btStyle, _hCreate
+  }, []); // msgOnIsEmptyName, onCreate
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -75,7 +67,9 @@ var GroupAddPane = function GroupAddPane(_ref) {
       validationMessages: validationMessages
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
       btStyle: btStyle,
-      Primary: _btPrimaryEl,
+      caption: "Create",
+      title: "Create New Group",
+      onClick: _hCreate,
       onClear: _hClear,
       onClose: onClose
     })]

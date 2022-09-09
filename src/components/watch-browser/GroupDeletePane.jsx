@@ -31,7 +31,7 @@ const GroupDeletePane = ({
   , [
     groupOptions,
     setGroupOptions
-  ] = useState(() => store.getWatchGroups())  
+  ] = useState(() => store.getWatchGroups())
   , _hSelectGroup = useMemo(() => (item) => {
      const { caption } = item || {};
      setRefValue(_refCaption, caption || null)
@@ -47,20 +47,7 @@ const GroupDeletePane = ({
      }
   }, [])
   // msgOnNotSelect, onDelete
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _btPrimaryEl = useMemo(() => (
-    <A.Button.Primary
-       style={btStyle}
-       caption="Delete"
-       title="Delete Group"
-       onClick={_hDeleteGroup}
-    />
-  ), [])
-  // btStyle, _hDeleteGroup
-  /*eslint-enable react-hooks/exhaustive-deps */
-
+  /*eslint-enable react-hooks/exhaustive-deps */  
 
   useListen(store, (actionType, data) => {
     if (actionType === actionCompleted) {
@@ -84,8 +71,9 @@ const GroupDeletePane = ({
       />
       <A.RowButtons
         btStyle={btStyle}
-        Primary={_btPrimaryEl}
-        withoutClear={true}
+        caption="Delete"
+        title="Delete Group"
+        onClick={_hDeleteGroup}
         onClose={onClose}
       />
    </>

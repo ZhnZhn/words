@@ -91,18 +91,7 @@ class ListCreatePane extends Component {
        this.setState({ validationMessages:msg, isUpdateGroup:false });
      }
   }
-
-  _crPrimaryBt = (btStyle) => {
-    return (
-      <A.Button.Primary
-         style={btStyle}
-         caption="Create"
-         title="Create New List"
-         onClick={this._handleCreate}
-      />
-    );
-  }
-
+  
   _refInputText = c => this.inputText = c
 
   render(){
@@ -129,7 +118,9 @@ class ListCreatePane extends Component {
         />
         <A.RowButtons
            btStyle={btStyle}
-           Primary={this._crPrimaryBt(btStyle)}
+           caption="Create"
+           title="Create New List"
+           onClick={this._handleCreate}
            onClear={this._handleClear}
            onClose={onClose}
         />

@@ -115,8 +115,10 @@ class ListEditPane extends Component {
            validationMessages={validationMessages}
          />
          <A.RowButtons
-            btStyle={btStyle}
-            Primary={this._crPrimaryBt(btStyle)}
+            btStyle={btStyle}          
+            caption="Edit"
+            title="Edit List Name"
+            onClick={this._handleRename}
             onClear={this._handleClear}
             onClose={onClose}
          />
