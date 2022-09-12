@@ -1,8 +1,22 @@
-import { Component } from '../uiApi';
 //import PropTypes from "prop-types";
+import {
+  useRef,
+  useState,
+  useMemo,
+  useEffect,
+  getRefValue,
+  setRefValue
+} from '../uiApi';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from '../dialogs/Dialog.Style'
+import useListen from '../hooks/useListen';
+
+import memoIsShow from '../hoc/memoIsShow';
+import useTheme from '../hoc/useTheme';
+import styleConfig from '../dialogs/Dialog.Style';
+
+import useGroupOptions from './useGroupOptions';
+import useRefItemCaption from './useRefItemCaption';
+import useValidationMessages from './useValidationMessages';
 
 import WatchActions, { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
 import {
@@ -12,204 +26,190 @@ import {
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import RowInputSelect from './RowInputSelect'
 import Row from '../dialogs/Row';
-import withValidationLoad from '../dialogs/decorators/withValidationLoad';
 import A from './Atoms';
 
 const actionCompleted = WAT.EDIT_WATCH_COMPLETED
-    , actionFailed =  WAT.EDIT_WATCH_FAILED
-    , forActionType = WAT.ADD_ITEM;
+, actionFailed =  WAT.EDIT_WATCH_FAILED
+, forActionType = WAT.ADD_ITEM;
 
-const CL_BT_DIV = 'bt-flat__div';
-
-const S2 = {
-  DIALOG: {
-    left: 'calc(50vw - 142px)'
-  },
-  BT_ROOT: {
-    color: '#3270b4'
-  }
+const CL_BT_DIV = 'bt-flat__div'
+, S_DIALOG = {
+  left: 'calc(50vw - 142px)',
+  width: 300
+}
+, S_BT_ROOT = {
+  color: '#3270b4'
 };
 
-@withValidationLoad
-class AddToWatchDialog extends Component {
-  /*
-  static propTypes = {
-    isShow  : PropTypes.bool,
-    data    : PropTypes.object,
-    store   : PropTypes.shape({
-      listen: PropTypes.func,
-      getWatchGroups: PropTypes.func,
-      getWatchListsByGroup: PropTypes.func
-    }),
-    onClose : PropTypes.func
-  }
-  */
-
-  constructor(props){
-    super(props)
-    this.groupCaption = null
-    this.listCaption = null
-    this.state = {
-      groupOptions : props.store.getWatchGroups(),
-      listOptions : [],
-      validationMessages : []
-    }
-  }
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore)
-  }
-  componetWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, data) => {
-    if (actionType === actionCompleted && data.forActionType === forActionType){
-       if (this.state.validationMessages.length>0){
-         this.setState({ validationMessages:[] })
-       }
-       this.props.onClose()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-       this.setState({ validationMessages:data.messages });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState){
-    //Update group and list options from store
-    const { isShow, store } = this.props;
-    if (prevProps !== this.props && isShow){
-      const groupOptions = store.getWatchGroups();
-      if (groupOptions !== this.state.groupOptions){
-        this.groupCaption = null
-        this.listCaption = null
-        this.setState({ groupOptions, listOptions: [] })
-      } else if (this.groupCaption) {
-        const listOptions = store.getWatchListsByGroup(this.groupCaption);
-        if (listOptions !== this.state.listOptions){
-          this.listCaption = null
-          this.setState({ listOptions })
-        }
-      }
-    }
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  }
-
-  _handleSelectGroup = (group) => {
-    if (group && group.caption){
-       this.groupCaption = group.caption;
-       if (group.lists){
-         this.setState({ listOptions : group.lists })
-       }  else {
-         this.setState({ listOptions : [] })
-       }
+const AddToWatchDialog = memoIsShow((
+  props
+) => {
+  const {
+    isShow,
+    store,
+    data,
+    onClose
+  } = props
+  , {
+    caption
+  } = data
+  , [
+    validationMessages,
+    setValidationMessages,
+    _hClose
+  ] = useValidationMessages(onClose)
+  , [
+    groupOptions,
+    _updateGroupOptions
+  ] = useGroupOptions(store)
+  , _refGroupCaption = useRef(null)
+  , [
+    _refListCaption,
+    _hSelectList
+  ] = useRefItemCaption()
+  , [
+    listOptions,
+    setListOptions
+  ] = useState([])
+  , _hSelectGroup = useMemo(() => (group) => {
+    const {
+      caption,
+      lists
+    } = group || {}
+    if (caption){
+       setRefValue(_refGroupCaption, caption)
+       setListOptions(lists || [])
     } else {
-      this.groupCaption = null
+      setRefValue(_refGroupCaption, null)
     }
-  }
-  _handleSelectList = (list) => {
-      if (list && list.caption){
-        this.listCaption = list.caption
-      } else {
-        this.listCaption = null
-      }
-  }
-  _handleAdd = () => {
-    const validationMessages = this._getValidationMessages();
-    if (validationMessages.isValid){
-      const { data } = this.props
-          , { caption, config } = data
-          , { groupCaption, listCaption } = this;
+  }, [])
 
-      WatchActions.addWatchItem({ caption, groupCaption, listCaption, config })
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hAdd = useMemo(() => () => {
+    const groupCaption = getRefValue(_refGroupCaption)
+    , listCaption = getRefValue(_refListCaption)
+    , msgs = [];
+    if (!groupCaption) {
+      msgs.push(notSelected('Group'))
+    }
+    if (!listCaption) {
+      msgs.push(notSelected('List'))
+    }
+
+    if (msgs.length === 0){
+      const {
+        caption,
+        config
+      } = data;
+      WatchActions.addWatchItem({
+        caption,
+        config,
+        groupCaption,
+        listCaption
+      })
     } else {
-      this._updateValidationMessages(validationMessages)
+      setValidationMessages(msgs)
     }
-  }
-  _getValidationMessages = () => {
-    const msg = [];
-    if (!this.groupCaption) {
-      msg.push(notSelected('Group'))
-    }
-    if (!this.listCaption) {
-      msg.push(notSelected('List'))
-    }
-    msg.isValid = (msg.length === 0)
-      ? true
-      : false
-    return msg;
-  }
+  }, [data])
+  // _refListCaption, setValidationMessages
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _handleClose = () => {
-    if (this.state.validationMessages.length>0){
-      this.setState({ validationMessages:[] })
-    }
-    this.props.onClose()
-  }
-
-  _crCommandButtons = (S) => {
-    return [
+  , _commandButtons = useMemo(() => [
       <A.Button.Flat
         key="_add"
         caption="Add"
         title="Add Item To Watch List"
-        rootStyle={S2.BT_ROOT}
+        rootStyle={S_BT_ROOT}
         clDiv={CL_BT_DIV}
-        onClick={this._handleAdd}
+        onClick={_hAdd}
        />
-    ];
-  }
+  ], [_hAdd]);
 
-  render(){
-    const { theme, isShow, data } = this.props
-        , { caption } = data
-        , {
-            groupOptions, listOptions,
-            validationMessages
-          } = this.state
-        , TS = theme.createStyle(styleConfig)
-        , _commandButtons = this._crCommandButtons(TS.BT);
+  useListen(store, (actionType, data) => {
+    if (actionType === actionCompleted && data.forActionType === forActionType){
+      _hClose()
+    } else if (actionType === actionFailed && data.forActionType === forActionType){
+      setValidationMessages(data.messages || [])
+    }
+  })
 
-    return (
-      <ModalDialog
-         STYLE={TS.BT}
-         style={{...TS.R_DIALOG, ...S2.DIALOG}}
-         captionStyle={TS.BROWSER_CAPTION}
-         caption="Add To Watch List"
-         isShow={isShow}
-         commandButtons={_commandButtons}
-         onClose={this._handleClose}
-      >
-        <div>
-          <RowInputSelect
-            inputStyle={TS.INPUT}
-            caption="Group:"
-            options={groupOptions}
-            onSelect={this._handleSelectGroup}
-          />
-        </div>
-        <div>
-          <RowInputSelect
-            inputStyle={TS.INPUT}
-            caption="List:"
-            onSelect={this._handleSelectList}
-            options={listOptions}
-          />
-        </div>
-        <Row.Text
-          caption="Word:"
-          text={caption}
+  /*eslint-disable react-hooks/exhaustive-deps */
+  // sync state with store on props isShow true
+  useEffect(() => {
+    const { isShow } = props;
+    if (isShow) {
+      const _groupOptions = store.getWatchGroups()
+      , _groupCaption = getRefValue(_refGroupCaption);
+      if (_groupOptions !== groupOptions){
+        setRefValue(_refGroupCaption, null)
+        setRefValue(_refListCaption, null)
+        _updateGroupOptions()
+        setListOptions([])
+      } else if (_groupCaption) {
+        setListOptions(prevListOptions => {
+          const listOptions = store.getWatchListsByGroup(_groupCaption);
+          if (prevListOptions !== listOptions) {
+            setRefValue(_refListCaption, null)
+          }
+          return listOptions;
+        })
+      }
+    }
+  }, [props])
+  // _refListCaption, _updateGroupOptions
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  const TS = useTheme(styleConfig);
+
+  return (
+    <ModalDialog
+       STYLE={TS.BT}
+       style={{...TS.R_DIALOG, ...S_DIALOG}}
+       captionStyle={TS.BROWSER_CAPTION}
+       caption="Add To Watch List"
+       isShow={isShow}
+       commandButtons={_commandButtons}
+       onClose={_hClose}
+    >
+      <div>
+        <RowInputSelect
+          inputStyle={TS.INPUT}
+          caption="Group:"
+          options={groupOptions}
+          onSelect={_hSelectGroup}
         />
-        <A.ValidationMessages
-           validationMessages={validationMessages}
-         />
-      </ModalDialog>
-    );
-  }
-}
+      </div>
+      <div>
+        <RowInputSelect
+          inputStyle={TS.INPUT}
+          caption="List:"
+          onSelect={_hSelectList}
+          options={listOptions}
+        />
+      </div>
+      <Row.Text
+        caption="Word:"
+        text={caption}
+      />
+      <A.ValidationMessages
+         validationMessages={validationMessages}
+       />
+    </ModalDialog>
+  );
+})
 
-export default withTheme(AddToWatchDialog)
+/*
+AddToWatchDialog.propTypes = {
+  isShow  : PropTypes.bool,
+  data    : PropTypes.object,
+  store   : PropTypes.shape({
+    listen: PropTypes.func,
+    getWatchGroups: PropTypes.func,
+    getWatchListsByGroup: PropTypes.func
+  }),
+  onClose : PropTypes.func
+}
+*/
+
+
+export default AddToWatchDialog
