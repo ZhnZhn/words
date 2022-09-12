@@ -68,7 +68,7 @@ const ListDeletePane = ({
 
   return (
     <>
-      <A.FragmentSelectGroupList
+      <A.SelectGroupList
         ref={_refGroupList}
         store={store}
         inputStyle={inputStyle}

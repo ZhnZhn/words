@@ -75,7 +75,7 @@ var ListDeletePane = function ListDeletePane(_ref) {
     }
   });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FragmentSelectGroupList, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SelectGroupList, {
       ref: _refGroupList,
       store: store,
       inputStyle: inputStyle,

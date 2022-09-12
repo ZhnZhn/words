@@ -80,7 +80,7 @@ const ListEditPane = ({
 
   return (
     <>
-       <A.FragmentSelectGroupList
+       <A.SelectGroupList
          ref={_refGroupList}
          inputStyle={inputStyle}
          store={store}
