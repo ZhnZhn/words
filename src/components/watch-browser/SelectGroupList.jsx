@@ -68,10 +68,10 @@ const SelectGroupList = forwardRef((
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useImperativeHandle(ref, () => ({
-    getValue: () => ({
-      captionGroup: getRefValue(_refCaptionGroup),
-      captionList: getRefValue(_refCaptionList)
-    })
+    getValue: () => [
+      getRefValue(_refCaptionGroup),
+      getRefValue(_refCaptionList)
+    ]
   }), [])
   // _refCaptionList
   /*eslint-enable react-hooks/exhaustive-deps */

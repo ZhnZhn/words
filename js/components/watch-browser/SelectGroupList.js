@@ -68,10 +68,7 @@ var SelectGroupList = (0, _uiApi.forwardRef)(function (props, ref) {
   (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       getValue: function getValue() {
-        return {
-          captionGroup: (0, _uiApi.getRefValue)(_refCaptionGroup),
-          captionList: (0, _uiApi.getRefValue)(_refCaptionList)
-        };
+        return [(0, _uiApi.getRefValue)(_refCaptionGroup), (0, _uiApi.getRefValue)(_refCaptionList)];
       }
     };
   }, []); // _refCaptionList

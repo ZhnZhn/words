@@ -45,10 +45,10 @@ const ListEditPane = ({
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useCallback(() => {
-    const {
+    const [
       captionGroup,
       captionList
-    } = getRefInputValue(_refGroupList)
+    ] = getRefInputValue(_refGroupList)
     , captionListTo = getRefInputValue(_refInputText)
     if (captionGroup && captionList && captionListTo){
       onRename({

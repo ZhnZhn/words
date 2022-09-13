@@ -39,10 +39,10 @@ const ListDeletePane = ({
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDelete = useCallback(() => {
-      const {
+      const [
         captionGroup,
         captionList
-      } = getRefInputValue(_refGroupList);
+      ] = getRefInputValue(_refGroupList);
       if (captionGroup && captionList){
         onDelete({
           captionGroup,

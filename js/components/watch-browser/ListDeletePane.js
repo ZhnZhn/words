@@ -40,8 +40,8 @@ var ListDeletePane = function ListDeletePane(_ref) {
       _hClear = _useValidationMessage[2],
       _hDelete = (0, _uiApi.useCallback)(function () {
     var _getRefInputValue = (0, _uiApi.getRefInputValue)(_refGroupList),
-        captionGroup = _getRefInputValue.captionGroup,
-        captionList = _getRefInputValue.captionList;
+        captionGroup = _getRefInputValue[0],
+        captionList = _getRefInputValue[1];
 
     if (captionGroup && captionList) {
       onDelete({
