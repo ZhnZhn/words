@@ -5,7 +5,9 @@ import {
   getRefInputValue
 } from '../uiApi';
 
+import useRerender from '../hooks/useRerender';
 import useListen from '../hooks/useListen';
+
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
 
@@ -56,13 +58,15 @@ const ListDeletePane = ({
   // setValidationMessages
   // msgOnNotSelect, onDelete
   /*eslint-enable react-hooks/exhaustive-deps */
+  , rerender = useRerender()[1]
 
   useListen(store, (actionType, data) => {
     if (actionType === actionCompleted){
       if (data.forActionType === forActionType) {
         _hClear()
       }
-      updateGroupOptions(true)
+      updateGroupOptions()
+      rerender()
     }
   })
 

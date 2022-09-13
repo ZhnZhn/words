@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
+var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
+
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _useGroupOptions2 = _interopRequireDefault(require("./useGroupOptions"));
@@ -59,11 +61,8 @@ var ListDeletePane = function ListDeletePane(_ref) {
 
       setValidationMessages(msg);
     }
-  }, []); // setValidationMessages
-  // msgOnNotSelect, onDelete
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-
+  }, []),
+      rerender = (0, _useRerender["default"])()[1];
 
   (0, _useListen["default"])(store, function (actionType, data) {
     if (actionType === actionCompleted) {
@@ -71,7 +70,8 @@ var ListDeletePane = function ListDeletePane(_ref) {
         _hClear();
       }
 
-      updateGroupOptions(true);
+      updateGroupOptions();
+      rerender();
     }
   });
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {

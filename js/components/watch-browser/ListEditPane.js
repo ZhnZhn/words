@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
+var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
+
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _useGroupOptions2 = _interopRequireDefault(require("./useGroupOptions"));
@@ -70,11 +72,8 @@ var ListEditPane = function ListEditPane(_ref) {
 
       setValidationMessages(msg);
     }
-  }, []); // setValidationMessages
-  // msgOnIsEmptyName, msgOnNotSelect, onRename
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-
+  }, []),
+      rerender = (0, _useRerender["default"])()[1];
 
   (0, _useListen["default"])(store, function (actionType, data) {
     if (actionType === actionCompleted) {
@@ -82,7 +81,8 @@ var ListEditPane = function ListEditPane(_ref) {
         _hClear();
       }
 
-      updateGroupOptions(true);
+      updateGroupOptions();
+      rerender();
     } else if (actionType === actionFailed && data.forActionType === forActionType) {
       setValidationMessages(data.messages);
     }

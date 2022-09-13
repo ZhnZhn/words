@@ -13,14 +13,18 @@ import {
 import useRefItemCaption from './useRefItemCaption';
 import RowInputSelect from './RowInputSelect';
 
-const SelectGroupList = forwardRef(({
-  inputStyle,
-  store,
-  groupOptions,
-  groupCaption,
-  listCaption
-}, ref) => {
-  const _refCaptionGroup = useRef(null)
+const SelectGroupList = forwardRef((
+  props,
+  ref
+) => {
+  const {
+    inputStyle,
+    store,
+    groupOptions,
+    groupCaption,
+    listCaption
+  } = props
+  , _refCaptionGroup = useRef(null)
   , [
     _refCaptionList,
     _hSelectList
@@ -42,13 +46,25 @@ const SelectGroupList = forwardRef(({
     }
   }, [])
 
+  // sync store with state on props update
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    setRefValue(_refCaptionGroup, null)
-    setRefValue(_refCaptionList, null)
-    setListOptions([])
-  }, [groupOptions])
-  // _refCaptionList
+    const captionGroup = getRefValue(_refCaptionGroup);
+    if (props.groupOptions !== groupOptions) {
+      setRefValue(_refCaptionGroup, null)
+      setRefValue(_refCaptionList, null)
+      setListOptions([])
+    } else if (captionGroup) {
+      setListOptions(prevListOptions => {
+        const listOptions = store.getWatchListsByGroup(captionGroup);
+        if (prevListOptions !== listOptions) {
+          setRefValue(_refCaptionList, null)
+        }
+        return listOptions;
+      })
+    }
+  }, [props])
+  // _refCaptionList, groupOptions, store
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */
