@@ -1,7 +1,6 @@
 //import PropTypes from "prop-types";
 import {
   useRef,
-  useState,
   useMemo,
   useEffect,
   getRefValue,
@@ -15,6 +14,7 @@ import useTheme from '../hoc/useTheme';
 import styleConfig from '../dialogs/Dialog.Style';
 
 import useGroupOptions from './useGroupOptions';
+import useListOptions from './useListOptions';
 import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 
@@ -69,8 +69,11 @@ const AddToWatchDialog = memoIsShow((
   ] = useRefItemCaption()
   , [
     listOptions,
-    setListOptions
-  ] = useState([])
+    setListOptions,
+    updateListOptions
+  ] = useListOptions(store, _refListCaption)
+
+  /*eslint-disable react-hooks/exhaustive-deps */
   , _hSelectGroup = useMemo(() => (group) => {
     const {
       caption,
@@ -83,6 +86,8 @@ const AddToWatchDialog = memoIsShow((
       setRefValue(_refGroupCaption, null)
     }
   }, [])
+  // setListOptions
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hAdd = useMemo(() => () => {
@@ -146,13 +151,7 @@ const AddToWatchDialog = memoIsShow((
         _updateGroupOptions()
         setListOptions([])
       } else if (_groupCaption) {
-        setListOptions(prevListOptions => {
-          const listOptions = store.getWatchListsByGroup(_groupCaption);
-          if (prevListOptions !== listOptions) {
-            setRefValue(_refListCaption, null)
-          }
-          return listOptions;
-        })
+        updateListOptions(_groupCaption)        
       }
     }
   }, [props])

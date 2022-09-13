@@ -2,7 +2,6 @@
 import {
   forwardRef,
   useRef,
-  useState,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -11,6 +10,7 @@ import {
 } from '../uiApi';
 
 import useRefItemCaption from './useRefItemCaption';
+import useListOptions from './useListOptions';
 import RowInputSelect from './RowInputSelect';
 
 const SelectGroupList = forwardRef((
@@ -31,8 +31,11 @@ const SelectGroupList = forwardRef((
   ] = useRefItemCaption()
   , [
     listOptions,
-    setListOptions
-  ] = useState([])
+    setListOptions,
+    updateListOptions
+  ] = useListOptions(store, _refCaptionList)
+
+  /*eslint-disable react-hooks/exhaustive-deps */
   , _hSelectGroup = useCallback((item) => {
     const {
       caption,
@@ -45,23 +48,19 @@ const SelectGroupList = forwardRef((
       setRefValue(_refCaptionGroup, null)
     }
   }, [])
+  // setListOptions
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   // sync store with state on props update
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    const captionGroup = getRefValue(_refCaptionGroup);
+    const _captionGroup = getRefValue(_refCaptionGroup);
     if (props.groupOptions !== groupOptions) {
       setRefValue(_refCaptionGroup, null)
       setRefValue(_refCaptionList, null)
       setListOptions([])
-    } else if (captionGroup) {
-      setListOptions(prevListOptions => {
-        const listOptions = store.getWatchListsByGroup(captionGroup);
-        if (prevListOptions !== listOptions) {
-          setRefValue(_refCaptionList, null)
-        }
-        return listOptions;
-      })
+    } else if (_captionGroup) {
+      updateListOptions(_captionGroup)
     }
   }, [props])
   // _refCaptionList, groupOptions, store

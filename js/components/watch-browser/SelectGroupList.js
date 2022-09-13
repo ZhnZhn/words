@@ -9,6 +9,8 @@ var _uiApi = require("../uiApi");
 
 var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"));
 
+var _useListOptions2 = _interopRequireDefault(require("./useListOptions"));
+
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -24,9 +26,10 @@ var SelectGroupList = (0, _uiApi.forwardRef)(function (props, ref) {
       _useRefItemCaption = (0, _useRefItemCaption2["default"])(),
       _refCaptionList = _useRefItemCaption[0],
       _hSelectList = _useRefItemCaption[1],
-      _useState = (0, _uiApi.useState)([]),
-      listOptions = _useState[0],
-      setListOptions = _useState[1],
+      _useListOptions = (0, _useListOptions2["default"])(store, _refCaptionList),
+      listOptions = _useListOptions[0],
+      setListOptions = _useListOptions[1],
+      updateListOptions = _useListOptions[2],
       _hSelectGroup = (0, _uiApi.useCallback)(function (item) {
     var _ref = item || {},
         caption = _ref.caption,
@@ -38,28 +41,23 @@ var SelectGroupList = (0, _uiApi.forwardRef)(function (props, ref) {
     } else {
       (0, _uiApi.setRefValue)(_refCaptionGroup, null);
     }
-  }, []); // sync store with state on props update
+  }, []); // setListOptions
+
+  /*eslint-enable react-hooks/exhaustive-deps */
+  // sync store with state on props update
 
   /*eslint-disable react-hooks/exhaustive-deps */
 
 
   (0, _uiApi.useEffect)(function () {
-    var captionGroup = (0, _uiApi.getRefValue)(_refCaptionGroup);
+    var _captionGroup = (0, _uiApi.getRefValue)(_refCaptionGroup);
 
     if (props.groupOptions !== groupOptions) {
       (0, _uiApi.setRefValue)(_refCaptionGroup, null);
       (0, _uiApi.setRefValue)(_refCaptionList, null);
       setListOptions([]);
-    } else if (captionGroup) {
-      setListOptions(function (prevListOptions) {
-        var listOptions = store.getWatchListsByGroup(captionGroup);
-
-        if (prevListOptions !== listOptions) {
-          (0, _uiApi.setRefValue)(_refCaptionList, null);
-        }
-
-        return listOptions;
-      });
+    } else if (_captionGroup) {
+      updateListOptions(_captionGroup);
     }
   }, [props]); // _refCaptionList, groupOptions, store
 

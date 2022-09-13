@@ -19,6 +19,8 @@ var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
 var _useGroupOptions2 = _interopRequireDefault(require("./useGroupOptions"));
 
+var _useListOptions2 = _interopRequireDefault(require("./useListOptions"));
+
 var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"));
 
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
@@ -70,9 +72,10 @@ var AddToWatchDialog = (0, _memoIsShow["default"])(function (props) {
       _useRefItemCaption = (0, _useRefItemCaption2["default"])(),
       _refListCaption = _useRefItemCaption[0],
       _hSelectList = _useRefItemCaption[1],
-      _useState = (0, _uiApi.useState)([]),
-      listOptions = _useState[0],
-      setListOptions = _useState[1],
+      _useListOptions = (0, _useListOptions2["default"])(store, _refListCaption),
+      listOptions = _useListOptions[0],
+      setListOptions = _useListOptions[1],
+      updateListOptions = _useListOptions[2],
       _hSelectGroup = (0, _uiApi.useMemo)(function () {
     return function (group) {
       var _ref = group || {},
@@ -151,15 +154,7 @@ var AddToWatchDialog = (0, _memoIsShow["default"])(function (props) {
 
         setListOptions([]);
       } else if (_groupCaption) {
-        setListOptions(function (prevListOptions) {
-          var listOptions = store.getWatchListsByGroup(_groupCaption);
-
-          if (prevListOptions !== listOptions) {
-            (0, _uiApi.setRefValue)(_refListCaption, null);
-          }
-
-          return listOptions;
-        });
+        updateListOptions(_groupCaption);
       }
     }
   }, [props]); // _refListCaption, _updateGroupOptions
