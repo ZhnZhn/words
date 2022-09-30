@@ -1,0 +1,28 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/watch-browser/dnd-handlers/DnDHandlers.js"
+ ],
+ "file": "../../../../src/components/watch-browser/dnd-handlers/DnDHandlers.js",
+ "names": [
+  "fDragStart",
+  "permissions",
+  "crDragId",
+  "options",
+  "event",
+  "dragStartWithDnDStyle",
+  "setTransferTo",
+  "dragId",
+  "xType",
+  "fDragEnter",
+  "sourceType",
+  "borderColor",
+  "preventDefault",
+  "dragEnterWithDnDStyle",
+  "hDragOver",
+  "hDragLeave",
+  "ev",
+  "dragLeaveWithDnDStyle"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AAMO,IAAMA,UAAU,GAAG,SAAbA,UAAa,CACxBC,WADwB,EAExBC,QAFwB;EAAA,OAGrB,UAACC,OAAD,EAAUC,KAAV,EAAoB;IACvB,IAAAC,uCAAA,EAAsBD,KAAtB,EAA6BH,WAA7B;IACA,IAAAK,yBAAA,EAAc;MACZF,KAAK,EAALA,KADY;MAEZG,MAAM,EAAEL,QAAQ,CAACC,OAAD,CAFJ;MAGZK,KAAK,EAAEP,WAAW,CAAC,CAAD;IAHN,CAAd;EAKD,CAVyB;AAAA,CAAnB;;;;AAYA,IAAMQ,UAAU,GAAG,SAAbA,UAAa,CACxBC,UADwB,EAExBC,WAFwB;EAAA,OAGrB,UAAAP,KAAK,EAAI;IACXA,KAAK,CAACQ,cAAN;IACA,IAAAC,uCAAA,EACET,KADF,EAEEM,UAFF,EAGEC,WAHF;EAKF,CAVyB;AAAA,CAAnB;;;;AAYA,IAAMG,SAAS,GAAG,SAAZA,SAAY,CAAAV,KAAK,EAAI;EAC/BA,KAAK,CAACQ,cAAN;AACF,CAFM;;;;AAIA,IAAMG,UAAU,GAAG,SAAbA,UAAa,CAAAC,EAAE,EAAI;EAC7BA,EAAE,CAACJ,cAAH;EACA,IAAAK,uCAAA,EAAsBD,EAAtB;AACF,CAHM"
+}
