@@ -1,6 +1,7 @@
 import { useCallback } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
+import useDnDHandlers from '../hooks/useDnDHandlers';
 import isKeyEnter from './isKeyEnter';
 
 const CL_MENU_ITEM = 'oc-item not-selected'
@@ -53,18 +54,27 @@ const _crStyleConf = ({
    styleNotSelected
  ];
 
-const OpenClose2 = ({
-  isInitialOpen,
-  style,
-  styleCaption,
-  caption,
-  fillOpen=DF_FILL_OPEN,
-  fillClose=DF_FILL_CLOSE,
-  styleNotSelected,
-  draggableOption,
-  children
-}) => {
-  const [
+const OpenClose2 = (props) => {
+  const {
+      isInitialOpen,
+      style,
+      styleCaption,
+      caption,
+      fillOpen=DF_FILL_OPEN,
+      fillClose=DF_FILL_CLOSE,
+      styleNotSelected,
+      /*
+      isDraggable,
+      option,
+      onDragStart,
+      onDragEnter,
+      onDragOver,
+      onDragLeave,
+      onDrop,
+      */
+      children
+  } = props
+  , [
     isOpen,
     toggleIsOpen
   ] = useToggle(isInitialOpen)
@@ -73,6 +83,7 @@ const OpenClose2 = ({
        toggleIsOpen()
      }
   }, [toggleIsOpen])
+  , _draggableOption = useDnDHandlers(props)
   , [
      _d,
      _fill,
@@ -95,7 +106,7 @@ const OpenClose2 = ({
          style={_styleNotSelected}
          onClick={toggleIsOpen}
          onKeyDown={_hKeyDown}
-         {...draggableOption}
+         {..._draggableOption}
        >
         <div style={S_DIV_SVG}>
            <svg

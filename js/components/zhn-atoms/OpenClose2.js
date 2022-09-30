@@ -11,6 +11,8 @@ var _uiApi = require("../uiApi");
 
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
+var _useDnDHandlers = _interopRequireDefault(require("../hooks/useDnDHandlers"));
+
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -57,20 +59,18 @@ var _crStyleConf = function _crStyleConf(_ref) {
   return isOpen ? [D_OPEN, fillOpen, S_BLOCK, 'show-popup', null] : [D_CLOSE, fillClose, S_NONE, null, styleNotSelected];
 };
 
-var OpenClose2 = function OpenClose2(_ref2) {
-  var isInitialOpen = _ref2.isInitialOpen,
-      style = _ref2.style,
-      styleCaption = _ref2.styleCaption,
-      caption = _ref2.caption,
-      _ref2$fillOpen = _ref2.fillOpen,
-      fillOpen = _ref2$fillOpen === void 0 ? DF_FILL_OPEN : _ref2$fillOpen,
-      _ref2$fillClose = _ref2.fillClose,
-      fillClose = _ref2$fillClose === void 0 ? DF_FILL_CLOSE : _ref2$fillClose,
-      styleNotSelected = _ref2.styleNotSelected,
-      draggableOption = _ref2.draggableOption,
-      children = _ref2.children;
-
-  var _useToggle = (0, _useToggle2["default"])(isInitialOpen),
+var OpenClose2 = function OpenClose2(props) {
+  var isInitialOpen = props.isInitialOpen,
+      style = props.style,
+      styleCaption = props.styleCaption,
+      caption = props.caption,
+      _props$fillOpen = props.fillOpen,
+      fillOpen = _props$fillOpen === void 0 ? DF_FILL_OPEN : _props$fillOpen,
+      _props$fillClose = props.fillClose,
+      fillClose = _props$fillClose === void 0 ? DF_FILL_CLOSE : _props$fillClose,
+      styleNotSelected = props.styleNotSelected,
+      children = props.children,
+      _useToggle = (0, _useToggle2["default"])(isInitialOpen),
       isOpen = _useToggle[0],
       toggleIsOpen = _useToggle[1],
       _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
@@ -78,6 +78,7 @@ var OpenClose2 = function OpenClose2(_ref2) {
       toggleIsOpen();
     }
   }, [toggleIsOpen]),
+      _draggableOption = (0, _useDnDHandlers["default"])(props),
       _crStyleConf2 = _crStyleConf({
     isOpen: isOpen,
     fillOpen: fillOpen,
@@ -99,7 +100,7 @@ var OpenClose2 = function OpenClose2(_ref2) {
       style: _styleNotSelected,
       onClick: toggleIsOpen,
       onKeyDown: _hKeyDown
-    }, draggableOption, {
+    }, _draggableOption, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         style: S_DIV_SVG,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {

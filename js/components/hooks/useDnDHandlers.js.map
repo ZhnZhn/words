@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useDnDHandlers.js"
+ ],
+ "file": "../../../src/components/hooks/useDnDHandlers.js",
+ "names": [
+  "useDnDHandlers",
+  "isDraggable",
+  "option",
+  "onDragStart",
+  "onDrop",
+  "onDragEnter",
+  "onDragOver",
+  "onDragLeave",
+  "draggable",
+  "bind"
+ ],
+ "mappings": ";;;;;AACA,IAAMA,cAAc,GAAG,SAAjBA,cAAiB;EAAA,IACrBC,WADqB,QACrBA,WADqB;EAAA,IAErBC,MAFqB,QAErBA,MAFqB;EAAA,IAGrBC,WAHqB,QAGrBA,WAHqB;EAAA,IAIrBC,MAJqB,QAIrBA,MAJqB;EAAA,IAKrBC,WALqB,QAKrBA,WALqB;EAAA,IAMrBC,UANqB,QAMrBA,UANqB;EAAA,IAOrBC,WAPqB,QAOrBA,WAPqB;EAAA,OAQjBN,WAAW,GACb;IACEO,SAAS,EAAE,IADb;IAEEL,WAAW,EAAEA,WAAW,CAACM,IAAZ,CAAiB,IAAjB,EAAuBP,MAAvB,CAFf;IAGEE,MAAM,EAAEA,MAAM,CAACK,IAAP,CAAY,IAAZ,EAAkBP,MAAlB,CAHV;IAIEG,WAAW,EAAXA,WAJF;IAKEC,UAAU,EAAVA,UALF;IAMEC,WAAW,EAAXA;EANF,CADa,GASb,KAAK,CAjBc;AAAA,CAAvB;;eAmBeP,c"
+}

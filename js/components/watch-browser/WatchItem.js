@@ -7,33 +7,31 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var _useDnDHandlers = _interopRequireDefault(require("../hooks/useDnDHandlers"));
+
 var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var STYLE = {
-  ITEM_DIV: {
-    position: 'relative',
-    paddingRight: 40,
-    lineHeight: 1.4,
-    paddingTop: 5,
-    paddingBottom: 5
-  },
-  ITEM_SPAN: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    width: '100%',
-    maxWidth: 250,
-    paddingLeft: 8,
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    fontWeight: 'bold',
-    cursor: 'pointer'
-  },
-  SVG_CLOSE: {
-    position: 'absolute',
-    right: 0
-  }
+var S_ITEM_DIV = {
+  position: 'relative',
+  padding: '5px 40px 5px 0',
+  lineHeight: 1.4
+},
+    S_ITEM_SPAN = {
+  display: 'inline-block',
+  width: '100%',
+  maxWidth: 250,
+  paddingLeft: 8,
+  verticalAlign: 'middle',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
+  fontWeight: 'bold',
+  cursor: 'pointer'
+},
+    S_SVG_CLOSE = {
+  position: 'absolute',
+  right: 0
 };
 
 var _isKeyEnter = function _isKeyEnter(_ref) {
@@ -41,37 +39,25 @@ var _isKeyEnter = function _isKeyEnter(_ref) {
   return keyCode === 13;
 };
 
-var WatchItem = function WatchItem(_ref2) {
-  var item = _ref2.item,
-      className = _ref2.className,
-      isModeEdit = _ref2.isModeEdit,
-      option = _ref2.option,
-      onClick = _ref2.onClick,
-      _onClose = _ref2.onClose,
-      onDragStart = _ref2.onDragStart,
-      onDragEnter = _ref2.onDragEnter,
-      onDragOver = _ref2.onDragOver,
-      onDragLeave = _ref2.onDragLeave,
-      onDrop = _ref2.onDrop;
-
-  var caption = item.caption,
+var WatchItem = function WatchItem(props) {
+  var item = props.item,
+      className = props.className,
+      isDraggable = props.isDraggable,
+      option = props.option,
+      onClick = props.onClick,
+      _onClose = props.onClose,
+      _draggableOptions = (0, _useDnDHandlers["default"])(props),
+      caption = item.caption,
       _onClick = function _onClick() {
     return onClick(item);
   },
-      _onKeyDown = function _onKeyDown(event) {
-    if (_isKeyEnter(event)) {
+      _onKeyDown = function _onKeyDown(evt) {
+    if (_isKeyEnter(evt)) {
       _onClick();
     }
   },
-      _handlers = isModeEdit ? {
-    onDragStart: onDragStart.bind(null, option),
-    onDrop: onDrop.bind(null, option),
-    onDragOver: onDragOver,
-    onDragEnter: onDragEnter,
-    onDragLeave: onDragLeave
-  } : void 0,
-      _btClose = isModeEdit ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
-    style: STYLE.SVG_CLOSE,
+      _btClose = isDraggable ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
+    style: S_SVG_CLOSE,
     onClose: function onClose(evt) {
       return _onClose(option, evt);
     }
@@ -81,13 +67,12 @@ var WatchItem = function WatchItem(_ref2) {
     tabIndex: 0,
     role: "menuitem",
     className: className,
-    style: STYLE.ITEM_DIV,
+    style: S_ITEM_DIV,
     onClick: _onClick,
-    onKeyDown: _onKeyDown,
-    draggable: isModeEdit
-  }, _handlers, {
+    onKeyDown: _onKeyDown
+  }, _draggableOptions, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: STYLE.ITEM_SPAN,
+      style: S_ITEM_SPAN,
       children: caption
     }), _btClose]
   }));

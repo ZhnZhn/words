@@ -1,68 +1,72 @@
+import useDnDHandlers from '../hooks/useDnDHandlers';
 import SvgClose from '../zhn-atoms/SvgClose';
 
-const STYLE = {
-  ITEM_DIV : {
-    position: 'relative',
-    paddingRight: 40,
-    lineHeight: 1.4,
-    paddingTop: 5,
-    paddingBottom: 5
-  },
-  ITEM_SPAN : {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    width: '100%',
-    maxWidth: 250,
-    paddingLeft: 8,
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    fontWeight: 'bold',
-    cursor: 'pointer'
-  },
-
-  SVG_CLOSE : {
-    position: 'absolute',
-    right: 0
-  }
+const S_ITEM_DIV = {
+  position: 'relative',
+  padding: '5px 40px 5px 0',
+  lineHeight: 1.4
 }
+, S_ITEM_SPAN = {
+  display: 'inline-block',
+  width: '100%',
+  maxWidth: 250,
+  paddingLeft: 8,
+  verticalAlign: 'middle',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
+  fontWeight: 'bold',
+  cursor: 'pointer'
+}
+, S_SVG_CLOSE = {
+  position: 'absolute',
+  right: 0
+};
 
-const _isKeyEnter = ({ keyCode }) => keyCode === 13;
+const _isKeyEnter = ({
+  keyCode
+}) => keyCode === 13;
 
-const WatchItem = ({
-  item, className, isModeEdit, option,
-  onClick, onClose,
-  onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop
-}) => {
-  const { caption } = item
-    , _onClick = () => onClick(item)
-    , _onKeyDown = event => {
-      if (_isKeyEnter(event)) {
+const WatchItem = (props) => {
+  const {
+    item,
+    className,
+    isDraggable,
+    option,
+    onClick,
+    onClose,
+    /*
+    onDragStart,
+    onDragEnter,
+    onDragOver,
+    onDragLeave,
+    onDrop
+    */
+  } = props
+  , _draggableOptions = useDnDHandlers(props)
+  , { caption } = item
+  , _onClick = () => onClick(item)
+  , _onKeyDown = evt => {
+      if (_isKeyEnter(evt)) {
         _onClick()
       }
     }
-    , _handlers = isModeEdit ? {
-        onDragStart: onDragStart.bind(null, option),
-        onDrop: onDrop.bind(null, option),
-        onDragOver, onDragEnter, onDragLeave
-    } : void 0
-    , _btClose = isModeEdit
-        ? (<SvgClose
-             style={STYLE.SVG_CLOSE}
-             onClose={(evt) => onClose(option, evt)}
-           />)
-        : null;
+  , _btClose = isDraggable
+      ? (<SvgClose
+           style={S_SVG_CLOSE}
+           onClose={(evt) => onClose(option, evt)}
+         />)
+      : null;
 return (
      <div
        tabIndex={0}
        role="menuitem"
        className={className}
-       style={STYLE.ITEM_DIV}
+       style={S_ITEM_DIV}
        onClick={_onClick}
        onKeyDown={_onKeyDown}
-       draggable={isModeEdit}
-       {..._handlers}
+       {..._draggableOptions}
      >
-       <span style={STYLE.ITEM_SPAN}>
+       <span style={S_ITEM_SPAN}>
          {caption}
        </span>
        {_btClose}
