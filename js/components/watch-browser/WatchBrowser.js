@@ -7,319 +7,134 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _uiApi = require("../uiApi");
 
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
+
+var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 
 var _MenuBrowserStyle = _interopRequireDefault(require("../styles/MenuBrowserStyle"));
 
-var _Type = require("../../constants/Type");
-
-var _ComponentActions = _interopRequireDefault(require("../../flux/actions/ComponentActions"));
-
-var _WatchActions = _interopRequireDefault(require("../../flux/actions/WatchActions"));
+var _Handlers = require("./Handlers");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _EditBar = _interopRequireDefault(require("./EditBar"));
 
-var _WatchItem = _interopRequireDefault(require("./WatchItem"));
-
-var _Decorators = _interopRequireDefault(require("./decorators/Decorators"));
+var _WatchGroups = _interopRequireDefault(require("./WatchGroups"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _dec, _dec2, _dec3, _dec4, _class, _class2;
-
-var C_FILL_OPEN = '#80c040';
-var CL_WATCH_ITEM = 'row__type2-topic not-selected';
-var DRAG = {
-  GROUP: 'GROUP',
-  LIST: 'LIST',
-  ITEM: 'ITEM'
+//import PropTypes from 'prop-types'
+var S_BROWSER = {
+  paddingRight: 0
+},
+    S_BT_CIRCLE = {
+  position: 'relative',
+  top: -2,
+  marginLeft: 20
+},
+    S_SP = {
+  height: '92%',
+  paddingRight: 10,
+  overflowY: 'auto'
+},
+    S_SP_SHORT = {
+  height: 'calc(100% - 70px)'
 };
-var COLOR_CAPTION = '#9e9e9e';
-var S = {
-  BROWSER: {
-    paddingRight: 0
-  },
-  BT_CIRCLE: {
-    position: 'relative',
-    top: -2,
-    marginLeft: 20
-  },
-  SP: {
-    height: '92%',
-    paddingRight: 10,
-    overflowY: 'auto'
-  },
-  SP_SHORT: {
-    height: 'calc(100% - 70px)'
-  },
-  GROUP_DIV: {
-    lineHeight: 2.5
-  },
-  CAPTION: {
-    color: COLOR_CAPTION
-  },
-  LIST_DIV: {
-    marginLeft: 8,
-    paddingLeft: 12,
-    borderLeft: "3px solid " + COLOR_CAPTION,
-    lineHeight: 2.5
-  },
-  ITEM_NOT_SELECTED: {
-    marginRight: 10,
-    borderBottom: '1px solid rgba(128, 192, 64, 0.6)'
-  }
-};
-var T = {
-  S: "Click to save to LocalStorage",
-  E_V: "Click to toggle edit mode E/V"
-};
-var saveWatch = _WatchActions["default"].saveWatch,
-    removeWatchItem = _WatchActions["default"].removeWatchItem;
-var WatchBrowser = (_dec = _Decorators["default"].withDnDStyle, _dec2 = _Decorators["default"].withDnDGroup(DRAG, _WatchActions["default"]), _dec3 = _Decorators["default"].withDnDList(DRAG, _WatchActions["default"]), _dec4 = _Decorators["default"].withDnDItem(DRAG, _WatchActions["default"]), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(WatchBrowser, _Component);
+var T_S = "Click to save to LocalStorage",
+    T_E_V = "Click to toggle edit mode E/V";
 
-  /*
-  static propTypes = {
-    caption: PropTypes.string,
-    isInitShow: PropTypes.bool,
-    store: PropTypes.object,
-    browserType: PropTypes.string,
-    showAction: PropTypes.string,
-    updateAction: PropTypes.string,
-    onClickItem: PropTypes.func
-  }
-  */
-  function WatchBrowser(props) {
-    var _this;
+var FN_NOOP = function FN_NOOP() {};
 
-    _this = _Component.call(this, props) || this;
+var WatchBrowser = function WatchBrowser(_ref) {
+  var caption = _ref.caption,
+      isInitShow = _ref.isInitShow,
+      store = _ref.store,
+      browserType = _ref.browserType,
+      showAction = _ref.showAction,
+      updateAction = _ref.updateAction,
+      _ref$onClickItem = _ref.onClickItem,
+      onClickItem = _ref$onClickItem === void 0 ? FN_NOOP : _ref$onClickItem;
 
-    _this._onStore = function (actionType, data) {
-      var _this$props = _this.props,
-          browserType = _this$props.browserType,
-          showAction = _this$props.showAction,
-          updateAction = _this$props.updateAction;
+  var _useToggle = (0, _useToggle2["default"])(),
+      isModeEdit = _useToggle[0],
+      _toggleEditMode = _useToggle[1],
+      _useBool = (0, _useBool2["default"])(isInitShow),
+      isShow = _useBool[0],
+      _hShow = _useBool[1],
+      _hHide = _useBool[2],
+      _useState = (0, _uiApi.useState)(function () {
+    return store.getWatchList();
+  }),
+      watchList = _useState[0],
+      setWatchList = _useState[1];
 
-      if (actionType === showAction && data === browserType) {
-        _this._handlerShow();
-      } else if (actionType === updateAction) {
-        _this.setState({
-          watchList: data
-        });
-      }
-    };
+  (0, _useListen["default"])(store, function (actionType, data) {
+    if (actionType === showAction && data === browserType) {
+      _hShow();
+    } else if (actionType === updateAction) {
+      setWatchList((0, _extends2["default"])({}, data));
+    }
+  });
 
-    _this._handlerHide = function () {
-      _this.setState({
-        isShow: false
-      });
-    };
+  var TS = (0, _useTheme["default"])(_MenuBrowserStyle["default"]),
+      _spStyle = isModeEdit ? (0, _extends2["default"])({}, S_SP, S_SP_SHORT) : S_SP,
+      _captionEV = isModeEdit ? 'V' : 'E',
+      _ref2 = watchList || {},
+      groups = _ref2.groups;
 
-    _this._handlerShow = function () {
-      _this.setState({
-        isShow: true
-      });
-    };
-
-    _this._handlerToggleEditMode = function () {
-      _this.setState({
-        isModeEdit: !_this.state.isModeEdit
-      });
-    };
-
-    _this._crGroupDraggableOption = function (isModeEdit, option) {
-      return isModeEdit ? {
-        draggable: true,
-        onDragStart: _this._handlerDragStartGroup.bind(null, option),
-        onDragEnter: _this._handlerDragEnterGroup,
-        onDragOver: _this._handlerDragOverGroup,
-        onDragLeave: _this._handlerDragLeaveGroup,
-        onDrop: _this._handlerDropGroup.bind(null, option)
-      } : void 0;
-    };
-
-    _this._crListDraggableOption = function (isModeEdit, option) {
-      return isModeEdit ? {
-        draggable: true,
-        onDragStart: _this._handlerDragStartList.bind(null, option),
-        onDragEnter: _this._handlerDragEnterList,
-        onDragOver: _this._handlerDragOverList,
-        onDragLeave: _this._handlerDragLeaveList,
-        onDrop: _this._handlerDropList.bind(null, option)
-      } : void 0;
-    };
-
-    _this._renderWatchList = function (watchList, TS) {
-      var isModeEdit = _this.state.isModeEdit;
-      return watchList.groups.map(function (group, index) {
-        var caption = group.caption,
-            lists = group.lists;
-        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].OpenClose2, {
-          style: (0, _extends2["default"])({}, S.GROUP_DIV, TS.OPEN_CLOSE),
-          styleCaption: S.CAPTION,
-          caption: caption,
-          draggableOption: _this._crGroupDraggableOption(isModeEdit, {
-            caption: caption
-          }),
-          children: lists && _this._renderLists(lists, caption, TS)
-        }, index);
-      });
-    };
-
-    _this._renderLists = function (lists, groupCaption, TS) {
-      var isModeEdit = _this.state.isModeEdit;
-      return lists.map(function (list, index) {
-        var caption = list.caption,
-            items = list.items;
-        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].OpenClose2, {
-          fillOpen: C_FILL_OPEN,
-          style: (0, _extends2["default"])({}, S.LIST_DIV, TS.OPEN_CLOSE),
-          styleCaption: S.CAPTION,
-          styleNotSelected: S.ITEM_NOT_SELECTED,
-          caption: caption,
-          draggableOption: _this._crListDraggableOption(isModeEdit, {
-            groupCaption: groupCaption,
-            caption: caption
-          }),
-          children: items && _this._renderItems(items, groupCaption, caption)
-        }, index);
-      });
-    };
-
-    _this._renderItems = function (items, groupCaption, listCaption) {
-      var isModeEdit = _this.state.isModeEdit;
-      return items.map(function (item, index) {
-        var caption = item.caption;
-        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchItem["default"], {
-          className: CL_WATCH_ITEM,
-          isModeEdit: isModeEdit,
-          item: item,
-          option: {
-            groupCaption: groupCaption,
-            listCaption: listCaption,
-            caption: caption
-          },
-          onClick: _this._handlerClickItem,
-          onClose: _this._handlerRemoveItem,
-          onDragStart: _this._handlerDragStartItem,
-          onDragOver: _this._handlerDragOverItem,
-          onDragEnter: _this._handlerDragEnterItem,
-          onDragLeave: _this._handlerDragLeaveItem,
-          onDrop: _this._handlerDropItem
-        }, caption);
-      });
-    };
-
-    _this._handlerDragStartGroup = _this._handlerDragStartGroup.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDropGroup = _this._handlerDropGroup.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragEnterGroup = _this._handlerDragEnterGroup.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragLeaveGroup = _this._handlerDragLeaveGroup.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragStartList = _this._handlerDragStartList.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDropList = _this._handlerDropList.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragEnterList = _this._handlerDragEnterList.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragLeaveList = _this._handlerDragLeaveList.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragStartItem = _this._handlerDragStartItem.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDropItem = _this._handlerDropItem.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragEnterItem = _this._handlerDragEnterItem.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerDragLeaveItem = _this._handlerDragLeaveItem.bind((0, _assertThisInitialized2["default"])(_this));
-    _this._handlerClickItem = _this._handlerClickItem.bind((0, _assertThisInitialized2["default"])(_this));
-    var isInitShow = props.isInitShow,
-        store = props.store;
-    _this.state = {
-      isShow: !!isInitShow,
-      isModeEdit: false,
-      watchList: store.getWatchList()
-    };
-    return _this;
-  }
-
-  var _proto = WatchBrowser.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto._handlerSaveWatch = function _handlerSaveWatch() {
-    saveWatch();
-  };
-
-  _proto._handlerEditGroup = function _handlerEditGroup() {
-    _ComponentActions["default"].showModalDialog(_Type.MD_EDIT_WATCH_GROUP);
-  };
-
-  _proto._handlerEditList = function _handlerEditList() {
-    _ComponentActions["default"].showModalDialog(_Type.MD_EDIT_WATCH_LIST);
-  };
-
-  _proto._handlerClickItem = function _handlerClickItem(item) {
-    this.props.onClickItem(item); //ComponentActions.showModalDialog(ModalDialog.LOAD_ITEM, item)
-  };
-
-  _proto._handlerRemoveItem = function _handlerRemoveItem(option, event) {
-    event.stopPropagation();
-    removeWatchItem(option);
-  };
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        theme = _this$props2.theme,
-        caption = _this$props2.caption,
-        _this$state = this.state,
-        isShow = _this$state.isShow,
-        isModeEdit = _this$state.isModeEdit,
-        watchList = _this$state.watchList,
-        _captionEV = isModeEdit ? 'V' : 'E',
-        _spStyle = isModeEdit ? (0, _extends2["default"])({}, S.SP, S.SP_SHORT) : S.SP,
-        TS = theme.createStyle(_MenuBrowserStyle["default"]);
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].Browser, {
-      isShow: isShow,
-      style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER),
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
-        rootStyle: TS.BROWSER_CAPTION,
-        caption: caption,
-        onClose: this._handlerHide,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
-          caption: "S",
-          title: T.S,
-          style: S.BT_CIRCLE,
-          onClick: this._handlerSaveWatch
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
-          caption: _captionEV,
-          title: T.E_V,
-          style: S.BT_CIRCLE,
-          onClick: this._handlerToggleEditMode
-        })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditBar["default"], {
-        isShow: isModeEdit,
-        onClickGroup: this._handlerEditGroup,
-        onClickList: this._handlerEditList
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
-        className: TS.CL_SCROLL_PANE,
-        style: _spStyle,
-        children: watchList && this._renderWatchList(watchList, TS)
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].Browser, {
+    isShow: isShow,
+    style: (0, _extends2["default"])({}, S_BROWSER, TS.BROWSER),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
+      rootStyle: TS.BROWSER_CAPTION,
+      caption: caption,
+      onClose: _hHide,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+        caption: "S",
+        title: T_S,
+        style: S_BT_CIRCLE,
+        onClick: _Handlers.saveWatchList
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+        caption: _captionEV,
+        title: T_E_V,
+        style: S_BT_CIRCLE,
+        onClick: _toggleEditMode
       })]
-    });
-  };
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditBar["default"], {
+      isShow: isModeEdit,
+      onClickGroup: _Handlers.showDialogEditGroups,
+      onClickList: _Handlers.showDialogEditLists
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
+      className: TS.CL_SCROLL_PANE,
+      style: _spStyle,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchGroups["default"], {
+        isModeEdit: isModeEdit,
+        TS: TS,
+        groups: groups,
+        onClickItem: onClickItem
+      })
+    })]
+  });
+};
+/*
+WatchBrowser.propTypes = {
+  caption: PropTypes.string,
+  isInitShow: PropTypes.bool,
+  store: PropTypes.object,
+  browserType: PropTypes.string,
+  showAction: PropTypes.string,
+  updateAction: PropTypes.string,
+  onClickItem: PropTypes.func
+}
+*/
 
-  return WatchBrowser;
-}(_uiApi.Component), _class2.defaultProps = {
-  onClickItem: function onClickItem() {}
-}, _class2)) || _class) || _class) || _class) || _class);
 
-var _default = (0, _withTheme["default"])(WatchBrowser);
-
+var _default = WatchBrowser;
 exports["default"] = _default;
 //# sourceMappingURL=WatchBrowser.js.map

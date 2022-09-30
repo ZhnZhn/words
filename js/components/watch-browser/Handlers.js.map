@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/watch-browser/Handlers.js"
+ ],
+ "file": "../../../src/components/watch-browser/Handlers.js",
+ "names": [
+  "showDialogEditGroups",
+  "ComponentActions",
+  "showModalDialog",
+  "MD_EDIT_WATCH_GROUP",
+  "showDialogEditLists",
+  "MD_EDIT_WATCH_LIST",
+  "removeWatchItem",
+  "option",
+  "evt",
+  "stopPropagation",
+  "WatchActions",
+  "removeItem",
+  "saveWatchList",
+  "saveWatch"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AACA;;AAKO,IAAMA,oBAAoB,GAAG,SAAvBA,oBAAuB;EAAA,OAClCC,4BAAA,CAAiBC,eAAjB,CAAiCC,yBAAjC,CADkC;AAAA,CAA7B;;;;AAGA,IAAMC,mBAAmB,GAAG,SAAtBA,mBAAsB;EAAA,OACjCH,4BAAA,CAAiBC,eAAjB,CAAiCG,wBAAjC,CADiC;AAAA,CAA5B;;;;AAGA,IAAMC,eAAe,GAAG,SAAlBA,eAAkB,CAACC,MAAD,EAASC,GAAT,EAAiB;EAC9CA,GAAG,CAACC,eAAJ;;EACAC,wBAAA,CAAaC,UAAb,CAAwBJ,MAAxB;AACD,CAHM;;;;AAKA,IAAMK,aAAa,GAAG,SAAhBA,aAAgB,GAAM;EACjCF,wBAAA,CAAaG,SAAb;AACD,CAFM"
+}
