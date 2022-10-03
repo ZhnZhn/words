@@ -6,9 +6,8 @@
  "file": "../../../src/flux/watch-list/Logic.js",
  "names": [
   "Logic",
-  "WithLogicList",
   "WithLogicItem",
   "WithLogicDnD"
  ],
- "mappings": ";;;;;;;;;AACA;;AACA;;AACA;;AAEA,IAAMA,KAAK,iCAENC,yBAFM,EAGNC,yBAHM,EAKNC,wBALM,CAAX;eAQeH,K"
+ "mappings": ";;;;;;;;;AACA;;AACA;;AAEA,IAAMA,KAAK,iCAENC,yBAFM,EAINC,wBAJM,CAAX;eAOeF,K"
 }

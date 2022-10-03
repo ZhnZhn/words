@@ -32,6 +32,11 @@ import {
   renameGroup,
   deleteGroup,
 } from './WithLogicGroup';
+import {
+  createList,
+  renameList,
+  deleteList
+} from './WithLogicList';
 
 const STORAGE_KEY = 'WATCH_LIST_WORDS'
 , DIALOG_CAPTION ='Watch List:';
@@ -41,10 +46,7 @@ const {
   removeItem,
   dragDropItem,
   dragDropList,
-  dragDropGroup,
-  createList,
-  renameList,
-  deleteList
+  dragDropGroup
 } = Logic;
 
 const WatchListSlice = {
