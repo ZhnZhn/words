@@ -13,7 +13,7 @@ var _ComponentActions = require("../actions/ComponentActions");
 
 var _ItemActions = require("../actions/ItemActions");
 
-var _SettingActions = _interopRequireDefault(require("../actions/SettingActions"));
+var _SettingActions = require("../actions/SettingActions");
 
 var _WatchActions = _interopRequireDefault(require("../actions/WatchActions"));
 
@@ -28,7 +28,7 @@ var _WithLoading = _interopRequireDefault(require("./WithLoading"));
 var _WatchListSlice = _interopRequireDefault(require("../watch-list/WatchListSlice"));
 
 var Store = _refluxCore["default"].createStore((0, _extends2["default"])({
-  listenables: [_ComponentActions.ComponentActions, _ItemActions.ItemActions, _SettingActions["default"], _WatchActions["default"]],
+  listenables: [_ComponentActions.ComponentActions, _ItemActions.ItemActions, _SettingActions.SettingActions, _WatchActions["default"]],
   init: function init() {
     this.initWatchList();
   }

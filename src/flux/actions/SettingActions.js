@@ -1,14 +1,9 @@
+import Reflux from 'reflux-core';
 
-import Reflux from 'reflux-core'
+export const SAT_CHECK_AUTO_SAVE = "checkAutoSave"
+export const SAT_UNCHECK_AUTO_SAVE = "uncheckAutoSave"
 
-const T = {
-  CHECK_AUTO_SAVE: "checkAutoSave",
-  UNCHECK_AUTO_SAVE: "uncheckAutoSave"
-}
-
-const Actions = Reflux.createActions({
-  [T.CHECK_AUTO_SAVE]: {},
-  [T.UNCHECK_AUTO_SAVE]: {}
+export const SettingActions = Reflux.createActions({
+  [SAT_CHECK_AUTO_SAVE]: {},
+  [SAT_UNCHECK_AUTO_SAVE]: {}
 });
-
-export default Actions

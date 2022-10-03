@@ -15,7 +15,7 @@ var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
 var _ComponentActions = require("../../flux/actions/ComponentActions");
 
-var _SettingActions = _interopRequireDefault(require("../../flux/actions/SettingActions"));
+var _SettingActions = require("../../flux/actions/SettingActions");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -107,8 +107,8 @@ var SettingsDialog = function SettingsDialog(_ref) {
           btStyle: TS.BT.FLAT_ROOT,
           chbStroke: TS.CHB_STROKE,
           onSetTheme: _hSelectTheme,
-          onCheckAutoSave: _SettingActions["default"].checkAutoSave,
-          onUncheckAutoSave: _SettingActions["default"].uncheckAutoSave,
+          onCheckAutoSave: _SettingActions.SettingActions.checkAutoSave,
+          onUncheckAutoSave: _SettingActions.SettingActions.uncheckAutoSave,
           onClose: onClose
         })
       })]

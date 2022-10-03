@@ -11,7 +11,9 @@ import styleConfig from './Dialog.Style';
 import {
   ComponentActions
 } from '../../flux/actions/ComponentActions';
-import SA from '../../flux/actions/SettingActions';
+import {
+  SettingActions  
+} from '../../flux/actions/SettingActions';
 
 import A from '../Comp';
 import TabPane from '../zhn-tabpane/TabPane';
@@ -95,8 +97,8 @@ const SettingsDialog = ({
              btStyle={TS.BT.FLAT_ROOT}
              chbStroke={TS.CHB_STROKE}
              onSetTheme={_hSelectTheme}
-             onCheckAutoSave={SA.checkAutoSave}
-             onUncheckAutoSave={SA.uncheckAutoSave}
+             onCheckAutoSave={SettingActions.checkAutoSave}
+             onUncheckAutoSave={SettingActions.uncheckAutoSave}
              onClose={onClose}
            />
         </Tab>

@@ -6,7 +6,9 @@ import {
 import {
   ItemActions
 } from '../actions/ItemActions';
-import SettingActions from '../actions/SettingActions';
+import {
+  SettingActions
+} from '../actions/SettingActions';
 import WatchActions from '../actions/WatchActions';
 
 import ComponentSlice from './ComponentSlice';
