@@ -19,17 +19,15 @@ var _MsgWatch = require("../../constants/MsgWatch");
 
 var _Logic = _interopRequireDefault(require("./Logic"));
 
+var _WithLogicGroup = require("./WithLogicGroup");
+
 var STORAGE_KEY = 'WATCH_LIST_WORDS',
     DIALOG_CAPTION = 'Watch List:';
-var findGroup = _Logic["default"].findGroup,
-    addItem = _Logic["default"].addItem,
+var addItem = _Logic["default"].addItem,
     removeItem = _Logic["default"].removeItem,
     dragDropItem = _Logic["default"].dragDropItem,
     dragDropList = _Logic["default"].dragDropList,
     dragDropGroup = _Logic["default"].dragDropGroup,
-    createGroup = _Logic["default"].createGroup,
-    renameGroup = _Logic["default"].renameGroup,
-    deleteGroup = _Logic["default"].deleteGroup,
     createList = _Logic["default"].createList,
     renameList = _Logic["default"].renameList,
     deleteList = _Logic["default"].deleteList;
@@ -56,7 +54,7 @@ var WatchListSlice = {
     return this.watchList.groups;
   },
   getWatchListsByGroup: function getWatchListsByGroup(groupCaption) {
-    var group = findGroup(this.watchList, groupCaption);
+    var group = (0, _WithLogicGroup.findGroup)(this.watchList, groupCaption);
 
     if (!group) {
       return [];
@@ -139,13 +137,13 @@ var WatchListSlice = {
     }
   },
   onCreateGroup: function onCreateGroup(option) {
-    this._onEditWatch(createGroup(this.watchList, option), _WatchActions.WAT_CREATE_GROUP);
+    this._onEditWatch((0, _WithLogicGroup.createGroup)(this.watchList, option), _WatchActions.WAT_CREATE_GROUP);
   },
   onRenameGroup: function onRenameGroup(option) {
-    this._onEditWatch(renameGroup(this.watchList, option), _WatchActions.WAT_RENAME_GROUP);
+    this._onEditWatch((0, _WithLogicGroup.renameGroup)(this.watchList, option), _WatchActions.WAT_RENAME_GROUP);
   },
   onDeleteGroup: function onDeleteGroup(option) {
-    this._onEditWatch(deleteGroup(this.watchList, option), _WatchActions.WAT_DELETE_GROUP);
+    this._onEditWatch((0, _WithLogicGroup.deleteGroup)(this.watchList, option), _WatchActions.WAT_DELETE_GROUP);
   },
   onCreateList: function onCreateList(option) {
     this._onEditWatch(createList(this.watchList, option), _WatchActions.WAT_CREATE_LIST);

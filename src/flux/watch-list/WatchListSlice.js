@@ -26,19 +26,22 @@ import {
 
 import Logic from './Logic';
 
+import {
+  findGroup,
+  createGroup,
+  renameGroup,
+  deleteGroup,
+} from './WithLogicGroup';
+
 const STORAGE_KEY = 'WATCH_LIST_WORDS'
 , DIALOG_CAPTION ='Watch List:';
 
 const {
-  findGroup,
   addItem,
   removeItem,
   dragDropItem,
   dragDropList,
   dragDropGroup,
-  createGroup,
-  renameGroup,
-  deleteGroup,
   createList,
   renameList,
   deleteList
