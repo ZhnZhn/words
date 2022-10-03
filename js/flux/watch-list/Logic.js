@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _LogicFn = _interopRequireDefault(require("./LogicFn"));
+var _LogicFn = require("./LogicFn");
 
 var _WithLogicGroup = _interopRequireDefault(require("./WithLogicGroup"));
 
@@ -18,7 +18,7 @@ var _WithLogicItem = _interopRequireDefault(require("./WithLogicItem"));
 var _WithLogicDnD = _interopRequireDefault(require("./WithLogicDnD"));
 
 var Logic = (0, _extends2["default"])({}, _WithLogicGroup["default"], _WithLogicList["default"], _WithLogicItem["default"], _WithLogicDnD["default"], {
-  findGroup: _LogicFn["default"].findGroup
+  findGroup: _LogicFn.findGroup
 });
 var _default = Logic;
 exports["default"] = _default;

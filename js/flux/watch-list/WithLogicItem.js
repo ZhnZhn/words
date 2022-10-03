@@ -1,28 +1,21 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _LogicFn = _interopRequireDefault(require("./LogicFn"));
+var _LogicFn = require("./LogicFn");
 
-var crMsgItemExisted = _LogicFn["default"].crMsgItemExisted,
-    findGroup = _LogicFn["default"].findGroup,
-    findList = _LogicFn["default"].findList,
-    isInArraySameCaption = _LogicFn["default"].isInArraySameCaption,
-    filter = _LogicFn["default"].filter;
 var WithLogicItem = {
   addItem: function addItem(watchList, item) {
     var caption = item.caption,
         groupCaption = item.groupCaption,
         listCaption = item.listCaption,
-        toGroup = findGroup(watchList, groupCaption),
-        toList = findList(toGroup, listCaption),
+        toGroup = (0, _LogicFn.findGroup)(watchList, groupCaption),
+        toList = (0, _LogicFn.findList)(toGroup, listCaption),
         items = toList.items;
 
-    if (isInArraySameCaption(items, caption)) {
-      return crMsgItemExisted(caption, listCaption);
+    if ((0, _LogicFn.isInArraySameCaption)(items, caption)) {
+      return (0, _LogicFn.crMsgItemExisted)(caption, listCaption);
     }
 
     if (items) {
@@ -43,9 +36,9 @@ var WithLogicItem = {
     var groupCaption = _ref.groupCaption,
         listCaption = _ref.listCaption,
         caption = _ref.caption;
-    var groupFrom = findGroup(watchList, groupCaption),
-        listFrom = findList(groupFrom, listCaption);
-    listFrom.items = filter(listFrom.items, caption);
+    var groupFrom = (0, _LogicFn.findGroup)(watchList, groupCaption),
+        listFrom = (0, _LogicFn.findList)(groupFrom, listCaption);
+    listFrom.items = (0, _LogicFn.filter)(listFrom.items, caption);
   }
 };
 var _default = WithLogicItem;

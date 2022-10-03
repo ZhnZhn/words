@@ -1,1 +1,30 @@
-{"version":3,"sources":["../../../src/flux/watch-list/WithLogicItem.js"],"names":["crMsgItemExisted","LogicFn","findGroup","findList","isInArraySameCaption","filter","WithLogicItem","addItem","watchList","item","caption","groupCaption","listCaption","toGroup","toList","items","push","isDone","removeItem","groupFrom","listFrom"],"mappings":";;;;;;;AAAA;;IAGEA,gB,GAMEC,mB,CANFD,gB;IAEAE,S,GAIED,mB,CAJFC,S;IACAC,Q,GAGEF,mB,CAHFE,Q;IACAC,oB,GAEEH,mB,CAFFG,oB;IACAC,M,GACEJ,mB,CADFI,M;AAGF,IAAMC,aAAa,GAAG;AAEpBC,EAAAA,OAFoB,mBAEZC,SAFY,EAEDC,IAFC,EAEI;AAAA,QAEfC,OAFe,GAGZD,IAHY,CAEfC,OAFe;AAAA,QAENC,YAFM,GAGZF,IAHY,CAENE,YAFM;AAAA,QAEQC,WAFR,GAGZH,IAHY,CAEQG,WAFR;AAAA,QAIhBC,OAJgB,GAINX,SAAS,CAACM,SAAD,EAAYG,YAAZ,CAJH;AAAA,QAKhBG,MALgB,GAKPX,QAAQ,CAACU,OAAD,EAAUD,WAAV,CALD;AAAA,QAMhBG,KANgB,GAMRD,MAAM,CAACC,KANC;;AAQtB,QAAKX,oBAAoB,CAACW,KAAD,EAAQL,OAAR,CAAzB,EAA2C;AACzC,aAAOV,gBAAgB,CAACU,OAAD,EAAUE,WAAV,CAAvB;AACD;;AACD,QAAIG,KAAJ,EAAU;AACRD,MAAAA,MAAM,CAACC,KAAP,CAAaC,IAAb,CAAkB;AAAEN,QAAAA,OAAO,EAAPA;AAAF,OAAlB;AACD,KAFD,MAEO;AACLI,MAAAA,MAAM,CAACC,KAAP,GAAe,CAAC;AAAEL,QAAAA,OAAO,EAAPA;AAAF,OAAD,CAAf;AACD;;AACD,WAAO;AAAEO,MAAAA,MAAM,EAAE;AAAV,KAAP;AACD,GAnBmB;AAqBpBC,EAAAA,UArBoB,sBAqBTV,SArBS,QAqBuC;AAAA,QAApCG,YAAoC,QAApCA,YAAoC;AAAA,QAAtBC,WAAsB,QAAtBA,WAAsB;AAAA,QAATF,OAAS,QAATA,OAAS;AACzD,QAAMS,SAAS,GAAGjB,SAAS,CAACM,SAAD,EAAYG,YAAZ,CAA3B;AAAA,QACMS,QAAQ,GAAGjB,QAAQ,CAACgB,SAAD,EAAYP,WAAZ,CADzB;AAGAQ,IAAAA,QAAQ,CAACL,KAAT,GAAiBV,MAAM,CAACe,QAAQ,CAACL,KAAV,EAAiBL,OAAjB,CAAvB;AACD;AA1BmB,CAAtB;eA8BeJ,a","sourcesContent":["import LogicFn from './LogicFn';\r\n\r\nconst {\r\n  crMsgItemExisted,\r\n\r\n  findGroup,\r\n  findList,\r\n  isInArraySameCaption,\r\n  filter\r\n} = LogicFn;\r\n\r\nconst WithLogicItem = {\r\n\r\n  addItem(watchList, item){\r\n    const {\r\n           caption, groupCaption, listCaption,\r\n          } = item\r\n        , toGroup = findGroup(watchList, groupCaption)\r\n        , toList = findList(toGroup, listCaption)\r\n        , items = toList.items;\r\n\r\n    if ( isInArraySameCaption(items, caption) ){\r\n      return crMsgItemExisted(caption, listCaption);\r\n    }\r\n    if (items){\r\n      toList.items.push({ caption });\r\n    } else {\r\n      toList.items = [{ caption }];\r\n    }\r\n    return { isDone: true };\r\n  },\r\n\r\n  removeItem(watchList, {groupCaption, listCaption, caption}){\r\n    const groupFrom = findGroup(watchList, groupCaption)\r\n        , listFrom = findList(groupFrom, listCaption);\r\n\r\n    listFrom.items = filter(listFrom.items, caption);\r\n  }\r\n\r\n};\r\n\r\nexport default WithLogicItem\r\n"],"file":"WithLogicItem.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/watch-list/WithLogicItem.js"
+ ],
+ "file": "../../../src/flux/watch-list/WithLogicItem.js",
+ "names": [
+  "WithLogicItem",
+  "addItem",
+  "watchList",
+  "item",
+  "caption",
+  "groupCaption",
+  "listCaption",
+  "toGroup",
+  "findGroup",
+  "toList",
+  "findList",
+  "items",
+  "isInArraySameCaption",
+  "crMsgItemExisted",
+  "push",
+  "isDone",
+  "removeItem",
+  "groupFrom",
+  "listFrom",
+  "filter"
+ ],
+ "mappings": ";;;;;AAAA;;AASA,IAAMA,aAAa,GAAG;EAEpBC,OAFoB,mBAEZC,SAFY,EAEDC,IAFC,EAEI;IACtB,IACOC,OADP,GAEUD,IAFV,CACOC,OADP;IAAA,IACgBC,YADhB,GAEUF,IAFV,CACgBE,YADhB;IAAA,IAC8BC,WAD9B,GAEUH,IAFV,CAC8BG,WAD9B;IAAA,IAGMC,OAHN,GAGgB,IAAAC,kBAAA,EAAUN,SAAV,EAAqBG,YAArB,CAHhB;IAAA,IAIMI,MAJN,GAIe,IAAAC,iBAAA,EAASH,OAAT,EAAkBD,WAAlB,CAJf;IAAA,IAKMK,KALN,GAKcF,MAAM,CAACE,KALrB;;IAOA,IAAK,IAAAC,6BAAA,EAAqBD,KAArB,EAA4BP,OAA5B,CAAL,EAA2C;MACzC,OAAO,IAAAS,yBAAA,EAAiBT,OAAjB,EAA0BE,WAA1B,CAAP;IACD;;IACD,IAAIK,KAAJ,EAAU;MACRF,MAAM,CAACE,KAAP,CAAaG,IAAb,CAAkB;QAAEV,OAAO,EAAPA;MAAF,CAAlB;IACD,CAFD,MAEO;MACLK,MAAM,CAACE,KAAP,GAAe,CAAC;QAAEP,OAAO,EAAPA;MAAF,CAAD,CAAf;IACD;;IACD,OAAO;MAAEW,MAAM,EAAE;IAAV,CAAP;EACD,CAnBmB;EAqBpBC,UArBoB,sBAqBTd,SArBS,QAqBuC;IAAA,IAApCG,YAAoC,QAApCA,YAAoC;IAAA,IAAtBC,WAAsB,QAAtBA,WAAsB;IAAA,IAATF,OAAS,QAATA,OAAS;IACzD,IAAMa,SAAS,GAAG,IAAAT,kBAAA,EAAUN,SAAV,EAAqBG,YAArB,CAAlB;IAAA,IACMa,QAAQ,GAAG,IAAAR,iBAAA,EAASO,SAAT,EAAoBX,WAApB,CADjB;IAGAY,QAAQ,CAACP,KAAT,GAAiB,IAAAQ,eAAA,EAAOD,QAAQ,CAACP,KAAhB,EAAuBP,OAAvB,CAAjB;EACD;AA1BmB,CAAtB;eA8BeJ,a"
+}

@@ -1,20 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _LogicFn = _interopRequireDefault(require("./LogicFn"));
+var _LogicFn = require("./LogicFn");
 
-var crAlertItemExisted = _LogicFn["default"].crAlertItemExisted,
-    crAlertListExisted = _LogicFn["default"].crAlertListExisted,
-    findGroup = _LogicFn["default"].findGroup,
-    findList = _LogicFn["default"].findList,
-    findIndex = _LogicFn["default"].findIndex,
-    isInArraySameCaption = _LogicFn["default"].isInArraySameCaption,
-    filter = _LogicFn["default"].filter,
-    insertItemInArray = _LogicFn["default"].insertItemInArray;
 var WithLogicDnD = {
   dragDropItem: function dragDropItem(watchList, _ref) {
     var dragId = _ref.dragId,
@@ -24,26 +14,26 @@ var WithLogicDnD = {
         dragGroupId = _dragId$split[0],
         dragListId = _dragId$split[1],
         dragItemId = _dragId$split[2],
-        dragGroup = findGroup(watchList, dragGroupId),
-        dragList = findList(dragGroup, dragListId),
-        dragIndex = findIndex(dragList.items, dragItemId),
+        dragGroup = (0, _LogicFn.findGroup)(watchList, dragGroupId),
+        dragList = (0, _LogicFn.findList)(dragGroup, dragListId),
+        dragIndex = (0, _LogicFn.findIndex)(dragList.items, dragItemId),
         dragItem = dragList.items[dragIndex];
 
     var _dropId$split = dropId.split(';'),
         dropGroupId = _dropId$split[0],
         dropListId = _dropId$split[1],
         dropItemId = _dropId$split[2],
-        dropGroup = findGroup(watchList, dropGroupId),
-        dropList = findList(dropGroup, dropListId),
-        dropIndex = dropItemId ? findIndex(dropList.items, dropItemId) : 0; //dragArr[3] => dragArr[2]
+        dropGroup = (0, _LogicFn.findGroup)(watchList, dropGroupId),
+        dropList = (0, _LogicFn.findList)(dropGroup, dropListId),
+        dropIndex = dropItemId ? (0, _LogicFn.findIndex)(dropList.items, dropItemId) : 0; //dragArr[3] => dragArr[2]
 
 
-    if (dragList.caption !== dropList.caption && isInArraySameCaption(dropList.items, dragItemId)) {
-      return crAlertItemExisted(dropListId, dragItemId);
+    if (dragList.caption !== dropList.caption && (0, _LogicFn.isInArraySameCaption)(dropList.items, dragItemId)) {
+      return (0, _LogicFn.crAlertItemExisted)(dropListId, dragItemId);
     }
 
-    dragList.items = filter(dragList.items, dragItemId);
-    dropList.items = insertItemInArray(dragItem, dropIndex, dropList.items);
+    dragList.items = (0, _LogicFn.filter)(dragList.items, dragItemId);
+    dropList.items = (0, _LogicFn.insertItemInArray)(dragItem, dropIndex, dropList.items);
     return {
       isDone: true
     };
@@ -55,21 +45,21 @@ var WithLogicDnD = {
     var _dragId$split2 = dragId.split(';'),
         dragGroupCaption = _dragId$split2[0],
         dragListCaption = _dragId$split2[1],
-        dragGroup = findGroup(watchList, dragGroupCaption),
-        dragList = findList(dragGroup, dragListCaption);
+        dragGroup = (0, _LogicFn.findGroup)(watchList, dragGroupCaption),
+        dragList = (0, _LogicFn.findList)(dragGroup, dragListCaption);
 
     var _dropId$split2 = dropId.split(';'),
         dropGroupCaption = _dropId$split2[0],
         dropListCaption = _dropId$split2[1],
-        dropGroup = findGroup(watchList, dropGroupCaption),
-        dropIndex = dropListCaption ? findIndex(dropGroup.lists, dropListCaption) : 0;
+        dropGroup = (0, _LogicFn.findGroup)(watchList, dropGroupCaption),
+        dropIndex = dropListCaption ? (0, _LogicFn.findIndex)(dropGroup.lists, dropListCaption) : 0;
 
-    if (dragGroup.caption !== dropGroup.caption && isInArraySameCaption(dropGroup.lists, dragListCaption)) {
-      return crAlertListExisted(dropGroupCaption, dragListCaption);
+    if (dragGroup.caption !== dropGroup.caption && (0, _LogicFn.isInArraySameCaption)(dropGroup.lists, dragListCaption)) {
+      return (0, _LogicFn.crAlertListExisted)(dropGroupCaption, dragListCaption);
     }
 
-    dragGroup.lists = filter(dragGroup.lists, dragListCaption);
-    dropGroup.lists = insertItemInArray(dragList, dropIndex, dropGroup.lists);
+    dragGroup.lists = (0, _LogicFn.filter)(dragGroup.lists, dragListCaption);
+    dropGroup.lists = (0, _LogicFn.insertItemInArray)(dragList, dropIndex, dropGroup.lists);
     return {
       isDone: true
     };
@@ -80,13 +70,13 @@ var WithLogicDnD = {
 
     var _dragId$split3 = dragId.split(';'),
         dragGroupCaption = _dragId$split3[0],
-        dragGroup = findGroup(watchList, dragGroupCaption),
+        dragGroup = (0, _LogicFn.findGroup)(watchList, dragGroupCaption),
         _dropId$split3 = dropId.split(';'),
         dropGroupCaption = _dropId$split3[0],
-        dropIndex = dropGroupCaption ? findIndex(watchList.groups, dropGroupCaption) : 0;
+        dropIndex = dropGroupCaption ? (0, _LogicFn.findIndex)(watchList.groups, dropGroupCaption) : 0;
 
-    watchList.groups = filter(watchList.groups, dragGroupCaption);
-    watchList.groups = insertItemInArray(dragGroup, dropIndex, watchList.groups);
+    watchList.groups = (0, _LogicFn.filter)(watchList.groups, dragGroupCaption);
+    watchList.groups = (0, _LogicFn.insertItemInArray)(dragGroup, dropIndex, watchList.groups);
     return {
       isDone: true
     };

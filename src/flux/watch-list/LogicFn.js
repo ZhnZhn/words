@@ -1,4 +1,3 @@
-
 import {
   notFoundItem,
   groupExisted,
@@ -14,67 +13,68 @@ const CAPTION = 'caption'
 , GROUPS = 'groups'
 , LISTS = 'lists';
 
-const LogicFn = {
+export const crMsgNotFound = (
+  itemType,
+  name
+) => ({
+   isDone: false,
+   message: notFoundItem(itemType, name)
+})
 
-  crMsgNotFound(itemType, name){
-    return {
-      isDone: false,
-      message: notFoundItem(itemType, name)
-    };
-  },
-  crMsgGroupExisted(caption){
-    return {
-      isDone: false,
-      message: groupExisted(caption)
-    };
-  },
-  crMsgListExisted(captionList, captionGroup){
-    return {
-      isDone: false,
-      message: listExisted(captionList, captionGroup)
-    };
-  },
-  crMsgItemExisted(caption, captionList){
-    return {
-      isDone: false,
-      message: itemExisted(caption, captionList)
-    };
-  },
+export const crMsgGroupExisted = (
+  caption
+) => ({
+   isDone: false,
+   message: groupExisted(caption)
+})
 
-  /* for DragDrop */
-  crAlertItemExisted(dropId, dragId){
-    return {
-      isDone: false,
-      itemId: `${dropId}:${dragId}`,
-      ...ALERT_DND_ITEM
-   };
- },
- crAlertListExisted(dropGroupCaption, dragListCaption){
-   return {
-      isDone: false,
-      itemId: `${dropGroupCaption}:${dragListCaption}`,
-      ...ALERT_DND_LIST
-   };
- },
+export const crMsgListExisted = (
+  captionList,
+  captionGroup
+) => ({
+   isDone: false,
+   message: listExisted(captionList, captionGroup)
+})
 
+export const crMsgItemExisted = (
+  caption,
+  captionList
+) => ({
+    isDone: false,
+    message: itemExisted(caption, captionList)
+})
 
+/* for DragDrop */
+export const crAlertItemExisted = (
+  dropId,
+  dragId
+) => ({
+    isDone: false,
+    itemId: `${dropId}:${dragId}`,
+    ...ALERT_DND_ITEM
+ })
 
- /* for DragDrop */
-  filter : ut.imArr.filterByPropFn(CAPTION),
-  getArrayWithObj : ut.imArr.push,
+ export const crAlertListExisted = (
+   dropGroupCaption,
+   dragListCaption
+ ) => ({
+    isDone: false,
+    itemId: `${dropGroupCaption}:${dragListCaption}`,
+    ...ALERT_DND_LIST
+ })
 
-  getArrayWithRename: ut.imArr.editByPropFn(CAPTION),
+/* for DragDrop */
+export const filter = ut.imArr.filterByPropFn(CAPTION)
+export const getArrayWithObj = ut.imArr.push
 
-  /* for DragDrop */
-  insertItemInArray : ut.imArr.insertItem,
-  /* for DragDrop */
+export const getArrayWithRename = ut.imArr.editByPropFn(CAPTION)
 
-  findGroup : ut.obj.findInPropArrayByProp(GROUPS, CAPTION),
-  findList : ut.obj.findInPropArrayByProp(LISTS, CAPTION),
+/* for DragDrop */
+export const insertItemInArray = ut.imArr.insertItem
+/* for DragDrop */
 
-  findIndex : ut.arr.findIndexByProp('caption'),
-  isInArraySameCaption : ut.arr.isSameByProp(CAPTION)
+export const findGroup = ut.obj.findInPropArrayByProp(GROUPS, CAPTION)
+export const findList = ut.obj.findInPropArrayByProp(LISTS, CAPTION)
 
-};
-
-export default LogicFn
+export const findIndex = ut.arr.findIndexByProp('caption')
+export const isInArraySameCaption = ut.arr.isSameByProp(CAPTION)

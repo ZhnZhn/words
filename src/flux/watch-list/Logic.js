@@ -1,5 +1,5 @@
 
-import LogicFn from './LogicFn';
+import { findGroup } from './LogicFn';
 
 import WithLogicGroup from './WithLogicGroup';
 import WithLogicList from './WithLogicList';
@@ -14,8 +14,7 @@ const Logic = {
 
   ...WithLogicDnD,
 
-  findGroup : LogicFn.findGroup
-
+  findGroup
 };
 
 export default Logic
