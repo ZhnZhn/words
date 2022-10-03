@@ -15,7 +15,7 @@ var crMsgGroupExisted = _LogicFn["default"].crMsgGroupExisted,
     getArrayWithRename = _LogicFn["default"].getArrayWithRename,
     filter = _LogicFn["default"].filter;
 var WithLogicGroup = {
-  addGroup: function addGroup(watchList, _ref) {
+  createGroup: function createGroup(watchList, _ref) {
     var caption = _ref.caption;
     var groups = watchList.groups;
 

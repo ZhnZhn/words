@@ -25,7 +25,7 @@ var _useRefItemCaption2 = _interopRequireDefault(require("./useRefItemCaption"))
 
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 
-var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
+var _WatchActions = require("../../flux/actions/WatchActions");
 
 var _MsgWatch = require("../../constants/MsgWatch");
 
@@ -39,14 +39,10 @@ var _Atoms = _interopRequireDefault(require("./Atoms"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
 //import PropTypes from "prop-types";
-var actionCompleted = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
-    actionFailed = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
-    forActionType = _WatchActions.WatchActionTypes.ADD_ITEM;
+var actionCompleted = _WatchActions.WAT_EDIT_WATCH_COMPLETED,
+    actionFailed = _WatchActions.WAT_EDIT_WATCH_FAILED,
+    forActionType = _WatchActions.WAT_ADD_ITEM;
 var CL_BT_DIV = 'bt-flat__div',
     S_DIALOG = {
   left: 'calc(50vw - 142px)',
@@ -108,7 +104,7 @@ var AddToWatchDialog = (0, _memoIsShow["default"])(function (props) {
         var _caption = data.caption,
             config = data.config;
 
-        _WatchActions["default"].addWatchItem({
+        _WatchActions.WatchActions.addWatchItem({
           caption: _caption,
           config: config,
           groupCaption: groupCaption,

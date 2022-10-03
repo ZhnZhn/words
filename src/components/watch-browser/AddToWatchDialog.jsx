@@ -18,7 +18,12 @@ import useListOptions from './useListOptions';
 import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 
-import WatchActions, { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
+import {
+  WAT_ADD_ITEM,
+  WAT_EDIT_WATCH_COMPLETED,
+  WAT_EDIT_WATCH_FAILED,
+  WatchActions
+} from '../../flux/actions/WatchActions';
 import {
   notSelected
 } from '../../constants/MsgWatch';
@@ -28,9 +33,9 @@ import RowInputSelect from './RowInputSelect'
 import Row from '../dialogs/Row';
 import A from './Atoms';
 
-const actionCompleted = WAT.EDIT_WATCH_COMPLETED
-, actionFailed =  WAT.EDIT_WATCH_FAILED
-, forActionType = WAT.ADD_ITEM;
+const actionCompleted = WAT_EDIT_WATCH_COMPLETED
+, actionFailed =  WAT_EDIT_WATCH_FAILED
+, forActionType = WAT_ADD_ITEM;
 
 const CL_BT_DIV = 'bt-flat__div'
 , S_DIALOG = {
@@ -151,7 +156,7 @@ const AddToWatchDialog = memoIsShow((
         _updateGroupOptions()
         setListOptions([])
       } else if (_groupCaption) {
-        updateListOptions(_groupCaption)        
+        updateListOptions(_groupCaption)
       }
     }
   }, [props])

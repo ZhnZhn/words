@@ -2,7 +2,14 @@ import memoIsShow from '../hoc/memoIsShow';
 import useTheme from '../hoc/useTheme';
 import styleConfig from '../dialogs/Dialog.Style';
 
-import Actions, { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
+import {
+  WAT_EDIT_WATCH_COMPLETED,
+  WAT_EDIT_WATCH_FAILED,
+  WAT_CREATE_LIST,
+  WAT_RENAME_LIST,
+  WAT_DELETE_LIST,
+  WatchActions
+} from '../../flux/actions/WatchActions';
 
 import {
   notSelected,
@@ -26,14 +33,7 @@ const {
   createList,
   renameList,
   deleteList
-} = Actions
-const {
-  EDIT_WATCH_COMPLETED,
-  EDIT_WATCH_FAILED,
-  CREATE_LIST,
-  RENAME_LIST,
-  DELETE_LIST
-} = WAT;
+} = WatchActions;
 
 const EditListDialog = memoIsShow(({
   isShow,
@@ -56,9 +56,9 @@ const EditListDialog = memoIsShow(({
               store={store}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={EDIT_WATCH_COMPLETED}
-              actionFailed={EDIT_WATCH_FAILED}
-              forActionType={CREATE_LIST}
+              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+              actionFailed={WAT_EDIT_WATCH_FAILED}
+              forActionType={WAT_CREATE_LIST}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
               onCreate={createList}
@@ -69,9 +69,9 @@ const EditListDialog = memoIsShow(({
               store={store}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={EDIT_WATCH_COMPLETED}
-              actionFailed={EDIT_WATCH_FAILED}
-              forActionType={RENAME_LIST}
+              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+              actionFailed={WAT_EDIT_WATCH_FAILED}
+              forActionType={WAT_RENAME_LIST}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
               onRename={renameList}
@@ -83,9 +83,9 @@ const EditListDialog = memoIsShow(({
               store={store}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={EDIT_WATCH_COMPLETED}
-              actionFailed={EDIT_WATCH_FAILED}
-              forActionType={DELETE_LIST}
+              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+              actionFailed={WAT_EDIT_WATCH_FAILED}
+              forActionType={WAT_DELETE_LIST}
               msgOnNotSelect={notSelected}
               onDelete={deleteList}
               onClose={onClose}

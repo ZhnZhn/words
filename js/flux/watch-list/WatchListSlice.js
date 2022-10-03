@@ -27,7 +27,7 @@ var findGroup = _Logic["default"].findGroup,
     dragDropItem = _Logic["default"].dragDropItem,
     dragDropList = _Logic["default"].dragDropList,
     dragDropGroup = _Logic["default"].dragDropGroup,
-    addGroup = _Logic["default"].addGroup,
+    createGroup = _Logic["default"].createGroup,
     renameGroup = _Logic["default"].renameGroup,
     deleteGroup = _Logic["default"].deleteGroup,
     createList = _Logic["default"].createList,
@@ -65,7 +65,7 @@ var WatchListSlice = {
     return group.lists;
   },
   onAddWatchItem: function onAddWatchItem(item) {
-    this._onEditWatch(addItem(this.watchList, item), _WatchActions.WatchActionTypes.ADD_ITEM);
+    this._onEditWatch(addItem(this.watchList, item), _WatchActions.WAT_ADD_ITEM);
 
     if (this.isAutoSaveOnAdd) {
       this.onSaveWatch({
@@ -128,33 +128,33 @@ var WatchListSlice = {
     if (result.isDone) {
       this.isWatchEdited = true;
       this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, this.watchList);
-      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, {
+      this.trigger(_WatchActions.WAT_EDIT_WATCH_COMPLETED, {
         forActionType: forActionType
       });
     } else {
-      this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_FAILED, {
+      this.trigger(_WatchActions.WAT_EDIT_WATCH_FAILED, {
         messages: [result.message],
         forActionType: forActionType
       });
     }
   },
-  onAddGroup: function onAddGroup(option) {
-    this._onEditWatch(addGroup(this.watchList, option), _WatchActions.WatchActionTypes.ADD_GROUP);
+  onCreateGroup: function onCreateGroup(option) {
+    this._onEditWatch(createGroup(this.watchList, option), _WatchActions.WAT_CREATE_GROUP);
   },
   onRenameGroup: function onRenameGroup(option) {
-    this._onEditWatch(renameGroup(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_GROUP);
+    this._onEditWatch(renameGroup(this.watchList, option), _WatchActions.WAT_RENAME_GROUP);
   },
   onDeleteGroup: function onDeleteGroup(option) {
-    this._onEditWatch(deleteGroup(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_GROUP);
+    this._onEditWatch(deleteGroup(this.watchList, option), _WatchActions.WAT_DELETE_GROUP);
   },
   onCreateList: function onCreateList(option) {
-    this._onEditWatch(createList(this.watchList, option), _WatchActions.WatchActionTypes.CREATE_LIST);
+    this._onEditWatch(createList(this.watchList, option), _WatchActions.WAT_CREATE_LIST);
   },
   onRenameList: function onRenameList(option) {
-    this._onEditWatch(renameList(this.watchList, option), _WatchActions.WatchActionTypes.RENAME_LIST);
+    this._onEditWatch(renameList(this.watchList, option), _WatchActions.WAT_RENAME_LIST);
   },
   onDeleteList: function onDeleteList(option) {
-    this._onEditWatch(deleteList(this.watchList, option), _WatchActions.WatchActionTypes.DELETE_LIST);
+    this._onEditWatch(deleteList(this.watchList, option), _WatchActions.WAT_DELETE_LIST);
   }
 };
 var _default = WatchListSlice;

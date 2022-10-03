@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.hDropGroup = exports.hDragStartGroup = exports.hDragOverGroup = exports.hDragLeaveGroup = exports.hDragEnterGroup = void 0;
 
-var _WatchActions = _interopRequireDefault(require("../../../flux/actions/WatchActions"));
+var _WatchActions = require("../../../flux/actions/WatchActions");
 
 var _getTransferData2 = _interopRequireDefault(require("./getTransferData"));
 
@@ -38,7 +38,7 @@ options, event) {
     } else {
       event.preventDefault();
 
-      _WatchActions["default"].dragDropGroup({
+      _WatchActions.WatchActions.dragDropGroup({
         dragId: dragId,
         dropId: dropId
       });
@@ -46,7 +46,7 @@ options, event) {
   } else if (xType === _WatchDnDConfig["default"].LIST) {
     event.preventDefault();
 
-    _WatchActions["default"].dragDropList({
+    _WatchActions.WatchActions.dragDropList({
       dragId: dragId,
       dropId: dropId
     });

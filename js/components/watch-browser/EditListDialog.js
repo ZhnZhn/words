@@ -13,7 +13,7 @@ var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
-var _WatchActions = _interopRequireWildcard(require("../../flux/actions/WatchActions"));
+var _WatchActions = require("../../flux/actions/WatchActions");
 
 var _MsgWatch = require("../../constants/MsgWatch");
 
@@ -33,18 +33,9 @@ var _Dialog2 = require("./Dialog.Style");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-var createList = _WatchActions["default"].createList,
-    renameList = _WatchActions["default"].renameList,
-    deleteList = _WatchActions["default"].deleteList;
-var EDIT_WATCH_COMPLETED = _WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED,
-    EDIT_WATCH_FAILED = _WatchActions.WatchActionTypes.EDIT_WATCH_FAILED,
-    CREATE_LIST = _WatchActions.WatchActionTypes.CREATE_LIST,
-    RENAME_LIST = _WatchActions.WatchActionTypes.RENAME_LIST,
-    DELETE_LIST = _WatchActions.WatchActionTypes.DELETE_LIST;
+var createList = _WatchActions.WatchActions.createList,
+    renameList = _WatchActions.WatchActions.renameList,
+    deleteList = _WatchActions.WatchActions.deleteList;
 var EditListDialog = (0, _memoIsShow["default"])(function (_ref) {
   var isShow = _ref.isShow,
       store = _ref.store,
@@ -67,9 +58,9 @@ var EditListDialog = (0, _memoIsShow["default"])(function (_ref) {
           store: store,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
-          actionCompleted: EDIT_WATCH_COMPLETED,
-          actionFailed: EDIT_WATCH_FAILED,
-          forActionType: CREATE_LIST,
+          actionCompleted: _WatchActions.WAT_EDIT_WATCH_COMPLETED,
+          actionFailed: _WatchActions.WAT_EDIT_WATCH_FAILED,
+          forActionType: _WatchActions.WAT_CREATE_LIST,
           msgOnNotSelect: _MsgWatch.notSelected,
           msgOnIsEmptyName: _MsgWatch.emptyName,
           onCreate: createList,
@@ -82,9 +73,9 @@ var EditListDialog = (0, _memoIsShow["default"])(function (_ref) {
           store: store,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
-          actionCompleted: EDIT_WATCH_COMPLETED,
-          actionFailed: EDIT_WATCH_FAILED,
-          forActionType: RENAME_LIST,
+          actionCompleted: _WatchActions.WAT_EDIT_WATCH_COMPLETED,
+          actionFailed: _WatchActions.WAT_EDIT_WATCH_FAILED,
+          forActionType: _WatchActions.WAT_RENAME_LIST,
           msgOnNotSelect: _MsgWatch.notSelected,
           msgOnIsEmptyName: _MsgWatch.emptyName,
           onRename: renameList,
@@ -97,9 +88,9 @@ var EditListDialog = (0, _memoIsShow["default"])(function (_ref) {
           store: store,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
-          actionCompleted: EDIT_WATCH_COMPLETED,
-          actionFailed: EDIT_WATCH_FAILED,
-          forActionType: DELETE_LIST,
+          actionCompleted: _WatchActions.WAT_EDIT_WATCH_COMPLETED,
+          actionFailed: _WatchActions.WAT_EDIT_WATCH_FAILED,
+          forActionType: _WatchActions.WAT_DELETE_LIST,
           msgOnNotSelect: _MsgWatch.notSelected,
           onDelete: deleteList,
           onClose: onClose

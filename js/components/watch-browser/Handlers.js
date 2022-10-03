@@ -1,13 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports.showDialogEditLists = exports.showDialogEditGroups = exports.saveWatchList = exports.removeWatchItem = void 0;
 
 var _ComponentActions = require("../../flux/actions/ComponentActions");
 
-var _WatchActions = _interopRequireDefault(require("../../flux/actions/WatchActions"));
+var _WatchActions = require("../../flux/actions/WatchActions");
 
 var _Type = require("../../constants/Type");
 
@@ -26,13 +24,13 @@ exports.showDialogEditLists = showDialogEditLists;
 var removeWatchItem = function removeWatchItem(option, evt) {
   evt.stopPropagation();
 
-  _WatchActions["default"].removeItem(option);
+  _WatchActions.WatchActions.removeItem(option);
 };
 
 exports.removeWatchItem = removeWatchItem;
 
 var saveWatchList = function saveWatchList() {
-  _WatchActions["default"].saveWatch();
+  _WatchActions.WatchActions.saveWatch();
 };
 
 exports.saveWatchList = saveWatchList;

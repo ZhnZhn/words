@@ -13,7 +13,7 @@ const {
 
 const WithLogicGroup = {
 
-  addGroup(watchList, { caption }){
+  createGroup(watchList, { caption }){
     const groups = watchList.groups;
 
     if ( isInArraySameCaption(groups, caption)){

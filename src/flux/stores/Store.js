@@ -9,7 +9,9 @@ import {
 import {
   SettingActions
 } from '../actions/SettingActions';
-import WatchActions from '../actions/WatchActions';
+import {
+  WatchActions
+} from '../actions/WatchActions';
 
 import ComponentSlice from './ComponentSlice';
 import ItemSlice from './ItemSlice';

@@ -2,7 +2,14 @@ import memoIsShow from '../hoc/memoIsShow';
 import useTheme from '../hoc/useTheme';
 import styleConfig from '../dialogs/Dialog.Style';
 
-import Actions, { WatchActionTypes as WAT } from '../../flux/actions/WatchActions';
+import {
+  WAT_EDIT_WATCH_COMPLETED,
+  WAT_EDIT_WATCH_FAILED,
+  WAT_CREATE_GROUP,
+  WAT_RENAME_GROUP,
+  WAT_DELETE_GROUP,
+  WatchActions
+} from '../../flux/actions/WatchActions';
 
 import {
   notSelected,
@@ -23,17 +30,11 @@ import {
 } from './Dialog.Style';
 
 const {
-  addGroup,
+  createGroup,
   renameGroup,
   deleteGroup
-} = Actions;
-const {
-  EDIT_WATCH_COMPLETED,
-  EDIT_WATCH_FAILED,
-  ADD_GROUP,
-  RENAME_GROUP,
-  DELETE_GROUP
-} = WAT;
+} = WatchActions;
+
 
 const EditGroupDialog = memoIsShow(({
   isShow,
@@ -56,11 +57,11 @@ const EditGroupDialog = memoIsShow(({
               store={store}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={EDIT_WATCH_COMPLETED}
-              actionFailed={EDIT_WATCH_FAILED}
-              forActionType={ADD_GROUP}
+              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+              actionFailed={WAT_EDIT_WATCH_FAILED}
+              forActionType={WAT_CREATE_GROUP}
               msgOnIsEmptyName={emptyName}
-              onCreate={addGroup}
+              onCreate={createGroup}
               onClose={onClose}
             />
          </Tab>
@@ -69,9 +70,9 @@ const EditGroupDialog = memoIsShow(({
               store={store}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={EDIT_WATCH_COMPLETED}
-              actionFailed={EDIT_WATCH_FAILED}
-              forActionType={RENAME_GROUP}
+              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+              actionFailed={WAT_EDIT_WATCH_FAILED}
+              forActionType={WAT_RENAME_GROUP}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
               onRename={renameGroup}
@@ -84,8 +85,8 @@ const EditGroupDialog = memoIsShow(({
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
               store={store}
-              actionCompleted={EDIT_WATCH_COMPLETED}
-              forActionType={DELETE_GROUP}
+              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
+              forActionType={WAT_DELETE_GROUP}
               msgOnNotSelect={notSelected}
               onDelete={deleteGroup}
               onClose={onClose}
