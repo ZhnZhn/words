@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../../src/flux/actions/ComponentActions.js"],"names":["T","SHOW_BROWSER","SHOW_DIALOG","SHOW_MODAL_DIALOG","SHOW_PANE","CLOSE_PANE","CHANGE_THEME","SHOW_ABOUT","CLOSE_ABOUT","UPDATE_WATCH_BROWSER","CLICK_WATCH_ITEM","Actions","Reflux","createActions"],"mappings":";;;;;;;AAAA;;;;AAEO,IAAMA,CAAC,GAAG;AACfC,EAAAA,YAAY,EAAE,aADC;AAGfC,EAAAA,WAAW,EAAE,YAHE;AAKfC,EAAAA,iBAAiB,EAAE,iBALJ;AAOfC,EAAAA,SAAS,EAAE,UAPI;AAQf;AACAC,EAAAA,UAAU,EAAE,WATG;AAWfC,EAAAA,YAAY,EAAE,aAXC;AAafC,EAAAA,UAAU,EAAE,WAbG;AAcfC,EAAAA,WAAW,EAAE,YAdE;AAgBfC,EAAAA,oBAAoB,EAAE,oBAhBP;AAiBfC,EAAAA,gBAAgB,EAAE;AAjBH,CAAV;;;AAoBP,IAAMC,OAAO,GAAGC,uBAAOC,aAAP,oDACbb,CAAC,CAACC,YADW,IACI,EADJ,wBAEbD,CAAC,CAACE,WAFW,IAEG,EAFH,wBAGbF,CAAC,CAACG,iBAHW,IAGS,EAHT,wBAIbH,CAAC,CAACI,SAJW,IAIC,EAJD,wBAMbJ,CAAC,CAACK,UANW,IAME,EANF,wBAObL,CAAC,CAACM,YAPW,IAOI,EAPJ,wBAQbN,CAAC,CAACO,UARW,IAQE,EARF,wBASbP,CAAC,CAACU,gBATW,IASQ,EATR,yBAAhB;;eAYeC,O","sourcesContent":["import Reflux from 'reflux-core'\r\n\r\nexport const T = {\r\n  SHOW_BROWSER: 'showBrowser',\r\n\r\n  SHOW_DIALOG: 'showDialog',\r\n\r\n  SHOW_MODAL_DIALOG: 'showModalDialog',\r\n\r\n  SHOW_PANE: 'showPane',\r\n  //TOGGLE_PANE: 'togglePane',\r\n  CLOSE_PANE: 'closePane',\r\n\r\n  CHANGE_THEME: 'changeTheme',\r\n\r\n  SHOW_ABOUT: 'showAbout',\r\n  CLOSE_ABOUT: 'closeAbout',\r\n\r\n  UPDATE_WATCH_BROWSER: 'updateWatchBrowser',\r\n  CLICK_WATCH_ITEM: 'clickWatchItem'\r\n};\r\n\r\nconst Actions = Reflux.createActions({\r\n  [T.SHOW_BROWSER]: {},\r\n  [T.SHOW_DIALOG]: {},\r\n  [T.SHOW_MODAL_DIALOG]: {},\r\n  [T.SHOW_PANE]: {},\r\n  //[T.TOGGLE_PANE]: {},\r\n  [T.CLOSE_PANE]: {},\r\n  [T.CHANGE_THEME]: {},\r\n  [T.SHOW_ABOUT]: {},\r\n  [T.CLICK_WATCH_ITEM]: {}\r\n});\r\n\r\nexport default Actions\r\n"],"file":"ComponentActions.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/actions/ComponentActions.js"
+ ],
+ "file": "../../../src/flux/actions/ComponentActions.js",
+ "names": [
+  "CAT_SHOW_BROWSER",
+  "CAT_SHOW_DIALOG",
+  "CAT_SHOW_MODAL_DIALOG",
+  "CAT_SHOW_PANE",
+  "CAT_TOGGLE_PANE",
+  "CAT_CLOSE_PANE",
+  "CAT_CHANGE_THEME",
+  "CAT_SHOW_ABOUT",
+  "CAT_CLOSE_ABOUT",
+  "CAT_UPDATE_WATCH_BROWSER",
+  "CAT_CLICK_WATCH_ITEM",
+  "ComponentActions",
+  "Reflux",
+  "createActions"
+ ],
+ "mappings": ";;;;;;;AAAA;;;;AAEO,IAAMA,gBAAgB,GAAG,aAAzB;;AACA,IAAMC,eAAe,GAAG,YAAxB;;AACA,IAAMC,qBAAqB,GAAG,iBAA9B;;AAEA,IAAMC,aAAa,GAAG,UAAtB;;AACA,IAAMC,eAAe,GAAG,YAAxB;;AACA,IAAMC,cAAc,GAAG,WAAvB;;AAEA,IAAMC,gBAAgB,GAAG,aAAzB;;AAEA,IAAMC,cAAc,GAAG,WAAvB;;AACA,IAAMC,eAAe,GAAG,YAAxB;;AAEA,IAAMC,wBAAwB,GAAG,oBAAjC;;AACA,IAAMC,oBAAoB,GAAG,gBAA7B;;;AAEA,IAAMC,gBAAgB,GAAGC,sBAAA,CAAOC,aAAP,oDAC7Bb,gBAD6B,IACV,EADU,wBAE7BC,eAF6B,IAEX,EAFW,wBAG7BC,qBAH6B,IAGL,EAHK,wBAI7BC,aAJ6B,IAIb,EAJa,wBAK7BE,cAL6B,IAKZ,EALY,wBAM7BC,gBAN6B,IAMV,EANU,wBAO7BC,cAP6B,IAOZ,EAPY,wBAQ7BG,oBAR6B,IAQN,EARM,yBAAzB"
+}

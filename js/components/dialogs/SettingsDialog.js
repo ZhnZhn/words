@@ -13,7 +13,7 @@ var _ThemeContext = _interopRequireDefault(require("../hoc/ThemeContext"));
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _ComponentActions = _interopRequireDefault(require("../../flux/actions/ComponentActions"));
+var _ComponentActions = require("../../flux/actions/ComponentActions");
 
 var _SettingActions = _interopRequireDefault(require("../../flux/actions/SettingActions"));
 
@@ -67,7 +67,7 @@ var SettingsDialog = function SettingsDialog(_ref) {
         value = _ref2.value;
 
     if (theme.getThemeName() !== value) {
-      _ComponentActions["default"].changeTheme(value);
+      _ComponentActions.ComponentActions.changeTheme(value);
     }
   }, [theme]),
       _hSetAndClose = (0, _uiApi.useCallback)(function () {

@@ -8,7 +8,9 @@ import {
 import ThemeContext from '../hoc/ThemeContext';
 import styleConfig from './Dialog.Style';
 
-import Actions from '../../flux/actions/ComponentActions';
+import {
+  ComponentActions
+} from '../../flux/actions/ComponentActions';
 import SA from '../../flux/actions/SettingActions';
 
 import A from '../Comp';
@@ -54,7 +56,7 @@ const SettingsDialog = ({
   , _hSelectTheme = useCallback(item => {
      const { value } = item || {}
      if (theme.getThemeName() !== value) {
-       Actions.changeTheme(value)
+       ComponentActions.changeTheme(value)
      }
    }, [theme])
   , _hSetAndClose = useCallback(() => {

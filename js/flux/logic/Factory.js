@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,7 @@ var _react = require("react");
 
 var _throttle = _interopRequireDefault(require("../../utils/throttle"));
 
-var _ComponentActions = _interopRequireWildcard(require("../actions/ComponentActions"));
+var _ComponentActions = require("../actions/ComponentActions");
 
 var _ItemActions = _interopRequireWildcard(require("../actions/ItemActions"));
 
@@ -23,9 +21,13 @@ var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterP
 
 var _About = _interopRequireDefault(require("../../components/about/About"));
 
-var showPane = _ComponentActions["default"].showPane,
-    closePane = _ComponentActions["default"].closePane,
-    showModalDialog = _ComponentActions["default"].showModalDialog;
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var showPane = _ComponentActions.ComponentActions.showPane,
+    closePane = _ComponentActions.ComponentActions.closePane,
+    showModalDialog = _ComponentActions.ComponentActions.showModalDialog;
 
 var _addToWatch = showModalDialog.bind(null, 'AW');
 
@@ -69,9 +71,9 @@ var Factory = {
       Input: Input,
       Item: Item,
       updateAction: _ItemActions.T.LOAD_ITEM_COMPLETED,
-      showAction: _ComponentActions.T.SHOW_PANE,
-      toggleAction: _ComponentActions.T.TOGGLE_PANE,
-      watchAction: _ComponentActions.T.CLICK_WATCH_ITEM,
+      showAction: _ComponentActions.CAT_SHOW_PANE,
+      toggleAction: _ComponentActions.CAT_TOGGLE_PANE,
+      watchAction: _ComponentActions.CAT_CLICK_WATCH_ITEM,
       onRemoveItems: _ItemActions["default"].removeItems.bind(null, paneId),
       onRemoveUnder: _ItemActions["default"].removeItemsUnder,
       onCloseItem: _ItemActions["default"].removeItem,
@@ -85,8 +87,8 @@ var Factory = {
     return /*#__PURE__*/(0, _react.createElement)(_About["default"], {
       key: 'About',
       id: 'About',
-      showAction: _ComponentActions.T.SHOW_ABOUT,
-      closeAction: _ComponentActions.T.CLOSE_ABOUT,
+      showAction: _ComponentActions.CAT_SHOW_ABOUT,
+      closeAction: _ComponentActions.CAT_CLOSE_ABOUT,
       store: store
     });
   }

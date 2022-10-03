@@ -7,16 +7,16 @@ exports["default"] = void 0;
 
 var _Settings = _interopRequireDefault(require("../stores/Settings"));
 
-var _ComponentActions = _interopRequireDefault(require("./ComponentActions"));
+var _ComponentActions = require("./ComponentActions");
 
 var WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 var WATCH_BROWSER_ID = 'WATCH_ID';
-var showBrowser = _ComponentActions["default"].showBrowser,
-    showPane = _ComponentActions["default"].showPane,
-    showModalDialog = _ComponentActions["default"].showModalDialog,
-    showAbout = _ComponentActions["default"].showAbout,
-    changeTheme = _ComponentActions["default"].changeTheme,
-    clickWatchItem = _ComponentActions["default"].clickWatchItem;
+var showBrowser = _ComponentActions.ComponentActions.showBrowser,
+    showPane = _ComponentActions.ComponentActions.showPane,
+    showModalDialog = _ComponentActions.ComponentActions.showModalDialog,
+    showAbout = _ComponentActions.ComponentActions.showAbout,
+    changeTheme = _ComponentActions.ComponentActions.changeTheme,
+    clickWatchItem = _ComponentActions.ComponentActions.clickWatchItem;
 
 var _fShowBrowser = function _fShowBrowser(id) {
   return showBrowser.bind(null, id);

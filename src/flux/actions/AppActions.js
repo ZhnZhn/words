@@ -1,6 +1,7 @@
-
-import Settings from '../stores/Settings'
-import Action from './ComponentActions'
+import Settings from '../stores/Settings';
+import {
+  ComponentActions
+} from './ComponentActions';
 
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
@@ -12,12 +13,12 @@ const {
   showAbout,
   changeTheme,
   clickWatchItem
-} = Action;
+} = ComponentActions;
 
 const _fShowBrowser = id => showBrowser.bind(null, id);
 
 const AppActions = {
-  showAbout: showAbout,
+  showAbout,
 
   headerActions: {
     onDefinition: showPane.bind(null, {

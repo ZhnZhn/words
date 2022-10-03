@@ -42,11 +42,11 @@ var WatchListSlice = {
     _localforage["default"].getItem(STORAGE_KEY).then(function (value) {
       _this.watchList = value || _WatchDefault["default"];
 
-      _this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, _this.watchList);
+      _this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, _this.watchList);
     })["catch"](function () {
       _this.watchList = _WatchDefault["default"];
 
-      _this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, _this.watchList);
+      _this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, _this.watchList);
     });
   },
   getWatchList: function getWatchList() {
@@ -76,12 +76,12 @@ var WatchListSlice = {
   onRemoveWatchItem: function onRemoveWatchItem(option) {
     removeItem(this.watchList, option);
     this.isWatchEdited = true;
-    this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, this.watchList);
+    this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
   _onDragDrop: function _onDragDrop(result) {
     if (result.isDone) {
       this.isWatchEdited = true;
-      this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, this.watchList);
     } else {
       this.showAlertDialog(result);
     }
@@ -127,7 +127,7 @@ var WatchListSlice = {
   _onEditWatch: function _onEditWatch(result, forActionType) {
     if (result.isDone) {
       this.isWatchEdited = true;
-      this.trigger(_ComponentActions.T.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, this.watchList);
       this.trigger(_WatchActions.WatchActionTypes.EDIT_WATCH_COMPLETED, {
         forActionType: forActionType
       });

@@ -1,6 +1,8 @@
 import Reflux from 'reflux-core'
 
-import ComponentActions from '../actions/ComponentActions'
+import {
+  ComponentActions
+} from '../actions/ComponentActions'
 import ItemActions from '../actions/ItemActions'
 import SettingActions from '../actions/SettingActions'
 import WatchActions from '../actions/WatchActions';

@@ -1,1 +1,38 @@
-{"version":3,"sources":["../../../src/flux/actions/AppActions.js"],"names":["WORDS_BROWSER_ID","WATCH_BROWSER_ID","showBrowser","Action","showPane","showModalDialog","showAbout","changeTheme","clickWatchItem","_fShowBrowser","id","bind","AppActions","headerActions","onDefinition","paneCaption","type","paneId","onSources","onWatch","onSettings","Settings","settingFn","onAbout","onChangeTheme","browserActions","onClickItem","onClickWatchItem"],"mappings":";;;;;;;AACA;;AACA;;AAEA,IAAMA,gBAAgB,GAAG,kBAAzB;AACA,IAAMC,gBAAgB,GAAG,UAAzB;IAGEC,W,GAMEC,4B,CANFD,W;IACAE,Q,GAKED,4B,CALFC,Q;IACAC,e,GAIEF,4B,CAJFE,e;IACAC,S,GAGEH,4B,CAHFG,S;IACAC,W,GAEEJ,4B,CAFFI,W;IACAC,c,GACEL,4B,CADFK,c;;AAGF,IAAMC,aAAa,GAAG,SAAhBA,aAAgB,CAAAC,EAAE;AAAA,SAAIR,WAAW,CAACS,IAAZ,CAAiB,IAAjB,EAAuBD,EAAvB,CAAJ;AAAA,CAAxB;;AAEA,IAAME,UAAU,GAAG;AACjBN,EAAAA,SAAS,EAAEA,SADM;AAGjBO,EAAAA,aAAa,EAAE;AACbC,IAAAA,YAAY,EAAEV,QAAQ,CAACO,IAAT,CAAc,IAAd,EAAoB;AAChCI,MAAAA,WAAW,EAAE,iBADmB;AAEhCC,MAAAA,IAAI,EAAE,MAF0B;AAGhCC,MAAAA,MAAM,EAAE;AAHwB,KAApB,CADD;AAMbC,IAAAA,SAAS,EAAET,aAAa,CAACT,gBAAD,CANX;AAObmB,IAAAA,OAAO,EAAGV,aAAa,CAACR,gBAAD,CAPV;AAQbmB,IAAAA,UAAU,EAAEf,eAAe,CAACM,IAAhB,CACV,IADU,EACJ,UADI,EACQU,qBAASC,SAAT,EADR,CARC;AAWbC,IAAAA,OAAO,EAAEjB,SAXI;AAYbkB,IAAAA,aAAa,EAAEjB;AAZF,GAHE;AAkBjBkB,EAAAA,cAAc,EAAE;AACdC,IAAAA,WAAW,EAAEtB,QADC;AAEduB,IAAAA,gBAAgB,EAAEnB;AAFJ;AAlBC,CAAnB;eAwBeI,U","sourcesContent":["\r\nimport Settings from '../stores/Settings'\r\nimport Action from './ComponentActions'\r\n\r\nconst WORDS_BROWSER_ID = 'WORDS_DIFINITION';\r\nconst WATCH_BROWSER_ID = 'WATCH_ID';\r\n\r\nconst {\r\n  showBrowser,\r\n  showPane,\r\n  showModalDialog,\r\n  showAbout,\r\n  changeTheme,\r\n  clickWatchItem\r\n} = Action;\r\n\r\nconst _fShowBrowser = id => showBrowser.bind(null, id);\r\n\r\nconst AppActions = {\r\n  showAbout: showAbout,\r\n\r\n  headerActions: {\r\n    onDefinition: showPane.bind(null, {\r\n      paneCaption: \"Word Definition\",\r\n      type: \"WD_W\",\r\n      paneId: \"P_WD_W\"\r\n    }),\r\n    onSources: _fShowBrowser(WORDS_BROWSER_ID),\r\n    onWatch:  _fShowBrowser(WATCH_BROWSER_ID),\r\n    onSettings: showModalDialog.bind(\r\n      null, \"SETTINGS\", Settings.settingFn()\r\n    ),\r\n    onAbout: showAbout,\r\n    onChangeTheme: changeTheme\r\n  },\r\n\r\n  browserActions: {\r\n    onClickItem: showPane,\r\n    onClickWatchItem: clickWatchItem\r\n  }\r\n};\r\n\r\nexport default AppActions\r\n"],"file":"AppActions.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/actions/AppActions.js"
+ ],
+ "file": "../../../src/flux/actions/AppActions.js",
+ "names": [
+  "WORDS_BROWSER_ID",
+  "WATCH_BROWSER_ID",
+  "showBrowser",
+  "ComponentActions",
+  "showPane",
+  "showModalDialog",
+  "showAbout",
+  "changeTheme",
+  "clickWatchItem",
+  "_fShowBrowser",
+  "id",
+  "bind",
+  "AppActions",
+  "headerActions",
+  "onDefinition",
+  "paneCaption",
+  "type",
+  "paneId",
+  "onSources",
+  "onWatch",
+  "onSettings",
+  "Settings",
+  "settingFn",
+  "onAbout",
+  "onChangeTheme",
+  "browserActions",
+  "onClickItem",
+  "onClickWatchItem"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAIA,IAAMA,gBAAgB,GAAG,kBAAzB;AACA,IAAMC,gBAAgB,GAAG,UAAzB;AAEA,IACEC,WADF,GAOIC,kCAPJ,CACED,WADF;AAAA,IAEEE,QAFF,GAOID,kCAPJ,CAEEC,QAFF;AAAA,IAGEC,eAHF,GAOIF,kCAPJ,CAGEE,eAHF;AAAA,IAIEC,SAJF,GAOIH,kCAPJ,CAIEG,SAJF;AAAA,IAKEC,WALF,GAOIJ,kCAPJ,CAKEI,WALF;AAAA,IAMEC,cANF,GAOIL,kCAPJ,CAMEK,cANF;;AASA,IAAMC,aAAa,GAAG,SAAhBA,aAAgB,CAAAC,EAAE;EAAA,OAAIR,WAAW,CAACS,IAAZ,CAAiB,IAAjB,EAAuBD,EAAvB,CAAJ;AAAA,CAAxB;;AAEA,IAAME,UAAU,GAAG;EACjBN,SAAS,EAATA,SADiB;EAGjBO,aAAa,EAAE;IACbC,YAAY,EAAEV,QAAQ,CAACO,IAAT,CAAc,IAAd,EAAoB;MAChCI,WAAW,EAAE,iBADmB;MAEhCC,IAAI,EAAE,MAF0B;MAGhCC,MAAM,EAAE;IAHwB,CAApB,CADD;IAMbC,SAAS,EAAET,aAAa,CAACT,gBAAD,CANX;IAObmB,OAAO,EAAGV,aAAa,CAACR,gBAAD,CAPV;IAQbmB,UAAU,EAAEf,eAAe,CAACM,IAAhB,CACV,IADU,EACJ,UADI,EACQU,oBAAA,CAASC,SAAT,EADR,CARC;IAWbC,OAAO,EAAEjB,SAXI;IAYbkB,aAAa,EAAEjB;EAZF,CAHE;EAkBjBkB,cAAc,EAAE;IACdC,WAAW,EAAEtB,QADC;IAEduB,gBAAgB,EAAEnB;EAFJ;AAlBC,CAAnB;eAwBeI,U"
+}

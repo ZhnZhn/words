@@ -1,35 +1,28 @@
-import Reflux from 'reflux-core'
+import Reflux from 'reflux-core';
 
-export const T = {
-  SHOW_BROWSER: 'showBrowser',
+export const CAT_SHOW_BROWSER = 'showBrowser'
+export const CAT_SHOW_DIALOG = 'showDialog'
+export const CAT_SHOW_MODAL_DIALOG = 'showModalDialog'
 
-  SHOW_DIALOG: 'showDialog',
+export const CAT_SHOW_PANE = 'showPane'
+export const CAT_TOGGLE_PANE = 'togglePane'
+export const CAT_CLOSE_PANE = 'closePane'
 
-  SHOW_MODAL_DIALOG: 'showModalDialog',
+export const CAT_CHANGE_THEME = 'changeTheme'
 
-  SHOW_PANE: 'showPane',
-  //TOGGLE_PANE: 'togglePane',
-  CLOSE_PANE: 'closePane',
+export const CAT_SHOW_ABOUT = 'showAbout'
+export const CAT_CLOSE_ABOUT = 'closeAbout'
 
-  CHANGE_THEME: 'changeTheme',
+export const CAT_UPDATE_WATCH_BROWSER = 'updateWatchBrowser'
+export const CAT_CLICK_WATCH_ITEM = 'clickWatchItem'
 
-  SHOW_ABOUT: 'showAbout',
-  CLOSE_ABOUT: 'closeAbout',
-
-  UPDATE_WATCH_BROWSER: 'updateWatchBrowser',
-  CLICK_WATCH_ITEM: 'clickWatchItem'
-};
-
-const Actions = Reflux.createActions({
-  [T.SHOW_BROWSER]: {},
-  [T.SHOW_DIALOG]: {},
-  [T.SHOW_MODAL_DIALOG]: {},
-  [T.SHOW_PANE]: {},
-  //[T.TOGGLE_PANE]: {},
-  [T.CLOSE_PANE]: {},
-  [T.CHANGE_THEME]: {},
-  [T.SHOW_ABOUT]: {},
-  [T.CLICK_WATCH_ITEM]: {}
-});
-
-export default Actions
+export const ComponentActions = Reflux.createActions({
+  [CAT_SHOW_BROWSER]: {},
+  [CAT_SHOW_DIALOG]: {},
+  [CAT_SHOW_MODAL_DIALOG]: {},
+  [CAT_SHOW_PANE]: {},
+  [CAT_CLOSE_PANE]: {},
+  [CAT_CHANGE_THEME]: {},
+  [CAT_SHOW_ABOUT]: {},
+  [CAT_CLICK_WATCH_ITEM]: {}
+})

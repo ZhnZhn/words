@@ -1,6 +1,8 @@
 import LocalForage from 'localforage';
 
-import { T as CAT } from '../actions/ComponentActions';
+import {
+  CAT_UPDATE_WATCH_BROWSER
+} from '../actions/ComponentActions';
 
 import { WatchActionTypes as WAT } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
@@ -40,11 +42,11 @@ const WatchListSlice = {
   initWatchList(){
     LocalForage.getItem(STORAGE_KEY).then((value) => {
       this.watchList = value || WatchDefault;
-      this.trigger(CAT.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
     })
     .catch(() => {
       this.watchList = WatchDefault;
-      this.trigger(CAT.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
     })
   },
   getWatchList(){
@@ -70,14 +72,14 @@ const WatchListSlice = {
   onRemoveWatchItem(option){
     removeItem(this.watchList, option);
     this.isWatchEdited = true;
-    this.trigger(CAT.UPDATE_WATCH_BROWSER, this.watchList);
+    this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
 
 
   _onDragDrop(result){
     if (result.isDone){
        this.isWatchEdited = true;
-       this.trigger(CAT.UPDATE_WATCH_BROWSER, this.watchList);
+       this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
     } else {
       this.showAlertDialog(result);
     }
@@ -122,7 +124,7 @@ const WatchListSlice = {
   _onEditWatch(result, forActionType){
     if (result.isDone){
       this.isWatchEdited = true;
-      this.trigger(CAT.UPDATE_WATCH_BROWSER, this.watchList);
+      this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
       this.trigger(WAT.EDIT_WATCH_COMPLETED, {forActionType});
     } else {
       this.trigger(WAT.EDIT_WATCH_FAILED, {

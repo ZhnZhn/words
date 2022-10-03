@@ -2,7 +2,14 @@ import { createElement } from 'react'
 
 import throttle from '../../utils/throttle'
 
-import ComponentActions, { T as CAT } from '../actions/ComponentActions'
+import {
+  CAT_SHOW_PANE,
+  CAT_TOGGLE_PANE,
+  CAT_SHOW_ABOUT,
+  CAT_CLOSE_ABOUT,
+  CAT_CLICK_WATCH_ITEM,
+  ComponentActions
+} from '../actions/ComponentActions'
 import ItemActions, { T as IAT } from '../actions/ItemActions'
 
 import RouterDialog from '../../components/dialogs/RouterDialog'
@@ -51,9 +58,9 @@ const Factory = {
       Input,
       Item,
       updateAction: IAT.LOAD_ITEM_COMPLETED,
-      showAction: CAT.SHOW_PANE,
-      toggleAction: CAT.TOGGLE_PANE,
-      watchAction: CAT.CLICK_WATCH_ITEM,
+      showAction: CAT_SHOW_PANE,
+      toggleAction: CAT_TOGGLE_PANE,
+      watchAction: CAT_CLICK_WATCH_ITEM,
       onRemoveItems: ItemActions.removeItems.bind(null, paneId),
       onRemoveUnder: ItemActions.removeItemsUnder,
       onCloseItem: ItemActions.removeItem,
@@ -67,8 +74,8 @@ const Factory = {
   crAbout: (store) => {
     return createElement(About, {
       key: 'About', id: 'About',
-      showAction: CAT.SHOW_ABOUT,
-      closeAction: CAT.CLOSE_ABOUT,
+      showAction: CAT_SHOW_ABOUT,
+      closeAction: CAT_CLOSE_ABOUT,
       store
     })
   }

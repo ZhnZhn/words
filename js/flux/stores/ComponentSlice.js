@@ -68,14 +68,14 @@ var ComponentSlice = {
     }
 
     option.modalDialogType = _Type.MD_EXCEPTION;
-    this.trigger(_ComponentActions.T.SHOW_MODAL_DIALOG, option);
+    this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
   },
   onShowBrowser: function onShowBrowser(browserId) {
-    this.trigger(_ComponentActions.T.SHOW_BROWSER, browserId);
+    this.trigger(_ComponentActions.CAT_SHOW_BROWSER, browserId);
   },
   onShowDialog: function onShowDialog(itemConf, event) {
     var r = DialogLogic.showDialog(this.dialogInit, itemConf);
-    this.trigger(_ComponentActions.T.SHOW_DIALOG, r);
+    this.trigger(_ComponentActions.CAT_SHOW_DIALOG, r);
   },
   onShowModalDialog: function onShowModalDialog(modalDialogType, option) {
     if (option === void 0) {
@@ -83,13 +83,13 @@ var ComponentSlice = {
     }
 
     option.modalDialogType = modalDialogType;
-    this.trigger(_ComponentActions.T.SHOW_MODAL_DIALOG, option);
+    this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
   },
   onShowPane: function onShowPane(itemConf) {
     var pane = PaneLogic.showPane(this.paneInit, itemConf, this); //const browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
 
-    this.trigger(_ComponentActions.T.SHOW_PANE, pane);
-    this.trigger(_ComponentActions.T.CLOSE_ABOUT); //this.trigger(TYPES.UPDATE_BROWSER, browser)
+    this.trigger(_ComponentActions.CAT_SHOW_PANE, pane);
+    this.trigger(_ComponentActions.CAT_CLOSE_ABOUT); //this.trigger(TYPES.UPDATE_BROWSER, browser)
   },
 
   /*
@@ -111,17 +111,17 @@ var ComponentSlice = {
     if (!this._initAbout) {
       var pane = CompLogic.crAbout(this);
       this._initAbout = true;
-      this.trigger(_ComponentActions.T.SHOW_PANE, pane);
+      this.trigger(_ComponentActions.CAT_SHOW_PANE, pane);
     } else {
-      this.trigger(_ComponentActions.T.SHOW_ABOUT);
+      this.trigger(_ComponentActions.CAT_SHOW_ABOUT);
     }
   },
   onChangeTheme: function onChangeTheme(themeName) {
-    this.trigger(_ComponentActions.T.CHANGE_THEME, themeName);
+    this.trigger(_ComponentActions.CAT_CHANGE_THEME, themeName);
   },
   onClickWatchItem: function onClickWatchItem(item) {
     item.id = item.id || DF_WATCH_PANE_ID;
-    this.trigger(_ComponentActions.T.CLICK_WATCH_ITEM, item);
+    this.trigger(_ComponentActions.CAT_CLICK_WATCH_ITEM, item);
   }
 };
 var _default = ComponentSlice;

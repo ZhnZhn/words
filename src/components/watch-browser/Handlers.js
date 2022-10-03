@@ -1,4 +1,6 @@
-import ComponentActions from '../../flux/actions/ComponentActions';
+import {
+  ComponentActions
+} from '../../flux/actions/ComponentActions';
 import WatchActions from '../../flux/actions/WatchActions';
 import {
   MD_EDIT_WATCH_GROUP,

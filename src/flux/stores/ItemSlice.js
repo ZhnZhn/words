@@ -1,6 +1,8 @@
 
 import { T } from '../actions/ItemActions'
-import ComponentActions from '../actions/ComponentActions'
+import {
+  ComponentActions
+} from '../actions/ComponentActions'
 import { T as LPT } from '../actions/LoadingActions'
 
 
@@ -114,7 +116,7 @@ const ItemSlice = {
     const _options = Logic.removeItem(this.items, config)
     if (_options) {
       this.trigger(T.LOAD_ITEM_COMPLETED, _options)
-    }  
+    }
   },
   onRemoveItems(paneId){
     Logic.removeItems(this.items, paneId)

@@ -1,13 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
 var _ItemActions = require("../actions/ItemActions");
 
-var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
+var _ComponentActions = require("../actions/ComponentActions");
 
 var _LoadingActions = require("../actions/LoadingActions");
 
@@ -106,7 +104,7 @@ var ItemSlice = {
       option = {};
     }
 
-    _ComponentActions["default"].showPane(option.itemConf);
+    _ComponentActions.ComponentActions.showPane(option.itemConf);
 
     this.triggerLoading(_LoadingActions.T.LOADING);
   },
@@ -124,7 +122,7 @@ var ItemSlice = {
     this.triggerLoading(_LoadingActions.T.LOADING_COMPLETE, limitRemaining);
   },
   onLoadItemFailed: function onLoadItemFailed(option) {
-    _ComponentActions["default"].showModalDialog('ALERT_DIALOG', option);
+    _ComponentActions.ComponentActions.showModalDialog('ALERT_DIALOG', option);
 
     this.triggerLoading(_LoadingActions.T.LOADING_FAILED);
   },

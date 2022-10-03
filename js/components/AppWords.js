@@ -15,6 +15,8 @@ var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
 
 var _theme = _interopRequireDefault(require("./styles/theme"));
 
+var _ComponentActions = require("../flux/actions/ComponentActions");
+
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 
 var _Container = _interopRequireDefault(require("./zhn-containers/Container"));
@@ -28,7 +30,6 @@ var CL_COMP = "component-container",
 var AppWords = function AppWords(_ref) {
   var store = _ref.store,
       action = _ref.action,
-      CAT = _ref.CAT,
       LPT = _ref.LPT;
 
   var _useState = (0, _uiApi.useState)(_theme["default"]),
@@ -63,18 +64,18 @@ var AppWords = function AppWords(_ref) {
         className: CL_COMP,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Browser, (0, _extends2["default"])({
           store: store,
-          showBrowserAction: CAT.SHOW_BROWSER,
-          showDialogAction: CAT.SHOW_DIALOG,
+          showBrowserAction: _ComponentActions.CAT_SHOW_BROWSER,
+          showDialogAction: _ComponentActions.CAT_SHOW_DIALOG,
           browserId: WORDS_BROWSER_ID,
-          updateWatchAction: CAT.UPDATE_WATCH_BROWSER
+          updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER
         }, browserActions)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Hrz, {
           className: CL_ITEMS,
           store: store,
-          addAction: CAT.SHOW_PANE
+          addAction: _ComponentActions.CAT_SHOW_PANE
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Wrapper, {
         store: store,
-        SHOW_ACTION: CAT.SHOW_MODAL_DIALOG
+        SHOW_ACTION: _ComponentActions.CAT_SHOW_MODAL_DIALOG
       })]
     })
   });

@@ -8,6 +8,14 @@ import useListen from './hooks/useListen';
 import ThemeContext from './hoc/ThemeContext';
 import initialUiTheme  from './styles/theme';
 
+import {
+  CAT_SHOW_BROWSER,
+  CAT_SHOW_DIALOG,
+  CAT_SHOW_MODAL_DIALOG,
+  CAT_SHOW_PANE,
+  CAT_UPDATE_WATCH_BROWSER
+} from '../flux/actions/ComponentActions';
+
 import HeaderBar from './header/HeaderBar';
 import Container from './zhn-containers/Container';
 
@@ -18,7 +26,6 @@ const CL_COMP = "component-container"
 const AppWords = ({
   store,
   action,
-  CAT,
   LPT
 }) => {
   const [
@@ -58,21 +65,21 @@ const AppWords = ({
         <div className={CL_COMP}>
            <Container.Browser
              store={store}
-             showBrowserAction={CAT.SHOW_BROWSER}
-             showDialogAction={CAT.SHOW_DIALOG}
+             showBrowserAction={CAT_SHOW_BROWSER}
+             showDialogAction={CAT_SHOW_DIALOG}
              browserId={WORDS_BROWSER_ID}
-             updateWatchAction={CAT.UPDATE_WATCH_BROWSER}
+             updateWatchAction={CAT_UPDATE_WATCH_BROWSER}
              {...browserActions}
            />
            <Container.Hrz
              className={CL_ITEMS}
              store={store}
-             addAction={CAT.SHOW_PANE}
+             addAction={CAT_SHOW_PANE}
            />
         </div>
         <Container.Wrapper
            store={store}
-           SHOW_ACTION={CAT.SHOW_MODAL_DIALOG}
+           SHOW_ACTION={CAT_SHOW_MODAL_DIALOG}
         />
       </div>
     </ThemeContext.Provider>
