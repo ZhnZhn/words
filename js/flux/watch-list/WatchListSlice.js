@@ -23,11 +23,11 @@ var _WithLogicGroup = require("./WithLogicGroup");
 
 var _WithLogicList = require("./WithLogicList");
 
+var _WithLogicItem = require("./WithLogicItem");
+
 var STORAGE_KEY = 'WATCH_LIST_WORDS',
     DIALOG_CAPTION = 'Watch List:';
-var addItem = _Logic["default"].addItem,
-    removeItem = _Logic["default"].removeItem,
-    dragDropItem = _Logic["default"].dragDropItem,
+var dragDropItem = _Logic["default"].dragDropItem,
     dragDropList = _Logic["default"].dragDropList,
     dragDropGroup = _Logic["default"].dragDropGroup;
 var WatchListSlice = {
@@ -62,7 +62,7 @@ var WatchListSlice = {
     return group.lists;
   },
   onAddWatchItem: function onAddWatchItem(item) {
-    this._onEditWatch(addItem(this.watchList, item), _WatchActions.WAT_ADD_ITEM);
+    this._onEditWatch((0, _WithLogicItem.addItem)(this.watchList, item), _WatchActions.WAT_ADD_ITEM);
 
     if (this.isAutoSaveOnAdd) {
       this.onSaveWatch({
@@ -71,7 +71,7 @@ var WatchListSlice = {
     }
   },
   onRemoveWatchItem: function onRemoveWatchItem(option) {
-    removeItem(this.watchList, option);
+    (0, _WithLogicItem.removeItem)(this.watchList, option);
     this.isWatchEdited = true;
     this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, this.watchList);
   },

@@ -37,13 +37,15 @@ import {
   renameList,
   deleteList
 } from './WithLogicList';
+import {
+  addItem,
+  removeItem,
+} from './WithLogicItem';
 
 const STORAGE_KEY = 'WATCH_LIST_WORDS'
 , DIALOG_CAPTION ='Watch List:';
 
 const {
-  addItem,
-  removeItem,
   dragDropItem,
   dragDropList,
   dragDropGroup
