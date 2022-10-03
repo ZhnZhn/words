@@ -5,13 +5,11 @@
  ],
  "file": "../src/index.js",
  "names": [
-  "appProps",
+  "render",
   "store",
   "action",
-  "LPT",
-  "render",
   "document",
   "getElementById"
  ],
- "mappings": ";;;;;;AAAA;;AAEA;;AACA;;AAEA;;AAEA;;;;AAEA,IAAMA,QAAQ,GAAG;EACfC,KAAK,EAALA,iBADe;EAEfC,MAAM,EAANA,sBAFe;EAGfC,GAAG,EAAHA;AAHe,CAAjB;AAMA,IAAAC,gBAAA,gBACE,qBAAC,oBAAD,gCAASJ,QAAT,EADF,EAEEK,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CAFF"
+ "mappings": ";;;;AAAA;;AAEA;;AACA;;AAEA;;;;AAEA,IAAAA,gBAAA,gBACE,qBAAC,oBAAD;EAAK,KAAK,EAAEC,iBAAZ;EAAmB,MAAM,EAAEC;AAA3B,EADF,EAEEC,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CAFF"
 }

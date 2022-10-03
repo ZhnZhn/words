@@ -9,6 +9,8 @@ var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
+var _LoadingActions = require("../../flux/actions/LoadingActions");
+
 var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -22,8 +24,7 @@ var _isNotShouldRerender = function _isNotShouldRerender() {
 };
 
 var ProgressLoading = (0, _uiApi.memo)(function (_ref) {
-  var store = _ref.store,
-      ACTIONS = _ref.ACTIONS;
+  var store = _ref.store;
 
   var _useState = (0, _uiApi.useState)(DF_STATE),
       state = _useState[0],
@@ -32,11 +33,11 @@ var ProgressLoading = (0, _uiApi.memo)(function (_ref) {
       color = state[1];
 
   (0, _useListen["default"])(store, function (actionType) {
-    if (actionType === ACTIONS.LOADING) {
+    if (actionType === _LoadingActions.LPAT_LOADING) {
       setState([35, COLOR_LOADING]);
-    } else if (actionType === ACTIONS.LOADING_COMPLETE) {
+    } else if (actionType === _LoadingActions.LPAT_LOADING_COMPLETE) {
       setState([100, COLOR_LOADING]);
-    } else if (actionType === ACTIONS.LOADING_FAILED) {
+    } else if (actionType === _LoadingActions.LPAT_LOADING_FAILED) {
       setState([100, COLOR_FAILED]);
     }
   }, 'listenLoading');

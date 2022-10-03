@@ -1,4 +1,8 @@
 import { useState } from '../uiApi';
+
+import {
+  LPAT_LOADING_COMPLETE
+} from '../../flux/actions/LoadingActions';
 import useListen from '../hooks/useListen';
 
 const S_LABEL = {
@@ -14,13 +18,15 @@ const S_LABEL = {
 
 const LimitLabel = ({
   style,
-  ACTIONS,
   store
 }) => {
-  const [value, setValue] = useState('');
+  const [
+    value,
+    setValue
+  ] = useState('');
 
   useListen(store, (actionType, value) => {
-    if (actionType === ACTIONS.LOADING_COMPLETE
+    if (actionType === LPAT_LOADING_COMPLETE
       && !(value == null)) {
       setValue(value)
     }

@@ -25,8 +25,7 @@ const CL_COMP = "component-container"
 
 const AppWords = ({
   store,
-  action,
-  LPT
+  action
 }) => {
   const [
     uiTheme,
@@ -59,7 +58,6 @@ const AppWords = ({
       <div>
         <HeaderBar
           store={store}
-          LPT={LPT}
           {...headerActions}
         />
         <div className={CL_COMP}>

@@ -41,7 +41,6 @@ const CL_HEADER = "header"
 };
 
 const HeaderBar = ({
-  LPT,
   store,
   onSettings,
   onAbout,
@@ -82,7 +81,6 @@ const HeaderBar = ({
       />
        <ProgressLoading
          store={store}
-         ACTIONS={LPT}
        />
        <IconAppLogo
          className={CL_ICON_APP}
@@ -131,7 +129,6 @@ const HeaderBar = ({
        </div>
        <LimitLabel
          store={store}
-         ACTIONS={LPT}
          style={S.LIMIT}
        />
     </header>

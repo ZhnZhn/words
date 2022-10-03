@@ -3,6 +3,12 @@ import {
   useState
 } from '../uiApi';
 import useListen from '../hooks/useListen';
+
+import {
+  LPAT_LOADING,
+  LPAT_LOADING_COMPLETE,
+  LPAT_LOADING_FAILED
+} from '../../flux/actions/LoadingActions';
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
 const COLOR_LOADING = '#2f7ed8'
@@ -12,8 +18,7 @@ const COLOR_LOADING = '#2f7ed8'
 const _isNotShouldRerender = () => true;
 
 const ProgressLoading = memo(({
-  store,
-  ACTIONS
+  store
 }) => {
   const [
     state,
@@ -25,11 +30,11 @@ const ProgressLoading = memo(({
   ] = state;
 
   useListen(store, (actionType) => {
-      if (actionType === ACTIONS.LOADING){
+      if (actionType === LPAT_LOADING){
         setState([35, COLOR_LOADING])
-      } else if (actionType === ACTIONS.LOADING_COMPLETE){
+      } else if (actionType === LPAT_LOADING_COMPLETE){
         setState([100, COLOR_LOADING])
-      } else if (actionType === ACTIONS.LOADING_FAILED){
+      } else if (actionType === LPAT_LOADING_FAILED){
         setState([100, COLOR_FAILED])
       }
   }, 'listenLoading')

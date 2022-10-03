@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../src/components/header/LimitLabel.jsx"],"names":["S","LABEL","position","top","display","color","paddingRight","fontSize","fontWeight","LimitLabel","state","value","_onStore","actionType","ACTIONS","props","LOADING_COMPLETE","setState","componentDidMount","store","unsubscribe","listenLoading","componentWillUnmount","render","style","Component"],"mappings":";;;;;;;;;;;AAAA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,KAAK,EAAG;AACNC,IAAAA,QAAQ,EAAE,UADJ;AAEN,aAAO,OAFD;AAGNC,IAAAA,GAAG,EAAE,CAHC;AAINC,IAAAA,OAAO,EAAE,cAJH;AAKNC,IAAAA,KAAK,EAAC,SALA;AAMNC,IAAAA,YAAY,EAAE,EANR;AAONC,IAAAA,QAAQ,EAAE,MAPJ;AAQNC,IAAAA,UAAU,EAAE;AARN;AADA,CAAV;;IAaMC,U;;;;;;;;;;;UACJC,K,GAAQ;AACNC,MAAAA,KAAK,EAAE;AADD,K;;UAYRC,Q,GAAW,UAACC,UAAD,EAAaF,KAAb,EAAuB;AAAA,UACxBG,OADwB,GACZ,MAAKC,KADO,CACxBD,OADwB;;AAEhC,UAAID,UAAU,KAAKC,OAAO,CAACE,gBAA3B,EAA6C;AAC3C,YAAK,EAAEL,KAAK,IAAI,IAAX,CAAL,EAAwB;AACtB,gBAAKM,QAAL,CAAc;AAAEN,YAAAA,KAAK,EAAEA;AAAT,WAAd;AACD;AACF;AACF,K;;;;;;;SAfDO,iB,GAAA,6BAAoB;AAAA,QACVC,KADU,GACA,KAAKJ,KADL,CACVI,KADU;AAElB,SAAKC,WAAL,GAAmBD,KAAK,CAACE,aAAN,CAAoB,KAAKT,QAAzB,CAAnB;AACD,G;;SACDU,oB,GAAA,gCAAuB;AACrB,SAAKF,WAAL;AACD,G;;SAWDG,M,GAAA,kBAAS;AACD,QAAEC,KAAF,GAAY,KAAKT,KAAjB,CAAES,KAAF;AAAA,QACEb,KADF,GACY,KAAKD,KADjB,CACEC,KADF;AAEN,wBACG;AAAM,MAAA,KAAK,gCAAOX,CAAC,CAACC,KAAT,EAAmBuB,KAAnB,CAAX;AAAA,gBACGb;AADH,MADH;AAKD,G;;;EA9BsBc,gB;;eAiCVhB,U","sourcesContent":["import { Component } from 'react'\r\n\r\nconst S = {\r\n  LABEL : {\r\n    position: 'relative',\r\n    float: 'right',\r\n    top: 9,\r\n    display: 'inline-block',\r\n    color:'#2f7ed8',\r\n    paddingRight: 10,\r\n    fontSize: '16px',\r\n    fontWeight: 'bold'\r\n  }\r\n}\r\n\r\nclass LimitLabel extends Component {\r\n  state = {\r\n    value: ''\r\n  }\r\n\r\n  componentDidMount() {\r\n    const { store } = this.props;\r\n    this.unsubscribe = store.listenLoading(this._onStore)\r\n  }\r\n  componentWillUnmount() {\r\n    this.unsubscribe()\r\n  }\r\n\r\n  _onStore = (actionType, value) => {\r\n    const { ACTIONS } = this.props;\r\n    if (actionType === ACTIONS.LOADING_COMPLETE) {\r\n      if ( !(value == null) ) {\r\n        this.setState({ value: value })\r\n      }\r\n    }\r\n  }\r\n\r\n  render() {\r\n    const { style } = this.props\r\n        , { value } = this.state;\r\n    return (\r\n       <span style={{ ...S.LABEL, ...style }}>\r\n         {value}\r\n       </span>\r\n    );\r\n  }\r\n}\r\n\r\nexport default LimitLabel\r\n"],"file":"LimitLabel.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/header/LimitLabel.js"
+ ],
+ "file": "../../../src/components/header/LimitLabel.js",
+ "names": [
+  "S_LABEL",
+  "position",
+  "top",
+  "display",
+  "color",
+  "paddingRight",
+  "fontSize",
+  "fontWeight",
+  "LimitLabel",
+  "style",
+  "store",
+  "useState",
+  "value",
+  "setValue",
+  "useListen",
+  "actionType",
+  "LPAT_LOADING_COMPLETE"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA;;AAGA;;;;AAEA,IAAMA,OAAO,GAAG;EACdC,QAAQ,EAAE,UADI;EAEd,SAAO,OAFO;EAGdC,GAAG,EAAE,CAHS;EAIdC,OAAO,EAAE,cAJK;EAKdC,KAAK,EAAC,SALQ;EAMdC,YAAY,EAAE,EANA;EAOdC,QAAQ,EAAE,MAPI;EAQdC,UAAU,EAAE;AARE,CAAhB;;AAWA,IAAMC,UAAU,GAAG,SAAbA,UAAa,OAGb;EAAA,IAFJC,KAEI,QAFJA,KAEI;EAAA,IADJC,KACI,QADJA,KACI;;EACJ,gBAGI,IAAAC,eAAA,EAAS,EAAT,CAHJ;EAAA,IACEC,KADF;EAAA,IAEEC,QAFF;;EAKA,IAAAC,qBAAA,EAAUJ,KAAV,EAAiB,UAACK,UAAD,EAAaH,KAAb,EAAuB;IACtC,IAAIG,UAAU,KAAKC,qCAAf,IACC,EAAEJ,KAAK,IAAI,IAAX,CADL,EACuB;MACrBC,QAAQ,CAACD,KAAD,CAAR;IACD;EACF,CALD,EAKG,eALH;EAOA,oBACE;IAAM,KAAK,gCAAMZ,OAAN,EAAkBS,KAAlB,CAAX;IAAA,UACGG;EADH,EADF;AAKD,CArBD;;eAuBeJ,U"
+}

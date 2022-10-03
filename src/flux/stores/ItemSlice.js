@@ -4,7 +4,11 @@ import {
 import {
   ComponentActions
 } from '../actions/ComponentActions';
-import { T as LPT } from '../actions/LoadingActions';
+import {
+  LPAT_LOADING,
+  LPAT_LOADING_COMPLETE,
+  LPAT_LOADING_FAILED 
+} from '../actions/LoadingActions';
 
 const _isArr = Array.isArray;
 
@@ -94,7 +98,7 @@ const ItemSlice = {
 
   onLoadItem(option={}){
     ComponentActions.showPane(option.itemConf)
-    this.triggerLoading(LPT.LOADING)
+    this.triggerLoading(LPAT_LOADING)
   },
   onLoadItemCompleted(result, option){
     const {
@@ -106,11 +110,11 @@ const ItemSlice = {
       const _option = Logic.addItem(this.items, config, itemConf);
       this.trigger(IAT_LOAD_ITEM_COMPLETED, _option)
     }
-    this.triggerLoading(LPT.LOADING_COMPLETE, limitRemaining)
+    this.triggerLoading(LPAT_LOADING_COMPLETE, limitRemaining)
   },
   onLoadItemFailed(option){
     ComponentActions.showModalDialog('ALERT_DIALOG', option)
-    this.triggerLoading(LPT.LOADING_FAILED)
+    this.triggerLoading(LPAT_LOADING_FAILED)
   },
 
   onRemoveItem(config){

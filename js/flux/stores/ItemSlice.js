@@ -107,7 +107,7 @@ var ItemSlice = {
 
     _ComponentActions.ComponentActions.showPane(option.itemConf);
 
-    this.triggerLoading(_LoadingActions.T.LOADING);
+    this.triggerLoading(_LoadingActions.LPAT_LOADING);
   },
   onLoadItemCompleted: function onLoadItemCompleted(result, option) {
     var config = result.config,
@@ -120,12 +120,12 @@ var ItemSlice = {
       this.trigger(_ItemActions.IAT_LOAD_ITEM_COMPLETED, _option);
     }
 
-    this.triggerLoading(_LoadingActions.T.LOADING_COMPLETE, limitRemaining);
+    this.triggerLoading(_LoadingActions.LPAT_LOADING_COMPLETE, limitRemaining);
   },
   onLoadItemFailed: function onLoadItemFailed(option) {
     _ComponentActions.ComponentActions.showModalDialog('ALERT_DIALOG', option);
 
-    this.triggerLoading(_LoadingActions.T.LOADING_FAILED);
+    this.triggerLoading(_LoadingActions.LPAT_LOADING_FAILED);
   },
   onRemoveItem: function onRemoveItem(config) {
     var _options = Logic.removeItem(this.items, config);

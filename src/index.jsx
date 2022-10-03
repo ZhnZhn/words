@@ -1,19 +1,11 @@
-import { render } from 'react-dom'
+import { render } from 'react-dom';
 
-import store from './flux/stores/Store'
-import action from './flux/actions/AppActions'
+import store from './flux/stores/Store';
+import action from './flux/actions/AppActions';
 
-import { T as LPT } from './flux/actions/LoadingActions'
-
-import App  from './components/AppWords'
-
-const appProps = {
-  store,
-  action,
-  LPT
-};
+import App  from './components/AppWords';
 
 render(
-  <App {...appProps} />,
+  <App store={store} action={action} />,
   document.getElementById('app')
 )

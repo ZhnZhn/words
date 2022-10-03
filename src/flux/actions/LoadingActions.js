@@ -1,6 +1,4 @@
 
-export const T = {
-  LOADING: 'loading',
-  LOADING_COMPLETE: 'loadingComplete',
-  LOADING_FAILED: 'loadingFailed'
-};
+export const LPAT_LOADING = 'loading'
+export const LPAT_LOADING_COMPLETE = 'loadingComplete'
+export const LPAT_LOADING_FAILED = 'loadingFailed'

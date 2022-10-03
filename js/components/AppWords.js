@@ -29,8 +29,7 @@ var CL_COMP = "component-container",
 
 var AppWords = function AppWords(_ref) {
   var store = _ref.store,
-      action = _ref.action,
-      LPT = _ref.LPT;
+      action = _ref.action;
 
   var _useState = (0, _uiApi.useState)(_theme["default"]),
       uiTheme = _useState[0],
@@ -58,8 +57,7 @@ var AppWords = function AppWords(_ref) {
     value: uiTheme,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], (0, _extends2["default"])({
-        store: store,
-        LPT: LPT
+        store: store
       }, headerActions)), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Browser, (0, _extends2["default"])({

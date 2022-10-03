@@ -51,8 +51,7 @@ var CL_HEADER = "header",
 };
 
 var HeaderBar = function HeaderBar(_ref) {
-  var LPT = _ref.LPT,
-      store = _ref.store,
+  var store = _ref.store,
       onSettings = _ref.onSettings,
       onAbout = _ref.onAbout,
       onDefinition = _ref.onDefinition,
@@ -98,8 +97,7 @@ var HeaderBar = function HeaderBar(_ref) {
       items: _topicItems,
       onClose: _hCloseTopics
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLoading["default"], {
-      store: store,
-      ACTIONS: LPT
+      store: store
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
       className: CL_ICON_APP,
       title: _titles.APP_TITLE
@@ -147,7 +145,6 @@ var HeaderBar = function HeaderBar(_ref) {
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LimitLabel["default"], {
       store: store,
-      ACTIONS: LPT,
       style: S.LIMIT
     })]
   });
