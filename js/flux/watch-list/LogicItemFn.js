@@ -44,4 +44,4 @@ var removeItem = function removeItem(watchList, _ref) {
 };
 
 exports.removeItem = removeItem;
-//# sourceMappingURL=WithLogicItem.js.map
+//# sourceMappingURL=LogicItemFn.js.map

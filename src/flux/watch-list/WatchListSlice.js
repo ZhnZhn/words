@@ -24,32 +24,30 @@ import {
   WATCH_PREV
 } from '../../constants/MsgWatch';
 
-import Logic from './Logic';
-
+import {
+  dragDropItem,
+  dragDropList,
+  dragDropGroup
+} from './LogicDnDFn';
 import {
   findGroup,
   createGroup,
   renameGroup,
   deleteGroup,
-} from './WithLogicGroup';
+} from './LogicGroupFn';
 import {
   createList,
   renameList,
   deleteList
-} from './WithLogicList';
+} from './LogicListFn';
 import {
   addItem,
   removeItem,
-} from './WithLogicItem';
+} from './LogicItemFn';
+
 
 const STORAGE_KEY = 'WATCH_LIST_WORDS'
 , DIALOG_CAPTION ='Watch List:';
-
-const {
-  dragDropItem,
-  dragDropList,
-  dragDropGroup
-} = Logic;
 
 const WatchListSlice = {
 

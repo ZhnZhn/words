@@ -1,9 +1,9 @@
 {
  "version": 3,
  "sources": [
-  "../../../src/flux/watch-list/WithLogicItem.js"
+  "../../../src/flux/watch-list/LogicItemFn.js"
  ],
- "file": "../../../src/flux/watch-list/WithLogicItem.js",
+ "file": "../../../src/flux/watch-list/LogicItemFn.js",
  "names": [
   "addItem",
   "watchList",

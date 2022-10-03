@@ -60,4 +60,4 @@ var deleteGroup = function deleteGroup(watchList, _ref3) {
 };
 
 exports.deleteGroup = deleteGroup;
-//# sourceMappingURL=WithLogicGroup.js.map
+//# sourceMappingURL=LogicGroupFn.js.map

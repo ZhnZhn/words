@@ -1,9 +1,9 @@
 {
  "version": 3,
  "sources": [
-  "../../../src/flux/watch-list/WithLogicGroup.js"
+  "../../../src/flux/watch-list/LogicGroupFn.js"
  ],
- "file": "../../../src/flux/watch-list/WithLogicGroup.js",
+ "file": "../../../src/flux/watch-list/LogicGroupFn.js",
  "names": [
   "createGroup",
   "watchList",
