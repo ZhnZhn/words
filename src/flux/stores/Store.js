@@ -1,16 +1,18 @@
-import Reflux from 'reflux-core'
+import Reflux from 'reflux-core';
 
 import {
   ComponentActions
-} from '../actions/ComponentActions'
-import ItemActions from '../actions/ItemActions'
-import SettingActions from '../actions/SettingActions'
+} from '../actions/ComponentActions';
+import {
+  ItemActions
+} from '../actions/ItemActions';
+import SettingActions from '../actions/SettingActions';
 import WatchActions from '../actions/WatchActions';
 
-import ComponentSlice from './ComponentSlice'
-import ItemSlice from './ItemSlice'
-import SettingSlice from './SettingSlice'
-import WithLoading from './WithLoading'
+import ComponentSlice from './ComponentSlice';
+import ItemSlice from './ItemSlice';
+import SettingSlice from './SettingSlice';
+import WithLoading from './WithLoading';
 
 import WatchListSlice from '../watch-list/WatchListSlice';
 

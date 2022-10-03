@@ -13,7 +13,7 @@ var _throttle = _interopRequireDefault(require("../../utils/throttle"));
 
 var _ComponentActions = require("../actions/ComponentActions");
 
-var _ItemActions = _interopRequireWildcard(require("../actions/ItemActions"));
+var _ItemActions = require("../actions/ItemActions");
 
 var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
 
@@ -21,17 +21,13 @@ var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterP
 
 var _About = _interopRequireDefault(require("../../components/about/About"));
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
 var showPane = _ComponentActions.ComponentActions.showPane,
     closePane = _ComponentActions.ComponentActions.closePane,
     showModalDialog = _ComponentActions.ComponentActions.showModalDialog;
 
 var _addToWatch = showModalDialog.bind(null, 'AW');
 
-var _loadItem = (0, _throttle["default"])(_ItemActions["default"].loadItem, 2500, {
+var _loadItem = (0, _throttle["default"])(_ItemActions.ItemActions.loadItem, 2500, {
   trailing: false
 });
 
@@ -48,8 +44,7 @@ var Factory = {
       itemConf: itemConf
     }, dialogProps, {
       onShow: showPane.bind(null, itemConf),
-      onLoad: _loadItem //onLoad: loadItem
-
+      onLoad: _loadItem
     }));
   },
   crPane: function crPane(itemConf, store) {
@@ -70,15 +65,14 @@ var Factory = {
       store: store,
       Input: Input,
       Item: Item,
-      updateAction: _ItemActions.T.LOAD_ITEM_COMPLETED,
+      updateAction: _ItemActions.IAT_LOAD_ITEM_COMPLETED,
       showAction: _ComponentActions.CAT_SHOW_PANE,
       toggleAction: _ComponentActions.CAT_TOGGLE_PANE,
       watchAction: _ComponentActions.CAT_CLICK_WATCH_ITEM,
-      onRemoveItems: _ItemActions["default"].removeItems.bind(null, paneId),
-      onRemoveUnder: _ItemActions["default"].removeItemsUnder,
-      onCloseItem: _ItemActions["default"].removeItem,
+      onRemoveItems: _ItemActions.ItemActions.removeItems.bind(null, paneId),
+      onRemoveUnder: _ItemActions.ItemActions.removeItemsUnder,
+      onCloseItem: _ItemActions.ItemActions.removeItem,
       onClose: closePane.bind(null, itemConf),
-      //onLoad: ItemActions.loadItem
       onLoad: _loadItem,
       onAddToWatch: _addToWatch
     });

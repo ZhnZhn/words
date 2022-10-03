@@ -1,6 +1,6 @@
-import { createElement } from 'react'
+import { createElement } from 'react';
 
-import throttle from '../../utils/throttle'
+import throttle from '../../utils/throttle';
 
 import {
   CAT_SHOW_PANE,
@@ -9,15 +9,19 @@ import {
   CAT_CLOSE_ABOUT,
   CAT_CLICK_WATCH_ITEM,
   ComponentActions
-} from '../actions/ComponentActions'
-import ItemActions, { T as IAT } from '../actions/ItemActions'
+} from '../actions/ComponentActions';
+import {
+  IAT_LOAD_ITEM_COMPLETED,
+  ItemActions
+} from '../actions/ItemActions';
 
-import RouterDialog from '../../components/dialogs/RouterDialog'
-import RouterPane from '../../components/panes/RouterPane'
-import About from '../../components/about/About'
+import RouterDialog from '../../components/dialogs/RouterDialog';
+import RouterPane from '../../components/panes/RouterPane';
+import About from '../../components/about/About';
 
 const {
-  showPane, closePane,
+  showPane,
+  closePane,
   showModalDialog
 } = ComponentActions;
 
@@ -31,8 +35,12 @@ const _loadItem = throttle(
 
 const Factory = {
   crDialog: (itemConf) => {
-    const { type, dialogType, dialogProps } = itemConf
-        , El = RouterDialog.getElement(dialogType);
+    const {
+      type,
+      dialogType,
+      dialogProps
+    } = itemConf
+    , El = RouterDialog.getElement(dialogType);
     return createElement(El, {
       key: type,
       type: type,
@@ -40,15 +48,21 @@ const Factory = {
       ...dialogProps,
       onShow: showPane.bind(null, itemConf),
       onLoad: _loadItem
-      //onLoad: loadItem
     });
   },
 
-  crPane : (itemConf, store) => {
-    const { type,
-            paneType, paneCaption, paneId,
-          } = itemConf
-        , { Pane, Input, Item } = RouterPane.getElement(paneType)
+  crPane: (itemConf, store) => {
+    const {
+      type,
+      paneType,
+      paneCaption,
+      paneId,
+    } = itemConf
+    , {
+      Pane,
+      Input,
+      Item
+    } = RouterPane.getElement(paneType);
     return createElement(Pane, {
       key: type,
       id: paneId,
@@ -57,7 +71,7 @@ const Factory = {
       store,
       Input,
       Item,
-      updateAction: IAT.LOAD_ITEM_COMPLETED,
+      updateAction: IAT_LOAD_ITEM_COMPLETED,
       showAction: CAT_SHOW_PANE,
       toggleAction: CAT_TOGGLE_PANE,
       watchAction: CAT_CLICK_WATCH_ITEM,
@@ -65,7 +79,6 @@ const Factory = {
       onRemoveUnder: ItemActions.removeItemsUnder,
       onCloseItem: ItemActions.removeItem,
       onClose: closePane.bind(null, itemConf),
-      //onLoad: ItemActions.loadItem
       onLoad: _loadItem,
       onAddToWatch: _addToWatch
     });
@@ -73,7 +86,8 @@ const Factory = {
 
   crAbout: (store) => {
     return createElement(About, {
-      key: 'About', id: 'About',
+      key: 'About',
+      id: 'About',
       showAction: CAT_SHOW_ABOUT,
       closeAction: CAT_CLOSE_ABOUT,
       store

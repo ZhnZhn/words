@@ -1,10 +1,12 @@
-
-import { T } from '../actions/ItemActions'
+import {
+  IAT_LOAD_ITEM_COMPLETED
+} from '../actions/ItemActions';
 import {
   ComponentActions
-} from '../actions/ComponentActions'
-import { T as LPT } from '../actions/LoadingActions'
+} from '../actions/ComponentActions';
+import { T as LPT } from '../actions/LoadingActions';
 
+const _isArr = Array.isArray;
 
 const Logic = {
   addItem(slice, config, itemConf){
@@ -12,8 +14,8 @@ const Logic = {
     config.paneId = paneId
 
     const paneSlice = slice[paneId] || {}
-       , { configs } = paneSlice;
-    if (Array.isArray(configs)) {
+    , { configs } = paneSlice;
+    if (_isArr(configs)) {
       if (!Logic._isItem(configs, config.id)) {
         configs.unshift(config)
       }
@@ -29,21 +31,19 @@ const Logic = {
   },
 
   _isItem(configs, id){
-    return  Array.isArray(configs) &&
-      configs.findIndex(c => c.id === id) !== -1
-      ? true
-      : false;
+    return _isArr(configs) &&
+      configs.findIndex(c => c.id === id) !== -1;
   },
 
   isItem(slice, paneId, id){
     const paneSlice = slice[paneId] || {}
-       , { configs } = paneSlice;
+    , { configs } = paneSlice;
     return Logic._isItem(configs, id);
   },
 
   _isConfigs(slice){
     return slice
-      && Array.isArray(slice.configs);
+      && _isArr(slice.configs);
   },
 
   removeItem(slice, config){
@@ -55,9 +55,9 @@ const Logic = {
       return {
         configs: slice[paneId].configs,
         id: paneId
-      }
+      };
     } else {
-      return undefined;
+      return;
     }
   },
 
@@ -70,7 +70,7 @@ const Logic = {
 
   removeItemsUnder(slice, config={}){
     const { paneId, id } = config
-        , paneSlice = slice[paneId];
+    , paneSlice = slice[paneId];
     if ( this._isConfigs(paneSlice) ) {
       const _undexIndex = paneSlice.configs
         .findIndex(c => c.id === id )
@@ -81,7 +81,7 @@ const Logic = {
          id: paneId
        };
     }
-    return undefined;
+    return;
   }
 };
 
@@ -98,12 +98,13 @@ const ItemSlice = {
   },
   onLoadItemCompleted(result, option){
     const {
-            config, itemConf
-          } = result
-        , { limitRemaining } = option;
+      config,
+      itemConf
+    } = result
+    , { limitRemaining } = option;
     if (config) {
       const _option = Logic.addItem(this.items, config, itemConf);
-      this.trigger(T.LOAD_ITEM_COMPLETED, _option)
+      this.trigger(IAT_LOAD_ITEM_COMPLETED, _option)
     }
     this.triggerLoading(LPT.LOADING_COMPLETE, limitRemaining)
   },
@@ -115,19 +116,20 @@ const ItemSlice = {
   onRemoveItem(config){
     const _options = Logic.removeItem(this.items, config)
     if (_options) {
-      this.trigger(T.LOAD_ITEM_COMPLETED, _options)
+      this.trigger(IAT_LOAD_ITEM_COMPLETED, _options)
     }
   },
   onRemoveItems(paneId){
     Logic.removeItems(this.items, paneId)
-    this.trigger(T.LOAD_ITEM_COMPLETED, {
-      configs: [], id: paneId
+    this.trigger(IAT_LOAD_ITEM_COMPLETED, {
+      configs: [],
+      id: paneId
     })
   },
   onRemoveItemsUnder(config){
     const _option = Logic.removeItemsUnder(this.items, config)
     if (_option){
-      this.trigger(T.LOAD_ITEM_COMPLETED, _option)
+      this.trigger(IAT_LOAD_ITEM_COMPLETED, _option)
     }
   }
 };

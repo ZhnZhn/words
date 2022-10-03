@@ -9,6 +9,7 @@ var _ComponentActions = require("../actions/ComponentActions");
 
 var _LoadingActions = require("../actions/LoadingActions");
 
+var _isArr = Array.isArray;
 var Logic = {
   addItem: function addItem(slice, config, itemConf) {
     var _itemConf$paneId = itemConf.paneId,
@@ -17,7 +18,7 @@ var Logic = {
     var paneSlice = slice[paneId] || {},
         configs = paneSlice.configs;
 
-    if (Array.isArray(configs)) {
+    if (_isArr(configs)) {
       if (!Logic._isItem(configs, config.id)) {
         configs.unshift(config);
       }
@@ -33,9 +34,9 @@ var Logic = {
     };
   },
   _isItem: function _isItem(configs, id) {
-    return Array.isArray(configs) && configs.findIndex(function (c) {
+    return _isArr(configs) && configs.findIndex(function (c) {
       return c.id === id;
-    }) !== -1 ? true : false;
+    }) !== -1;
   },
   isItem: function isItem(slice, paneId, id) {
     var paneSlice = slice[paneId] || {},
@@ -43,7 +44,7 @@ var Logic = {
     return Logic._isItem(configs, id);
   },
   _isConfigs: function _isConfigs(slice) {
-    return slice && Array.isArray(slice.configs);
+    return slice && _isArr(slice.configs);
   },
   removeItem: function removeItem(slice, config) {
     var paneId = config.paneId,
@@ -59,7 +60,7 @@ var Logic = {
         id: paneId
       };
     } else {
-      return undefined;
+      return;
     }
   },
   removeItems: function removeItems(slice, paneId) {
@@ -91,7 +92,7 @@ var Logic = {
       };
     }
 
-    return undefined;
+    return;
   }
 };
 var ItemSlice = {
@@ -116,7 +117,7 @@ var ItemSlice = {
     if (config) {
       var _option = Logic.addItem(this.items, config, itemConf);
 
-      this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, _option);
+      this.trigger(_ItemActions.IAT_LOAD_ITEM_COMPLETED, _option);
     }
 
     this.triggerLoading(_LoadingActions.T.LOADING_COMPLETE, limitRemaining);
@@ -130,12 +131,12 @@ var ItemSlice = {
     var _options = Logic.removeItem(this.items, config);
 
     if (_options) {
-      this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, _options);
+      this.trigger(_ItemActions.IAT_LOAD_ITEM_COMPLETED, _options);
     }
   },
   onRemoveItems: function onRemoveItems(paneId) {
     Logic.removeItems(this.items, paneId);
-    this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, {
+    this.trigger(_ItemActions.IAT_LOAD_ITEM_COMPLETED, {
       configs: [],
       id: paneId
     });
@@ -144,7 +145,7 @@ var ItemSlice = {
     var _option = Logic.removeItemsUnder(this.items, config);
 
     if (_option) {
-      this.trigger(_ItemActions.T.LOAD_ITEM_COMPLETED, _option);
+      this.trigger(_ItemActions.IAT_LOAD_ITEM_COMPLETED, _option);
     }
   }
 };

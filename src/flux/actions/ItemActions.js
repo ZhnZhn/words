@@ -1,36 +1,36 @@
-import Reflux from 'reflux-core'
+import Reflux from 'reflux-core';
 
-import Store from '../stores/Store'
+import Store from '../stores/Store';
 
-import RouterApiConf from '../logic/RouterApiConf'
-import loadItem from '../logic/loadItem'
+import RouterApiConf from '../logic/RouterApiConf';
+import loadItem from '../logic/loadItem';
 
-export const T = {
-  LOAD_ITEM: 'loadItem',
-  LOAD_ITEM_COMPLETED: 'loadItemCompleted',
-  LOAD_ITEM_FAILED: 'loadItemFailed',
+export const IAT_LOAD_ITEM = 'loadItem'
+export const IAT_LOAD_ITEM_COMPLETED = 'loadItemCompleted'
+export const IAT_LOAD_ITEM_FAILED = 'loadItemFailed'
 
-  REMOVE_ITEM: 'removeItem',
-  REMOVE_ITEMS: 'removeItems',
-  REMOVE_ITEMS_UNDER: 'removeItemsUnder'
-};
+export const IAT_REMOVE_ITEM = 'removeItem'
+export const IAT_REMOVE_ITEMS = 'removeItems'
+export const IAT_REMOVE_ITEMS_UNDER = 'removeItemsUnder'
 
 const Actions = Reflux.createActions({
-  [T.LOAD_ITEM]: {
+  [IAT_LOAD_ITEM]: {
     children: ['completed', 'failed']
   },
-  [T.REMOVE_ITEM]: {},
-  [T.REMOVE_ITEMS]: {},
-  [T.REMOVE_ITEMS_UNDER]: {}
+  [IAT_REMOVE_ITEM]: {},
+  [IAT_REMOVE_ITEMS]: {},
+  [IAT_REMOVE_ITEMS_UNDER]: {}
 });
 
+const _assign = Object.assign
+, _crDbLoadMsg = word => `Item '${word}' has been already loaded.`;
 
-const _crDbLoadMsg = word => `Item '${word}' has been already loaded.`;
-
-Actions[T.LOAD_ITEM].listen(function(option={}){
-
-  const { itemConf={}, word='' } = option
-      , { paneId } = itemConf;
+Actions[IAT_LOAD_ITEM].listen(function(option={}){
+  const {
+    itemConf={},
+    word=''
+  } = option
+  , { paneId } = itemConf;
   if (Store.isItem(paneId, word)){
     this.failed({ msg: _crDbLoadMsg(word) })
     return;
@@ -45,12 +45,11 @@ Actions[T.LOAD_ITEM].listen(function(option={}){
     msgErr
   } = RouterApiConf.getApiConf(loadId);
   if (apiKey){
-    Object.assign(option, { apiKey, adapter, api })
+    _assign(option, { apiKey, adapter, api })
     loadItem(option, this.completed, this.failed)
   } else {
     this.failed({ msg: msgErr })
   }
 });
 
-
-export default Actions
+export const ItemActions = Actions
