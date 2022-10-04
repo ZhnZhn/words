@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/localStorageFn.js"
+ ],
+ "file": "../../src/utils/localStorageFn.js",
+ "names": [
+  "LS",
+  "window",
+  "localStorage",
+  "hasLocalStorage",
+  "_getTryCatchValue",
+  "getValue",
+  "dfValue",
+  "err",
+  "readObj",
+  "storageKey",
+  "JSON",
+  "parse",
+  "writeObj",
+  "valueObj",
+  "stringify"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,EAAE,GAAGC,MAAM,CAACC,YAAlB;AAEO,IAAMC,eAAe,GAAG,CAAC,CAAEH,EAA3B;;;AAEP,IAAMI,iBAAiB,GAAG,SAApBA,iBAAoB,CACxBC,QADwB,EAExBC,OAFwB,EAGrB;EACH,IAAI;IACF,OAAOD,QAAQ,MAAMC,OAArB;EACD,CAFD,CAEE,OAAMC,GAAN,EAAW;IACX,OAAOD,OAAP;EACD;AACF,CATD;;AAWO,IAAME,OAAO,GAAG,SAAVA,OAAU,CACrBC,UADqB,EAErBH,OAFqB;EAAA,OAGlBF,iBAAiB,CACpB;IAAA,OAAMM,IAAI,CAACC,KAAL,CAAWX,EAAE,CAACS,UAAD,CAAb,CAAN;EAAA,CADoB,EAEpBH,OAFoB,CAHC;AAAA,CAAhB;;;;AAQA,IAAMM,QAAQ,GAAG,SAAXA,QAAW,CACtBH,UADsB,EAEtBI,QAFsB,EAGnB;EACH,IAAI;IACFb,EAAE,CAACS,UAAD,CAAF,GAAiBC,IAAI,CAACI,SAAL,CAAeD,QAAf,CAAjB;EACD,CAFD,CAEE,OAAMN,GAAN,EAAW;IACX,OAAOA,GAAP;EACD;AACF,CATM"
+}

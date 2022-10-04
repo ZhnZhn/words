@@ -1,4 +1,8 @@
-import LocalForage from 'localforage';
+import {
+  hasLocalStorage,
+  readObj,
+  writeObj
+} from '../../utils/localStorageFn';
 
 import {
   CAT_UPDATE_WATCH_BROWSER
@@ -21,7 +25,8 @@ import {
 }  from '../../constants/Type';
 import {
   WATCH_SAVED,
-  WATCH_PREV
+  WATCH_PREV,
+  LOCAL_STORAGE_ABSENT
 } from '../../constants/MsgWatch';
 
 import {
@@ -55,14 +60,10 @@ const WatchListSlice = {
   isWatchEdited: false,
 
   initWatchList(){
-    LocalForage.getItem(STORAGE_KEY).then((value) => {
-      this.watchList = value || WatchDefault;
-      this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
-    })
-    .catch(() => {
-      this.watchList = WatchDefault;
-      this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
-    })
+    this.watchList = hasLocalStorage
+      ? readObj(STORAGE_KEY, WatchDefault)
+      : WatchDefault
+    this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
   getWatchList(){
     return this.watchList;
@@ -113,21 +114,25 @@ const WatchListSlice = {
 
   onSaveWatch({ isShowDialog=true } = {}){
     if (this.isWatchEdited){
-       LocalForage.setItem(STORAGE_KEY , this.watchList)
-          .then(()=>{
-             this.isWatchEdited = false;
-             if (isShowDialog) {
-               this.onShowModalDialog(MD_MSG, {
-                  caption: DIALOG_CAPTION,
-                  descr: WATCH_SAVED
-               })
-             }
-          })
-          .catch((error) => {
-             /*eslint-disable no-console*/
-             console.warn(error);
-             /*eslint-enable no-console*/
-          })
+       if (hasLocalStorage) {
+         const _err = writeObj(STORAGE_KEY, this.watchList);
+         if (_err) {
+           console.warn(_err);
+         } else {
+           this.isWatchEdited = false;
+           if (isShowDialog) {
+             this.onShowModalDialog(MD_MSG, {
+                caption: DIALOG_CAPTION,
+                descr: WATCH_SAVED
+             })
+           }
+         }
+       } else {
+         this.onShowModalDialog(MD_MSG, {
+            caption: DIALOG_CAPTION,
+            descr: LOCAL_STORAGE_ABSENT
+         })
+       }
     } else {
        this.onShowModalDialog(MD_MSG, {
           caption: DIALOG_CAPTION,

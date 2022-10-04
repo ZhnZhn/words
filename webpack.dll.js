@@ -9,9 +9,10 @@ module.exports = {
   mode: "production",
   entry: {
      lib: [
-            "react", "react-dom",
+            "react", 
+            "react-dom",
             "reflux-core",            
-            "interactjs", "localforage"
+            "interactjs"
           ]
   },
   output: {

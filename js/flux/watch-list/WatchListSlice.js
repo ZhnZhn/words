@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _localforage = _interopRequireDefault(require("localforage"));
+var _localStorageFn = require("../../utils/localStorageFn");
 
 var _ComponentActions = require("../actions/ComponentActions");
 
@@ -31,17 +31,8 @@ var WatchListSlice = {
   watchList: _WatchDefault["default"],
   isWatchEdited: false,
   initWatchList: function initWatchList() {
-    var _this = this;
-
-    _localforage["default"].getItem(STORAGE_KEY).then(function (value) {
-      _this.watchList = value || _WatchDefault["default"];
-
-      _this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, _this.watchList);
-    })["catch"](function () {
-      _this.watchList = _WatchDefault["default"];
-
-      _this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, _this.watchList);
-    });
+    this.watchList = _localStorageFn.hasLocalStorage ? (0, _localStorageFn.readObj)(STORAGE_KEY, _WatchDefault["default"]) : _WatchDefault["default"];
+    this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
   getWatchList: function getWatchList() {
     return this.watchList;
@@ -90,27 +81,32 @@ var WatchListSlice = {
     this._onDragDrop((0, _LogicDnDFn.dragDropGroup)(this.watchList, option));
   },
   onSaveWatch: function onSaveWatch(_temp) {
-    var _this2 = this;
-
     var _ref = _temp === void 0 ? {} : _temp,
         _ref$isShowDialog = _ref.isShowDialog,
         isShowDialog = _ref$isShowDialog === void 0 ? true : _ref$isShowDialog;
 
     if (this.isWatchEdited) {
-      _localforage["default"].setItem(STORAGE_KEY, this.watchList).then(function () {
-        _this2.isWatchEdited = false;
+      if (_localStorageFn.hasLocalStorage) {
+        var _err = (0, _localStorageFn.writeObj)(STORAGE_KEY, this.watchList);
 
-        if (isShowDialog) {
-          _this2.onShowModalDialog(_Type.MD_MSG, {
-            caption: DIALOG_CAPTION,
-            descr: _MsgWatch.WATCH_SAVED
-          });
+        if (_err) {
+          console.warn(_err);
+        } else {
+          this.isWatchEdited = false;
+
+          if (isShowDialog) {
+            this.onShowModalDialog(_Type.MD_MSG, {
+              caption: DIALOG_CAPTION,
+              descr: _MsgWatch.WATCH_SAVED
+            });
+          }
         }
-      })["catch"](function (error) {
-        /*eslint-disable no-console*/
-        console.warn(error);
-        /*eslint-enable no-console*/
-      });
+      } else {
+        this.onShowModalDialog(_Type.MD_MSG, {
+          caption: DIALOG_CAPTION,
+          descr: _MsgWatch.LOCAL_STORAGE_ABSENT
+        });
+      }
     } else {
       this.onShowModalDialog(_Type.MD_MSG, {
         caption: DIALOG_CAPTION,
