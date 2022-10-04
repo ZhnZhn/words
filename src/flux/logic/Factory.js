@@ -33,66 +33,67 @@ const _loadItem = throttle(
     trailing: false
   });
 
-const Factory = {
-  crDialog: (itemConf) => {
-    const {
-      type,
-      dialogType,
-      dialogProps
-    } = itemConf
-    , El = RouterDialog.getElement(dialogType);
-    return createElement(El, {
-      key: type,
-      type: type,
-      itemConf: itemConf,
-      ...dialogProps,
-      onShow: showPane.bind(null, itemConf),
-      onLoad: _loadItem
-    });
-  },
+export const crDialog = (
+  itemConf
+) => {
+  const {
+    type,
+    dialogType,
+    dialogProps
+  } = itemConf
+  , El = RouterDialog.getElement(dialogType);
+  return createElement(El, {
+    key: type,
+    type: type,
+    itemConf: itemConf,
+    ...dialogProps,
+    onShow: showPane.bind(null, itemConf),
+    onLoad: _loadItem
+  });
+}
 
-  crPane: (itemConf, store) => {
-    const {
-      type,
-      paneType,
-      paneCaption,
-      paneId,
-    } = itemConf
-    , {
-      Pane,
-      Input,
-      Item
-    } = RouterPane.getElement(paneType);
-    return createElement(Pane, {
-      key: type,
-      id: paneId,
-      itemConf: itemConf,
-      paneCaption,
-      store,
-      Input,
-      Item,
-      updateAction: IAT_LOAD_ITEM_COMPLETED,
-      showAction: CAT_SHOW_PANE,
-      toggleAction: CAT_TOGGLE_PANE,
-      watchAction: CAT_CLICK_WATCH_ITEM,
-      onRemoveItems: ItemActions.removeItems.bind(null, paneId),
-      onRemoveUnder: ItemActions.removeItemsUnder,
-      onCloseItem: ItemActions.removeItem,
-      onClose: closePane.bind(null, itemConf),
-      onLoad: _loadItem,
-      onAddToWatch: _addToWatch
-    });
-  },
+export const crPane = (
+  itemConf,
+  store
+) => {
+  const {
+    type,
+    paneType,
+    paneCaption,
+    paneId,
+  } = itemConf
+  , {
+    Pane,
+    Input,
+    Item
+  } = RouterPane.getElement(paneType);
+  return createElement(Pane, {
+    key: type,
+    id: paneId,
+    itemConf: itemConf,
+    paneCaption,
+    store,
+    Input,
+    Item,
+    updateAction: IAT_LOAD_ITEM_COMPLETED,
+    showAction: CAT_SHOW_PANE,
+    toggleAction: CAT_TOGGLE_PANE,
+    watchAction: CAT_CLICK_WATCH_ITEM,
+    onRemoveItems: ItemActions.removeItems.bind(null, paneId),
+    onRemoveUnder: ItemActions.removeItemsUnder,
+    onCloseItem: ItemActions.removeItem,
+    onClose: closePane.bind(null, itemConf),
+    onLoad: _loadItem,
+    onAddToWatch: _addToWatch
+  });
+}
 
-  crAbout: (store) => {
-    return createElement(About, {
-      key: 'About',
-      id: 'About',
-      showAction: CAT_SHOW_ABOUT,
-      closeAction: CAT_CLOSE_ABOUT,
-      store
-    })
-  }
-};
-
-export default Factory
+export const crAbout = (
+  store
+) => createElement(About, {
+  key: 'About',
+  id: 'About',
+  showAction: CAT_SHOW_ABOUT,
+  closeAction: CAT_CLOSE_ABOUT,
+  store
+})

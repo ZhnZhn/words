@@ -9,7 +9,11 @@ import {
   CAT_CLICK_WATCH_ITEM
 } from '../actions/ComponentActions';
 
-import Factory from '../logic/Factory';
+import {
+  crDialog,
+  crPane,
+  crAbout
+} from '../logic/Factory';
 import {
   MD_EXCEPTION
 } from '../../constants/Type';
@@ -22,7 +26,7 @@ const DialogLogic = {
     if (slice[type]) {
       return { key: type };
     } else {
-      const Comp = Factory.crDialog(itemConf);
+      const Comp = crDialog(itemConf);
       slice[type] = true
       return { key: type, Comp };
     }
@@ -35,7 +39,7 @@ const PaneLogic = {
     if (slice[type]){
       return { id: paneId };
     } else {
-      const Comp = Factory.crPane(itemConf, store)
+      const Comp = crPane(itemConf, store)
       slice[type] = true;
       return { Comp };
     }
@@ -44,7 +48,7 @@ const PaneLogic = {
 
 const CompLogic = {
   crAbout(store) {
-    const Comp = Factory.crAbout(store)
+    const Comp = crAbout(store)
     return { Comp };
   }
 };

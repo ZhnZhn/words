@@ -1,13 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
 var _ComponentActions = require("../actions/ComponentActions");
 
-var _Factory = _interopRequireDefault(require("../logic/Factory"));
+var _Factory = require("../logic/Factory");
 
 var _Type = require("../../constants/Type");
 
@@ -21,8 +19,7 @@ var DialogLogic = {
         key: type
       };
     } else {
-      var Comp = _Factory["default"].crDialog(itemConf);
-
+      var Comp = (0, _Factory.crDialog)(itemConf);
       slice[type] = true;
       return {
         key: type,
@@ -41,8 +38,7 @@ var PaneLogic = {
         id: paneId
       };
     } else {
-      var Comp = _Factory["default"].crPane(itemConf, store);
-
+      var Comp = (0, _Factory.crPane)(itemConf, store);
       slice[type] = true;
       return {
         Comp: Comp
@@ -52,8 +48,7 @@ var PaneLogic = {
 };
 var CompLogic = {
   crAbout: function crAbout(store) {
-    var Comp = _Factory["default"].crAbout(store);
-
+    var Comp = (0, _Factory.crAbout)(store);
     return {
       Comp: Comp
     };
