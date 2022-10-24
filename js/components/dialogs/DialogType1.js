@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _uiApi = require("../uiApi");
@@ -21,33 +19,31 @@ var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 
 var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
 
-var _withKeyDown = _interopRequireDefault(require("./decorators/withKeyDown"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _class;
-
-var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_Component) {
+var DialogType1 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType1, _Component);
 
-  function DialogType1(props) {
+  function DialogType1() {
     var _this;
 
-    _this = _Component.call(this, props) || this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
     _this._handleLoad = function () {
       var _this$props = _this.props,
           type = _this$props.type,
           source = _this$props.source,
           itemConf = _this$props.itemConf,
-          onLoad = _this$props.onLoad,
-          _symbol = _this.inputSymbol.getValue();
-
+          onLoad = _this$props.onLoad;
       onLoad({
         type: type,
         source: source,
         itemConf: itemConf,
-        symbol: _symbol
+        symbol: _this.inputSymbol.getValue()
       });
     };
 
@@ -55,6 +51,14 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_
       _this.dialogComp.focusPrevEl();
 
       _this.props.onClose();
+    };
+
+    _this._handleKeyDown = function (event) {
+      if (event.keyCode === 13) {
+        _this._handleLoad();
+      } else if (event.keyCode === 27) {
+        _this._handleClose();
+      }
     };
 
     _this._createCommandButtons = function (TS) {
@@ -75,7 +79,6 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_
       return _this.inputSymbol = comp;
     };
 
-    _this._handleKeyDownWith = _this._handleKeyDownWith.bind((0, _assertThisInitialized2["default"])(_this));
     return _this;
   }
 
@@ -98,7 +101,7 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_
       caption: caption,
       isShow: isShow,
       commandButtons: _commandButtons,
-      onKeyDown: this._handleKeyDownWith,
+      onKeyDown: this._handleKeyDown,
       onShowChart: onShow,
       onClose: this._handleClose,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextField["default"], {
@@ -111,7 +114,7 @@ var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_
   };
 
   return DialogType1;
-}(_uiApi.Component)) || _class;
+}(_uiApi.Component);
 
 var _default = (0, _withTheme["default"])(DialogType1);
 

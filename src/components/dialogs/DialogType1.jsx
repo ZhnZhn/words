@@ -7,29 +7,34 @@ import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import TextField from '../zhn-m-input/TextField'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
-import withKeyDown from './decorators/withKeyDown'
-
-@withKeyDown
 class DialogType1 extends Component {
-  constructor(props){
-    super(props)
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
-  }
-
-
   _handleLoad = () => {
-    const { type, source, itemConf, onLoad } = this.props
-        , _symbol = this.inputSymbol.getValue();
+    const {
+      type,
+      source,
+      itemConf,
+      onLoad
+    } = this.props;
 
     onLoad({
-      type, source, itemConf,
-      symbol: _symbol,
+      type,
+      source,
+      itemConf,
+      symbol: this.inputSymbol.getValue()
     })
   }
 
   _handleClose = () => {
     this.dialogComp.focusPrevEl()
     this.props.onClose()
+  }
+
+  _handleKeyDown = (event) => {
+    if (event.keyCode === 13){
+      this._handleLoad()
+    } else if (event.keyCode === 27){
+      this._handleClose()
+    }
   }
 
   _createCommandButtons = (TS) => {
@@ -50,13 +55,13 @@ class DialogType1 extends Component {
 
   render(){
     const {
-            theme,
-            isShow, caption,
-            onShow
-          } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , _commandButtons = this._createCommandButtons(TS.BT);
-
+      theme,
+      isShow,
+      caption,
+      onShow
+    } = this.props
+    , TS = theme.createStyle(styleConfig)
+    , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
       <DraggableDialog
@@ -67,7 +72,7 @@ class DialogType1 extends Component {
            caption={caption}
            isShow={isShow}
            commandButtons={_commandButtons}
-           onKeyDown={this._handleKeyDownWith}
+           onKeyDown={this._handleKeyDown}
            onShowChart={onShow}
            onClose={this._handleClose}
        >
