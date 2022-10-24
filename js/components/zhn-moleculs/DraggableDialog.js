@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _uiApi = require("../uiApi");
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
@@ -23,7 +21,7 @@ var _this = void 0;
 
 var CL_DIALOG = 'dialog';
 var CL_DIALOG_OPEN = 'dialog show-popup';
-var S_ROOT = {
+var S_DIV = {
   zIndex: 10,
   position: 'absolute',
   top: 30,
@@ -33,7 +31,7 @@ var S_ROOT = {
   borderRadius: 5,
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
 },
-    S_CHILDREN = {
+    S_CHL_DIV = {
   cursor: 'default'
 },
     S_COMMAND = {
@@ -81,126 +79,121 @@ var DialogButtons = function DialogButtons(_ref) {
     })]
   });
 };
+/*eslint-disable react-hooks/exhaustive-deps */
 
-var DraggableDialog = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DraggableDialog, _Component);
 
-  function DraggableDialog() {
-    var _this2;
+var useFocusByRef = function useFocusByRef(ref) {
+  return (0, _uiApi.useCallback)(function () {
+    (0, _uiApi.focusRefElement)(ref);
+  }, []);
+}; //ref
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+/*eslint-enable react-hooks/exhaustive-deps */
+
+
+var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
+  var isShow = _ref2.isShow,
+      style = _ref2.style,
+      captionStyle = _ref2.captionStyle,
+      buttonStyle = _ref2.buttonStyle,
+      caption = _ref2.caption,
+      children = _ref2.children,
+      onKeyDown = _ref2.onKeyDown,
+      onLoad = _ref2.onLoad,
+      onShow = _ref2.onShow,
+      onClose = _ref2.onClose;
+
+  var _refDiv = (0, _uiApi.useRef)(null),
+      _refIsShow = (0, _uiApi.useRef)(isShow),
+      _refPrevFocused = (0, _uiApi.useRef)(null),
+      focusPrevEl = useFocusByRef(_refPrevFocused),
+      focus = useFocusByRef(_refDiv),
+      _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
+    if (document.activeElement == (0, _uiApi.getRefValue)(_refDiv)) {
+      onKeyDown(evt);
+    }
+  }, [onKeyDown]),
+      _hClose = (0, _uiApi.useCallback)(function (evt) {
+    focusPrevEl();
+    onClose();
+  }, [onClose, focusPrevEl]);
+
+  (0, _uiApi.useEffect)(function () {
+    var _divElement = (0, _uiApi.getRefValue)(_refDiv);
+
+    _Interact["default"].makeDragable(_divElement);
+
+    (0, _uiApi.setRefValue)(_refPrevFocused, document.activeElement);
+
+    _divElement.focus();
+  }, []);
+  /*eslint-disable react-hooks/exhaustive-deps */
+
+  (0, _uiApi.useEffect)(function () {
+    if (isShow && !(0, _uiApi.getRefValue)(_refIsShow)) {
+      focus();
     }
 
-    _this2 = _Component.call.apply(_Component, [this].concat(args)) || this;
+    (0, _uiApi.setRefValue)(_refIsShow, isShow);
+  }, [isShow]); // focus
 
-    _this2._handleKeyDown = function (event) {
-      var focused = document.activeElement;
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-      if (focused == _this2.rootDiv) {
-        _this2.props.onKeyDown(event);
-      }
+  (0, _uiApi.useImperativeHandle)(ref, function () {
+    return {
+      focusPrevEl: focusPrevEl
     };
+  });
 
-    _this2._handleClose = function (event) {
-      if (_this2.prevFocusedEl) {
-        _this2.prevFocusedEl.focus();
-      }
+  var _ref3 = isShow ? [CL_DIALOG_OPEN, S_BLOCK] : [CL_DIALOG, S_NONE],
+      _classShow = _ref3[0],
+      _styleShow = _ref3[1];
 
-      _this2.props.onClose();
-    };
+  return (
+    /*#__PURE__*/
 
-    _this2._refRootDiv = function (_divElement) {
-      return _this2.rootDiv = _divElement;
-    };
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
 
-    return _this2;
-  }
-
-  var _proto = DraggableDialog.prototype;
-
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    style: PropTypes.object,
-    browserCaptionStyle: PropTypes.object,
-    styleButton: PropTypes.object,
-    caption: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]),
-    onLoad: PropTypes.func,
-    onShow: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-  _proto.componentDidMount = function componentDidMount() {
-    _Interact["default"].makeDragable(this.rootDiv);
-
-    this.prevFocusedEl = document.activeElement;
-    this.rootDiv.focus();
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
-    if (this.props.isShow && !prevProps.isShow) {
-      this.rootDiv.focus();
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        isShow = _this$props.isShow,
-        style = _this$props.style,
-        browserCaptionStyle = _this$props.browserCaptionStyle,
-        styleButton = _this$props.styleButton,
-        caption = _this$props.caption,
-        children = _this$props.children,
-        onLoad = _this$props.onLoad,
-        onShow = _this$props.onShow,
-        onClose = _this$props.onClose,
-        _ref2 = isShow ? [CL_DIALOG_OPEN, S_BLOCK] : [CL_DIALOG, S_NONE],
-        _classShow = _ref2[0],
-        _styleShow = _ref2[1];
-
-    return (
-      /*#__PURE__*/
-
-      /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
-
-      /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
-      (0, _jsxRuntime.jsxs)("div", {
-        ref: this._refRootDiv,
-        role: "dialog",
-        className: _classShow,
-        style: (0, _extends2["default"])({}, S_ROOT, style, _styleShow),
-        tabIndex: "0",
-        onKeyDown: this._handleKeyDown,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
-          rootStyle: browserCaptionStyle,
-          caption: caption,
-          onClose: onClose
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          style: S_CHILDREN,
-          children: children
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogButtons, {
-          S: styleButton,
-          onLoad: onLoad,
-          onShow: onShow,
-          onClose: this._handleClose
-        })]
-      })
-    );
-  };
-
-  _proto.focusPrevEl = function focusPrevEl() {
-    if (this.prevFocusedEl) {
-      this.prevFocusedEl.focus();
-    }
-  };
-
-  return DraggableDialog;
-}(_uiApi.Component);
+    /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+    (0, _jsxRuntime.jsxs)("div", {
+      ref: _refDiv,
+      role: "dialog",
+      className: _classShow,
+      style: (0, _extends2["default"])({}, S_DIV, style, _styleShow),
+      tabIndex: "0",
+      onKeyDown: _hKeyDown,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
+        style: captionStyle,
+        caption: caption,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S_CHL_DIV,
+        children: children
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogButtons, {
+        TS: buttonStyle,
+        onLoad: onLoad,
+        onShow: onShow,
+        onClose: _hClose
+      })]
+    })
+  );
+});
+/*
+static propTypes = {
+  isShow: PropTypes.bool,
+  style: PropTypes.object,
+  browserCaptionStyle: PropTypes.object,
+  styleButton: PropTypes.object,
+  caption: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  onLoad: PropTypes.func,
+  onShow: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
 
 var _default = DraggableDialog;
 exports["default"] = _default;
