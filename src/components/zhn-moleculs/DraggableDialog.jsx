@@ -36,6 +36,32 @@ const S_ROOT = {
   display: 'none'
 };
 
+const DialogButtons = ({
+  commandButtons,
+  styleButton:S={},
+  onShow,
+  onClose
+}) => (
+  <div style={S_COMMAND}>
+    {commandButtons}
+    {typeof onShow === 'function' &&
+      <RaisedButton
+         style={S.RAISED_ROOT}
+         clDiv={S.CL_RAISED_DIV}
+         caption="Show"
+         onClick={onShow}
+      />
+    }
+    <RaisedButton
+       style={S.RAISED_ROOT}
+       clDiv={S.CL_RAISED_DIV}
+       caption="Close"
+       onClick={this._handleClose}
+    />
+  </div>
+);
+
+
 
 class DraggableDialog extends Component {
   /*
@@ -76,49 +102,43 @@ class DraggableDialog extends Component {
     }
     this.props.onClose()
   }
-
-  _renderCommandButton = ({
-    commandButtons, styleButton:S={}, onShowChart, onClose
-  }) => {
-    return (
-      <div style={S_COMMAND}>
-        {commandButtons}
-        {typeof onShowChart === 'function' &&
-          <RaisedButton
-             style={S.RAISED_ROOT}
-             clDiv={S.CL_RAISED_DIV}
-             caption="Show"
-             onClick={onShowChart}
-          />
-        }
-        <RaisedButton
-           style={S.RAISED_ROOT}
-           clDiv={S.CL_RAISED_DIV}
-           caption="Close"
-           onClick={this._handleClose}
-        />
-      </div>
-    );
-  }
+  
+  _refRootDiv = (_divElement) => this.rootDiv = _divElement
 
   render(){
     const {
-           isShow, rootStyle,
-           caption, browserCaptionStyle,
-           commandButtons, styleButton,
-           children,
-           onShowChart, onClose
-         } = this.props
-        , _styleShow = isShow ? S_BLOCK : S_NONE
-        , _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
+       isShow,
+       rootStyle,
+       caption,
+       browserCaptionStyle,
+       commandButtons,
+       styleButton,
+       children,
+       onShowChart,
+       onClose
+     } = this.props
+    , [
+      _classShow,
+      _styleShow
+    ] = isShow
+      ? [CL_DIALOG_OPEN, S_BLOCK]
+      : [CL_DIALOG, S_NONE];
+
     return (
+      /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+      /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
       <div
-           ref={c => this.rootDiv = c}
-           className={_classShow}
-           style={Object.assign({}, S_ROOT, rootStyle, _styleShow)}
-           tabIndex="0"
-           onKeyDown={this._handleKeyDown}
+         ref={this._refRootDiv}
+         role="dialog"
+         className={_classShow}
+         style={{...S_ROOT, ...rootStyle, ..._styleShow}}
+         tabIndex="0"
+         onKeyDown={this._handleKeyDown}
       >
+      {
+        /*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/
+        /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
+      }
         <BrowserCaption
            rootStyle={browserCaptionStyle}
            caption={caption}
@@ -127,7 +147,12 @@ class DraggableDialog extends Component {
         <div style={S_CHILDREN}>
            {children}
         </div>
-        {this._renderCommandButton({ commandButtons, styleButton, onShowChart, onClose })}
+        <DialogButtons
+          commandButtons={commandButtons}
+          styleButton={styleButton}
+          onShow={onShowChart}
+          onClose={this._handleClose}
+        />
       </div>
     );
   }
