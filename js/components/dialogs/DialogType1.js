@@ -17,8 +17,6 @@ var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/Draggable
 
 var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 
-var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
 var DialogType1 = /*#__PURE__*/function (_Component) {
@@ -61,16 +59,6 @@ var DialogType1 = /*#__PURE__*/function (_Component) {
       }
     };
 
-    _this._createCommandButtons = function (TS) {
-      return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-        style: TS.RAISED_ROOT,
-        clDiv: TS.CL_RAISED_DIV,
-        caption: "Load",
-        isPrimary: true,
-        onClick: _this._handleLoad
-      }, "_load")];
-    };
-
     _this._refDialogComp = function (comp) {
       return _this.dialogComp = comp;
     };
@@ -90,9 +78,7 @@ var DialogType1 = /*#__PURE__*/function (_Component) {
         isShow = _this$props2.isShow,
         caption = _this$props2.caption,
         onShow = _this$props2.onShow,
-        TS = theme.createStyle(_Dialog["default"]),
-        _commandButtons = this._createCommandButtons(TS.BT);
-
+        TS = theme.createStyle(_Dialog["default"]);
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
       ref: this._refDialogComp,
       rootStyle: TS.R_DIALOG,
@@ -100,9 +86,9 @@ var DialogType1 = /*#__PURE__*/function (_Component) {
       styleButton: TS.BT,
       caption: caption,
       isShow: isShow,
-      commandButtons: _commandButtons,
       onKeyDown: this._handleKeyDown,
-      onShowChart: onShow,
+      onLoad: this._handleLoad,
+      onShow: onShow,
       onClose: this._handleClose,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextField["default"], {
         ref: this._refInputWord,

@@ -5,7 +5,6 @@ import styleConfig from './Dialog.Style'
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import TextField from '../zhn-m-input/TextField'
-import RaisedButton from '../zhn-atoms/RaisedButton'
 
 class DialogType1 extends Component {
   _handleLoad = () => {
@@ -37,19 +36,6 @@ class DialogType1 extends Component {
     }
   }
 
-  _createCommandButtons = (TS) => {
-    return [
-      <RaisedButton
-        key="_load"
-        style={TS.RAISED_ROOT}
-        clDiv={TS.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
-      />
-    ];
-  }
-
   _refDialogComp = comp => this.dialogComp = comp
   _refInputWord = comp => this.inputSymbol = comp
 
@@ -60,8 +46,7 @@ class DialogType1 extends Component {
       caption,
       onShow
     } = this.props
-    , TS = theme.createStyle(styleConfig)
-    , _commandButtons = this._createCommandButtons(TS.BT);
+    , TS = theme.createStyle(styleConfig);
 
     return (
       <DraggableDialog
@@ -71,9 +56,9 @@ class DialogType1 extends Component {
            styleButton={TS.BT}
            caption={caption}
            isShow={isShow}
-           commandButtons={_commandButtons}
            onKeyDown={this._handleKeyDown}
-           onShowChart={onShow}
+           onLoad={this._handleLoad}
+           onShow={onShow}
            onClose={this._handleClose}
        >
          <TextField

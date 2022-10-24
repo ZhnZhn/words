@@ -36,16 +36,24 @@ const S_ROOT = {
   display: 'none'
 };
 
+const _isFn = fn => typeof fn === 'function';
+
 const DialogButtons = ({
-  commandButtons,
-  styleButton:S={},
+  S={},
+  onLoad,
   onShow,
   onClose
 }) => (
   <div style={S_COMMAND}>
-    {commandButtons}
-    {typeof onShow === 'function' &&
-      <RaisedButton
+    {_isFn(onLoad) && <RaisedButton
+        style={S.RAISED_ROOT}
+        clDiv={S.CL_RAISED_DIV}
+        caption="Load"
+        isPrimary={true}
+        onClick={onLoad}
+      />
+    }
+    {_isFn(onShow) && <RaisedButton
          style={S.RAISED_ROOT}
          clDiv={S.CL_RAISED_DIV}
          caption="Show"
@@ -62,18 +70,20 @@ const DialogButtons = ({
 );
 
 
-
 class DraggableDialog extends Component {
   /*
   static propTypes = {
     isShow: PropTypes.bool,
+    rootStyle: PropTypes.object,
+    browserCaptionStyle: PropTypes.object,
+    styleButton: PropTypes.object,
     caption: PropTypes.string,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node
     ]),
-    commandButtons: PropTypes.arrayOf(PropTypes.element),
-    onShowChart: PropTypes.func,
+    onLoad: PropTypes.func,
+    onShow: PropTypes.func,
     onClose: PropTypes.func
   }
   */
@@ -102,19 +112,19 @@ class DraggableDialog extends Component {
     }
     this.props.onClose()
   }
-  
+
   _refRootDiv = (_divElement) => this.rootDiv = _divElement
 
   render(){
     const {
        isShow,
        rootStyle,
-       caption,
        browserCaptionStyle,
-       commandButtons,
        styleButton,
+       caption,
        children,
-       onShowChart,
+       onLoad,
+       onShow,
        onClose
      } = this.props
     , [
@@ -148,9 +158,9 @@ class DraggableDialog extends Component {
            {children}
         </div>
         <DialogButtons
-          commandButtons={commandButtons}
-          styleButton={styleButton}
-          onShow={onShowChart}
+          S={styleButton}
+          onLoad={onLoad}
+          onShow={onShow}
           onClose={this._handleClose}
         />
       </div>

@@ -50,15 +50,25 @@ var S_ROOT = {
   display: 'none'
 };
 
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+
 var DialogButtons = function DialogButtons(_ref) {
-  var commandButtons = _ref.commandButtons,
-      _ref$styleButton = _ref.styleButton,
-      S = _ref$styleButton === void 0 ? {} : _ref$styleButton,
+  var _ref$S = _ref.S,
+      S = _ref$S === void 0 ? {} : _ref$S,
+      onLoad = _ref.onLoad,
       onShow = _ref.onShow,
       onClose = _ref.onClose;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_COMMAND,
-    children: [commandButtons, typeof onShow === 'function' && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+    children: [_isFn(onLoad) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+      style: S.RAISED_ROOT,
+      clDiv: S.CL_RAISED_DIV,
+      caption: "Load",
+      isPrimary: true,
+      onClick: onLoad
+    }), _isFn(onShow) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
       style: S.RAISED_ROOT,
       clDiv: S.CL_RAISED_DIV,
       caption: "Show",
@@ -112,13 +122,16 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
   /*
   static propTypes = {
     isShow: PropTypes.bool,
+    rootStyle: PropTypes.object,
+    browserCaptionStyle: PropTypes.object,
+    styleButton: PropTypes.object,
     caption: PropTypes.string,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node
     ]),
-    commandButtons: PropTypes.arrayOf(PropTypes.element),
-    onShowChart: PropTypes.func,
+    onLoad: PropTypes.func,
+    onShow: PropTypes.func,
     onClose: PropTypes.func
   }
   */
@@ -139,12 +152,12 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
     var _this$props = this.props,
         isShow = _this$props.isShow,
         rootStyle = _this$props.rootStyle,
-        caption = _this$props.caption,
         browserCaptionStyle = _this$props.browserCaptionStyle,
-        commandButtons = _this$props.commandButtons,
         styleButton = _this$props.styleButton,
+        caption = _this$props.caption,
         children = _this$props.children,
-        onShowChart = _this$props.onShowChart,
+        onLoad = _this$props.onLoad,
+        onShow = _this$props.onShow,
         onClose = _this$props.onClose,
         _ref2 = isShow ? [CL_DIALOG_OPEN, S_BLOCK] : [CL_DIALOG, S_NONE],
         _classShow = _ref2[0],
@@ -171,9 +184,9 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
           style: S_CHILDREN,
           children: children
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogButtons, {
-          commandButtons: commandButtons,
-          styleButton: styleButton,
-          onShow: onShowChart,
+          S: styleButton,
+          onLoad: onLoad,
+          onShow: onShow,
           onClose: this._handleClose
         })]
       })
