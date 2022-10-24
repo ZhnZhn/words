@@ -74,7 +74,7 @@ class DraggableDialog extends Component {
   /*
   static propTypes = {
     isShow: PropTypes.bool,
-    rootStyle: PropTypes.object,
+    style: PropTypes.object,
     browserCaptionStyle: PropTypes.object,
     styleButton: PropTypes.object,
     caption: PropTypes.string,
@@ -118,7 +118,7 @@ class DraggableDialog extends Component {
   render(){
     const {
        isShow,
-       rootStyle,
+       style,
        browserCaptionStyle,
        styleButton,
        caption,
@@ -141,7 +141,7 @@ class DraggableDialog extends Component {
          ref={this._refRootDiv}
          role="dialog"
          className={_classShow}
-         style={{...S_ROOT, ...rootStyle, ..._styleShow}}
+         style={{...S_ROOT, ...style, ..._styleShow}}
          tabIndex="0"
          onKeyDown={this._handleKeyDown}
       >

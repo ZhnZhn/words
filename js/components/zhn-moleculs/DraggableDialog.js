@@ -122,7 +122,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
   /*
   static propTypes = {
     isShow: PropTypes.bool,
-    rootStyle: PropTypes.object,
+    style: PropTypes.object,
     browserCaptionStyle: PropTypes.object,
     styleButton: PropTypes.object,
     caption: PropTypes.string,
@@ -151,7 +151,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var _this$props = this.props,
         isShow = _this$props.isShow,
-        rootStyle = _this$props.rootStyle,
+        style = _this$props.style,
         browserCaptionStyle = _this$props.browserCaptionStyle,
         styleButton = _this$props.styleButton,
         caption = _this$props.caption,
@@ -173,7 +173,7 @@ var DraggableDialog = /*#__PURE__*/function (_Component) {
         ref: this._refRootDiv,
         role: "dialog",
         className: _classShow,
-        style: (0, _extends2["default"])({}, S_ROOT, rootStyle, _styleShow),
+        style: (0, _extends2["default"])({}, S_ROOT, style, _styleShow),
         tabIndex: "0",
         onKeyDown: this._handleKeyDown,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
