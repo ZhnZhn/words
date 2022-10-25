@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _uiApi = require("../uiApi");
+
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -21,124 +21,107 @@ var S_ROOT = {
   width: '99%'
 };
 
-var _doVisible = function _doVisible(arr, keyValue) {
-  var index,
-      max = arr.length,
-      i;
+var _isUndef = function _isUndef(value) {
+  return typeof value === 'undefined';
+};
 
-  for (i = 0; i < max; i++) {
-    if (arr[i].key === keyValue) {
-      index = i;
-      break;
+var _findCompIndex = function _findCompIndex(arr, key) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].key === key) {
+      return i;
     }
   }
 
-  return [].concat(arr.slice(0, index), arr.slice(index + 1), [arr[index]]);
+  return;
+};
+
+var _doVisible = function _doVisible(arr, keyValue) {
+  var _index = _findCompIndex(arr, keyValue) || 0;
+
+  return [].concat(arr.slice(0, _index), arr.slice(_index + 1), [arr[_index]]);
 };
 
 var _updateVisible = function _updateVisible(state, key, maxDialog) {
-  var hmIs = state.hmIs;
+  var hmIs = state.hmIs,
+      visibleDialogs = state.visibleDialogs,
+      _keyIndex = visibleDialogs.indexOf(key);
 
-  if (!hmIs[key]) {
-    var visibleDialogs = state.visibleDialogs;
-    hmIs[key] = true;
-    visibleDialogs.push(key);
+  if (_keyIndex !== -1) {
+    visibleDialogs.splice(_keyIndex, 1);
+  }
 
-    if (visibleDialogs.length > maxDialog) {
-      hmIs[visibleDialogs[0]] = false;
-      visibleDialogs = visibleDialogs.slice(1);
-    }
+  visibleDialogs.push(key);
+  hmIs[key] = true;
+
+  if (visibleDialogs.length > maxDialog) {
+    hmIs[visibleDialogs[0]] = false;
+    visibleDialogs.splice(0, 1);
   }
 };
 
-var DialogContainer = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DialogContainer, _Component);
+var DialogContainer = function DialogContainer(_ref) {
+  var store = _ref.store,
+      _ref$maxDialog = _ref.maxDialog,
+      maxDialog = _ref$maxDialog === void 0 ? 3 : _ref$maxDialog,
+      showAction = _ref.showAction;
 
-  function DialogContainer(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._onStore = function (actionType, option) {
-      var showAction = _this.props.showAction;
-
-      if (actionType === showAction) {
-        _this.setState(function (prevState) {
-          var key = option.key,
-              Comp = option.Comp,
-              maxDialog = _this.props.maxDialog;
-
-          _updateVisible(prevState, key, maxDialog);
-
-          if (!Comp) {
-            prevState.compDialogs = _doVisible(prevState.compDialogs, key);
-          } else {
-            prevState.compDialogs.push(Comp);
-          }
-
-          return prevState;
-        });
-      }
-    };
-
-    _this._handleToggleDialog = function (key) {
-      _this.setState(function (prevState) {
-        var hmIs = prevState.hmIs;
-        hmIs[key] = !hmIs[key];
-
-        if (!hmIs[key]) {
-          prevState.visibleDialogs = prevState.visibleDialogs.filter(function (value) {
-            return value !== key;
-          });
-          _this.elHtml.style.cursor = '';
-        }
-
-        return prevState;
+  var _useState = (0, _uiApi.useState)({
+    hmIs: {},
+    compDialogs: [],
+    visibleDialogs: []
+  }),
+      state = _useState[0],
+      setState = _useState[1],
+      hmIs = state.hmIs,
+      compDialogs = state.compDialogs,
+      _hToggleDialog = function _hToggleDialog(key) {
+    setState(function (prevState) {
+      var hmIs = prevState.hmIs,
+          visibleDialogs = prevState.visibleDialogs;
+      hmIs[key] = false;
+      prevState.visibleDialogs = visibleDialogs.filter(function (value) {
+        return value !== key;
       });
-    };
-
-    _this._renderDialogs = function () {
-      var _this$state = _this.state,
-          hmIs = _this$state.hmIs,
-          compDialogs = _this$state.compDialogs;
-      return compDialogs.map(function (Comp) {
-        var key = Comp.key;
-        return (0, _uiApi.cloneElement)(Comp, {
-          key: key,
-          isShow: hmIs[key],
-          onClose: _this._handleToggleDialog.bind((0, _assertThisInitialized2["default"])(_this), key)
-        });
-      });
-    };
-
-    _this.elHtml = document.getElementsByTagName('html')[0];
-    _this.state = {
-      hmIs: {},
-      compDialogs: [],
-      visibleDialogs: []
-    };
-    return _this;
-  }
-
-  var _proto = DialogContainer.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: S_ROOT,
-      children: this._renderDialogs()
+      return (0, _extends2["default"])({}, prevState);
     });
   };
 
-  return DialogContainer;
-}(_uiApi.Component);
+  (0, _useListen["default"])(store, function (actionType, option) {
+    if (actionType === showAction) {
+      setState(function (prevState) {
+        var key = option.key,
+            Comp = option.Comp;
+
+        if (Comp && !_isUndef(_findCompIndex(prevState.compDialogs, key))) {
+          return prevState;
+        }
+
+        _updateVisible(prevState, key, maxDialog);
+
+        if (!Comp) {
+          prevState.compDialogs = _doVisible(prevState.compDialogs, key);
+        } else {
+          prevState.compDialogs.push(Comp);
+        }
+
+        return (0, _extends2["default"])({}, prevState);
+      });
+    }
+  });
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    style: S_ROOT,
+    children: compDialogs.map(function (Comp) {
+      var key = Comp.key;
+      return (0, _uiApi.cloneElement)(Comp, {
+        key: key,
+        isShow: hmIs[key],
+        onClose: function onClose() {
+          return _hToggleDialog(key);
+        }
+      });
+    })
+  });
+};
 
 var _default = DialogContainer;
 exports["default"] = _default;
