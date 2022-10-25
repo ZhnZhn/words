@@ -17,9 +17,15 @@ var _theme = _interopRequireDefault(require("./styles/theme"));
 
 var _ComponentActions = require("../flux/actions/ComponentActions");
 
+var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
+
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 
-var _Container = _interopRequireDefault(require("./zhn-containers/Container"));
+var _BrowserContainer = _interopRequireDefault(require("./zhn-containers/BrowserContainer"));
+
+var _HrzContainer = _interopRequireDefault(require("./zhn-containers/HrzContainer"));
+
+var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/ModalDialogContainer"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -60,20 +66,21 @@ var AppWords = function AppWords(_ref) {
         store: store
       }, headerActions)), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Browser, (0, _extends2["default"])({
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer["default"], (0, _extends2["default"])({
           store: store,
           showBrowserAction: _ComponentActions.CAT_SHOW_BROWSER,
           showDialogAction: _ComponentActions.CAT_SHOW_DIALOG,
           browserId: WORDS_BROWSER_ID,
           updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER
-        }, browserActions)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Hrz, {
+        }, browserActions)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HrzContainer["default"], {
           className: CL_ITEMS,
           store: store,
           addAction: _ComponentActions.CAT_SHOW_PANE
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Container["default"].Wrapper, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
         store: store,
-        SHOW_ACTION: _ComponentActions.CAT_SHOW_MODAL_DIALOG
+        router: _RouterModalDialog["default"],
+        showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
       })]
     })
   });

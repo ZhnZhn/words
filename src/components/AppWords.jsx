@@ -16,8 +16,12 @@ import {
   CAT_UPDATE_WATCH_BROWSER
 } from '../flux/actions/ComponentActions';
 
+import RouterModalDialog from './dialogs/RouterModalDialog';
 import HeaderBar from './header/HeaderBar';
-import Container from './zhn-containers/Container';
+
+import BrowserContainer from './zhn-containers/BrowserContainer';
+import HrzContainer from './zhn-containers/HrzContainer';
+import ModalDialogContainer from './zhn-containers/ModalDialogContainer';
 
 const CL_COMP = "component-container"
 , CL_ITEMS = "items-container"
@@ -61,23 +65,24 @@ const AppWords = ({
           {...headerActions}
         />
         <div className={CL_COMP}>
-           <Container.Browser
-             store={store}
-             showBrowserAction={CAT_SHOW_BROWSER}
-             showDialogAction={CAT_SHOW_DIALOG}
-             browserId={WORDS_BROWSER_ID}
-             updateWatchAction={CAT_UPDATE_WATCH_BROWSER}
-             {...browserActions}
+           <BrowserContainer
+              store={store}
+              showBrowserAction={CAT_SHOW_BROWSER}
+              showDialogAction={CAT_SHOW_DIALOG}
+              browserId={WORDS_BROWSER_ID}
+              updateWatchAction={CAT_UPDATE_WATCH_BROWSER}
+              {...browserActions}
            />
-           <Container.Hrz
-             className={CL_ITEMS}
-             store={store}
-             addAction={CAT_SHOW_PANE}
+           <HrzContainer
+              className={CL_ITEMS}
+              store={store}
+              addAction={CAT_SHOW_PANE}
            />
         </div>
-        <Container.Wrapper
+        <ModalDialogContainer
            store={store}
-           SHOW_ACTION={CAT_SHOW_MODAL_DIALOG}
+           router={RouterModalDialog}
+           showAction={CAT_SHOW_MODAL_DIALOG}
         />
       </div>
     </ThemeContext.Provider>

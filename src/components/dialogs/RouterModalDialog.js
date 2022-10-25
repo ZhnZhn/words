@@ -18,7 +18,7 @@ import EditGroupDialog from '../watch-browser/EditGroupDialog';
 import EditListDialog from '../watch-browser/EditListDialog';
 import AddToWatchDialog from '../watch-browser/AddToWatchDialog';
 
-const _r = {
+const RouterModalDialog = {
   [MD_SETTINGS]: SettingsDialog,
   [MD_ALERT_DIALOG]: AlertDialog,
   [MD_EXCEPTION]: AlertDialog2,
@@ -29,10 +29,4 @@ const _r = {
   [MD_ADD_TO_WATCH]: AddToWatchDialog
 };
 
-const RouterModal = {
-  getDialog(type){
-    return Promise.resolve(_r[type]);
-  }
-};
-
-export default RouterModal
+export default RouterModalDialog
