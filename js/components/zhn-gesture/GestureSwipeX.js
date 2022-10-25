@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../uiApi");
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -54,8 +54,6 @@ var _gestureStartImpl = function _gestureStartImpl(refIs, el) {
   (0, _uiApi.setRefValue)(refIs, true);
   el.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT);
 };
-
-var HAS_TOUCH = _has["default"].HAS_TOUCH;
 
 var FN_NOOP = function FN_NOOP() {};
 
@@ -132,7 +130,7 @@ var GestureSwipeX = function GestureSwipeX(_ref) {
       _gestureStart = _useMemo[0],
       _gestureMove = _useMemo[1],
       _gestureEnd = _useMemo[2],
-      _handlers = (0, _uiApi.getRefValue)((0, _uiApi.useRef)(HAS_TOUCH ? {
+      _handlers = (0, _uiApi.getRefValue)((0, _uiApi.useRef)(_has.HAS_TOUCH ? {
     onTouchStart: _gestureStart,
     onTouchMove: _gestureMove,
     onTouchEnd: _gestureEnd

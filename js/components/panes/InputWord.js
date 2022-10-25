@@ -9,13 +9,12 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../uiApi");
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var HAS_TOUCH = _has["default"].HAS_TOUCH;
 var S_TF_LABEL = {
   top: 28
 },
@@ -69,7 +68,7 @@ var InputWord = (0, _uiApi.forwardRef)(function (_ref, ref) {
       spellCheck: true,
       initialValue: initValue,
       onEnter: onEnter
-    }), HAS_TOUCH ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ButtonClear, {
+    }), _has.HAS_TOUCH ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ButtonClear, {
       style: S_BT_CLEAR,
       onClick: _hClear
     }) : /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {

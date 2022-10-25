@@ -5,7 +5,7 @@ import {
   setRefValue
 } from '../uiApi';
 
-import has from '../has';
+import { HAS_TOUCH } from '../has';
 
 const BORDER_LEFT = 'border-left'
 , DRAG_START_BORDER_LEFT = "4px solid #d64336"
@@ -48,7 +48,6 @@ const _gestureStartImpl = (
   el.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT)
 }
 
-const { HAS_TOUCH } = has;
 const FN_NOOP = () => {};
 
 const GestureSwipeX = ({

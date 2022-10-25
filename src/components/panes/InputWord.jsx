@@ -9,10 +9,8 @@ import {
   getRefInputValue
 } from '../uiApi';
 
-import has from '../has';
+import { HAS_TOUCH } from '../has';
 import A from '../Comp';
-
-const { HAS_TOUCH } = has;
 
 const S_TF_LABEL = {
   top: 28
@@ -64,7 +62,7 @@ const InputWord = forwardRef(({
         caption="Word"
         accessKey="W"
         spellCheck={true}
-        initialValue={initValue}        
+        initialValue={initValue}
         onEnter={onEnter}
       />
       { HAS_TOUCH
