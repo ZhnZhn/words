@@ -1,10 +1,16 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 exports.__esModule = true;
 exports["default"] = exports.THEME_NAME = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _setTheme2;
 
+var _assign = Object.assign,
+    _getObjectKeys = Object.keys;
 var P = {};
 var TH_GREY = {
   C_ICON: '#4d4d4d',
@@ -16,24 +22,23 @@ var TH_GREY = {
   BG_INPUT: '#e1e1cb',
   C_M_SELECT_ITEM: 'white'
 };
-var TH_WHITE = {
+var _TH_LIGHT = {
+  BG_BODY: 'darkgrey',
+  BG_HEADER: '#0096c8',
+  C_M_SELECT_ITEM: '#303030'
+};
+var TH_WHITE = (0, _extends2["default"])({}, _TH_LIGHT, {
   C_ICON: 'grey',
-  BG_BODY: 'darkgrey',
   BG: '#ebf1f5',
-  BG_HEADER: '#0096c8',
   BG_ITEM_HEADER: '#e6ecf0',
-  BG_INPUT: '#e1e1cb',
-  C_M_SELECT_ITEM: '#303030'
-};
-var TH_SAND = {
+  BG_INPUT: '#e1e1cb'
+});
+var TH_SAND = (0, _extends2["default"])({}, _TH_LIGHT, {
   C_ICON: '#e8e0cb',
-  BG_BODY: 'darkgrey',
   BG: '#e8e0cb',
-  BG_HEADER: '#0096c8',
   BG_ITEM_HEADER: '#d0c198',
-  BG_INPUT: 'white',
-  C_M_SELECT_ITEM: '#303030'
-};
+  BG_INPUT: 'white'
+});
 var CSS_RULE = {
   CL_QUERY_ITEM: 'row__topic',
   CL_ROW_ITEM: "row__item",
@@ -70,7 +75,7 @@ var _setClassNameTo = function _setClassNameTo(suffix) {
     suffix = '';
   }
 
-  Object.keys(CL_PROPS).forEach(function (key) {
+  _getObjectKeys(CL_PROPS).forEach(function (key) {
     CSS_RULE[key] = CL_PROPS[key] + suffix;
   });
 };
@@ -89,14 +94,14 @@ var _crBg = function _crBg(conf) {
 };
 
 var _crBgHeader = function _crBgHeader(conf) {
-  Object.assign(conf.BG_HEADER, {
+  _assign(conf.BG_HEADER, {
     backgroundColor: P.BG_HEADER,
     color: P.BG
   });
 };
 
 var _crSvgResize = function _crSvgResize(conf) {
-  Object.assign(conf.SVG_RESIZE, {
+  _assign(conf.SVG_RESIZE, {
     borderColor: P.BG,
     stroke: P.BG
   });
@@ -107,20 +112,20 @@ var _crItemHeader = function _crItemHeader(conf) {
 };
 
 var _crRDialog = function _crRDialog(conf) {
-  Object.assign(conf.R_DIALOG, {
+  _assign(conf.R_DIALOG, {
     border: "solid 2px " + P.BG_HEADER,
     backgroundColor: P.BG
   });
 };
 
 var _crTab = function _crTab(conf) {
-  Object.assign(conf.TAB, {
+  _assign(conf.TAB, {
     backgroundColor: P.BG_HEADER
   });
 };
 
 var _crMSelectItem = function _crMSelectItem(conf) {
-  Object.assign(conf.M_SELECT_ITEM, {
+  _assign(conf.M_SELECT_ITEM, {
     color: P.C_M_SELECT_ITEM
   });
 };
@@ -142,19 +147,19 @@ var _setStyleTo = function _setStyleTo(conf) {
 };
 
 var _setTheme = (_setTheme2 = {}, _setTheme2[THEME_NAME.GREY] = function () {
-  Object.assign(P, TH_GREY);
+  _assign(P, TH_GREY);
 
   _setClassNameTo();
 
   _setStyleTo(CSS_RULE);
 }, _setTheme2[THEME_NAME.WHITE] = function () {
-  Object.assign(P, TH_WHITE);
+  _assign(P, TH_WHITE);
 
   _setClassNameTo('--white');
 
   _setStyleTo(CSS_RULE);
 }, _setTheme2[THEME_NAME.SAND] = function () {
-  Object.assign(P, TH_SAND);
+  _assign(P, TH_SAND);
 
   _setClassNameTo('--white');
 
@@ -164,7 +169,7 @@ var _setTheme = (_setTheme2 = {}, _setTheme2[THEME_NAME.GREY] = function () {
 var theme = {
   themeName: THEME_NAME.DEFAULT,
   _init: function _init() {
-    Object.assign(P, TH_GREY);
+    _assign(P, TH_GREY);
 
     _setClassNameTo();
 

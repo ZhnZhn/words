@@ -1,4 +1,7 @@
 
+const _assign = Object.assign
+, _getObjectKeys = Object.keys;
+
 const P = {};
 const TH_GREY = {
   C_ICON: '#4d4d4d',
@@ -10,23 +13,25 @@ const TH_GREY = {
   BG_INPUT: '#e1e1cb',
   C_M_SELECT_ITEM: 'white'
 }
-const TH_WHITE = {
-  C_ICON: 'grey',
+const _TH_LIGHT = {
   BG_BODY: 'darkgrey',
-  BG: '#ebf1f5',
   BG_HEADER: '#0096c8',
-  BG_ITEM_HEADER: '#e6ecf0',
-  BG_INPUT: '#e1e1cb',
   C_M_SELECT_ITEM: '#303030'
+}
+
+const TH_WHITE = {
+  ..._TH_LIGHT,
+  C_ICON: 'grey',
+  BG: '#ebf1f5',
+  BG_ITEM_HEADER: '#e6ecf0',
+  BG_INPUT: '#e1e1cb'
 };
 const TH_SAND = {
+  ..._TH_LIGHT,
   C_ICON: '#e8e0cb',
-  BG_BODY: 'darkgrey',
   BG: '#e8e0cb',
-  BG_HEADER: '#0096c8',
   BG_ITEM_HEADER: '#d0c198',
-  BG_INPUT: 'white',
-  C_M_SELECT_ITEM: '#303030'
+  BG_INPUT: 'white'
 }
 
 const CSS_RULE = {
@@ -66,7 +71,7 @@ const CL_PROPS = {
 };
 
 const _setClassNameTo = (suffix='') => {
-  Object.keys(CL_PROPS).forEach(key => {
+  _getObjectKeys(CL_PROPS).forEach(key => {
     CSS_RULE[key] = CL_PROPS[key] + suffix
   })
 }
@@ -82,13 +87,13 @@ const _crBg = conf => {
   conf.BG.backgroundColor = P.BG
 };
 const _crBgHeader = conf => {
-  Object.assign(conf.BG_HEADER, {
+  _assign(conf.BG_HEADER, {
     backgroundColor: P.BG_HEADER,
     color: P.BG
   })
 };
 const _crSvgResize = conf => {
-  Object.assign(conf.SVG_RESIZE, {
+  _assign(conf.SVG_RESIZE, {
     borderColor: P.BG,
     stroke: P.BG
   })
@@ -97,18 +102,18 @@ const _crItemHeader = conf => {
   conf.ITEM_HEADER.backgroundColor = P.BG_ITEM_HEADER
 };
 const _crRDialog = conf => {
-  Object.assign(conf.R_DIALOG, {
+  _assign(conf.R_DIALOG, {
     border: `solid 2px ${P.BG_HEADER}`,
     backgroundColor: P.BG
   })
 };
 const _crTab = conf => {
-  Object.assign(conf.TAB, {
+  _assign(conf.TAB, {
     backgroundColor: P.BG_HEADER
   })
 };
 const _crMSelectItem = conf => {
-  Object.assign(conf.M_SELECT_ITEM, {
+  _assign(conf.M_SELECT_ITEM, {
     color: P.C_M_SELECT_ITEM
   })
 };
@@ -135,17 +140,17 @@ const _setStyleTo = conf => {
 
 const _setTheme = {
   [THEME_NAME.GREY]: () => {
-    Object.assign(P, TH_GREY)
+    _assign(P, TH_GREY)
     _setClassNameTo()
     _setStyleTo(CSS_RULE)
   },
   [THEME_NAME.WHITE]: () => {
-    Object.assign(P, TH_WHITE)
+    _assign(P, TH_WHITE)
     _setClassNameTo('--white')
     _setStyleTo(CSS_RULE)
   },
   [THEME_NAME.SAND]: () => {
-    Object.assign(P, TH_SAND)
+    _assign(P, TH_SAND)
     _setClassNameTo('--white')
     _setStyleTo(CSS_RULE)
   }
@@ -154,7 +159,7 @@ const _setTheme = {
 const theme = {
   themeName : THEME_NAME.DEFAULT,
   _init(){
-    Object.assign(P, TH_GREY)
+    _assign(P, TH_GREY)
     _setClassNameTo()
     _setStyleTo(CSS_RULE, 'GREY')
   },
