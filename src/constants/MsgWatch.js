@@ -1,7 +1,5 @@
-
 export const WATCH_SAVED = 'Watch List has been saved.'
 export const WATCH_PREV = 'Watch List has not been edited\nfrom previous save.'
-export const LOCAL_STORAGE_ABSENT = 'Browser LocalStorage is absent.'
 
 export const notFoundItem = (
   itemType,

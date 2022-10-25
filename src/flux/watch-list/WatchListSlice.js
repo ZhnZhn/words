@@ -1,5 +1,4 @@
 import {
-  hasLocalStorage,
   readObj,
   writeObj
 } from '../../utils/localStorageFn';
@@ -25,8 +24,7 @@ import {
 }  from '../../constants/Type';
 import {
   WATCH_SAVED,
-  WATCH_PREV,
-  LOCAL_STORAGE_ABSENT
+  WATCH_PREV
 } from '../../constants/MsgWatch';
 
 import {
@@ -60,9 +58,7 @@ const WatchListSlice = {
   isWatchEdited: false,
 
   initWatchList(){
-    this.watchList = hasLocalStorage
-      ? readObj(STORAGE_KEY, WatchDefault)
-      : WatchDefault
+    this.watchList = readObj(STORAGE_KEY)[0] || WatchDefault
     this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
   getWatchList(){
@@ -114,25 +110,21 @@ const WatchListSlice = {
 
   onSaveWatch({ isShowDialog=true } = {}){
     if (this.isWatchEdited){
-       if (hasLocalStorage) {
-         const _err = writeObj(STORAGE_KEY, this.watchList);
-         if (_err) {
-           console.warn(_err);
-         } else {
-           this.isWatchEdited = false;
-           if (isShowDialog) {
-             this.onShowModalDialog(MD_MSG, {
-                caption: DIALOG_CAPTION,
-                descr: WATCH_SAVED
-             })
-           }
-         }
-       } else {
+      const _err = writeObj(STORAGE_KEY, this.watchList);
+      if (_err) {
+       this.onShowModalDialog(MD_MSG, {
+          caption: DIALOG_CAPTION,
+          descr: _err.message
+       })
+      } else {
+       this.isWatchEdited = false;
+       if (isShowDialog) {
          this.onShowModalDialog(MD_MSG, {
             caption: DIALOG_CAPTION,
-            descr: LOCAL_STORAGE_ABSENT
+            descr: WATCH_SAVED
          })
        }
+      }
     } else {
        this.onShowModalDialog(MD_MSG, {
           caption: DIALOG_CAPTION,

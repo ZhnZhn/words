@@ -31,7 +31,7 @@ var WatchListSlice = {
   watchList: _WatchDefault["default"],
   isWatchEdited: false,
   initWatchList: function initWatchList() {
-    this.watchList = _localStorageFn.hasLocalStorage ? (0, _localStorageFn.readObj)(STORAGE_KEY, _WatchDefault["default"]) : _WatchDefault["default"];
+    this.watchList = (0, _localStorageFn.readObj)(STORAGE_KEY)[0] || _WatchDefault["default"];
     this.trigger(_ComponentActions.CAT_UPDATE_WATCH_BROWSER, this.watchList);
   },
   getWatchList: function getWatchList() {
@@ -86,26 +86,22 @@ var WatchListSlice = {
         isShowDialog = _ref$isShowDialog === void 0 ? true : _ref$isShowDialog;
 
     if (this.isWatchEdited) {
-      if (_localStorageFn.hasLocalStorage) {
-        var _err = (0, _localStorageFn.writeObj)(STORAGE_KEY, this.watchList);
+      var _err = (0, _localStorageFn.writeObj)(STORAGE_KEY, this.watchList);
 
-        if (_err) {
-          console.warn(_err);
-        } else {
-          this.isWatchEdited = false;
-
-          if (isShowDialog) {
-            this.onShowModalDialog(_Type.MD_MSG, {
-              caption: DIALOG_CAPTION,
-              descr: _MsgWatch.WATCH_SAVED
-            });
-          }
-        }
-      } else {
+      if (_err) {
         this.onShowModalDialog(_Type.MD_MSG, {
           caption: DIALOG_CAPTION,
-          descr: _MsgWatch.LOCAL_STORAGE_ABSENT
+          descr: _err.message
         });
+      } else {
+        this.isWatchEdited = false;
+
+        if (isShowDialog) {
+          this.onShowModalDialog(_Type.MD_MSG, {
+            caption: DIALOG_CAPTION,
+            descr: _MsgWatch.WATCH_SAVED
+          });
+        }
       }
     } else {
       this.onShowModalDialog(_Type.MD_MSG, {
