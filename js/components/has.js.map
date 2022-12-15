@@ -5,10 +5,9 @@
  ],
  "file": "../../src/components/has.js",
  "names": [
-  "_isTouchable",
+  "HAS_TOUCH_EVENTS",
   "document",
-  "documentElement",
-  "HAS_TOUCH"
+  "documentElement"
  ],
- "mappings": ";;;;;AACA,IAAMA,YAAY,GAAG,SAAfA,YAAe;EAAA,OAAMC,QAAQ,IAC9B,kBAAkBA,QAAQ,CAACC,eADX;AAAA,CAArB;;AAGO,IAAMC,SAAS,GAAGH,YAAY,EAA9B"
+ "mappings": ";;;;AAAO,IAAMA,gBAAgB,GAAGC,QAAQ,IACnC,cAAc,IAAIA,QAAQ,CAACC,eAAe;AAAC"
 }

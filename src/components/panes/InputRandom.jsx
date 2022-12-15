@@ -1,3 +1,5 @@
+import { forwardRef } from '../uiApi';
+
 import A from '../zhn-atoms/Atoms';
 
 const S_DIV = {
@@ -12,10 +14,10 @@ const S_DIV = {
   marginLeft: 8
 };
 
-const InputRandom = ({
+const InputRandom = forwardRef(({
   TS,
   onEnter
-}) => (
+}, ref) => (
   <div style={S_DIV}>
     <span style={S_SPAN}>
       Random Word
@@ -27,6 +29,6 @@ const InputRandom = ({
       onClick={onEnter}
     />
   </div>
-);
+));
 
 export default InputRandom

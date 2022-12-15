@@ -9,7 +9,7 @@ import {
   getRefInputValue
 } from '../uiApi';
 
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 import A from '../Comp';
 
 const S_TF_LABEL = {
@@ -65,7 +65,7 @@ const InputWord = forwardRef(({
         initialValue={initValue}
         onEnter={onEnter}
       />
-      { HAS_TOUCH
+      { HAS_TOUCH_EVENTS
            ? (<A.ButtonClear
                style={S_BT_CLEAR}
                onClick={_hClear}

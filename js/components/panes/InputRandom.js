@@ -1,31 +1,26 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+var _uiApi = require("../uiApi");
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
 var S_DIV = {
-  height: 60,
-  paddingTop: 8
-},
-    S_SPAN = {
-  paddingLeft: 16,
-  fontWeight: 'bold'
-},
-    S_BT = {
-  marginLeft: 8
-};
-
-var InputRandom = function InputRandom(_ref) {
+    height: 60,
+    paddingTop: 8
+  },
+  S_SPAN = {
+    paddingLeft: 16,
+    fontWeight: 'bold'
+  },
+  S_BT = {
+    marginLeft: 8
+  };
+var InputRandom = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var TS = _ref.TS,
-      onEnter = _ref.onEnter;
+    onEnter = _ref.onEnter;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S_DIV,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
@@ -38,8 +33,7 @@ var InputRandom = function InputRandom(_ref) {
       onClick: onEnter
     })]
   });
-};
-
+});
 var _default = InputRandom;
 exports["default"] = _default;
 //# sourceMappingURL=InputRandom.js.map

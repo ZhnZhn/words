@@ -1,5 +1,2 @@
-
-const _isTouchable = () => document
+export const HAS_TOUCH_EVENTS = document
   && 'ontouchstart' in document.documentElement;
-
-export const HAS_TOUCH = _isTouchable()
