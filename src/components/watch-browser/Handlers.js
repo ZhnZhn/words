@@ -17,7 +17,7 @@ export const showDialogEditLists = () =>
 
 export const removeWatchItem = (option, evt) => {
   evt.stopPropagation()
-  WatchActions.removeItem(option)
+  WatchActions.removeWatchItem(option)
 }
 
 export const saveWatchList = () => {
