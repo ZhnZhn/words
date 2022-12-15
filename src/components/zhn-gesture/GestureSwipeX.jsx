@@ -2,10 +2,11 @@ import {
   useRef,
   useMemo,
   getRefValue,
-  setRefValue
+  setRefValue,
+  getClientX
 } from '../uiApi';
 
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 
 const BORDER_LEFT = 'border-left'
 , DRAG_START_BORDER_LEFT = "4px solid #d64336"
@@ -13,17 +14,6 @@ const BORDER_LEFT = 'border-left'
 
 const _assign = Object.assign;
 
-const _getTouchClietX = touches => touches
-  && touches[0]
-  && touches[0].clientX;
-
-const _getClientX = (ev) => {
-  if (ev.clientX) { return ev.clientX; }
-  const { targetTouches, changedTouches } = ev;
-  return _getTouchClietX(targetTouches)
-    || _getTouchClietX(changedTouches)
-    || 0;
-};
 const _setMoveStyle = (el, dX) => {
   _assign(el.style, {
     right: dX + 'px',
@@ -84,7 +74,7 @@ const GestureSwipeX = ({
     // _gestureMove
     (evt) => {
       if (getRefValue(_refIsGestureStart)) {
-        const _clientX = _getClientX(evt);
+        const _clientX = getClientX(evt);
         if (_clientX) {
           if (!getRefValue(_refIsMoveStart)){
             setRefValue(_refClientX, _clientX)
@@ -106,7 +96,7 @@ const GestureSwipeX = ({
         if (getRefValue(_refIsMoveStart)) {
           evt.preventDefault()
           setTimeStamp(evt.timeStamp)
-          const _clientX = _getClientX(evt)
+          const _clientX = getClientX(evt)
           , _dX = getRefValue(_refClientX) - _clientX;
           _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
           setRefValue(_refIsMoveStart, false)
@@ -120,7 +110,7 @@ const GestureSwipeX = ({
   ], [])
   // onGesture, setTimeStamp
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _handlers = getRefValue(useRef(HAS_TOUCH ? {
+  , _handlers = getRefValue(useRef(HAS_TOUCH_EVENTS ? {
     onTouchStart: _gestureStart,
     onTouchMove: _gestureMove,
     onTouchEnd: _gestureEnd
