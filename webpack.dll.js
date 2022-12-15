@@ -11,8 +11,7 @@ module.exports = {
      lib: [
             "react", 
             "react-dom",
-            "reflux-core",            
-            "interactjs"
+            "reflux-core"
           ]
   },
   output: {

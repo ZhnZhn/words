@@ -10,13 +10,13 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import RaisedButton from '../zhn-atoms/RaisedButton'
+import useXYMovable from '../hooks/useXYMovable';
 
-import Interact from '../../utils/Interact'
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import RaisedButton from '../zhn-atoms/RaisedButton';
 
-const CL_DIALOG = 'dialog';
-const CL_DIALOG_OPEN = 'dialog show-popup';
+const CL_DIALOG = 'dialog'
+, CL_DIALOG_OPEN = `${CL_DIALOG} show-popup`;
 
 const S_DIV = {
   zIndex: 10,
@@ -28,15 +28,9 @@ const S_DIV = {
   borderRadius: 5,
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
 }
-, S_CHL_DIV = {
-  cursor: 'default'
-}
 , S_COMMAND = {
-   cursor: 'default',
-   float: 'right',
-   marginTop: 16,
-   marginBottom: 10,
-   marginRight: 4
+  textAlign: 'right',
+  margin: '16px 4px 10px 0'
 }
 , S_BLOCK = {
   display: 'block'
@@ -114,10 +108,11 @@ const DraggableDialog = forwardRef(({
 
   useEffect(() => {
     const _divElement = getRefValue(_refDiv);
-    Interact.makeDragable(_divElement)
     setRefValue(_refPrevFocused, document.activeElement)
     _divElement.focus()
   }, [])
+
+  useXYMovable(getRefValue(_refDiv))
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
@@ -162,7 +157,7 @@ const DraggableDialog = forwardRef(({
          caption={caption}
          onClose={onClose}
       />
-      <div style={S_CHL_DIV}>
+      <div>
          {children}
       </div>
       <DialogButtons
