@@ -5,11 +5,12 @@
  ],
  "file": "../src/index.js",
  "names": [
+  "createRoot",
+  "document",
+  "getElementById",
   "render",
   "store",
-  "action",
-  "document",
-  "getElementById"
+  "action"
  ],
- "mappings": ";;;;AAAA;;AAEA;;AACA;;AAEA;;;;AAEA,IAAAA,gBAAA,gBACE,qBAAC,oBAAD;EAAK,KAAK,EAAEC,iBAAZ;EAAmB,MAAM,EAAEC;AAA3B,EADF,EAEEC,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CAFF"
+ "mappings": ";;;AAAA;AAEA;AACA;AAEA;AAAyC;AAEzC,IAAAA,kBAAU,EAACC,QAAQ,CAACC,cAAc,CAAC,KAAK,CAAC,CAAC,CACvCC,MAAM,eACL,qBAAC,oBAAG;EACF,KAAK,EAAEC,iBAAM;EACb,MAAM,EAAEC;AAAO,EACf,CACF"
 }
