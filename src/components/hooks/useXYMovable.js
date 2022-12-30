@@ -51,6 +51,11 @@ const _getComposedPath = (
   ? evt.composedPath()
   : void 0;
 
+const _isExcludeElement = (
+  element
+) => element.tagName === 'BUTTON'
+  || element.dataset.scrollable;
+
 const _isInitEvent = (
   evt,
   initialEvtClientX,
@@ -61,7 +66,7 @@ const _isInitEvent = (
   if (_isArr(_composedPath)) {
     for(let i=0; i<_composedPath.length; i++){
       const _el = _composedPath[i];
-      if (_el.tagName === 'BUTTON') {
+      if (_isExcludeElement(_el)) {
         return false;
       }
       if (_el === element) {
@@ -141,14 +146,7 @@ const useXYMovable = (
       _moveDone()
     }
 
-    function clearEventListener() {
-      _elementStyle.cursor = ''
-      _element.removeEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS)
-      _element.removeEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS)
-      _element.removeEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS)
-    }
-
-    _element.addEventListener(INIT_EVENT, (evt) => {
+    function _hInitEvent(evt) {
       _initialEvtClientX = getClientX(evt)
       _initialEvtClientY = getClientY(evt)
       if (_isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
@@ -156,10 +154,20 @@ const useXYMovable = (
         _element.addEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS)
         _element.addEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS)
       }
-    }, EVENT_OPTIONS)
+    }
+
+    function clearEventListener() {
+      _elementStyle.cursor = ''
+      _element.removeEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS)
+      _element.removeEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS)
+      _element.removeEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS)
+    }
+
+    _element.addEventListener(INIT_EVENT, _hInitEvent, EVENT_OPTIONS)
 
     return () => {
       clearEventListener()
+      _element.removeEventListener(INIT_EVENT, _hInitEvent, EVENT_OPTIONS)
       _elementStyle = null;
       _element = null;
     };

@@ -38,12 +38,15 @@ var _isValueInGapRange = function _isValueInGapRange(from, to, value) {
 var _getComposedPath = function _getComposedPath(evt) {
   return _isFn(evt.composedPath) ? evt.composedPath() : void 0;
 };
+var _isExcludeElement = function _isExcludeElement(element) {
+  return element.tagName === 'BUTTON' || element.dataset.scrollable;
+};
 var _isInitEvent = function _isInitEvent(evt, initialEvtClientX, initialEvtClientY, element) {
   var _composedPath = _getComposedPath(evt);
   if (_isArr(_composedPath)) {
     for (var i = 0; i < _composedPath.length; i++) {
       var _el = _composedPath[i];
-      if (_el.tagName === 'BUTTON') {
+      if (_isExcludeElement(_el)) {
         return false;
       }
       if (_el === element) {
@@ -104,13 +107,7 @@ var useXYMovable = function useXYMovable(refElement) {
       clearEventListener();
       _moveDone();
     }
-    function clearEventListener() {
-      _elementStyle.cursor = '';
-      _element.removeEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS);
-      _element.removeEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS);
-      _element.removeEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS);
-    }
-    _element.addEventListener(INIT_EVENT, function (evt) {
+    function _hInitEvent(evt) {
       _initialEvtClientX = (0, _uiApi.getClientX)(evt);
       _initialEvtClientY = (0, _uiApi.getClientY)(evt);
       if (_isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
@@ -118,9 +115,17 @@ var useXYMovable = function useXYMovable(refElement) {
         _element.addEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS);
         _element.addEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS);
       }
-    }, EVENT_OPTIONS);
+    }
+    function clearEventListener() {
+      _elementStyle.cursor = '';
+      _element.removeEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS);
+      _element.removeEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS);
+      _element.removeEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS);
+    }
+    _element.addEventListener(INIT_EVENT, _hInitEvent, EVENT_OPTIONS);
     return function () {
       clearEventListener();
+      _element.removeEventListener(INIT_EVENT, _hInitEvent, EVENT_OPTIONS);
       _elementStyle = null;
       _element = null;
     };
