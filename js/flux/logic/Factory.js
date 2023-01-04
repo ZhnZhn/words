@@ -1,43 +1,27 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports.crPane = exports.crDialog = exports.crAbout = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _react = require("react");
-
-var _throttle = _interopRequireDefault(require("../../utils/throttle"));
-
+var _uiApi = require("../../components/uiApi");
+var _throttleFn = _interopRequireDefault(require("../../utils/throttleFn"));
 var _ComponentActions = require("../actions/ComponentActions");
-
 var _ItemActions = require("../actions/ItemActions");
-
 var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
-
 var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterPane"));
-
 var _About = _interopRequireDefault(require("../../components/about/About"));
-
 var showPane = _ComponentActions.ComponentActions.showPane,
-    closePane = _ComponentActions.ComponentActions.closePane,
-    showModalDialog = _ComponentActions.ComponentActions.showModalDialog;
-
+  closePane = _ComponentActions.ComponentActions.closePane,
+  showModalDialog = _ComponentActions.ComponentActions.showModalDialog;
 var _addToWatch = showModalDialog.bind(null, 'AW');
-
-var _loadItem = (0, _throttle["default"])(_ItemActions.ItemActions.loadItem, 2500, {
-  trailing: false
-});
-
+var _loadItem = (0, _throttleFn["default"])(_ItemActions.ItemActions.loadItem, 2500);
 var crDialog = function crDialog(itemConf) {
   var type = itemConf.type,
-      dialogType = itemConf.dialogType,
-      dialogProps = itemConf.dialogProps,
-      El = _RouterDialog["default"].getElement(dialogType);
-
-  return /*#__PURE__*/(0, _react.createElement)(El, (0, _extends2["default"])({
+    dialogType = itemConf.dialogType,
+    dialogProps = itemConf.dialogProps,
+    El = _RouterDialog["default"].getElement(dialogType);
+  return (0, _uiApi.createElement)(El, (0, _extends2["default"])({
     key: type,
     type: type,
     itemConf: itemConf
@@ -46,20 +30,17 @@ var crDialog = function crDialog(itemConf) {
     onLoad: _loadItem
   }));
 };
-
 exports.crDialog = crDialog;
-
 var crPane = function crPane(itemConf, store) {
   var type = itemConf.type,
-      paneType = itemConf.paneType,
-      paneCaption = itemConf.paneCaption,
-      paneId = itemConf.paneId,
-      _RouterPane$getElemen = _RouterPane["default"].getElement(paneType),
-      Pane = _RouterPane$getElemen.Pane,
-      Input = _RouterPane$getElemen.Input,
-      Item = _RouterPane$getElemen.Item;
-
-  return /*#__PURE__*/(0, _react.createElement)(Pane, {
+    paneType = itemConf.paneType,
+    paneCaption = itemConf.paneCaption,
+    paneId = itemConf.paneId,
+    _RouterPane$getElemen = _RouterPane["default"].getElement(paneType),
+    Pane = _RouterPane$getElemen.Pane,
+    Input = _RouterPane$getElemen.Input,
+    Item = _RouterPane$getElemen.Item;
+  return (0, _uiApi.createElement)(Pane, {
     key: type,
     id: paneId,
     itemConf: itemConf,
@@ -79,11 +60,9 @@ var crPane = function crPane(itemConf, store) {
     onAddToWatch: _addToWatch
   });
 };
-
 exports.crPane = crPane;
-
 var crAbout = function crAbout(store) {
-  return /*#__PURE__*/(0, _react.createElement)(_About["default"], {
+  return (0, _uiApi.createElement)(_About["default"], {
     key: 'About',
     id: 'About',
     showAction: _ComponentActions.CAT_SHOW_ABOUT,
@@ -91,6 +70,5 @@ var crAbout = function crAbout(store) {
     store: store
   });
 };
-
 exports.crAbout = crAbout;
 //# sourceMappingURL=Factory.js.map

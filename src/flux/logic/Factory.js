@@ -1,6 +1,6 @@
-import { createElement } from 'react';
+import { createElement } from '../../components/uiApi';
 
-import throttle from '../../utils/throttle';
+import throttleFn from '../../utils/throttleFn';
 
 import {
   CAT_SHOW_PANE,
@@ -27,11 +27,10 @@ const {
 
 const _addToWatch = showModalDialog.bind(null, 'AW')
 
-const _loadItem = throttle(
+const _loadItem = throttleFn(
   ItemActions.loadItem,
-  2500, {
-    trailing: false
-  });
+  2500
+);
 
 export const crDialog = (
   itemConf
