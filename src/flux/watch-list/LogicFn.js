@@ -7,11 +7,16 @@ import {
   ALERT_DND_ITEM
 } from '../../constants/MsgWatch';
 
-import ut from '../../utils/fnUtil';
 import {
   fFindArrIndexByPropName,
   fIsArrSameItemByPropName
 } from '../../utils/fnArr';
+import {
+  pushToImArr,
+  fFilterByPropNameImArr,
+  insertItemToImArr,
+  fEditByPropNameImArr
+} from '../../utils/fnImArr';
 import {
   fFindItemInObjArrayByPropName
 } from '../../utils/fnObj';
@@ -71,13 +76,13 @@ export const crAlertItemExisted = (
  })
 
 /* for DragDrop */
-export const filter = ut.imArr.filterByPropFn(CAPTION)
-export const getArrayWithObj = ut.imArr.push
+export const filter = fFilterByPropNameImArr(CAPTION)
+export const getArrayWithObj = pushToImArr
 
-export const getArrayWithRename = ut.imArr.editByPropFn(CAPTION)
+export const getArrayWithRename = fEditByPropNameImArr(CAPTION)
 
 /* for DragDrop */
-export const insertItemInArray = ut.imArr.insertItem
+export const insertItemInArray = insertItemToImArr
 /* for DragDrop */
 
 export const findGroup = fFindItemInObjArrayByPropName(GROUPS, CAPTION)

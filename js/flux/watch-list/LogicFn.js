@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.isInArraySameCaption = exports.insertItemInArray = exports.getArrayWithRename = exports.getArrayWithObj = exports.findList = exports.findIndex = exports.findGroup = exports.filter = exports.crMsgNotFound = exports.crMsgListExisted = exports.crMsgItemExisted = exports.crMsgGroupExisted = exports.crAlertListExisted = exports.crAlertItemExisted = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _MsgWatch = require("../../constants/MsgWatch");
-var _fnUtil = _interopRequireDefault(require("../../utils/fnUtil"));
 var _fnArr = require("../../utils/fnArr");
+var _fnImArr = require("../../utils/fnImArr");
 var _fnObj = require("../../utils/fnObj");
 var CAPTION = 'caption',
   GROUPS = 'groups',
@@ -57,15 +57,15 @@ var crAlertListExisted = function crAlertListExisted(dropGroupCaption, dragListC
 
 /* for DragDrop */
 exports.crAlertListExisted = crAlertListExisted;
-var filter = _fnUtil["default"].imArr.filterByPropFn(CAPTION);
+var filter = (0, _fnImArr.fFilterByPropNameImArr)(CAPTION);
 exports.filter = filter;
-var getArrayWithObj = _fnUtil["default"].imArr.push;
+var getArrayWithObj = _fnImArr.pushToImArr;
 exports.getArrayWithObj = getArrayWithObj;
-var getArrayWithRename = _fnUtil["default"].imArr.editByPropFn(CAPTION);
+var getArrayWithRename = (0, _fnImArr.fEditByPropNameImArr)(CAPTION);
 
 /* for DragDrop */
 exports.getArrayWithRename = getArrayWithRename;
-var insertItemInArray = _fnUtil["default"].imArr.insertItem;
+var insertItemInArray = _fnImArr.insertItemToImArr;
 /* for DragDrop */
 exports.insertItemInArray = insertItemInArray;
 var findGroup = (0, _fnObj.fFindItemInObjArrayByPropName)(GROUPS, CAPTION);

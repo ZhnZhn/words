@@ -1,34 +1,30 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.pushToImArr = exports.insertItemToImArr = exports.fFilterByPropNameImArr = exports.fEditByPropNameImArr = void 0;
+var _isArr = Array.isArray;
 var _assign = Object.assign;
-var fnImArr = {
-  push: function push(arr, obj) {
-    return arr ? [].concat(arr, [_assign({}, obj)]) : [_assign({}, obj)];
-  },
-  filterByPropFn: function filterByPropFn(propName) {
-    return function (arr, propValue) {
-      return arr.filter(function (obj) {
-        return obj[propName] !== propValue;
-      });
-    };
-  },
-  insertItem: function insertItem(item, index, arr) {
-    if (arr === void 0) {
-      arr = [];
-    }
-
-    return [].concat(arr.slice(0, index), [_assign({}, item)], arr.slice(index));
-  },
-  editByPropFn: function editByPropFn(propName) {
-    return function (arr, index, propValue) {
-      var _assign2;
-
-      return [].concat(arr.slice(0, index), [_assign({}, arr[index], (_assign2 = {}, _assign2[propName] = propValue, _assign2))], arr.slice(index + 1));
-    };
-  }
+var pushToImArr = function pushToImArr(arr, obj) {
+  return _isArr(arr) ? [].concat(arr, [_assign({}, obj)]) : [_assign({}, obj)];
 };
-var _default = fnImArr;
-exports["default"] = _default;
+exports.pushToImArr = pushToImArr;
+var fFilterByPropNameImArr = function fFilterByPropNameImArr(propName) {
+  return function (arr, propValue) {
+    return arr.filter(function (obj) {
+      return obj[propName] !== propValue;
+    });
+  };
+};
+exports.fFilterByPropNameImArr = fFilterByPropNameImArr;
+var insertItemToImArr = function insertItemToImArr(item, index, arr) {
+  return _isArr(arr) ? [].concat(arr.slice(0, index), [_assign({}, item)], arr.slice(index)) : [_assign({}, item)];
+};
+exports.insertItemToImArr = insertItemToImArr;
+var fEditByPropNameImArr = function fEditByPropNameImArr(propName) {
+  return function (arr, index, propValue) {
+    var _assign2, _ref;
+    return _isArr(arr) ? [].concat(arr.slice(0, index), [_assign({}, arr[index], (_assign2 = {}, _assign2[propName] = propValue, _assign2))], arr.slice(index + 1)) : [(_ref = {}, _ref[propName] = propValue, _ref)];
+  };
+};
+exports.fEditByPropNameImArr = fEditByPropNameImArr;
 //# sourceMappingURL=fnImArr.js.map
