@@ -11,49 +11,42 @@ var _fnObj = require("../../utils/fnObj");
 var CAPTION = 'caption',
   GROUPS = 'groups',
   LISTS = 'lists';
-var crMsgNotFound = function crMsgNotFound(itemType, name) {
-  return {
-    isDone: false,
-    message: (0, _MsgWatch.notFoundItem)(itemType, name)
+var _fCrMsgItem = function _fCrMsgItem(crMsg) {
+  return function () {
+    return {
+      isDone: false,
+      message: crMsg.apply(void 0, arguments)
+    };
   };
 };
+
+//itemType, name
+var crMsgNotFound = _fCrMsgItem(_MsgWatch.notFoundItem);
+//caption
 exports.crMsgNotFound = crMsgNotFound;
-var crMsgGroupExisted = function crMsgGroupExisted(caption) {
-  return {
-    isDone: false,
-    message: (0, _MsgWatch.groupExisted)(caption)
-  };
-};
+var crMsgGroupExisted = _fCrMsgItem(_MsgWatch.groupExisted);
+//captionList, captionGroup
 exports.crMsgGroupExisted = crMsgGroupExisted;
-var crMsgListExisted = function crMsgListExisted(captionList, captionGroup) {
-  return {
-    isDone: false,
-    message: (0, _MsgWatch.listExisted)(captionList, captionGroup)
-  };
-};
+var crMsgListExisted = _fCrMsgItem(_MsgWatch.listExisted);
+//caption, captionList
 exports.crMsgListExisted = crMsgListExisted;
-var crMsgItemExisted = function crMsgItemExisted(caption, captionList) {
-  return {
-    isDone: false,
-    message: (0, _MsgWatch.itemExisted)(caption, captionList)
+var crMsgItemExisted = _fCrMsgItem(_MsgWatch.itemExisted);
+exports.crMsgItemExisted = crMsgItemExisted;
+var _fCrAlertItem = function _fCrAlertItem(options) {
+  return function (token1, token2) {
+    return (0, _extends2["default"])({
+      isDone: false,
+      itemId: token1 + ":" + token2
+    }, options);
   };
 };
 
 /* for DragDrop */
-exports.crMsgItemExisted = crMsgItemExisted;
-var crAlertItemExisted = function crAlertItemExisted(dropId, dragId) {
-  return (0, _extends2["default"])({
-    isDone: false,
-    itemId: dropId + ":" + dragId
-  }, _MsgWatch.ALERT_DND_ITEM);
-};
+// dropId, dragId
+var crAlertItemExisted = _fCrAlertItem(_MsgWatch.ALERT_DND_ITEM);
+//dropGroupCaption, dragListCaption
 exports.crAlertItemExisted = crAlertItemExisted;
-var crAlertListExisted = function crAlertListExisted(dropGroupCaption, dragListCaption) {
-  return (0, _extends2["default"])({
-    isDone: false,
-    itemId: dropGroupCaption + ":" + dragListCaption
-  }, _MsgWatch.ALERT_DND_LIST);
-};
+var crAlertListExisted = _fCrAlertItem(_MsgWatch.ALERT_DND_LIST);
 
 /* for DragDrop */
 exports.crAlertListExisted = crAlertListExisted;

@@ -25,55 +25,36 @@ const CAPTION = 'caption'
 , GROUPS = 'groups'
 , LISTS = 'lists';
 
-export const crMsgNotFound = (
-  itemType,
-  name
-) => ({
-   isDone: false,
-   message: notFoundItem(itemType, name)
+const _fCrMsgItem = (
+  crMsg
+) => (...args) => ({
+  isDone: false,
+  message: crMsg(...args)
 })
 
-export const crMsgGroupExisted = (
-  caption
-) => ({
-   isDone: false,
-   message: groupExisted(caption)
-})
+//itemType, name
+export const crMsgNotFound = _fCrMsgItem(notFoundItem)
+//caption
+export const crMsgGroupExisted = _fCrMsgItem(groupExisted)
+//captionList, captionGroup
+export const crMsgListExisted = _fCrMsgItem(listExisted)
+//caption, captionList
+export const crMsgItemExisted = _fCrMsgItem(itemExisted)
 
-export const crMsgListExisted = (
-  captionList,
-  captionGroup
+const _fCrAlertItem = (options) => (
+  token1,
+  token2
 ) => ({
-   isDone: false,
-   message: listExisted(captionList, captionGroup)
-})
-
-export const crMsgItemExisted = (
-  caption,
-  captionList
-) => ({
-    isDone: false,
-    message: itemExisted(caption, captionList)
+  isDone: false,
+  itemId: `${token1}:${token2}`,
+  ...options
 })
 
 /* for DragDrop */
-export const crAlertItemExisted = (
-  dropId,
-  dragId
-) => ({
-    isDone: false,
-    itemId: `${dropId}:${dragId}`,
-    ...ALERT_DND_ITEM
- })
-
- export const crAlertListExisted = (
-   dropGroupCaption,
-   dragListCaption
- ) => ({
-    isDone: false,
-    itemId: `${dropGroupCaption}:${dragListCaption}`,
-    ...ALERT_DND_LIST
- })
+// dropId, dragId
+export const crAlertItemExisted = _fCrAlertItem(ALERT_DND_ITEM)
+//dropGroupCaption, dragListCaption
+export const crAlertListExisted = _fCrAlertItem(ALERT_DND_LIST)
 
 /* for DragDrop */
 export const filter = fFilterByPropNameImArr(CAPTION)
