@@ -1,21 +1,41 @@
-import fnFetch from '../../utils/fn'
+import fnFetch from '../../utils/fnFetch';
 
-const _fnCatch = ({ error, onFailed }) => {
+const _fnCatch = ({
+  error,
+  onFailed
+}) => {
   onFailed(error)
 };
 
-const _fFetch = (adapter) => function({ json, option, onCompleted }){
-  const config = adapter.toConfig(json, option);
-  const itemConf = option.itemConf;
+const _fFetch = (
+  adapter
+) => ({
+  json,
+  option,
+  onCompleted
+}) => {
+  const config = adapter.toConfig(json, option)
+  , itemConf = option.itemConf;
   onCompleted({ config, itemConf }, option)
 };
 
-const loadItem = function(option, onCompleted, onFailed){
-  const { api, adapter } = option
-      , { getRequestUrl, crOptions, checkResponse } = api
-      , fetchOptions = (typeof crOptions === 'function')
-          ? crOptions(option)
-          : undefined;
+const loadItem = (
+  option,
+  onCompleted,
+  onFailed
+) => {
+  const {
+    api,
+    adapter
+  } = option
+  , {
+    getRequestUrl,
+    crOptions,
+    checkResponse
+  } = api
+  , fetchOptions = typeof crOptions === 'function'
+      ? crOptions(option)
+      : void 0;
   fnFetch({
     uri: getRequestUrl(option),
     option: option,
