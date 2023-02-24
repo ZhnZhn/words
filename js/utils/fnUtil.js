@@ -4,10 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _fnImArr = _interopRequireDefault(require("./fnImArr"));
-var _fnObj = _interopRequireDefault(require("./fnObj"));
 var fnUtil = {
-  imArr: _fnImArr["default"],
-  obj: _fnObj["default"]
+  imArr: _fnImArr["default"]
 };
 var _default = fnUtil;
 exports["default"] = _default;

@@ -12,6 +12,9 @@ import {
   fFindArrIndexByPropName,
   fIsArrSameItemByPropName
 } from '../../utils/fnArr';
+import {
+  fFindItemInObjArrayByPropName
+} from '../../utils/fnObj';
 
 const CAPTION = 'caption'
 , GROUPS = 'groups'
@@ -77,8 +80,8 @@ export const getArrayWithRename = ut.imArr.editByPropFn(CAPTION)
 export const insertItemInArray = ut.imArr.insertItem
 /* for DragDrop */
 
-export const findGroup = ut.obj.findInPropArrayByProp(GROUPS, CAPTION)
-export const findList = ut.obj.findInPropArrayByProp(LISTS, CAPTION)
+export const findGroup = fFindItemInObjArrayByPropName(GROUPS, CAPTION)
+export const findList = fFindItemInObjArrayByPropName(LISTS, CAPTION)
 
 export const findIndex = fFindArrIndexByPropName('caption')
 export const isInArraySameCaption = fIsArrSameItemByPropName(CAPTION)
