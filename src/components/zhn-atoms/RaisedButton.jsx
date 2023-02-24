@@ -20,6 +20,7 @@ const RaisedButton = ({
 
   return (
     <button
+      type="button"
       tabIndex={tabIndex}
       className={_btCl}
       style={style}

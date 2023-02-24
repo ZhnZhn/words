@@ -10,6 +10,7 @@ const CircleButton = forwardRef(({
   onClick
 }, ref) => (
   <button
+     type="button"
      ref={ref}
      className={CL}
      style={style}

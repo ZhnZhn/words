@@ -19,6 +19,7 @@ const SvgMore = forwardRef(({
   onClick
 }, ref) => (
   <button
+    type="button"
     ref={ref}
     className={CL_FOCUSABLE}
     style={{...S_BT, ...style}}

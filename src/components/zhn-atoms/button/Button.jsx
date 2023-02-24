@@ -7,6 +7,7 @@ const Button = ({
   onClick
 }) => (
   <button
+     type="button"
      className={className}
      style={style}
      tabIndex={tabIndex}

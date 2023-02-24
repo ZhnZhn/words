@@ -27,6 +27,7 @@ const ModalButton = ({
 
   return (
     <button
+      type="button"
       ref={_ref}
       className={CL_BT}
       style={style}

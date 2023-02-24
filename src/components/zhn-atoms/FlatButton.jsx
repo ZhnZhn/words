@@ -17,6 +17,7 @@ const FlatButton = ({
   onClick
 }) => (
   <button
+    type="button"
     className={crCn(CL_BT, className)}
     style={rootStyle}
     tabIndex={0}

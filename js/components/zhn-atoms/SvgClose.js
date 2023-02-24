@@ -2,20 +2,18 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _jsxRuntime = require("react/jsx-runtime");
-
 var CL_SVG_CLOSE = "svg-close",
-    STROKE_COLOR = '#d64336',
-    S_SVG = {
-  padding: 3
-};
-
+  STROKE_COLOR = '#d64336',
+  S_SVG = {
+    padding: 3
+  };
 var SvgClose = function SvgClose(_ref) {
   var style = _ref.style,
-      tabIndex = _ref.tabIndex,
-      onClose = _ref.onClose;
+    tabIndex = _ref.tabIndex,
+    onClose = _ref.onClose;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+    type: "button",
     tabIndex: tabIndex,
     className: CL_SVG_CLOSE,
     style: style,
@@ -38,7 +36,6 @@ var SvgClose = function SvgClose(_ref) {
     })
   });
 };
-
 var _default = SvgClose;
 exports["default"] = _default;
 //# sourceMappingURL=SvgClose.js.map
