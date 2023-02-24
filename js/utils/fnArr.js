@@ -1,32 +1,22 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var fnArr = {
-  findIndexByProp: function findIndexByProp(propName) {
-    return function (arr, propValue) {
-      if (!Array.isArray(arr)) {
-        return -1;
-      }
-
-      return arr.findIndex(function (item) {
-        return item[propName] === propValue;
-      });
-    };
-  },
-  isSameByProp: function isSameByProp(propName) {
-    return function (arr, propValue) {
-      if (!Array.isArray(arr)) {
-        return false;
-      }
-
-      var index = arr.findIndex(function (item) {
-        return item[propName] === propValue;
-      });
-      return index === -1 ? false : true;
-    };
-  }
+exports.fIsArrSameItemByPropName = exports.fFindArrIndexByPropName = void 0;
+var _isArr = Array.isArray;
+var fFindArrIndexByPropName = function fFindArrIndexByPropName(propName) {
+  return function (arr, propValue) {
+    return _isArr(arr) ? arr.findIndex(function (item) {
+      return item[propName] === propValue;
+    }) : -1;
+  };
 };
-var _default = fnArr;
-exports["default"] = _default;
+exports.fFindArrIndexByPropName = fFindArrIndexByPropName;
+var fIsArrSameItemByPropName = function fIsArrSameItemByPropName(propName) {
+  return function (arr, propValue) {
+    return _isArr(arr) ? arr.findIndex(function (item) {
+      return item[propName] === propValue;
+    }) !== -1 : false;
+  };
+};
+exports.fIsArrSameItemByPropName = fIsArrSameItemByPropName;
 //# sourceMappingURL=fnArr.js.map

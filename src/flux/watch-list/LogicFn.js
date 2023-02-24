@@ -8,6 +8,10 @@ import {
 } from '../../constants/MsgWatch';
 
 import ut from '../../utils/fnUtil';
+import {
+  fFindArrIndexByPropName,
+  fIsArrSameItemByPropName
+} from '../../utils/fnArr';
 
 const CAPTION = 'caption'
 , GROUPS = 'groups'
@@ -76,5 +80,5 @@ export const insertItemInArray = ut.imArr.insertItem
 export const findGroup = ut.obj.findInPropArrayByProp(GROUPS, CAPTION)
 export const findList = ut.obj.findInPropArrayByProp(LISTS, CAPTION)
 
-export const findIndex = ut.arr.findIndexByProp('caption')
-export const isInArraySameCaption = ut.arr.isSameByProp(CAPTION)
+export const findIndex = fFindArrIndexByPropName('caption')
+export const isInArraySameCaption = fIsArrSameItemByPropName(CAPTION)

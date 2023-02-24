@@ -51,11 +51,14 @@
     "reflux-core": "^1.0.0"
   },
   "jest": {
+    
     "roots": [
-      "<rootDir>/js/flux/stores/"
+      "<rootDir>/js/flux/stores/",
+      "<rootDir>/js/utils/"
     ],
     "transformIgnorePatterns": [
-      "<rootDir>/js/flux/stores/"
+      "<rootDir>/js/flux/stores/",
+      "<rootDir>/js/utils/"
     ]
   }
 }

@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../src/utils/fnArr.js"],"names":["fnArr","findIndexByProp","propName","arr","propValue","Array","isArray","findIndex","item","isSameByProp","index"],"mappings":";;;;AACA,IAAMA,KAAK,GAAG;AAEZC,EAAAA,eAAe,EAAE,yBAACC,QAAD;AAAA,WAAc,UAACC,GAAD,EAAMC,SAAN,EAAoB;AAChD,UAAI,CAACC,KAAK,CAACC,OAAN,CAAcH,GAAd,CAAL,EAAwB;AACtB,eAAO,CAAC,CAAR;AACD;;AAED,aAAOA,GAAG,CAACI,SAAJ,CACL,UAAAC,IAAI;AAAA,eAAIA,IAAI,CAACN,QAAD,CAAJ,KAAmBE,SAAvB;AAAA,OADC,CAAP;AAGF,KARgB;AAAA,GAFL;AAYZK,EAAAA,YAAY,EAAE,sBAACP,QAAD;AAAA,WAAc,UAACC,GAAD,EAAMC,SAAN,EAAoB;AAC5C,UAAI,CAACC,KAAK,CAACC,OAAN,CAAcH,GAAd,CAAL,EAAwB;AACtB,eAAO,KAAP;AACD;;AAED,UAAMO,KAAK,GAAGP,GAAG,CAACI,SAAJ,CACZ,UAAAC,IAAI;AAAA,eAAIA,IAAI,CAACN,QAAD,CAAJ,KAAmBE,SAAvB;AAAA,OADQ,CAAd;AAIA,aAAQM,KAAK,KAAK,CAAC,CAAZ,GACH,KADG,GAEH,IAFJ;AAGH,KAZa;AAAA;AAZF,CAAd;eA4BeV,K","sourcesContent":["\r\nconst fnArr = {\r\n\r\n  findIndexByProp: (propName) => (arr, propValue) => {\r\n     if (!Array.isArray(arr)){\r\n       return -1;\r\n     }\r\n\r\n     return arr.findIndex(\r\n       item => item[propName] === propValue\r\n     );\r\n  },\r\n\r\n  isSameByProp: (propName) => (arr, propValue) => {\r\n      if (!Array.isArray(arr)){\r\n        return false;\r\n      }\r\n\r\n      const index = arr.findIndex(\r\n        item => item[propName] === propValue\r\n      );\r\n\r\n      return (index === -1)\r\n        ? false\r\n        : true;\r\n  }\r\n\r\n};\r\n\r\nexport default fnArr\r\n"],"file":"fnArr.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/fnArr.js"
+ ],
+ "file": "../../src/utils/fnArr.js",
+ "names": [
+  "_isArr",
+  "Array",
+  "isArray",
+  "fFindArrIndexByPropName",
+  "propName",
+  "arr",
+  "propValue",
+  "findIndex",
+  "item",
+  "exports",
+  "fIsArrSameItemByPropName"
+ ],
+ "mappings": ";;;;AACA,IAAMA,MAAM,GAAGC,KAAK,CAACC,OAAO;AAErB,IAAMC,uBAAuB,GAAG,SAA1BA,uBAAuBA,CAClCC,QAAQ;EAAA,OACL,UACHC,GAAG,EACHC,SAAS;IAAA,OACNN,MAAM,CAACK,GAAG,CAAC,GACZA,GAAG,CAACE,SAAS,CACX,UAAAC,IAAI;MAAA,OAAIA,IAAI,CAACJ,QAAQ,CAAC,KAAKE,SAAS;IAAA,EACrC,GACD,CAAC,CAAC;EAAA;AAAA;AAACG,OAAA,CAAAN,uBAAA,GAAAA,uBAAA;AAEA,IAAMO,wBAAwB,GAAG,SAA3BA,wBAAwBA,CACnCN,QAAQ;EAAA,OACL,UACHC,GAAG,EACHC,SAAS;IAAA,OACNN,MAAM,CAACK,GAAG,CAAC,GACZA,GAAG,CAACE,SAAS,CACT,UAAAC,IAAI;MAAA,OAAIA,IAAI,CAACJ,QAAQ,CAAC,KAAKE,SAAS;IAAA,EACvC,KAAK,CAAC,CAAC,GACR,KAAK;EAAA;AAAA;AAACG,OAAA,CAAAC,wBAAA,GAAAA,wBAAA"
+}
