@@ -5,23 +5,25 @@ import {
 
 import useToggle from '../hooks/useToggle';
 
+import Svg from './svg/Svg'
+
 const CL_CAPTION = 'open-close not-selected'
-, S_ROOT = {
-  backgroundColor: 'inherit',
-  lineHeight: 2.5
+, S_BT = {
+  paddingTop: 2,
+  paddingLeft: 8,
+  lineHeight: 2.2
 }
 , S_SVG = {
   display: 'inline-block',
   width: 16,
-  height: 16
+  height: 16,
+  position: 'relative',
+  top: 3
 }
-, S_ROOT_CAPTION = { paddingLeft: 12 }
 , S_CAPTION = {
   color: '#9e9e9e',
-  paddingLeft: 4,
-  verticalAlign: 'top'
+  paddingLeft: 4
 }
-, S_INLINE = { display: 'inline-block' }
 , S_BLOCK = { display: 'block' }
 , S_NONE = { display: 'none' }
 
@@ -88,45 +90,39 @@ const OpenClose = ({
     : [PATH_CLOSE, fillClose, S_NONE, null, itemStyle];
 
   return (
-    <div style={{...S_ROOT, ...style}}>
+    <>
       <div
          role="button"
          className={CL_CAPTION}
          tabIndex="0"
-         style={{...S_ROOT_CAPTION, ..._itemStyle }}
+         style={{...S_BT, ...style, ..._itemStyle}}
          onClick={toggleIsOpen}
          onKeyDown={_hKeyDown}
          {..._dndOption}
       >
-        <div style={S_SVG}>
-           <svg
-              viewBox="0 0 16 16"
-              width="100%"
-              height="100%"
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={S_INLINE}
-            >
-             <path
-                d={_pathV}
-                fill={_fillV}
-                strokeWidth="1"
-                stroke={fillOpen}
-             />
-           </svg>
-       </div>
-       <span style={{...S_CAPTION, ...captionStyle}} >
-          {caption}
-       </span>
-       {afterCaptionComp}
-     </div>
-    <div
-       className={_classShow}
-       style={{ ...childrenStyle, ..._styleCollapse }}
-     >
-      {children}
-    </div>
-   </div>
+         <Svg
+            style={S_SVG}
+            w="16"
+         >
+           <path
+             d={_pathV}
+             fill={_fillV}
+             strokeWidth="1"
+             stroke={fillOpen}
+           />
+         </Svg>
+         <span style={{...S_CAPTION, ...captionStyle}} >
+           {caption}
+         </span>
+         {afterCaptionComp}
+      </div>
+      <div
+        className={_classShow}
+        style={{ ...childrenStyle, ..._styleCollapse }}
+      >
+       {children}
+      </div>
+   </>
   );
 };
 
