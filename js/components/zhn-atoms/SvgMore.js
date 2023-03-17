@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("../uiApi");
+var _Svg = _interopRequireDefault(require("./svg/Svg"));
 var _jsxRuntime = require("react/jsx-runtime");
 var CL_FOCUSABLE = 'focusable',
   S_BT = {
@@ -30,13 +31,10 @@ var SvgMore = (0, _uiApi.forwardRef)(function (_ref, ref) {
     style: (0, _extends2["default"])({}, S_BT, style),
     title: title,
     onClick: onClick,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg["default"], {
       style: (0, _extends2["default"])({}, S_SVG, svgStyle),
-      width: "6px",
-      height: "22px",
-      viewBox: "0 0 6 22",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
+      w: "6",
+      h: "22",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("circle", {
         cx: "3",
         cy: "4",
