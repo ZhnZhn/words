@@ -5,6 +5,10 @@ import {
   setRefValue
 } from '../../uiApi';
 
+import {
+  crStyle2
+} from  '../../zhn-utils/crStyle';
+
 import useToggle from '../../hooks/useToggle';
 import useTheme from '../../hoc/useTheme';
 import styleConfig from './Word.Style';
@@ -21,7 +25,7 @@ const S_ROOT = {
   position: 'relative',
   lineHeight: 1.5,
   marginBottom: 5,
-  marginRight: 25,
+  marginRight: 16,
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
   borderBottomRightRadius: 2
 }
@@ -80,14 +84,10 @@ const Word = ({
     onCloseItem(config)
   }, [])
   // onCloseItem, config
-  , _onGestureSwipeX = useCallback(dX => {
-    if (dX > D_REMOVE_UNDER) {
-      _hClose()
-      return false;
-    } else {
-      return true;
-    }
-  }, [])
+  , _onGestureSwipeX = useCallback(dX => dX > D_REMOVE_UNDER
+      ? (_hClose(), false)
+      : true
+  , [])
   // _hClose
   /*eslint-enable react-hooks/exhaustive-deps */
   , {
@@ -95,12 +95,14 @@ const Word = ({
     caption
   } = config
   , TS = useTheme(styleConfig)
-  , _headerStyle = isShow
-       ? { ...S_HEADER, ...S_HEADER_OPEN }
-       : S_HEADER
-  , _captionStyle = isShow
-       ? { ...S_CAPTION, ...S_CAPTION_OPEN }
-       : S_CAPTION;
+  , _headerStyle = crStyle2(
+      S_HEADER,
+      isShow && S_HEADER_OPEN
+  )
+  , _captionStyle = crStyle2(
+      S_CAPTION,
+      isShow && S_CAPTION_OPEN
+  );
 
   return (
     <GestureSwipeX
