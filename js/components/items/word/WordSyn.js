@@ -1,64 +1,57 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _Comp = _interopRequireDefault(require("../../Comp"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var S = {
-  ROOT: {
+var S_ROOT = {
     lineHeight: 1.7
   },
-  DER_ROOT: {
+  S_DERIVATION_ROOT = {
     display: 'inline-block'
   },
-  DER_CAPTION: {
+  S_DERIVATION_CAPTION = {
     color: '#0c7abf',
     paddingRight: 8,
     fontWeight: 800
   },
-  SYN_CAPTION: {
+  S_SYNONYMS_CAPTION = {
     color: 'green',
     paddingRight: 8,
     fontWeight: 800
   },
-  ITEM: {
+  S_ITEM = {
     fontWeight: 400
-  }
-};
-
+  };
 var WordSyn = function WordSyn(_ref) {
   var result = _ref.result;
-  var derivation = result.derivation,
-      examples = result.examples,
-      synonyms = result.synonyms,
-      similarTo = result.similarTo;
+  var _ref2 = result || {},
+    derivation = _ref2.derivation,
+    examples = _ref2.examples,
+    synonyms = _ref2.synonyms,
+    similarTo = _ref2.similarTo;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: S.ROOT,
+    style: S_ROOT,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
       caption: "derivation:",
-      rootStyle: S.DER_ROOT,
-      captionStyle: S.DER_CAPTION,
+      rootStyle: S_DERIVATION_ROOT,
+      captionStyle: S_DERIVATION_CAPTION,
       items: derivation
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListDiv, {
-      itemStyle: S.ITEM,
+      itemStyle: S_ITEM,
       items: examples
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
       caption: "synonyms:",
-      captionStyle: S.SYN_CAPTION,
+      captionStyle: S_SYNONYMS_CAPTION,
       items: synonyms
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
       caption: "similarTo:",
-      captionStyle: S.SYN_CAPTION,
+      captionStyle: S_SYNONYMS_CAPTION,
       items: similarTo
     })]
   });
 };
-
 var _default = WordSyn;
 exports["default"] = _default;
 //# sourceMappingURL=WordSyn.js.map

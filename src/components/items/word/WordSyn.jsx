@@ -1,58 +1,58 @@
-import A from '../../Comp'
+import A from '../../Comp';
 
-const S = {
-  ROOT: {
-    lineHeight: 1.7
-  },
-  DER_ROOT: {
-    display: 'inline-block'
-  },
-  DER_CAPTION: {
-    color: '#0c7abf',
-    paddingRight: 8,
-    fontWeight: 800
-  },
-  SYN_CAPTION: {
-    color: 'green',
-    paddingRight: 8,
-    fontWeight: 800
-  },
-  ITEM: {
-    fontWeight: 400
-  }
+const S_ROOT = {
+  lineHeight: 1.7
+}
+, S_DERIVATION_ROOT = {
+  display: 'inline-block'
+}
+, S_DERIVATION_CAPTION = {
+  color: '#0c7abf',
+  paddingRight: 8,
+  fontWeight: 800
+}
+, S_SYNONYMS_CAPTION = {
+  color: 'green',
+  paddingRight: 8,
+  fontWeight: 800
+}
+, S_ITEM = {
+  fontWeight: 400
 };
 
-const WordSyn = ({ result }) => {
+const WordSyn = ({
+  result
+}) => {
   const {
-          derivation,
-          examples,
-          synonyms,
-          similarTo
-        } = result;
+    derivation,
+    examples,
+    synonyms,
+    similarTo
+  } = result || {};
   return (
-    <div style={S.ROOT}>
+    <div style={S_ROOT}>
       <A.ListSpan
         caption="derivation:"
-        rootStyle={S.DER_ROOT}
-        captionStyle={S.DER_CAPTION}
+        rootStyle={S_DERIVATION_ROOT}
+        captionStyle={S_DERIVATION_CAPTION}
         items={derivation}
       />
       <A.ListDiv
-        itemStyle={S.ITEM}
+        itemStyle={S_ITEM}
         items={examples}
       />
       <A.ListSpan
         caption="synonyms:"
-        captionStyle={S.SYN_CAPTION}
+        captionStyle={S_SYNONYMS_CAPTION}
         items={synonyms}
       />
       <A.ListSpan
         caption="similarTo:"
-        captionStyle={S.SYN_CAPTION}
+        captionStyle={S_SYNONYMS_CAPTION}
         items={similarTo}
       />
     </div>
   );
-}
+};
 
 export default WordSyn

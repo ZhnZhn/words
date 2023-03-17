@@ -24,16 +24,10 @@ const DefenitionList = ({
   defItems
 }) => (defItems || [])
  .map((defItem, index) => {
-    const {
-      definition,
-      partOfSpeech,
-    } = defItem
-    , _afterComp = (
-       <Span
-          style={S_OC_AFTER}
-          text={partOfSpeech}
-        />
-     );
+  const {
+    definition,
+    partOfSpeech,
+  } = defItem || {}   
   return (
     <A.OpenClose
       key={index}
@@ -42,7 +36,12 @@ const DefenitionList = ({
       caption={definition}
       fillOpen={S_FILL_OPEN}
       captionStyle={S_OC_CAPTION}
-      afterCaptionComp={_afterComp}
+      afterCaptionComp={(
+         <Span
+            style={S_OC_AFTER}
+            text={partOfSpeech}
+          />
+      )}
       childrenStyle={S_OC_CHILDREN}
     >
       <WordSyn
