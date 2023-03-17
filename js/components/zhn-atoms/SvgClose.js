@@ -1,7 +1,9 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _Svg = _interopRequireDefault(require("./svg/Svg100"));
 var _jsxRuntime = require("react/jsx-runtime");
 var CL_SVG_CLOSE = "svg-close",
   STROKE_COLOR = '#d64336',
@@ -18,13 +20,9 @@ var SvgClose = function SvgClose(_ref) {
     className: CL_SVG_CLOSE,
     style: style,
     onClick: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
-      viewBox: "0 0 12 12",
-      width: "100%",
-      height: "100%",
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg["default"], {
+      w: "12",
       style: S_SVG,
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
       strokeWidth: "2",
       stroke: STROKE_COLOR,
       strokeLinecap: "round",
