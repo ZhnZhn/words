@@ -1,1 +1,34 @@
-{"version":3,"sources":["../../../../src/components/zhn-atoms/svg/SvgIcon.jsx"],"names":["SvgIcon","color","size","children","restProps","defaultProps"],"mappings":";;;;;;;;;;;;;AAAA,IAAMA,OAAO,GAAG,SAAVA,OAAU;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,IAAV,QAAUA,IAAV;AAAA,MAAgBC,QAAhB,QAAgBA,QAAhB;AAAA,MAA6BC,SAA7B;AAAA,sBACZ;AACE,IAAA,KAAK,EAAC,4BADR;AAEE,IAAA,KAAK,EAAEF,IAFT;AAGE,IAAA,MAAM,EAAEA,IAHV;AAIE,IAAA,OAAO,EAAC,WAJV;AAKE,IAAA,IAAI,EAAC,MALP;AAME,IAAA,MAAM,EAAED,KANV;AAOE,IAAA,WAAW,EAAC,GAPd;AAQE,IAAA,aAAa,EAAC,OARhB;AASE,IAAA,cAAc,EAAC;AATjB,KAUMG,SAVN;AAAA,cAYGD;AAZH,KADY;AAAA,CAAhB;;AAiBAH,OAAO,CAACK,YAAR,GAAuB;AACrBJ,EAAAA,KAAK,EAAE,cADc;AAErBC,EAAAA,IAAI,EAAE;AAFe,CAAvB;eAKeF,O","sourcesContent":["const SvgIcon = ({ color, size, children, ...restProps }) => (\r\n    <svg\r\n      xmlns=\"http://www.w3.org/2000/svg\"\r\n      width={size}\r\n      height={size}\r\n      viewBox=\"0 0 24 24\"\r\n      fill=\"none\"\r\n      stroke={color}\r\n      strokeWidth=\"2\"\r\n      strokeLinecap=\"round\"\r\n      strokeLinejoin=\"round\"\r\n      {...restProps}\r\n    >\r\n      {children}\r\n    </svg>\r\n);\r\n\r\nSvgIcon.defaultProps = {\r\n  color: 'currentColor',\r\n  size: '24',\r\n};\r\n\r\nexport default SvgIcon\r\n"],"file":"SvgIcon.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/zhn-atoms/svg/SvgIcon.js"
+ ],
+ "file": "../../../../src/components/zhn-atoms/svg/SvgIcon.js",
+ "names": [
+  "_Svg",
+  "_interopRequireDefault",
+  "require",
+  "_jsxRuntime",
+  "_excluded",
+  "SvgIcon",
+  "_ref",
+  "_ref$color",
+  "color",
+  "_ref$size",
+  "size",
+  "children",
+  "restProps",
+  "_objectWithoutPropertiesLoose2",
+  "jsx",
+  "_extends2",
+  "w",
+  "fill",
+  "stroke",
+  "strokeWidth",
+  "strokeLinecap",
+  "strokeLinejoin",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;;;AAAA,IAAAA,IAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAwB,IAAAC,WAAA,GAAAD,OAAA;AAAA,IAAAE,SAAA;AAExB,IAAMC,OAAO,GAAG,SAAVA,OAAOA,CAAAC,IAAA;EAAA,IAAAC,UAAA,GAAAD,IAAA,CACXE,KAAK;IAALA,KAAK,GAAAD,UAAA,cAAC,cAAc,GAAAA,UAAA;IAAAE,SAAA,GAAAH,IAAA,CACpBI,IAAI;IAAJA,IAAI,GAAAD,SAAA,cAAC,IAAI,GAAAA,SAAA;IACTE,QAAQ,GAAAL,IAAA,CAARK,QAAQ;IACLC,SAAS,OAAAC,8BAAA,aAAAP,IAAA,EAAAF,SAAA;EAAA,oBAEV,IAAAD,WAAA,CAAAW,GAAA,EAACd,IAAA,WAAG,MAAAe,SAAA;IACFC,CAAC,EAAEN,IAAK;IACRO,IAAI,EAAC,MAAM;IACXC,MAAM,EAAEV,KAAM;IACdW,WAAW,EAAC,GAAG;IACfC,aAAa,EAAC,OAAO;IACrBC,cAAc,EAAC;EAAO,GAClBT,SAAS;IAAAD,QAAA,EAEZA;EAAQ,GACL;AAAA,CACT;AAAC,IAAAW,QAAA,GAEajB,OAAO;AAAAkB,OAAA,cAAAD,QAAA"
+}
