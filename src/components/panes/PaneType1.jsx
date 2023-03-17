@@ -27,16 +27,15 @@ const RESIZE_INIT_WIDTH = 535
 
 const S_ROOT_DIV = {
   backgroundColor: '#4d4d4d',
-  padding : '0px 0px 3px 0px',
   position: 'relative',
-  borderRadius: 4,
   width: RESIZE_INIT_WIDTH,
   height: 'calc(100vh - 71px)',
   minHeight: 500,
   marginLeft: 16,
+  padding : '0 0 3px 0',
+  borderRadius: 4,
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-  overflowY: 'hidden',
-  overflowX : 'hidden'
+  overflow: 'hidden'
 }
 , S_BR_CAPTION = {
   marginRight: -2
@@ -51,8 +50,7 @@ const S_ROOT_DIV = {
   overflowY: 'auto',
   overflowX: 'hidden',
   //height: '92%',
-  height: 'calc(100% - 120px)',
-  paddingRight: 10
+  height: 'calc(100% - 120px)'
 }
 , S_INLINE_BLOCK = {
   display: 'inline-block'
