@@ -1,7 +1,8 @@
 import { useState } from '../uiApi';
 
-import isKeyEnter from './isKeyEnter';
 import C from '../styles/Color';
+import isKeyEnter from './isKeyEnter';
+import Svg100 from './svg/Svg100';
 
 const DF_COLOR_IS = "#2f7ed8"
 , S_DIV = {
@@ -12,8 +13,9 @@ const DF_COLOR_IS = "#2f7ed8"
 }
 , S_SVG = { display: 'inline-block' };
 
-
-const SvgChecked = ({ stroke }) => (
+const SvgChecked = ({
+  stroke
+}) => (
   <path
      d="M 2,5 L 8,14 14,1"
      strokeWidth="2"
@@ -63,12 +65,8 @@ const SvgCheckBox = ({
        onClick={_hClick}
        onKeyDown={_hKeyDown}
     >
-      <svg
-         viewBox="0 0 16 16"
-         width="100%"
-         height="100%"
-         preserveAspectRatio="none"
-         xmlns="http://www.w3.org/2000/svg"
+      <Svg100
+         w="16"
          style={S_SVG}
       >
         <rect
@@ -82,7 +80,7 @@ const SvgCheckBox = ({
             ? <SvgChecked stroke={stroke} />
             : null
         }
-      </svg>
+      </Svg100>
     </div>
   );
 };
