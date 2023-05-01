@@ -116,8 +116,7 @@ const Word = ({
          onClose={_hClose}
          onAddToWatch={onAddToWatch}
       />
-      <WordDef
-        style={TS.DESCR}
+      <WordDef        
         isShow={isShow}
         config={config}
       />

@@ -6,11 +6,7 @@ const styleConfig = {
     return {
       HEADER: {
         ...R.ITEM_HEADER
-      },
-       DESCR: {
-         lineHeight: 1.5,
-         paddingBottom: 4
-       }
+      }
     };
   }
 };

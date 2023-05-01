@@ -91,7 +91,6 @@ var Word = function Word(_ref) {
       onClose: _hClose,
       onAddToWatch: onAddToWatch
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordDef["default"], {
-      style: TS.DESCR,
       isShow: isShow,
       config: config
     })]

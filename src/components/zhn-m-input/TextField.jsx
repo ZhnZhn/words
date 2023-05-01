@@ -63,7 +63,7 @@ const TextField = forwardRef(({
   labelStyle,
   inputStyle,
   errorMsg='',
-  maxLength=18,
+  maxLength=24,
   onTest=DF_ON_TEST,
   onEnter=FN_NOOP,
   ...restProps

@@ -6,7 +6,7 @@ const CL_NOT_SELECTED = "not-selected"
 , S_ROOT = {
   position: 'relative',
   backgroundColor: '#3f5178',
-  color: 'rgba(164, 135, 212, 1)',
+  color: '#a487d4',
   lineHeight: 1.8,
   padding: '4px 42px 0 10px',
   marginBottom: 10,

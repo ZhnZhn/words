@@ -9,11 +9,7 @@ var styleConfig = {
   style: void 0,
   createStyle: function createStyle(R, themeName) {
     return {
-      HEADER: (0, _extends2["default"])({}, R.ITEM_HEADER),
-      DESCR: {
-        lineHeight: 1.5,
-        paddingBottom: 4
-      }
+      HEADER: (0, _extends2["default"])({}, R.ITEM_HEADER)
     };
   }
 };

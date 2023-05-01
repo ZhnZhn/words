@@ -14,6 +14,7 @@ var CL_CAPTION = 'open-close not-selected',
   S_BT = {
     paddingTop: 2,
     paddingLeft: 8,
+    paddingBottom: 2,
     lineHeight: 2.2
   },
   S_SVG = {
