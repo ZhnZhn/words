@@ -32,12 +32,10 @@ const S_ROOT = {
 , S_HEADER = {
   backgroundColor: '#404040'
 }
-, S_HEADER_OPEN = {
-  borderLeft: '6px solid #607d8b'
-}
 , S_CAPTION = {
   display: 'inline-block',
   color: 'black',
+  paddingLeft: 8,
   paddingRight: 8,
   fontSize: '18px',
   fontWeight: 'bold',
@@ -94,11 +92,7 @@ const Word = ({
     title,
     caption
   } = config
-  , TS = useTheme(styleConfig)
-  , _headerStyle = crStyle2(
-      S_HEADER,
-      isShow && S_HEADER_OPEN
-  )
+  , TS = useTheme(styleConfig)  
   , _captionStyle = crStyle2(
       S_CAPTION,
       isShow && S_CAPTION_OPEN
@@ -112,7 +106,7 @@ const Word = ({
     >
       <ItemHeader
          className={CL_ITEM_HEADER}
-         style={{ ..._headerStyle, ...TS.HEADER }}
+         style={{ ...S_HEADER, ...TS.HEADER }}
          captionStyle={_captionStyle}
          svgCloseStyle={S_SVG_CLOSE}
          title={title}

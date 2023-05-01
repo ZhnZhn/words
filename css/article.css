@@ -1,7 +1,8 @@
-.article-header {
+.article-header {  
+  display: flex; 
+  align-items: center; 
   width: 100%;
-  padding: 8px 32px 10px 8px;
-  line-height: 1.5;
+  height: 47px;  
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   border-bottom: 2px solid transparent;

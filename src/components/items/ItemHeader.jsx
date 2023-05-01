@@ -4,7 +4,8 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
-  getRefValue
+  getRefValue,
+  focusRefElement
 } from '../uiApi'
 
 import A from '../Comp';
@@ -19,6 +20,7 @@ const _setPrevFocused = element => {
 const FN_NOOP = () => {};
 
 const ItemHeader = forwardRef(({
+  isShow,
   className,
   style,
   captionStyle,
@@ -48,15 +50,12 @@ const ItemHeader = forwardRef(({
        } else if (keyCode === 46) {
          onClose()
        } else if (keyCode === 65) {
-         _hAddToWatch(event)
+         _hAddToWatch(evt)
        }
      }
   }, [_hAddToWatch, onClick, onClose])
   , focus = useCallback(() => {
-     const _elRoot = getRefValue(_refRootNode);
-     if (_elRoot) {
-       _elRoot.focus()
-     }
+     focusRefElement(_refRootNode)
   }, []);
 
   /*eslint-disable react-hooks/exhaustive-deps */

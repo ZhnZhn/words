@@ -26,12 +26,10 @@ var S_ROOT = {
   S_HEADER = {
     backgroundColor: '#404040'
   },
-  S_HEADER_OPEN = {
-    borderLeft: '6px solid #607d8b'
-  },
   S_CAPTION = {
     display: 'inline-block',
     color: 'black',
+    paddingLeft: 8,
     paddingRight: 8,
     fontSize: '18px',
     fontWeight: 'bold',
@@ -76,7 +74,6 @@ var Word = function Word(_ref) {
     title = config.title,
     caption = config.caption,
     TS = (0, _useTheme["default"])(_Word["default"]),
-    _headerStyle = (0, _crStyle.crStyle2)(S_HEADER, isShow && S_HEADER_OPEN),
     _captionStyle = (0, _crStyle.crStyle2)(S_CAPTION, isShow && S_CAPTION_OPEN);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     style: S_ROOT,
@@ -84,7 +81,7 @@ var Word = function Word(_ref) {
     onGesture: _onGestureSwipeX,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
       className: CL_ITEM_HEADER,
-      style: (0, _extends2["default"])({}, _headerStyle, TS.HEADER),
+      style: (0, _extends2["default"])({}, S_HEADER, TS.HEADER),
       captionStyle: _captionStyle,
       svgCloseStyle: S_SVG_CLOSE,
       title: title,
