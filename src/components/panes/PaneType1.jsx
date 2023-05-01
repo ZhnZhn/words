@@ -16,6 +16,7 @@ import useTheme from '../hoc/useTheme';
 import styleConfig from './Pane.Style';
 import crModelMore from './crModelMore';
 
+import { S_PANE_TYPE1 } from '../styles/ContainerStyle';
 import A from '../Comp';
 
 const RESIZE_INIT_WIDTH = 535
@@ -26,16 +27,8 @@ const RESIZE_INIT_WIDTH = 535
 , CL_MENU_MORE = "popup-menu items__menu-more";
 
 const S_ROOT_DIV = {
-  backgroundColor: '#4d4d4d',
-  position: 'relative',
-  width: RESIZE_INIT_WIDTH,
-  height: 'calc(100vh - 71px)',
-  minHeight: 500,
-  marginLeft: 16,
-  padding : '0 0 3px 0',
-  borderRadius: 4,
-  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-  overflow: 'hidden'
+  ...S_PANE_TYPE1,
+  width: RESIZE_INIT_WIDTH
 }
 , S_BR_CAPTION = {
   marginRight: -2

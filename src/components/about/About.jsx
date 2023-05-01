@@ -8,7 +8,7 @@ import A from '../zhn-atoms/Atoms';
 import Link from '../links/Links';
 import IconLogoBar from './IconLogoBar';
 
-import STYLE from '../styles/ContainerStyle';
+import { S_ABOUT } from '../styles/ContainerStyle';
 
 const CL_SHOW = "show-popup";
 
@@ -46,7 +46,7 @@ const About = ({
   return (
     <div
       className={_className}
-      style={{...STYLE.ABOUT_ROOT, ..._style, ...TS.ROOT}}
+      style={{...S_ABOUT, ..._style, ...TS.ROOT}}
      >
        <A.BrowserCaption
           rootStyle={TS.BROWSER_CAPTION}

@@ -11,6 +11,7 @@ var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize")
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _Pane = _interopRequireDefault(require("./Pane.Style"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
+var _ContainerStyle = require("../styles/ContainerStyle");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from 'prop-types'
@@ -21,18 +22,9 @@ var RESIZE_INIT_WIDTH = 535,
   RESIZE_DELTA = 10,
   CL_SHOW_POPUP = "show-popup",
   CL_MENU_MORE = "popup-menu items__menu-more";
-var S_ROOT_DIV = {
-    backgroundColor: '#4d4d4d',
-    position: 'relative',
-    width: RESIZE_INIT_WIDTH,
-    height: 'calc(100vh - 71px)',
-    minHeight: 500,
-    marginLeft: 16,
-    padding: '0 0 3px 0',
-    borderRadius: 4,
-    boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-    overflow: 'hidden'
-  },
+var S_ROOT_DIV = (0, _extends2["default"])({}, _ContainerStyle.S_PANE_TYPE1, {
+    width: RESIZE_INIT_WIDTH
+  }),
   S_BR_CAPTION = {
     marginRight: -2
   },

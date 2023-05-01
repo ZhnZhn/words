@@ -1,5 +1,4 @@
-
-import STYLE from '../styles/ContainerStyle';
+import { S_BROWSER } from '../styles/ContainerStyle';
 
 const CL_SHOW_POPUP = 'show-popup'
 , S_BLOCK = { display: 'block' }
@@ -10,12 +9,17 @@ const Browser = ({
   style,
   children
 }) => {
-  const _styleOpen = isShow ? S_BLOCK : S_NONE
-  , _classOpen = isShow ? CL_SHOW_POPUP : null;
+  const [
+    _style,
+    _className
+  ] = isShow
+    ? [S_BLOCK, CL_SHOW_POPUP]
+    : [S_NONE];
+
   return (
      <div
-        className={_classOpen}
-        style={{...STYLE.BROWSER_ROOT, ...style, ..._styleOpen}}
+        className={_className}
+        style={{...S_BROWSER, ...style, ..._style}}
       >
         {children}
      </div>

@@ -1,65 +1,46 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
-
 var _useListen = _interopRequireDefault(require("../hoc/useListen"));
-
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
-
 var _About = _interopRequireDefault(require("./About.Style"));
-
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
-
 var _Links = _interopRequireDefault(require("../links/Links"));
-
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
-
-var _ContainerStyle = _interopRequireDefault(require("../styles/ContainerStyle"));
-
+var _ContainerStyle = require("../styles/ContainerStyle");
 var _jsxRuntime = require("react/jsx-runtime");
-
 var CL_SHOW = "show-popup";
-
 var About = function About(_ref) {
   var store = _ref.store,
-      showAction = _ref.showAction,
-      closeAction = _ref.closeAction;
-
+    showAction = _ref.showAction,
+    closeAction = _ref.closeAction;
   var _useBool = (0, _useBool2["default"])(true),
-      isShow = _useBool[0],
-      showAbout = _useBool[1],
-      closeAbout = _useBool[2];
-
+    isShow = _useBool[0],
+    showAbout = _useBool[1],
+    closeAbout = _useBool[2];
   (0, _useListen["default"])(store, function (actionType, data) {
     switch (actionType) {
       case showAction:
         showAbout();
         break;
-
       case closeAction:
         closeAbout();
         break;
-
       default:
         return;
     }
   });
-
   var TS = (0, _useTheme["default"])(_About["default"]),
-      _ref2 = isShow ? [TS.BLOCK, CL_SHOW] : [TS.NONE],
-      _style = _ref2[0],
-      _className = _ref2[1];
-
+    _ref2 = isShow ? [TS.BLOCK, CL_SHOW] : [TS.NONE],
+    _style = _ref2[0],
+    _className = _ref2[1];
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _ContainerStyle["default"].ABOUT_ROOT, _style, TS.ROOT),
+    style: (0, _extends2["default"])({}, _ContainerStyle.S_ABOUT, _style, TS.ROOT),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].BrowserCaption, {
       rootStyle: TS.BROWSER_CAPTION,
       caption: "About",
@@ -95,7 +76,6 @@ var About = function About(_ref) {
     })]
   });
 };
-
 var _default = About;
 exports["default"] = _default;
 //# sourceMappingURL=About.js.map
