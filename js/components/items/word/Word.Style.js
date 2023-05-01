@@ -12,7 +12,6 @@ var styleConfig = {
       HEADER: (0, _extends2["default"])({}, R.ITEM_HEADER),
       DESCR: {
         lineHeight: 1.5,
-        paddingRight: 4,
         paddingBottom: 4
       }
     };

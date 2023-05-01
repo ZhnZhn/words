@@ -1,9 +1,6 @@
 import A from '../../Comp';
 
-const S_ROOT = {
-  lineHeight: 1.7
-}
-, S_DERIVATION_ROOT = {
+const S_DERIVATION_ROOT = {
   display: 'inline-block'
 }
 , S_DERIVATION_CAPTION = {
@@ -21,6 +18,7 @@ const S_ROOT = {
 };
 
 const WordSyn = ({
+  style,
   result
 }) => {
   const {
@@ -30,7 +28,7 @@ const WordSyn = ({
     similarTo
   } = result || {};
   return (
-    <div style={S_ROOT}>
+    <div style={style}>
       <A.ListSpan
         caption="derivation:"
         rootStyle={S_DERIVATION_ROOT}

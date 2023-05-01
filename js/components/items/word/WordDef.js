@@ -17,6 +17,10 @@ var S_FILL_OPEN = "black",
   },
   S_OC_CHILDREN = {
     padding: '0 16px'
+  },
+  S_W_SYN = {
+    lineHeight: 1.7,
+    marginLeft: -6
   };
 var Span = function Span(_ref) {
   var style = _ref.style,
@@ -45,6 +49,7 @@ var DefenitionList = function DefenitionList(_ref2) {
       }),
       childrenStyle: S_OC_CHILDREN,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WordSyn["default"], {
+        style: S_W_SYN,
         result: defItem
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordNyms["default"], {
         result: defItem

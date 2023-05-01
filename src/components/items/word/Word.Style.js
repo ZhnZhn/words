@@ -9,7 +9,6 @@ const styleConfig = {
       },
        DESCR: {
          lineHeight: 1.5,
-         paddingRight: 4,
          paddingBottom: 4
        }
     };

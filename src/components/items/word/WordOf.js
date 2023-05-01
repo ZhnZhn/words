@@ -8,7 +8,7 @@ const COLOR_FILL_OPEN = "#80c040"
   color: '#0c7abf'
 }
 , S_OPEN_CLOSE_CHILDREN = {
-  paddingLeft: 12,
+  marginLeft: -6,
   paddingRight: 16
 }
 , S_LIST = {

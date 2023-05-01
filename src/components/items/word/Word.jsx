@@ -92,7 +92,7 @@ const Word = ({
     title,
     caption
   } = config
-  , TS = useTheme(styleConfig)  
+  , TS = useTheme(styleConfig)
   , _captionStyle = crStyle2(
       S_CAPTION,
       isShow && S_CAPTION_OPEN

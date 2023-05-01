@@ -5,10 +5,7 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var _Comp = _interopRequireDefault(require("../../Comp"));
 var _jsxRuntime = require("react/jsx-runtime");
-var S_ROOT = {
-    lineHeight: 1.7
-  },
-  S_DERIVATION_ROOT = {
+var S_DERIVATION_ROOT = {
     display: 'inline-block'
   },
   S_DERIVATION_CAPTION = {
@@ -25,14 +22,15 @@ var S_ROOT = {
     fontWeight: 400
   };
 var WordSyn = function WordSyn(_ref) {
-  var result = _ref.result;
+  var style = _ref.style,
+    result = _ref.result;
   var _ref2 = result || {},
     derivation = _ref2.derivation,
     examples = _ref2.examples,
     synonyms = _ref2.synonyms,
     similarTo = _ref2.similarTo;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: S_ROOT,
+    style: style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
       caption: "derivation:",
       rootStyle: S_DERIVATION_ROOT,
