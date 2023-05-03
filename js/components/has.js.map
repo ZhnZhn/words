@@ -7,7 +7,11 @@
  "names": [
   "HAS_TOUCH_EVENTS",
   "document",
-  "documentElement"
+  "documentElement",
+  "exports",
+  "_HAS_ACCESS_KEY",
+  "hasAccessKey",
+  "accessKey"
  ],
- "mappings": ";;;;AAAO,IAAMA,gBAAgB,GAAGC,QAAQ,IACnC,cAAc,IAAIA,QAAQ,CAACC,eAAe;AAAC"
+ "mappings": ";;;;AAAO,IAAMA,gBAAgB,GAAGC,QAAQ,IACnC,cAAc,IAAIA,QAAQ,CAACC,eAAe;AAACC,OAAA,CAAAH,gBAAA,GAAAA,gBAAA;AAEhD,IAAMI,eAAe,GAAG,CAACJ,gBAAgB;AAClC,IAAMK,YAAY,GAAG,SAAfA,YAAYA,CACvBC,SAAS;EAAA,OACNF,eAAe,IAAIE,SAAS;AAAA;AAAAH,OAAA,CAAAE,YAAA,GAAAA,YAAA"
 }

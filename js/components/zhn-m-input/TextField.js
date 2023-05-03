@@ -6,6 +6,7 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 var _uiApi = require("../uiApi");
+var _has = require("../has");
 var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 var _jsxRuntime = require("react/jsx-runtime");
 var _excluded = ["caption", "accessKey", "spellCheck", "initialValue", "rootStyle", "labelStyle", "inputStyle", "errorMsg", "maxLength", "onTest", "onEnter"];
@@ -29,7 +30,7 @@ var CL_SELECT = 'm-select',
     textDecoration: 'underline'
   };
 var _crCaption = function _crCaption(caption, accessKey) {
-  if (!accessKey) {
+  if (!(0, _has.hasAccessKey)(accessKey)) {
     return {
       cPrefix: caption
     };

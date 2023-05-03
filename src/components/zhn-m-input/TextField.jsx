@@ -9,6 +9,8 @@ import {
   focusRefElement
 } from '../uiApi';
 
+import { hasAccessKey } from '../has';
+
 import useBool from '../hooks/useBool';
 
 const CL_SELECT = 'm-select'
@@ -36,7 +38,7 @@ const _crCaption = (
   caption,
   accessKey
 ) => {
-  if (!accessKey) {
+  if (!hasAccessKey(accessKey)) {
     return { cPrefix: caption };
   }
   const keyIndex = caption.toLowerCase()

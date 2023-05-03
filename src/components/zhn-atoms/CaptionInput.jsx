@@ -1,46 +1,43 @@
-const S_KEY = { textDecoration: 'underline' }
-, EMPTY = '';
+import { hasAccessKey } from '../has';
 
-const _toCaptionIn = (caption, accessKey) => {
-  const captionIn = caption == null
-       ? EMPTY
-       : EMPTY + caption
-  , _index = captionIn
-      .toLowerCase()
-      .indexOf(accessKey);
-  if (accessKey && _index !== -1) {
-    return {
-      before: captionIn.substring(0, _index),
-      key: captionIn.substring(_index, _index+1),
-      after:  captionIn.substring(_index+1)
-    };
-  }
-  return { captionIn };
+const S_KEY = {
+  textDecoration: 'underline'
+};
+
+const _crCaptionEl = (
+  caption,
+  accessKey
+) => {
+  const captionIn = caption || ''
+  , _index = hasAccessKey(accessKey)
+      ? captionIn
+          .toLowerCase()
+          .indexOf(accessKey)
+      : -1;
+  return _index === -1
+    ? captionIn
+    : (<>
+        <span>{captionIn.slice(0, _index)}</span>
+        <span style={S_KEY}>{captionIn.slice(_index, _index+1)}</span>
+        <span>{captionIn.slice(_index+1)}</span>
+       </>
+    );
 };
 
 const CaptionInput = ({
   className,
-  rootStyle,
+  style,
   caption,
   accessKey,
   children
 }) => {
-  const {
-    captionIn,
-    after,
-    key,
-    before
-  } = _toCaptionIn(caption, accessKey)
-  , _captionEl = captionIn || (
-    <>
-      <span>{before}</span>
-      <span style={S_KEY}>{key}</span>
-      <span>{after}</span>
-    </>
+  const _captionEl = _crCaptionEl(
+    caption,
+    accessKey
   );
 
   return (
-    <span className={className} style={rootStyle}>
+    <span className={className} style={style}>
        {_captionEl}
        {children}
     </span>
