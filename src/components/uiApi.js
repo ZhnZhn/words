@@ -4,7 +4,6 @@ export {
   forwardRef,
   memo,
   createContext,
-  Component,
   useContext,
   useRef,
   useState,
