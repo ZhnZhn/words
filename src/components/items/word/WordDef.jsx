@@ -69,7 +69,6 @@ const WordDef = ({
   const { results } = config || {};
   return (
     <A.ShowHide
-      style={style}
       isShow={isShow}
     >
       <DefenitionList

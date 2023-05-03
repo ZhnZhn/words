@@ -51,7 +51,7 @@ const WordOf = ({
   >
     <A.ListSpan
       caption=""
-      rootStyle={S_LIST}
+      style={S_LIST}
       captionStyle={S_LIST_CAPTION}
       items={items}
     />

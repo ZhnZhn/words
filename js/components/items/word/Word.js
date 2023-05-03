@@ -43,6 +43,12 @@ var S_ROOT = {
     top: 8,
     right: 0
   },
+  S_WORD_DEF = {
+    paddingTop: 6,
+    paddingRight: 4,
+    paddingBottom: 6,
+    lineHeight: void 0
+  },
   DF_CONFIG = {};
 var Word = function Word(_ref) {
   var _ref$config = _ref.config,
@@ -91,6 +97,7 @@ var Word = function Word(_ref) {
       onClose: _hClose,
       onAddToWatch: onAddToWatch
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WordDef["default"], {
+      style: S_WORD_DEF,
       isShow: isShow,
       config: config
     })]

@@ -3,21 +3,19 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _Comp = _interopRequireDefault(require("../../Comp"));
 var _jsxRuntime = require("react/jsx-runtime");
-var S_DERIVATION_ROOT = {
-    display: 'inline-block'
-  },
-  S_DERIVATION_CAPTION = {
-    color: '#0c7abf',
+var _S_CAPTION = {
     paddingRight: 8,
     fontWeight: 800
   },
-  S_SYNONYMS_CAPTION = {
-    color: 'green',
-    paddingRight: 8,
-    fontWeight: 800
-  },
+  S_DERIVATION_CAPTION = (0, _extends2["default"])({}, _S_CAPTION, {
+    color: '#0c7abf'
+  }),
+  S_SYNONYMS_CAPTION = (0, _extends2["default"])({}, _S_CAPTION, {
+    color: 'green'
+  }),
   S_ITEM = {
     fontWeight: 400
   };
@@ -33,7 +31,6 @@ var WordSyn = function WordSyn(_ref) {
     style: style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
       caption: "derivation:",
-      rootStyle: S_DERIVATION_ROOT,
       captionStyle: S_DERIVATION_CAPTION,
       items: derivation
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListDiv, {

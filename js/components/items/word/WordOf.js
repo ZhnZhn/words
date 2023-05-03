@@ -48,7 +48,7 @@ var WordOf = function WordOf(_ref) {
     childrenStyle: S_OPEN_CLOSE_CHILDREN,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
       caption: "",
-      rootStyle: S_LIST,
+      style: S_LIST,
       captionStyle: S_LIST_CAPTION,
       items: items
     })

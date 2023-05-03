@@ -49,6 +49,12 @@ const S_ROOT = {
   top: 8,
   right: 0
 }
+, S_WORD_DEF = {
+  paddingTop: 6,
+  paddingRight: 4,
+  paddingBottom: 6,
+  lineHeight: void 0
+}
 , DF_CONFIG = {};
 
 const Word = ({
@@ -116,7 +122,8 @@ const Word = ({
          onClose={_hClose}
          onAddToWatch={onAddToWatch}
       />
-      <WordDef        
+      <WordDef
+        style={S_WORD_DEF}
         isShow={isShow}
         config={config}
       />

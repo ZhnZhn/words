@@ -1,7 +1,7 @@
 const S_ITEM = { fontWeight: 400 };
 
 const ListSpan = ({
-  rootStyle,
+  style,
   caption,
   captionStyle,
   items=[],
@@ -11,7 +11,7 @@ const ListSpan = ({
     return null;
   }
   return (
-    <div style={rootStyle}>
+    <div style={style}>
        {
          caption && <span style={captionStyle}>
            {caption}
