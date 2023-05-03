@@ -1,122 +1,67 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _uiApi = require("../uiApi");
-
+var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL = "progress-line";
-var Transitions = {
-  WIDTH: 'width 500ms ease-out',
-  OPACITY: 'opacity 400ms linear'
+var CL = "progress-line",
+  DF_COLOR = '#2f7ed8',
+  TM_PERIOD = 800,
+  TRANSITION_WIDTH = 'width 350ms linear',
+  TRANSITION_OPACITY = 'opacity 250ms linear';
+var _crLineStyle = function _crLineStyle(backgroundColor, opacity, width, transition) {
+  return {
+    backgroundColor: backgroundColor,
+    width: width,
+    opacity: opacity,
+    transition: transition
+  };
 };
-
-var ProgressLine = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(ProgressLine, _Component);
-
-  function ProgressLine(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-    _this.wasCompleted = false;
-    _this.idCompleted = null;
-    _this.wasOpacied = false;
-    _this.idOpacied = null;
-    return _this;
+var ProgressLine = function ProgressLine(_ref) {
+  var _ref$color = _ref.color,
+    color = _ref$color === void 0 ? DF_COLOR : _ref$color,
+    completed = _ref.completed;
+  var rerender = (0, _useRerender["default"])()[1],
+    _refWasCompleted = (0, _uiApi.useRef)(false),
+    _refIdCompleted = (0, _uiApi.useRef)(null),
+    _refWasOpacied = (0, _uiApi.useRef)(false),
+    _refIdOpacied = (0, _uiApi.useRef)(null);
+  (0, _uiApi.useEffect)(function () {
+    if ((0, _uiApi.getRefValue)(_refWasCompleted)) {
+      (0, _uiApi.setRefValue)(_refIdCompleted, setTimeout(rerender, TM_PERIOD));
+    } else if ((0, _uiApi.getRefValue)(_refWasOpacied)) {
+      (0, _uiApi.setRefValue)(_refIdOpacied, setTimeout(rerender, TM_PERIOD));
+    }
+  });
+  (0, _uiApi.useEffect)(function () {
+    return function () {
+      clearTimeout((0, _uiApi.getRefValue)(_refIdCompleted));
+      clearTimeout((0, _uiApi.getRefValue)(_refIdOpacied));
+    };
+  }, []);
+  var _style;
+  if ((0, _uiApi.getRefValue)(_refWasOpacied)) {
+    _style = _crLineStyle(color, 1, 0);
+    (0, _uiApi.setRefValue)(_refWasOpacied, false);
+  } else if ((0, _uiApi.getRefValue)(_refWasCompleted)) {
+    _style = _crLineStyle(color, 0, '100%', TRANSITION_OPACITY);
+    (0, _uiApi.setRefValue)(_refWasCompleted, false);
+    (0, _uiApi.setRefValue)(_refWasOpacied, true);
+  } else {
+    if (completed < 0) {
+      completed = 0;
+    } else if (completed >= 100) {
+      completed = 100;
+      (0, _uiApi.setRefValue)(_refWasOpacied, true);
+    }
+    _style = _crLineStyle(color, 1, completed + '%', TRANSITION_WIDTH);
   }
-
-  var _proto = ProgressLine.prototype;
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    if (this.idCompleted) {
-      clearTimeout(this.idCompleted);
-    }
-
-    if (this.idOpacied) {
-      clearTimeout(this.idOpacied);
-    }
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate() {
-    var _this2 = this;
-
-    if (this.wasCompleted) {
-      this.idCompleted = setTimeout(function () {
-        _this2.idCompleted = null;
-
-        _this2.forceUpdate();
-      }, 800);
-    } else if (this.wasOpacied) {
-      this.idOpacied = setTimeout(function () {
-        _this2.idOpacied = null;
-
-        _this2.forceUpdate();
-      }, 800);
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        color = _this$props.color,
-        height = _this$props.height;
-
-    var _style;
-
-    if (this.wasOpacied) {
-      _style = {
-        backgroundColor: color,
-        width: 0,
-        opacity: 1,
-        height: height
-      };
-      this.wasOpacied = false;
-    } else if (this.wasCompleted) {
-      _style = {
-        backgroundColor: color,
-        width: '100%',
-        opacity: 0,
-        transition: Transitions.OPACITY,
-        height: height
-      };
-      this.wasCompleted = false;
-      this.wasOpacied = true;
-    } else {
-      var completed = this.props.completed;
-
-      if (completed < 0) {
-        completed = 0;
-      } else if (completed >= 100) {
-        completed = 100;
-        this.wasCompleted = true;
-      }
-
-      _style = {
-        backgroundColor: color,
-        opacity: 1,
-        width: completed + '%',
-        transition: Transitions.WIDTH,
-        height: height
-      };
-    }
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: CL,
-      style: _style
-    });
-  };
-
-  return ProgressLine;
-}(_uiApi.Component);
-
-ProgressLine.defaultProps = {
-  color: '#2f7ed8',
-  height: 3
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: CL,
+    style: _style
+  });
 };
 var _default = ProgressLine;
 exports["default"] = _default;

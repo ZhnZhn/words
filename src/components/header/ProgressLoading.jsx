@@ -9,42 +9,54 @@ import {
   LPAT_LOADING_COMPLETE,
   LPAT_LOADING_FAILED
 } from '../../flux/actions/LoadingActions';
+
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
 const COLOR_LOADING = '#2f7ed8'
 , COLOR_FAILED = '#ed5813'
-, DF_STATE = [0, COLOR_LOADING];
+, COMPLETE_TIMEOUT_MLS = 450;
 
-const _isNotShouldRerender = () => true;
+const _crState = (
+  completed,
+  color
+) => [
+  completed,
+  color
+];
 
-const ProgressLoading = memo(({
+const ProgressLoading = ({
   store
 }) => {
   const [
     state,
     setState
-  ] = useState(DF_STATE)
+  ] = useState(
+    ()=>_crState(0, COLOR_LOADING)
+  )
   , [
     completed,
     color
   ] = state;
 
-  useListen(store, (actionType) => {
-      if (actionType === LPAT_LOADING){
-        setState([35, COLOR_LOADING])
-      } else if (actionType === LPAT_LOADING_COMPLETE){
-        setState([100, COLOR_LOADING])
-      } else if (actionType === LPAT_LOADING_FAILED){
-        setState([100, COLOR_FAILED])
-      }
+  useListen(store, (actionType)=>{
+    if (actionType === LPAT_LOADING){
+      setState(_crState(35, COLOR_LOADING))
+    } else if (actionType === LPAT_LOADING_COMPLETE){
+      setTimeout(
+        () => setState(_crState(100, COLOR_LOADING))
+      , COMPLETE_TIMEOUT_MLS)
+    } else if (actionType === LPAT_LOADING_FAILED){
+      setState(_crState(100, COLOR_FAILED))
+    }
   }, 'listenLoading')
 
   return (
     <ProgressLine
-       completed={completed}
        color={color}
+       completed={completed}
     />
   );
-}, _isNotShouldRerender);
+};
 
-export default ProgressLoading
+const _isNotShouldRerender = () => true;
+export default memo(ProgressLoading, _isNotShouldRerender)
