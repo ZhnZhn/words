@@ -13,8 +13,8 @@ import {
 import ProgressLine from '../zhn-atoms/ProgressLine';
 
 const COLOR_LOADING = '#2f7ed8'
-, COLOR_FAILED = '#ed5813'
-, COMPLETE_TIMEOUT_MLS = 450;
+, COLOR_FAILED = '#ed5813';
+//, COMPLETE_TIMEOUT_MLS = 450;
 
 const _crState = (
   completed,
@@ -43,8 +43,8 @@ const ProgressLoading = ({
       setState(_crState(35, COLOR_LOADING))
     } else if (actionType === LPAT_LOADING_COMPLETE){
       setTimeout(
-        () => setState(_crState(100, COLOR_LOADING))
-      , COMPLETE_TIMEOUT_MLS)
+        () => setState(_crState(100, COLOR_LOADING)), 0
+      )
     } else if (actionType === LPAT_LOADING_FAILED){
       setState(_crState(100, COLOR_FAILED))
     }
