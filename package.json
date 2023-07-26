@@ -11,6 +11,7 @@
     "css:min": "node min-css.js",
     "build:dll": "webpack --color --progress --config webpack.dll.js",
     "build:dll-jsx": "webpack --color --progress --config webpack.dll-jsx.js",
+    "build:prod": "webpack --color --progress --config webpack.prod.js", 
     "test": "jest",
     "test:watch": "jest --watch"
   },
