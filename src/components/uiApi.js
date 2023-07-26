@@ -1,9 +1,12 @@
 export {
+  render,
+
   cloneElement,
   createElement,
   forwardRef,
   memo,
   createContext,
+
   useContext,
   useRef,
   useState,
@@ -13,7 +16,7 @@ export {
   useLayoutEffect,
   useEffect,
   useImperativeHandle
-} from 'react';
+} from 'preact/compat';
 
 export const getRefValue = ref => (ref || {}).current
 

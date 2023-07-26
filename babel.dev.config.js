@@ -21,6 +21,10 @@ module.exports = {
   ],
   plugins: [
     ['react-refresh/babel'],
-    ['@babel/plugin-transform-runtime']    
+    ['@babel/plugin-transform-runtime'],
+    ['@babel/plugin-transform-react-jsx', {
+      runtime: 'automatic',
+      importSource: 'preact'      
+    }]      
   ]
 };

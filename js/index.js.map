@@ -5,12 +5,20 @@
  ],
  "file": "../src/index.js",
  "names": [
-  "createRoot",
-  "document",
-  "getElementById",
+  "_uiApi",
+  "require",
+  "_Store",
+  "_interopRequireDefault",
+  "_AppActions",
+  "_AppWords",
+  "_jsxRuntime",
   "render",
+  "jsx",
+  "default",
   "store",
-  "action"
+  "action",
+  "document",
+  "getElementById"
  ],
- "mappings": ";;;AAAA;AAEA;AACA;AAEA;AAAyC;AAEzC,IAAAA,kBAAU,EAACC,QAAQ,CAACC,cAAc,CAAC,KAAK,CAAC,CAAC,CACvCC,MAAM,eACL,qBAAC,oBAAG;EACF,KAAK,EAAEC,iBAAM;EACb,MAAM,EAAEC;AAAO,EACf,CACF"
+ "mappings": ";;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA,IAAAC,MAAA,GAAAC,sBAAA,CAAAF,OAAA;AACA,IAAAG,WAAA,GAAAD,sBAAA,CAAAF,OAAA;AAEA,IAAAI,SAAA,GAAAF,sBAAA,CAAAF,OAAA;AAAyC,IAAAK,WAAA,GAAAL,OAAA;AAEzC,IAAAM,aAAM,gBACJ,IAAAD,WAAA,CAAAE,GAAA,EAACH,SAAA,CAAAI,OAAG;EACFC,KAAK,EAAEA,cAAM;EACbC,MAAM,EAAEA;AAAO,CAChB,CAAC,EACFC,QAAQ,CAACC,cAAc,CAAC,KAAK,CAC/B,CAAC"
 }

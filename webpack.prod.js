@@ -15,11 +15,10 @@ module.exports = {
       dependOn: 'lib'
     },
     lib: [
-       "react", 
-       "react-dom",
+       "preact",
+       "preact/compat",                   
        "dompurify",
-       "reflux-core"        
-     
+       "reflux-core"             
     ],
   },
   output: {
@@ -49,7 +48,11 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.jsx']    
+    extensions: ['.js', '.jsx'],
+    alias: { 
+      "react": "preact/compat",      
+      "react-dom": "preact/compat",     
+    }    
   },
   plugins : [
     new HtmlWebpackPlugin({
