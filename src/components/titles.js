@@ -1,2 +1,2 @@
 
-export const APP_TITLE = 'Words v0.3.0'
+export const APP_TITLE = 'Words v0.4.0'
