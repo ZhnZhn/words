@@ -1,4 +1,5 @@
-import A from '../../Comp';
+import ListSpan from '../../zhn-atoms/ListSpan';
+import ListDiv from '../../zhn-atoms/ListDiv';
 
 const _S_CAPTION = {
   paddingRight: 8,
@@ -28,21 +29,21 @@ const WordSyn = ({
   } = result || {};
   return (
     <div style={style}>
-      <A.ListSpan
+      <ListSpan
         caption="derivation:"
         captionStyle={S_DERIVATION_CAPTION}
         items={derivation}
       />
-      <A.ListDiv
+      <ListDiv
         itemStyle={S_ITEM}
         items={examples}
       />
-      <A.ListSpan
+      <ListSpan
         caption="synonyms:"
         captionStyle={S_SYNONYMS_CAPTION}
         items={synonyms}
       />
-      <A.ListSpan
+      <ListSpan
         caption="similarTo:"
         captionStyle={S_SYNONYMS_CAPTION}
         items={similarTo}

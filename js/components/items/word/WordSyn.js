@@ -2,45 +2,50 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _Comp = _interopRequireDefault(require("../../Comp"));
+exports.default = void 0;
+var _ListSpan = _interopRequireDefault(require("../../zhn-atoms/ListSpan"));
+var _ListDiv = _interopRequireDefault(require("../../zhn-atoms/ListDiv"));
 var _jsxRuntime = require("react/jsx-runtime");
-var _S_CAPTION = {
+const _S_CAPTION = {
     paddingRight: 8,
     fontWeight: 800
   },
-  S_DERIVATION_CAPTION = (0, _extends2["default"])({}, _S_CAPTION, {
+  S_DERIVATION_CAPTION = {
+    ..._S_CAPTION,
     color: '#0c7abf'
-  }),
-  S_SYNONYMS_CAPTION = (0, _extends2["default"])({}, _S_CAPTION, {
+  },
+  S_SYNONYMS_CAPTION = {
+    ..._S_CAPTION,
     color: 'green'
-  }),
+  },
   S_ITEM = {
     fontWeight: 400
   };
-var WordSyn = function WordSyn(_ref) {
-  var style = _ref.style,
-    result = _ref.result;
-  var _ref2 = result || {},
-    derivation = _ref2.derivation,
-    examples = _ref2.examples,
-    synonyms = _ref2.synonyms,
-    similarTo = _ref2.similarTo;
+const WordSyn = _ref => {
+  let {
+    style,
+    result
+  } = _ref;
+  const {
+    derivation,
+    examples,
+    synonyms,
+    similarTo
+  } = result || {};
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ListSpan.default, {
       caption: "derivation:",
       captionStyle: S_DERIVATION_CAPTION,
       items: derivation
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListDiv, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ListDiv.default, {
       itemStyle: S_ITEM,
       items: examples
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ListSpan.default, {
       caption: "synonyms:",
       captionStyle: S_SYNONYMS_CAPTION,
       items: synonyms
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ListSpan, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ListSpan.default, {
       caption: "similarTo:",
       captionStyle: S_SYNONYMS_CAPTION,
       items: similarTo
@@ -48,5 +53,5 @@ var WordSyn = function WordSyn(_ref) {
   });
 };
 var _default = WordSyn;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=WordSyn.js.map
