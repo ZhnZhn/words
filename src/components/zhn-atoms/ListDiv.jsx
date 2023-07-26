@@ -1,14 +1,18 @@
+const _isArr = Array.isArray;
 
-const ListDiv = ({ items=[], itemStyle }) => (
+const ListDiv = ({
+  items,
+  itemStyle
+}) => (
   <>
     {
-      items.map((str, index) => {
-        return (
-          <div key={index} style={itemStyle}>
-             {str}
-          </div>
-        );
-      })
+      _isArr(items)
+        ? items.map((str, index) => (
+            <div key={index} style={itemStyle}>
+              {str}
+            </div>
+          ))
+        : null
     }
   </>
 );
