@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _OpenClose = _interopRequireDefault(require("../../zhn-atoms/OpenClose"));
+var _SafeToken = _interopRequireDefault(require("../../zhn-atoms/SafeToken"));
 var _WordSyn = _interopRequireDefault(require("./WordSyn"));
 var _WordNyms = _interopRequireDefault(require("./WordNyms"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -13,6 +14,7 @@ const S_FILL_OPEN = "black",
   },
   S_OC_AFTER = {
     color: '#0c7abf',
+    marginLeft: 6,
     fontWeight: 800
   },
   S_OC_CHILDREN = {
@@ -22,21 +24,11 @@ const S_FILL_OPEN = "black",
     lineHeight: 1.7,
     marginLeft: -6
   };
-const Span = _ref => {
-  let {
-    style,
-    text
-  } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-    style: style,
-    children: ["\xA0", text]
-  });
-};
-const DefinitionList = _ref2 => {
+const DefinitionList = _ref => {
   let {
     style,
     defItems
-  } = _ref2;
+  } = _ref;
   return (defItems || []).map((defItem, index) => {
     const {
       definition,
@@ -48,7 +40,7 @@ const DefinitionList = _ref2 => {
       caption: definition,
       fillOpen: S_FILL_OPEN,
       captionStyle: S_OC_CAPTION,
-      afterCaptionComp: /*#__PURE__*/(0, _jsxRuntime.jsx)(Span, {
+      afterCaptionComp: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeToken.default, {
         style: S_OC_AFTER,
         text: partOfSpeech
       }),

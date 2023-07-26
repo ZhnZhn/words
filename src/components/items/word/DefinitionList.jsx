@@ -1,4 +1,5 @@
 import OpenClose from '../../zhn-atoms/OpenClose';
+import SafeToken from '../../zhn-atoms/SafeToken';
 import WordSyn from './WordSyn';
 import WordNyms from './WordNyms';
 
@@ -8,6 +9,7 @@ const S_FILL_OPEN = "black"
 }
 , S_OC_AFTER = {
   color: '#0c7abf',
+  marginLeft: 6,
   fontWeight: 800
 }
 , S_OC_CHILDREN = { padding: '0 16px' }
@@ -15,15 +17,6 @@ const S_FILL_OPEN = "black"
   lineHeight: 1.7,
   marginLeft: -6
 };
-
-const Span = ({
-  style,
-  text
-}) => (
-  <span style={style}>
-    &nbsp;{text}
-  </span>
-);
 
 const DefinitionList = ({
   style,
@@ -43,7 +36,7 @@ const DefinitionList = ({
       fillOpen={S_FILL_OPEN}
       captionStyle={S_OC_CAPTION}
       afterCaptionComp={(
-         <Span
+         <SafeToken
             style={S_OC_AFTER}
             text={partOfSpeech}
           />
