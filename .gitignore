@@ -4,6 +4,7 @@ _start_server.bat
 lint.txt
 out.txt
 dev
+index-dev.ejs
 webpack.dev.js
 min-css.js
 
