@@ -1,3 +1,4 @@
+import domSanitize from '../../utils/domSanitize';
 
 const _isNotEmptyStr = v => typeof v === 'string'
   && v !== '';
@@ -7,9 +8,10 @@ const SafeToken = ({
   style,
   token
 }) => {
-  const Comp = as;
-  return _isNotEmptyStr(token)
-    ? (<Comp style={style}>{token}</Comp>)
+  const Comp = as
+  , _token = domSanitize(token);
+  return _isNotEmptyStr(_token)
+    ? (<Comp style={style}>{_token}</Comp>)
     : null;
 }
 

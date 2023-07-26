@@ -1,1 +1,35 @@
-{"version":3,"sources":["../../../src/adapters/words/WordsAdapter.js"],"names":["EMPTY","_crConfig","json","word","frequency","pronunciation","all","_pron","Object","assign","caption","id","title","WordsAdapter","toConfig","option"],"mappings":";;;;AACA,IAAMA,KAAK,GAAG,EAAd;;AAEA,IAAMC,SAAS,GAAG,SAAZA,SAAY,CAACC,IAAD,EAAU;AAAA,MAElBC,IAFkB,GAIhBD,IAJgB,CAElBC,IAFkB;AAAA,wBAIhBD,IAJgB,CAGlBE,SAHkB;AAAA,MAGlBA,SAHkB,gCAGRJ,KAHQ;AAAA,4BAIhBE,IAJgB,CAGDG,aAHC;AAAA,MAGDA,aAHC,oCAGa,EAHb;AAAA,2BAKJA,aALI,CAKlBC,GALkB;AAAA,MAKlBA,GALkB,mCAKdN,KALc;AAAA,MAMpBO,KANoB,GAMZD,GAAG,SACHA,GADG,SAEPN,KARgB;;AAU1B,SAAOQ,MAAM,CAACC,MAAP,CAAcP,IAAd,EAAoB;AACzBQ,IAAAA,OAAO,EAAEP,IADgB;AAEzBQ,IAAAA,EAAE,EAAER,IAAI,IAAI,IAFa;AAGzBS,IAAAA,KAAK,EAAKT,IAAL,UAAcC,SAAd,SAA2BG;AAHP,GAApB,CAAP;AAMD,CAhBD;;AAkBA,IAAMM,YAAY,GAAG;AACnBC,EAAAA,QADmB,oBACVZ,IADU,EACDa,MADC,EACM;AAAA,QAAhBb,IAAgB;AAAhBA,MAAAA,IAAgB,GAAX,EAAW;AAAA;;AACvB,WAAOD,SAAS,CAACC,IAAD,CAAhB;AACD;AAHkB,CAArB;eAMeW,Y","sourcesContent":["\r\nconst EMPTY = '';\r\n\r\nconst _crConfig = (json) => {\r\n  const {\r\n          word,\r\n          frequency=EMPTY, pronunciation={}\r\n        } = json\r\n      , { all=EMPTY } = pronunciation\r\n      , _pron = all\r\n          ? `[${all}]`\r\n          : EMPTY\r\n\r\n  return Object.assign(json, {\r\n    caption: word,\r\n    id: word || 'id',\r\n    title: `${word}: ${frequency} ${_pron}`\r\n  });\r\n\r\n}\r\n\r\nconst WordsAdapter = {\r\n  toConfig(json={}, option){    \r\n    return _crConfig(json);\r\n  }\r\n}\r\n\r\nexport default WordsAdapter\r\n"],"file":"WordsAdapter.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/adapters/words/WordsAdapter.js"
+ ],
+ "file": "../../../src/adapters/words/WordsAdapter.js",
+ "names": [
+  "_domSanitize",
+  "_interopRequireDefault",
+  "require",
+  "_assign",
+  "Object",
+  "assign",
+  "EMPTY",
+  "_crConfig",
+  "json",
+  "word",
+  "frequency",
+  "pronunciation",
+  "all",
+  "_pron",
+  "domSanitize",
+  "_caption",
+  "caption",
+  "id",
+  "title",
+  "WordsAdapter",
+  "toConfig",
+  "option",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,YAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,MAAMC,OAAO,GAAGC,MAAM,CAACC,MAAM;EAC3BC,KAAK,GAAG,EAAE;AAEZ,MAAMC,SAAS,GAAIC,IAAI,IAAK;EAC1B,MAAM;MACJC,IAAI;MACJC,SAAS,GAACJ,KAAK;MACfK;IACF,CAAC,GAAGH,IAAI,IAAI,CAAC,CAAC;IACZ;MACAI,GAAG,GAACN;IACN,CAAC,GAAGK,aAAa,IAAI,CAAC,CAAC;IACrBE,KAAK,GAAGD,GAAG,SACH,IAAAE,oBAAW,EAACF,GAAG,CAAC,SACpBN,KAAK;IACTS,QAAQ,GAAG,IAAAD,oBAAW,EAACL,IAAI,CAAC;EAE9B,OAAON,OAAO,CAACK,IAAI,IAAI,CAAC,CAAC,EAAE;IACzBQ,OAAO,EAAED,QAAQ;IACjBE,EAAE,EAAEF,QAAQ,IAAI,IAAI;IACpBG,KAAK,EAAKH,QAAQ,UAAK,IAAAD,oBAAW,EAACJ,SAAS,CAAC,SAAIG;EACnD,CAAC,CAAC;AACJ,CAAC;AAED,MAAMM,YAAY,GAAG;EACnBC,QAAQA,CAACZ,IAAI,EAAEa,MAAM,EAAC;IACpB,OAAOd,SAAS,CAACC,IAAI,CAAC;EACxB;AACF,CAAC;AAAA,IAAAc,QAAA,GAEcH,YAAY;AAAAI,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}

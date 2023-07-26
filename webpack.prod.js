@@ -17,7 +17,9 @@ module.exports = {
     lib: [
        "react", 
        "react-dom",
+       "dompurify",
        "reflux-core"        
+     
     ],
   },
   output: {
