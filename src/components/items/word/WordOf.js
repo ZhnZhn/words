@@ -1,4 +1,5 @@
-import A from '../../Comp'
+import OpenClose from '../../zhn-atoms/OpenClose';
+import ListSpan from '../../zhn-atoms/ListSpan';
 
 const COLOR_FILL_OPEN = "#80c040"
 , S_OPEN_CLOSE = {
@@ -41,7 +42,7 @@ const WordOf = ({
   captionStyle,
   childrenStyle
 }) => _isItems(items) ? (
-  <A.OpenClose
+  <OpenClose
     isClose={true}
     caption={_crCaption(isCount, caption, items)}
     style={S_OPEN_CLOSE}
@@ -49,14 +50,13 @@ const WordOf = ({
     captionStyle={S_OPEN_CLOSE_CAPTION}
     childrenStyle={S_OPEN_CLOSE_CHILDREN}
   >
-    <A.ListSpan
+    <ListSpan
       caption=""
       style={S_LIST}
       captionStyle={S_LIST_CAPTION}
       items={items}
     />
-  </A.OpenClose>
+  </OpenClose>
 ) : null;
-
 
 export default WordOf
