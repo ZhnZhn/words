@@ -51,7 +51,6 @@ const WordOf = ({
     childrenStyle={S_OPEN_CLOSE_CHILDREN}
   >
     <ListSpan
-      caption=""
       style={S_LIST}
       captionStyle={S_LIST_CAPTION}
       items={items}

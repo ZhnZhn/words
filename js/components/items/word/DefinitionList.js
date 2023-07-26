@@ -42,7 +42,7 @@ const DefinitionList = _ref => {
       captionStyle: S_OC_CAPTION,
       afterCaptionComp: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeToken.default, {
         style: S_OC_AFTER,
-        text: partOfSpeech
+        token: partOfSpeech
       }),
       childrenStyle: S_OC_CHILDREN,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WordSyn.default, {

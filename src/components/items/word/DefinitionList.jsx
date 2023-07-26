@@ -38,7 +38,7 @@ const DefinitionList = ({
       afterCaptionComp={(
          <SafeToken
             style={S_OC_AFTER}
-            text={partOfSpeech}
+            token={partOfSpeech}
           />
       )}
       childrenStyle={S_OC_CHILDREN}

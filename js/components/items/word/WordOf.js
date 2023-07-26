@@ -45,7 +45,6 @@ const WordOf = _ref => {
     captionStyle: S_OPEN_CLOSE_CAPTION,
     childrenStyle: S_OPEN_CLOSE_CHILDREN,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ListSpan.default, {
-      caption: "",
       style: S_LIST,
       captionStyle: S_LIST_CAPTION,
       items: items
