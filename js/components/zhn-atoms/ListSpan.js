@@ -1,34 +1,35 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-var S_ITEM = {
+const S_ITEM = {
   fontWeight: 400
 };
-var ListSpan = function ListSpan(_ref) {
-  var style = _ref.style,
-    caption = _ref.caption,
-    captionStyle = _ref.captionStyle,
-    _ref$items = _ref.items,
-    items = _ref$items === void 0 ? [] : _ref$items,
-    itemStyle = _ref.itemStyle;
-  if (items.length === 0) {
-    return null;
-  }
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+const _isArr = Array.isArray,
+  _isNotEmptyStr = v => typeof v === 'string' && v !== '';
+const ListSpan = _ref => {
+  let {
+    style,
+    caption,
+    captionStyle,
+    items,
+    itemStyle
+  } = _ref;
+  return !_isArr(items) || items.length === 0 ? null : /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [caption && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    children: [_isNotEmptyStr(caption) && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       style: captionStyle,
       children: caption
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: (0, _extends2["default"])({}, S_ITEM, itemStyle),
+      style: {
+        ...S_ITEM,
+        ...itemStyle
+      },
       children: items.join(', ')
     })]
   });
 };
 var _default = ListSpan;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=ListSpan.js.map
