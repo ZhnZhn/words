@@ -1,13 +1,14 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _SafeToken = _interopRequireDefault(require("./SafeToken"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_ITEM = {
   fontWeight: 400
 };
-const _isArr = Array.isArray,
-  _isNotEmptyStr = v => typeof v === 'string' && v !== '';
+const _isArr = Array.isArray;
 const ListSpan = _ref => {
   let {
     style,
@@ -18,15 +19,15 @@ const ListSpan = _ref => {
   } = _ref;
   return !_isArr(items) || items.length === 0 ? null : /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [_isNotEmptyStr(caption) && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeToken.default, {
       style: captionStyle,
-      children: caption
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      token: caption
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeToken.default, {
       style: {
         ...S_ITEM,
         ...itemStyle
       },
-      children: items.join(', ')
+      token: items.join(', ')
     })]
   });
 };

@@ -1,3 +1,5 @@
+import SafeToken from './SafeToken';
+
 const _isArr = Array.isArray;
 
 const ListDiv = ({
@@ -8,9 +10,12 @@ const ListDiv = ({
     {
       _isArr(items)
         ? items.map((str, index) => (
-            <div key={index} style={itemStyle}>
-              {str}
-            </div>
+            <SafeToken
+               as="div"
+               key={index}
+               style={itemStyle}
+               token={str}
+            />
           ))
         : null
     }
