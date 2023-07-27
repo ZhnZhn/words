@@ -8,7 +8,7 @@ var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _uiThemeStore = require("../../flux/uiThemeStore");
 var _SettingActions = require("../../flux/actions/SettingActions");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
 var _Tab = _interopRequireDefault(require("../zhn-tabpane/Tab"));
 var _CardApiKey = _interopRequireDefault(require("./CardApiKey"));
@@ -50,7 +50,7 @@ const SettingsDialog = _ref => {
       (0, _uiApi.getRefValue)(_refSetKey1)((0, _uiApi.getRefValue)(_ref1).getValue());
       onClose();
     }, [onClose]);
-  return (0, _jsxRuntime.jsx)(_Comp.default.ModalDialog, {
+  return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
     className: "",
     STYLE: TS.BT,
     style: {

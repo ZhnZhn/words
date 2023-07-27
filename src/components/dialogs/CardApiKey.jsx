@@ -5,7 +5,8 @@ import {
   getRefInputValue
 } from '../uiApi';
 
-import A from '../Comp';
+import FlatButton from '../zhn-atoms/FlatButton';
+import PasswordField from '../zhn-m-input/PasswordField';
 
 const CL_DIV = 'bt-flat__div'
 , S_PF = {
@@ -35,10 +36,10 @@ const CardApiKey = forwardRef(({
     getValue: () => getRefInputValue(_refInput)
   }), [])
 
-  return !(isShow && isSelected) ? null : (
+  return isShow && isSelected ? (
     <div style={style}>
       <form>
-        <A.PasswordField
+        <PasswordField
           ref={_refInput}
           rootStyle={S_PF}
           caption="Words API Key"
@@ -48,14 +49,14 @@ const CardApiKey = forwardRef(({
         />
       </form>
       <div style={buttonsStyle}>
-        <A.FlatButton
+        <FlatButton
           rootStyle={_btStyle}
           clDiv={CL_DIV}
           caption="Set & Close"
           title="Set & Close Dialog"
           onClick={onSet}
         />
-        <A.FlatButton
+        <FlatButton
           rootStyle={_btStyle}
           clDiv={CL_DIV}
           caption="Close"
@@ -64,7 +65,7 @@ const CardApiKey = forwardRef(({
         />
       </div>
     </div>
-  );
+  ) : null;
 });
 
 export default CardApiKey

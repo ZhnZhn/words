@@ -1,49 +1,42 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
-var _Comp = _interopRequireDefault(require("../Comp"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_DIV = 'bt-flat__div',
-    S_PF = {
-  width: 320,
-  marginLeft: 12
-},
-    S_BT = {
-  color: '#3270b4'
-};
-var CardApiKey = (0, _uiApi.forwardRef)(function (_ref, ref) {
-  var isShow = _ref.isShow,
-      isSelected = _ref.isSelected,
-      style = _ref.style,
-      buttonsStyle = _ref.buttonsStyle,
-      btStyle = _ref.btStyle,
-      onClose = _ref.onClose,
-      onSet = _ref.onSet;
-
-  var _refInput = (0, _uiApi.useRef)(),
-      _btStyle = (0, _extends2["default"])({}, S_BT, btStyle);
-
-  (0, _uiApi.useImperativeHandle)(ref, function () {
-    return {
-      getValue: function getValue() {
-        return (0, _uiApi.getRefInputValue)(_refInput);
-      }
+var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
+var _PasswordField = _interopRequireDefault(require("../zhn-m-input/PasswordField"));
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_DIV = 'bt-flat__div',
+  S_PF = {
+    width: 320,
+    marginLeft: 12
+  },
+  S_BT = {
+    color: '#3270b4'
+  };
+const CardApiKey = (0, _uiApi.forwardRef)((_ref, ref) => {
+  let {
+    isShow,
+    isSelected,
+    style,
+    buttonsStyle,
+    btStyle,
+    onClose,
+    onSet
+  } = _ref;
+  const _refInput = (0, _uiApi.useRef)(),
+    _btStyle = {
+      ...S_BT,
+      ...btStyle
     };
-  }, []);
-  return !(isShow && isSelected) ? null : /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  (0, _uiApi.useImperativeHandle)(ref, () => ({
+    getValue: () => (0, _uiApi.getRefInputValue)(_refInput)
+  }), []);
+  return isShow && isSelected ? (0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+    children: [(0, _jsxRuntime.jsx)("form", {
+      children: (0, _jsxRuntime.jsx)(_PasswordField.default, {
         ref: _refInput,
         rootStyle: S_PF,
         caption: "Words API Key",
@@ -51,15 +44,15 @@ var CardApiKey = (0, _uiApi.forwardRef)(function (_ref, ref) {
         maxLength: "50",
         onEnter: onSet
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsxs)("div", {
       style: buttonsStyle,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+      children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
         rootStyle: _btStyle,
         clDiv: CL_DIV,
         caption: "Set & Close",
         title: "Set & Close Dialog",
         onClick: onSet
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+      }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
         rootStyle: _btStyle,
         clDiv: CL_DIV,
         caption: "Close",
@@ -67,8 +60,8 @@ var CardApiKey = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onClick: onClose
       })]
     })]
-  });
+  }) : null;
 });
 var _default = CardApiKey;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=CardApiKey.js.map

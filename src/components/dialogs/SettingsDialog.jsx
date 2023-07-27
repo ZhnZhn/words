@@ -10,7 +10,7 @@ import styleConfig from './Dialog.Style';
 import { setUiTheme } from '../../flux/uiThemeStore';
 import { SettingActions } from '../../flux/actions/SettingActions';
 
-import A from '../Comp';
+import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-tabpane/TabPane';
 import Tab from '../zhn-tabpane/Tab';
 
@@ -55,10 +55,10 @@ const SettingsDialog = ({
   }, [onClose]);
 
   return (
-    <A.ModalDialog
+    <ModalDialog
        className=""
        STYLE={TS.BT}
-       style={{ ...S_MODAL, ...TS.R_DIALOG }}
+       style={{...S_MODAL, ...TS.R_DIALOG}}
        caption="User Settings"
        captionStyle={TS.BROWSER_CAPTION}
        isShow={isShow}
@@ -90,7 +90,7 @@ const SettingsDialog = ({
            />
         </Tab>
       </TabPane>
-    </A.ModalDialog>
+    </ModalDialog>
   );
 };
 
