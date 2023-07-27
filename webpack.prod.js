@@ -18,7 +18,8 @@ module.exports = {
        "preact",
        "preact/compat",                   
        "dompurify",
-       "reflux-core"             
+       "reflux-core",
+       "zustand"             
     ],
   },
   output: {
