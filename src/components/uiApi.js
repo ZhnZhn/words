@@ -18,6 +18,8 @@ export {
   useImperativeHandle
 } from 'preact/compat';
 
+export { useStore } from 'zustand';
+
 export const getRefValue = ref => (ref || {}).current
 
 export const setRefValue = (
