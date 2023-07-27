@@ -1,58 +1,57 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
 var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var S = {
-  ROOT_DIV: {
+var _jsxRuntime = require("preact/jsx-runtime");
+const S_ROOT_DIV = {
     margin: 5,
     lineHeight: 2,
     fontWeight: 'bold'
   },
-  LABEL_SPAN: {
+  S_LABEL_SPAN = {
     display: 'inline-block',
     color: '#1b75bb',
     paddingLeft: 18,
     paddingRight: 5,
     fontSize: '16px'
-  }
-};
-
-var Plain = function Plain(_ref) {
-  var style = _ref.style,
-      children = _ref.children;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    style: (0, _extends2["default"])({}, _DialogStyles["default"].rowDiv, style),
+  };
+const Plain = _ref => {
+  let {
+    style,
+    children
+  } = _ref;
+  return (0, _jsxRuntime.jsx)("div", {
+    style: {
+      ..._DialogStyles.default.rowDiv,
+      ...style
+    },
     children: children
   });
 };
-
-var Text = function Text(_ref2) {
-  var caption = _ref2.caption,
-      text = _ref2.text,
-      styleRoot = _ref2.styleRoot;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: (0, _extends2["default"])({}, S.ROOT_DIV, styleRoot),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.LABEL_SPAN,
+const Text = _ref2 => {
+  let {
+    caption,
+    text,
+    styleRoot
+  } = _ref2;
+  return (0, _jsxRuntime.jsxs)("div", {
+    style: {
+      ...S_ROOT_DIV,
+      ...styleRoot
+    },
+    children: [(0, _jsxRuntime.jsx)("span", {
+      style: S_LABEL_SPAN,
       children: caption
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    }), (0, _jsxRuntime.jsx)("span", {
       children: text
     })]
   });
 };
-
 var _default = {
-  Plain: Plain,
-  Text: Text
+  Plain,
+  Text
 };
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=Row.js.map

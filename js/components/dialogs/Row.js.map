@@ -1,1 +1,40 @@
-{"version":3,"sources":["../../../src/components/dialogs/Row.jsx"],"names":["S","ROOT_DIV","margin","lineHeight","fontWeight","LABEL_SPAN","display","color","paddingLeft","paddingRight","fontSize","Plain","style","children","STYLE","rowDiv","Text","caption","text","styleRoot"],"mappings":";;;;;;;;;AAAA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,QAAQ,EAAE;AACRC,IAAAA,MAAM,EAAE,CADA;AAERC,IAAAA,UAAU,EAAE,CAFJ;AAGRC,IAAAA,UAAU,EAAE;AAHJ,GADF;AAMRC,EAAAA,UAAU,EAAG;AACXC,IAAAA,OAAO,EAAE,cADE;AAEXC,IAAAA,KAAK,EAAE,SAFI;AAGXC,IAAAA,WAAW,EAAE,EAHF;AAIXC,IAAAA,YAAY,EAAE,CAJH;AAKXC,IAAAA,QAAQ,EAAE;AALC;AANL,CAAV;;AAgBA,IAAMC,KAAK,GAAG,SAARA,KAAQ;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,QAAV,QAAUA,QAAV;AAAA,sBACZ;AAAK,IAAA,KAAK,gCAAOC,yBAAMC,MAAb,EAAwBH,KAAxB,CAAV;AAAA,cACGC;AADH,IADY;AAAA,CAAd;;AAMA,IAAMG,IAAI,GAAG,SAAPA,IAAO,QAAkC;AAAA,MAA/BC,OAA+B,SAA/BA,OAA+B;AAAA,MAAtBC,IAAsB,SAAtBA,IAAsB;AAAA,MAAhBC,SAAgB,SAAhBA,SAAgB;AAC7C,sBACE;AAAK,IAAA,KAAK,gCAAOnB,CAAC,CAACC,QAAT,EAAsBkB,SAAtB,CAAV;AAAA,4BACE;AAAM,MAAA,KAAK,EAAEnB,CAAC,CAACK,UAAf;AAAA,gBACGY;AADH,MADF,eAIE;AAAA,gBACGC;AADH,MAJF;AAAA,IADF;AAUD,CAXD;;eAee;AAAEP,EAAAA,KAAK,EAALA,KAAF;AAASK,EAAAA,IAAI,EAAJA;AAAT,C","sourcesContent":["import STYLE from '../styles/DialogStyles';\r\n\r\nconst S = {\r\n  ROOT_DIV: {\r\n    margin: 5,\r\n    lineHeight: 2,\r\n    fontWeight: 'bold'\r\n  },\r\n  LABEL_SPAN : {\r\n    display: 'inline-block',\r\n    color: '#1b75bb',\r\n    paddingLeft: 18,\r\n    paddingRight: 5,\r\n    fontSize: '16px'\r\n  }\r\n};\r\n\r\n\r\nconst Plain = ({ style, children }) => (\r\n  <div style={{ ...STYLE.rowDiv, ...style }}>\r\n    {children}\r\n  </div>\r\n);\r\n\r\nconst Text = ({ caption, text, styleRoot }) => {\r\n  return (\r\n    <div style={{ ...S.ROOT_DIV, ...styleRoot }}>\r\n      <span style={S.LABEL_SPAN}>\r\n        {caption}\r\n      </span>\r\n      <span>\r\n        {text}\r\n      </span>\r\n    </div>\r\n  )\r\n};\r\n\r\n\r\n\r\nexport default { Plain, Text }\r\n"],"file":"Row.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/Row.js"
+ ],
+ "file": "../../../src/components/dialogs/Row.js",
+ "names": [
+  "_DialogStyles",
+  "_interopRequireDefault",
+  "require",
+  "_jsxRuntime",
+  "S_ROOT_DIV",
+  "margin",
+  "lineHeight",
+  "fontWeight",
+  "S_LABEL_SPAN",
+  "display",
+  "color",
+  "paddingLeft",
+  "paddingRight",
+  "fontSize",
+  "Plain",
+  "_ref",
+  "style",
+  "children",
+  "jsx",
+  "STYLE",
+  "rowDiv",
+  "Text",
+  "_ref2",
+  "caption",
+  "text",
+  "styleRoot",
+  "jsxs",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,aAAA,GAAAC,sBAAA,CAAAC,OAAA;AAA2C,IAAAC,WAAA,GAAAD,OAAA;AAE3C,MAAME,UAAU,GAAG;IACjBC,MAAM,EAAE,CAAC;IACTC,UAAU,EAAE,CAAC;IACbC,UAAU,EAAE;EACd,CAAC;EACCC,YAAY,GAAG;IACfC,OAAO,EAAE,cAAc;IACvBC,KAAK,EAAE,SAAS;IAChBC,WAAW,EAAE,EAAE;IACfC,YAAY,EAAE,CAAC;IACfC,QAAQ,EAAE;EACZ,CAAC;AAED,MAAMC,KAAK,GAAGC,IAAA;EAAA,IAAC;IACbC,KAAK;IACLC;EACF,CAAC,GAAAF,IAAA;EAAA,OACC,IAAAZ,WAAA,CAAAe,GAAA;IAAKF,KAAK,EAAE;MAAC,GAAGG,qBAAK,CAACC,MAAM;MAAE,GAAGJ;IAAK,CAAE;IAAAC,QAAA,EACrCA;EAAQ,CACN,CAAC;AAAA,CACP;AAED,MAAMI,IAAI,GAAGC,KAAA;EAAA,IAAC;IACZC,OAAO;IACPC,IAAI;IACJC;EACF,CAAC,GAAAH,KAAA;EAAA,OACC,IAAAnB,WAAA,CAAAuB,IAAA;IAAKV,KAAK,EAAE;MAAC,GAAGZ,UAAU;MAAE,GAAGqB;IAAS,CAAE;IAAAR,QAAA,GACxC,IAAAd,WAAA,CAAAe,GAAA;MAAMF,KAAK,EAAER,YAAa;MAAAS,QAAA,EACvBM;IAAO,CACJ,CAAC,EACP,IAAApB,WAAA,CAAAe,GAAA;MAAAD,QAAA,EACGO;IAAI,CACD,CAAC;EAAA,CACJ,CAAC;AAAA,CACP;AAAC,IAAAG,QAAA,GAKa;EAAEb,KAAK;EAAEO;AAAK,CAAC;AAAAO,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
