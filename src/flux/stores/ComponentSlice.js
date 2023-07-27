@@ -5,7 +5,6 @@ import {
   CAT_SHOW_PANE,
   CAT_SHOW_ABOUT,
   CAT_CLOSE_ABOUT,
-  CAT_CHANGE_THEME,
   CAT_CLICK_WATCH_ITEM
 } from '../actions/ComponentActions';
 
@@ -78,25 +77,9 @@ const ComponentSlice = {
 
   onShowPane(itemConf){
     const pane = PaneLogic.showPane(this.paneInit, itemConf, this);
-    //const browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
     this.trigger(CAT_SHOW_PANE, pane)
     this.trigger(CAT_CLOSE_ABOUT)
-    //this.trigger(TYPES.UPDATE_BROWSER, browser)
   },
-  /*
-  onTogglePane(itemConf){
-    //const browser = BrowserLogic.toggleBadge(this.hmBrowser, itemConf);
-    const pane = PaneLogic.togglePane(itemConf);
-    this.trigger(T.TOGGLE_PANE, pane)
-    //this.trigger(TYPES.UPDATE_BROWSER, browser)
-  },
-  */
-  /*
-  onClosePane(itemConf){
-    //const r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {isOpen:false});
-    //this.trigger(TYPES.UPDATE_BROWSER, r)
-  },
-  */
 
   onShowAbout(){
     if (!this._initAbout) {
@@ -106,10 +89,6 @@ const ComponentSlice = {
     } else {
       this.trigger(CAT_SHOW_ABOUT)
     }
-  },
-
-  onChangeTheme(themeName){
-    this.trigger(CAT_CHANGE_THEME, themeName)
   },
 
   onClickWatchItem(item){

@@ -1,19 +1,14 @@
 import {
   useRef,
-  useContext,
   useCallback,
   getRefValue
 } from '../uiApi';
 
-import ThemeContext from '../hoc/ThemeContext';
+import useTheme from '../hoc/useTheme';
 import styleConfig from './Dialog.Style';
 
-import {
-  ComponentActions
-} from '../../flux/actions/ComponentActions';
-import {
-  SettingActions  
-} from '../../flux/actions/SettingActions';
+import { setUiTheme } from '../../flux/uiThemeStore';
+import { SettingActions } from '../../flux/actions/SettingActions';
 
 import A from '../Comp';
 import TabPane from '../zhn-tabpane/TabPane';
@@ -53,19 +48,11 @@ const SettingsDialog = ({
 }) => {
   const _refSetKey1 = useRef(data.key1)
   , _ref1 = useRef()
-  , theme = useContext(ThemeContext)
-  , TS = theme.createStyle(styleConfig)
-  , _hSelectTheme = useCallback(item => {
-     const { value } = item || {}
-     if (theme.getThemeName() !== value) {
-       ComponentActions.changeTheme(value)
-     }
-   }, [theme])
+  , TS = useTheme(styleConfig)
   , _hSetAndClose = useCallback(() => {
      getRefValue(_refSetKey1)(getRefValue(_ref1).getValue())
      onClose()
   }, [onClose]);
-
 
   return (
     <A.ModalDialog
@@ -96,7 +83,7 @@ const SettingsDialog = ({
              buttonsStyle={S_CARD_BUTTONS}
              btStyle={TS.BT.FLAT_ROOT}
              chbStroke={TS.CHB_STROKE}
-             onSetTheme={_hSelectTheme}
+             onSetTheme={setUiTheme}
              onCheckAutoSave={SettingActions.checkAutoSave}
              onUncheckAutoSave={SettingActions.uncheckAutoSave}
              onClose={onClose}

@@ -8,8 +8,6 @@ export const CAT_SHOW_PANE = 'showPane'
 export const CAT_TOGGLE_PANE = 'togglePane'
 export const CAT_CLOSE_PANE = 'closePane'
 
-export const CAT_CHANGE_THEME = 'changeTheme'
-
 export const CAT_SHOW_ABOUT = 'showAbout'
 export const CAT_CLOSE_ABOUT = 'closeAbout'
 
@@ -22,7 +20,6 @@ export const ComponentActions = Reflux.createActions({
   [CAT_SHOW_MODAL_DIALOG]: {},
   [CAT_SHOW_PANE]: {},
   [CAT_CLOSE_PANE]: {},
-  [CAT_CHANGE_THEME]: {},
   [CAT_SHOW_ABOUT]: {},
   [CAT_CLICK_WATCH_ITEM]: {}
 })

@@ -1,124 +1,100 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _ComponentActions = require("../actions/ComponentActions");
-
 var _Factory = require("../logic/Factory");
-
 var _Type = require("../../constants/Type");
-
-var DF_WATCH_PANE_ID = 'P_WD_W';
-var DialogLogic = {
-  showDialog: function showDialog(slice, itemConf) {
-    var type = itemConf.type;
-
+const DF_WATCH_PANE_ID = 'P_WD_W';
+const DialogLogic = {
+  showDialog(slice, itemConf) {
+    const {
+      type
+    } = itemConf;
     if (slice[type]) {
       return {
         key: type
       };
     } else {
-      var Comp = (0, _Factory.crDialog)(itemConf);
+      const Comp = (0, _Factory.crDialog)(itemConf);
       slice[type] = true;
       return {
         key: type,
-        Comp: Comp
+        Comp
       };
     }
   }
 };
-var PaneLogic = {
-  showPane: function showPane(slice, itemConf, store) {
-    var type = itemConf.type,
-        paneId = itemConf.paneId;
-
+const PaneLogic = {
+  showPane(slice, itemConf, store) {
+    const {
+      type,
+      paneId
+    } = itemConf;
     if (slice[type]) {
       return {
         id: paneId
       };
     } else {
-      var Comp = (0, _Factory.crPane)(itemConf, store);
+      const Comp = (0, _Factory.crPane)(itemConf, store);
       slice[type] = true;
       return {
-        Comp: Comp
+        Comp
       };
     }
   }
 };
-var CompLogic = {
-  crAbout: function crAbout(store) {
-    var Comp = (0, _Factory.crAbout)(store);
+const CompLogic = {
+  crAbout(store) {
+    const Comp = (0, _Factory.crAbout)(store);
     return {
-      Comp: Comp
+      Comp
     };
   }
 };
-var ComponentSlice = {
+const ComponentSlice = {
   dialogInit: {},
   paneInit: {},
-  showAlertDialog: function showAlertDialog(option) {
+  showAlertDialog(option) {
     if (option === void 0) {
       option = {};
     }
-
     option.modalDialogType = _Type.MD_EXCEPTION;
     this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
   },
-  onShowBrowser: function onShowBrowser(browserId) {
+  onShowBrowser(browserId) {
     this.trigger(_ComponentActions.CAT_SHOW_BROWSER, browserId);
   },
-  onShowDialog: function onShowDialog(itemConf, event) {
-    var r = DialogLogic.showDialog(this.dialogInit, itemConf);
+  onShowDialog(itemConf, event) {
+    const r = DialogLogic.showDialog(this.dialogInit, itemConf);
     this.trigger(_ComponentActions.CAT_SHOW_DIALOG, r);
   },
-  onShowModalDialog: function onShowModalDialog(modalDialogType, option) {
+  onShowModalDialog(modalDialogType, option) {
     if (option === void 0) {
       option = {};
     }
-
     option.modalDialogType = modalDialogType;
     this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
   },
-  onShowPane: function onShowPane(itemConf) {
-    var pane = PaneLogic.showPane(this.paneInit, itemConf, this); //const browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
-
+  onShowPane(itemConf) {
+    const pane = PaneLogic.showPane(this.paneInit, itemConf, this);
     this.trigger(_ComponentActions.CAT_SHOW_PANE, pane);
-    this.trigger(_ComponentActions.CAT_CLOSE_ABOUT); //this.trigger(TYPES.UPDATE_BROWSER, browser)
+    this.trigger(_ComponentActions.CAT_CLOSE_ABOUT);
   },
-
-  /*
-  onTogglePane(itemConf){
-    //const browser = BrowserLogic.toggleBadge(this.hmBrowser, itemConf);
-    const pane = PaneLogic.togglePane(itemConf);
-    this.trigger(T.TOGGLE_PANE, pane)
-    //this.trigger(TYPES.UPDATE_BROWSER, browser)
-  },
-  */
-
-  /*
-  onClosePane(itemConf){
-    //const r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {isOpen:false});
-    //this.trigger(TYPES.UPDATE_BROWSER, r)
-  },
-  */
-  onShowAbout: function onShowAbout() {
+  onShowAbout() {
     if (!this._initAbout) {
-      var pane = CompLogic.crAbout(this);
+      const pane = CompLogic.crAbout(this);
       this._initAbout = true;
       this.trigger(_ComponentActions.CAT_SHOW_PANE, pane);
     } else {
       this.trigger(_ComponentActions.CAT_SHOW_ABOUT);
     }
   },
-  onChangeTheme: function onChangeTheme(themeName) {
-    this.trigger(_ComponentActions.CAT_CHANGE_THEME, themeName);
-  },
-  onClickWatchItem: function onClickWatchItem(item) {
+  onClickWatchItem(item) {
     item.id = item.id || DF_WATCH_PANE_ID;
     this.trigger(_ComponentActions.CAT_CLICK_WATCH_ITEM, item);
   }
 };
 var _default = ComponentSlice;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=ComponentSlice.js.map

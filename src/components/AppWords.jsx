@@ -1,12 +1,7 @@
-import {
-  useState,
-  useEffect
-} from './uiApi';
+import { useEffect } from './uiApi';
 
-import useListen from './hooks/useListen';
-
+import { uiThemeStore } from '../flux/uiThemeStore';
 import ThemeContext from './hoc/ThemeContext';
-import initialUiTheme  from './styles/theme';
 
 import {
   CAT_SHOW_BROWSER,
@@ -31,20 +26,6 @@ const AppWords = ({
   store,
   action
 }) => {
-  const [
-    uiTheme,
-    setUiTheme
-  ] = useState(initialUiTheme);
-
-  useListen(store, (actionType, uiThemeName) => {
-    if (actionType === "changeTheme"){
-      setUiTheme(prevUiTheme => {
-        prevUiTheme.setThemeName(uiThemeName)
-        return {...prevUiTheme};
-      })
-    }
-  })
-
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     action.showAbout()
@@ -58,7 +39,7 @@ const AppWords = ({
   } = action;
 
   return (
-    <ThemeContext.Provider value={uiTheme}>
+    <ThemeContext.Provider value={uiThemeStore}>
       <div>
         <HeaderBar
           store={store}

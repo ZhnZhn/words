@@ -1,91 +1,65 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
 var _uiApi = require("./uiApi");
-
-var _useListen = _interopRequireDefault(require("./hooks/useListen"));
-
+var _uiThemeStore = require("../flux/uiThemeStore");
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
-
-var _theme = _interopRequireDefault(require("./styles/theme"));
-
 var _ComponentActions = require("../flux/actions/ComponentActions");
-
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
-
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
-
 var _BrowserContainer = _interopRequireDefault(require("./zhn-containers/BrowserContainer"));
-
 var _HrzContainer = _interopRequireDefault(require("./zhn-containers/HrzContainer"));
-
 var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/ModalDialogContainer"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_COMP = "component-container",
-    CL_ITEMS = "items-container",
-    WORDS_BROWSER_ID = 'WORDS_DIFINITION';
-
-var AppWords = function AppWords(_ref) {
-  var store = _ref.store,
-      action = _ref.action;
-
-  var _useState = (0, _uiApi.useState)(_theme["default"]),
-      uiTheme = _useState[0],
-      setUiTheme = _useState[1];
-
-  (0, _useListen["default"])(store, function (actionType, uiThemeName) {
-    if (actionType === "changeTheme") {
-      setUiTheme(function (prevUiTheme) {
-        prevUiTheme.setThemeName(uiThemeName);
-        return (0, _extends2["default"])({}, prevUiTheme);
-      });
-    }
-  });
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_COMP = "component-container",
+  CL_ITEMS = "items-container",
+  WORDS_BROWSER_ID = 'WORDS_DIFINITION';
+const AppWords = _ref => {
+  let {
+    store,
+    action
+  } = _ref;
   /*eslint-disable react-hooks/exhaustive-deps */
-
-  (0, _uiApi.useEffect)(function () {
+  (0, _uiApi.useEffect)(() => {
     action.showAbout();
-  }, []); // action
-
+  }, []);
+  // action
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  var headerActions = action.headerActions,
-      browserActions = action.browserActions;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
-    value: uiTheme,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], (0, _extends2["default"])({
-        store: store
-      }, headerActions)), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  const {
+    headerActions,
+    browserActions
+  } = action;
+  return (0, _jsxRuntime.jsx)(_ThemeContext.default.Provider, {
+    value: _uiThemeStore.uiThemeStore,
+    children: (0, _jsxRuntime.jsxs)("div", {
+      children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
+        store: store,
+        ...headerActions
+      }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer["default"], (0, _extends2["default"])({
+        children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
           store: store,
           showBrowserAction: _ComponentActions.CAT_SHOW_BROWSER,
           showDialogAction: _ComponentActions.CAT_SHOW_DIALOG,
           browserId: WORDS_BROWSER_ID,
-          updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER
-        }, browserActions)), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HrzContainer["default"], {
+          updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER,
+          ...browserActions
+        }), (0, _jsxRuntime.jsx)(_HrzContainer.default, {
           className: CL_ITEMS,
           store: store,
           addAction: _ComponentActions.CAT_SHOW_PANE
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
+      }), (0, _jsxRuntime.jsx)(_ModalDialogContainer.default, {
         store: store,
-        router: _RouterModalDialog["default"],
+        router: _RouterModalDialog.default,
         showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
       })]
     })
   });
 };
-
 var _default = AppWords;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=AppWords.js.map
