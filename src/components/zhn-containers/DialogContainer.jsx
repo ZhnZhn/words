@@ -3,7 +3,7 @@ import {
   cloneElement
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
+import useSubscribe from '../hooks/useSubscribe';
 
 const S_ROOT = {
   zIndex: 1030,
@@ -58,9 +58,9 @@ const _updateVisible = (
 };
 
 const DialogContainer = ({
-  store,
   maxDialog=3,
-  showAction
+  store,
+  selectDialog
 }) => {
   const [
     state,
@@ -87,22 +87,25 @@ const DialogContainer = ({
      })
   };
 
-  useListen(store, (actionType, option) => {
-     if (actionType === showAction){
-        setState(prevState => {
-          const { key, Comp } = option;
-           if (Comp && !_isUndef(_findCompIndex(prevState.compDialogs, key))) {
-             return prevState;
-           }
-          _updateVisible(prevState, key, maxDialog)
-          if (!Comp){
-             prevState.compDialogs = _doVisible(prevState.compDialogs, key)
-          } else {
-             prevState.compDialogs.push(Comp)
+  useSubscribe(store, selectDialog, (dialogOption) => {
+    if (dialogOption){
+       setState(prevState => {
+         const {
+           key,
+           Comp
+         } = dialogOption;
+          if (Comp && !_isUndef(_findCompIndex(prevState.compDialogs, key))) {
+            return prevState;
           }
-          return {...prevState};
-        })
-     }
+         _updateVisible(prevState, key, maxDialog)
+         if (!Comp){
+            prevState.compDialogs = _doVisible(prevState.compDialogs, key)
+         } else {
+            prevState.compDialogs.push(Comp)
+         }
+         return {...prevState};
+       })
+    }
   })
 
   return (

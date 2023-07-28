@@ -44,9 +44,9 @@ const AppWords = _ref => {
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
           store: store,
           compStore: _useCompStore.useCompStore,
-          selectBrowser: _useCompStore.selectBrowser,
-          showDialogAction: _ComponentActions.CAT_SHOW_DIALOG,
           browserId: WORDS_BROWSER_ID,
+          selectBrowser: _useCompStore.selectBrowser,
+          selectDialog: _useCompStore.selectDialog,
           updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER,
           ...browserActions
         }), (0, _jsxRuntime.jsx)(_HrzContainer.default, {

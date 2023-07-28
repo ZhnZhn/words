@@ -13,9 +13,8 @@ const BrowserContainer = _ref => {
     store,
     compStore,
     browserId,
-    //showBrowserAction,
     selectBrowser,
-    showDialogAction,
+    selectDialog,
     onClickItem,
     updateWatchAction,
     onClickWatchItem
@@ -39,8 +38,8 @@ const BrowserContainer = _ref => {
       onClickItem: onClickWatchItem
     }), (0, _jsxRuntime.jsx)(_DialogContainer.default, {
       maxDialog: 3,
-      store: store,
-      showAction: showDialogAction
+      store: compStore,
+      selectDialog: selectDialog
     })]
   });
 };

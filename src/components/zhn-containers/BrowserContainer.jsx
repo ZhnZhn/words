@@ -8,9 +8,8 @@ const BrowserContainer = ({
   store,
   compStore,
   browserId,
-  //showBrowserAction,
   selectBrowser,
-  showDialogAction,
+  selectDialog,
   onClickItem,
   updateWatchAction,
   onClickWatchItem
@@ -35,8 +34,8 @@ const BrowserContainer = ({
     />
     <DialogContainer
       maxDialog={3}
-      store={store}
-      showAction={showDialogAction}
+      store={compStore}
+      selectDialog={selectDialog}
     />
   </div>
 );
