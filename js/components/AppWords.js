@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("./uiApi");
 var _uiThemeStore = require("../flux/uiThemeStore");
+var _useCompStore = require("../flux/useCompStore");
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
 var _ComponentActions = require("../flux/actions/ComponentActions");
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
@@ -42,7 +43,8 @@ const AppWords = _ref => {
         className: CL_COMP,
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
           store: store,
-          showBrowserAction: _ComponentActions.CAT_SHOW_BROWSER,
+          compStore: _useCompStore.useCompStore,
+          selectBrowser: _useCompStore.selectBrowser,
           showDialogAction: _ComponentActions.CAT_SHOW_DIALOG,
           browserId: WORDS_BROWSER_ID,
           updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER,

@@ -6,8 +6,10 @@ const CL_ROOT = "hrz-container";
 
 const BrowserContainer = ({
   store,
+  compStore,
   browserId,
-  showBrowserAction,
+  //showBrowserAction,
+  selectBrowser,
   showDialogAction,
   onClickItem,
   updateWatchAction,
@@ -16,16 +18,18 @@ const BrowserContainer = ({
   <div className={CL_ROOT}>
     <MenuBrowser
       store={store}
+      compStore={compStore}
       browserId={browserId}
-      showAction={showBrowserAction}
+      selectBrowser={selectBrowser}
       onClickItem={onClickItem}
     />
     <WatchBrowser
       caption="Watch Words"
       store={store}
+      compStore={compStore}
       isInitShow={false}
-      browserType="WATCH_ID"
-      showAction={showBrowserAction}
+      browserId="WATCH_ID"
+      selectBrowser={selectBrowser}
       updateAction={updateWatchAction}
       onClickItem={onClickWatchItem}
     />

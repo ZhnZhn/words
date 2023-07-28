@@ -1,68 +1,49 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
+exports.default = void 0;
 var _MenuBrowser = _interopRequireDefault(require("../zhn-browsers/MenuBrowser"));
-
 var _WatchBrowser = _interopRequireDefault(require("../watch-browser/WatchBrowser"));
-
 var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_ROOT = "hrz-container";
-
-var BrowserContainer = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(BrowserContainer, _Component);
-
-  function BrowserContainer() {
-    return _Component.apply(this, arguments) || this;
-  }
-
-  var _proto = BrowserContainer.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        store = _this$props.store,
-        browserId = _this$props.browserId,
-        showBrowserAction = _this$props.showBrowserAction,
-        showDialogAction = _this$props.showDialogAction,
-        onClickItem = _this$props.onClickItem,
-        updateWatchAction = _this$props.updateWatchAction,
-        onClickWatchItem = _this$props.onClickWatchItem;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL_ROOT,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuBrowser["default"], {
-        store: store,
-        browserId: browserId,
-        showAction: showBrowserAction,
-        onClickItem: onClickItem
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_WatchBrowser["default"], {
-        caption: "Watch Words",
-        store: store,
-        isInitShow: false,
-        browserType: "WATCH_ID",
-        showAction: showBrowserAction,
-        updateAction: updateWatchAction,
-        onClickItem: onClickWatchItem
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogContainer["default"], {
-        maxDialog: 3,
-        store: store,
-        showAction: showDialogAction
-      })]
-    });
-  };
-
-  return BrowserContainer;
-}(_react.Component);
-
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_ROOT = "hrz-container";
+const BrowserContainer = _ref => {
+  let {
+    store,
+    compStore,
+    browserId,
+    //showBrowserAction,
+    selectBrowser,
+    showDialogAction,
+    onClickItem,
+    updateWatchAction,
+    onClickWatchItem
+  } = _ref;
+  return (0, _jsxRuntime.jsxs)("div", {
+    className: CL_ROOT,
+    children: [(0, _jsxRuntime.jsx)(_MenuBrowser.default, {
+      store: store,
+      compStore: compStore,
+      browserId: browserId,
+      selectBrowser: selectBrowser,
+      onClickItem: onClickItem
+    }), (0, _jsxRuntime.jsx)(_WatchBrowser.default, {
+      caption: "Watch Words",
+      store: store,
+      compStore: compStore,
+      isInitShow: false,
+      browserId: "WATCH_ID",
+      selectBrowser: selectBrowser,
+      updateAction: updateWatchAction,
+      onClickItem: onClickWatchItem
+    }), (0, _jsxRuntime.jsx)(_DialogContainer.default, {
+      maxDialog: 3,
+      store: store,
+      showAction: showDialogAction
+    })]
+  });
+};
 var _default = BrowserContainer;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=BrowserContainer.js.map
