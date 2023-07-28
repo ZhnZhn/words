@@ -3,7 +3,12 @@ import {
   useCallback
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
+import {
+  useCompStore,
+  selectMdOption
+} from '../../flux/useCompStore';
+
+import useSubscribe from '../hooks/useSubscribe';
 
 import ItemStack from '../zhn-atoms/ItemStack';
 import ModalContainer from './ModalContainer';
@@ -31,8 +36,7 @@ const _getModalDialogType = option =>
 
 const ModalDialogContainer = ({
   store,
-  router,
-  showAction
+  router
 }) => {
   const [
     state,
@@ -55,27 +59,31 @@ const ModalDialogContainer = ({
      currentDialog: null
   })), []);
 
-  useListen(store, (actionType, option)=>{
-    if (actionType === showAction){
-      const type = _getModalDialogType(option);
-      if (_isStr(type)) {
-        setState(prevState => {
-          if (!prevState.data[type]) {
-            prevState.dialogs.push({
-               type,
-               Comp: router[type]
-            });
-          }
-          prevState.data[type] = option;
-          return {
-            ...prevState,
-            isShow: true,
-            currentDialog: type
-          };
-        })
+  useSubscribe(
+    useCompStore,
+    selectMdOption,
+    (option )=> {
+      if (option){
+        const type = _getModalDialogType(option);
+        if (_isStr(type)) {
+          setState(prevState => {
+            if (!prevState.data[type]) {
+              prevState.dialogs.push({
+                 type,
+                 Comp: router[type]
+              });
+            }
+            prevState.data[type] = option;
+            return {
+              ...prevState,
+              isShow: true,
+              currentDialog: type
+            };
+          })
+        }
       }
     }
-  })
+  )
 
   return (
     <ModalContainer

@@ -6,7 +6,6 @@ import ThemeContext from './hoc/ThemeContext';
 import {
   CAT_SHOW_BROWSER,
   CAT_SHOW_DIALOG,
-  CAT_SHOW_MODAL_DIALOG,
   CAT_SHOW_PANE,
   CAT_UPDATE_WATCH_BROWSER
 } from '../flux/actions/ComponentActions';
@@ -63,7 +62,6 @@ const AppWords = ({
         <ModalDialogContainer
            store={store}
            router={RouterModalDialog}
-           showAction={CAT_SHOW_MODAL_DIALOG}
         />
       </div>
     </ThemeContext.Provider>

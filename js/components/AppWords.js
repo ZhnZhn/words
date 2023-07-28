@@ -54,8 +54,7 @@ const AppWords = _ref => {
         })]
       }), (0, _jsxRuntime.jsx)(_ModalDialogContainer.default, {
         store: store,
-        router: _RouterModalDialog.default,
-        showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
+        router: _RouterModalDialog.default
       })]
     })
   });

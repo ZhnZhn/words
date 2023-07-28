@@ -1,6 +1,5 @@
-import {
-  ComponentActions
-} from '../../flux/actions/ComponentActions';
+import { showMd } from '../../flux/useCompStore';
+
 import {
   WatchActions
 } from '../../flux/actions/WatchActions';
@@ -9,11 +8,8 @@ import {
   MD_EDIT_WATCH_LIST
 } from '../../constants/Type';
 
-export const showDialogEditGroups = () =>
-  ComponentActions.showModalDialog(MD_EDIT_WATCH_GROUP);
-
-export const showDialogEditLists = () =>
-  ComponentActions.showModalDialog(MD_EDIT_WATCH_LIST);
+export const showDialogEditGroups = () => showMd(MD_EDIT_WATCH_GROUP);
+export const showDialogEditLists = () => showMd(MD_EDIT_WATCH_LIST);
 
 export const removeWatchItem = (option, evt) => {
   evt.stopPropagation()
