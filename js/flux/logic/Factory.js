@@ -6,7 +6,6 @@ exports.crPane = exports.crDialog = exports.crAbout = void 0;
 var _uiApi = require("../../components/uiApi");
 var _throttleFn = _interopRequireDefault(require("../../utils/throttleFn"));
 var _useCompStore = require("../useCompStore");
-var _ComponentActions = require("../actions/ComponentActions");
 var _ItemActions = require("../actions/ItemActions");
 var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
 var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterPane"));
@@ -29,7 +28,7 @@ const crDialog = itemConf => {
   });
 };
 exports.crDialog = crDialog;
-const crPane = (itemConf, store, compStore, selectPane) => {
+const crPane = (itemConf, store, compStore, selectPane, selectWatch) => {
   const {
       type,
       paneType,
@@ -49,10 +48,10 @@ const crPane = (itemConf, store, compStore, selectPane) => {
     store,
     compStore,
     selectPane,
+    selectWatch,
     Input,
     Item,
     updateAction: _ItemActions.IAT_LOAD_ITEM_COMPLETED,
-    watchAction: _ComponentActions.CAT_CLICK_WATCH_ITEM,
     onRemoveItems: _ItemActions.ItemActions.removeItems.bind(null, paneId),
     onRemoveUnder: _ItemActions.ItemActions.removeItemsUnder,
     onCloseItem: _ItemActions.ItemActions.removeItem,

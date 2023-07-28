@@ -4,7 +4,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _ItemActions = require("../actions/ItemActions");
 var _useCompStore = require("../useCompStore");
-var _ComponentActions = require("../actions/ComponentActions");
 var _LoadingActions = require("../actions/LoadingActions");
 const _isArr = Array.isArray;
 const Logic = {
@@ -95,7 +94,7 @@ const ItemSlice = {
     if (option === void 0) {
       option = {};
     }
-    _ComponentActions.ComponentActions.showPane(option.itemConf);
+    (0, _useCompStore.showPane)(option.itemConf);
     this.triggerLoading(_LoadingActions.LPAT_LOADING);
   },
   onLoadItemCompleted(result, option) {

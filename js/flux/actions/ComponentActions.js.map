@@ -5,15 +5,8 @@
  ],
  "file": "../../../src/flux/actions/ComponentActions.js",
  "names": [
-  "_refluxCore",
-  "_interopRequireDefault",
-  "require",
   "CAT_UPDATE_WATCH_BROWSER",
-  "exports",
-  "CAT_CLICK_WATCH_ITEM",
-  "ComponentActions",
-  "Reflux",
-  "createActions"
+  "exports"
  ],
- "mappings": ";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEO,MAAMC,wBAAwB,GAAG,oBAAoB;AAAAC,OAAA,CAAAD,wBAAA,GAAAA,wBAAA;AACrD,MAAME,oBAAoB,GAAG,gBAAgB;AAAAD,OAAA,CAAAC,oBAAA,GAAAA,oBAAA;AAE7C,MAAMC,gBAAgB,GAAGC,mBAAM,CAACC,aAAa,CAAC;EACnD,CAACH,oBAAoB,GAAG,CAAC;AAC3B,CAAC,CAAC;AAAAD,OAAA,CAAAE,gBAAA,GAAAA,gBAAA"
+ "mappings": ";;;;AAAO,MAAMA,wBAAwB,GAAG,oBAAoB;AAAAC,OAAA,CAAAD,wBAAA,GAAAA,wBAAA"
 }

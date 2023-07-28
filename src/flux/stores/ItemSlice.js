@@ -2,10 +2,11 @@ import {
   IAT_LOAD_ITEM_COMPLETED
 } from '../actions/ItemActions';
 
-import { showMd } from '../useCompStore';
 import {
-  ComponentActions
-} from '../actions/ComponentActions';
+  showMd,
+  showPane
+} from '../useCompStore';
+
 import {
   LPAT_LOADING,
   LPAT_LOADING_COMPLETE,
@@ -99,7 +100,7 @@ const ItemSlice = {
   },
 
   onLoadItem(option={}){
-    ComponentActions.showPane(option.itemConf)
+    showPane(option.itemConf)
     this.triggerLoading(LPAT_LOADING)
   },
   onLoadItemCompleted(result, option){

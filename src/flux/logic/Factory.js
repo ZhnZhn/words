@@ -8,9 +8,6 @@ import {
 } from '../useCompStore';
 
 import {
-  CAT_CLICK_WATCH_ITEM
-} from '../actions/ComponentActions';
-import {
   IAT_LOAD_ITEM_COMPLETED,
   ItemActions
 } from '../actions/ItemActions';
@@ -47,7 +44,8 @@ export const crPane = (
   itemConf,
   store,
   compStore,
-  selectPane
+  selectPane,
+  selectWatch
 ) => {
   const {
     type,
@@ -68,10 +66,10 @@ export const crPane = (
     store,
     compStore,
     selectPane,
+    selectWatch,
     Input,
     Item,
     updateAction: IAT_LOAD_ITEM_COMPLETED,
-    watchAction: CAT_CLICK_WATCH_ITEM,
     onRemoveItems: ItemActions.removeItems.bind(null, paneId),
     onRemoveUnder: ItemActions.removeItemsUnder,
     onCloseItem: ItemActions.removeItem,

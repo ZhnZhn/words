@@ -5,21 +5,32 @@
  ],
  "file": "../../../src/flux/stores/Store.js",
  "names": [
+  "_refluxCore",
+  "_interopRequireDefault",
+  "require",
+  "_ItemActions",
+  "_SettingActions",
+  "_WatchActions",
+  "_ItemSlice",
+  "_SettingSlice",
+  "_WithLoading",
+  "_WatchListSlice",
   "Store",
   "Reflux",
   "createStore",
   "listenables",
-  "ComponentActions",
   "ItemActions",
   "SettingActions",
   "WatchActions",
   "init",
   "initWatchList",
-  "ComponentSlice",
   "ItemSlice",
   "SettingSlice",
   "WatchListSlice",
-  "WithLoading"
+  "WithLoading",
+  "_default",
+  "exports",
+  "default"
  ],
- "mappings": ";;;;;;;;;AAAA;;AAEA;;AAGA;;AAGA;;AAGA;;AAIA;;AACA;;AACA;;AACA;;AAEA;;AAEA,IAAMA,KAAK,GAAGC,sBAAA,CAAOC,WAAP;EACZC,WAAW,EAAE,CACXC,kCADW,EAEXC,wBAFW,EAGXC,8BAHW,EAIXC,0BAJW,CADD;EAQZC,IARY,kBAQN;IACJ,KAAKC,aAAL;EACD;AAVW,GAYTC,0BAZS,EAaTC,qBAbS,EAcTC,wBAdS,EAeTC,0BAfS,EAgBTC,uBAhBS,EAAd;;eAoBed,K"
+ "mappings": ";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,YAAA,GAAAD,OAAA;AAGA,IAAAE,eAAA,GAAAF,OAAA;AAGA,IAAAG,aAAA,GAAAH,OAAA;AAIA,IAAAI,UAAA,GAAAL,sBAAA,CAAAC,OAAA;AACA,IAAAK,aAAA,GAAAN,sBAAA,CAAAC,OAAA;AACA,IAAAM,YAAA,GAAAP,sBAAA,CAAAC,OAAA;AAEA,IAAAO,eAAA,GAAAR,sBAAA,CAAAC,OAAA;AAEA,MAAMQ,KAAK,GAAGC,mBAAM,CAACC,WAAW,CAAC;EAC/BC,WAAW,EAAE,CACXC,wBAAW,EACXC,8BAAc,EACdC,0BAAY,CACb;EAEDC,IAAIA,CAAA,EAAE;IACJ,IAAI,CAACC,aAAa,CAAC,CAAC;EACtB,CAAC;EAED,GAAGC,kBAAS;EACZ,GAAGC,qBAAY;EACf,GAAGC,uBAAc;EACjB,GAAGC;AAEL,CAAC,CAAC;AAAC,IAAAC,QAAA,GAEYb,KAAK;AAAAc,OAAA,CAAAC,OAAA,GAAAF,QAAA"
 }

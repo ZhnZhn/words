@@ -1,21 +1,15 @@
 import Settings from '../stores/Settings';
-import {
-  ComponentActions
-} from './ComponentActions';
 
 import {
   showBrowser,
   showMd,
   showPane,
-  showAbout
+  showAbout,
+  clickWatchItem
 } from '../useCompStore';
 
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
-
-const {
-  clickWatchItem
-} = ComponentActions;
 
 const _fShowBrowser = id => showBrowser.bind(null, id);
 

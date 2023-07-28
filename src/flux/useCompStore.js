@@ -14,9 +14,13 @@ export const selectBrowser = state => state.browser
 export const selectAbout = state => state.about
 export const selectPane = state => state.pOption
 
+export const selectWatch = state => state.watch
+
 const _dialogInit = {};
 const _paneInit = {};
 let _isInitiedAbout = false;
+
+const DF_WATCH_PANE_ID = 'P_WD_W';
 
 export const useCompStore = create(
   subscribeWithSelector((set) => ({
@@ -40,7 +44,13 @@ export const useCompStore = create(
     about: { is: true },
     showPane: (itemConf) => set({
        about: { is: false },
-       pOption: crPaneOption(_paneInit, itemConf, useCompStore, selectPane)
+       pOption: crPaneOption(
+         _paneInit,
+         itemConf,
+         useCompStore,
+         selectPane,
+         selectWatch
+       )
     }),
     showAbout: () => set(() => {
       if (_isInitiedAbout) {
@@ -52,6 +62,12 @@ export const useCompStore = create(
       return {
         pOption: crAboutOption(useCompStore, selectAbout)
       };
+    }),
+
+    watch: void 0,
+    clickWatchItem: (item) => set(() => {
+      item.id = item.id || DF_WATCH_PANE_ID
+      return { watch: { item }};
     })
 
   }))
@@ -64,3 +80,5 @@ export const showBrowser = _compStore.showBrowser
 
 export const showPane = _compStore.showPane
 export const showAbout = _compStore.showAbout
+
+export const clickWatchItem = _compStore.clickWatchItem

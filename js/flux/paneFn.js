@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.crPaneOption = exports.crAboutOption = void 0;
 var _Factory = require("./logic/Factory");
 var _Store = _interopRequireDefault(require("./stores/Store"));
-const crPaneOption = (slice, itemConf, compStore, selectPane) => {
+const crPaneOption = (slice, itemConf, compStore, selectPane, selectWatch) => {
   const {
     type,
     paneId
@@ -15,7 +15,7 @@ const crPaneOption = (slice, itemConf, compStore, selectPane) => {
       id: paneId
     };
   } else {
-    const Comp = (0, _Factory.crPane)(itemConf, _Store.default, compStore, selectPane);
+    const Comp = (0, _Factory.crPane)(itemConf, _Store.default, compStore, selectPane, selectWatch);
     slice[type] = true;
     return {
       Comp

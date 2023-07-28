@@ -9,7 +9,8 @@ export const crPaneOption = (
   slice,
   itemConf,
   compStore,
-  selectPane
+  selectPane,
+  selectWatch
 ) => {
     const {
       type,
@@ -18,7 +19,13 @@ export const crPaneOption = (
     if (slice[type]){
       return { id: paneId };
     } else {
-      const Comp = crPane(itemConf, Store, compStore, selectPane);
+      const Comp = crPane(
+        itemConf,
+        Store,
+        compStore,
+        selectPane,
+        selectWatch
+      );
       slice[type] = true;
       return { Comp };
     }
