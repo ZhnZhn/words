@@ -11,11 +11,6 @@ var _ItemActions = require("../actions/ItemActions");
 var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
 var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterPane"));
 var _About = _interopRequireDefault(require("../../components/about/About"));
-const {
-  showPane,
-  closePane
-} = _ComponentActions.ComponentActions;
-const _addToWatch = _useCompStore.showMd.bind(null, 'AW');
 const _loadItem = (0, _throttleFn.default)(_ItemActions.ItemActions.loadItem, 2500);
 const crDialog = itemConf => {
   const {
@@ -29,12 +24,12 @@ const crDialog = itemConf => {
     type: type,
     itemConf: itemConf,
     ...dialogProps,
-    onShow: showPane.bind(null, itemConf),
+    onShow: _useCompStore.showPane.bind(null, itemConf),
     onLoad: _loadItem
   });
 };
 exports.crDialog = crDialog;
-const crPane = (itemConf, store) => {
+const crPane = (itemConf, store, compStore, selectPane) => {
   const {
       type,
       paneType,
@@ -52,27 +47,25 @@ const crPane = (itemConf, store) => {
     itemConf: itemConf,
     paneCaption,
     store,
+    compStore,
+    selectPane,
     Input,
     Item,
     updateAction: _ItemActions.IAT_LOAD_ITEM_COMPLETED,
-    showAction: _ComponentActions.CAT_SHOW_PANE,
-    toggleAction: _ComponentActions.CAT_TOGGLE_PANE,
     watchAction: _ComponentActions.CAT_CLICK_WATCH_ITEM,
     onRemoveItems: _ItemActions.ItemActions.removeItems.bind(null, paneId),
     onRemoveUnder: _ItemActions.ItemActions.removeItemsUnder,
     onCloseItem: _ItemActions.ItemActions.removeItem,
-    onClose: closePane.bind(null, itemConf),
     onLoad: _loadItem,
-    onAddToWatch: _addToWatch
+    onAddToWatch: _useCompStore.showMd.bind(null, 'AW')
   });
 };
 exports.crPane = crPane;
-const crAbout = store => (0, _uiApi.createElement)(_About.default, {
+const crAbout = (store, selectAbout) => (0, _uiApi.createElement)(_About.default, {
   key: 'About',
   id: 'About',
-  showAction: _ComponentActions.CAT_SHOW_ABOUT,
-  closeAction: _ComponentActions.CAT_CLOSE_ABOUT,
-  store
+  store,
+  selectAbout
 });
 exports.crAbout = crAbout;
 //# sourceMappingURL=Factory.js.map

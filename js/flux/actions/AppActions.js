@@ -9,16 +9,13 @@ var _useCompStore = require("../useCompStore");
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
 const {
-  showPane,
-  showAbout,
-  changeTheme,
   clickWatchItem
 } = _ComponentActions.ComponentActions;
 const _fShowBrowser = id => _useCompStore.showBrowser.bind(null, id);
 const AppActions = {
-  showAbout,
+  showAbout: _useCompStore.showAbout,
   headerActions: {
-    onDefinition: showPane.bind(null, {
+    onDefinition: _useCompStore.showPane.bind(null, {
       paneCaption: "Word Definition",
       type: "WD_W",
       paneId: "P_WD_W"
@@ -26,11 +23,10 @@ const AppActions = {
     onSources: _fShowBrowser(WORDS_BROWSER_ID),
     onWatch: _fShowBrowser(WATCH_BROWSER_ID),
     onSettings: _useCompStore.showMd.bind(null, "SETTINGS", _Settings.default.settingFn()),
-    onAbout: showAbout,
-    onChangeTheme: changeTheme
+    onAbout: _useCompStore.showAbout
   },
   browserActions: {
-    onClickItem: showPane,
+    onClickItem: _useCompStore.showPane,
     onClickWatchItem: clickWatchItem
   }
 };

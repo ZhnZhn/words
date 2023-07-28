@@ -5,16 +5,15 @@ import {
 
 import {
   showBrowser,
-  showMd
+  showMd,
+  showPane,
+  showAbout
 } from '../useCompStore';
 
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
 
 const {
-  showPane,
-  showAbout,
-  changeTheme,
   clickWatchItem
 } = ComponentActions;
 
@@ -30,12 +29,12 @@ const AppActions = {
       paneId: "P_WD_W"
     }),
     onSources: _fShowBrowser(WORDS_BROWSER_ID),
-    onWatch:  _fShowBrowser(WATCH_BROWSER_ID),
-    onSettings: showMd.bind(
-      null, "SETTINGS", Settings.settingFn()
+    onWatch: _fShowBrowser(WATCH_BROWSER_ID),
+    onSettings: showMd.bind(null,
+      "SETTINGS",
+      Settings.settingFn()
     ),
-    onAbout: showAbout,
-    onChangeTheme: changeTheme
+    onAbout: showAbout
   },
 
   browserActions: {

@@ -1,0 +1,30 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/paneFn.js"
+ ],
+ "file": "../../src/flux/paneFn.js",
+ "names": [
+  "_Factory",
+  "require",
+  "_Store",
+  "_interopRequireDefault",
+  "crPaneOption",
+  "slice",
+  "itemConf",
+  "compStore",
+  "selectPane",
+  "type",
+  "paneId",
+  "id",
+  "Comp",
+  "crPane",
+  "Store",
+  "exports",
+  "crAboutOption",
+  "store",
+  "selectAbout",
+  "crAbout"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AAKA,IAAAC,MAAA,GAAAC,sBAAA,CAAAF,OAAA;AAEO,MAAMG,YAAY,GAAGA,CAC1BC,KAAK,EACLC,QAAQ,EACRC,SAAS,EACTC,UAAU,KACP;EACD,MAAM;IACJC,IAAI;IACJC;EACF,CAAC,GAAGJ,QAAQ;EACZ,IAAID,KAAK,CAACI,IAAI,CAAC,EAAC;IACd,OAAO;MAAEE,EAAE,EAAED;IAAO,CAAC;EACvB,CAAC,MAAM;IACL,MAAME,IAAI,GAAG,IAAAC,eAAM,EAACP,QAAQ,EAAEQ,cAAK,EAAEP,SAAS,EAAEC,UAAU,CAAC;IAC3DH,KAAK,CAACI,IAAI,CAAC,GAAG,IAAI;IAClB,OAAO;MAAEG;IAAK,CAAC;EACjB;AACJ,CAAC;AAAAG,OAAA,CAAAX,YAAA,GAAAA,YAAA;AAEM,MAAMY,aAAa,GAAGA,CAC3BC,KAAK,EACLC,WAAW,KACR;EACH,MAAMN,IAAI,GAAG,IAAAO,gBAAO,EAACF,KAAK,EAAEC,WAAW,CAAC;EACxC,OAAO;IAAEN;EAAK,CAAC;AACjB,CAAC;AAAAG,OAAA,CAAAC,aAAA,GAAAA,aAAA"
+}

@@ -2,15 +2,13 @@ import { createElement } from '../../components/uiApi';
 
 import throttleFn from '../../utils/throttleFn';
 
-import { showMd } from '../useCompStore';
+import {
+  showMd,
+  showPane
+} from '../useCompStore';
 
 import {
-  CAT_SHOW_PANE,
-  CAT_TOGGLE_PANE,
-  CAT_SHOW_ABOUT,
-  CAT_CLOSE_ABOUT,
-  CAT_CLICK_WATCH_ITEM,
-  ComponentActions
+  CAT_CLICK_WATCH_ITEM
 } from '../actions/ComponentActions';
 import {
   IAT_LOAD_ITEM_COMPLETED,
@@ -20,13 +18,6 @@ import {
 import RouterDialog from '../../components/dialogs/RouterDialog';
 import RouterPane from '../../components/panes/RouterPane';
 import About from '../../components/about/About';
-
-const {
-  showPane,
-  closePane
-} = ComponentActions;
-
-const _addToWatch = showMd.bind(null, 'AW')
 
 const _loadItem = throttleFn(
   ItemActions.loadItem,
@@ -54,7 +45,9 @@ export const crDialog = (
 
 export const crPane = (
   itemConf,
-  store
+  store,
+  compStore,
+  selectPane
 ) => {
   const {
     type,
@@ -73,27 +66,26 @@ export const crPane = (
     itemConf: itemConf,
     paneCaption,
     store,
+    compStore,
+    selectPane,
     Input,
     Item,
     updateAction: IAT_LOAD_ITEM_COMPLETED,
-    showAction: CAT_SHOW_PANE,
-    toggleAction: CAT_TOGGLE_PANE,
     watchAction: CAT_CLICK_WATCH_ITEM,
     onRemoveItems: ItemActions.removeItems.bind(null, paneId),
     onRemoveUnder: ItemActions.removeItemsUnder,
     onCloseItem: ItemActions.removeItem,
-    onClose: closePane.bind(null, itemConf),
     onLoad: _loadItem,
-    onAddToWatch: _addToWatch
+    onAddToWatch: showMd.bind(null, 'AW')
   });
 }
 
 export const crAbout = (
-  store
+  store,
+  selectAbout
 ) => createElement(About, {
   key: 'About',
   id: 'About',
-  showAction: CAT_SHOW_ABOUT,
-  closeAction: CAT_CLOSE_ABOUT,
-  store
+  store,
+  selectAbout
 })
