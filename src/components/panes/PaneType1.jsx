@@ -115,9 +115,9 @@ const PaneType1 = ({
   store,
   compStore,
   selectPane,
+  selectWatch,
 
   updateAction,
-  watchAction,
 
   paneCaption,
   Input,
@@ -185,6 +185,12 @@ const PaneType1 = ({
       toggleIsShow(true)
     }
   })
+  useSubscribe(compStore, selectWatch, (option) => {
+    const { item } = option || {}
+    if (item && item.id === id) {
+      setWord(item.caption)
+    }
+  })
 
   useListen(store, (actionType, option={}) => {
     if (option.id === id){
@@ -197,10 +203,7 @@ const PaneType1 = ({
         case toggleAction:
           toggleIsShow()
           break;
-        */  
-        case watchAction:
-          setWord(option.caption)
-          break;
+        */
         default:
           return;
       }
@@ -281,9 +284,7 @@ PaneType1.propTypes = {
   }),
 
   id: PropTypes.string,
-  addAction: PropTypes.string,
-  showAction: PropTypes.string,
-  toggleAction: PropTypes.string
+  updateAction: PropTypes.string,
   Input: PropTypes.element,
 
   itemConf: PropTypes.object,

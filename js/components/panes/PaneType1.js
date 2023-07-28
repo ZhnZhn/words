@@ -99,9 +99,8 @@ const PaneType1 = _ref2 => {
     store,
     compStore,
     selectPane,
+    selectWatch,
     updateAction,
-    toggleAction,
-    watchAction,
     paneCaption,
     Input,
     Item,
@@ -149,6 +148,14 @@ const PaneType1 = _ref2 => {
       toggleIsShow(true);
     }
   });
+  (0, _useSubscribe.default)(compStore, selectWatch, option => {
+    const {
+      item
+    } = option || {};
+    if (item && item.id === id) {
+      setWord(item.caption);
+    }
+  });
   (0, _useListen.default)(store, function (actionType, option) {
     if (option === void 0) {
       option = {};
@@ -160,16 +167,10 @@ const PaneType1 = _ref2 => {
           setConfigs([...option.configs]);
           break;
         /*
-        case showAction:
-          toggleIsShow(true)
+        case toggleAction:
+          toggleIsShow()
           break;
         */
-        case toggleAction:
-          toggleIsShow();
-          break;
-        case watchAction:
-          setWord(option.caption);
-          break;
         default:
           return;
       }
@@ -238,9 +239,7 @@ PaneType1.propTypes = {
   }),
 
   id: PropTypes.string,
-  addAction: PropTypes.string,
-  showAction: PropTypes.string,
-  toggleAction: PropTypes.string
+  updateAction: PropTypes.string,
   Input: PropTypes.element,
 
   itemConf: PropTypes.object,
