@@ -1,5 +1,4 @@
 import {
-  CAT_SHOW_DIALOG,
   CAT_SHOW_PANE,
   CAT_SHOW_ABOUT,
   CAT_CLOSE_ABOUT,
@@ -7,25 +6,11 @@ import {
 } from '../actions/ComponentActions';
 
 import {
-  crDialog,
   crPane,
   crAbout
 } from '../logic/Factory';
 
 const DF_WATCH_PANE_ID = 'P_WD_W';
-
-const DialogLogic = {
-  showDialog(slice, itemConf){
-    const { type } = itemConf;
-    if (slice[type]) {
-      return { key: type };
-    } else {
-      const Comp = crDialog(itemConf);
-      slice[type] = true
-      return { key: type, Comp };
-    }
-  }
-};
 
 const PaneLogic = {
   showPane(slice, itemConf, store){
@@ -48,13 +33,7 @@ const CompLogic = {
 };
 
 const ComponentSlice = {
-  dialogInit: {},
   paneInit: {},
-    
-  onShowDialog(itemConf, event){
-    const r = DialogLogic.showDialog(this.dialogInit, itemConf);
-    this.trigger(CAT_SHOW_DIALOG, r)
-  },
 
   onShowPane(itemConf){
     const pane = PaneLogic.showPane(this.paneInit, itemConf, this);

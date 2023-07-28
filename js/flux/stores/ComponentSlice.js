@@ -5,25 +5,6 @@ exports.default = void 0;
 var _ComponentActions = require("../actions/ComponentActions");
 var _Factory = require("../logic/Factory");
 const DF_WATCH_PANE_ID = 'P_WD_W';
-const DialogLogic = {
-  showDialog(slice, itemConf) {
-    const {
-      type
-    } = itemConf;
-    if (slice[type]) {
-      return {
-        key: type
-      };
-    } else {
-      const Comp = (0, _Factory.crDialog)(itemConf);
-      slice[type] = true;
-      return {
-        key: type,
-        Comp
-      };
-    }
-  }
-};
 const PaneLogic = {
   showPane(slice, itemConf, store) {
     const {
@@ -52,12 +33,7 @@ const CompLogic = {
   }
 };
 const ComponentSlice = {
-  dialogInit: {},
   paneInit: {},
-  onShowDialog(itemConf, event) {
-    const r = DialogLogic.showDialog(this.dialogInit, itemConf);
-    this.trigger(_ComponentActions.CAT_SHOW_DIALOG, r);
-  },
   onShowPane(itemConf) {
     const pane = PaneLogic.showPane(this.paneInit, itemConf, this);
     this.trigger(_ComponentActions.CAT_SHOW_PANE, pane);

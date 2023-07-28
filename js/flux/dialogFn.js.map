@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/dialogFn.js"
+ ],
+ "file": "../../src/flux/dialogFn.js",
+ "names": [
+  "_Factory",
+  "require",
+  "crDialogOption",
+  "slice",
+  "itemConf",
+  "type",
+  "key",
+  "Comp",
+  "crDialog",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AAEO,MAAMC,cAAc,GAAGA,CAC5BC,KAAK,EACLC,QAAQ,KACL;EACH,MAAM;IAAEC;EAAK,CAAC,GAAGD,QAAQ;EACzB,IAAID,KAAK,CAACE,IAAI,CAAC,EAAE;IACf,OAAO;MAAEC,GAAG,EAAED;IAAK,CAAC;EACtB,CAAC,MAAM;IACL,MAAME,IAAI,GAAG,IAAAC,iBAAQ,EAACJ,QAAQ,CAAC;IAC/BD,KAAK,CAACE,IAAI,CAAC,GAAG,IAAI;IAClB,OAAO;MAAEC,GAAG,EAAED,IAAI;MAAEE;IAAK,CAAC;EAC5B;AACF,CAAC;AAAAE,OAAA,CAAAP,cAAA,GAAAA,cAAA"
+}
