@@ -3,13 +3,16 @@ import {
   ComponentActions
 } from './ComponentActions';
 
+import { showMd } from '../useCompStore';
+
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
+
+
 
 const {
   showBrowser,
   showPane,
-  showModalDialog,
   showAbout,
   changeTheme,
   clickWatchItem
@@ -28,9 +31,9 @@ const AppActions = {
     }),
     onSources: _fShowBrowser(WORDS_BROWSER_ID),
     onWatch:  _fShowBrowser(WATCH_BROWSER_ID),
-    onSettings: showModalDialog.bind(
+    onSettings: showMd.bind(
       null, "SETTINGS", Settings.settingFn()
-    ),
+    ),    
     onAbout: showAbout,
     onChangeTheme: changeTheme
   },

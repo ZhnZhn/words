@@ -3,6 +3,8 @@ import {
   writeObj
 } from '../../utils/localStorageFn';
 
+import { showMd } from '../useCompStore';
+
 import {
   CAT_UPDATE_WATCH_BROWSER
 } from '../actions/ComponentActions';
@@ -20,6 +22,7 @@ import {
 } from '../actions/WatchActions';
 import WatchDefault from '../../constants/WatchDefault';
 import {
+  MD_EXCEPTION,
   MD_MSG
 }  from '../../constants/Type';
 import {
@@ -93,7 +96,7 @@ const WatchListSlice = {
        this.isWatchEdited = true;
        this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
     } else {
-      this.showAlertDialog(result);
+      showMd(MD_EXCEPTION, result)    
     }
   },
 
@@ -112,21 +115,21 @@ const WatchListSlice = {
     if (this.isWatchEdited){
       const _err = writeObj(STORAGE_KEY, this.watchList);
       if (_err) {
-       this.onShowModalDialog(MD_MSG, {
+       showMd(MD_MSG, {
           caption: DIALOG_CAPTION,
           descr: _err.message
        })
       } else {
        this.isWatchEdited = false;
        if (isShowDialog) {
-         this.onShowModalDialog(MD_MSG, {
+         showMd(MD_MSG, {
             caption: DIALOG_CAPTION,
             descr: WATCH_SAVED
          })
        }
       }
     } else {
-       this.onShowModalDialog(MD_MSG, {
+       showMd(MD_MSG, {
           caption: DIALOG_CAPTION,
           descr: WATCH_PREV
        })

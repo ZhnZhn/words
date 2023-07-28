@@ -1,13 +1,15 @@
 import {
   IAT_LOAD_ITEM_COMPLETED
 } from '../actions/ItemActions';
+
+import { showMd } from '../useCompStore';
 import {
   ComponentActions
 } from '../actions/ComponentActions';
 import {
   LPAT_LOADING,
   LPAT_LOADING_COMPLETE,
-  LPAT_LOADING_FAILED 
+  LPAT_LOADING_FAILED
 } from '../actions/LoadingActions';
 
 const _isArr = Array.isArray;
@@ -113,7 +115,7 @@ const ItemSlice = {
     this.triggerLoading(LPAT_LOADING_COMPLETE, limitRemaining)
   },
   onLoadItemFailed(option){
-    ComponentActions.showModalDialog('ALERT_DIALOG', option)
+    showMd('ALERT_DIALOG', option)
     this.triggerLoading(LPAT_LOADING_FAILED)
   },
 

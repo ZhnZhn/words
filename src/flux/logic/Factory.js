@@ -2,6 +2,8 @@ import { createElement } from '../../components/uiApi';
 
 import throttleFn from '../../utils/throttleFn';
 
+import { showMd } from '../useCompStore';
+
 import {
   CAT_SHOW_PANE,
   CAT_TOGGLE_PANE,
@@ -21,11 +23,10 @@ import About from '../../components/about/About';
 
 const {
   showPane,
-  closePane,
-  showModalDialog
+  closePane
 } = ComponentActions;
 
-const _addToWatch = showModalDialog.bind(null, 'AW')
+const _addToWatch = showMd.bind(null, 'AW')
 
 const _loadItem = throttleFn(
   ItemActions.loadItem,

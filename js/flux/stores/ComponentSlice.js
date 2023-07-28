@@ -4,7 +4,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _ComponentActions = require("../actions/ComponentActions");
 var _Factory = require("../logic/Factory");
-var _Type = require("../../constants/Type");
 const DF_WATCH_PANE_ID = 'P_WD_W';
 const DialogLogic = {
   showDialog(slice, itemConf) {
@@ -55,26 +54,12 @@ const CompLogic = {
 const ComponentSlice = {
   dialogInit: {},
   paneInit: {},
-  showAlertDialog(option) {
-    if (option === void 0) {
-      option = {};
-    }
-    option.modalDialogType = _Type.MD_EXCEPTION;
-    this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
-  },
   onShowBrowser(browserId) {
     this.trigger(_ComponentActions.CAT_SHOW_BROWSER, browserId);
   },
   onShowDialog(itemConf, event) {
     const r = DialogLogic.showDialog(this.dialogInit, itemConf);
     this.trigger(_ComponentActions.CAT_SHOW_DIALOG, r);
-  },
-  onShowModalDialog(modalDialogType, option) {
-    if (option === void 0) {
-      option = {};
-    }
-    option.modalDialogType = modalDialogType;
-    this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
   },
   onShowPane(itemConf) {
     const pane = PaneLogic.showPane(this.paneInit, itemConf, this);

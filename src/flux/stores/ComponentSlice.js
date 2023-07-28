@@ -1,7 +1,6 @@
 import {
   CAT_SHOW_BROWSER,
   CAT_SHOW_DIALOG,
-  CAT_SHOW_MODAL_DIALOG,
   CAT_SHOW_PANE,
   CAT_SHOW_ABOUT,
   CAT_CLOSE_ABOUT,
@@ -13,9 +12,6 @@ import {
   crPane,
   crAbout
 } from '../logic/Factory';
-import {
-  MD_EXCEPTION
-} from '../../constants/Type';
 
 const DF_WATCH_PANE_ID = 'P_WD_W';
 
@@ -56,11 +52,6 @@ const ComponentSlice = {
   dialogInit: {},
   paneInit: {},
 
-  showAlertDialog(option={}){
-   option.modalDialogType = MD_EXCEPTION;
-   this.trigger(CAT_SHOW_MODAL_DIALOG, option);
- },
-
   onShowBrowser(browserId) {
     this.trigger(CAT_SHOW_BROWSER, browserId)
   },
@@ -68,11 +59,6 @@ const ComponentSlice = {
   onShowDialog(itemConf, event){
     const r = DialogLogic.showDialog(this.dialogInit, itemConf);
     this.trigger(CAT_SHOW_DIALOG, r)
-  },
-
-  onShowModalDialog(modalDialogType, option={}){
-    option.modalDialogType = modalDialogType
-    this.trigger(CAT_SHOW_MODAL_DIALOG, option)
   },
 
   onShowPane(itemConf){
