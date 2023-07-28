@@ -1,6 +1,6 @@
 import useBool from '../hooks/useBool';
 
-import useListen from '../hoc/useListen';
+import useSubscribe from '../hooks/useSubscribe';
 import useTheme from '../hoc/useTheme';
 import styleConfig from './About.Style';
 
@@ -14,8 +14,7 @@ const CL_SHOW = "show-popup";
 
 const About = ({
   store,
-  showAction,
-  closeAction
+  selectAbout
 }) => {
   const [
     isShow,
@@ -23,18 +22,14 @@ const About = ({
     closeAbout
   ] = useBool(true);
 
-  useListen(store, (actionType, data) => {
-    switch(actionType){
-      case showAction:
-         showAbout()
-         break;
-      case closeAction:
-         closeAbout()
-         break;
-      default: return;
+  useSubscribe(store, selectAbout, (about) => {
+    if (about.is) {
+      showAbout()
+    } else {
+      closeAbout()
     }
   })
-
+  
   const TS = useTheme(styleConfig)
   , [
     _style,

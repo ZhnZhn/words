@@ -1,14 +1,18 @@
 import { useState } from '../uiApi';
-import useListen from '../hooks/useListen';
+
+import useSubscribe from '../hooks/useSubscribe';
 import crCn from '../zhn-utils/crCn';
-//import PropTypes from 'prop-types'
 
 const CL_DIV = "hrz-container";
 
-const _isInCont = (arrComps, comp) => {
-  const { key } = comp, _max = arrComps.length;
+const _isInCont = (
+  arrComps,
+  comp
+) => {
+  const { key } = comp
+  , _max = arrComps.length;
   let i = 0;
-  for(i;i<_max;i++) {
+  for(i; i<_max; i++) {
     if (arrComps[i].key === key) {
       return true;
     }
@@ -19,19 +23,23 @@ const _isInCont = (arrComps, comp) => {
 const HrzContainer = ({
   className,
   store,
+  selectPane,
   addAction
 }) => {
-  const [comps, setComps] = useState([]);
+  const [
+    comps,
+    setComps
+  ] = useState([]);
 
-  useListen(store, (actionType, option) => {
-     if (actionType === addAction && option && option.Comp){
-       setComps(prevComps => {
-         const comp = option.Comp;
-         return _isInCont(prevComps, comp)
-           ? prevComps
-           : [comp, ...prevComps];
-       })
-     }
+  useSubscribe(store, selectPane, (option) => {
+    if (option && option.Comp){
+      setComps(prevComps => {
+        const comp = option.Comp;
+        return _isInCont(prevComps, comp)
+          ? prevComps
+          : [comp, ...prevComps];
+      })
+    }
   })
 
   return (
@@ -40,15 +48,5 @@ const HrzContainer = ({
     </div>
   );
 };
-
-/*
-HrzContainer.propTypes = {
-  className: PropTypes.string
-  store: PropTypes.shape({
-    listen: PropTypes.func
-  }),
-  addAction: PropTypes.string
-}
-*/
 
 export default HrzContainer

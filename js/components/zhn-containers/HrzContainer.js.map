@@ -1,1 +1,43 @@
-{"version":3,"sources":["../../../src/components/zhn-containers/HrzContainer.jsx"],"names":["CL_DIV","_isInCont","arrComps","comp","key","_max","length","i","HrzContainer","state","containers","_onStore","actionType","option","props","addAction","Comp","setState","prevState","unshift","componentDidMount","unsubscribe","store","listen","componentWillUnmount","render","className","Component","defaultProps"],"mappings":";;;;;;;;;AAAA;;;;AACA;AAEA,IAAMA,MAAM,GAAG,eAAf;;AAEA,IAAMC,SAAS,GAAG,SAAZA,SAAY,CAACC,QAAD,EAAWC,IAAX,EAAoB;AAC9B,MAAEC,GAAF,GAAUD,IAAV,CAAEC,GAAF;AAAA,MAAgBC,IAAhB,GAAuBH,QAAQ,CAACI,MAAhC;AACN,MAAIC,CAAC,GAAG,CAAR;;AACA,OAAIA,CAAJ,EAAMA,CAAC,GAACF,IAAR,EAAaE,CAAC,EAAd,EAAkB;AAChB,QAAIL,QAAQ,CAACK,CAAD,CAAR,CAAYH,GAAZ,KAAoBA,GAAxB,EAA6B;AAC3B,aAAO,IAAP;AACD;AACF;;AACD,SAAO,KAAP;AACD,CATD;;IAWMI,Y;;;;;;;;;;;UAaJC,K,GAAQ;AACNC,MAAAA,UAAU,EAAE;AADN,K;;UAYRC,Q,GAAW,UAACC,UAAD,EAAaC,MAAb,EAAwB;AAChC,UAAID,UAAU,KAAK,MAAKE,KAAL,CAAWC,SAA1B,IAAuCF,MAAvC,IAAiDA,MAAM,CAACG,IAA5D,EAAiE;AAC/D,cAAKC,QAAL,CAAc,UAAAC,SAAS,EAAI;AACzB,cAAMf,IAAI,GAAGU,MAAM,CAACG,IAApB;;AACA,cAAI,CAACf,SAAS,CAACiB,SAAS,CAACR,UAAX,EAAuBP,IAAvB,CAAd,EAA4C;AAC1Ce,YAAAA,SAAS,CAACR,UAAV,CAAqBS,OAArB,CAA6BhB,IAA7B;AACD;;AACD,iBAAOe,SAAP;AACD,SAND;AAOD;AACH,K;;;;;;;SAlBDE,iB,GAAA,6BAAmB;AACjB,SAAKC,WAAL,GAAmB,KAAKP,KAAL,CAAWQ,KAAX,CAChBC,MADgB,CACT,KAAKZ,QADI,CAAnB;AAED,G;;SACDa,oB,GAAA,gCAAsB;AACpB,SAAKH,WAAL;AACD,G;;SAcDI,M,GAAA,kBAAQ;AACA,QAAEC,SAAF,GAAgB,KAAKZ,KAArB,CAAEY,SAAF;AAAA,QACEhB,UADF,GACiB,KAAKD,KADtB,CACEC,UADF;AAEN,wBACG;AAAK,MAAA,SAAS,EAAKV,MAAL,SAAe0B,SAA7B;AAAA,gBACGhB;AADH,MADH;AAKD,G;;;EA7CwBiB,gB;;AAArBnB,Y,CASGoB,Y,GAAe;AACpBF,EAAAA,SAAS,EAAE;AADS,C;eAuCTlB,Y","sourcesContent":["import { Component } from 'react'\r\n//import PropTypes from 'prop-types'\r\n\r\nconst CL_DIV = \"hrz-container\";\r\n\r\nconst _isInCont = (arrComps, comp) => {\r\n  const { key } = comp, _max = arrComps.length;\r\n  let i = 0;\r\n  for(i;i<_max;i++) {\r\n    if (arrComps[i].key === key) {\r\n      return true;\r\n    }\r\n  }\r\n  return false;\r\n};\r\n\r\nclass HrzContainer extends Component {\r\n  /*\r\n  static propTypes = {\r\n    store: PropTypes.shape({\r\n      listen: PropTypes.func\r\n    }),\r\n    addAction: PropTypes.string\r\n  }\r\n  */\r\n  static defaultProps = {\r\n    className: ''\r\n  }\r\n\r\n  state = {\r\n    containers: []\r\n  }\r\n\r\n  componentDidMount(){\r\n    this.unsubscribe = this.props.store\r\n      .listen(this._onStore)\r\n  }\r\n  componentWillUnmount(){\r\n    this.unsubscribe()\r\n  }\r\n\r\n  _onStore = (actionType, option) => {\r\n     if (actionType === this.props.addAction && option && option.Comp){\r\n       this.setState(prevState => {\r\n         const comp = option.Comp;\r\n         if (!_isInCont(prevState.containers, comp)) {\r\n           prevState.containers.unshift(comp)\r\n         }\r\n         return prevState;\r\n       })\r\n     }\r\n  }\r\n\r\n  render(){\r\n    const { className } = this.props\r\n        , { containers } = this.state;\r\n    return (\r\n       <div className={`${CL_DIV} ${className}`}>\r\n         {containers}\r\n       </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default HrzContainer\r\n"],"file":"HrzContainer.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-containers/HrzContainer.js"
+ ],
+ "file": "../../../src/components/zhn-containers/HrzContainer.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_useSubscribe",
+  "_interopRequireDefault",
+  "_crCn",
+  "_jsxRuntime",
+  "CL_DIV",
+  "_isInCont",
+  "arrComps",
+  "comp",
+  "key",
+  "_max",
+  "length",
+  "i",
+  "HrzContainer",
+  "_ref",
+  "className",
+  "store",
+  "selectPane",
+  "addAction",
+  "comps",
+  "setComps",
+  "useState",
+  "useSubscribe",
+  "option",
+  "Comp",
+  "prevComps",
+  "jsx",
+  "crCn",
+  "children",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA,IAAAC,aAAA,GAAAC,sBAAA,CAAAF,OAAA;AACA,IAAAG,KAAA,GAAAD,sBAAA,CAAAF,OAAA;AAAqC,IAAAI,WAAA,GAAAJ,OAAA;AAErC,MAAMK,MAAM,GAAG,eAAe;AAE9B,MAAMC,SAAS,GAAGA,CAChBC,QAAQ,EACRC,IAAI,KACD;EACH,MAAM;MAAEC;IAAI,CAAC,GAAGD,IAAI;IAClBE,IAAI,GAAGH,QAAQ,CAACI,MAAM;EACxB,IAAIC,CAAC,GAAG,CAAC;EACT,KAAIA,CAAC,EAAEA,CAAC,GAACF,IAAI,EAAEE,CAAC,EAAE,EAAE;IAClB,IAAIL,QAAQ,CAACK,CAAC,CAAC,CAACH,GAAG,KAAKA,GAAG,EAAE;MAC3B,OAAO,IAAI;IACb;EACF;EACA,OAAO,KAAK;AACd,CAAC;AAED,MAAMI,YAAY,GAAGC,IAAA,IAKf;EAAA,IALgB;IACpBC,SAAS;IACTC,KAAK;IACLC,UAAU;IACVC;EACF,CAAC,GAAAJ,IAAA;EACC,MAAM,CACJK,KAAK,EACLC,QAAQ,CACT,GAAG,IAAAC,eAAQ,EAAC,EAAE,CAAC;EAEhB,IAAAC,qBAAY,EAACN,KAAK,EAAEC,UAAU,EAAGM,MAAM,IAAK;IAC1C,IAAIA,MAAM,IAAIA,MAAM,CAACC,IAAI,EAAC;MACxBJ,QAAQ,CAACK,SAAS,IAAI;QACpB,MAAMjB,IAAI,GAAGe,MAAM,CAACC,IAAI;QACxB,OAAOlB,SAAS,CAACmB,SAAS,EAAEjB,IAAI,CAAC,GAC7BiB,SAAS,GACT,CAACjB,IAAI,EAAE,GAAGiB,SAAS,CAAC;MAC1B,CAAC,CAAC;IACJ;EACF,CAAC,CAAC;EAEF,OACE,IAAArB,WAAA,CAAAsB,GAAA;IAAKX,SAAS,EAAE,IAAAY,aAAI,EAACtB,MAAM,EAAEU,SAAS,CAAE;IAAAa,QAAA,EACrCT;EAAK,CACH,CAAC;AAEV,CAAC;AAAC,IAAAU,QAAA,GAEahB,YAAY;AAAAiB,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}

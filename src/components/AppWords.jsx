@@ -4,13 +4,13 @@ import { uiThemeStore } from '../flux/uiThemeStore';
 import {
   useCompStore,
   selectBrowser,
-  selectDialog
+  selectDialog,
+  selectPane
 } from '../flux/useCompStore';
 
 import ThemeContext from './hoc/ThemeContext';
 
 import {
-  CAT_SHOW_PANE,
   CAT_UPDATE_WATCH_BROWSER
 } from '../flux/actions/ComponentActions';
 
@@ -54,14 +54,14 @@ const AppWords = ({
               compStore={useCompStore}
               browserId={WORDS_BROWSER_ID}
               selectBrowser={selectBrowser}
-              selectDialog={selectDialog}            
+              selectDialog={selectDialog}
               updateWatchAction={CAT_UPDATE_WATCH_BROWSER}
               {...browserActions}
            />
            <HrzContainer
               className={CL_ITEMS}
-              store={store}
-              addAction={CAT_SHOW_PANE}
+              store={useCompStore}
+              selectPane={selectPane}            
            />
         </div>
         <ModalDialogContainer

@@ -1,1 +1,31 @@
-{"version":3,"sources":["../../../src/components/panes/RouterPane.js"],"names":["R","DF","Pane","PaneType1","Input","InputWord","Item","Word","InputRandom","RouterPane","getElement","type"],"mappings":";;;;;;;AACA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,EAAE,EAAE;AACFC,IAAAA,IAAI,EAAEC,oBADJ;AAEFC,IAAAA,KAAK,EAAEC,qBAFL;AAGFC,IAAAA,IAAI,EAAEC;AAHJ,GADI;AAMRP,EAAAA,CAAC,EAAE;AACDE,IAAAA,IAAI,EAAEC,oBADL;AAEDC,IAAAA,KAAK,EAAEI,uBAFN;AAGDF,IAAAA,IAAI,EAAEC;AAHL;AANK,CAAV;AAaA,IAAME,UAAU,GAAG;AACjBC,EAAAA,UAAU,EAAE,oBAACC,IAAD,EAAU;AACpB,WAAOX,CAAC,CAACW,IAAD,CAAD,IAAWX,CAAC,CAACC,EAApB;AACD;AAHgB,CAAnB;eAMeQ,U","sourcesContent":["\r\nimport PaneType1 from './PaneType1'\r\n\r\nimport Word from '../items/word/Word'\r\nimport InputWord from './InputWord'\r\nimport InputRandom from './InputRandom'\r\n\r\nconst R = {\r\n  DF: {\r\n    Pane: PaneType1,\r\n    Input: InputWord,\r\n    Item: Word\r\n  },\r\n  R: {\r\n    Pane: PaneType1,\r\n    Input: InputRandom,\r\n    Item: Word\r\n  }\r\n};\r\n\r\nconst RouterPane = {\r\n  getElement: (type) => {    \r\n    return R[type] || R.DF;\r\n  }\r\n};\r\n\r\nexport default RouterPane\r\n"],"file":"RouterPane.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/RouterPane.js"
+ ],
+ "file": "../../../src/components/panes/RouterPane.js",
+ "names": [
+  "_PaneType",
+  "_interopRequireDefault",
+  "require",
+  "_Word",
+  "_InputWord",
+  "_InputRandom",
+  "R",
+  "DF",
+  "Pane",
+  "PaneType1",
+  "Input",
+  "InputWord",
+  "Item",
+  "Word",
+  "InputRandom",
+  "RouterPane",
+  "getElement",
+  "type",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,SAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,KAAA,GAAAF,sBAAA,CAAAC,OAAA;AACA,IAAAE,UAAA,GAAAH,sBAAA,CAAAC,OAAA;AACA,IAAAG,YAAA,GAAAJ,sBAAA,CAAAC,OAAA;AAEA,MAAMI,CAAC,GAAG;EACRC,EAAE,EAAE;IACFC,IAAI,EAAEC,iBAAS;IACfC,KAAK,EAAEC,kBAAS;IAChBC,IAAI,EAAEC;EACR,CAAC;EACDP,CAAC,EAAE;IACDE,IAAI,EAAEC,iBAAS;IACfC,KAAK,EAAEI,oBAAW;IAClBF,IAAI,EAAEC;EACR;AACF,CAAC;AAED,MAAME,UAAU,GAAG;EACjBC,UAAU,EAAGC,IAAI,IAAKA,IAAI,IAAIX,CAAC,CAACW,IAAI,CAAC,IAAIX,CAAC,CAACC;AAC7C,CAAC;AAAC,IAAAW,QAAA,GAEaH,UAAU;AAAAI,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}

@@ -1,9 +1,8 @@
+import PaneType1 from './PaneType1';
 
-import PaneType1 from './PaneType1'
-
-import Word from '../items/word/Word'
-import InputWord from './InputWord'
-import InputRandom from './InputRandom'
+import Word from '../items/word/Word';
+import InputWord from './InputWord';
+import InputRandom from './InputRandom';
 
 const R = {
   DF: {
@@ -19,9 +18,7 @@ const R = {
 };
 
 const RouterPane = {
-  getElement: (type) => {    
-    return R[type] || R.DF;
-  }
+  getElement: (type) => type && R[type] || R.DF
 };
 
 export default RouterPane

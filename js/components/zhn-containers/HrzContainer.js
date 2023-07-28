@@ -1,90 +1,47 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-//import PropTypes from 'prop-types'
-var CL_DIV = "hrz-container";
-
-var _isInCont = function _isInCont(arrComps, comp) {
-  var key = comp.key,
-      _max = arrComps.length;
-  var i = 0;
-
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_DIV = "hrz-container";
+const _isInCont = (arrComps, comp) => {
+  const {
+      key
+    } = comp,
+    _max = arrComps.length;
+  let i = 0;
   for (i; i < _max; i++) {
     if (arrComps[i].key === key) {
       return true;
     }
   }
-
   return false;
 };
-
-var HrzContainer = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(HrzContainer, _Component);
-
-  function HrzContainer() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+const HrzContainer = _ref => {
+  let {
+    className,
+    store,
+    selectPane,
+    addAction
+  } = _ref;
+  const [comps, setComps] = (0, _uiApi.useState)([]);
+  (0, _useSubscribe.default)(store, selectPane, option => {
+    if (option && option.Comp) {
+      setComps(prevComps => {
+        const comp = option.Comp;
+        return _isInCont(prevComps, comp) ? prevComps : [comp, ...prevComps];
+      });
     }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      containers: []
-    };
-
-    _this._onStore = function (actionType, option) {
-      if (actionType === _this.props.addAction && option && option.Comp) {
-        _this.setState(function (prevState) {
-          var comp = option.Comp;
-
-          if (!_isInCont(prevState.containers, comp)) {
-            prevState.containers.unshift(comp);
-          }
-
-          return prevState;
-        });
-      }
-    };
-
-    return _this;
-  }
-
-  var _proto = HrzContainer.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = this.props.store.listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var className = this.props.className,
-        containers = this.state.containers;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: CL_DIV + " " + className,
-      children: containers
-    });
-  };
-
-  return HrzContainer;
-}(_react.Component);
-
-HrzContainer.defaultProps = {
-  className: ''
+  });
+  return (0, _jsxRuntime.jsx)("div", {
+    className: (0, _crCn.default)(CL_DIV, className),
+    children: comps
+  });
 };
 var _default = HrzContainer;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=HrzContainer.js.map

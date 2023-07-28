@@ -2,73 +2,67 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
-var _useListen = _interopRequireDefault(require("../hoc/useListen"));
+exports.default = void 0;
+var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _About = _interopRequireDefault(require("./About.Style"));
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 var _Links = _interopRequireDefault(require("../links/Links"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 var _ContainerStyle = require("../styles/ContainerStyle");
-var _jsxRuntime = require("react/jsx-runtime");
-var CL_SHOW = "show-popup";
-var About = function About(_ref) {
-  var store = _ref.store,
-    showAction = _ref.showAction,
-    closeAction = _ref.closeAction;
-  var _useBool = (0, _useBool2["default"])(true),
-    isShow = _useBool[0],
-    showAbout = _useBool[1],
-    closeAbout = _useBool[2];
-  (0, _useListen["default"])(store, function (actionType, data) {
-    switch (actionType) {
-      case showAction:
-        showAbout();
-        break;
-      case closeAction:
-        closeAbout();
-        break;
-      default:
-        return;
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_SHOW = "show-popup";
+const About = _ref => {
+  let {
+    store,
+    selectAbout
+  } = _ref;
+  const [isShow, showAbout, closeAbout] = (0, _useBool.default)(true);
+  (0, _useSubscribe.default)(store, selectAbout, about => {
+    if (about.is) {
+      showAbout();
+    } else {
+      closeAbout();
     }
   });
-  var TS = (0, _useTheme["default"])(_About["default"]),
-    _ref2 = isShow ? [TS.BLOCK, CL_SHOW] : [TS.NONE],
-    _style = _ref2[0],
-    _className = _ref2[1];
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  const TS = (0, _useTheme.default)(_About.default),
+    [_style, _className] = isShow ? [TS.BLOCK, CL_SHOW] : [TS.NONE];
+  return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _ContainerStyle.S_ABOUT, _style, TS.ROOT),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].BrowserCaption, {
+    style: {
+      ..._ContainerStyle.S_ABOUT,
+      ..._style,
+      ...TS.ROOT
+    },
+    children: [(0, _jsxRuntime.jsx)(_Atoms.default.BrowserCaption, {
       rootStyle: TS.BROWSER_CAPTION,
       caption: "About",
       onClose: closeAbout
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ScrollPane, {
+    }), (0, _jsxRuntime.jsx)(_Atoms.default.ScrollPane, {
       className: TS.CL_SCROLL_PANE,
       style: TS.SCROLL_DIV,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: (0, _jsxRuntime.jsxs)("div", {
         style: TS.DIV_WRAPPER,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [(0, _jsxRuntime.jsxs)("div", {
           style: TS.DIV_TEXT,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
-            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          children: [(0, _jsxRuntime.jsxs)("p", {
+            children: [(0, _jsxRuntime.jsx)("span", {
               style: TS.APP_TITLE,
               children: "Words"
             }), " is web app, RESTful client."]
-          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
-            children: ["Words data provider ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_Links["default"].WordsApi, {}), " via ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_Links["default"].RapidApi, {})]
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          }), (0, _jsxRuntime.jsxs)("p", {
+            children: ["Words data provider ", (0, _jsxRuntime.jsx)(_Links.default.WordsApi, {}), " via ", (0, _jsxRuntime.jsx)(_Links.default.RapidApi, {})]
+          }), (0, _jsxRuntime.jsx)("p", {
             style: TS.PADDING_TOP,
             children: "Provider's API Key is required for using app."
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          }), (0, _jsxRuntime.jsx)("p", {
             children: "API Key can be set in Settings Dialog [s]."
           })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconLogoBar["default"], {
+        }), (0, _jsxRuntime.jsx)(_IconLogoBar.default, {
           iconStyle: TS.ICON,
           iconGitHubStyle: TS.ICON_GITHUB
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+        }), (0, _jsxRuntime.jsx)("p", {
           style: TS.BLACK,
           children: "*Logos Fair Use."
         })]
@@ -77,5 +71,5 @@ var About = function About(_ref) {
   });
 };
 var _default = About;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=About.js.map
