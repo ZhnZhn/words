@@ -9,13 +9,12 @@ var _useCompStore = require("../useCompStore");
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
 const {
-  showBrowser,
   showPane,
   showAbout,
   changeTheme,
   clickWatchItem
 } = _ComponentActions.ComponentActions;
-const _fShowBrowser = id => showBrowser.bind(null, id);
+const _fShowBrowser = id => _useCompStore.showBrowser.bind(null, id);
 const AppActions = {
   showAbout,
   headerActions: {

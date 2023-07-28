@@ -54,9 +54,6 @@ const CompLogic = {
 const ComponentSlice = {
   dialogInit: {},
   paneInit: {},
-  onShowBrowser(browserId) {
-    this.trigger(_ComponentActions.CAT_SHOW_BROWSER, browserId);
-  },
   onShowDialog(itemConf, event) {
     const r = DialogLogic.showDialog(this.dialogInit, itemConf);
     this.trigger(_ComponentActions.CAT_SHOW_DIALOG, r);

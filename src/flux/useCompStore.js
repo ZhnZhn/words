@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
-export const selectMdOption = state => state.mdOption;
+export const selectMdOption = state => state.mdOption
+export const selectBrowser = state => state.browser
 
 export const useCompStore = create(
   subscribeWithSelector((set) => ({
@@ -11,8 +12,14 @@ export const useCompStore = create(
         ...option,
         modalDialogType: mdType
       }
-    }))
+    })),
+
+    browser: { id: void 0},
+    showBrowser: (id) => set({ browser: { id } })
+
   }))
 );
 
-export const showMd = useCompStore.getState().showMd
+const _compStore = useCompStore.getState();
+export const showMd = _compStore.showMd
+export const showBrowser = _compStore.showBrowser

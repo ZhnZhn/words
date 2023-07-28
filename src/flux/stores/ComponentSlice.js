@@ -1,5 +1,4 @@
 import {
-  CAT_SHOW_BROWSER,
   CAT_SHOW_DIALOG,
   CAT_SHOW_PANE,
   CAT_SHOW_ABOUT,
@@ -51,11 +50,7 @@ const CompLogic = {
 const ComponentSlice = {
   dialogInit: {},
   paneInit: {},
-
-  onShowBrowser(browserId) {
-    this.trigger(CAT_SHOW_BROWSER, browserId)
-  },
-
+    
   onShowDialog(itemConf, event){
     const r = DialogLogic.showDialog(this.dialogInit, itemConf);
     this.trigger(CAT_SHOW_DIALOG, r)

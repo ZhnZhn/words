@@ -3,15 +3,15 @@ import {
   ComponentActions
 } from './ComponentActions';
 
-import { showMd } from '../useCompStore';
+import {
+  showBrowser,
+  showMd
+} from '../useCompStore';
 
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
 
-
-
 const {
-  showBrowser,
   showPane,
   showAbout,
   changeTheme,
@@ -33,7 +33,7 @@ const AppActions = {
     onWatch:  _fShowBrowser(WATCH_BROWSER_ID),
     onSettings: showMd.bind(
       null, "SETTINGS", Settings.settingFn()
-    ),    
+    ),
     onAbout: showAbout,
     onChangeTheme: changeTheme
   },
