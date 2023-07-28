@@ -4,7 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _About = _interopRequireDefault(require("./About.Style"));
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
@@ -15,11 +14,10 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SHOW = "show-popup";
 const About = _ref => {
   let {
-    store,
-    selectAbout
+    useAbout
   } = _ref;
   const [isShow, showAbout, closeAbout] = (0, _useBool.default)(true);
-  (0, _useSubscribe.default)(store, selectAbout, about => {
+  useAbout(about => {
     if (about.is) {
       showAbout();
     } else {

@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
-var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _Pane = _interopRequireDefault(require("./Pane.Style"));
@@ -97,9 +96,8 @@ const PaneType1 = _ref2 => {
   let {
     id,
     store,
-    compStore,
-    selectPane,
-    selectWatch,
+    usePane,
+    useWatch,
     updateAction,
     paneCaption,
     Input,
@@ -143,12 +141,12 @@ const PaneType1 = _ref2 => {
       });
     }, [itemConf, onLoad]),
     TS = (0, _useTheme.default)(_Pane.default);
-  (0, _useSubscribe.default)(compStore, selectPane, pOption => {
-    if (pOption.id === id) {
+  usePane(pOption => {
+    if (pOption && pOption.id === id) {
       toggleIsShow(true);
     }
   });
-  (0, _useSubscribe.default)(compStore, selectWatch, option => {
+  useWatch(option => {
     const {
       item
     } = option || {};

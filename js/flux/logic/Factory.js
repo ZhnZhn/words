@@ -4,12 +4,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.crPane = exports.crDialog = exports.crAbout = void 0;
 var _uiApi = require("../../components/uiApi");
+var _useSubscribe = _interopRequireDefault(require("../../components/hooks/useSubscribe"));
 var _throttleFn = _interopRequireDefault(require("../../utils/throttleFn"));
 var _useCompStore = require("../useCompStore");
 var _ItemActions = require("../actions/ItemActions");
 var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
 var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterPane"));
 var _About = _interopRequireDefault(require("../../components/about/About"));
+const _fCrUse = (store, select) => _useSubscribe.default.bind(null, store, select);
 const _loadItem = (0, _throttleFn.default)(_ItemActions.ItemActions.loadItem, 2500);
 const crDialog = itemConf => {
   const {
@@ -46,9 +48,8 @@ const crPane = (itemConf, store, compStore, selectPane, selectWatch) => {
     itemConf: itemConf,
     paneCaption,
     store,
-    compStore,
-    selectPane,
-    selectWatch,
+    usePane: _fCrUse(compStore, selectPane),
+    useWatch: _fCrUse(compStore, selectWatch),
     Input,
     Item,
     updateAction: _ItemActions.IAT_LOAD_ITEM_COMPLETED,
@@ -63,8 +64,7 @@ exports.crPane = crPane;
 const crAbout = (store, selectAbout) => (0, _uiApi.createElement)(_About.default, {
   key: 'About',
   id: 'About',
-  store,
-  selectAbout
+  useAbout: _fCrUse(store, selectAbout)
 });
 exports.crAbout = crAbout;
 //# sourceMappingURL=Factory.js.map

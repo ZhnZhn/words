@@ -1,6 +1,5 @@
 import useBool from '../hooks/useBool';
 
-import useSubscribe from '../hooks/useSubscribe';
 import useTheme from '../hoc/useTheme';
 import styleConfig from './About.Style';
 
@@ -13,8 +12,7 @@ import { S_ABOUT } from '../styles/ContainerStyle';
 const CL_SHOW = "show-popup";
 
 const About = ({
-  store,
-  selectAbout
+  useAbout
 }) => {
   const [
     isShow,
@@ -22,14 +20,14 @@ const About = ({
     closeAbout
   ] = useBool(true);
 
-  useSubscribe(store, selectAbout, (about) => {
+  useAbout(about => {
     if (about.is) {
       showAbout()
     } else {
       closeAbout()
     }
   })
-  
+
   const TS = useTheme(styleConfig)
   , [
     _style,

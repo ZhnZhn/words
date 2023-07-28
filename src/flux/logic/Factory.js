@@ -1,4 +1,5 @@
 import { createElement } from '../../components/uiApi';
+import useSubscribe from '../../components/hooks/useSubscribe';
 
 import throttleFn from '../../utils/throttleFn';
 
@@ -15,6 +16,11 @@ import {
 import RouterDialog from '../../components/dialogs/RouterDialog';
 import RouterPane from '../../components/panes/RouterPane';
 import About from '../../components/about/About';
+
+const _fCrUse = (
+  store,
+  select
+) => useSubscribe.bind(null, store, select);
 
 const _loadItem = throttleFn(
   ItemActions.loadItem,
@@ -64,9 +70,8 @@ export const crPane = (
     itemConf: itemConf,
     paneCaption,
     store,
-    compStore,
-    selectPane,
-    selectWatch,
+    usePane: _fCrUse(compStore, selectPane),
+    useWatch: _fCrUse(compStore, selectWatch),
     Input,
     Item,
     updateAction: IAT_LOAD_ITEM_COMPLETED,
@@ -84,6 +89,5 @@ export const crAbout = (
 ) => createElement(About, {
   key: 'About',
   id: 'About',
-  store,
-  selectAbout
+  useAbout: _fCrUse(store, selectAbout)
 })

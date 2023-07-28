@@ -10,7 +10,6 @@ import {
 
 import useToggle from '../hooks/useToggle';
 import useListen from '../hooks/useListen';
-import useSubscribe from '../hooks/useSubscribe';
 
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 import useTheme from '../hoc/useTheme';
@@ -113,9 +112,8 @@ const DF_WORD = 'example'
 const PaneType1 = ({
   id,
   store,
-  compStore,
-  selectPane,
-  selectWatch,
+  usePane,
+  useWatch,
 
   updateAction,
 
@@ -180,13 +178,13 @@ const PaneType1 = ({
   }, [itemConf, onLoad])
   , TS = useTheme(styleConfig);
 
-  useSubscribe(compStore, selectPane, (pOption) => {
-    if (pOption.id === id) {
+  usePane(pOption => {
+    if (pOption && pOption.id === id) {
       toggleIsShow(true)
     }
   })
-  useSubscribe(compStore, selectWatch, (option) => {
-    const { item } = option || {}
+  useWatch(option => {
+    const { item } = option || {};
     if (item && item.id === id) {
       setWord(item.caption)
     }
