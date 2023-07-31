@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
+import fCrUse from './fCrUse';
 import { crDialogOption } from './dialogFn';
 import {
   ABOUT_PANE_ID,
@@ -9,7 +10,6 @@ import {
 
 export const selectMdOption = state => state.mdOption
 export const selectDialog = state => state.dOption
-export const selectBrowser = state => state.browser
 export const selectPane = state => state.pOption
 export const selectWatch = state => state.watch
 
@@ -52,6 +52,9 @@ export const useCompStore = create(
 
   }))
 );
+
+const _selectBrowser = state => state.browser;
+export const useBrowser = fCrUse(useCompStore, _selectBrowser)
 
 const _compStore = useCompStore.getState();
 export const showMd = _compStore.showMd

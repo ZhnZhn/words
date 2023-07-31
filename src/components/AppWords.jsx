@@ -3,9 +3,9 @@ import { useEffect } from './uiApi';
 import { uiThemeStore } from '../flux/uiThemeStore';
 import {
   useCompStore,
-  selectBrowser,
   selectDialog,
-  selectPane
+  selectPane,
+  useBrowser
 } from '../flux/useCompStore';
 
 import ThemeContext from './hoc/ThemeContext';
@@ -53,7 +53,7 @@ const AppWords = ({
               store={store}
               compStore={useCompStore}
               browserId={WORDS_BROWSER_ID}
-              selectBrowser={selectBrowser}
+              useBrowser={useBrowser}
               selectDialog={selectDialog}
               updateWatchAction={CAT_UPDATE_WATCH_BROWSER}
               {...browserActions}
@@ -61,7 +61,7 @@ const AppWords = ({
            <HrzContainer
               className={CL_ITEMS}
               store={useCompStore}
-              selectPane={selectPane}            
+              selectPane={selectPane}
            />
         </div>
         <ModalDialogContainer

@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 var _preact = require("preact");
@@ -51,10 +50,9 @@ const MenuParts = _ref => {
 const DynamicMenuBrowser = _ref2 => {
   let {
     store,
-    compStore,
     url,
     browserId,
-    selectBrowser,
+    useBrowser,
     styleConfig: TS = DF_STYLE_CONFIG,
     caption,
     children,
@@ -67,8 +65,8 @@ const DynamicMenuBrowser = _ref2 => {
     setLoading, /*eslint-enable no-unused-vars */
     setNotLoading] = (0, _useBool.default)(true),
     [isLoadingFailed, setLoadingFailed] = (0, _useBool.default)();
-  (0, _useSubscribe.default)(compStore, selectBrowser, browser => {
-    if (browser.id === browserId) {
+  useBrowser(browser => {
+    if (browser && browser.id === browserId) {
       openMenuBrowser();
     }
   });

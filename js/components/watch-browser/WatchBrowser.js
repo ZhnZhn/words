@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _MenuBrowserStyle = _interopRequireDefault(require("../styles/MenuBrowserStyle"));
@@ -41,17 +40,16 @@ const WatchBrowser = _ref => {
     caption,
     isInitShow,
     store,
-    compStore,
     browserId,
-    selectBrowser,
+    useBrowser,
     updateAction,
     onClickItem = FN_NOOP
   } = _ref;
   const [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(),
     [isShow, _hShow, _hHide] = (0, _useBool.default)(isInitShow),
     [watchList, setWatchList] = (0, _uiApi.useState)(() => store.getWatchList());
-  (0, _useSubscribe.default)(compStore, selectBrowser, browser => {
-    if (browserId === browser.id) {
+  useBrowser(browser => {
+    if (browser && browserId === browser.id) {
       _hShow();
     }
   });

@@ -8,8 +8,8 @@ const BrowserContainer = ({
   store,
   compStore,
   browserId,
-  selectBrowser,
   selectDialog,
+  useBrowser,
   onClickItem,
   updateWatchAction,
   onClickWatchItem
@@ -17,18 +17,16 @@ const BrowserContainer = ({
   <div className={CL_ROOT}>
     <MenuBrowser
       store={store}
-      compStore={compStore}
       browserId={browserId}
-      selectBrowser={selectBrowser}
+      useBrowser={useBrowser}
       onClickItem={onClickItem}
     />
     <WatchBrowser
       caption="Watch Words"
       store={store}
-      compStore={compStore}
+      useBrowser={useBrowser}
       isInitShow={false}
       browserId="WATCH_ID"
-      selectBrowser={selectBrowser}
       updateAction={updateWatchAction}
       onClickItem={onClickWatchItem}
     />

@@ -45,7 +45,7 @@ const AppWords = _ref => {
           store: store,
           compStore: _useCompStore.useCompStore,
           browserId: WORDS_BROWSER_ID,
-          selectBrowser: _useCompStore.selectBrowser,
+          useBrowser: _useCompStore.useBrowser,
           selectDialog: _useCompStore.selectDialog,
           updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER,
           ...browserActions

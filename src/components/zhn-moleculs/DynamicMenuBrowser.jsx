@@ -4,7 +4,6 @@ import {
 } from '../uiApi';
 
 import useBool from '../hooks/useBool';
-import useSubscribe from '../hooks/useSubscribe';
 
 import A from '../zhn-atoms/Atoms';
 import MenuPart from './MenuPart';
@@ -54,10 +53,9 @@ const MenuParts = ({
 
 const DynamicMenuBrowser = ({
   store,
-  compStore,
   url,
   browserId,
-  selectBrowser,
+  useBrowser,
   styleConfig:TS=DF_STYLE_CONFIG,
   caption,
   children,
@@ -85,8 +83,8 @@ const DynamicMenuBrowser = ({
     setLoadingFailed
   ] = useBool();
 
-  useSubscribe(compStore, selectBrowser, (browser) => {
-    if (browser.id === browserId) {
+  useBrowser(browser => {
+    if (browser && browser.id === browserId) {
       openMenuBrowser()
     }
   })

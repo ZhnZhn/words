@@ -5,7 +5,6 @@ import {
 
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
-import useSubscribe from '../hooks/useSubscribe';
 import useListen from '../hooks/useListen';
 
 import useTheme from '../hoc/useTheme';
@@ -47,9 +46,8 @@ const WatchBrowser = ({
   caption,
   isInitShow,
   store,
-  compStore,
   browserId,
-  selectBrowser,
+  useBrowser,
   updateAction,
   onClickItem=FN_NOOP
 }) => {
@@ -67,13 +65,13 @@ const WatchBrowser = ({
     setWatchList
   ] = useState(() => store.getWatchList());
 
-  useSubscribe(compStore, selectBrowser, (browser) => {
-    if (browserId === browser.id) {
+  useBrowser(browser => {
+    if (browser && browserId === browser.id) {
       _hShow()
     }
   })
 
-  useListen(store, (actionType, data) => {    
+  useListen(store, (actionType, data) => {
     if (actionType === updateAction) {
       setWatchList({...data})
     }

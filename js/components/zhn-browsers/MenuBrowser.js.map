@@ -1,1 +1,27 @@
-{"version":3,"sources":["../../../src/components/zhn-browsers/MenuBrowser.jsx"],"names":["MenuBrowser","props","TS","styleConfig"],"mappings":";;;;;;;;;AAAA;;AACA;;AAEA;;;;AAEA,IAAMA,WAAW,GAAG,SAAdA,WAAc,CAACC,KAAD,EAAW;AAC7B,MAAMC,EAAE,GAAG,0BAASC,4BAAT,CAAX;AACA,sBACE,qBAAC,8BAAD,gCACOF,KADP;AAEG,IAAA,WAAW,EAAEC,EAFhB;AAGG,IAAA,OAAO,EAAC,eAHX;AAIG,IAAA,GAAG,EAAC;AAJP,KADF;AAQD,CAVD;AAYA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeF,W","sourcesContent":["import useTheme from '../hoc/useTheme'\r\nimport styleConfig from '../styles/MenuBrowserStyle'\r\n\r\nimport DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'\r\n\r\nconst MenuBrowser = (props) => {\r\n  const TS = useTheme(styleConfig);\r\n  return (\r\n    <DynamicMenuBrowser\r\n       {...props}\r\n       styleConfig={TS}\r\n       caption=\"Words Sources\"\r\n       url=\"data/words-source-menu.json\"\r\n    />\r\n  );\r\n}\r\n\r\n/*\r\nMenuBrowser.propTypes = {\r\n  store: PropTypes.object,\r\n  showAction: PropTypes.string,\r\n  browserId: PropTypes.string,\r\n  onClickItem: PropTypes.func\r\n}\r\n*/\r\n\r\nexport default MenuBrowser\r\n"],"file":"MenuBrowser.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-browsers/MenuBrowser.js"
+ ],
+ "file": "../../../src/components/zhn-browsers/MenuBrowser.js",
+ "names": [
+  "_useTheme",
+  "_interopRequireDefault",
+  "require",
+  "_MenuBrowserStyle",
+  "_DynamicMenuBrowser",
+  "_jsxRuntime",
+  "MenuBrowser",
+  "props",
+  "TS",
+  "useTheme",
+  "styleConfig",
+  "jsx",
+  "default",
+  "caption",
+  "url",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,SAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,iBAAA,GAAAF,sBAAA,CAAAC,OAAA;AAEA,IAAAE,mBAAA,GAAAH,sBAAA,CAAAC,OAAA;AAAmE,IAAAG,WAAA,GAAAH,OAAA;AAEnE,MAAMI,WAAW,GAAIC,KAAK,IAAK;EAC7B,MAAMC,EAAE,GAAG,IAAAC,iBAAQ,EAACC,yBAAW,CAAC;EAChC,OACE,IAAAL,WAAA,CAAAM,GAAA,EAACP,mBAAA,CAAAQ,OAAkB;IAAA,GACZL,KAAK;IACTG,WAAW,EAAEF,EAAG;IAChBK,OAAO,EAAC,eAAe;IACvBC,GAAG,EAAC;EAA6B,CACnC,CAAC;AAEN,CAAC;;AAED;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AAPA,IAAAC,QAAA,GASeT,WAAW;AAAAU,OAAA,CAAAJ,OAAA,GAAAG,QAAA"
+}

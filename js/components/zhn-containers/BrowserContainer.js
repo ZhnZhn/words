@@ -13,8 +13,8 @@ const BrowserContainer = _ref => {
     store,
     compStore,
     browserId,
-    selectBrowser,
     selectDialog,
+    useBrowser,
     onClickItem,
     updateWatchAction,
     onClickWatchItem
@@ -23,17 +23,15 @@ const BrowserContainer = _ref => {
     className: CL_ROOT,
     children: [(0, _jsxRuntime.jsx)(_MenuBrowser.default, {
       store: store,
-      compStore: compStore,
       browserId: browserId,
-      selectBrowser: selectBrowser,
+      useBrowser: useBrowser,
       onClickItem: onClickItem
     }), (0, _jsxRuntime.jsx)(_WatchBrowser.default, {
       caption: "Watch Words",
       store: store,
-      compStore: compStore,
+      useBrowser: useBrowser,
       isInitShow: false,
       browserId: "WATCH_ID",
-      selectBrowser: selectBrowser,
       updateAction: updateWatchAction,
       onClickItem: onClickWatchItem
     }), (0, _jsxRuntime.jsx)(_DialogContainer.default, {
