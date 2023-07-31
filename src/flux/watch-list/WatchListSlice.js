@@ -4,6 +4,7 @@ import {
 } from '../../utils/localStorageFn';
 
 import { showMd } from '../useCompStore';
+import { getIsAutoSave } from '../settingStore';
 
 import {
   CAT_UPDATE_WATCH_BROWSER
@@ -80,9 +81,9 @@ const WatchListSlice = {
     this._onEditWatch(
       addItem(this.watchList, item), WAT_ADD_ITEM
     );
-    if (this.isAutoSaveOnAdd){
+    if (getIsAutoSave()) {
       this.onSaveWatch({ isShowDialog: false })
-    }
+    }    
   },
   onRemoveWatchItem(option){
     removeItem(this.watchList, option);
@@ -96,7 +97,7 @@ const WatchListSlice = {
        this.isWatchEdited = true;
        this.trigger(CAT_UPDATE_WATCH_BROWSER, this.watchList);
     } else {
-      showMd(MD_EXCEPTION, result)    
+      showMd(MD_EXCEPTION, result)
     }
   },
 

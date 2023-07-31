@@ -7,8 +7,13 @@ import {
 import useTheme from '../hoc/useTheme';
 import styleConfig from './Dialog.Style';
 
-import { setUiTheme } from '../../flux/uiThemeStore';
-import { SettingActions } from '../../flux/actions/SettingActions';
+import {
+  setUiTheme
+} from '../../flux/uiThemeStore';
+import {
+  enableAutoSave,
+  disableAutoSave
+} from '../../flux/settingStore';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-tabpane/TabPane';
@@ -84,8 +89,8 @@ const SettingsDialog = ({
              btStyle={TS.BT.FLAT_ROOT}
              chbStroke={TS.CHB_STROKE}
              onSetTheme={setUiTheme}
-             onCheckAutoSave={SettingActions.checkAutoSave}
-             onUncheckAutoSave={SettingActions.uncheckAutoSave}
+             onCheckAutoSave={enableAutoSave}
+             onUncheckAutoSave={disableAutoSave}
              onClose={onClose}
            />
         </Tab>

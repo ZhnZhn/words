@@ -7,7 +7,7 @@ var _uiApi = require("../uiApi");
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _uiThemeStore = require("../../flux/uiThemeStore");
-var _SettingActions = require("../../flux/actions/SettingActions");
+var _settingStore = require("../../flux/settingStore");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
 var _Tab = _interopRequireDefault(require("../zhn-tabpane/Tab"));
@@ -85,8 +85,8 @@ const SettingsDialog = _ref => {
           btStyle: TS.BT.FLAT_ROOT,
           chbStroke: TS.CHB_STROKE,
           onSetTheme: _uiThemeStore.setUiTheme,
-          onCheckAutoSave: _SettingActions.SettingActions.checkAutoSave,
-          onUncheckAutoSave: _SettingActions.SettingActions.uncheckAutoSave,
+          onCheckAutoSave: _settingStore.enableAutoSave,
+          onUncheckAutoSave: _settingStore.disableAutoSave,
           onClose: onClose
         })
       })]

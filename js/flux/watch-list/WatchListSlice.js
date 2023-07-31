@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _localStorageFn = require("../../utils/localStorageFn");
 var _useCompStore = require("../useCompStore");
+var _settingStore = require("../settingStore");
 var _ComponentActions = require("../actions/ComponentActions");
 var _WatchActions = require("../actions/WatchActions");
 var _WatchDefault = _interopRequireDefault(require("../../constants/WatchDefault"));
@@ -38,7 +39,7 @@ const WatchListSlice = {
   },
   onAddWatchItem(item) {
     this._onEditWatch((0, _LogicItemFn.addItem)(this.watchList, item), _WatchActions.WAT_ADD_ITEM);
-    if (this.isAutoSaveOnAdd) {
+    if ((0, _settingStore.getIsAutoSave)()) {
       this.onSaveWatch({
         isShowDialog: false
       });
