@@ -3,8 +3,6 @@ import {
   cloneElement
 } from '../uiApi';
 
-import useSubscribe from '../hooks/useSubscribe';
-
 const S_ROOT = {
   zIndex: 1030,
   position: 'absolute',
@@ -59,8 +57,7 @@ const _updateVisible = (
 
 const DialogContainer = ({
   maxDialog=3,
-  store,
-  selectDialog
+  useDialog
 }) => {
   const [
     state,
@@ -87,7 +84,7 @@ const DialogContainer = ({
      })
   };
 
-  useSubscribe(store, selectDialog, (dialogOption) => {
+  useDialog(dialogOption => {
     if (dialogOption){
        setState(prevState => {
          const {

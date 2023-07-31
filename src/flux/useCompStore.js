@@ -9,7 +9,7 @@ import {
 } from './paneFn';
 
 export const selectMdOption = state => state.mdOption
-export const selectDialog = state => state.dOption
+const _selectDialog = state => state.dOption
 const _selectPane = state => state.pOption;
 const _selectBrowser = state => state.browser;
 export const selectWatch = state => state.watch
@@ -56,6 +56,7 @@ export const useCompStore = create(
 
 export const useBrowser = fCrUse(useCompStore, _selectBrowser)
 export const usePane = fCrUse(useCompStore, _selectPane)
+export const useDialog = fCrUse(useCompStore, _selectDialog)
 
 const _compStore = useCompStore.getState();
 export const showMd = _compStore.showMd

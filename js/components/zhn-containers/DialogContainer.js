@@ -1,10 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ROOT = {
   zIndex: 1030,
@@ -45,8 +43,7 @@ const _updateVisible = (state, key, maxDialog) => {
 const DialogContainer = _ref => {
   let {
     maxDialog = 3,
-    store,
-    selectDialog
+    useDialog
   } = _ref;
   const [state, setState] = (0, _uiApi.useState)({
       hmIs: {},
@@ -70,7 +67,7 @@ const DialogContainer = _ref => {
         };
       });
     };
-  (0, _useSubscribe.default)(store, selectDialog, dialogOption => {
+  useDialog(dialogOption => {
     if (dialogOption) {
       setState(prevState => {
         const {

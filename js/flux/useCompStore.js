@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.usePane = exports.useCompStore = exports.useBrowser = exports.showPane = exports.showMd = exports.showDialog = exports.showBrowser = exports.showAbout = exports.selectWatch = exports.selectMdOption = exports.selectDialog = exports.clickWatchItem = void 0;
+exports.usePane = exports.useDialog = exports.useCompStore = exports.useBrowser = exports.showPane = exports.showMd = exports.showDialog = exports.showBrowser = exports.showAbout = exports.selectWatch = exports.selectMdOption = exports.clickWatchItem = void 0;
 var _zustand = require("zustand");
 var _middleware = require("zustand/middleware");
 var _fCrUse = _interopRequireDefault(require("./fCrUse"));
@@ -10,8 +10,7 @@ var _dialogFn = require("./dialogFn");
 var _paneFn = require("./paneFn");
 const selectMdOption = state => state.mdOption;
 exports.selectMdOption = selectMdOption;
-const selectDialog = state => state.dOption;
-exports.selectDialog = selectDialog;
+const _selectDialog = state => state.dOption;
 const _selectPane = state => state.pOption;
 const _selectBrowser = state => state.browser;
 const selectWatch = state => state.watch;
@@ -57,6 +56,8 @@ const useBrowser = (0, _fCrUse.default)(useCompStore, _selectBrowser);
 exports.useBrowser = useBrowser;
 const usePane = (0, _fCrUse.default)(useCompStore, _selectPane);
 exports.usePane = usePane;
+const useDialog = (0, _fCrUse.default)(useCompStore, _selectDialog);
+exports.useDialog = useDialog;
 const _compStore = useCompStore.getState();
 const showMd = _compStore.showMd;
 exports.showMd = showMd;

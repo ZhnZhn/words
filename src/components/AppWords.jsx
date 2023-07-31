@@ -2,10 +2,9 @@ import { useEffect } from './uiApi';
 
 import { uiThemeStore } from '../flux/uiThemeStore';
 import {
-  useCompStore,
-  selectDialog,
   useBrowser,
-  usePane
+  usePane,
+  useDialog
 } from '../flux/useCompStore';
 
 import ThemeContext from './hoc/ThemeContext';
@@ -51,10 +50,9 @@ const AppWords = ({
         <div className={CL_COMP}>
            <BrowserContainer
               store={store}
-              compStore={useCompStore}
               browserId={WORDS_BROWSER_ID}
               useBrowser={useBrowser}
-              selectDialog={selectDialog}
+              useDialog={useDialog}
               updateWatchAction={CAT_UPDATE_WATCH_BROWSER}
               {...browserActions}
            />

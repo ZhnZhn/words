@@ -6,10 +6,9 @@ const CL_ROOT = "hrz-container";
 
 const BrowserContainer = ({
   store,
-  compStore,
   browserId,
-  selectDialog,
   useBrowser,
+  useDialog,
   onClickItem,
   updateWatchAction,
   onClickWatchItem
@@ -32,8 +31,7 @@ const BrowserContainer = ({
     />
     <DialogContainer
       maxDialog={3}
-      store={compStore}
-      selectDialog={selectDialog}
+      useDialog={useDialog}
     />
   </div>
 );
