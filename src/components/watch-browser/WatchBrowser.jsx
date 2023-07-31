@@ -1,7 +1,7 @@
 //import PropTypes from 'prop-types'
-import {
-  useState
-} from '../uiApi';
+import { useState } from '../uiApi';
+
+import { crStyle2 } from '../zhn-utils/crStyle';
 
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
@@ -79,9 +79,7 @@ const WatchBrowser = ({
 
 
   const TS = useTheme(styleConfig)
-  , _spStyle = isModeEdit
-       ? {...S_SP, ...S_SP_SHORT}
-       : S_SP
+  , _spStyle = crStyle2(S_SP, isModeEdit && S_SP_SHORT)
   , _captionEV = isModeEdit ? 'V' : 'E'
   , { groups } = watchList || {};
 

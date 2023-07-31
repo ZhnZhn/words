@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../zhn-utils/crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
@@ -61,10 +62,7 @@ const WatchBrowser = _ref => {
     }
   });
   const TS = (0, _useTheme.default)(_MenuBrowserStyle.default),
-    _spStyle = isModeEdit ? {
-      ...S_SP,
-      ...S_SP_SHORT
-    } : S_SP,
+    _spStyle = (0, _crStyle.crStyle2)(S_SP, isModeEdit && S_SP_SHORT),
     _captionEV = isModeEdit ? 'V' : 'E',
     {
       groups
