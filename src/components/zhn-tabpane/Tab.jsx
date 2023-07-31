@@ -1,5 +1,5 @@
 //import PropTypes from "prop-types";
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../uiApi';
 
 const CL_TAB = 'tab'
 , CL_TAB_SELECTED = 'tab--selected';

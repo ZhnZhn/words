@@ -1,6 +1,5 @@
+import { crCn } from '../uiApi';
 import CaptionInput from './CaptionInput';
-import crCn from '../zhn-utils/crCn';
-
 
 const CL_BT = 'bt-flat'
 , CL_BT_SPAN = 'bt-flat__span';

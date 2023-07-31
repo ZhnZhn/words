@@ -1,4 +1,4 @@
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../uiApi';
 
 const CL_BT = 'bt-raised'
 , CL_BT_SPAN = 'bt-raised__span'

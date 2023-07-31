@@ -1,4 +1,4 @@
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../uiApi';
 
 const CL_SHOW_POPUP = 'show-popup'
 , S_SHOW = { display: 'block' }

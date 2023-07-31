@@ -1,13 +1,10 @@
 import {
+  crStyle2,
   useRef,
   useCallback,
   getRefValue,
   setRefValue
 } from '../../uiApi';
-
-import {
-  crStyle2
-} from  '../../zhn-utils/crStyle';
 
 import useToggle from '../../hooks/useToggle';
 import useTheme from '../../hoc/useTheme';

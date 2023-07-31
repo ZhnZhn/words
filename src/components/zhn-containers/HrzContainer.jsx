@@ -1,6 +1,7 @@
-import { useState } from '../uiApi';
-
-import crCn from '../zhn-utils/crCn';
+import {
+  crCn,
+  useState
+} from '../uiApi';
 
 const CL_DIV = "hrz-container";
 
@@ -20,7 +21,7 @@ const _isInCont = (
 };
 
 const HrzContainer = ({
-  className,  
+  className,
   usePane,
   addAction
 }) => {

@@ -1,3 +1,6 @@
+export { crCn } from './zhn-utils/crCn';
+export { crStyle2 } from './zhn-utils/crStyle';
+
 export {
   render,
 
