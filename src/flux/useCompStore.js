@@ -10,7 +10,8 @@ import {
 
 export const selectMdOption = state => state.mdOption
 export const selectDialog = state => state.dOption
-export const selectPane = state => state.pOption
+const _selectPane = state => state.pOption;
+const _selectBrowser = state => state.browser;
 export const selectWatch = state => state.watch
 
 const _dialogInit = {};
@@ -39,7 +40,7 @@ export const useCompStore = create(
       pOption: crPaneOption(
          itemConf,
          useCompStore,
-         selectPane,
+         _selectPane,
          selectWatch
       )
     }),
@@ -53,8 +54,8 @@ export const useCompStore = create(
   }))
 );
 
-const _selectBrowser = state => state.browser;
 export const useBrowser = fCrUse(useCompStore, _selectBrowser)
+export const usePane = fCrUse(useCompStore, _selectPane)
 
 const _compStore = useCompStore.getState();
 export const showMd = _compStore.showMd

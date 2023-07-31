@@ -4,7 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_DIV = "hrz-container";
@@ -24,12 +23,11 @@ const _isInCont = (arrComps, comp) => {
 const HrzContainer = _ref => {
   let {
     className,
-    store,
-    selectPane,
+    usePane,
     addAction
   } = _ref;
   const [comps, setComps] = (0, _uiApi.useState)([]);
-  (0, _useSubscribe.default)(store, selectPane, option => {
+  usePane(option => {
     if (option && option.Comp) {
       setComps(prevComps => {
         const comp = option.Comp;

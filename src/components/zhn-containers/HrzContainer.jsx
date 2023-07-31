@@ -1,6 +1,5 @@
 import { useState } from '../uiApi';
 
-import useSubscribe from '../hooks/useSubscribe';
 import crCn from '../zhn-utils/crCn';
 
 const CL_DIV = "hrz-container";
@@ -21,9 +20,8 @@ const _isInCont = (
 };
 
 const HrzContainer = ({
-  className,
-  store,
-  selectPane,
+  className,  
+  usePane,
   addAction
 }) => {
   const [
@@ -31,7 +29,7 @@ const HrzContainer = ({
     setComps
   ] = useState([]);
 
-  useSubscribe(store, selectPane, (option) => {
+  usePane(option => {
     if (option && option.Comp){
       setComps(prevComps => {
         const comp = option.Comp;

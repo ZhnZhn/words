@@ -51,8 +51,7 @@ const AppWords = _ref => {
           ...browserActions
         }), (0, _jsxRuntime.jsx)(_HrzContainer.default, {
           className: CL_ITEMS,
-          store: _useCompStore.useCompStore,
-          selectPane: _useCompStore.selectPane
+          usePane: _useCompStore.usePane
         })]
       }), (0, _jsxRuntime.jsx)(_ModalDialogContainer.default, {
         store: store,

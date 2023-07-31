@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useCompStore = exports.useBrowser = exports.showPane = exports.showMd = exports.showDialog = exports.showBrowser = exports.showAbout = exports.selectWatch = exports.selectPane = exports.selectMdOption = exports.selectDialog = exports.clickWatchItem = void 0;
+exports.usePane = exports.useCompStore = exports.useBrowser = exports.showPane = exports.showMd = exports.showDialog = exports.showBrowser = exports.showAbout = exports.selectWatch = exports.selectMdOption = exports.selectDialog = exports.clickWatchItem = void 0;
 var _zustand = require("zustand");
 var _middleware = require("zustand/middleware");
 var _fCrUse = _interopRequireDefault(require("./fCrUse"));
@@ -12,8 +12,8 @@ const selectMdOption = state => state.mdOption;
 exports.selectMdOption = selectMdOption;
 const selectDialog = state => state.dOption;
 exports.selectDialog = selectDialog;
-const selectPane = state => state.pOption;
-exports.selectPane = selectPane;
+const _selectPane = state => state.pOption;
+const _selectBrowser = state => state.browser;
 const selectWatch = state => state.watch;
 exports.selectWatch = selectWatch;
 const _dialogInit = {};
@@ -40,7 +40,7 @@ const useCompStore = (0, _zustand.create)((0, _middleware.subscribeWithSelector)
   }),
   pOption: void 0,
   showPane: itemConf => set({
-    pOption: (0, _paneFn.crPaneOption)(itemConf, useCompStore, selectPane, selectWatch)
+    pOption: (0, _paneFn.crPaneOption)(itemConf, useCompStore, _selectPane, selectWatch)
   }),
   watch: void 0,
   clickWatchItem: item => set(() => {
@@ -53,9 +53,10 @@ const useCompStore = (0, _zustand.create)((0, _middleware.subscribeWithSelector)
   })
 })));
 exports.useCompStore = useCompStore;
-const _selectBrowser = state => state.browser;
 const useBrowser = (0, _fCrUse.default)(useCompStore, _selectBrowser);
 exports.useBrowser = useBrowser;
+const usePane = (0, _fCrUse.default)(useCompStore, _selectPane);
+exports.usePane = usePane;
 const _compStore = useCompStore.getState();
 const showMd = _compStore.showMd;
 exports.showMd = showMd;

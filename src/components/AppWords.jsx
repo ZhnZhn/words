@@ -4,8 +4,8 @@ import { uiThemeStore } from '../flux/uiThemeStore';
 import {
   useCompStore,
   selectDialog,
-  selectPane,
-  useBrowser
+  useBrowser,
+  usePane
 } from '../flux/useCompStore';
 
 import ThemeContext from './hoc/ThemeContext';
@@ -60,8 +60,7 @@ const AppWords = ({
            />
            <HrzContainer
               className={CL_ITEMS}
-              store={useCompStore}
-              selectPane={selectPane}
+              usePane={usePane}
            />
         </div>
         <ModalDialogContainer
