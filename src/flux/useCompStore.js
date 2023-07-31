@@ -3,23 +3,17 @@ import { subscribeWithSelector } from 'zustand/middleware';
 
 import { crDialogOption } from './dialogFn';
 import {
-  crPaneOption,
-  crAboutOption
+  ABOUT_PANE_ID,
+  crPaneOption
 } from './paneFn';
 
 export const selectMdOption = state => state.mdOption
 export const selectDialog = state => state.dOption
 export const selectBrowser = state => state.browser
-
-export const selectAbout = state => state.about
 export const selectPane = state => state.pOption
-
 export const selectWatch = state => state.watch
 
 const _dialogInit = {};
-const _paneInit = {};
-let _isInitiedAbout = false;
-
 const DF_WATCH_PANE_ID = 'P_WD_W';
 
 export const useCompStore = create(
@@ -41,27 +35,13 @@ export const useCompStore = create(
     showBrowser: (id) => set({ browser: { id } }),
 
     pOption: void 0,
-    about: { is: true },
     showPane: (itemConf) => set({
-       about: { is: false },
-       pOption: crPaneOption(
-         _paneInit,
+      pOption: crPaneOption(
          itemConf,
          useCompStore,
          selectPane,
          selectWatch
-       )
-    }),
-    showAbout: () => set(() => {
-      if (_isInitiedAbout) {
-        return {
-          about: { is: true }
-        };
-      }
-      _isInitiedAbout = true
-      return {
-        pOption: crAboutOption(useCompStore, selectAbout)
-      };
+      )
     }),
 
     watch: void 0,
@@ -79,6 +59,6 @@ export const showDialog = _compStore.showDialog
 export const showBrowser = _compStore.showBrowser
 
 export const showPane = _compStore.showPane
-export const showAbout = _compStore.showAbout
+export const showAbout = showPane.bind(null, { paneId: ABOUT_PANE_ID })
 
 export const clickWatchItem = _compStore.clickWatchItem

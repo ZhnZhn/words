@@ -12,7 +12,8 @@ import { S_ABOUT } from '../styles/ContainerStyle';
 const CL_SHOW = "show-popup";
 
 const About = ({
-  useAbout
+  id,
+  usePane
 }) => {
   const [
     isShow,
@@ -20,13 +21,13 @@ const About = ({
     closeAbout
   ] = useBool(true);
 
-  useAbout(about => {
-    if (about.is) {
+  usePane(pOption => {
+    if (pOption.id === id) {
       showAbout()
     } else {
       closeAbout()
     }
-  })
+  })  
 
   const TS = useTheme(styleConfig)
   , [

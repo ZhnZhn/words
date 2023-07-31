@@ -54,10 +54,9 @@ export const crPane = (
   selectWatch
 ) => {
   const {
-    type,
     paneType,
     paneCaption,
-    paneId,
+    paneId
   } = itemConf
   , {
     Pane,
@@ -65,7 +64,7 @@ export const crPane = (
     Item
   } = RouterPane.getElement(paneType);
   return createElement(Pane, {
-    key: type,
+    key: paneId,
     id: paneId,
     itemConf: itemConf,
     paneCaption,
@@ -84,10 +83,11 @@ export const crPane = (
 }
 
 export const crAbout = (
+  paneId,
   store,
-  selectAbout
+  selectPane
 ) => createElement(About, {
-  key: 'About',
-  id: 'About',
-  useAbout: _fCrUse(store, selectAbout)
+  key: paneId,
+  id: paneId,
+  usePane: _fCrUse(store, selectPane)
 })

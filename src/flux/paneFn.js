@@ -5,36 +5,35 @@ import {
 
 import Store from './stores/Store';
 
+export const ABOUT_PANE_ID = 'about';
+
+const _hmPaneId = Object.create(null);
 export const crPaneOption = (
-  slice,
   itemConf,
   compStore,
   selectPane,
   selectWatch
 ) => {
     const {
-      type,
       paneId
     } = itemConf;
-    if (slice[type]){
+    if (_hmPaneId[paneId]){
       return { id: paneId };
     } else {
-      const Comp = crPane(
-        itemConf,
-        Store,
-        compStore,
-        selectPane,
-        selectWatch
-      );
-      slice[type] = true;
+      const Comp = paneId === ABOUT_PANE_ID
+       ? crAbout(
+           ABOUT_PANE_ID,
+           compStore,
+           selectPane
+         )
+       : crPane(
+           itemConf,
+           Store,
+           compStore,
+           selectPane,
+           selectWatch
+       );
+      _hmPaneId[paneId] = true;
       return { Comp };
     }
-}
-
-export const crAboutOption = (
-  store,
-  selectAbout
-) => {
-  const Comp = crAbout(store, selectAbout);
-  return { Comp };
 }

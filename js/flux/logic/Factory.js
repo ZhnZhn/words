@@ -32,7 +32,6 @@ const crDialog = itemConf => {
 exports.crDialog = crDialog;
 const crPane = (itemConf, store, compStore, selectPane, selectWatch) => {
   const {
-      type,
       paneType,
       paneCaption,
       paneId
@@ -43,7 +42,7 @@ const crPane = (itemConf, store, compStore, selectPane, selectWatch) => {
       Item
     } = _RouterPane.default.getElement(paneType);
   return (0, _uiApi.createElement)(Pane, {
-    key: type,
+    key: paneId,
     id: paneId,
     itemConf: itemConf,
     paneCaption,
@@ -61,10 +60,10 @@ const crPane = (itemConf, store, compStore, selectPane, selectWatch) => {
   });
 };
 exports.crPane = crPane;
-const crAbout = (store, selectAbout) => (0, _uiApi.createElement)(_About.default, {
-  key: 'About',
-  id: 'About',
-  useAbout: _fCrUse(store, selectAbout)
+const crAbout = (paneId, store, selectPane) => (0, _uiApi.createElement)(_About.default, {
+  key: paneId,
+  id: paneId,
+  usePane: _fCrUse(store, selectPane)
 });
 exports.crAbout = crAbout;
 //# sourceMappingURL=Factory.js.map
