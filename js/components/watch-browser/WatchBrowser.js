@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _MenuBrowserStyle = _interopRequireDefault(require("../styles/MenuBrowserStyle"));
 var _Handlers = require("./Handlers");
@@ -37,27 +36,24 @@ const T_S = "Click to save to LocalStorage",
 const FN_NOOP = () => {};
 const WatchBrowser = _ref => {
   let {
-    caption,
     isInitShow,
-    store,
+    caption,
     browserId,
     useBrowser,
-    updateAction,
+    useWatchList,
     onClickItem = FN_NOOP
   } = _ref;
   const [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(),
     [isShow, _hShow, _hHide] = (0, _useBool.default)(isInitShow),
-    [watchList, setWatchList] = (0, _uiApi.useState)(() => store.getWatchList());
+    [watchList, setWatchList] = (0, _uiApi.useState)({});
   useBrowser(browser => {
     if (browser && browserId === browser.id) {
       _hShow();
     }
   });
-  (0, _useListen.default)(store, (actionType, data) => {
-    if (actionType === updateAction) {
-      setWatchList({
-        ...data
-      });
+  useWatchList(watchList => {
+    if (watchList) {
+      setWatchList(watchList);
     }
   });
   const TS = (0, _useTheme.default)(_MenuBrowserStyle.default),
@@ -111,7 +107,7 @@ WatchBrowser.propTypes = {
   store: PropTypes.object,
   browserType: PropTypes.string,
   showAction: PropTypes.string,
-  updateAction: PropTypes.string,
+  //updateAction: PropTypes.string,
   onClickItem: PropTypes.func
 }
 */

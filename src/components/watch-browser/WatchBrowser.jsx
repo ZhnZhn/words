@@ -6,7 +6,6 @@ import {
 
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
-import useListen from '../hooks/useListen';
 
 import useTheme from '../hoc/useTheme';
 import styleConfig from '../styles/MenuBrowserStyle';
@@ -44,12 +43,11 @@ const T_S = "Click to save to LocalStorage"
 const FN_NOOP = () => {};
 
 const WatchBrowser = ({
-  caption,
   isInitShow,
-  store,
+  caption,
   browserId,
   useBrowser,
-  updateAction,
+  useWatchList,
   onClickItem=FN_NOOP
 }) => {
   const [
@@ -64,20 +62,18 @@ const WatchBrowser = ({
   , [
     watchList,
     setWatchList
-  ] = useState(() => store.getWatchList());
+  ] = useState({});
 
   useBrowser(browser => {
     if (browser && browserId === browser.id) {
       _hShow()
     }
   })
-
-  useListen(store, (actionType, data) => {
-    if (actionType === updateAction) {
-      setWatchList({...data})
+  useWatchList(watchList => {
+    if (watchList) {
+      setWatchList(watchList)
     }
   })
-
 
   const TS = useTheme(styleConfig)
   , _spStyle = crStyle2(S_SP, isModeEdit && S_SP_SHORT)
@@ -134,7 +130,7 @@ WatchBrowser.propTypes = {
   store: PropTypes.object,
   browserType: PropTypes.string,
   showAction: PropTypes.string,
-  updateAction: PropTypes.string,
+  //updateAction: PropTypes.string,
   onClickItem: PropTypes.func
 }
 */

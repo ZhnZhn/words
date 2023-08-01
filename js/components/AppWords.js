@@ -6,8 +6,8 @@ exports.default = void 0;
 var _uiApi = require("./uiApi");
 var _uiThemeStore = require("../flux/uiThemeStore");
 var _useCompStore = require("../flux/useCompStore");
+var _useWatchListStore = require("../flux/watch-list/useWatchListStore");
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
-var _ComponentActions = require("../flux/actions/ComponentActions");
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 var _BrowserContainer = _interopRequireDefault(require("./zhn-containers/BrowserContainer"));
@@ -25,6 +25,7 @@ const AppWords = _ref => {
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
     action.showAbout();
+    action.initWatchList();
   }, []);
   // action
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -46,7 +47,7 @@ const AppWords = _ref => {
           browserId: WORDS_BROWSER_ID,
           useBrowser: _useCompStore.useBrowser,
           useDialog: _useCompStore.useDialog,
-          updateWatchAction: _ComponentActions.CAT_UPDATE_WATCH_BROWSER,
+          useWatchList: _useWatchListStore.useWatchList,
           ...browserActions
         }), (0, _jsxRuntime.jsx)(_HrzContainer.default, {
           className: CL_ITEMS,

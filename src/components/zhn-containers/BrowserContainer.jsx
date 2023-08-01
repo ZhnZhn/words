@@ -9,8 +9,8 @@ const BrowserContainer = ({
   browserId,
   useBrowser,
   useDialog,
+  useWatchList,
   onClickItem,
-  updateWatchAction,
   onClickWatchItem
 }) => (
   <div className={CL_ROOT}>
@@ -21,12 +21,11 @@ const BrowserContainer = ({
       onClickItem={onClickItem}
     />
     <WatchBrowser
-      caption="Watch Words"
-      store={store}
-      useBrowser={useBrowser}
       isInitShow={false}
+      caption="Watch Words"
       browserId="WATCH_ID"
-      updateAction={updateWatchAction}
+      useBrowser={useBrowser}
+      useWatchList={useWatchList}
       onClickItem={onClickWatchItem}
     />
     <DialogContainer

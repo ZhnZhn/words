@@ -3,13 +3,20 @@ import useTheme from '../hoc/useTheme';
 import styleConfig from '../dialogs/Dialog.Style';
 
 import {
-  WAT_EDIT_WATCH_COMPLETED,
-  WAT_EDIT_WATCH_FAILED,
   WAT_CREATE_LIST,
   WAT_RENAME_LIST,
-  WAT_DELETE_LIST,
-  WatchActions
+  WAT_DELETE_LIST
 } from '../../flux/actions/WatchActions';
+
+import {
+  crList,
+  renList,
+  delList,
+  getWatchGroups,
+  getWatchListsByGroup,
+  useMsEdit,
+  useWatchList
+} from '../../flux/watch-list/useWatchListStore'
 
 import {
   notSelected,
@@ -29,12 +36,6 @@ import {
   S_TABS
 } from './Dialog.Style';
 
-const {
-  createList,
-  renameList,
-  deleteList
-} = WatchActions;
-
 const EditListDialog = memoIsShow(({
   isShow,
   store,
@@ -43,51 +44,54 @@ const EditListDialog = memoIsShow(({
   const TS = useTheme(styleConfig);
   return (
     <ModalDialog
+       isShow={isShow}
+       isWithButton={false}
        style={{...TS.R_DIALOG, ...S_DIALOG}}
        captionStyle={TS.BROWSER_CAPTION}
        caption="Watch Lists Edit"
-       isShow={isShow}
-       isWithButton={false}
        onClose={onClose}
     >
       <TabPane width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
          <Tab title="Create" style={TS.TAB}>
            <ListCreatePane
-              store={store}
+              getWatchGroups={getWatchGroups}
+              useMsEdit={useMsEdit}
+              useWatchList={useWatchList}
+              forActionType={WAT_CREATE_LIST}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-              actionFailed={WAT_EDIT_WATCH_FAILED}
-              forActionType={WAT_CREATE_LIST}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
-              onCreate={createList}
-              onClose={onClose} />
+              onCreate={crList}
+              onClose={onClose}
+            />
          </Tab>
          <Tab title="Rename" style={TS.TAB}>
            <ListEditPane
-              store={store}
+              getWatchGroups={getWatchGroups}
+              getWatchListsByGroup={getWatchListsByGroup}
+              useMsEdit={useMsEdit}
+              useWatchList={useWatchList}
+              forActionType={WAT_RENAME_LIST}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-              actionFailed={WAT_EDIT_WATCH_FAILED}
-              forActionType={WAT_RENAME_LIST}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
-              onRename={renameList}
+              onRename={renList}
               onClose={onClose}
            />
          </Tab>
          <Tab title="Delete" style={TS.TAB}>
            <ListDeletePane
-              store={store}
+              getWatchGroups={getWatchGroups}
+              getWatchListsByGroup={getWatchListsByGroup}
+              useMsEdit={useMsEdit}
+              useWatchList={useWatchList}
+              forActionType={WAT_DELETE_LIST}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-              actionFailed={WAT_EDIT_WATCH_FAILED}
-              forActionType={WAT_DELETE_LIST}
               msgOnNotSelect={notSelected}
-              onDelete={deleteList}
+              onDelete={delList}
               onClose={onClose}
            />
          </Tab>

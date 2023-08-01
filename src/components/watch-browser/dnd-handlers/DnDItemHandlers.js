@@ -1,6 +1,6 @@
 import {
-  WatchActions
-} from '../../../flux/actions/WatchActions';
+  ddItem  
+} from '../../../flux/watch-list/useWatchListStore';
 
 import getTransferData from './getTransferData';
 import DRAG from './WatchDnDConfig';
@@ -43,7 +43,7 @@ export const hDropItem = (
        return;
     } else {
       event.preventDefault()
-      WatchActions.dragDropItem({
+      ddItem({
         dragId,
         dropId
       })

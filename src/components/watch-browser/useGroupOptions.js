@@ -4,18 +4,18 @@ import {
 } from '../uiApi';
 
 const useGroupOptions = (
-  store
+  getWatchGroups
 ) => {
   const [
     groupOpions,
     setGroupOptions
-  ] = useState(() => store.getWatchGroups())
+  ] = useState(getWatchGroups)
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _updateGroupOptions = useCallback(() => {    
-    setGroupOptions(store.getWatchGroups())
+  , _updateGroupOptions = useCallback(() => {
+    setGroupOptions(getWatchGroups())
   }, [])
-  // store
+  // getWatchGroups
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return [

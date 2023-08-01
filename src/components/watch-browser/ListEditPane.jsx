@@ -7,26 +7,22 @@ import {
 } from '../uiApi';
 
 import useRerender from '../hooks/useRerender';
-import useListen from '../hooks/useListen';
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
 const ListEditPane = ({
-  store,
-
+  getWatchGroups,
+  getWatchListsByGroup,
+  useMsEdit,
+  useWatchList,
+  forActionType,
   inputStyle,
   btStyle,
-
-  actionCompleted,
-  actionFailed,
-  forActionType,
-
   msgOnIsEmptyName,
   msgOnNotSelect,
   onRename,
-
   onClose
 }) => {
   const _refGroupList = useRef()
@@ -34,7 +30,7 @@ const ListEditPane = ({
   , [
     groupOptions,
     updateGroupOptions
-  ] = useGroupOptions(store)
+  ] = useGroupOptions(getWatchGroups)
   , [
     validationMessages,
     setValidationMessages,
@@ -69,15 +65,19 @@ const ListEditPane = ({
   /*eslint-enable react-hooks/exhaustive-deps */
   , rerender = useRerender()[1]
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted){
-        if (data.forActionType === forActionType){
-          _hClear()
-        }
-        updateGroupOptions()
-        rerender()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      setValidationMessages(data.messages)
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === forActionType) {
+      if (msEdit.messages) {
+        setValidationMessages(msEdit.messages)
+      } else {
+        _hClear()
+      }
+    }
+  })
+  useWatchList(watchList => {
+    if (watchList) {
+      updateGroupOptions()
+      rerender()
     }
   })
 
@@ -86,7 +86,7 @@ const ListEditPane = ({
        <A.SelectGroupList
          ref={_refGroupList}
          inputStyle={inputStyle}
-         store={store}
+         getWatchListsByGroup={getWatchListsByGroup}
          groupCaption="In Group:"
          groupOptions={groupOptions}
          listCaption="List From:"

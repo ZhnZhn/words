@@ -7,8 +7,6 @@ import {
   setRefValue
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
-
 import memoIsShow from '../hoc/memoIsShow';
 import useTheme from '../hoc/useTheme';
 import styleConfig from '../dialogs/Dialog.Style';
@@ -18,12 +16,13 @@ import useListOptions from './useListOptions';
 import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 
+import { WAT_ADD_ITEM } from '../../flux/actions/WatchActions';
 import {
-  WAT_ADD_ITEM,
-  WAT_EDIT_WATCH_COMPLETED,
-  WAT_EDIT_WATCH_FAILED,
-  WatchActions
-} from '../../flux/actions/WatchActions';
+  addWatchItem,
+  useMsEdit,
+  getWatchGroups,
+  getWatchListsByGroup
+} from '../../flux/watch-list/useWatchListStore';
 import {
   notSelected
 } from '../../constants/MsgWatch';
@@ -32,10 +31,6 @@ import ModalDialog from '../zhn-moleculs/ModalDialog';
 import RowInputSelect from './RowInputSelect'
 import Row from '../dialogs/Row';
 import A from './Atoms';
-
-const actionCompleted = WAT_EDIT_WATCH_COMPLETED
-, actionFailed =  WAT_EDIT_WATCH_FAILED
-, forActionType = WAT_ADD_ITEM;
 
 const CL_BT_DIV = 'bt-flat__div'
 , S_DIALOG = {
@@ -51,7 +46,6 @@ const AddToWatchDialog = memoIsShow((
 ) => {
   const {
     isShow,
-    store,
     data,
     onClose
   } = props
@@ -66,7 +60,7 @@ const AddToWatchDialog = memoIsShow((
   , [
     groupOptions,
     _updateGroupOptions
-  ] = useGroupOptions(store)
+  ] = useGroupOptions(getWatchGroups)
   , _refGroupCaption = useRef(null)
   , [
     _refListCaption,
@@ -76,7 +70,7 @@ const AddToWatchDialog = memoIsShow((
     listOptions,
     setListOptions,
     updateListOptions
-  ] = useListOptions(store, _refListCaption)
+  ] = useListOptions(getWatchListsByGroup, _refListCaption)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hSelectGroup = useMemo(() => (group) => {
@@ -111,7 +105,7 @@ const AddToWatchDialog = memoIsShow((
         caption,
         config
       } = data;
-      WatchActions.addWatchItem({
+      addWatchItem({
         caption,
         config,
         groupCaption,
@@ -135,11 +129,13 @@ const AddToWatchDialog = memoIsShow((
        />
   ], [_hAdd]);
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted && data.forActionType === forActionType){
-      _hClose()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      setValidationMessages(data.messages || [])
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === WAT_ADD_ITEM) {
+      if (msEdit.message) {
+        setValidationMessages(msEdit.messages)
+      } else {
+        _hClose()
+      }
     }
   })
 
@@ -148,7 +144,7 @@ const AddToWatchDialog = memoIsShow((
   useEffect(() => {
     const { isShow } = props;
     if (isShow) {
-      const _groupOptions = store.getWatchGroups()
+      const _groupOptions = getWatchGroups()
       , _groupCaption = getRefValue(_refGroupCaption);
       if (_groupOptions !== groupOptions){
         setRefValue(_refGroupCaption, null)
@@ -206,11 +202,6 @@ const AddToWatchDialog = memoIsShow((
 AddToWatchDialog.propTypes = {
   isShow  : PropTypes.bool,
   data    : PropTypes.object,
-  store   : PropTypes.shape({
-    listen: PropTypes.func,
-    getWatchGroups: PropTypes.func,
-    getWatchListsByGroup: PropTypes.func
-  }),
   onClose : PropTypes.func
 }
 */

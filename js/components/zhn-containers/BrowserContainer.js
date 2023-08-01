@@ -14,8 +14,8 @@ const BrowserContainer = _ref => {
     browserId,
     useBrowser,
     useDialog,
+    useWatchList,
     onClickItem,
-    updateWatchAction,
     onClickWatchItem
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
@@ -26,12 +26,11 @@ const BrowserContainer = _ref => {
       useBrowser: useBrowser,
       onClickItem: onClickItem
     }), (0, _jsxRuntime.jsx)(_WatchBrowser.default, {
-      caption: "Watch Words",
-      store: store,
-      useBrowser: useBrowser,
       isInitShow: false,
+      caption: "Watch Words",
       browserId: "WATCH_ID",
-      updateAction: updateWatchAction,
+      useBrowser: useBrowser,
+      useWatchList: useWatchList,
       onClickItem: onClickWatchItem
     }), (0, _jsxRuntime.jsx)(_DialogContainer.default, {
       maxDialog: 3,

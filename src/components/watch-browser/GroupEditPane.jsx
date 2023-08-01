@@ -1,13 +1,12 @@
 //import PropTypes from "prop-types";
 import {
-  useRef,  
+  useRef,
   useMemo,
   getRefValue,
   getRefInputValue,
   setRefInputValue
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
@@ -15,14 +14,12 @@ import useValidationMessages from './useValidationMessages';
 import A from './Atoms';
 
 const GroupEditPane = ({
-  store,
-  actionCompleted,
-  actionFailed,
+  getWatchGroups,
+  useMsEdit,
+  useWatchList,
   forActionType,
-
   inputStyle,
   btStyle,
-
   msgOnNotSelect,
   msgOnIsEmptyName,
   onRename,
@@ -36,7 +33,7 @@ const GroupEditPane = ({
   , [
     groupOptions,
     updateGroupOptions
-  ] = useGroupOptions(store)
+  ] = useGroupOptions(getWatchGroups)
   , [
     validationMessages,
     setValidationMessages,
@@ -68,14 +65,18 @@ const GroupEditPane = ({
   // msgOnNotSelect, msgOnIsEmptyName, onRename
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted){
-      if (data.forActionType === forActionType){
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === forActionType) {
+      if (msEdit.messages) {
+        setValidationMessages(msEdit.messages)
+      } else {
         _hClear()
       }
+    }
+  })
+  useWatchList(watchList => {
+    if (watchList) {
       updateGroupOptions()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      setValidationMessages(data.messages)
     }
   })
 

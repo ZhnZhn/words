@@ -6,7 +6,6 @@ import {
 } from '../uiApi';
 
 import useRerender from '../hooks/useRerender';
-import useListen from '../hooks/useListen';
 
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
@@ -14,23 +13,22 @@ import useValidationMessages from './useValidationMessages';
 import A from './Atoms';
 
 const ListDeletePane = ({
-  store,
+  getWatchGroups,
+  getWatchListsByGroup,
+  useMsEdit,
+  useWatchList,
+  forActionType,
   inputStyle,
   btStyle,
-
-  actionCompleted,
-  forActionType,
-
   msgOnNotSelect,
   onDelete,
-
   onClose
 }) => {
   const _refGroupList = useRef()
   , [
     groupOptions,
     updateGroupOptions
-  ] = useGroupOptions(store)
+  ] = useGroupOptions(getWatchGroups)
   , [
     validationMessages,
     setValidationMessages,
@@ -60,11 +58,13 @@ const ListDeletePane = ({
   /*eslint-enable react-hooks/exhaustive-deps */
   , rerender = useRerender()[1]
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted){
-      if (data.forActionType === forActionType) {
-        _hClear()
-      }
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === forActionType) {
+      _hClear()
+    }
+  })
+  useWatchList(watchList => {
+    if (watchList) {
       updateGroupOptions()
       rerender()
     }
@@ -74,7 +74,7 @@ const ListDeletePane = ({
     <>
       <A.SelectGroupList
         ref={_refGroupList}
-        store={store}
+        getWatchListsByGroup={getWatchListsByGroup}
         inputStyle={inputStyle}
         groupCaption="In Group:"
         groupOptions={groupOptions}

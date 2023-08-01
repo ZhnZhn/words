@@ -4,7 +4,6 @@ import {
   getRefValue
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
@@ -12,8 +11,9 @@ import useValidationMessages from './useValidationMessages';
 import A from './Atoms';
 
 const GroupDeletePane = ({
-  store,
-  actionCompleted,
+  getWatchGroups,
+  useMsEdit,
+  useWatchList,
   forActionType,
   inputStyle,
   btStyle,
@@ -33,7 +33,7 @@ const GroupDeletePane = ({
   , [
     groupOptions,
     updateGroupOptions
-  ] = useGroupOptions(store)
+  ] = useGroupOptions(getWatchGroups)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useMemo(() => () => {
@@ -47,11 +47,13 @@ const GroupDeletePane = ({
   // msgOnNotSelect, onDelete
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted) {
-      if (data.forActionType === forActionType){
-        _hClear()
-      }
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === forActionType) {
+      _hClear()
+    }
+  })
+  useWatchList(watchList => {
+    if (watchList) {
       updateGroupOptions()
     }
   })
@@ -80,10 +82,6 @@ const GroupDeletePane = ({
 
 /*
 GroupDeletePane.propTypes = {
-  store: PropTypes.shape({
-    listen: PropTypes.func,
-    getWatchGroups: PropTypes.func
-  }),
   actionCompleted: PropTypes.string,
   forActionType: PropTypes.string,
   msgOnNotSelect: PropTypes.func,

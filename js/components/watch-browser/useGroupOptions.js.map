@@ -5,14 +5,18 @@
  ],
  "file": "../../../src/components/watch-browser/useGroupOptions.js",
  "names": [
+  "_uiApi",
+  "require",
   "useGroupOptions",
-  "store",
-  "useState",
   "getWatchGroups",
   "groupOpions",
   "setGroupOptions",
+  "useState",
   "_updateGroupOptions",
-  "useCallback"
+  "useCallback",
+  "_default",
+  "exports",
+  "default"
  ],
- "mappings": ";;;;;AAAA;;AAKA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB,CACtBC,KADsB,EAEnB;EACH,gBAGI,IAAAC,eAAA,EAAS;IAAA,OAAMD,KAAK,CAACE,cAAN,EAAN;EAAA,CAAT,CAHJ;EAAA,IACEC,WADF;EAAA,IAEEC,eAFF;EAAA,IAMEC,mBANF,GAMwB,IAAAC,kBAAA,EAAY,YAAM;IACxCF,eAAe,CAACJ,KAAK,CAACE,cAAN,EAAD,CAAf;EACD,CAFuB,EAErB,EAFqB,CANxB,CADG,CAUH;;EACA;;;EAEA,OAAO,CACLC,WADK,EAELE,mBAFK,CAAP;AAID,CAnBD;;eAqBeN,e"
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,MAAMC,eAAe,GACnBC,cAAc,IACX;EACH,MAAM,CACJC,WAAW,EACXC,eAAe,CAChB,GAAG,IAAAC,eAAQ,EAACH,cAAc;;IAE3B;IACEI,mBAAmB,GAAG,IAAAC,kBAAW,EAAC,MAAM;MACxCH,eAAe,CAACF,cAAc,CAAC,CAAC,CAAC;IACnC,CAAC,EAAE,EAAE,CAAC;EACN;EACA;;EAEA,OAAO,CACLC,WAAW,EACXG,mBAAmB,CACpB;AACH,CAAC;AAAC,IAAAE,QAAA,GAEaP,eAAe;AAAAQ,OAAA,CAAAC,OAAA,GAAAF,QAAA"
 }

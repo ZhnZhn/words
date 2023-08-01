@@ -6,12 +6,11 @@ import {
   usePane,
   useDialog
 } from '../flux/useCompStore';
+import {
+  useWatchList
+} from '../flux/watch-list/useWatchListStore';
 
 import ThemeContext from './hoc/ThemeContext';
-
-import {
-  CAT_UPDATE_WATCH_BROWSER
-} from '../flux/actions/ComponentActions';
 
 import RouterModalDialog from './dialogs/RouterModalDialog';
 import HeaderBar from './header/HeaderBar';
@@ -31,6 +30,7 @@ const AppWords = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     action.showAbout()
+    action.initWatchList()
   }, [])
   // action
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -53,7 +53,7 @@ const AppWords = ({
               browserId={WORDS_BROWSER_ID}
               useBrowser={useBrowser}
               useDialog={useDialog}
-              updateWatchAction={CAT_UPDATE_WATCH_BROWSER}
+              useWatchList={useWatchList}
               {...browserActions}
            />
            <HrzContainer

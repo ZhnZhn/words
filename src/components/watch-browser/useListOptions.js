@@ -5,7 +5,7 @@ import {
 } from '../uiApi';
 
 const useListOptions = (
-  store,
+  getWatchListsByGroup,
   refListCaption
 ) => {
   const [
@@ -16,14 +16,14 @@ const useListOptions = (
   /*eslint-disable react-hooks/exhaustive-deps */
   , updateListOptions = useCallback(groupCaption => {
     setListOptions(prevListOptions => {
-      const listOptions = store.getWatchListsByGroup(groupCaption);
+      const listOptions = getWatchListsByGroup(groupCaption);
       if (prevListOptions !== listOptions) {
         setRefValue(refListCaption, null)
       }
       return listOptions;
     })
   }, []);
-  // store
+  // getWatchListsByGroup
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return [

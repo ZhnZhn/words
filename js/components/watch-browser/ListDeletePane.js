@@ -1,90 +1,78 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
-
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
-
-var _useGroupOptions2 = _interopRequireDefault(require("./useGroupOptions"));
-
+var _useGroupOptions = _interopRequireDefault(require("./useGroupOptions"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
-
 var _Atoms = _interopRequireDefault(require("./Atoms"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
+var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
-var ListDeletePane = function ListDeletePane(_ref) {
-  var store = _ref.store,
-      inputStyle = _ref.inputStyle,
-      btStyle = _ref.btStyle,
-      actionCompleted = _ref.actionCompleted,
-      forActionType = _ref.forActionType,
-      msgOnNotSelect = _ref.msgOnNotSelect,
-      onDelete = _ref.onDelete,
-      onClose = _ref.onClose;
 
-  var _refGroupList = (0, _uiApi.useRef)(),
-      _useGroupOptions = (0, _useGroupOptions2["default"])(store),
-      groupOptions = _useGroupOptions[0],
-      updateGroupOptions = _useGroupOptions[1],
-      _useValidationMessage = (0, _useValidationMessages["default"])(),
-      validationMessages = _useValidationMessage[0],
-      setValidationMessages = _useValidationMessage[1],
-      _hClear = _useValidationMessage[2],
-      _hDelete = (0, _uiApi.useCallback)(function () {
-    var _getRefInputValue = (0, _uiApi.getRefInputValue)(_refGroupList),
-        captionGroup = _getRefInputValue[0],
-        captionList = _getRefInputValue[1];
+const ListDeletePane = _ref => {
+  let {
+    getWatchGroups,
+    getWatchListsByGroup,
+    useMsEdit,
+    useWatchList,
+    forActionType,
+    inputStyle,
+    btStyle,
+    msgOnNotSelect,
+    onDelete,
+    onClose
+  } = _ref;
+  const _refGroupList = (0, _uiApi.useRef)(),
+    [groupOptions, updateGroupOptions] = (0, _useGroupOptions.default)(getWatchGroups),
+    [validationMessages, setValidationMessages, _hClear] = (0, _useValidationMessages.default)()
 
-    if (captionGroup && captionList) {
-      onDelete({
-        captionGroup: captionGroup,
-        captionList: captionList
-      });
-    } else {
-      var msg = [];
-
-      if (!captionGroup) {
-        msg.push(msgOnNotSelect('Group'));
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hDelete = (0, _uiApi.useCallback)(() => {
+      const [captionGroup, captionList] = (0, _uiApi.getRefInputValue)(_refGroupList);
+      if (captionGroup && captionList) {
+        onDelete({
+          captionGroup,
+          captionList
+        });
+      } else {
+        const msg = [];
+        if (!captionGroup) {
+          msg.push(msgOnNotSelect('Group'));
+        }
+        if (!captionList) {
+          msg.push(msgOnNotSelect('List'));
+        }
+        setValidationMessages(msg);
       }
-
-      if (!captionList) {
-        msg.push(msgOnNotSelect('List'));
-      }
-
-      setValidationMessages(msg);
+    }, [])
+    // setValidationMessages
+    // msgOnNotSelect, onDelete
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    rerender = (0, _useRerender.default)()[1];
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === forActionType) {
+      _hClear();
     }
-  }, []),
-      rerender = (0, _useRerender["default"])()[1];
-
-  (0, _useListen["default"])(store, function (actionType, data) {
-    if (actionType === actionCompleted) {
-      if (data.forActionType === forActionType) {
-        _hClear();
-      }
-
+  });
+  useWatchList(watchList => {
+    if (watchList) {
       updateGroupOptions();
       rerender();
     }
   });
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SelectGroupList, {
+  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
       ref: _refGroupList,
-      store: store,
+      getWatchListsByGroup: getWatchListsByGroup,
       inputStyle: inputStyle,
       groupCaption: "In Group:",
       groupOptions: groupOptions,
       listCaption: "List:"
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ValidationMessages, {
+    }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].RowButtons, {
+    }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
       btStyle: btStyle,
       caption: "Delete",
       title: "Delete List",
@@ -94,6 +82,7 @@ var ListDeletePane = function ListDeletePane(_ref) {
     })]
   });
 };
+
 /*
 ListDeletePane.propTypes = {
   store: PropTypes.shape({
@@ -110,8 +99,6 @@ ListDeletePane.propTypes = {
   onClose: PropTypes.func
 }
 */
-
-
 var _default = ListDeletePane;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=ListDeletePane.js.map

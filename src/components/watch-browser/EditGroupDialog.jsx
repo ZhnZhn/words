@@ -3,13 +3,19 @@ import useTheme from '../hoc/useTheme';
 import styleConfig from '../dialogs/Dialog.Style';
 
 import {
-  WAT_EDIT_WATCH_COMPLETED,
-  WAT_EDIT_WATCH_FAILED,
   WAT_CREATE_GROUP,
   WAT_RENAME_GROUP,
-  WAT_DELETE_GROUP,
-  WatchActions
+  WAT_DELETE_GROUP
 } from '../../flux/actions/WatchActions';
+
+import {
+  crGroup,
+  renGroup,
+  delGroup,
+  getWatchGroups,
+  useMsEdit,
+  useWatchList
+} from '../../flux/watch-list/useWatchListStore';
 
 import {
   notSelected,
@@ -29,66 +35,57 @@ import {
   S_TABS
 } from './Dialog.Style';
 
-const {
-  createGroup,
-  renameGroup,
-  deleteGroup
-} = WatchActions;
-
 
 const EditGroupDialog = memoIsShow(({
   isShow,
-  store,
   onClose
 }) => {
   const TS = useTheme(styleConfig);
   return (
     <ModalDialog
+       isShow={isShow}
+       isWithButton={false}
        style={{...TS.R_DIALOG, ...S_DIALOG}}
        captionStyle={TS.BROWSER_CAPTION}
        caption="Watch Groups Edit"
-       isShow={isShow}
-       isWithButton={false}
        onClose={onClose}
     >
       <TabPane width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
          <Tab title="Create" style={TS.TAB}>
            <GroupAddPane
-              store={store}
+              useMsEdit={useMsEdit}
+              forActionType={WAT_CREATE_GROUP}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-              actionFailed={WAT_EDIT_WATCH_FAILED}
-              forActionType={WAT_CREATE_GROUP}
               msgOnIsEmptyName={emptyName}
-              onCreate={createGroup}
+              onCreate={crGroup}
               onClose={onClose}
             />
          </Tab>
          <Tab title="Rename" style={TS.TAB}>
            <GroupEditPane
-              store={store}
+              getWatchGroups={getWatchGroups}
+              useMsEdit={useMsEdit}
+              useWatchList={useWatchList}
+              forActionType={WAT_RENAME_GROUP}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-              actionFailed={WAT_EDIT_WATCH_FAILED}
-              forActionType={WAT_RENAME_GROUP}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
-              onRename={renameGroup}
+              onRename={renGroup}
               onClose={onClose}
            />
          </Tab>
          <Tab title="Delete" style={TS.TAB}>
            <GroupDeletePane
-              store={store}
+              getWatchGroups={getWatchGroups}
+              useMsEdit={useMsEdit}
+              useWatchList={useWatchList}
+              forActionType={WAT_DELETE_GROUP}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
-              store={store}
-              actionCompleted={WAT_EDIT_WATCH_COMPLETED}
-              forActionType={WAT_DELETE_GROUP}
               msgOnNotSelect={notSelected}
-              onDelete={deleteGroup}
+              onDelete={delGroup}
               onClose={onClose}
            />
          </Tab>

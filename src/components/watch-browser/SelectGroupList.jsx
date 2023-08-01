@@ -19,7 +19,7 @@ const SelectGroupList = forwardRef((
 ) => {
   const {
     inputStyle,
-    store,
+    getWatchListsByGroup,
     groupOptions,
     groupCaption,
     listCaption
@@ -33,7 +33,7 @@ const SelectGroupList = forwardRef((
     listOptions,
     setListOptions,
     updateListOptions
-  ] = useListOptions(store, _refCaptionList)
+  ] = useListOptions(getWatchListsByGroup, _refCaptionList)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hSelectGroup = useCallback((item) => {
@@ -63,7 +63,7 @@ const SelectGroupList = forwardRef((
       updateListOptions(_captionGroup)
     }
   }, [props])
-  // _refCaptionList, groupOptions, store
+  // _refCaptionList, groupOptions
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */

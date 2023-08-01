@@ -5,15 +5,12 @@ import {
   setRefInputValue
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
 import useValidationMessages from './useValidationMessages';
 
 import A from './Atoms';
 
 const GroupAddPane = ({
-  store,
-  actionCompleted,
-  actionFailed,
+  useMsEdit,
   forActionType,
   inputStyle,
   btStyle,
@@ -41,13 +38,15 @@ const GroupAddPane = ({
     }
   }, [])
   // msgOnIsEmptyName, onCreate
-  /*eslint-enable react-hooks/exhaustive-deps */  
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted && data.forActionType === forActionType){
-       _hClear()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-       setValidationMessages(data.messages)
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === forActionType) {
+      if (msEdit.messages) {
+        setValidationMessages(msEdit.messages)
+      } else {
+        _hClear()
+      }
     }
   })
 
@@ -75,9 +74,6 @@ const GroupAddPane = ({
 
 /*
 GroupAddPane.propTypes = {
-  store: PropTypes.shape({
-    listen: PropTypes.func
-  }),
   actionCompleted: PropTypes.string,
   actionFailed: PropTypes.string,
   forActionType: PropTypes.string,

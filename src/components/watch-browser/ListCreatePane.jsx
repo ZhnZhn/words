@@ -7,7 +7,6 @@ import {
   setRefInputValue
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
 import useRefItemCaption from './useRefItemCaption';
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
@@ -15,18 +14,15 @@ import useValidationMessages from './useValidationMessages';
 import A from './Atoms';
 
 const ListCreatePane = ({
-  store,
+  getWatchGroups,
+  useMsEdit,
+  useWatchList,
+  forActionType,
   inputStyle,
   btStyle,
-
-  actionCompleted,
-  actionFailed,
-  forActionType,
-
   msgOnNotSelect,
   msgOnIsEmptyName,
   onCreate,
-
   onClose
 }) => {
   const _refInputText = useRef()
@@ -37,7 +33,7 @@ const ListCreatePane = ({
   , [
     groupOptions,
     updateGroupOptions
-  ] = useGroupOptions(store)
+  ] = useGroupOptions(getWatchGroups)
   , [
     validationMessages,
     setValidationMessages,
@@ -65,17 +61,22 @@ const ListCreatePane = ({
   // onCreate, msgOnNotSelect, msgOnIsEmptyName
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useListen(store, (actionType, data) => {
-    if (actionType === actionCompleted){
-        if (data.forActionType === forActionType){
-          _hClear()
-        }
-        updateGroupOptions()
-    } else if (actionType === actionFailed && data.forActionType === forActionType){
-      setValidationMessages(data.messages)
+
+  useMsEdit(msEdit => {
+    if (msEdit && msEdit.forActionType === forActionType) {
+      if (msEdit.messages) {
+        setValidationMessages(msEdit.messages)
+      } else {
+        _hClear()
+      }
     }
   })
-
+  useWatchList(watchList => {
+    if (watchList) {
+      updateGroupOptions()
+    }
+  })
+  
   return (
     <>
       <A.RowInputSelect
