@@ -49,7 +49,7 @@ const _loadItemFailed = option => {
         limitRemaining
       };
     if (config) {
-      _nextState.msItem = (0, _itemFn.addItem)(_selectItems(_get()), config, itemConf);
+      _nextState.msItem = (0, _itemFn.addItemImpl)(_selectItems(_get()), config, itemConf);
     }
     _set(_nextState);
   };
@@ -64,7 +64,7 @@ const loadItem = function (option) {
     {
       paneId
     } = itemConf;
-  if ((0, _itemFn.isItem)(paneId, word)) {
+  if ((0, _itemFn.isItemImpl)(paneId, word)) {
     _loadItemFailed({
       msg: _crDbLoadMsg(word)
     });
@@ -98,7 +98,7 @@ const loadItem = function (option) {
 };
 exports.loadItem = loadItem;
 const removeItem = config => {
-  const _options = removeItem(_selectItems(_get()), config);
+  const _options = (0, _itemFn.removeItemImpl)(_selectItems(_get()), config);
   if (_options) {
     _set({
       msItem: _options
@@ -107,7 +107,7 @@ const removeItem = config => {
 };
 exports.removeItem = removeItem;
 const removeItems = paneId => {
-  removeItems(_selectItems(_get()), paneId);
+  (0, _itemFn.removeItemsImpl)(_selectItems(_get()), paneId);
   _set({
     msItem: {
       configs: [],
@@ -117,7 +117,7 @@ const removeItems = paneId => {
 };
 exports.removeItems = removeItems;
 const removeItemsUnder = config => {
-  const _option = removeItemsUnder(_selectItems(_get()), config);
+  const _option = (0, _itemFn.removeItemsUnderImpl)(_selectItems(_get()), config);
   if (_option) {
     _set({
       msItem: _option

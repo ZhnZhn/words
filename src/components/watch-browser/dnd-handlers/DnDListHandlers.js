@@ -1,7 +1,7 @@
 import {
   ddList,
   ddItem
-} from '../../../flux/watch-list/useWatchListStore';
+} from '../../../flux/watch-list/watchListStore';
 
 import getTransferData from './getTransferData';
 import DRAG from './WatchDnDConfig';

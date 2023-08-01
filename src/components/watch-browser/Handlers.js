@@ -1,7 +1,7 @@
-export { saveWatchList } from '../../flux/watch-list/useWatchListStore';
+export { saveWatchList } from '../../flux/watch-list/watchListStore';
 
-import { deleteWatchItem } from '../../flux/watch-list/useWatchListStore';
-import { showMd } from '../../flux/useCompStore';
+import { deleteWatchItem } from '../../flux/watch-list/watchListStore';
+import { showMd } from '../../flux/compStore';
 
 import {
   MD_EDIT_WATCH_GROUP,

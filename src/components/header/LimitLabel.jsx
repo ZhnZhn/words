@@ -1,9 +1,5 @@
 import { useState } from '../uiApi';
-
-import {
-  LPAT_LOADING_COMPLETE
-} from '../../flux/actions/LoadingActions';
-import useListen from '../hooks/useListen';
+import { useLimitRemaining } from '../../flux/itemStore';
 
 const S_LABEL = {
   position: 'relative',
@@ -17,20 +13,18 @@ const S_LABEL = {
 };
 
 const LimitLabel = ({
-  style,
-  store
+  style
 }) => {
   const [
     value,
     setValue
   ] = useState('');
 
-  useListen(store, (actionType, value) => {
-    if (actionType === LPAT_LOADING_COMPLETE
-      && !(value == null)) {
-      setValue(value)
+  useLimitRemaining(limitRemaining => {
+    if (limitRemaining != null) {
+      setValue(limitRemaining)
     }
-  }, 'listenLoading')
+  })
 
   return (
     <span style={{...S_LABEL, ...style}}>

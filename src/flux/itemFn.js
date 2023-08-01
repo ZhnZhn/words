@@ -8,7 +8,7 @@ const _isArr = Array.isArray
   slice
 ) => slice && _isArr(slice.configs);
 
-export const addItem = (
+export const addItemImpl = (
   slice,
   config,
   itemConf
@@ -35,7 +35,7 @@ export const addItem = (
   };
 }
 
-export const isItem = (
+export const isItemImpl = (
   slice,
   paneId,
   id
@@ -45,7 +45,7 @@ export const isItem = (
   return _isItem(configs, id);
 }
 
-export const removeItem = (
+export const removeItemImpl = (
   slice,
   config
 ) => {
@@ -63,7 +63,7 @@ export const removeItem = (
   }
 }
 
-export const removeItems = (
+export const removeItemsImpl = (
   slice,
   paneId
 ) => {
@@ -73,7 +73,7 @@ export const removeItems = (
   }
 }
 
-export const removeItemsUnder = (
+export const removeItemsUnderImpl = (
   slice,
   config={}
 ) => {

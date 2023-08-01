@@ -4,11 +4,8 @@ import {
 } from '../uiApi';
 
 import {
-  useCompStore,
-  selectMdOption
-} from '../../flux/useCompStore';
-
-import useSubscribe from '../hooks/useSubscribe';
+  useMdOption
+} from '../../flux/compStore';
 
 import ItemStack from '../zhn-atoms/ItemStack';
 import ModalContainer from './ModalContainer';
@@ -16,7 +13,6 @@ import ModalContainer from './ModalContainer';
 const _crDialogItem = (
   { Comp, type },
   index, {
-  store,
   currentDialog,
   data,
   onClose
@@ -25,7 +21,6 @@ const _crDialogItem = (
     key={type}
     isShow={currentDialog === type}
     data={data[type]}
-    store={store}
     onClose={onClose}
   />
 );
@@ -35,7 +30,6 @@ const _getModalDialogType = option =>
  (option || {}).modalDialogType;
 
 const ModalDialogContainer = ({
-  store,
   router
 }) => {
   const [
@@ -59,31 +53,27 @@ const ModalDialogContainer = ({
      currentDialog: null
   })), []);
 
-  useSubscribe(
-    useCompStore,
-    selectMdOption,
-    (option )=> {
-      if (option){
-        const type = _getModalDialogType(option);
-        if (_isStr(type)) {
-          setState(prevState => {
-            if (!prevState.data[type]) {
-              prevState.dialogs.push({
-                 type,
-                 Comp: router[type]
-              });
-            }
-            prevState.data[type] = option;
-            return {
-              ...prevState,
-              isShow: true,
-              currentDialog: type
-            };
-          })
-        }
+  useMdOption(option => {
+    if (option){
+      const type = _getModalDialogType(option);
+      if (_isStr(type)) {
+        setState(prevState => {
+          if (!prevState.data[type]) {
+            prevState.dialogs.push({
+               type,
+               Comp: router[type]
+            });
+          }
+          prevState.data[type] = option;
+          return {
+            ...prevState,
+            isShow: true,
+            currentDialog: type
+          };
+        })
       }
     }
-  )
+  })
 
   return (
     <ModalContainer
@@ -95,7 +85,6 @@ const ModalDialogContainer = ({
         crItem={_crDialogItem}
         currentDialog={currentDialog}
         data={data}
-        store={store}
         onClose={_hClose}
       />
    </ModalContainer>

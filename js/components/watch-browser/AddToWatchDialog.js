@@ -12,7 +12,7 @@ var _useListOptions = _interopRequireDefault(require("./useListOptions"));
 var _useRefItemCaption = _interopRequireDefault(require("./useRefItemCaption"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 var _WatchActions = require("../../flux/actions/WatchActions");
-var _useWatchListStore = require("../../flux/watch-list/useWatchListStore");
+var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _MsgWatch = require("../../constants/MsgWatch");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
@@ -39,10 +39,10 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
       caption
     } = data,
     [validationMessages, setValidationMessages, _hClose] = (0, _useValidationMessages.default)(onClose),
-    [groupOptions, _updateGroupOptions] = (0, _useGroupOptions.default)(_useWatchListStore.getWatchGroups),
+    [groupOptions, _updateGroupOptions] = (0, _useGroupOptions.default)(_watchListStore.getWatchGroups),
     _refGroupCaption = (0, _uiApi.useRef)(null),
     [_refListCaption, _hSelectList] = (0, _useRefItemCaption.default)(),
-    [listOptions, setListOptions, updateListOptions] = (0, _useListOptions.default)(_useWatchListStore.getWatchListsByGroup, _refListCaption)
+    [listOptions, setListOptions, updateListOptions] = (0, _useListOptions.default)(_watchListStore.getWatchListsByGroup, _refListCaption)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hSelectGroup = (0, _uiApi.useMemo)(() => group => {
@@ -76,7 +76,7 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
           caption,
           config
         } = data;
-        (0, _useWatchListStore.addWatchItem)({
+        (0, _watchListStore.addWatchItem)({
           caption,
           config,
           groupCaption,
@@ -95,7 +95,7 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
       clDiv: CL_BT_DIV,
       onClick: _hAdd
     }, "_add")], [_hAdd]);
-  (0, _useWatchListStore.useMsEdit)(msEdit => {
+  (0, _watchListStore.useMsEdit)(msEdit => {
     if (msEdit && msEdit.forActionType === _WatchActions.WAT_ADD_ITEM) {
       if (msEdit.message) {
         setValidationMessages(msEdit.messages);
@@ -112,7 +112,7 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
       isShow
     } = props;
     if (isShow) {
-      const _groupOptions = (0, _useWatchListStore.getWatchGroups)(),
+      const _groupOptions = (0, _watchListStore.getWatchGroups)(),
         _groupCaption = (0, _uiApi.getRefValue)(_refGroupCaption);
       if (_groupOptions !== groupOptions) {
         (0, _uiApi.setRefValue)(_refGroupCaption, null);

@@ -10,7 +10,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_ROOT = "hrz-container";
 const BrowserContainer = _ref => {
   let {
-    store,
+    //store,
     browserId,
     useBrowser,
     useDialog,
@@ -21,7 +21,6 @@ const BrowserContainer = _ref => {
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_ROOT,
     children: [(0, _jsxRuntime.jsx)(_MenuBrowser.default, {
-      store: store,
       browserId: browserId,
       useBrowser: useBrowser,
       onClickItem: onClickItem

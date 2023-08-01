@@ -15,7 +15,7 @@ import {
   getWatchGroups,
   useMsEdit,
   useWatchList
-} from '../../flux/watch-list/useWatchListStore';
+} from '../../flux/watch-list/watchListStore';
 
 import {
   notSelected,

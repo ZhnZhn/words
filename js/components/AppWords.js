@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("./uiApi");
 var _uiThemeStore = require("../flux/uiThemeStore");
-var _useCompStore = require("../flux/useCompStore");
-var _useWatchListStore = require("../flux/watch-list/useWatchListStore");
+var _compStore = require("../flux/compStore");
+var _watchListStore = require("../flux/watch-list/watchListStore");
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
@@ -19,7 +19,6 @@ const CL_COMP = "component-container",
   WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const AppWords = _ref => {
   let {
-    store,
     action
   } = _ref;
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -38,23 +37,20 @@ const AppWords = _ref => {
     value: _uiThemeStore.uiThemeStore,
     children: (0, _jsxRuntime.jsxs)("div", {
       children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
-        store: store,
         ...headerActions
       }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
-          store: store,
           browserId: WORDS_BROWSER_ID,
-          useBrowser: _useCompStore.useBrowser,
-          useDialog: _useCompStore.useDialog,
-          useWatchList: _useWatchListStore.useWatchList,
+          useBrowser: _compStore.useBrowser,
+          useDialog: _compStore.useDialog,
+          useWatchList: _watchListStore.useWatchList,
           ...browserActions
         }), (0, _jsxRuntime.jsx)(_HrzContainer.default, {
           className: CL_ITEMS,
-          usePane: _useCompStore.usePane
+          usePane: _compStore.usePane
         })]
       }), (0, _jsxRuntime.jsx)(_ModalDialogContainer.default, {
-        store: store,
         router: _RouterModalDialog.default
       })]
     })

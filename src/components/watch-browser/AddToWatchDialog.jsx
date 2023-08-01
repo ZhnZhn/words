@@ -22,7 +22,7 @@ import {
   useMsEdit,
   getWatchGroups,
   getWatchListsByGroup
-} from '../../flux/watch-list/useWatchListStore';
+} from '../../flux/watch-list/watchListStore';
 import {
   notSelected
 } from '../../constants/MsgWatch';

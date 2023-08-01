@@ -1,11 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports.removeItemsUnder = exports.removeItems = exports.removeItem = exports.isItem = exports.addItem = void 0;
+exports.removeItemsUnderImpl = exports.removeItemsImpl = exports.removeItemImpl = exports.isItemImpl = exports.addItemImpl = void 0;
 const _isArr = Array.isArray,
   _isItem = (configs, id) => _isArr(configs) && configs.findIndex(c => c.id === id) !== -1,
   _isConfigs = slice => slice && _isArr(slice.configs);
-const addItem = (slice, config, itemConf) => {
+const addItemImpl = (slice, config, itemConf) => {
   const {
     paneId = 'paneId'
   } = itemConf;
@@ -28,16 +28,16 @@ const addItem = (slice, config, itemConf) => {
     id: paneId
   };
 };
-exports.addItem = addItem;
-const isItem = (slice, paneId, id) => {
+exports.addItemImpl = addItemImpl;
+const isItemImpl = (slice, paneId, id) => {
   const paneSlice = slice[paneId] || {},
     {
       configs
     } = paneSlice;
   return _isItem(configs, id);
 };
-exports.isItem = isItem;
-const removeItem = (slice, config) => {
+exports.isItemImpl = isItemImpl;
+const removeItemImpl = (slice, config) => {
   const {
       paneId,
       id
@@ -53,15 +53,15 @@ const removeItem = (slice, config) => {
     return;
   }
 };
-exports.removeItem = removeItem;
-const removeItems = (slice, paneId) => {
+exports.removeItemImpl = removeItemImpl;
+const removeItemsImpl = (slice, paneId) => {
   const paneSlice = slice[paneId];
   if (paneSlice) {
     paneSlice.configs = [];
   }
 };
-exports.removeItems = removeItems;
-const removeItemsUnder = function (slice, config) {
+exports.removeItemsImpl = removeItemsImpl;
+const removeItemsUnderImpl = function (slice, config) {
   if (config === void 0) {
     config = {};
   }
@@ -80,5 +80,5 @@ const removeItemsUnder = function (slice, config) {
   }
   return;
 };
-exports.removeItemsUnder = removeItemsUnder;
+exports.removeItemsUnderImpl = removeItemsUnderImpl;
 //# sourceMappingURL=itemFn.js.map

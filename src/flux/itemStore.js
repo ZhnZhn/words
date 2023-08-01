@@ -8,8 +8,11 @@ import {
 } from './actions/ItemActions';
 
 import {
-  isItem,
-  addItem
+  isItemImpl,
+  addItemImpl,
+  removeItemImpl,
+  removeItemsImpl,
+  removeItemsUnderImpl
 } from './itemFn';
 
 import {
@@ -58,7 +61,7 @@ const _loadItemFailed = (option) => {
   };
 
   if (config) {
-    _nextState.msItem = addItem(
+    _nextState.msItem = addItemImpl(
        _selectItems(_get()),
        config,
        itemConf
@@ -73,7 +76,7 @@ export const loadItem = (option={}) => {
     word=''
   } = option
   , { paneId } = itemConf;
-  if (isItem(paneId, word)){
+  if (isItemImpl(paneId, word)){
     _loadItemFailed({ msg: _crDbLoadMsg(word) })
     return;
   }
@@ -97,13 +100,19 @@ export const loadItem = (option={}) => {
 }
 
 export const removeItem = (config) => {
-  const _options = removeItem(_selectItems(_get()), config)
+  const _options = removeItemImpl(
+    _selectItems(_get()),
+    config
+  )
   if (_options) {
     _set({ msItem: _options })
   }
 }
 export const removeItems = (paneId) => {
-  removeItems(_selectItems(_get()), paneId)
+  removeItemsImpl(
+    _selectItems(_get()),
+    paneId
+  )
   _set({
     msItem: {
       configs: [],
@@ -112,7 +121,10 @@ export const removeItems = (paneId) => {
   })
 }
 export const removeItemsUnder = (config) => {
-  const _option = removeItemsUnder(_selectItems(_get()), config)
+  const _option = removeItemsUnderImpl(
+    _selectItems(_get()),
+    config
+  )
   if (_option){
     _set({ msItem: _option })
   }

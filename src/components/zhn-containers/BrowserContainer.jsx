@@ -5,7 +5,7 @@ import DialogContainer from './DialogContainer';
 const CL_ROOT = "hrz-container";
 
 const BrowserContainer = ({
-  store,
+  //store,
   browserId,
   useBrowser,
   useDialog,
@@ -14,8 +14,7 @@ const BrowserContainer = ({
   onClickWatchItem
 }) => (
   <div className={CL_ROOT}>
-    <MenuBrowser
-      store={store}
+    <MenuBrowser      
       browserId={browserId}
       useBrowser={useBrowser}
       onClickItem={onClickItem}

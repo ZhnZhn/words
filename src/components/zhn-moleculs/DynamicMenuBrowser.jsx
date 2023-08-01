@@ -52,7 +52,7 @@ const MenuParts = ({
 }
 
 const DynamicMenuBrowser = ({
-  store,
+  //store,
   url,
   browserId,
   useBrowser,

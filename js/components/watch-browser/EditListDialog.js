@@ -7,7 +7,7 @@ var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 var _WatchActions = require("../../flux/actions/WatchActions");
-var _useWatchListStore = require("../../flux/watch-list/useWatchListStore");
+var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _MsgWatch = require("../../constants/MsgWatch");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
@@ -41,46 +41,46 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
         title: "Create",
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_ListCreatePane.default, {
-          getWatchGroups: _useWatchListStore.getWatchGroups,
-          useMsEdit: _useWatchListStore.useMsEdit,
-          useWatchList: _useWatchListStore.useWatchList,
+          getWatchGroups: _watchListStore.getWatchGroups,
+          useMsEdit: _watchListStore.useMsEdit,
+          useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_CREATE_LIST,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
           msgOnNotSelect: _MsgWatch.notSelected,
           msgOnIsEmptyName: _MsgWatch.emptyName,
-          onCreate: _useWatchListStore.crList,
+          onCreate: _watchListStore.crList,
           onClose: onClose
         })
       }), (0, _jsxRuntime.jsx)(_Tab.default, {
         title: "Rename",
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_ListEditPane.default, {
-          getWatchGroups: _useWatchListStore.getWatchGroups,
-          getWatchListsByGroup: _useWatchListStore.getWatchListsByGroup,
-          useMsEdit: _useWatchListStore.useMsEdit,
-          useWatchList: _useWatchListStore.useWatchList,
+          getWatchGroups: _watchListStore.getWatchGroups,
+          getWatchListsByGroup: _watchListStore.getWatchListsByGroup,
+          useMsEdit: _watchListStore.useMsEdit,
+          useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_RENAME_LIST,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
           msgOnNotSelect: _MsgWatch.notSelected,
           msgOnIsEmptyName: _MsgWatch.emptyName,
-          onRename: _useWatchListStore.renList,
+          onRename: _watchListStore.renList,
           onClose: onClose
         })
       }), (0, _jsxRuntime.jsx)(_Tab.default, {
         title: "Delete",
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_ListDeletePane.default, {
-          getWatchGroups: _useWatchListStore.getWatchGroups,
-          getWatchListsByGroup: _useWatchListStore.getWatchListsByGroup,
-          useMsEdit: _useWatchListStore.useMsEdit,
-          useWatchList: _useWatchListStore.useWatchList,
+          getWatchGroups: _watchListStore.getWatchGroups,
+          getWatchListsByGroup: _watchListStore.getWatchListsByGroup,
+          useMsEdit: _watchListStore.useMsEdit,
+          useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_DELETE_LIST,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
           msgOnNotSelect: _MsgWatch.notSelected,
-          onDelete: _useWatchListStore.delList,
+          onDelete: _watchListStore.delList,
           onClose: onClose
         })
       })]

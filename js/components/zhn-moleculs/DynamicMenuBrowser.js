@@ -49,7 +49,7 @@ const MenuParts = _ref => {
 };
 const DynamicMenuBrowser = _ref2 => {
   let {
-    store,
+    //store,
     url,
     browserId,
     useBrowser,

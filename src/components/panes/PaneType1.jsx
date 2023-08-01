@@ -9,7 +9,6 @@ import {
 } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
-import useListen from '../hooks/useListen';
 
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 import useTheme from '../hoc/useTheme';
@@ -111,16 +110,12 @@ const DF_WORD = 'example'
 
 const PaneType1 = ({
   id,
-  store,
   usePane,
+  useMsItem,
   useWatch,
-
-  updateAction,
-
   paneCaption,
   Input,
   Item,
-
   itemConf,
   onLoad=FN_NOOP,
   onClose=FN_NOOP,
@@ -183,30 +178,18 @@ const PaneType1 = ({
       toggleIsShow(true)
     }
   })
+  useMsItem(option => {
+    if (option && option.id === id) {
+      toggleIsShow(true)
+      setConfigs([...option.configs])
+    }
+  })
   useWatch(option => {
     const { item } = option || {};
     if (item && item.id === id) {
       setWord(item.caption)
     }
-  })
-
-  useListen(store, (actionType, option={}) => {
-    if (option.id === id){
-      switch(actionType){
-        case updateAction:
-          toggleIsShow(true)
-          setConfigs([...option.configs])
-          break;
-        /*
-        case toggleAction:
-          toggleIsShow()
-          break;
-        */
-        default:
-          return;
-      }
-    }
-  })
+  })  
 
   const [
     _showStyle,

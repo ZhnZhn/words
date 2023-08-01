@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _Pane = _interopRequireDefault(require("./Pane.Style"));
@@ -95,10 +94,9 @@ const DF_WORD = 'example';
 const PaneType1 = _ref2 => {
   let {
     id,
-    store,
     usePane,
+    useMsItem,
     useWatch,
-    updateAction,
     paneCaption,
     Input,
     Item,
@@ -146,32 +144,18 @@ const PaneType1 = _ref2 => {
       toggleIsShow(true);
     }
   });
+  useMsItem(option => {
+    if (option && option.id === id) {
+      toggleIsShow(true);
+      setConfigs([...option.configs]);
+    }
+  });
   useWatch(option => {
     const {
       item
     } = option || {};
     if (item && item.id === id) {
       setWord(item.caption);
-    }
-  });
-  (0, _useListen.default)(store, function (actionType, option) {
-    if (option === void 0) {
-      option = {};
-    }
-    if (option.id === id) {
-      switch (actionType) {
-        case updateAction:
-          toggleIsShow(true);
-          setConfigs([...option.configs]);
-          break;
-        /*
-        case toggleAction:
-          toggleIsShow()
-          break;
-        */
-        default:
-          return;
-      }
     }
   });
   const [_showStyle, _showCl] = isShow ? [S_INLINE_BLOCK, CL_SHOW_POPUP] : [S_NONE];

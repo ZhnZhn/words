@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.hDropItem = exports.hDragStartItem = exports.hDragOverItem = exports.hDragLeaveItem = exports.hDragEnterItem = void 0;
-var _useWatchListStore = require("../../../flux/watch-list/useWatchListStore");
+var _watchListStore = require("../../../flux/watch-list/watchListStore");
 var _getTransferData = _interopRequireDefault(require("./getTransferData"));
 var _WatchDnDConfig = _interopRequireDefault(require("./WatchDnDConfig"));
 var _DnDStyleHandlers = require("./DnDStyleHandlers");
@@ -32,7 +32,7 @@ options, event) => {
       return;
     } else {
       event.preventDefault();
-      (0, _useWatchListStore.ddItem)({
+      (0, _watchListStore.ddItem)({
         dragId,
         dropId
       });

@@ -4,8 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useCompStore = require("../../flux/useCompStore");
-var _useSubscribe = _interopRequireDefault(require("../hooks/useSubscribe"));
+var _compStore = require("../../flux/compStore");
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -15,7 +14,6 @@ const _crDialogItem = (_ref, index, _ref2) => {
     type
   } = _ref;
   let {
-    store,
     currentDialog,
     data,
     onClose
@@ -23,7 +21,6 @@ const _crDialogItem = (_ref, index, _ref2) => {
   return (0, _jsxRuntime.jsx)(Comp, {
     isShow: currentDialog === type,
     data: data[type],
-    store: store,
     onClose: onClose
   }, type);
 };
@@ -31,7 +28,6 @@ const _isStr = str => typeof str === 'string';
 const _getModalDialogType = option => (option || {}).modalDialogType;
 const ModalDialogContainer = _ref3 => {
   let {
-    store,
     router
   } = _ref3;
   const [state, setState] = (0, _uiApi.useState)({
@@ -51,7 +47,7 @@ const ModalDialogContainer = _ref3 => {
       isShow: false,
       currentDialog: null
     })), []);
-  (0, _useSubscribe.default)(_useCompStore.useCompStore, _useCompStore.selectMdOption, option => {
+  (0, _compStore.useMdOption)(option => {
     if (option) {
       const type = _getModalDialogType(option);
       if (_isStr(type)) {
@@ -80,7 +76,6 @@ const ModalDialogContainer = _ref3 => {
       crItem: _crDialogItem,
       currentDialog: currentDialog,
       data: data,
-      store: store,
       onClose: _hClose
     })
   });

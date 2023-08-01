@@ -5,10 +5,10 @@ import {
   useBrowser,
   usePane,
   useDialog
-} from '../flux/useCompStore';
+} from '../flux/compStore';
 import {
   useWatchList
-} from '../flux/watch-list/useWatchListStore';
+} from '../flux/watch-list/watchListStore';
 
 import ThemeContext from './hoc/ThemeContext';
 
@@ -24,7 +24,6 @@ const CL_COMP = "component-container"
 , WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 
 const AppWords = ({
-  store,
   action
 }) => {
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -44,12 +43,10 @@ const AppWords = ({
     <ThemeContext.Provider value={uiThemeStore}>
       <div>
         <HeaderBar
-          store={store}
           {...headerActions}
         />
         <div className={CL_COMP}>
            <BrowserContainer
-              store={store}
               browserId={WORDS_BROWSER_ID}
               useBrowser={useBrowser}
               useDialog={useDialog}
@@ -62,7 +59,6 @@ const AppWords = ({
            />
         </div>
         <ModalDialogContainer
-           store={store}
            router={RouterModalDialog}
         />
       </div>
