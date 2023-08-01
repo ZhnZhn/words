@@ -1,10 +1,16 @@
 export { createStore } from 'zustand';
 
-import { create } from 'zustand';
+import { createStore } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
+import useSubscribe from '../components/hooks/useSubscribe';
 
-export const createWithSelector = (
+export const createStoreWithSelector = (
   crStore
-) => create(
-  subscribeWithSelector((...args) => crStore(...args))
+) => createStore(
+  subscribeWithSelector(crStore)
 )
+
+export const fCrUse = (
+  store,
+  select
+) => useSubscribe.bind(null, store, select);
