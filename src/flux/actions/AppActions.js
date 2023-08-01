@@ -7,6 +7,9 @@ import {
   showAbout,
   clickWatchItem
 } from '../useCompStore';
+import {
+  initWatchList
+} from '../watch-list/useWatchListStore'
 
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
@@ -15,6 +18,7 @@ const _fShowBrowser = id => showBrowser.bind(null, id);
 
 const AppActions = {
   showAbout,
+  initWatchList,
 
   headerActions: {
     onDefinition: showPane.bind(null, {
