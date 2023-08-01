@@ -6,10 +6,10 @@ import {
   showPane,
   showAbout,
   clickWatchItem
-} from '../useCompStore';
+} from '../compStore';
 import {
   initWatchList
-} from '../watch-list/useWatchListStore'
+} from '../watch-list/watchListStore';
 
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';

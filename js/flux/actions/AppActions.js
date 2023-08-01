@@ -4,26 +4,28 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _Settings = _interopRequireDefault(require("../stores/Settings"));
-var _useCompStore = require("../useCompStore");
+var _compStore = require("../compStore");
+var _watchListStore = require("../watch-list/watchListStore");
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
-const _fShowBrowser = id => _useCompStore.showBrowser.bind(null, id);
+const _fShowBrowser = id => _compStore.showBrowser.bind(null, id);
 const AppActions = {
-  showAbout: _useCompStore.showAbout,
+  showAbout: _compStore.showAbout,
+  initWatchList: _watchListStore.initWatchList,
   headerActions: {
-    onDefinition: _useCompStore.showPane.bind(null, {
+    onDefinition: _compStore.showPane.bind(null, {
       paneCaption: "Word Definition",
       type: "WD_W",
       paneId: "P_WD_W"
     }),
     onSources: _fShowBrowser(WORDS_BROWSER_ID),
     onWatch: _fShowBrowser(WATCH_BROWSER_ID),
-    onSettings: _useCompStore.showMd.bind(null, "SETTINGS", _Settings.default.settingFn()),
-    onAbout: _useCompStore.showAbout
+    onSettings: _compStore.showMd.bind(null, "SETTINGS", _Settings.default.settingFn()),
+    onAbout: _compStore.showAbout
   },
   browserActions: {
-    onClickItem: _useCompStore.showPane,
-    onClickWatchItem: _useCompStore.clickWatchItem
+    onClickItem: _compStore.showPane,
+    onClickWatchItem: _compStore.clickWatchItem
   }
 };
 var _default = AppActions;

@@ -1,16 +1,19 @@
 import { createElement } from '../../components/uiApi';
 import throttleFn from '../../utils/throttleFn';
 
-import fCrUse from '../fCrUse';
+import { fCrUse } from '../storeApi';
 import {
   showMd,
   showPane
-} from '../useCompStore';
+} from '../compStore';
 
 import {
-  IAT_LOAD_ITEM_COMPLETED,
-  ItemActions
-} from '../actions/ItemActions';
+  loadItem,
+  useMsItem,
+  removeItem,
+  removeItems,
+  removeItemsUnder
+} from '../itemStore';
 
 import RouterDialog from '../../components/dialogs/RouterDialog';
 import RouterPane from '../../components/panes/RouterPane';
@@ -18,7 +21,7 @@ import About from '../../components/about/About';
 
 
 const _loadItem = throttleFn(
-  ItemActions.loadItem,
+  loadItem,
   2500
 );
 
@@ -43,7 +46,7 @@ export const crDialog = (
 
 export const crPane = (
   itemConf,
-  store,
+  //store,
   compStore,
   selectPane,
   selectWatch
@@ -63,15 +66,21 @@ export const crPane = (
     id: paneId,
     itemConf: itemConf,
     paneCaption,
-    store,
+    //store,
     usePane: fCrUse(compStore, selectPane),
     useWatch: fCrUse(compStore, selectWatch),
     Input,
     Item,
-    updateAction: IAT_LOAD_ITEM_COMPLETED,
+    useMsItem,
+    onRemoveItems: removeItems.bind(null, paneId),
+    onRemoveUnder: removeItemsUnder,
+    onCloseItem: removeItem,
+    //updateAction: IAT_LOAD_ITEM_COMPLETED,
+    /*
     onRemoveItems: ItemActions.removeItems.bind(null, paneId),
     onRemoveUnder: ItemActions.removeItemsUnder,
     onCloseItem: ItemActions.removeItem,
+    */
     onLoad: _loadItem,
     onAddToWatch: showMd.bind(null, 'AW')
   });

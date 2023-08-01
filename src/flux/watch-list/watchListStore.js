@@ -1,7 +1,10 @@
-import { createWithSelector } from '../storeApi';
+import {
+  createStoreWithSelector,
+  fCrUse
+} from '../storeApi';
 
 import { getIsAutoSave } from '../settingStore';
-import { showMd } from '../useCompStore';
+import { showMd } from '../compStore';
 
 import {
   readObj,
@@ -54,22 +57,31 @@ import {
   dragDropGroup
 } from './LogicDnDFn';
 
-import fCrUse from '../fCrUse';
-
 const STORAGE_KEY = 'WATCH_LIST_WORDS'
 , DIALOG_CAPTION ='Watch List:';
 
-const _selectWatchList = state => state.watchList;
-const _selectMsEdit = state => state.msEdit;
-const _selectIsWatchEdited = state => state.isWatchEdited
+const _crStore = () => ({
+  isWatchEdited: false,
+  watchList: {},
+  msEdit: {}
+})
+, watchListStore = createStoreWithSelector(_crStore)
+, _selectWatchList = state => state.watchList
+, _selectMsEdit = state => state.msEdit
+, _selectIsWatchEdited = state => state.isWatchEdited
+, _set = watchListStore.setState
+, _get = watchListStore.getState;
 
-const _crMsgOption = (
-  caption,
-  descr
-) => ({
-  caption,
-  descr
-});
+export const useWatchList = fCrUse(watchListStore, _selectWatchList)
+export const useMsEdit = fCrUse(watchListStore, _selectMsEdit)
+
+export const getWatchGroups = () => _selectWatchList(watchListStore.getState()).groups
+export const getWatchListsByGroup = (groupCaption) => {
+  const group = findGroup(_selectWatchList(watchListStore.getState()), groupCaption);
+  return group
+    ? group.lists
+    : [];
+}
 
 const _onEditWatch = (
   result,
@@ -92,73 +104,6 @@ const _onEditWatch = (
     })
   }
 }
-
-const _onDragDrop = (
-  result,
-  set,
-  get
-) => {
-  if (result.isDone){
-    set({
-      isWatchEdited: true,
-      watchList: {..._selectWatchList(get())}
-    })
-  } else {
-    showMd(MD_EXCEPTION, result)
-  }
-}
-
-const _saveWl = (
-  isShowDialog=true,
-  set,
-  get
-) => {
-  const _isWatchEdited = _selectIsWatchEdited(get());
-  if (_isWatchEdited){
-    const _err = writeObj(STORAGE_KEY, _selectWatchList(get()));
-    if (_err) {
-      showMd(
-        MD_MSG,
-        _crMsgOption(DIALOG_CAPTION, _err.message)
-      )
-    } else {
-     set({ isWatchEdited: false })
-     if (isShowDialog) {
-       showMd(
-         MD_MSG,
-         _crMsgOption(DIALOG_CAPTION, WATCH_SAVED)
-       )
-     }
-    }
-  } else {
-     showMd(
-       MD_MSG,
-       _crMsgOption(DIALOG_CAPTION, WATCH_PREV)
-     )
-  }
-}
-
-const _crStore = () => ({
-  isWatchEdited: false,
-  watchList: WatchDefault,
-  msEdit: {}
-})
-
-const useWatchListStore = createWithSelector(_crStore)
-
-export const useWatchList = fCrUse(useWatchListStore, _selectWatchList)
-export const useMsEdit = fCrUse(useWatchListStore, _selectMsEdit)
-
-export const getWatchGroups = () => _selectWatchList(useWatchListStore.getState()).groups
-export const getWatchListsByGroup = (groupCaption) => {
-  const group = findGroup(_selectWatchList(useWatchListStore.getState()), groupCaption);
-  return group
-    ? group.lists
-    : [];
-}
-
-const _set = useWatchListStore.setState
-, _get = useWatchListStore.getState;
 
 export const crGroup = (option) => {
   _onEditWatch(
@@ -210,6 +155,20 @@ export const delList = (option) => {
   )
 }
 
+const _onDragDrop = (
+  result,
+  set,
+  get
+) => {
+  if (result.isDone){
+    set({
+      isWatchEdited: true,
+      watchList: {..._selectWatchList(get())}
+    })
+  } else {
+    showMd(MD_EXCEPTION, result)
+  }
+}
 export const ddItem = (option) => {
   _onDragDrop(
     dragDropItem(_selectWatchList(_get()), option),
@@ -230,6 +189,44 @@ export const ddGroup = (option) => {
     _set,
     _get
   );
+}
+
+const _crMsgOption = (
+  caption,
+  descr
+) => ({
+  caption,
+  descr
+});
+
+const _saveWl = (
+  isShowDialog=true,
+  set,
+  get
+) => {
+  const _isWatchEdited = _selectIsWatchEdited(get());
+  if (_isWatchEdited){
+    const _err = writeObj(STORAGE_KEY, _selectWatchList(get()));
+    if (_err) {
+      showMd(
+        MD_MSG,
+        _crMsgOption(DIALOG_CAPTION, _err.message)
+      )
+    } else {
+     set({ isWatchEdited: false })
+     if (isShowDialog) {
+       showMd(
+         MD_MSG,
+         _crMsgOption(DIALOG_CAPTION, WATCH_SAVED)
+       )
+     }
+    }
+  } else {
+     showMd(
+       MD_MSG,
+       _crMsgOption(DIALOG_CAPTION, WATCH_PREV)
+     )
+  }
 }
 
 export const initWatchList = () => {

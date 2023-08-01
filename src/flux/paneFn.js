@@ -3,8 +3,6 @@ import {
   crAbout
 } from './logic/Factory';
 
-import Store from './stores/Store';
-
 export const ABOUT_PANE_ID = 'about';
 
 const _hmPaneId = Object.create(null);
@@ -28,7 +26,6 @@ export const crPaneOption = (
          )
        : crPane(
            itemConf,
-           Store,
            compStore,
            selectPane,
            selectWatch
