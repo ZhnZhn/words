@@ -1,4 +1,4 @@
-import { createStore } from 'zustand';
+import { createStore } from './storeApi';
 import initialUiTheme  from '../components/styles/theme';
 
 export const selectUiTheme = state => state.uiTheme;

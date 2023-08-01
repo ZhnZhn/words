@@ -2,8 +2,8 @@
 
 exports.__esModule = true;
 exports.getIsAutoSave = exports.enableAutoSave = exports.disableAutoSave = void 0;
-var _zustand = require("zustand");
-const settingStore = (0, _zustand.createStore)(set => ({
+var _storeApi = require("./storeApi");
+const settingStore = (0, _storeApi.createStore)(set => ({
   is: true,
   enableAutoSave: () => set({
     is: true

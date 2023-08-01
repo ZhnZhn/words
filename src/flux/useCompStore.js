@@ -1,5 +1,4 @@
-import { create } from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware';
+import { createWithSelector } from './storeApi';
 
 import fCrUse from './fCrUse';
 import { crDialogOption } from './dialogFn';
@@ -17,42 +16,42 @@ export const selectWatch = state => state.watch
 const _dialogInit = {};
 const DF_WATCH_PANE_ID = 'P_WD_W';
 
-export const useCompStore = create(
-  subscribeWithSelector((set) => ({
-    mdOption: void 0,
-    showMd: (mdType, option) => set(() => ({
-      mdOption: {
-        ...option,
-        modalDialogType: mdType
-      }
-    })),
+const _crStore = (set) => ({
+  mdOption: void 0,
+  showMd: (mdType, option) => set(() => ({
+    mdOption: {
+      ...option,
+      modalDialogType: mdType
+    }
+  })),
 
-    dOption: void 0,
-    showDialog: (itemConf) => set({
-      dOption: crDialogOption(_dialogInit, itemConf)
-    }),
+  dOption: void 0,
+  showDialog: (itemConf) => set({
+    dOption: crDialogOption(_dialogInit, itemConf)
+  }),
 
-    browser: { id: void 0},
-    showBrowser: (id) => set({ browser: { id } }),
+  browser: { id: void 0},
+  showBrowser: (id) => set({ browser: { id } }),
 
-    pOption: void 0,
-    showPane: (itemConf) => set({
-      pOption: crPaneOption(
-         itemConf,
-         useCompStore,
-         _selectPane,
-         selectWatch
-      )
-    }),
+  pOption: void 0,
+  showPane: (itemConf) => set({
+    pOption: crPaneOption(
+       itemConf,
+       useCompStore,
+       _selectPane,
+       selectWatch
+    )
+  }),
 
-    watch: void 0,
-    clickWatchItem: (item) => set(() => {
-      item.id = item.id || DF_WATCH_PANE_ID
-      return { watch: { item }};
-    })
+  watch: void 0,
+  clickWatchItem: (item) => set(() => {
+    item.id = item.id || DF_WATCH_PANE_ID
+    return { watch: { item }};
+  })
 
-  }))
-);
+})
+
+export const useCompStore = createWithSelector(_crStore);
 
 export const useBrowser = fCrUse(useCompStore, _selectBrowser)
 export const usePane = fCrUse(useCompStore, _selectPane)

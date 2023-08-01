@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/storeApi.js"
+ ],
+ "file": "../../src/flux/storeApi.js",
+ "names": [
+  "_zustand",
+  "require",
+  "exports",
+  "createStore",
+  "_middleware",
+  "createWithSelector",
+  "crStore",
+  "create",
+  "subscribeWithSelector",
+  "arguments"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AAAsCC,OAAA,CAAAC,WAAA,GAAAH,QAAA,CAAAG,WAAA;AAGtC,IAAAC,WAAA,GAAAH,OAAA;AAEO,MAAMI,kBAAkB,GAC7BC,OAAO,IACJ,IAAAC,eAAM,EACT,IAAAC,iCAAqB,EAAC;EAAA,OAAaF,OAAO,CAAC,GAAAG,SAAO,CAAC;AAAA,EACrD,CAAC;AAAAP,OAAA,CAAAG,kBAAA,GAAAA,kBAAA"
+}

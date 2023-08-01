@@ -1,4 +1,4 @@
-import { createStore } from 'zustand';
+import { createStore } from './storeApi';
 
 const settingStore = createStore(set => ({
   is: true,

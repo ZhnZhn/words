@@ -1,5 +1,4 @@
-import { create } from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware';
+import { createWithSelector } from '../storeApi';
 
 import { getIsAutoSave } from '../settingStore';
 import { showMd } from '../useCompStore';
@@ -139,13 +138,13 @@ const _saveWl = (
   }
 }
 
-const useWatchListStore = create(
-  subscribeWithSelector(() => ({
-    isWatchEdited: false,
-    watchList: WatchDefault,
-    msEdit: {}
-  })
-))
+const _crStore = () => ({
+  isWatchEdited: false,
+  watchList: WatchDefault,
+  msEdit: {}
+})
+
+const useWatchListStore = createWithSelector(_crStore)
 
 export const useWatchList = fCrUse(useWatchListStore, _selectWatchList)
 export const useMsEdit = fCrUse(useWatchListStore, _selectMsEdit)

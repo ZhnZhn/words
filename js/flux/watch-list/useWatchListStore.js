@@ -3,8 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.useWatchList = exports.useMsEdit = exports.saveWatchList = exports.renList = exports.renGroup = exports.initWatchList = exports.getWatchListsByGroup = exports.getWatchGroups = exports.deleteWatchItem = exports.delList = exports.delGroup = exports.ddList = exports.ddItem = exports.ddGroup = exports.crList = exports.crGroup = exports.addWatchItem = void 0;
-var _zustand = require("zustand");
-var _middleware = require("zustand/middleware");
+var _storeApi = require("../storeApi");
 var _settingStore = require("../settingStore");
 var _useCompStore = require("../useCompStore");
 var _localStorageFn = require("../../utils/localStorageFn");
@@ -79,11 +78,12 @@ const _saveWl = function (isShowDialog, set, get) {
     (0, _useCompStore.showMd)(_Type.MD_MSG, _crMsgOption(DIALOG_CAPTION, _MsgWatch.WATCH_PREV));
   }
 };
-const useWatchListStore = (0, _zustand.create)((0, _middleware.subscribeWithSelector)(() => ({
+const _crStore = () => ({
   isWatchEdited: false,
   watchList: _WatchDefault.default,
   msEdit: {}
-})));
+});
+const useWatchListStore = (0, _storeApi.createWithSelector)(_crStore);
 const useWatchList = (0, _fCrUse.default)(useWatchListStore, _selectWatchList);
 exports.useWatchList = useWatchList;
 const useMsEdit = (0, _fCrUse.default)(useWatchListStore, _selectMsEdit);

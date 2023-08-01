@@ -3,8 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.usePane = exports.useDialog = exports.useCompStore = exports.useBrowser = exports.showPane = exports.showMd = exports.showDialog = exports.showBrowser = exports.showAbout = exports.selectWatch = exports.selectMdOption = exports.clickWatchItem = void 0;
-var _zustand = require("zustand");
-var _middleware = require("zustand/middleware");
+var _storeApi = require("./storeApi");
 var _fCrUse = _interopRequireDefault(require("./fCrUse"));
 var _dialogFn = require("./dialogFn");
 var _paneFn = require("./paneFn");
@@ -17,7 +16,7 @@ const selectWatch = state => state.watch;
 exports.selectWatch = selectWatch;
 const _dialogInit = {};
 const DF_WATCH_PANE_ID = 'P_WD_W';
-const useCompStore = (0, _zustand.create)((0, _middleware.subscribeWithSelector)(set => ({
+const _crStore = set => ({
   mdOption: void 0,
   showMd: (mdType, option) => set(() => ({
     mdOption: {
@@ -50,7 +49,8 @@ const useCompStore = (0, _zustand.create)((0, _middleware.subscribeWithSelector)
       }
     };
   })
-})));
+});
+const useCompStore = (0, _storeApi.createWithSelector)(_crStore);
 exports.useCompStore = useCompStore;
 const useBrowser = (0, _fCrUse.default)(useCompStore, _selectBrowser);
 exports.useBrowser = useBrowser;
