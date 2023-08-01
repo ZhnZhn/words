@@ -1,29 +1,19 @@
+const _crItemLists = () => [
+  { caption: 'List1' },
+  { caption: 'List2' },
+  { caption: 'List3' }
+]
+, _crItemGroup = (caption) => ({
+  caption,
+  lists: _crItemLists()
+});
 
 const WatchDefault = {
-    groups : [
-      {
-         caption : 'Group1',
-         lists : [
-           { caption : 'List1' },
-           { caption : 'List2' },
-           { caption : 'List3' }
-         ]
-      },{
-        caption : 'Group2' ,
-        lists : [
-          { caption : 'List1' },
-          { caption : 'List2' },
-          { caption : 'List3' }
-        ]
-      },{
-        caption : 'Group3',
-        lists : [
-          { caption : 'List1' },
-          { caption : 'List2' },
-          { caption : 'List3' }
-        ]
-      }
-    ]
+  groups: [
+    _crItemGroup('Group1'),
+    _crItemGroup('Group2'),
+    _crItemGroup('Group3')
+  ]
 }
 
 export default WatchDefault

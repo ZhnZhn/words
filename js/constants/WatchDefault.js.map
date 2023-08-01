@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../src/constants/WatchDefault.js"],"names":["WatchDefault","groups","caption","lists"],"mappings":";;;;AACA,IAAMA,YAAY,GAAG;AACjBC,EAAAA,MAAM,EAAG,CACP;AACGC,IAAAA,OAAO,EAAG,QADb;AAEGC,IAAAA,KAAK,EAAG,CACN;AAAED,MAAAA,OAAO,EAAG;AAAZ,KADM,EAEN;AAAEA,MAAAA,OAAO,EAAG;AAAZ,KAFM,EAGN;AAAEA,MAAAA,OAAO,EAAG;AAAZ,KAHM;AAFX,GADO,EAQL;AACAA,IAAAA,OAAO,EAAG,QADV;AAEAC,IAAAA,KAAK,EAAG,CACN;AAAED,MAAAA,OAAO,EAAG;AAAZ,KADM,EAEN;AAAEA,MAAAA,OAAO,EAAG;AAAZ,KAFM,EAGN;AAAEA,MAAAA,OAAO,EAAG;AAAZ,KAHM;AAFR,GARK,EAeL;AACAA,IAAAA,OAAO,EAAG,QADV;AAEAC,IAAAA,KAAK,EAAG,CACN;AAAED,MAAAA,OAAO,EAAG;AAAZ,KADM,EAEN;AAAEA,MAAAA,OAAO,EAAG;AAAZ,KAFM,EAGN;AAAEA,MAAAA,OAAO,EAAG;AAAZ,KAHM;AAFR,GAfK;AADQ,CAArB;eA2BeF,Y","sourcesContent":["\r\nconst WatchDefault = {\r\n    groups : [\r\n      {\r\n         caption : 'Group1',\r\n         lists : [\r\n           { caption : 'List1' },\r\n           { caption : 'List2' },\r\n           { caption : 'List3' }\r\n         ]\r\n      },{\r\n        caption : 'Group2' ,\r\n        lists : [\r\n          { caption : 'List1' },\r\n          { caption : 'List2' },\r\n          { caption : 'List3' }\r\n        ]\r\n      },{\r\n        caption : 'Group3',\r\n        lists : [\r\n          { caption : 'List1' },\r\n          { caption : 'List2' },\r\n          { caption : 'List3' }\r\n        ]\r\n      }\r\n    ]\r\n}\r\n\r\nexport default WatchDefault\r\n"],"file":"WatchDefault.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/constants/WatchDefault.js"
+ ],
+ "file": "../../src/constants/WatchDefault.js",
+ "names": [
+  "_crItemLists",
+  "caption",
+  "_crItemGroup",
+  "lists",
+  "WatchDefault",
+  "groups",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,MAAMA,YAAY,GAAGA,CAAA,KAAM,CACzB;IAAEC,OAAO,EAAE;EAAQ,CAAC,EACpB;IAAEA,OAAO,EAAE;EAAQ,CAAC,EACpB;IAAEA,OAAO,EAAE;EAAQ,CAAC,CACrB;EACCC,YAAY,GAAID,OAAO,KAAM;IAC7BA,OAAO;IACPE,KAAK,EAAEH,YAAY,CAAC;EACtB,CAAC,CAAC;AAEF,MAAMI,YAAY,GAAG;EACnBC,MAAM,EAAE,CACNH,YAAY,CAAC,QAAQ,CAAC,EACtBA,YAAY,CAAC,QAAQ,CAAC,EACtBA,YAAY,CAAC,QAAQ,CAAC;AAE1B,CAAC;AAAA,IAAAI,QAAA,GAEcF,YAAY;AAAAG,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
