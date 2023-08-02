@@ -9,13 +9,13 @@ import useRerender from '../hooks/useRerender';
 
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
+import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
 const ListDeletePane = ({
   getWatchGroups,
   getWatchListsByGroup,
-  useMsEdit,
   useWatchList,
   forActionType,
   inputStyle,
@@ -58,11 +58,12 @@ const ListDeletePane = ({
   /*eslint-enable react-hooks/exhaustive-deps */
   , rerender = useRerender()[1]
 
-  useMsEdit(msEdit => {
-    if (msEdit && msEdit.forActionType === forActionType) {
-      _hClear()
-    }
-  })
+  useWatchListMsEdit(
+    forActionType,
+    setValidationMessages,
+    _hClear
+  )
+
   useWatchList(watchList => {
     if (watchList) {
       updateGroupOptions()

@@ -13,7 +13,6 @@ import {
   renGroup,
   delGroup,
   getWatchGroups,
-  useMsEdit,
   useWatchList
 } from '../../flux/watch-list/watchListStore';
 
@@ -53,7 +52,6 @@ const EditGroupDialog = memoIsShow(({
       <TabPane width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
          <Tab title="Create" style={TS.TAB}>
            <GroupAddPane
-              useMsEdit={useMsEdit}
               forActionType={WAT_CREATE_GROUP}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
@@ -65,7 +63,6 @@ const EditGroupDialog = memoIsShow(({
          <Tab title="Rename" style={TS.TAB}>
            <GroupEditPane
               getWatchGroups={getWatchGroups}
-              useMsEdit={useMsEdit}
               useWatchList={useWatchList}
               forActionType={WAT_RENAME_GROUP}
               inputStyle={TS.INPUT}
@@ -79,7 +76,6 @@ const EditGroupDialog = memoIsShow(({
          <Tab title="Delete" style={TS.TAB}>
            <GroupDeletePane
               getWatchGroups={getWatchGroups}
-              useMsEdit={useMsEdit}
               useWatchList={useWatchList}
               forActionType={WAT_DELETE_GROUP}
               inputStyle={TS.INPUT}

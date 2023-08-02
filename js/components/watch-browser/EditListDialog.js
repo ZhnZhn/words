@@ -42,7 +42,6 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_ListCreatePane.default, {
           getWatchGroups: _watchListStore.getWatchGroups,
-          useMsEdit: _watchListStore.useMsEdit,
           useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_CREATE_LIST,
           inputStyle: TS.INPUT,
@@ -58,7 +57,6 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
         children: (0, _jsxRuntime.jsx)(_ListEditPane.default, {
           getWatchGroups: _watchListStore.getWatchGroups,
           getWatchListsByGroup: _watchListStore.getWatchListsByGroup,
-          useMsEdit: _watchListStore.useMsEdit,
           useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_RENAME_LIST,
           inputStyle: TS.INPUT,
@@ -74,7 +72,6 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
         children: (0, _jsxRuntime.jsx)(_ListDeletePane.default, {
           getWatchGroups: _watchListStore.getWatchGroups,
           getWatchListsByGroup: _watchListStore.getWatchListsByGroup,
-          useMsEdit: _watchListStore.useMsEdit,
           useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_DELETE_LIST,
           inputStyle: TS.INPUT,

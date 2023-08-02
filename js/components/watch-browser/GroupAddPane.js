@@ -5,11 +5,11 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const GroupAddPane = _ref => {
   let {
-    useMsEdit,
     forActionType,
     inputStyle,
     btStyle,
@@ -35,15 +35,7 @@ const GroupAddPane = _ref => {
   // msgOnIsEmptyName, onCreate
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useMsEdit(msEdit => {
-    if (msEdit && msEdit.forActionType === forActionType) {
-      if (msEdit.messages) {
-        setValidationMessages(msEdit.messages);
-      } else {
-        _hClear();
-      }
-    }
-  });
+  (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
       ref: _refInput,

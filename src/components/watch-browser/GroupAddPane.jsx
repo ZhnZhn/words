@@ -6,11 +6,11 @@ import {
 } from '../uiApi';
 
 import useValidationMessages from './useValidationMessages';
+import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
-const GroupAddPane = ({
-  useMsEdit,
+const GroupAddPane = ({  
   forActionType,
   inputStyle,
   btStyle,
@@ -40,15 +40,11 @@ const GroupAddPane = ({
   // msgOnIsEmptyName, onCreate
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useMsEdit(msEdit => {
-    if (msEdit && msEdit.forActionType === forActionType) {
-      if (msEdit.messages) {
-        setValidationMessages(msEdit.messages)
-      } else {
-        _hClear()
-      }
-    }
-  })
+  useWatchListMsEdit(
+    forActionType,
+    setValidationMessages,
+    _hClear
+  )
 
   return (
     <>

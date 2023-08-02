@@ -10,12 +10,12 @@ import {
 import useRefItemCaption from './useRefItemCaption';
 import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
+import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
 const ListCreatePane = ({
   getWatchGroups,
-  useMsEdit,
   useWatchList,
   forActionType,
   inputStyle,
@@ -61,22 +61,17 @@ const ListCreatePane = ({
   // onCreate, msgOnNotSelect, msgOnIsEmptyName
   /*eslint-enable react-hooks/exhaustive-deps */
 
-
-  useMsEdit(msEdit => {
-    if (msEdit && msEdit.forActionType === forActionType) {
-      if (msEdit.messages) {
-        setValidationMessages(msEdit.messages)
-      } else {
-        _hClear()
-      }
-    }
-  })
+  useWatchListMsEdit(
+    forActionType,
+    setValidationMessages,
+    _hClear
+  )  
   useWatchList(watchList => {
     if (watchList) {
       updateGroupOptions()
     }
   })
-  
+
   return (
     <>
       <A.RowInputSelect

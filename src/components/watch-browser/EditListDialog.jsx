@@ -14,7 +14,6 @@ import {
   delList,
   getWatchGroups,
   getWatchListsByGroup,
-  useMsEdit,
   useWatchList
 } from '../../flux/watch-list/watchListStore'
 
@@ -55,7 +54,6 @@ const EditListDialog = memoIsShow(({
          <Tab title="Create" style={TS.TAB}>
            <ListCreatePane
               getWatchGroups={getWatchGroups}
-              useMsEdit={useMsEdit}
               useWatchList={useWatchList}
               forActionType={WAT_CREATE_LIST}
               inputStyle={TS.INPUT}
@@ -70,7 +68,6 @@ const EditListDialog = memoIsShow(({
            <ListEditPane
               getWatchGroups={getWatchGroups}
               getWatchListsByGroup={getWatchListsByGroup}
-              useMsEdit={useMsEdit}
               useWatchList={useWatchList}
               forActionType={WAT_RENAME_LIST}
               inputStyle={TS.INPUT}
@@ -85,7 +82,6 @@ const EditListDialog = memoIsShow(({
            <ListDeletePane
               getWatchGroups={getWatchGroups}
               getWatchListsByGroup={getWatchListsByGroup}
-              useMsEdit={useMsEdit}
               useWatchList={useWatchList}
               forActionType={WAT_DELETE_LIST}
               inputStyle={TS.INPUT}

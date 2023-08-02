@@ -7,6 +7,7 @@ var _uiApi = require("../uiApi");
 var _useRefItemCaption = _interopRequireDefault(require("./useRefItemCaption"));
 var _useGroupOptions = _interopRequireDefault(require("./useGroupOptions"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
@@ -14,7 +15,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const GroupDeletePane = _ref => {
   let {
     getWatchGroups,
-    useMsEdit,
     useWatchList,
     forActionType,
     inputStyle,
@@ -41,11 +41,7 @@ const GroupDeletePane = _ref => {
   // msgOnNotSelect, onDelete
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useMsEdit(msEdit => {
-    if (msEdit && msEdit.forActionType === forActionType) {
-      _hClear();
-    }
-  });
+  (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
   useWatchList(watchList => {
     if (watchList) {
       updateGroupOptions();

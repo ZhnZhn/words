@@ -7,6 +7,7 @@ var _uiApi = require("../uiApi");
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 var _useGroupOptions = _interopRequireDefault(require("./useGroupOptions"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
@@ -15,7 +16,6 @@ const ListEditPane = _ref => {
   let {
     getWatchGroups,
     getWatchListsByGroup,
-    useMsEdit,
     useWatchList,
     forActionType,
     inputStyle,
@@ -58,15 +58,7 @@ const ListEditPane = _ref => {
     // msgOnIsEmptyName, msgOnNotSelect, onRename
     /*eslint-enable react-hooks/exhaustive-deps */,
     rerender = (0, _useRerender.default)()[1];
-  useMsEdit(msEdit => {
-    if (msEdit && msEdit.forActionType === forActionType) {
-      if (msEdit.messages) {
-        setValidationMessages(msEdit.messages);
-      } else {
-        _hClear();
-      }
-    }
-  });
+  (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
   useWatchList(watchList => {
     if (watchList) {
       updateGroupOptions();

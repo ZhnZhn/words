@@ -40,7 +40,6 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
         title: "Create",
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_GroupAddPane.default, {
-          useMsEdit: _watchListStore.useMsEdit,
           forActionType: _WatchActions.WAT_CREATE_GROUP,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
@@ -53,7 +52,6 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_GroupEditPane.default, {
           getWatchGroups: _watchListStore.getWatchGroups,
-          useMsEdit: _watchListStore.useMsEdit,
           useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_RENAME_GROUP,
           inputStyle: TS.INPUT,
@@ -68,7 +66,6 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_GroupDeletePane.default, {
           getWatchGroups: _watchListStore.getWatchGroups,
-          useMsEdit: _watchListStore.useMsEdit,
           useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_DELETE_GROUP,
           inputStyle: TS.INPUT,
