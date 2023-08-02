@@ -23,8 +23,7 @@ const { OpenClose2 } = Comp
   lineHeight: 2.5
 }
 , S_ITEM_NOT_SELECTED = {
-  marginRight : 10,
-  borderBottom : '1px solid rgba(128, 192, 64, 0.6)',
+  marginRight: 10
 };
 
 const WatchLists = ({
@@ -38,7 +37,7 @@ const WatchLists = ({
     <OpenClose2
        key={caption}
        fillOpen={C_FILL_OPEN}
-       style={{ ...S_LIST_DIV, ...TS.OPEN_CLOSE }}
+       style={{...S_LIST_DIV, ...TS.OPEN_CLOSE}}
        styleCaption={S_CAPTION}
        styleNotSelected={S_ITEM_NOT_SELECTED}
        caption={caption}
