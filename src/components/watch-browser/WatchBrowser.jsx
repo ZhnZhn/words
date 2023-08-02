@@ -11,6 +11,7 @@ import useTheme from '../hoc/useTheme';
 import styleConfig from '../styles/MenuBrowserStyle';
 
 import {
+  getWatchList,
   saveWatchList,
   showDialogEditGroups,
   showDialogEditLists
@@ -62,7 +63,7 @@ const WatchBrowser = ({
   , [
     watchList,
     setWatchList
-  ] = useState({});
+  ] = useState(getWatchList);
 
   useBrowser(browser => {
     if (browser && browserId === browser.id) {

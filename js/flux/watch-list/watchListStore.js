@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useWatchList = exports.useMsEdit = exports.saveWatchList = exports.renList = exports.renGroup = exports.initWatchList = exports.getWatchListsByGroup = exports.getWatchGroups = exports.deleteWatchItem = exports.delList = exports.delGroup = exports.ddList = exports.ddItem = exports.ddGroup = exports.crList = exports.crGroup = exports.addWatchItem = void 0;
+exports.useWatchList = exports.useMsEdit = exports.saveWatchList = exports.renList = exports.renGroup = exports.initWatchList = exports.getWatchListsByGroup = exports.getWatchList = exports.getWatchGroups = exports.deleteWatchItem = exports.delList = exports.delGroup = exports.ddList = exports.ddItem = exports.ddGroup = exports.crList = exports.crGroup = exports.addWatchItem = void 0;
 var _storeApi = require("../storeApi");
 var _settingStore = require("../settingStore");
 var _compStore = require("../compStore");
@@ -19,7 +19,7 @@ const STORAGE_KEY = 'WATCH_LIST_WORDS',
   DIALOG_CAPTION = 'Watch List:';
 const _crStore = () => ({
     isWatchEdited: false,
-    watchList: {},
+    watchList: _WatchDefault.default,
     msEdit: {}
   }),
   _watchListStore = (0, _storeApi.createStoreWithSelector)(_crStore),
@@ -28,16 +28,17 @@ const _crStore = () => ({
   _selectIsWatchEdited = state => state.isWatchEdited,
   _set = _watchListStore.setState,
   _get = _watchListStore.getState,
-  _getWatchList = () => _selectWatchList(_get()),
   _getIsWatchEdited = () => _selectIsWatchEdited(_get());
+const getWatchList = () => _selectWatchList(_get());
+exports.getWatchList = getWatchList;
 const useWatchList = (0, _storeApi.fCrUse)(_watchListStore, _selectWatchList);
 exports.useWatchList = useWatchList;
 const useMsEdit = (0, _storeApi.fCrUse)(_watchListStore, _selectMsEdit);
 exports.useMsEdit = useMsEdit;
-const getWatchGroups = () => _getWatchList().groups;
+const getWatchGroups = () => (getWatchList() || {}).groups;
 exports.getWatchGroups = getWatchGroups;
 const getWatchListsByGroup = groupCaption => {
-  const group = (0, _LogicGroupFn.findGroup)(_getWatchList(), groupCaption);
+  const group = (0, _LogicGroupFn.findGroup)(getWatchList(), groupCaption);
   return group ? group.lists : [];
 };
 exports.getWatchListsByGroup = getWatchListsByGroup;
@@ -46,7 +47,7 @@ const _onEditWatch = (result, forActionType) => {
     _set({
       isWatchEdited: true,
       watchList: {
-        ..._getWatchList()
+        ...getWatchList()
       },
       msEdit: {
         forActionType
@@ -62,7 +63,7 @@ const _onEditWatch = (result, forActionType) => {
   }
 };
 const _fEditWatch = (editEntity, EDIT_ENTITY) => option => {
-  _onEditWatch(editEntity(_getWatchList(), option), EDIT_ENTITY);
+  _onEditWatch(editEntity(getWatchList(), option), EDIT_ENTITY);
 };
 const crGroup = _fEditWatch(_LogicGroupFn.createGroup, _WatchActions.WAT_CREATE_GROUP);
 exports.crGroup = crGroup;
@@ -82,7 +83,7 @@ const _onDragDrop = result => {
     _set({
       isWatchEdited: true,
       watchList: {
-        ..._getWatchList()
+        ...getWatchList()
       }
     });
   } else {
@@ -90,7 +91,7 @@ const _onDragDrop = result => {
   }
 };
 const _fDdEntity = ddEntity => option => {
-  _onDragDrop(ddEntity(_getWatchList(), option));
+  _onDragDrop(ddEntity(getWatchList(), option));
 };
 const ddItem = _fDdEntity(_LogicDnDFn.dragDropItem);
 exports.ddItem = ddItem;
@@ -107,7 +108,7 @@ const _saveWl = function (isShowDialog) {
     isShowDialog = true;
   }
   if (_getIsWatchEdited()) {
-    const _err = (0, _localStorageFn.writeObj)(STORAGE_KEY, _getWatchList());
+    const _err = (0, _localStorageFn.writeObj)(STORAGE_KEY, getWatchList());
     if (_err) {
       (0, _compStore.showMd)(_Type.MD_MSG, _crMsgOption(_err.message));
     } else {
@@ -143,11 +144,11 @@ const addWatchItem = item => {
 };
 exports.addWatchItem = addWatchItem;
 const deleteWatchItem = option => {
-  (0, _LogicItemFn.removeItem)(_getWatchList(), option);
+  (0, _LogicItemFn.removeItem)(getWatchList(), option);
   _set({
     isWatchEdited: true,
     watchList: {
-      ..._getWatchList()
+      ...getWatchList()
     }
   });
 };

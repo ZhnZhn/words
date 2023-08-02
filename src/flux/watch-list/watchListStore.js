@@ -62,7 +62,7 @@ const STORAGE_KEY = 'WATCH_LIST_WORDS'
 
 const _crStore = () => ({
   isWatchEdited: false,
-  watchList: {},
+  watchList: WatchDefault,
   msEdit: {}
 })
 , _watchListStore = createStoreWithSelector(_crStore)
@@ -71,15 +71,16 @@ const _crStore = () => ({
 , _selectIsWatchEdited = state => state.isWatchEdited
 , _set = _watchListStore.setState
 , _get = _watchListStore.getState
-, _getWatchList = () => _selectWatchList(_get())
 , _getIsWatchEdited = () => _selectIsWatchEdited(_get());
+
+export const getWatchList = () => _selectWatchList(_get())
 
 export const useWatchList = fCrUse(_watchListStore, _selectWatchList)
 export const useMsEdit = fCrUse(_watchListStore, _selectMsEdit)
 
-export const getWatchGroups = () => _getWatchList().groups
+export const getWatchGroups = () => (getWatchList() || {}).groups
 export const getWatchListsByGroup = (groupCaption) => {
-  const group = findGroup(_getWatchList(), groupCaption);
+  const group = findGroup(getWatchList(), groupCaption);
   return group
     ? group.lists
     : [];
@@ -92,7 +93,7 @@ const _onEditWatch = (
   if (result.isDone){
     _set({
       isWatchEdited: true,
-      watchList: { ..._getWatchList() },
+      watchList: { ...getWatchList() },
       msEdit: { forActionType }
     })
   } else {
@@ -109,7 +110,7 @@ const _fEditWatch = (
   EDIT_ENTITY
 ) => (option) => {
   _onEditWatch(
-    editEntity(_getWatchList(), option),
+    editEntity(getWatchList(), option),
     EDIT_ENTITY
   )
 };
@@ -127,14 +128,14 @@ const _onDragDrop = (
   if (result.isDone){
     _set({
       isWatchEdited: true,
-      watchList: {..._getWatchList()}
+      watchList: {...getWatchList()}
     })
   } else {
     showMd(MD_EXCEPTION, result)
   }
 }
 const _fDdEntity = (ddEntity) => (option) => {
-  _onDragDrop(ddEntity(_getWatchList(), option))
+  _onDragDrop(ddEntity(getWatchList(), option))
 };
 export const ddItem = _fDdEntity(dragDropItem)
 export const ddList = _fDdEntity(dragDropList)
@@ -151,7 +152,7 @@ const _saveWl = (
   isShowDialog=true
 ) => {
   if (_getIsWatchEdited()){
-    const _err = writeObj(STORAGE_KEY, _getWatchList());
+    const _err = writeObj(STORAGE_KEY, getWatchList());
     if (_err) {
       showMd(MD_MSG, _crMsgOption(_err.message))
     } else {
@@ -180,9 +181,9 @@ export const addWatchItem = (item) => {
   }
 }
 export const deleteWatchItem = (option) => {
-  removeItem(_getWatchList(), option);
+  removeItem(getWatchList(), option);
   _set({
     isWatchEdited: true,
-    watchList: {..._getWatchList()}
+    watchList: {...getWatchList()}
   })
 }

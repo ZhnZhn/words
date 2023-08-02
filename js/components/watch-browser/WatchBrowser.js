@@ -45,7 +45,7 @@ const WatchBrowser = _ref => {
   } = _ref;
   const [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(),
     [isShow, _hShow, _hHide] = (0, _useBool.default)(isInitShow),
-    [watchList, setWatchList] = (0, _uiApi.useState)({});
+    [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList);
   useBrowser(browser => {
     if (browser && browserId === browser.id) {
       _hShow();

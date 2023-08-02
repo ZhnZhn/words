@@ -1,4 +1,7 @@
-export { saveWatchList } from '../../flux/watch-list/watchListStore';
+export {
+  getWatchList,
+  saveWatchList
+} from '../../flux/watch-list/watchListStore';
 
 import { deleteWatchItem } from '../../flux/watch-list/watchListStore';
 import { showMd } from '../../flux/compStore';
