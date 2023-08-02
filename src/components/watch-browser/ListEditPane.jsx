@@ -9,7 +9,6 @@ import {
 import useRerender from '../hooks/useRerender';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
-import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
@@ -33,7 +32,12 @@ const ListEditPane = ({
     () => setRefInputValue(_refInputText, '')
   )
   , rerender = useRerender()[1]
-  , groupOptions = useWatchList(rerender)
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear,
+     rerender
+  )
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useCallback(() => {
@@ -59,12 +63,6 @@ const ListEditPane = ({
   // setValidationMessages
   // msgOnIsEmptyName, msgOnNotSelect, onRename
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  useWatchListMsEdit(
-    forActionType,
-    setValidationMessages,
-    _hClear
-  )    
 
   return (
     <>

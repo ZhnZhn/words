@@ -7,7 +7,6 @@ import {
 import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
-import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
@@ -28,7 +27,11 @@ const GroupDeletePane = ({
     setValidationMessages,
     _hClear
   ] = useValidationMessages()
-  , groupOptions = useWatchList()
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear
+  )
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useMemo(() => () => {
@@ -38,15 +41,9 @@ const GroupDeletePane = ({
      } else {
        setValidationMessages([msgOnNotSelect('Group')])
      }
-  }, [])
+  }, []);
   // msgOnNotSelect, onDelete
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  useWatchListMsEdit(
-    forActionType,
-    setValidationMessages,
-    _hClear
-  )
 
   return (
     <>

@@ -6,10 +6,8 @@ import {
 } from '../uiApi';
 
 import useRerender from '../hooks/useRerender';
-
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
-import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
@@ -29,7 +27,12 @@ const ListDeletePane = ({
     _hClear
   ] = useValidationMessages()
   , rerender = useRerender()[1]
-  , groupOptions = useWatchList(rerender)
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear,
+     rerender
+  )
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDelete = useCallback(() => {
@@ -52,12 +55,6 @@ const ListDeletePane = ({
   // setValidationMessages
   // msgOnNotSelect, onDelete
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  useWatchListMsEdit(
-    forActionType,
-    setValidationMessages,
-    _hClear
-  )
 
   return (
     <>

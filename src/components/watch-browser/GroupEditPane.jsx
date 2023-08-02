@@ -10,7 +10,6 @@ import {
 import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
-import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
@@ -35,7 +34,11 @@ const GroupEditPane = ({
   ] = useValidationMessages(
     () => setRefInputValue(_refInputText, '')
   )
-  , groupOptions = useWatchList()
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear
+  )
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useMemo(() => () => {
@@ -56,15 +59,9 @@ const GroupEditPane = ({
        }
        setValidationMessages(msg)
      }
-  }, [])
+  }, []);
   // msgOnNotSelect, msgOnIsEmptyName, onRename
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  useWatchListMsEdit(
-    forActionType,
-    setValidationMessages,
-    _hClear
-  )    
 
   return (
     <>

@@ -7,7 +7,6 @@ var _uiApi = require("../uiApi");
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 var _useWatchList = _interopRequireDefault(require("./useWatchList"));
-var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
@@ -27,7 +26,7 @@ const ListEditPane = _ref => {
     _refInputText = (0, _uiApi.useRef)(),
     [validationMessages, setValidationMessages, _hClear] = (0, _useValidationMessages.default)(() => (0, _uiApi.setRefInputValue)(_refInputText, '')),
     rerender = (0, _useRerender.default)()[1],
-    groupOptions = (0, _useWatchList.default)(rerender)
+    groupOptions = (0, _useWatchList.default)(forActionType, setValidationMessages, _hClear, rerender)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hRename = (0, _uiApi.useCallback)(() => {
@@ -57,7 +56,6 @@ const ListEditPane = _ref => {
   // msgOnIsEmptyName, msgOnNotSelect, onRename
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
       ref: _refGroupList,

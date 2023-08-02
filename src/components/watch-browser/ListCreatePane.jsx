@@ -10,7 +10,6 @@ import {
 import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
-import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
@@ -33,7 +32,11 @@ const ListCreatePane = ({
     setValidationMessages,
     _hClear
   ] = useValidationMessages()
-  , groupOptions = useWatchList()
+  , groupOptions = useWatchList(
+     forActionType,
+     setValidationMessages,
+     _hClear
+  )
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCreate = useCallback(() => {
@@ -51,16 +54,10 @@ const ListCreatePane = ({
        if (!captionList)  { msg.push(msgOnIsEmptyName('List')); }
        setValidationMessages(msg)
      }
-  }, [])
+  }, []);
   // _refGroupCaption, setValidationMessages
   // onCreate, msgOnNotSelect, msgOnIsEmptyName
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  useWatchListMsEdit(
-    forActionType,
-    setValidationMessages,
-    _hClear
-  )
 
   return (
     <>

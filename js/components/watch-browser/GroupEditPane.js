@@ -7,7 +7,6 @@ var _uiApi = require("../uiApi");
 var _useRefItemCaption = _interopRequireDefault(require("./useRefItemCaption"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 var _useWatchList = _interopRequireDefault(require("./useWatchList"));
-var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
@@ -25,7 +24,7 @@ const GroupEditPane = _ref => {
   const _refInputText = (0, _uiApi.useRef)(),
     [_refCaptionFrom, _hSelectGroup] = (0, _useRefItemCaption.default)(),
     [validationMessages, setValidationMessages, _hClear] = (0, _useValidationMessages.default)(() => (0, _uiApi.setRefInputValue)(_refInputText, '')),
-    groupOptions = (0, _useWatchList.default)()
+    groupOptions = (0, _useWatchList.default)(forActionType, setValidationMessages, _hClear)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hRename = (0, _uiApi.useMemo)(() => () => {
@@ -50,7 +49,6 @@ const GroupEditPane = _ref => {
   // msgOnNotSelect, msgOnIsEmptyName, onRename
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
       caption: "Group From:",
