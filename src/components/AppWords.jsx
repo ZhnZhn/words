@@ -3,8 +3,7 @@ import { useEffect } from './uiApi';
 import { uiThemeStore } from '../flux/uiThemeStore';
 import {
   useBrowser,
-  usePane,
-  useDialog
+  usePane
 } from '../flux/compStore';
 import {
   useWatchList
@@ -48,8 +47,7 @@ const AppWords = ({
         <div className={CL_COMP}>
            <BrowserContainer
               browserId={WORDS_BROWSER_ID}
-              useBrowser={useBrowser}
-              useDialog={useDialog}
+              useBrowser={useBrowser}              
               useWatchList={useWatchList}
               {...browserActions}
            />

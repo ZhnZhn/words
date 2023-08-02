@@ -43,7 +43,6 @@ const AppWords = _ref => {
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
           browserId: WORDS_BROWSER_ID,
           useBrowser: _compStore.useBrowser,
-          useDialog: _compStore.useDialog,
           useWatchList: _watchListStore.useWatchList,
           ...browserActions
         }), (0, _jsxRuntime.jsx)(_HrzContainer.default, {

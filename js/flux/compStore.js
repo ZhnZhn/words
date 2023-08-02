@@ -1,15 +1,12 @@
 "use strict";
 
 exports.__esModule = true;
-exports.usePane = exports.useMdOption = exports.useDialog = exports.useBrowser = exports.showPane = exports.showMd = exports.showDialog = exports.showBrowser = exports.showAbout = exports.clickWatchItem = void 0;
+exports.usePane = exports.useMdOption = exports.useBrowser = exports.showPane = exports.showMd = exports.showBrowser = exports.showAbout = exports.clickWatchItem = void 0;
 var _storeApi = require("./storeApi");
-var _dialogFn = require("./dialogFn");
 var _paneFn = require("./paneFn");
-const _dialogInit = {};
 const DF_WATCH_PANE_ID = 'P_WD_W';
 const _crStore = () => ({
     mdOption: void 0,
-    dOption: void 0,
     browser: {
       id: void 0
     },
@@ -18,7 +15,6 @@ const _crStore = () => ({
   }),
   compStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectMdOption = state => state.mdOption,
-  _selectDialog = state => state.dOption,
   _selectPane = state => state.pOption,
   _selectBrowser = state => state.browser,
   _selectWatch = state => state.watch,
@@ -27,8 +23,6 @@ const useBrowser = (0, _storeApi.fCrUse)(compStore, _selectBrowser);
 exports.useBrowser = useBrowser;
 const usePane = (0, _storeApi.fCrUse)(compStore, _selectPane);
 exports.usePane = usePane;
-const useDialog = (0, _storeApi.fCrUse)(compStore, _selectDialog);
-exports.useDialog = useDialog;
 const useMdOption = (0, _storeApi.fCrUse)(compStore, _selectMdOption);
 exports.useMdOption = useMdOption;
 const showMd = (mdType, option) => _set({
@@ -38,10 +32,6 @@ const showMd = (mdType, option) => _set({
   }
 });
 exports.showMd = showMd;
-const showDialog = itemConf => _set({
-  dOption: (0, _dialogFn.crDialogOption)(_dialogInit, itemConf)
-});
-exports.showDialog = showDialog;
 const showBrowser = id => _set({
   browser: {
     id
