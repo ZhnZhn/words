@@ -1,11 +1,13 @@
 //import PropTypes from 'prop-types'
+import { crCn } from '../uiApi';
 
 import isKeyEnter from '../zhn-atoms/isKeyEnter'
 import OpenClose from '../zhn-atoms/OpenClose'
 
 const CL_NOT_S = 'not-selected';
 
-const _isFn = fn => typeof fn === 'function';
+const _assign = Object.assign
+, _isFn = fn => typeof fn === 'function';
 
 const _hKeyDown = (onClick, evt) => {
   if (_isFn(onClick) && isKeyEnter(evt)) {
@@ -21,13 +23,11 @@ const _renderMenuItems = function(TS, option){
     ...restOption
   } = option;
   return items.map((item, index) => {
-    const _className = TS.CL_ROW
-      ? `${TS.CL_ROW} ${CL_NOT_S}`
-      :  CL_NOT_S
+    const _className = crCn(TS.CL_ROW, CL_NOT_S)
     , _itemConf = hmItems[item.id]
     , { menuTitle} = _itemConf;
 
-    Object.assign(_itemConf, restOption)
+    _assign(_itemConf, restOption)
     const _onClick = _isFn(onClickItem)
        ? onClickItem.bind(null, _itemConf)
        : void 0;
@@ -48,13 +48,14 @@ const _renderMenuItems = function(TS, option){
 
 const MenuPart = ({
   styleConfig:TS,
-  caption, isInitClose, ...restProps
+  isInitClose,
+  caption,
+  ...restProps
 }) => (
   <OpenClose
      style={TS.OPEN_CLOSE}
      caption={caption}
      isClose={isInitClose}
-     itemStyle={TS.ITEM}
   >
      {_renderMenuItems(TS, restProps)}
   </OpenClose>
