@@ -1,11 +1,12 @@
 import {
+  getWatchGroups
+} from '../../flux/watch-list/watchListStore';
+import {
   useState,
   useCallback
 } from '../uiApi';
 
-const useGroupOptions = (
-  getWatchGroups
-) => {
+const useGroupOptions = () => {
   const [
     groupOpions,
     setGroupOptions

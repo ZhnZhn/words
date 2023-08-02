@@ -39,7 +39,7 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
       caption
     } = data,
     [validationMessages, setValidationMessages, _hClose] = (0, _useValidationMessages.default)(onClose),
-    [groupOptions, _updateGroupOptions] = (0, _useGroupOptions.default)(_watchListStore.getWatchGroups),
+    [groupOptions, _updateGroupOptions] = (0, _useGroupOptions.default)(),
     _refGroupCaption = (0, _uiApi.useRef)(null),
     [_refListCaption, _hSelectList] = (0, _useRefItemCaption.default)(),
     [listOptions, setListOptions, updateListOptions] = (0, _useListOptions.default)(_watchListStore.getWatchListsByGroup, _refListCaption)

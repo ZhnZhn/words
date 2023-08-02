@@ -60,7 +60,7 @@ const AddToWatchDialog = memoIsShow((
   , [
     groupOptions,
     _updateGroupOptions
-  ] = useGroupOptions(getWatchGroups)
+  ] = useGroupOptions()
   , _refGroupCaption = useRef(null)
   , [
     _refListCaption,
@@ -162,7 +162,7 @@ const AddToWatchDialog = memoIsShow((
   const TS = useTheme(styleConfig);
 
   return (
-    <ModalDialog       
+    <ModalDialog
        style={{...TS.R_DIALOG, ...S_DIALOG}}
        captionStyle={TS.BROWSER_CAPTION}
        caption="Add To Watch List"

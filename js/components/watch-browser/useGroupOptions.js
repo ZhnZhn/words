@@ -2,13 +2,14 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _uiApi = require("../uiApi");
-const useGroupOptions = getWatchGroups => {
-  const [groupOpions, setGroupOptions] = (0, _uiApi.useState)(getWatchGroups)
+const useGroupOptions = () => {
+  const [groupOpions, setGroupOptions] = (0, _uiApi.useState)(_watchListStore.getWatchGroups)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _updateGroupOptions = (0, _uiApi.useCallback)(() => {
-      setGroupOptions(getWatchGroups());
+      setGroupOptions((0, _watchListStore.getWatchGroups)());
     }, []);
   // getWatchGroups
   /*eslint-enable react-hooks/exhaustive-deps */
