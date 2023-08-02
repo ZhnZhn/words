@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/components/styles/MenuBrowserStyle.js"],"names":["styleConfig","themeName","undefined","style","createStyle","R","CL_SCROLL_PANE","CL_ROW","CL_ROW_ITEM","BROWSER","BG","OPEN_CLOSE","BROWSER_CAPTION","BG_HEADER","ITEM","borderBottom","BADGE"],"mappings":";;;;;;;;;AAEA,IAAMA,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAEC,SADO;AAElBC,EAAAA,KAAK,EAAED,SAFW;AAGlBE,EAAAA,WAAW,EAAE,qBAACC,CAAD,EAAO;AAClB,WAAO;AACLC,MAAAA,cAAc,EAAED,CAAC,CAACC,cADb;AAELC,MAAAA,MAAM,EAAEF,CAAC,CAACG,WAFL;AAILC,MAAAA,OAAO,gCACFJ,CAAC,CAACK,EADA,CAJF;AAOLC,MAAAA,UAAU,gCACLN,CAAC,CAACK,EADG,CAPL;AAULE,MAAAA,eAAe,gCACVP,CAAC,CAACQ,SADQ,CAVV;AAaLC,MAAAA,IAAI,EAAE;AACJC,QAAAA,YAAY,EAAE;AADV,OAbD;AAgBLC,MAAAA,KAAK,gCACAX,CAAC,CAACQ,SADF;AAhBA,KAAP;AAoBD;AAxBiB,CAApB;eA2Beb,W","sourcesContent":["\r\n\r\nconst styleConfig = {\r\n  themeName: undefined,\r\n  style: undefined,\r\n  createStyle: (R) => {\r\n    return {\r\n      CL_SCROLL_PANE: R.CL_SCROLL_PANE,\r\n      CL_ROW: R.CL_ROW_ITEM,\r\n\r\n      BROWSER: {\r\n        ...R.BG\r\n      },\r\n      OPEN_CLOSE: {\r\n        ...R.BG\r\n      },\r\n      BROWSER_CAPTION: {\r\n        ...R.BG_HEADER\r\n      },\r\n      ITEM: {\r\n        borderBottom: \"1px solid #9e9e9e\",\r\n      },\r\n      BADGE: {\r\n        ...R.BG_HEADER\r\n      }\r\n    };\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"],"file":"MenuBrowserStyle.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/styles/MenuBrowserStyle.js"
+ ],
+ "file": "../../../src/components/styles/MenuBrowserStyle.js",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "R",
+  "CL_SCROLL_PANE",
+  "CL_ROW",
+  "CL_ROW_ITEM",
+  "BROWSER",
+  "BG",
+  "OPEN_CLOSE",
+  "BROWSER_CAPTION",
+  "BG_HEADER",
+  "BADGE",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAEA,MAAMA,WAAW,GAAG;EAClBC,SAAS,EAAEC,SAAS;EACpBC,KAAK,EAAED,SAAS;EAChBE,WAAW,EAAGC,CAAC,IAAK;IAClB,OAAO;MACLC,cAAc,EAAED,CAAC,CAACC,cAAc;MAChCC,MAAM,EAAEF,CAAC,CAACG,WAAW;MAErBC,OAAO,EAAE;QACP,GAAGJ,CAAC,CAACK;MACP,CAAC;MACDC,UAAU,EAAE;QACV,GAAGN,CAAC,CAACK;MACP,CAAC;MACDE,eAAe,EAAE;QACf,GAAGP,CAAC,CAACQ;MACP,CAAC;MACDC,KAAK,EAAE;QACL,GAAGT,CAAC,CAACQ;MACP;IACF,CAAC;EACH;AACF,CAAC;AAAA,IAAAE,QAAA,GAEcf,WAAW;AAAAgB,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}

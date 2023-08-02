@@ -17,9 +17,6 @@ const styleConfig = {
       BROWSER_CAPTION: {
         ...R.BG_HEADER
       },
-      ITEM: {
-        borderBottom: "1px solid #9e9e9e",
-      },
       BADGE: {
         ...R.BG_HEADER
       }
