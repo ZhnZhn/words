@@ -65,19 +65,21 @@ const _crStore = () => ({
   watchList: {},
   msEdit: {}
 })
-, watchListStore = createStoreWithSelector(_crStore)
+, _watchListStore = createStoreWithSelector(_crStore)
 , _selectWatchList = state => state.watchList
 , _selectMsEdit = state => state.msEdit
 , _selectIsWatchEdited = state => state.isWatchEdited
-, _set = watchListStore.setState
-, _get = watchListStore.getState;
+, _set = _watchListStore.setState
+, _get = _watchListStore.getState
+, _getWatchList = () => _selectWatchList(_get())
+, _getIsWatchEdited = () => _selectIsWatchEdited(_get());
 
-export const useWatchList = fCrUse(watchListStore, _selectWatchList)
-export const useMsEdit = fCrUse(watchListStore, _selectMsEdit)
+export const useWatchList = fCrUse(_watchListStore, _selectWatchList)
+export const useMsEdit = fCrUse(_watchListStore, _selectMsEdit)
 
-export const getWatchGroups = () => _selectWatchList(watchListStore.getState()).groups
+export const getWatchGroups = () => _getWatchList().groups
 export const getWatchListsByGroup = (groupCaption) => {
-  const group = findGroup(_selectWatchList(watchListStore.getState()), groupCaption);
+  const group = findGroup(_getWatchList(), groupCaption);
   return group
     ? group.lists
     : [];
@@ -85,18 +87,16 @@ export const getWatchListsByGroup = (groupCaption) => {
 
 const _onEditWatch = (
   result,
-  forActionType,
-  set,
-  get
+  forActionType
 ) => {
   if (result.isDone){
-    set({
+    _set({
       isWatchEdited: true,
-      watchList: { ..._selectWatchList(get()) },
+      watchList: { ..._getWatchList() },
       msEdit: { forActionType }
     })
   } else {
-    set({
+    _set({
       msEdit: {
         messages:[result.message],
         forActionType
@@ -104,128 +104,64 @@ const _onEditWatch = (
     })
   }
 }
-
-export const crGroup = (option) => {
+const _fEditWatch = (
+  editEntity,
+  EDIT_ENTITY
+) => (option) => {
   _onEditWatch(
-     createGroup(_selectWatchList(_get()), option),
-     WAT_CREATE_GROUP,
-     _set,
-     _get
-  );
-}
-export const renGroup = (option) => {
-  _onEditWatch(
-    renameGroup(_selectWatchList(_get()), option),
-    WAT_RENAME_GROUP,
-    _set,
-    _get
-  );
-}
-export const delGroup = (option) => {
-  _onEditWatch(
-    deleteGroup(_selectWatchList(_get()), option),
-    WAT_DELETE_GROUP,
-    _set,
-    _get
-  );
-}
-
-export const crList = (option) => {
-  _onEditWatch(
-    createList(_selectWatchList(_get()), option),
-    WAT_CREATE_LIST,
-    _set,
-    _get
-  );
-}
-export const renList = (option) => {
-  _onEditWatch(
-    renameList(_selectWatchList(_get()), option),
-    WAT_RENAME_LIST,
-    _set,
-    _get
-  );
-}
-export const delList = (option) => {
-  _onEditWatch(
-    deleteList(_selectWatchList(_get()), option),
-    WAT_DELETE_LIST,
-    _set,
-    _get
+    editEntity(_getWatchList(), option),
+    EDIT_ENTITY
   )
-}
+};
+export const crGroup = _fEditWatch(createGroup, WAT_CREATE_GROUP)
+export const renGroup = _fEditWatch(renameGroup, WAT_RENAME_GROUP)
+export const delGroup = _fEditWatch(deleteGroup, WAT_DELETE_GROUP)
+export const crList = _fEditWatch(createList, WAT_CREATE_LIST)
+export const renList = _fEditWatch(renameList, WAT_RENAME_LIST)
+export const delList = _fEditWatch(deleteList, WAT_DELETE_LIST)
+const _addItem = _fEditWatch(addItem, WAT_ADD_ITEM);
 
 const _onDragDrop = (
-  result,
-  set,
-  get
+  result
 ) => {
   if (result.isDone){
-    set({
+    _set({
       isWatchEdited: true,
-      watchList: {..._selectWatchList(get())}
+      watchList: {..._getWatchList()}
     })
   } else {
     showMd(MD_EXCEPTION, result)
   }
 }
-export const ddItem = (option) => {
-  _onDragDrop(
-    dragDropItem(_selectWatchList(_get()), option),
-    _set,
-    _get
-  );
-}
-export const ddList = (option) => {
-  _onDragDrop(
-    dragDropList(_selectWatchList(_get()), option),
-    _set,
-    _get
-  );
-}
-export const ddGroup = (option) => {
-  _onDragDrop(
-    dragDropGroup(_selectWatchList(_get()), option),
-    _set,
-    _get
-  );
-}
+const _fDdEntity = (ddEntity) => (option) => {
+  _onDragDrop(ddEntity(_getWatchList(), option))
+};
+export const ddItem = _fDdEntity(dragDropItem)
+export const ddList = _fDdEntity(dragDropList)
+export const ddGroup = _fDdEntity(dragDropGroup)
 
 const _crMsgOption = (
-  caption,
   descr
 ) => ({
-  caption,
+  caption: DIALOG_CAPTION,
   descr
 });
 
 const _saveWl = (
-  isShowDialog=true,
-  set,
-  get
+  isShowDialog=true
 ) => {
-  const _isWatchEdited = _selectIsWatchEdited(get());
-  if (_isWatchEdited){
-    const _err = writeObj(STORAGE_KEY, _selectWatchList(get()));
+  if (_getIsWatchEdited()){
+    const _err = writeObj(STORAGE_KEY, _getWatchList());
     if (_err) {
-      showMd(
-        MD_MSG,
-        _crMsgOption(DIALOG_CAPTION, _err.message)
-      )
+      showMd(MD_MSG, _crMsgOption(_err.message))
     } else {
-     set({ isWatchEdited: false })
+     _set({ isWatchEdited: false })
      if (isShowDialog) {
-       showMd(
-         MD_MSG,
-         _crMsgOption(DIALOG_CAPTION, WATCH_SAVED)
-       )
+       showMd(MD_MSG, _crMsgOption(WATCH_SAVED))
      }
     }
   } else {
-     showMd(
-       MD_MSG,
-       _crMsgOption(DIALOG_CAPTION, WATCH_PREV)
-     )
+     showMd(MD_MSG, _crMsgOption(WATCH_PREV))
   }
 }
 
@@ -235,23 +171,18 @@ export const initWatchList = () => {
   })
 }
 export const saveWatchList = ({ isShowDialog } = {}) => {
-  _saveWl(isShowDialog, _set, _get)
+  _saveWl(isShowDialog)
 }
 export const addWatchItem = (item) => {
-  _onEditWatch(
-    addItem(_selectWatchList(_get()), item),
-    WAT_ADD_ITEM,
-    _set,
-    _get
-  );
+  _addItem(item)
   if (getIsAutoSave()) {
-    _saveWl(false, _set, _get)
+    _saveWl(false)
   }
 }
 export const deleteWatchItem = (option) => {
-  removeItem(_selectWatchList(_get()), option);
+  removeItem(_getWatchList(), option);
   _set({
     isWatchEdited: true,
-    watchList: {..._selectWatchList(_get())}
+    watchList: {..._getWatchList()}
   })
 }
