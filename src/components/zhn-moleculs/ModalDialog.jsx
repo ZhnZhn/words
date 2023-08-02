@@ -1,12 +1,16 @@
 import {
   useRef,
   useCallback,
-  useEffect
+  useEffect,
+  getRefValue,
+  setRefValue,
+  focusRefElement
 } from '../uiApi';
 
 import useClassAnimation from '../hooks/useClassAnimation';
 
-import A from '../Comp';
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import FlatButton from '../zhn-atoms/FlatButton';
 
 const CL_MD = 'modal-dialog'
 , CL_MD_ACTIONS = `${CL_MD}__actions`
@@ -38,11 +42,8 @@ const _getPrevFocusedElement = () => {
   return document.activeElement;
 };
 
-const _hasFocusFn = ref =>
-  typeof ((ref || {}).current || {}).focus === 'function';
-
-const _hClickDialog = (event) => {
-  event.stopPropagation()
+const _hClickDialog = (evt) => {
+  evt.stopPropagation()
 };
 
 const ModalDialog = ({
@@ -60,11 +61,11 @@ const ModalDialog = ({
   const _refRootDiv = useRef()
   , _refPrevFocused = useRef()
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback((event) => {
-       if (_refRootDiv
-         && event.target === _refRootDiv.current
-         && event.keyCode === 27) {
-           onClose(event)
+  , _hKeyDown = useCallback(evt => {
+       if ( evt.target === getRefValue(_refRootDiv)
+         && evt.keyCode === 27
+       ) {
+           onClose(evt)
        }
      }, [])
   // onClose
@@ -84,30 +85,35 @@ const ModalDialog = ({
 
   useEffect(() => {
     if(isShow) {
-      _refPrevFocused.current = _getPrevFocusedElement()
+      setRefValue(_refPrevFocused, _getPrevFocusedElement())
     }
   }, [isShow])
   useEffect(() => {
-    if (isShow && _hasFocusFn(_refRootDiv)) {
-      _refRootDiv.current.focus()
+    if (isShow) {
+      focusRefElement(_refRootDiv)
     }
   }, [isShow])
   useEffect(() => {
-    if (_style === S.HIDING && _hasFocusFn(_refPrevFocused) ) {
-      _refPrevFocused.current.focus()
+    if (_style === S.HIDING) {
+      focusRefElement(_refPrevFocused)
     }
   })
 
   return (
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
     <div
        ref={_refRootDiv}
-       tabIndex="0"
+       role="dialog"
+       tabIndex="-1"
+       aria-label={caption}
+       aria-hidden={!isShow}
        className={_className2}
        style={{...style, ..._style}}
        onClick={_hClickDialog}
        onKeyDown={_hKeyDown}
     >
-       <A.BrowserCaption
+    {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
+       <BrowserCaption
           rootStyle={captionStyle}
           caption={caption}
           onClose={onClose}
@@ -118,7 +124,7 @@ const ModalDialog = ({
        {isWithButton && <div className={CL_MD_ACTIONS}>
          {commandButtons}
          { !withoutClose &&
-            <A.FlatButton
+            <FlatButton
               rootStyle={S_BT}
               clDiv={CL_BT_DIV}
               caption="Close"

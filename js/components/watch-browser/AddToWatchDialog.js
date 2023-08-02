@@ -129,7 +129,6 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
 
   const TS = (0, _useTheme.default)(_Dialog.default);
   return (0, _jsxRuntime.jsxs)(_ModalDialog.default, {
-    STYLE: TS.BT,
     style: {
       ...TS.R_DIALOG,
       ...S_DIALOG

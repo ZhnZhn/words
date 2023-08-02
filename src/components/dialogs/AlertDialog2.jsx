@@ -1,13 +1,11 @@
 //import PropTypes from "prop-types";
-
 import memoIsShow from '../hoc/memoIsShow';
 import useTheme from '../hoc/useTheme';
 import styleConfig from './Dialog.Style';
 
-import A from '../Comp'
+import ModalDialog from '../zhn-moleculs/ModalDialog'
 
 const CL_ELL = 'ellipsis'
-
 , S_DIALOG = {
   left: 'calc(50vw - 184px)'
 }
@@ -65,11 +63,10 @@ const AlertDialog2 = memoIsShow(({
   , _caption = caption + ': ';
 
   return (
-    <A.ModalDialog
-      STYLE={TS.BT}
+    <ModalDialog
       style={{...TS.R_DIALOG, ...S_DIALOG }}
       caption="Exception"
-      captionStyle={{ ...TS.BROWSER_CAPTION, ...S_CAPTION }}
+      captionStyle={{...TS.BROWSER_CAPTION, ...S_CAPTION}}
       isShow={isShow}
       isClosePrimary={true}
       onClose={onClose}
@@ -91,7 +88,7 @@ const AlertDialog2 = memoIsShow(({
             {descr}
           </p>
        </div>
-    </A.ModalDialog>
+    </ModalDialog>
   );
 });
 

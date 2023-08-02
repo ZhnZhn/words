@@ -162,8 +162,7 @@ const AddToWatchDialog = memoIsShow((
   const TS = useTheme(styleConfig);
 
   return (
-    <ModalDialog
-       STYLE={TS.BT}
+    <ModalDialog       
        style={{...TS.R_DIALOG, ...S_DIALOG}}
        captionStyle={TS.BROWSER_CAPTION}
        caption="Add To Watch List"

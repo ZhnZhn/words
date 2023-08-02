@@ -61,8 +61,7 @@ const SettingsDialog = ({
 
   return (
     <ModalDialog
-       className=""
-       STYLE={TS.BT}
+       className=""       
        style={{...S_MODAL, ...TS.R_DIALOG}}
        caption="User Settings"
        captionStyle={TS.BROWSER_CAPTION}

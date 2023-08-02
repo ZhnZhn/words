@@ -3,7 +3,7 @@ import memoIsShow from '../hoc/memoIsShow';
 import useTheme from '../hoc/useTheme';
 import styleConfig from './Dialog.Style';
 
-import A from '../Comp';
+import ModalDialog from '../zhn-moleculs/ModalDialog'
 
 const S_DIALOG = {
   left: 'calc(50vw - 152px)'
@@ -46,8 +46,7 @@ const AlertDialog = memoIsShow(({
   , _msg  = _toMsg(data);
 
   return (
-    <A.ModalDialog
-       STYLE={TS.BT}
+    <ModalDialog       
        style={{...TS.R_DIALOG, ...S_DIALOG }}
        captionStyle={{ ...TS.BROWSER_CAPTION, ...S_CAPTION }}
        caption="Exception Message"
@@ -60,7 +59,7 @@ const AlertDialog = memoIsShow(({
             {_msg}
           </p>
        </div>
-    </A.ModalDialog>
+    </ModalDialog>
   );
 });
 

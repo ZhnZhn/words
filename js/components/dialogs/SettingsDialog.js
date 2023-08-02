@@ -52,7 +52,6 @@ const SettingsDialog = _ref => {
     }, [onClose]);
   return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
     className: "",
-    STYLE: TS.BT,
     style: {
       ...S_MODAL,
       ...TS.R_DIALOG
