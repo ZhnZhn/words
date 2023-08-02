@@ -51,8 +51,6 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
         title: "Rename",
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_GroupEditPane.default, {
-          getWatchGroups: _watchListStore.getWatchGroups,
-          useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_RENAME_GROUP,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,
@@ -65,8 +63,6 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
         title: "Delete",
         style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_GroupDeletePane.default, {
-          getWatchGroups: _watchListStore.getWatchGroups,
-          useWatchList: _watchListStore.useWatchList,
           forActionType: _WatchActions.WAT_DELETE_GROUP,
           inputStyle: TS.INPUT,
           btStyle: TS.BT.FLAT_ROOT,

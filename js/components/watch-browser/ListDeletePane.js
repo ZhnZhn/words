@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
-var _useGroupOptions = _interopRequireDefault(require("./useGroupOptions"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+var _useWatchList = _interopRequireDefault(require("./useWatchList"));
 var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -14,9 +14,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 
 const ListDeletePane = _ref => {
   let {
-    getWatchGroups,
     getWatchListsByGroup,
-    useWatchList,
     forActionType,
     inputStyle,
     btStyle,
@@ -25,8 +23,9 @@ const ListDeletePane = _ref => {
     onClose
   } = _ref;
   const _refGroupList = (0, _uiApi.useRef)(),
-    [groupOptions, updateGroupOptions] = (0, _useGroupOptions.default)(getWatchGroups),
-    [validationMessages, setValidationMessages, _hClear] = (0, _useValidationMessages.default)()
+    [validationMessages, setValidationMessages, _hClear] = (0, _useValidationMessages.default)(),
+    rerender = (0, _useRerender.default)()[1],
+    groupOptions = (0, _useWatchList.default)(rerender)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hDelete = (0, _uiApi.useCallback)(() => {
@@ -46,18 +45,12 @@ const ListDeletePane = _ref => {
         }
         setValidationMessages(msg);
       }
-    }, [])
-    // setValidationMessages
-    // msgOnNotSelect, onDelete
-    /*eslint-enable react-hooks/exhaustive-deps */,
-    rerender = (0, _useRerender.default)()[1];
+    }, []);
+  // setValidationMessages
+  // msgOnNotSelect, onDelete
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
-  useWatchList(watchList => {
-    if (watchList) {
-      updateGroupOptions();
-      rerender();
-    }
-  });
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
       ref: _refGroupList,

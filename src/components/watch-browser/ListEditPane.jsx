@@ -7,16 +7,14 @@ import {
 } from '../uiApi';
 
 import useRerender from '../hooks/useRerender';
-import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
+import useWatchList from './useWatchList';
 import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
 const ListEditPane = ({
-  getWatchGroups,
   getWatchListsByGroup,
-  useWatchList,
   forActionType,
   inputStyle,
   btStyle,
@@ -28,16 +26,14 @@ const ListEditPane = ({
   const _refGroupList = useRef()
   , _refInputText = useRef()
   , [
-    groupOptions,
-    updateGroupOptions
-  ] = useGroupOptions(getWatchGroups)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages(
     () => setRefInputValue(_refInputText, '')
   )
+  , rerender = useRerender()[1]
+  , groupOptions = useWatchList(rerender)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useCallback(() => {
@@ -59,23 +55,16 @@ const ListEditPane = ({
       if (!captionListTo){ msg.push(msgOnIsEmptyName('List To')) }
       setValidationMessages(msg)
     }
-  }, [])
+  }, []);
   // setValidationMessages
   // msgOnIsEmptyName, msgOnNotSelect, onRename
   /*eslint-enable react-hooks/exhaustive-deps */
-  , rerender = useRerender()[1]
 
   useWatchListMsEdit(
     forActionType,
     setValidationMessages,
     _hClear
-  )  
-  useWatchList(watchList => {
-    if (watchList) {
-      updateGroupOptions()
-      rerender()
-    }
-  })
+  )    
 
   return (
     <>

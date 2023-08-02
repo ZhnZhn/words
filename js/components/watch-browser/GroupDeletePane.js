@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useRefItemCaption = _interopRequireDefault(require("./useRefItemCaption"));
-var _useGroupOptions = _interopRequireDefault(require("./useGroupOptions"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
+var _useWatchList = _interopRequireDefault(require("./useWatchList"));
 var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -14,8 +14,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 
 const GroupDeletePane = _ref => {
   let {
-    getWatchGroups,
-    useWatchList,
     forActionType,
     inputStyle,
     btStyle,
@@ -25,7 +23,7 @@ const GroupDeletePane = _ref => {
   } = _ref;
   const [_refCaption, _hSelectGroup] = (0, _useRefItemCaption.default)(),
     [validationMessages, setValidationMessages, _hClear] = (0, _useValidationMessages.default)(),
-    [groupOptions, updateGroupOptions] = (0, _useGroupOptions.default)(getWatchGroups)
+    groupOptions = (0, _useWatchList.default)()
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hDeleteGroup = (0, _uiApi.useMemo)(() => () => {
@@ -42,11 +40,6 @@ const GroupDeletePane = _ref => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
-  useWatchList(watchList => {
-    if (watchList) {
-      updateGroupOptions();
-    }
-  });
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
       inputStyle: inputStyle,

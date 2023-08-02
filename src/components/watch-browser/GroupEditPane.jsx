@@ -8,15 +8,13 @@ import {
 } from '../uiApi';
 
 import useRefItemCaption from './useRefItemCaption';
-import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
+import useWatchList from './useWatchList';
 import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
 const GroupEditPane = ({
-  getWatchGroups,
-  useWatchList,
   forActionType,
   inputStyle,
   btStyle,
@@ -31,16 +29,13 @@ const GroupEditPane = ({
     _hSelectGroup
   ] = useRefItemCaption()
   , [
-    groupOptions,
-    updateGroupOptions
-  ] = useGroupOptions(getWatchGroups)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages(
     () => setRefInputValue(_refInputText, '')
   )
+  , groupOptions = useWatchList()
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hRename = useMemo(() => () => {
@@ -69,12 +64,7 @@ const GroupEditPane = ({
     forActionType,
     setValidationMessages,
     _hClear
-  )  
-  useWatchList(watchList => {
-    if (watchList) {
-      updateGroupOptions()
-    }
-  })
+  )    
 
   return (
     <>

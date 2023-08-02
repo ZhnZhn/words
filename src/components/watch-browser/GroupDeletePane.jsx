@@ -5,15 +5,13 @@ import {
 } from '../uiApi';
 
 import useRefItemCaption from './useRefItemCaption';
-import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
+import useWatchList from './useWatchList';
 import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
 const GroupDeletePane = ({
-  getWatchGroups,
-  useWatchList,
   forActionType,
   inputStyle,
   btStyle,
@@ -30,10 +28,7 @@ const GroupDeletePane = ({
     setValidationMessages,
     _hClear
   ] = useValidationMessages()
-  , [
-    groupOptions,
-    updateGroupOptions
-  ] = useGroupOptions(getWatchGroups)
+  , groupOptions = useWatchList()
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDeleteGroup = useMemo(() => () => {
@@ -52,11 +47,6 @@ const GroupDeletePane = ({
     setValidationMessages,
     _hClear
   )
-  useWatchList(watchList => {
-    if (watchList) {
-      updateGroupOptions()
-    }
-  })
 
   return (
     <>

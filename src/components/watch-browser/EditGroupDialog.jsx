@@ -11,9 +11,7 @@ import {
 import {
   crGroup,
   renGroup,
-  delGroup,
-  getWatchGroups,
-  useWatchList
+  delGroup  
 } from '../../flux/watch-list/watchListStore';
 
 import {
@@ -62,8 +60,6 @@ const EditGroupDialog = memoIsShow(({
          </Tab>
          <Tab title="Rename" style={TS.TAB}>
            <GroupEditPane
-              getWatchGroups={getWatchGroups}
-              useWatchList={useWatchList}
               forActionType={WAT_RENAME_GROUP}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}
@@ -75,8 +71,6 @@ const EditGroupDialog = memoIsShow(({
          </Tab>
          <Tab title="Delete" style={TS.TAB}>
            <GroupDeletePane
-              getWatchGroups={getWatchGroups}
-              useWatchList={useWatchList}
               forActionType={WAT_DELETE_GROUP}
               inputStyle={TS.INPUT}
               btStyle={TS.BT.FLAT_ROOT}

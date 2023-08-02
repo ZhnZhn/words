@@ -7,16 +7,14 @@ import {
 
 import useRerender from '../hooks/useRerender';
 
-import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
+import useWatchList from './useWatchList';
 import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
 const ListDeletePane = ({
-  getWatchGroups,
   getWatchListsByGroup,
-  useWatchList,
   forActionType,
   inputStyle,
   btStyle,
@@ -26,14 +24,12 @@ const ListDeletePane = ({
 }) => {
   const _refGroupList = useRef()
   , [
-    groupOptions,
-    updateGroupOptions
-  ] = useGroupOptions(getWatchGroups)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages()
+  , rerender = useRerender()[1]
+  , groupOptions = useWatchList(rerender)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hDelete = useCallback(() => {
@@ -52,24 +48,16 @@ const ListDeletePane = ({
         if (!captionList)  { msg.push(msgOnNotSelect('List'))  }
         setValidationMessages(msg)
       }
-  }, [])
+  }, []);
   // setValidationMessages
   // msgOnNotSelect, onDelete
   /*eslint-enable react-hooks/exhaustive-deps */
-  , rerender = useRerender()[1]
 
   useWatchListMsEdit(
     forActionType,
     setValidationMessages,
     _hClear
   )
-
-  useWatchList(watchList => {
-    if (watchList) {
-      updateGroupOptions()
-      rerender()
-    }
-  })
 
   return (
     <>

@@ -8,15 +8,13 @@ import {
 } from '../uiApi';
 
 import useRefItemCaption from './useRefItemCaption';
-import useGroupOptions from './useGroupOptions';
 import useValidationMessages from './useValidationMessages';
+import useWatchList from './useWatchList';
 import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
 const ListCreatePane = ({
-  getWatchGroups,
-  useWatchList,
   forActionType,
   inputStyle,
   btStyle,
@@ -31,14 +29,11 @@ const ListCreatePane = ({
     _hSelectGroup
   ] = useRefItemCaption()
   , [
-    groupOptions,
-    updateGroupOptions
-  ] = useGroupOptions(getWatchGroups)
-  , [
     validationMessages,
     setValidationMessages,
     _hClear
   ] = useValidationMessages()
+  , groupOptions = useWatchList()
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCreate = useCallback(() => {
@@ -65,12 +60,7 @@ const ListCreatePane = ({
     forActionType,
     setValidationMessages,
     _hClear
-  )  
-  useWatchList(watchList => {
-    if (watchList) {
-      updateGroupOptions()
-    }
-  })
+  )
 
   return (
     <>
