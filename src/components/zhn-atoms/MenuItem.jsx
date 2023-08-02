@@ -3,7 +3,8 @@ import {
   useRef,
   useCallback,
   useImperativeHandle,
-  getRefValue
+  getRefValue,
+  focusRefElement
 } from '../uiApi';
 
 const FN_NOOP = () => {};
@@ -15,8 +16,8 @@ const MenuItem = forwardRef(({
   onClose=FN_NOOP
 }, ref) => {
   const _refDiv = useRef()
-  , _hKeyDown = useCallback((evt) => {
-    const { keyCode } = event;
+  , _hKeyDown = useCallback(evt => {
+    const { keyCode } = evt;
     if (keyCode === 13 ) {
       onClick()
     } else if (keyCode === 27 ) {
@@ -26,10 +27,7 @@ const MenuItem = forwardRef(({
 
   useImperativeHandle(ref, () => ({
     focus: () => {
-      const _el = getRefValue(_refDiv);
-      if (_el) {
-        _el.focus()
-      }
+      focusRefElement(_refDiv)
     }
   }), [])
 
