@@ -1,25 +1,26 @@
 import IconGitHub from './IconGitHub'
 import IconWordsApi from './IconWordsApi'
-import IconReact from './IconReact'
+import IconPreact from './IconPreact'
 
-const S = {
-  ROOT : {
-    textAlign: 'center',
-    paddingTop: 20
-  }
+const S_ROOT = {
+  textAlign: 'center',
+  paddingTop: 20
 };
 
-const IconLogoBar = ({ iconStyle, iconGitHubStyle }) => (
-  <div style={S.ROOT}>
+const IconLogoBar = ({
+  iconStyle,
+  iconGitHubStyle
+}) => (
+  <div style={S_ROOT}>
      <IconGitHub
         style={iconGitHubStyle}
-        title="GitHub Repository"
+        ariaLabel="GitHub: Repository of web app Words"
         href="https://github.com/zhnzhn/words/"
      />
      <IconWordsApi
        style={iconStyle}
      />
-     <IconReact
+     <IconPreact
        style={iconStyle}
      />
   </div>

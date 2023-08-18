@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../../src/components/about/IconWordsApi.jsx"],"names":["IconWordsApi","className","style"],"mappings":";;;;;;;AAAA,IAAMA,YAAY,GAAG,SAAfA,YAAe;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,KAAd,QAAcA,KAAd;AAAA,sBACpB;AACE,IAAA,SAAS,EAAC,aADZ;AAEE,IAAA,KAAK,EAAEA,KAFT;AAGE,IAAA,IAAI,EAAC,2BAHP;AAAA,2BAKE;AACG,MAAA,GAAG,EAAC,eADP;AAEG,MAAA,GAAG,EAAC;AAFP;AALF,IADoB;AAAA,CAArB;;eAagBF,Y","sourcesContent":["const IconWordsApi = ({ className, style }) => (\r\n <a\r\n   className=\"icon__words\"\r\n   style={style}\r\n   href=\"https://www.wordsapi.com/\"\r\n >\r\n   <img\r\n      alt=\"Logo WordsApi\"\r\n      src=\"css/wordsapilogo.png\"\r\n    />\r\n </a>\r\n);\r\n\r\n export default IconWordsApi\r\n"],"file":"IconWordsApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/IconWordsApi.js"
+ ],
+ "file": "../../../src/components/about/IconWordsApi.js",
+ "names": [
+  "WORDS_API",
+  "IconWordsApi",
+  "_ref",
+  "style",
+  "_jsxRuntime",
+  "jsx",
+  "className",
+  "href",
+  "children",
+  "alt",
+  "src",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AACA,MAAMA,SAAS,GAAG,UAAU;AAE5B,MAAMC,YAAY,GAAGC,IAAA;EAAA,IAAC;IACpBC;EACF,CAAC,GAAAD,IAAA;EAAA,OACA,IAAAE,WAAA,CAAAC,GAAA;IACE,4BAAwBL,SAAS,UAAQ;IACzCM,SAAS,EAAC,aAAa;IACvBH,KAAK,EAAEA,KAAM;IACbI,IAAI,EAAC,2BAA2B;IAAAC,QAAA,EAEhC,IAAAJ,WAAA,CAAAC,GAAA;MACGI,GAAG,EAAKT,SAAS,UAAQ;MACzBU,GAAG,EAAC;IAAsB,CAC3B;EAAC,CACF,CAAC;AAAA,CACJ;AAAC,IAAAC,QAAA,GAEcV,YAAY;AAAAW,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}

@@ -1,1 +1,32 @@
-{"version":3,"sources":["../../../src/components/about/IconLogoBar.jsx"],"names":["S","ROOT","textAlign","paddingTop","IconLogoBar","iconStyle","iconGitHubStyle"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,SAAS,EAAE,QADN;AAELC,IAAAA,UAAU,EAAE;AAFP;AADC,CAAV;;AAOA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,eAAd,QAAcA,eAAd;AAAA,sBAClB;AAAK,IAAA,KAAK,EAAEN,CAAC,CAACC,IAAd;AAAA,4BACG,qBAAC,sBAAD;AACG,MAAA,KAAK,EAAEK,eADV;AAEG,MAAA,KAAK,EAAC,mBAFT;AAGG,MAAA,IAAI,EAAC;AAHR,MADH,eAMG,qBAAC,wBAAD;AACE,MAAA,KAAK,EAAED;AADT,MANH,eASG,qBAAC,qBAAD;AACE,MAAA,KAAK,EAAEA;AADT,MATH;AAAA,IADkB;AAAA,CAApB;;eAgBeD,W","sourcesContent":["import IconGitHub from './IconGitHub'\r\nimport IconWordsApi from './IconWordsApi'\r\nimport IconReact from './IconReact'\r\n\r\nconst S = {\r\n  ROOT : {\r\n    textAlign: 'center',\r\n    paddingTop: 20\r\n  }\r\n};\r\n\r\nconst IconLogoBar = ({ iconStyle, iconGitHubStyle }) => (\r\n  <div style={S.ROOT}>\r\n     <IconGitHub\r\n        style={iconGitHubStyle}\r\n        title=\"GitHub Repository\"\r\n        href=\"https://github.com/zhnzhn/words/\"\r\n     />\r\n     <IconWordsApi\r\n       style={iconStyle}\r\n     />\r\n     <IconReact\r\n       style={iconStyle}\r\n     />\r\n  </div>\r\n);\r\n\r\nexport default IconLogoBar\r\n"],"file":"IconLogoBar.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/IconLogoBar.js"
+ ],
+ "file": "../../../src/components/about/IconLogoBar.js",
+ "names": [
+  "_IconGitHub",
+  "_interopRequireDefault",
+  "require",
+  "_IconWordsApi",
+  "_IconPreact",
+  "_jsxRuntime",
+  "S_ROOT",
+  "textAlign",
+  "paddingTop",
+  "IconLogoBar",
+  "_ref",
+  "iconStyle",
+  "iconGitHubStyle",
+  "jsxs",
+  "style",
+  "children",
+  "jsx",
+  "default",
+  "ariaLabel",
+  "href",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,aAAA,GAAAF,sBAAA,CAAAC,OAAA;AACA,IAAAE,WAAA,GAAAH,sBAAA,CAAAC,OAAA;AAAqC,IAAAG,WAAA,GAAAH,OAAA;AAErC,MAAMI,MAAM,GAAG;EACbC,SAAS,EAAE,QAAQ;EACnBC,UAAU,EAAE;AACd,CAAC;AAED,MAAMC,WAAW,GAAGC,IAAA;EAAA,IAAC;IACnBC,SAAS;IACTC;EACF,CAAC,GAAAF,IAAA;EAAA,OACC,IAAAL,WAAA,CAAAQ,IAAA;IAAKC,KAAK,EAAER,MAAO;IAAAS,QAAA,GAChB,IAAAV,WAAA,CAAAW,GAAA,EAAChB,WAAA,CAAAiB,OAAU;MACRH,KAAK,EAAEF,eAAgB;MACvBM,SAAS,EAAC,qCAAqC;MAC/CC,IAAI,EAAC;IAAkC,CACzC,CAAC,EACF,IAAAd,WAAA,CAAAW,GAAA,EAACb,aAAA,CAAAc,OAAY;MACXH,KAAK,EAAEH;IAAU,CAClB,CAAC,EACF,IAAAN,WAAA,CAAAW,GAAA,EAACZ,WAAA,CAAAa,OAAU;MACTH,KAAK,EAAEH;IAAU,CAClB,CAAC;EAAA,CACA,CAAC;AAAA,CACP;AAAC,IAAAS,QAAA,GAEaX,WAAW;AAAAY,OAAA,CAAAJ,OAAA,GAAAG,QAAA"
+}
