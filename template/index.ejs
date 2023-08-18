@@ -15,7 +15,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <base target="_blank">  
   
-  <link rel="stylesheet" href="css/app-04e7f14a5b.min.css">    
+  <link rel="stylesheet" href="css/app-d3148d8437.min.css">    
 
 </head>
 <body>
@@ -43,14 +43,14 @@
    <!--googleon: snippet-->
 
    <%
-   for (let index in htmlWebpackPlugin.files.js ) {
-    const fileName = htmlWebpackPlugin.files.js[index];
-    if (fileName.indexOf('lib_') !== -1) { %>
-      <script src="<%=fileName %>" defer></script>
-    <% } else if (fileName.indexOf('words_') !== -1) { %>
-      <script src="<%=fileName %>" defer></script>
-    <% }
-   } %>
+    for (let index in htmlWebpackPlugin.files.js) {
+     const fileName = htmlWebpackPlugin.files.js[index];
+     if (fileName.indexOf('lib_') !== -1) { %>
+       <script src="<%=fileName %>" defer></script>
+     <% } else if (fileName.indexOf('words_') !== -1) { %>
+       <script src="<%=fileName %>" defer></script>
+     <% }
+    } %>  
 
 </body>
 </html>
