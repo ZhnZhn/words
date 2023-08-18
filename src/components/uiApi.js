@@ -35,11 +35,34 @@ export const setRefValue = (
 }
 
 const _isFn = fn => typeof fn === 'function';
-export const focusRefElement = ref => {
-  const _el = getRefValue(ref)
-  if (_el && _isFn(_el.focus)) {
-    _el.focus()
+
+const _focusHtmlElement = (
+  element
+) => {
+  if (element && _isFn(element.focus)) {
+    element.focus()
   }
+}
+
+export const focusRefElement = ref => {
+  _focusHtmlElement(
+    getRefValue(ref)
+  )
+}
+
+export const focusElementById = (
+  id
+) => {
+  _focusHtmlElement(
+    document.getElementById(id)
+  )
+}
+
+export const stopDefaultFor = (
+  evt
+) => {
+  evt.stopPropagation()
+  evt.preventDefault()
 }
 
 export const getRefInputValue = ref => {

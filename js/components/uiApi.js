@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.crStyle2 = exports.crCn = exports.cloneElement = void 0;
+exports.useStore = exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.crStyle2 = exports.crCn = exports.cloneElement = void 0;
 var _crCn = require("./zhn-utils/crCn");
 exports.crCn = _crCn.crCn;
 var _crStyle = require("./zhn-utils/crStyle");
@@ -33,13 +33,24 @@ const setRefValue = (ref, value) => {
 };
 exports.setRefValue = setRefValue;
 const _isFn = fn => typeof fn === 'function';
-const focusRefElement = ref => {
-  const _el = getRefValue(ref);
-  if (_el && _isFn(_el.focus)) {
-    _el.focus();
+const _focusHtmlElement = element => {
+  if (element && _isFn(element.focus)) {
+    element.focus();
   }
 };
+const focusRefElement = ref => {
+  _focusHtmlElement(getRefValue(ref));
+};
 exports.focusRefElement = focusRefElement;
+const focusElementById = id => {
+  _focusHtmlElement(document.getElementById(id));
+};
+exports.focusElementById = focusElementById;
+const stopDefaultFor = evt => {
+  evt.stopPropagation();
+  evt.preventDefault();
+};
+exports.stopDefaultFor = stopDefaultFor;
 const getRefInputValue = ref => {
   const _el = getRefValue(ref);
   return _el && _isFn(_el.getValue) ? _el.getValue() : void 0;
