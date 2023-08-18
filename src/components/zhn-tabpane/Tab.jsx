@@ -1,38 +1,25 @@
-//import PropTypes from "prop-types";
-import { crCn } from '../uiApi';
-
-const CL_TAB = 'tab'
-, CL_TAB_SELECTED = 'tab--selected';
-
 const Tab = ({
-  id,
+  className,
+  tabId,
+  tabPanelId,
   title,
   isSelected,
-  onClick
-}) => {
-  const _cn = crCn(CL_TAB, [isSelected, CL_TAB_SELECTED]);
-
-  return (
-    <button
-       className={_cn}
-       id={`tab-${id}`}
-       role="tab"
-       aria-selected={isSelected}
-       aria-controls={`tabpanel-${id}`}
-       onClick={onClick}
-    >
-       {title}
-    </button>
-  );
-}
-
-/*
-Tab.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string,
-  isSelected: PropTypes.bool,
-  onClick: PropTypes.func
-}
-*/
+  onClick,
+  onKeyDown
+}) => (
+  <button
+    type="button"
+    role="tab"
+    className={className}
+    id={tabId}
+    tabIndex={isSelected ? '0' : '-1'}
+    aria-selected={isSelected}
+    aria-controls={tabPanelId}
+    onClick={onClick}
+    onKeyDown={onKeyDown}
+  >
+    {title}
+  </button>
+);
 
 export default Tab

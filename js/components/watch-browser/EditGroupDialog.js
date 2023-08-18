@@ -34,6 +34,7 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
     caption: "Watch Groups Edit",
     onClose: onClose,
     children: (0, _jsxRuntime.jsxs)(_TabPane.default, {
+      id: "egd",
       width: _Dialog2.TAB_PANE_WIDTH,
       tabStyle: _Dialog2.S_TABS,
       children: [(0, _jsxRuntime.jsx)(_Tab.default, {

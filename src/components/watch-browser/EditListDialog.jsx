@@ -12,7 +12,7 @@ import {
   crList,
   renList,
   delList,
-  getWatchListsByGroup  
+  getWatchListsByGroup
 } from '../../flux/watch-list/watchListStore'
 
 import {
@@ -48,7 +48,7 @@ const EditListDialog = memoIsShow(({
        caption="Watch Lists Edit"
        onClose={onClose}
     >
-      <TabPane width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
+      <TabPane id="eld" width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
          <Tab title="Create" style={TS.TAB}>
            <ListCreatePane
               forActionType={WAT_CREATE_LIST}

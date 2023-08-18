@@ -61,7 +61,7 @@ const SettingsDialog = ({
 
   return (
     <ModalDialog
-       className=""       
+       className=""
        style={{...S_MODAL, ...TS.R_DIALOG}}
        caption="User Settings"
        captionStyle={TS.BROWSER_CAPTION}
@@ -69,7 +69,7 @@ const SettingsDialog = ({
        isWithButton={false}
        onClose={onClose}
     >
-      <TabPane style={S_TAB_PANE} >
+      <TabPane id="sd" style={S_TAB_PANE} >
         <Tab title="API Key" style={TS.TAB}>
            <CardApiKey
              ref={_ref1}

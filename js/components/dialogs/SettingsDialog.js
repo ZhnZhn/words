@@ -62,6 +62,7 @@ const SettingsDialog = _ref => {
     isWithButton: false,
     onClose: onClose,
     children: (0, _jsxRuntime.jsxs)(_TabPane.default, {
+      id: "sd",
       style: S_TAB_PANE,
       children: [(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "API Key",

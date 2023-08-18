@@ -1,7 +1,16 @@
 import {
+  memo,
   cloneElement,
-  useState
+  useState,
+  focusElementById,
+  stopDefaultFor
 } from '../uiApi';
+
+import {
+  crTabCn,
+  crTabId,
+  crTabPanelId
+} from './tabPaneFn';
 
 const S_TABS = {
   margin: '5px 5px 10px 12px'
@@ -19,29 +28,64 @@ const S_TABS = {
   display: 'none'
 };
 
+const _crNextId = (
+  id,
+  childrenLength
+) => id === -1
+  ? childrenLength - 1
+  : id === childrenLength
+      ? 0
+      : id;
 
-const TabPane = ({
+const TabPane = memo(({
+  id,
   width,
   height,
-  tabStyle,
   children
 }) => {
   const [
     selectedTabIndex,
     setSelectedTabIndex
   ] = useState(0)
-  , _isSelectedTabIndex = index =>
-      index === selectedTabIndex;
+  , _isSelectedTabIndex = (index) =>
+      index === selectedTabIndex
+
+  , _hKeyDown = (index, evt) => {
+      const _focusTabByIndex = (tabIndex) => {
+        const _nextIndex = _crNextId(
+          tabIndex,
+          children.length
+        );
+        focusElementById(crTabId(id, _nextIndex))
+        setSelectedTabIndex(_nextIndex)
+      }
+
+      const { keyCode } = evt;
+      if (keyCode === 39) {
+        stopDefaultFor(evt)
+        _focusTabByIndex(index + 1)
+      }
+      if (keyCode === 37) {
+        stopDefaultFor(evt)
+        _focusTabByIndex(index - 1)
+      }
+  };
 
   return (
     <div style={{ width, height }}>
-      <div style={{...S_TABS, ...tabStyle}}>
-         {children.map((tab, index) => cloneElement(tab, {
-             key: index,
-             id: index,
-             onClick: () => setSelectedTabIndex(index),
-             isSelected: _isSelectedTabIndex(index)
-          }))}
+      <div style={S_TABS}>
+         {children.map((tab, index) => {
+            const isSelected = _isSelectedTabIndex(index);
+            return cloneElement(tab, {
+              key: index,
+              isSelected,
+              tabId: crTabId(id, index),
+              tabPanelId: crTabPanelId(id, index),
+              className: crTabCn(isSelected),
+              onClick: () => setSelectedTabIndex(index),
+              onKeyDown: (evt) => _hKeyDown(index, evt)
+           });
+        })}
       </div>
       <div style={S_COMPONENTS}>
          {children.map((tab, index) => {
@@ -51,8 +95,8 @@ const TabPane = ({
                   key={index}
                   style={isSelected ? S_BLOCK : S_NONE}
                   role="tabpanel"
-                  id={`tabpanel-${index}`}
-                  aria-labelledby={`tab-${index}`}
+                  id={crTabPanelId(id, index)}
+                  aria-labelledby={crTabId(id, index)}
                 >
                    {cloneElement(tab.props.children, {
                      isSelected
@@ -63,6 +107,6 @@ const TabPane = ({
       </div>
     </div>
   );
-};
+});
 
 export default TabPane

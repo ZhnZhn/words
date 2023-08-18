@@ -11,7 +11,7 @@ import {
 import {
   crGroup,
   renGroup,
-  delGroup  
+  delGroup
 } from '../../flux/watch-list/watchListStore';
 
 import {
@@ -47,7 +47,7 @@ const EditGroupDialog = memoIsShow(({
        caption="Watch Groups Edit"
        onClose={onClose}
     >
-      <TabPane width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
+      <TabPane id="egd" width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
          <Tab title="Create" style={TS.TAB}>
            <GroupAddPane
               forActionType={WAT_CREATE_GROUP}
