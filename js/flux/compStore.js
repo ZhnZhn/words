@@ -18,7 +18,7 @@ const _crStore = () => ({
   _selectPane = state => state.pOption,
   _selectBrowser = state => state.browser,
   _selectWatch = state => state.watch,
-  _set = compStore.setState;
+  _set = (0, _storeApi.getStoreApi)(compStore)[0];
 const useBrowser = (0, _storeApi.fCrUse)(compStore, _selectBrowser);
 exports.useBrowser = useBrowser;
 const usePane = (0, _storeApi.fCrUse)(compStore, _selectPane);

@@ -1,5 +1,6 @@
 import {
   createStoreWithSelector,
+  getStoreApi,
   fCrUse
 } from '../storeApi';
 
@@ -69,8 +70,7 @@ const _crStore = () => ({
 , _selectWatchList = state => state.watchList
 , _selectMsEdit = state => state.msEdit
 , _selectIsWatchEdited = state => state.isWatchEdited
-, _set = _watchListStore.setState
-, _get = _watchListStore.getState
+, [_set, _get] = getStoreApi(_watchListStore)
 , _getIsWatchEdited = () => _selectIsWatchEdited(_get());
 
 export const getWatchList = () => _selectWatchList(_get())

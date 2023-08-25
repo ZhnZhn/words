@@ -17,6 +17,7 @@ import {
 
 import {
   createStoreWithSelector,
+  getStoreApi,
   fCrUse
 } from './storeApi';
 import {
@@ -38,8 +39,7 @@ const _crStore = () => ({
 , _selectLoading = state => state.loading
 , _selectLimitRemaining = state => state.limitRemaining
 , _selectMsItem = state => state.msItem
-, _set = itemStore.setState
-, _get = itemStore.getState;
+, [_set, _get] = getStoreApi(itemStore);
 
 export const useLoading = fCrUse(itemStore, _selectLoading)
 export const useLimitRemaining = fCrUse(itemStore, _selectLimitRemaining)

@@ -26,8 +26,7 @@ const _crStore = () => ({
   _selectWatchList = state => state.watchList,
   _selectMsEdit = state => state.msEdit,
   _selectIsWatchEdited = state => state.isWatchEdited,
-  _set = _watchListStore.setState,
-  _get = _watchListStore.getState,
+  [_set, _get] = (0, _storeApi.getStoreApi)(_watchListStore),
   _getIsWatchEdited = () => _selectIsWatchEdited(_get());
 const getWatchList = () => _selectWatchList(_get());
 exports.getWatchList = getWatchList;

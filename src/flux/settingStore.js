@@ -1,14 +1,25 @@
-import { createStore } from './storeApi';
+import {
+  createStore,
+  getStoreApi
+} from './storeApi';
 
-const settingStore = createStore(set => ({
-  is: true,
-  enableAutoSave: () => set({ is: true }),
-  disableAutoSave: () => set({ is: false })
+const _IS_AUTO_SAVE_ENABLED = 'is'
+, _crIsAutoSaveEnabled = is => ({
+  [_IS_AUTO_SAVE_ENABLED]: is
+})
+, _settingStore = createStore(() => ({
+  ..._crIsAutoSaveEnabled(true)
 }));
 
-const _getState = settingStore.getState;
-const _state = _getState();
+const [
+  _set,
+  _get
+] = getStoreApi(_settingStore);
 
-export const enableAutoSave = _state.enableAutoSave
-export const disableAutoSave = _state.disableAutoSave
-export const getIsAutoSave = () => _getState().is
+export const enableAutoSave = () => _set(
+  _crIsAutoSaveEnabled(true)
+)
+export const disableAutoSave = () => _set(
+  _crIsAutoSaveEnabled(false)
+)
+export const getIsAutoSave = () => _get()[_IS_AUTO_SAVE_ENABLED]

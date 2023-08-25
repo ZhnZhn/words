@@ -1,6 +1,7 @@
 import {
   bindTo,
   createStoreWithSelector,
+  getStoreApi,
   fCrUse
 } from './storeApi';
 
@@ -22,7 +23,7 @@ const _crStore = () => ({
 , _selectPane = state => state.pOption
 , _selectBrowser = state => state.browser
 , _selectWatch = state => state.watch
-, _set = compStore.setState;
+, _set = getStoreApi(compStore)[0];
 
 export const useBrowser = fCrUse(compStore, _selectBrowser)
 export const usePane = fCrUse(compStore, _selectPane)
