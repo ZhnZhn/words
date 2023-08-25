@@ -1,3 +1,5 @@
+import { bindTo } from '../uiApi';
+
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub'
@@ -12,11 +14,11 @@ const SUB_MENU = 'sub'
    fontWeight: 'bold'
 };
 
-const _fClick = ({
+const _fClick = (
   isClose,
   onClick,
   onClose
-}) => typeof onClick === 'function'
+) => typeof onClick === 'function'
   ? isClose
      ? () => { onClick(); onClose(); }
      : onClick
@@ -39,13 +41,20 @@ const MenuItemList = ({
 }) => (
   <>
     {items.map((item, index) => {
-       const { cn, name, type, id, isClose, onClick } = item
-          , _onClick = type === SUB_MENU
-              ? onNextPage.bind(null, id, name, pageNumber)
-              : _fClick({ isClose, onClick, onClose })
-          , _onReg = index === 0
-              ? onReg
-              : void 0;
+       const {
+         cn,
+         name,
+         type,
+         id,
+         isClose,
+         onClick
+       } = item
+       , _onClick = type === SUB_MENU
+           ? bindTo(onNextPage, id, name, pageNumber)
+           : _fClick(isClose, onClick, onClose)
+       , _onReg = index === 0
+           ? onReg
+           : void 0;
        return (
          <MenuAriaItem
            key={name}

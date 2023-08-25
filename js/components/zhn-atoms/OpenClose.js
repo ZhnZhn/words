@@ -2,15 +2,14 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _Svg = _interopRequireDefault(require("./svg/Svg"));
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types';
 
-var CL_CAPTION = 'open-close not-selected',
+const CL_CAPTION = 'open-close not-selected',
   S_BT = {
     paddingTop: 2,
     paddingLeft: 8,
@@ -38,79 +37,86 @@ var CL_CAPTION = 'open-close not-selected',
   FILL_CLOSE = 'transparent',
   PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
   PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
-var OpenClose = function OpenClose(_ref) {
-  var _ref$isClose = _ref.isClose,
-    isClose = _ref$isClose === void 0 ? true : _ref$isClose,
-    _ref$fillOpen = _ref.fillOpen,
-    fillOpen = _ref$fillOpen === void 0 ? FILL_OPEN : _ref$fillOpen,
-    _ref$fillClose = _ref.fillClose,
-    fillClose = _ref$fillClose === void 0 ? FILL_CLOSE : _ref$fillClose,
-    style = _ref.style,
-    itemStyle = _ref.itemStyle,
-    captionStyle = _ref.captionStyle,
-    childrenStyle = _ref.childrenStyle,
-    caption = _ref.caption,
-    afterCaptionComp = _ref.afterCaptionComp,
-    isDraggable = _ref.isDraggable,
-    option = _ref.option,
-    onDragStart = _ref.onDragStart,
-    onDragEnter = _ref.onDragEnter,
-    onDragOver = _ref.onDragOver,
-    onDragLeave = _ref.onDragLeave,
-    onDrop = _ref.onDrop,
-    children = _ref.children;
-  var _useToggle = (0, _useToggle2["default"])(!isClose),
-    isOpen = _useToggle[0],
-    toggleIsOpen = _useToggle[1],
-    _hKeyDown = (0, _uiApi.useMemo)(function () {
-      return function (evt) {
-        var keyCode = evt.keyCode;
-        if (keyCode === 13 || keyCode === 27) {
-          toggleIsOpen();
-        }
-      };
-    }, []),
-    _dndOption = (0, _uiApi.useMemo)(function () {
-      return isDraggable ? {
-        draggable: true,
-        onDragStart: onDragStart.bind(null, option),
-        onDrop: onDrop.bind(null, option),
-        onDragEnter: onDragEnter,
-        onDragOver: onDragOver,
-        onDragLeave: onDragLeave
-      } : void 0;
-    }, [isDraggable, option]),
-    _ref2 = isOpen ? [PATH_OPEN, fillOpen, S_BLOCK, 'show-popup', null] : [PATH_CLOSE, fillClose, S_NONE, null, itemStyle],
-    _pathV = _ref2[0],
-    _fillV = _ref2[1],
-    _styleCollapse = _ref2[2],
-    _classShow = _ref2[3],
-    _itemStyle = _ref2[4];
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
+const OpenClose = _ref => {
+  let {
+    isClose = true,
+    fillOpen = FILL_OPEN,
+    fillClose = FILL_CLOSE,
+    style,
+    itemStyle,
+    captionStyle,
+    childrenStyle,
+    caption,
+    afterCaptionComp,
+    isDraggable,
+    option,
+    onDragStart,
+    onDragEnter,
+    onDragOver,
+    onDragLeave,
+    onDrop,
+    children
+  } = _ref;
+  const [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose)
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hKeyDown = (0, _uiApi.useMemo)(() => evt => {
+      const {
+        keyCode
+      } = evt;
+      if (keyCode === 13 || keyCode === 27) {
+        toggleIsOpen();
+      }
+    }, [])
+    // toggleIsOpen
+    /*eslint-enable react-hooks/exhaustive-deps */
+
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _dndOption = (0, _uiApi.useMemo)(() => isDraggable ? {
+      draggable: true,
+      onDragStart: (0, _uiApi.bindTo)(onDragStart, option),
+      onDrop: (0, _uiApi.bindTo)(onDrop, option),
+      onDragEnter,
+      onDragOver,
+      onDragLeave
+    } : void 0, [isDraggable, option])
+    // onDragStart, onDrop, onDragEnter, onDragOver, onDragLeave
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    [_pathV, _fillV, _styleCollapse, _classShow, _itemStyle] = isOpen ? [PATH_OPEN, fillOpen, S_BLOCK, 'show-popup', null] : [PATH_CLOSE, fillClose, S_NONE, null, itemStyle];
+  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [(0, _jsxRuntime.jsxs)("div", {
       role: "button",
       className: CL_CAPTION,
       tabIndex: "0",
-      style: (0, _extends2["default"])({}, S_BT, style, _itemStyle),
+      style: {
+        ...S_BT,
+        ...style,
+        ..._itemStyle
+      },
       onClick: toggleIsOpen,
-      onKeyDown: _hKeyDown
-    }, _dndOption, {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Svg["default"], {
+      onKeyDown: _hKeyDown,
+      ..._dndOption,
+      children: [(0, _jsxRuntime.jsx)(_Svg.default, {
         style: S_SVG,
         w: "16",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+        children: (0, _jsxRuntime.jsx)("path", {
           d: _pathV,
           fill: _fillV,
           strokeWidth: "1",
           stroke: fillOpen
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: (0, _extends2["default"])({}, S_CAPTION, captionStyle),
+      }), (0, _jsxRuntime.jsx)("span", {
+        style: {
+          ...S_CAPTION,
+          ...captionStyle
+        },
         children: caption
       }), afterCaptionComp]
-    })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    }), (0, _jsxRuntime.jsx)("div", {
       className: _classShow,
-      style: (0, _extends2["default"])({}, childrenStyle, _styleCollapse),
+      style: {
+        ...childrenStyle,
+        ..._styleCollapse
+      },
       children: children
     })]
   });
@@ -144,5 +150,5 @@ OpenClose.propTypes = {
 }
 */
 var _default = OpenClose;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=OpenClose.js.map

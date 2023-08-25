@@ -1,3 +1,5 @@
+import { bindTo } from '../uiApi';
+
 import isKeyEnter from '../zhn-atoms/isKeyEnter';
 
 const _isFn = fn => typeof fn === 'function'
@@ -34,8 +36,8 @@ class ResizeElementImpl {
     this.delta = 0;
     _initResizeProperties(this)
 
-    this.hStartResizeLeft = this._startResize.bind(null, this._resizeLeft)
-    this.hStartResizeRight = this._startResize.bind(null, this._resizeRight)
+    this.hStartResizeLeft = bindTo(this._startResize, this._resizeLeft)
+    this.hStartResizeRight = bindTo(this._startResize, this._resizeRight)
   }
 
   _increaseDeltaStep = () => {

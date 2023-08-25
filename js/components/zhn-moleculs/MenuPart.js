@@ -31,13 +31,13 @@ const _renderMenuItems = function (TS, option) {
         menuTitle
       } = _itemConf;
     _assign(_itemConf, restOption);
-    const _onClick = _isFn(onClickItem) ? onClickItem.bind(null, _itemConf) : void 0;
+    const _onClick = _isFn(onClickItem) ? (0, _uiApi.bindTo)(onClickItem, _itemConf) : void 0;
     return (0, _jsxRuntime.jsx)("div", {
       role: "menuitem",
       tabIndex: "0",
       className: _className,
       onClick: _onClick,
-      onKeyDown: _hKeyDown.bind(null, _onClick),
+      onKeyDown: (0, _uiApi.bindTo)(_hKeyDown, _onClick),
       children: menuTitle
     }, index);
   });

@@ -1,5 +1,6 @@
 //import PropTypes from 'prop-types';
 import {
+  bindTo,
   useMemo
 } from '../uiApi';
 
@@ -70,8 +71,8 @@ const OpenClose = ({
   ,  _dndOption = useMemo(() => isDraggable
        ? {
            draggable: true,
-           onDragStart: onDragStart.bind(null, option),
-           onDrop: onDrop.bind(null, option),
+           onDragStart: bindTo(onDragStart, option),
+           onDrop: bindTo(onDrop, option),
            onDragEnter,
            onDragOver,
            onDragLeave

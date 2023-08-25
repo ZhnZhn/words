@@ -1,5 +1,8 @@
 //import PropTypes from 'prop-types'
-import { crCn } from '../uiApi';
+import {
+  bindTo,
+  crCn
+} from '../uiApi';
 
 import isKeyEnter from '../zhn-atoms/isKeyEnter'
 import OpenClose from '../zhn-atoms/OpenClose'
@@ -29,7 +32,7 @@ const _renderMenuItems = function(TS, option){
 
     _assign(_itemConf, restOption)
     const _onClick = _isFn(onClickItem)
-       ? onClickItem.bind(null, _itemConf)
+       ? bindTo(onClickItem, _itemConf)
        : void 0;
     return (
        <div
@@ -38,7 +41,7 @@ const _renderMenuItems = function(TS, option){
          tabIndex="0"
          className={_className}
          onClick={_onClick}
-         onKeyDown={_hKeyDown.bind(null, _onClick)}
+         onKeyDown={bindTo(_hKeyDown, _onClick)}
         >
           {menuTitle}
        </div>

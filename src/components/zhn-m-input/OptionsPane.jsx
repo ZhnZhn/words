@@ -1,3 +1,5 @@
+import { bindTo } from '../uiApi';
+
 import ModalPane from '../zhn-moleculs/ModalPane';
 import ShowHide from '../zhn-atoms/ShowHide';
 
@@ -41,7 +43,7 @@ const OptionsStack = ({
       key={caption}
       className={clItem}
       style={{...S_BT, ...itemStyle, ..._style}}
-      onClick={onSelect.bind(null, item)}
+      onClick={bindTo(onSelect, item)}
     >
       {caption}
     </button>
