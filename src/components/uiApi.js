@@ -1,3 +1,5 @@
+export { bindTo } from '../utils/bindTo';
+
 export { crCn } from './zhn-utils/crCn';
 export { crStyle2 } from './zhn-utils/crStyle';
 
