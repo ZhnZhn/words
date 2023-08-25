@@ -32,11 +32,11 @@ const crPane = (itemConf, compStore, selectPane, selectWatch) => {
     Input,
     Item,
     useMsItem: _itemStore.useMsItem,
-    onRemoveItems: _itemStore.removeItems.bind(null, paneId),
+    onRemoveItems: (0, _storeApi.bindTo)(_itemStore.removeItems, paneId),
     onRemoveUnder: _itemStore.removeItemsUnder,
     onCloseItem: _itemStore.removeItem,
     onLoad: _loadItem,
-    onAddToWatch: _compStore.showMd.bind(null, 'AW')
+    onAddToWatch: (0, _storeApi.bindTo)(_compStore.showMd, 'AW')
   });
 };
 exports.crPane = crPane;

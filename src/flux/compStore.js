@@ -1,4 +1,5 @@
 import {
+  bindTo,
   createStoreWithSelector,
   fCrUse
 } from './storeApi';
@@ -45,8 +46,8 @@ export const showPane = (itemConf) => _set({
      _selectWatch
   )
 })
-export const showAbout = showPane.bind(
-  null,
+export const showAbout = bindTo(
+  showPane,
   { paneId: ABOUT_PANE_ID }
 )
 

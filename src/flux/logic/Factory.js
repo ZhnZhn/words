@@ -1,7 +1,7 @@
 import { createElement } from '../../components/uiApi';
 import throttleFn from '../../utils/throttleFn';
 
-import { fCrUse } from '../storeApi';
+import { bindTo, fCrUse } from '../storeApi';
 import { showMd } from '../compStore';
 
 import {
@@ -46,11 +46,11 @@ export const crPane = (
     Input,
     Item,
     useMsItem,
-    onRemoveItems: removeItems.bind(null, paneId),
+    onRemoveItems: bindTo(removeItems, paneId),
     onRemoveUnder: removeItemsUnder,
     onCloseItem: removeItem,
     onLoad: _loadItem,
-    onAddToWatch: showMd.bind(null, 'AW')
+    onAddToWatch: bindTo(showMd, 'AW')
   });
 }
 

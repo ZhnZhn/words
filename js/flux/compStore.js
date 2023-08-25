@@ -42,7 +42,7 @@ const showPane = itemConf => _set({
   pOption: (0, _paneFn.crPaneOption)(itemConf, compStore, _selectPane, _selectWatch)
 });
 exports.showPane = showPane;
-const showAbout = showPane.bind(null, {
+const showAbout = (0, _storeApi.bindTo)(showPane, {
   paneId: _paneFn.ABOUT_PANE_ID
 });
 exports.showAbout = showAbout;

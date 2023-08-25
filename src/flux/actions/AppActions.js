@@ -1,3 +1,4 @@
+import { bindTo } from '../storeApi';
 import Settings from '../stores/Settings';
 
 import {
@@ -14,21 +15,21 @@ import {
 const WORDS_BROWSER_ID = 'WORDS_DIFINITION';
 const WATCH_BROWSER_ID = 'WATCH_ID';
 
-const _fShowBrowser = id => showBrowser.bind(null, id);
+const _fShowBrowser = id => bindTo(showBrowser, id);
 
 const AppActions = {
   showAbout,
   initWatchList,
 
   headerActions: {
-    onDefinition: showPane.bind(null, {
+    onDefinition: bindTo(showPane, {
       paneCaption: "Word Definition",
       type: "WD_W",
       paneId: "P_WD_W"
     }),
     onSources: _fShowBrowser(WORDS_BROWSER_ID),
     onWatch: _fShowBrowser(WATCH_BROWSER_ID),
-    onSettings: showMd.bind(null,
+    onSettings: bindTo(showMd,
       "SETTINGS",
       Settings.settingFn()
     ),
