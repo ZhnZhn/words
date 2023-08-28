@@ -1,18 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = exports.THEME_NAME = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _setTheme2;
-
-var _assign = Object.assign,
-    _getObjectKeys = Object.keys;
-var P = {};
-var TH_GREY = {
+exports.default = exports.THEME_NAME = void 0;
+const _assign = Object.assign,
+  _getObjectKeys = Object.keys;
+const P = {};
+const TH_GREY = {
   C_ICON: '#4d4d4d',
   BG_BODY: '#808080',
   BG: '#4d4d4d',
@@ -22,24 +15,26 @@ var TH_GREY = {
   BG_INPUT: '#e1e1cb',
   C_M_SELECT_ITEM: 'white'
 };
-var _TH_LIGHT = {
+const _TH_LIGHT = {
   BG_BODY: 'darkgrey',
   BG_HEADER: '#0096c8',
   C_M_SELECT_ITEM: '#303030'
 };
-var TH_WHITE = (0, _extends2["default"])({}, _TH_LIGHT, {
+const TH_WHITE = {
+  ..._TH_LIGHT,
   C_ICON: 'grey',
   BG: '#ebf1f5',
   BG_ITEM_HEADER: '#e6ecf0',
   BG_INPUT: '#e1e1cb'
-});
-var TH_SAND = (0, _extends2["default"])({}, _TH_LIGHT, {
+};
+const TH_SAND = {
+  ..._TH_LIGHT,
   C_ICON: '#e8e0cb',
   BG: '#e8e0cb',
   BG_ITEM_HEADER: '#d0c198',
   BG_INPUT: 'white'
-});
-var CSS_RULE = {
+};
+const CSS_RULE = {
   CL_QUERY_ITEM: 'row__topic',
   CL_ROW_ITEM: "row__item",
   CL_SELECT_ITEM: 'm-select__item',
@@ -58,143 +53,116 @@ var CSS_RULE = {
     color: '#303030'
   }
 };
-var THEME_NAME = {
-  DEFAULT: 'GREY',
+const THEME_NAME = {
+  DF: 'GREY',
   GREY: 'GREY',
   WHITE: 'WHITE',
   SAND: 'SAND'
 };
 exports.THEME_NAME = THEME_NAME;
-var CL_PROPS = {
+const CL_PROPS = {
   CL_SCROLL_PANE: 'with-scroll',
   CL_BT_RAISED_DIV: 'bt-raise__div'
 };
-
-var _setClassNameTo = function _setClassNameTo(suffix) {
+const _setClassNameTo = function (suffix) {
   if (suffix === void 0) {
     suffix = '';
   }
-
-  _getObjectKeys(CL_PROPS).forEach(function (key) {
+  _getObjectKeys(CL_PROPS).forEach(key => {
     CSS_RULE[key] = CL_PROPS[key] + suffix;
   });
 };
-
-var _setBodyBg = function _setBodyBg(conf) {
+const _setBodyBg = conf => {
   document.body.style.backgroundColor = P.BG_BODY;
 };
-
-var _crIcon = function _crIcon(conf) {
+const _crIcon = conf => {
   conf.ICON.backgroundColor = P.C_ICON;
   conf.ICON_GITHUB.fill = P.C_ICON;
 };
-
-var _crBg = function _crBg(conf) {
+const _crBg = conf => {
   conf.BG.backgroundColor = P.BG;
 };
-
-var _crBgHeader = function _crBgHeader(conf) {
+const _crBgHeader = conf => {
   _assign(conf.BG_HEADER, {
     backgroundColor: P.BG_HEADER,
     color: P.BG
   });
 };
-
-var _crSvgResize = function _crSvgResize(conf) {
+const _crSvgResize = conf => {
   _assign(conf.SVG_RESIZE, {
     borderColor: P.BG,
     stroke: P.BG
   });
 };
-
-var _crItemHeader = function _crItemHeader(conf) {
+const _crItemHeader = conf => {
   conf.ITEM_HEADER.backgroundColor = P.BG_ITEM_HEADER;
 };
-
-var _crRDialog = function _crRDialog(conf) {
+const _crRDialog = conf => {
   _assign(conf.R_DIALOG, {
     border: "solid 2px " + P.BG_HEADER,
     backgroundColor: P.BG
   });
 };
-
-var _crTab = function _crTab(conf) {
+const _crTab = conf => {
   _assign(conf.TAB, {
     backgroundColor: P.BG_HEADER
   });
 };
-
-var _crMSelectItem = function _crMSelectItem(conf) {
+const _crMSelectItem = conf => {
   _assign(conf.M_SELECT_ITEM, {
     color: P.C_M_SELECT_ITEM
   });
 };
-
-var _crBtFlat = function _crBtFlat(conf) {
+const _crBtFlat = conf => {
   conf.BT_FLAT.color = P.BG_HEADER;
 };
-
-var _crInput = function _crInput(conf) {
+const _crInput = conf => {
   conf.INPUT.backgroundColor = P.BG_INPUT;
 };
-
-var FN_STYLES = [_setBodyBg, _crIcon, _crBg, _crBgHeader, _crSvgResize, _crItemHeader, _crRDialog, _crTab, _crMSelectItem, _crBtFlat, _crInput];
-
-var _setStyleTo = function _setStyleTo(conf) {
-  FN_STYLES.forEach(function (fn) {
-    return fn(conf);
-  });
+const FN_STYLES = [_setBodyBg, _crIcon, _crBg, _crBgHeader, _crSvgResize, _crItemHeader, _crRDialog, _crTab, _crMSelectItem, _crBtFlat, _crInput];
+const _setStyleTo = conf => {
+  FN_STYLES.forEach(fn => fn(conf));
 };
-
-var _setTheme = (_setTheme2 = {}, _setTheme2[THEME_NAME.GREY] = function () {
-  _assign(P, TH_GREY);
-
-  _setClassNameTo();
-
-  _setStyleTo(CSS_RULE);
-}, _setTheme2[THEME_NAME.WHITE] = function () {
-  _assign(P, TH_WHITE);
-
-  _setClassNameTo('--white');
-
-  _setStyleTo(CSS_RULE);
-}, _setTheme2[THEME_NAME.SAND] = function () {
-  _assign(P, TH_SAND);
-
-  _setClassNameTo('--white');
-
-  _setStyleTo(CSS_RULE);
-}, _setTheme2);
-
-var theme = {
-  themeName: THEME_NAME.DEFAULT,
-  _init: function _init() {
+const _setTheme = {
+  [THEME_NAME.GREY]: () => {
     _assign(P, TH_GREY);
-
     _setClassNameTo();
-
+    _setStyleTo(CSS_RULE);
+  },
+  [THEME_NAME.WHITE]: () => {
+    _assign(P, TH_WHITE);
+    _setClassNameTo('--white');
+    _setStyleTo(CSS_RULE);
+  },
+  [THEME_NAME.SAND]: () => {
+    _assign(P, TH_SAND);
+    _setClassNameTo('--white');
+    _setStyleTo(CSS_RULE);
+  }
+};
+const theme = {
+  themeName: THEME_NAME.DF,
+  _init() {
+    _assign(P, TH_GREY);
+    _setClassNameTo();
     _setStyleTo(CSS_RULE, 'GREY');
   },
-  getThemeName: function getThemeName() {
+  getThemeName() {
     return this.themeName;
   },
-  setThemeName: function setThemeName(themeName) {
-    this.themeName = themeName;
-
-    _setTheme[themeName]();
+  setThemeName(themeName) {
+    this.themeName = themeName || THEME_NAME.DF;
+    _setTheme[this.themeName]();
   },
-  createStyle: function createStyle(config) {
+  createStyle(config) {
     if (this.themeName !== config.themeName) {
       config.style = config.createStyle(CSS_RULE, this.themeName);
       config.themeName = this.themeName;
     }
-
     return config.style;
   }
 };
-
 theme._init();
-
 var _default = theme;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=theme.js.map

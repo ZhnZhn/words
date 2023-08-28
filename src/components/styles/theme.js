@@ -59,9 +59,9 @@ const CSS_RULE = {
 };
 
 export const THEME_NAME = {
-  DEFAULT : 'GREY',
-  GREY : 'GREY',
-  WHITE : 'WHITE',
+  DF: 'GREY',
+  GREY: 'GREY',
+  WHITE: 'WHITE',
   SAND: 'SAND'
 };
 
@@ -157,7 +157,7 @@ const _setTheme = {
 }
 
 const theme = {
-  themeName : THEME_NAME.DEFAULT,
+  themeName: THEME_NAME.DF,
   _init(){
     _assign(P, TH_GREY)
     _setClassNameTo()
@@ -167,8 +167,8 @@ const theme = {
     return this.themeName;
   },
   setThemeName(themeName){
-    this.themeName = themeName
-    _setTheme[themeName]()
+    this.themeName = themeName || THEME_NAME.DF
+    _setTheme[this.themeName]()
   },
   createStyle(config){
      if (this.themeName !== config.themeName){

@@ -9,7 +9,7 @@ import styleConfig from './Dialog.Style';
 
 import {
   setUiTheme
-} from '../../flux/uiThemeStore';
+} from '../../flux/storeAtoms';
 import {
   enableAutoSave,
   disableAutoSave
@@ -53,6 +53,9 @@ const SettingsDialog = ({
 }) => {
   const _refSetKey1 = useRef(data.key1)
   , _ref1 = useRef()
+  , _selectTheme = useCallback(item => {
+    setUiTheme((item || {}).value)
+  }, [])
   , TS = useTheme(styleConfig)
   , _hSetAndClose = useCallback(() => {
      getRefValue(_refSetKey1)(getRefValue(_ref1).getValue())
@@ -87,7 +90,7 @@ const SettingsDialog = ({
              buttonsStyle={S_CARD_BUTTONS}
              btStyle={TS.BT.FLAT_ROOT}
              chbStroke={TS.CHB_STROKE}
-             onSetTheme={setUiTheme}
+             onSetTheme={_selectTheme}
              onCheckAutoSave={enableAutoSave}
              onUncheckAutoSave={disableAutoSave}
              onClose={onClose}

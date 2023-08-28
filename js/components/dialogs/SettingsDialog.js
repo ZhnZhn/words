@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
-var _uiThemeStore = require("../../flux/uiThemeStore");
+var _storeAtoms = require("../../flux/storeAtoms");
 var _settingStore = require("../../flux/settingStore");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
@@ -45,6 +45,9 @@ const SettingsDialog = _ref => {
   } = _ref;
   const _refSetKey1 = (0, _uiApi.useRef)(data.key1),
     _ref1 = (0, _uiApi.useRef)(),
+    _selectTheme = (0, _uiApi.useCallback)(item => {
+      (0, _storeAtoms.setUiTheme)((item || {}).value);
+    }, []),
     TS = (0, _useTheme.default)(_Dialog.default),
     _hSetAndClose = (0, _uiApi.useCallback)(() => {
       (0, _uiApi.getRefValue)(_refSetKey1)((0, _uiApi.getRefValue)(_ref1).getValue());
@@ -84,7 +87,7 @@ const SettingsDialog = _ref => {
           buttonsStyle: S_CARD_BUTTONS,
           btStyle: TS.BT.FLAT_ROOT,
           chbStroke: TS.CHB_STROKE,
-          onSetTheme: _uiThemeStore.setUiTheme,
+          onSetTheme: _selectTheme,
           onCheckAutoSave: _settingStore.enableAutoSave,
           onUncheckAutoSave: _settingStore.disableAutoSave,
           onClose: onClose

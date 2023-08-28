@@ -1,6 +1,6 @@
 import { useEffect } from './uiApi';
 
-import { uiThemeStore } from '../flux/uiThemeStore';
+import { useUiTheme } from '../flux/storeAtoms';
 import {
   useBrowser,
   usePane
@@ -25,6 +25,8 @@ const CL_COMP = "component-container"
 const AppWords = ({
   action
 }) => {
+  const uiTheme = useUiTheme();
+  
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     action.showAbout()
@@ -39,7 +41,8 @@ const AppWords = ({
   } = action;
 
   return (
-    <ThemeContext.Provider value={uiThemeStore}>
+    //<ThemeContext.Provider value={uiThemeStore}>
+    <ThemeContext.Provider value={uiTheme}>
       <div>
         <HeaderBar
           {...headerActions}
@@ -47,7 +50,7 @@ const AppWords = ({
         <div className={CL_COMP}>
            <BrowserContainer
               browserId={WORDS_BROWSER_ID}
-              useBrowser={useBrowser}              
+              useBrowser={useBrowser}
               useWatchList={useWatchList}
               {...browserActions}
            />
