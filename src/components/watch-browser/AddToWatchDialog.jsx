@@ -159,7 +159,7 @@ const AddToWatchDialog = memoIsShow((
 
   return (
     <ModalDialog
-       style={{...TS.R_DIALOG, ...S_DIALOG}}
+       style={S_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        caption="Add To Watch List"
        isShow={isShow}
@@ -168,15 +168,13 @@ const AddToWatchDialog = memoIsShow((
     >
       <div>
         <RowInputSelect
-          inputStyle={TS.INPUT}
           caption="Group:"
           options={groupOptions}
           onSelect={_hSelectGroup}
         />
       </div>
       <div>
-        <RowInputSelect
-          inputStyle={TS.INPUT}
+        <RowInputSelect        
           caption="List:"
           onSelect={_hSelectList}
           options={listOptions}

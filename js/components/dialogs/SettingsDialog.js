@@ -20,7 +20,6 @@ const S_MODAL = {
     width: 350,
     height: 290,
     margin: '70px auto 0px',
-    border: 'solid 2px #1b2836',
     borderRadius: 5,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
   },
@@ -55,10 +54,7 @@ const SettingsDialog = _ref => {
     }, [onClose]);
   return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
     className: "",
-    style: {
-      ...S_MODAL,
-      ...TS.R_DIALOG
-    },
+    style: S_MODAL,
     caption: "User Settings",
     captionStyle: TS.BROWSER_CAPTION,
     isShow: isShow,
@@ -82,7 +78,6 @@ const SettingsDialog = _ref => {
         children: (0, _jsxRuntime.jsx)(_CardUi.default, {
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,
-          chbStroke: TS.CHB_STROKE,
           onSetTheme: _selectTheme,
           onCheckAutoSave: _settingStore.enableAutoSave,
           onUncheckAutoSave: _settingStore.disableAutoSave,

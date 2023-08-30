@@ -16,10 +16,6 @@ const styleConfig = {
   createStyle: R => {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
-      R_DIALOG: {
-        ...R.R_DIALOG
-      },
-      CHB_STROKE: R.R_DIALOG.backgroundColor,
       BROWSER_CAPTION: {
         ...S_BROWSER_CAPTION,
         ...R.BG_HEADER

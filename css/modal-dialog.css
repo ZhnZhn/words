@@ -1,6 +1,18 @@
 
+.dialog {
+  background-color: #4d4d4d;
+  background-color: var(--bg-c, #4d4d4d);
+  border: solid 2px #3270b4;
+  border: solid 2px var(--bf-c, #3270b4);
+}
+
 .dialog:focus {  
   outline: greenyellow auto 2px;
+}
+
+.d-chb {
+  stroke: #4d4d4d;
+  stroke: var(--bg-c, #4d4d4d);
 }
 
 .modal-dialog {
@@ -8,17 +20,15 @@
   top: 20%;
   left: 40%;
   display: block;
-  z-index: 10;
-  background-color: #4d4d4d;
-  border: solid 2px #1b2836;
+  z-index: 10;  
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
 }
 
 .modal-dialog__actions {
-   float: right;
-   margin-top: 8px;
-   margin-bottom: 10px;
-   margin-right: 4px;
-   cursor: default;
+  float: right;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  margin-right: 4px;
+  cursor: default;
 }

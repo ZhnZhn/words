@@ -63,8 +63,8 @@ const AlertDialog2 = memoIsShow(({
   , _caption = caption + ': ';
 
   return (
-    <ModalDialog
-      style={{...TS.R_DIALOG, ...S_DIALOG }}
+    <ModalDialog      
+      style={S_DIALOG}
       caption="Exception"
       captionStyle={{...TS.BROWSER_CAPTION, ...S_CAPTION}}
       isShow={isShow}

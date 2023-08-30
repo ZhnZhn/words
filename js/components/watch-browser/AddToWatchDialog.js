@@ -125,10 +125,7 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
 
   const TS = (0, _useTheme.default)(_Dialog.default);
   return (0, _jsxRuntime.jsxs)(_ModalDialog.default, {
-    style: {
-      ...TS.R_DIALOG,
-      ...S_DIALOG
-    },
+    style: S_DIALOG,
     captionStyle: TS.BROWSER_CAPTION,
     caption: "Add To Watch List",
     isShow: isShow,
@@ -136,14 +133,12 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
     onClose: _hClose,
     children: [(0, _jsxRuntime.jsx)("div", {
       children: (0, _jsxRuntime.jsx)(_RowInputSelect.default, {
-        inputStyle: TS.INPUT,
         caption: "Group:",
         options: groupOptions,
         onSelect: _hSelectGroup
       })
     }), (0, _jsxRuntime.jsx)("div", {
       children: (0, _jsxRuntime.jsx)(_RowInputSelect.default, {
-        inputStyle: TS.INPUT,
         caption: "List:",
         onSelect: _hSelectList,
         options: listOptions

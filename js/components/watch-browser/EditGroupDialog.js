@@ -26,10 +26,7 @@ const EditGroupDialog = (0, _memoIsShow.default)(_ref => {
   return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
     isShow: isShow,
     isWithButton: false,
-    style: {
-      ...TS.R_DIALOG,
-      ..._Dialog2.S_DIALOG
-    },
+    style: _Dialog2.S_DIALOG,
     captionStyle: TS.BROWSER_CAPTION,
     caption: "Watch Groups Edit",
     onClose: onClose,

@@ -43,10 +43,7 @@ const MsgDialog = (0, _memoIsShow.default)(_ref => {
       descr
     } = data;
   return (0, _jsxRuntime.jsxs)(_ModalDialog.default, {
-    style: {
-      ...TS.R_DIALOG,
-      ...S_DIALOG
-    },
+    style: S_DIALOG,
     captionStyle: TS.BROWSER_CAPTION,
     caption: "Message",
     isShow: isShow,

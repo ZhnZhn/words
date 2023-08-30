@@ -52,10 +52,7 @@ const AlertDialog = (0, _memoIsShow.default)(_ref => {
   const TS = (0, _useTheme.default)(_Dialog.default),
     _msg = _toMsg(data);
   return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
-    style: {
-      ...TS.R_DIALOG,
-      ...S_DIALOG
-    },
+    style: S_DIALOG,
     captionStyle: {
       ...TS.BROWSER_CAPTION,
       ...S_CAPTION

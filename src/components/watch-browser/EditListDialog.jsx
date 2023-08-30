@@ -42,8 +42,8 @@ const EditListDialog = memoIsShow(({
   return (
     <ModalDialog
        isShow={isShow}
-       isWithButton={false}
-       style={{...TS.R_DIALOG, ...S_DIALOG}}
+       isWithButton={false}       
+       style={S_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        caption="Watch Lists Edit"
        onClose={onClose}

@@ -39,8 +39,8 @@ const MsgDialog = memoIsShow(({
     descr
   } = data;
   return (
-    <ModalDialog
-      style={{...TS.R_DIALOG, ...S_DIALOG}}
+    <ModalDialog      
+      style={S_DIALOG}
       captionStyle={TS.BROWSER_CAPTION}
       caption="Message"
       isShow={isShow}

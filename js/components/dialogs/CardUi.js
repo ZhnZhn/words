@@ -9,7 +9,8 @@ var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 
-const CL_DIV = 'bt-flat__div';
+const CL_DIV = 'bt-flat__div',
+  CL_D_CHB = "d-chb";
 const S_SELECT = {
     ROOT: {
       width: 280
@@ -40,7 +41,6 @@ const CardUi = _ref => {
   let {
     style,
     buttonsStyle,
-    chbStroke,
     onSetTheme,
     onCheckAutoSave,
     onUncheckAutoSave,
@@ -58,7 +58,7 @@ const CardUi = _ref => {
       style: S_CHB_ROW,
       children: [(0, _jsxRuntime.jsx)(_SvgCheckBox.default, {
         initialValue: true,
-        stroke: chbStroke,
+        className: CL_D_CHB,
         onCheck: onCheckAutoSave,
         onUnCheck: onUncheckAutoSave
       }), (0, _jsxRuntime.jsx)("span", {
@@ -81,7 +81,6 @@ const CardUi = _ref => {
 CardUi.propTypes = {
   style: PropTypes.object,
   buttonsStyle: PropTypes.object,
-  btStyle: PropTypes.object,
   onSetTheme: PropTypes.func,
   onCheckAutoSave: PropTypes.func,
   onUncheckAutoSave: PropTypes.func,

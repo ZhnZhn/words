@@ -3,7 +3,8 @@ import InputSelect from '../zhn-m-input/InputSelect';
 import SvgCheckBox from '../zhn-atoms/SvgCheckBox';
 import FlatButton from '../zhn-atoms/FlatButton';
 
-const CL_DIV = 'bt-flat__div';
+const CL_DIV = 'bt-flat__div'
+, CL_D_CHB = "d-chb";
 
 const S_SELECT = {
   ROOT: { width: 280 }
@@ -28,7 +29,6 @@ const S_SELECT = {
 const CardUi = ({
   style,
   buttonsStyle,
-  chbStroke,
   onSetTheme,
   onCheckAutoSave,
   onUncheckAutoSave,
@@ -45,14 +45,14 @@ const CardUi = ({
     <div style={S_CHB_ROW}>
       <SvgCheckBox
         initialValue={true}
-        stroke={chbStroke}
+        className={CL_D_CHB}
         onCheck={onCheckAutoSave}
         onUnCheck={onUncheckAutoSave}
       />
       <span style={S_TEXT}>AutoSave on Add to Watch List</span>
     </div>
     <div style={buttonsStyle}>
-      <FlatButton        
+      <FlatButton
         clDiv={CL_DIV}
         caption="Close"
         title="Close Dialog"
@@ -66,7 +66,6 @@ const CardUi = ({
 CardUi.propTypes = {
   style: PropTypes.object,
   buttonsStyle: PropTypes.object,
-  btStyle: PropTypes.object,
   onSetTheme: PropTypes.func,
   onCheckAutoSave: PropTypes.func,
   onUncheckAutoSave: PropTypes.func,

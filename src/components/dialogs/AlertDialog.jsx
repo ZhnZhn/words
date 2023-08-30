@@ -46,9 +46,9 @@ const AlertDialog = memoIsShow(({
   , _msg  = _toMsg(data);
 
   return (
-    <ModalDialog       
-       style={{...TS.R_DIALOG, ...S_DIALOG }}
-       captionStyle={{ ...TS.BROWSER_CAPTION, ...S_CAPTION }}
+    <ModalDialog
+       style={S_DIALOG}
+       captionStyle={{...TS.BROWSER_CAPTION, ...S_CAPTION}}
        caption="Exception Message"
        isShow={isShow}
        isClosePrimary={true}

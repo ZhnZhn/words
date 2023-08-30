@@ -66,10 +66,7 @@ const AlertDialog2 = (0, _memoIsShow.default)(_ref => {
     } = data,
     _caption = caption + ': ';
   return (0, _jsxRuntime.jsxs)(_ModalDialog.default, {
-    style: {
-      ...TS.R_DIALOG,
-      ...S_DIALOG
-    },
+    style: S_DIALOG,
     caption: "Exception",
     captionStyle: {
       ...TS.BROWSER_CAPTION,

@@ -2,18 +2,19 @@
 const _assign = Object.assign
 , _getObjectKeys = Object.keys;
 
+const DF_BG_C = "#4d4d4d"
 const DF_BF_C = "#3270b4"
 
 const P = {};
-const BG_HEADER_GREY = '#3270b4'
+const BG_HEADER_GREY = DF_BF_C
 const TH_GREY = {
   C_ICON: '#4d4d4d',
   BG_BODY: '#808080',
   BG: '#4d4d4d',
   BG_HEADER: BG_HEADER_GREY,
   BG_ITEM_HEADER: '#404040',
-  C_M_SELECT_ITEM: 'white',
 
+  'bg-c': DF_BG_C,
   'bf-c': BG_HEADER_GREY
 }
 
@@ -21,7 +22,6 @@ const BG_HEADER_LIGHT = '#0096c8'
 const _TH_LIGHT = {
   BG_BODY: 'darkgrey',
   BG_HEADER: BG_HEADER_LIGHT,
-  C_M_SELECT_ITEM: '#303030',
 
   'bf-c': BG_HEADER_LIGHT
 }
@@ -30,13 +30,17 @@ const TH_WHITE = {
   ..._TH_LIGHT,
   C_ICON: 'grey',
   BG: '#ebf1f5',
-  BG_ITEM_HEADER: '#e6ecf0'
+  BG_ITEM_HEADER: '#e6ecf0',
+
+  'bg-c': '#ebf1f5'
 };
 const TH_SAND = {
   ..._TH_LIGHT,
   C_ICON: '#e8e0cb',
   BG: '#e8e0cb',
-  BG_ITEM_HEADER: '#d0c198'
+  BG_ITEM_HEADER: '#d0c198',
+
+  'bg-c': '#e8e0cb'
 }
 
 const CSS_RULE = {
@@ -51,8 +55,7 @@ const CSS_RULE = {
   BG: {},
   BG_HEADER: {},
   SVG_RESIZE: {},
-  ITEM_HEADER: {},
-  R_DIALOG: {}
+  ITEM_HEADER: {}
 };
 
 export const THEME_NAME = {
@@ -94,14 +97,9 @@ const _crSvgResize = conf => {
 const _crItemHeader = conf => {
   conf.ITEM_HEADER.backgroundColor = P.BG_ITEM_HEADER
 };
-const _crRDialog = conf => {
-  _assign(conf.R_DIALOG, {
-    border: `solid 2px ${P.BG_HEADER}`,
-    backgroundColor: P.BG
-  })
-};
 
 const CUSTOM_CSS_PROPERTY_CONFIGS = [
+  ["bg-c", DF_BG_C],
   ["bf-c", DF_BF_C]
 ]
 
@@ -122,7 +120,6 @@ const FN_STYLES = [
   _crBgHeader,
   _crSvgResize,
   _crItemHeader,
-  _crRDialog,
   _setStyleProperties
 ];
 
