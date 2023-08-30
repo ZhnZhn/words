@@ -29,6 +29,7 @@ const _isFn = fn => typeof fn === 'function';
 
 const SvgCheckBox = ({
   initialValue,
+  className,
   style,
   stroke,
   onCheck,
@@ -61,6 +62,7 @@ const SvgCheckBox = ({
        role="checkbox"
        tabIndex="0"
        aria-checked={isChecked}
+       className={className}
        style={{...S_DIV, ...style}}
        onClick={_hClick}
        onKeyDown={_hKeyDown}
