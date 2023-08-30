@@ -54,7 +54,6 @@ const CSS_RULE = {
 
   BG: {},
   BG_HEADER: {},
-  SVG_RESIZE: {},
   ITEM_HEADER: {}
 };
 
@@ -88,12 +87,7 @@ const _crBgHeader = conf => {
     color: P.BG
   })
 };
-const _crSvgResize = conf => {
-  _assign(conf.SVG_RESIZE, {
-    borderColor: P.BG,
-    stroke: P.BG
-  })
-};
+
 const _crItemHeader = conf => {
   conf.ITEM_HEADER.backgroundColor = P.BG_ITEM_HEADER
 };
@@ -118,7 +112,6 @@ const FN_STYLES = [
   _crIcon,
   _crBg,
   _crBgHeader,
-  _crSvgResize,
   _crItemHeader,
   _setStyleProperties
 ];

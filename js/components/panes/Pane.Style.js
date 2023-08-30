@@ -24,9 +24,6 @@ const styleConfig = {
       PANE_CAPTION: {
         ...R.BG_HEADER
       },
-      SVG_RESIZE: {
-        ...R.SVG_RESIZE
-      },
       BG_COLOR: {
         ..._paneRoot
       },

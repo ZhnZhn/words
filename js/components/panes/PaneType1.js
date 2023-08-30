@@ -187,9 +187,7 @@ const PaneType1 = _ref2 => {
         style: S_BT_CIRCLE,
         onClick: onRemoveItems
       }), (0, _jsxRuntime.jsx)(_SvgHrzResize.default, {
-        elementRef: _refRootEl
-        //svgStyle={TS.SVG_RESIZE}
-        ,
+        elementRef: _refRootEl,
         initWidth: RESIZE_INIT_WIDTH,
         minWidth: RESIZE_MIN_WIDTH,
         maxWidth: RESIZE_MAX_WIDTH

@@ -229,8 +229,7 @@ const PaneType1 = ({
           onClick={onRemoveItems}
         />
         <SvgHrzResize
-          elementRef={_refRootEl}
-          //svgStyle={TS.SVG_RESIZE}
+          elementRef={_refRootEl}          
           initWidth={RESIZE_INIT_WIDTH}
           minWidth={RESIZE_MIN_WIDTH}
           maxWidth={RESIZE_MAX_WIDTH}

@@ -20,10 +20,7 @@ const styleConfig = {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
       PANE_CAPTION: {
         ...R.BG_HEADER
-      },
-      SVG_RESIZE: {
-        ...R.SVG_RESIZE
-      },
+      },      
       BG_COLOR: {
         ..._paneRoot
       },
