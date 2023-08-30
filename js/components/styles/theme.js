@@ -48,10 +48,7 @@ const CSS_RULE = {
   R_DIALOG: {},
   INPUT: {},
   M_SELECT_ITEM: {},
-  BT_FLAT: {},
-  TAB: {
-    color: '#303030'
-  }
+  BT_FLAT: {}
 };
 const THEME_NAME = {
   DF: 'GREY',
@@ -71,9 +68,6 @@ const _setClassNameTo = function (suffix) {
   _getObjectKeys(CL_PROPS).forEach(key => {
     CSS_RULE[key] = CL_PROPS[key] + suffix;
   });
-};
-const _setBodyBg = conf => {
-  document.body.style.backgroundColor = P.BG_BODY;
 };
 const _crIcon = conf => {
   conf.ICON.backgroundColor = P.C_ICON;
@@ -103,11 +97,6 @@ const _crRDialog = conf => {
     backgroundColor: P.BG
   });
 };
-const _crTab = conf => {
-  _assign(conf.TAB, {
-    backgroundColor: P.BG_HEADER
-  });
-};
 const _crMSelectItem = conf => {
   _assign(conf.M_SELECT_ITEM, {
     color: P.C_M_SELECT_ITEM
@@ -119,25 +108,34 @@ const _crBtFlat = conf => {
 const _crInput = conf => {
   conf.INPUT.backgroundColor = P.BG_INPUT;
 };
-const FN_STYLES = [_setBodyBg, _crIcon, _crBg, _crBgHeader, _crSvgResize, _crItemHeader, _crRDialog, _crTab, _crMSelectItem, _crBtFlat, _crInput];
-const _setStyleTo = conf => {
-  FN_STYLES.forEach(fn => fn(conf));
+const CUSTOM_CSS_PROPERTY_CONFIGS = [];
+const _setStyleProperties = (conf, P) => {
+  const _style = document.body.style;
+  _style.backgroundColor = P.BG_BODY;
+  CUSTOM_CSS_PROPERTY_CONFIGS.forEach(_ref => {
+    let [propName, dfValue] = _ref;
+    _style.setProperty('--' + propName, P[propName] || dfValue);
+  });
+};
+const FN_STYLES = [_crIcon, _crBg, _crBgHeader, _crSvgResize, _crItemHeader, _crRDialog, _crMSelectItem, _crBtFlat, _crInput, _setStyleProperties];
+const _setStyleTo = (conf, colorPallete) => {
+  FN_STYLES.forEach(fn => fn(conf, colorPallete));
 };
 const _setTheme = {
   [THEME_NAME.GREY]: () => {
     _assign(P, TH_GREY);
     _setClassNameTo();
-    _setStyleTo(CSS_RULE);
+    _setStyleTo(CSS_RULE, TH_GREY);
   },
   [THEME_NAME.WHITE]: () => {
     _assign(P, TH_WHITE);
     _setClassNameTo('--white');
-    _setStyleTo(CSS_RULE);
+    _setStyleTo(CSS_RULE, TH_WHITE);
   },
   [THEME_NAME.SAND]: () => {
     _assign(P, TH_SAND);
     _setClassNameTo('--white');
-    _setStyleTo(CSS_RULE);
+    _setStyleTo(CSS_RULE, TH_SAND);
   }
 };
 const theme = {
