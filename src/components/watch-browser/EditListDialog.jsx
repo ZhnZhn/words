@@ -49,7 +49,7 @@ const EditListDialog = memoIsShow(({
        onClose={onClose}
     >
       <TabPane id="eld" width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
-         <Tab title="Create" style={TS.TAB}>
+         <Tab title="Create">
            <ListCreatePane
               forActionType={WAT_CREATE_LIST}
               inputStyle={TS.INPUT}
@@ -60,7 +60,7 @@ const EditListDialog = memoIsShow(({
               onClose={onClose}
             />
          </Tab>
-         <Tab title="Rename" style={TS.TAB}>
+         <Tab title="Rename">
            <ListEditPane
               getWatchListsByGroup={getWatchListsByGroup}
               forActionType={WAT_RENAME_LIST}
@@ -72,7 +72,7 @@ const EditListDialog = memoIsShow(({
               onClose={onClose}
            />
          </Tab>
-         <Tab title="Delete" style={TS.TAB}>
+         <Tab title="Delete">
            <ListDeletePane
               getWatchListsByGroup={getWatchListsByGroup}
               forActionType={WAT_DELETE_LIST}

@@ -48,7 +48,7 @@ const EditGroupDialog = memoIsShow(({
        onClose={onClose}
     >
       <TabPane id="egd" width={TAB_PANE_WIDTH} tabStyle={S_TABS}>
-         <Tab title="Create" style={TS.TAB}>
+         <Tab title="Create">
            <GroupAddPane
               forActionType={WAT_CREATE_GROUP}
               inputStyle={TS.INPUT}
@@ -58,7 +58,7 @@ const EditGroupDialog = memoIsShow(({
               onClose={onClose}
             />
          </Tab>
-         <Tab title="Rename" style={TS.TAB}>
+         <Tab title="Rename">
            <GroupEditPane
               forActionType={WAT_RENAME_GROUP}
               inputStyle={TS.INPUT}
@@ -69,7 +69,7 @@ const EditGroupDialog = memoIsShow(({
               onClose={onClose}
            />
          </Tab>
-         <Tab title="Delete" style={TS.TAB}>
+         <Tab title="Delete">
            <GroupDeletePane
               forActionType={WAT_DELETE_GROUP}
               inputStyle={TS.INPUT}

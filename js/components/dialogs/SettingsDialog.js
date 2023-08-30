@@ -69,7 +69,6 @@ const SettingsDialog = _ref => {
       style: S_TAB_PANE,
       children: [(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "API Key",
-        style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_CardApiKey.default, {
           ref: _ref1,
           style: S_CARD_ROOT,
@@ -81,7 +80,6 @@ const SettingsDialog = _ref => {
         })
       }), (0, _jsxRuntime.jsx)(_Tab.default, {
         title: "UI Theme",
-        style: TS.TAB,
         children: (0, _jsxRuntime.jsx)(_CardUi.default, {
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,

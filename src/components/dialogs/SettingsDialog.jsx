@@ -73,7 +73,7 @@ const SettingsDialog = ({
        onClose={onClose}
     >
       <TabPane id="sd" style={S_TAB_PANE} >
-        <Tab title="API Key" style={TS.TAB}>
+        <Tab title="API Key">
            <CardApiKey
              ref={_ref1}
              style={S_CARD_ROOT}
@@ -84,7 +84,7 @@ const SettingsDialog = ({
              onClose={onClose}
            />
         </Tab>
-        <Tab title="UI Theme" style={TS.TAB}>
+        <Tab title="UI Theme">
            <CardUi
              style={S_CARD_ROOT}
              buttonsStyle={S_CARD_BUTTONS}
