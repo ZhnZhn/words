@@ -23,7 +23,7 @@ const InputRandom = forwardRef(({
       Random Word
     </span>
     <A.FlatButton
-      rootStyle={{...TS.BT.FLAT, ...S_BT}}
+      rootStyle={S_BT}
       clDiv={TS.BT.CL_FLAT_DIV}
       caption="Load"
       onClick={onEnter}

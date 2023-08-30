@@ -13,7 +13,6 @@ import A from './Atoms';
 const GroupDeletePane = ({
   forActionType,
   inputStyle,
-  btStyle,
   msgOnNotSelect,
   onDelete,
   onClose
@@ -57,7 +56,6 @@ const GroupDeletePane = ({
         validationMessages={validationMessages}
       />
       <A.RowButtons
-        btStyle={btStyle}
         caption="Delete"
         title="Delete Group"
         onClick={_hDeleteGroup}

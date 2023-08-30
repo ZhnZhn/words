@@ -78,7 +78,6 @@ const SettingsDialog = ({
              ref={_ref1}
              style={S_CARD_ROOT}
              buttonsStyle={S_CARD_BUTTONS}
-             btStyle={TS.BT.FLAT_ROOT}
              isShow={isShow}
              onSet={_hSetAndClose}
              onClose={onClose}
@@ -88,7 +87,6 @@ const SettingsDialog = ({
            <CardUi
              style={S_CARD_ROOT}
              buttonsStyle={S_CARD_BUTTONS}
-             btStyle={TS.BT.FLAT_ROOT}
              chbStroke={TS.CHB_STROKE}
              onSetTheme={_selectTheme}
              onCheckAutoSave={enableAutoSave}

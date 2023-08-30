@@ -12,7 +12,6 @@ const GroupAddPane = _ref => {
   let {
     forActionType,
     inputStyle,
-    btStyle,
     msgOnIsEmptyName,
     onCreate,
     onClose
@@ -44,7 +43,6 @@ const GroupAddPane = _ref => {
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
-      btStyle: btStyle,
       caption: "Create",
       title: "Create New Group",
       onClick: _hCreate,

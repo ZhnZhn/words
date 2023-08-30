@@ -10,10 +10,9 @@ import useWatchListMsEdit from './useWatchListMsEdit';
 
 import A from './Atoms';
 
-const GroupAddPane = ({  
+const GroupAddPane = ({
   forActionType,
   inputStyle,
-  btStyle,
   msgOnIsEmptyName,
   onCreate,
   onClose
@@ -57,7 +56,6 @@ const GroupAddPane = ({
          validationMessages={validationMessages}
        />
        <A.RowButtons
-          btStyle={btStyle}
           caption="Create"
           title="Create New Group"
           onClick={_hCreate}

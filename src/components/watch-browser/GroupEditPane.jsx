@@ -16,7 +16,6 @@ import A from './Atoms';
 const GroupEditPane = ({
   forActionType,
   inputStyle,
-  btStyle,
   msgOnNotSelect,
   msgOnIsEmptyName,
   onRename,
@@ -80,7 +79,6 @@ const GroupEditPane = ({
         validationMessages={validationMessages}
       />
       <A.RowButtons
-         btStyle={btStyle}
          caption="Rename"
          title="Rename Group Name"
          onClick={_hRename}

@@ -10,10 +10,7 @@ const styleConfig = {
       PANE: {
         ...R.BG
       },
-      BT: {
-        FLAT_ROOT: {
-          ...R.BT_FLAT
-        },
+      BT: {        
         CL_FLAT_DIV: R.CL_BT_FLAT_DIV
       }
     }

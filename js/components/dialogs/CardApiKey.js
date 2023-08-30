@@ -11,9 +11,6 @@ const CL_DIV = 'bt-flat__div',
   S_PF = {
     width: 320,
     marginLeft: 12
-  },
-  S_BT = {
-    color: '#3270b4'
   };
 const CardApiKey = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
@@ -21,15 +18,10 @@ const CardApiKey = (0, _uiApi.forwardRef)((_ref, ref) => {
     isSelected,
     style,
     buttonsStyle,
-    btStyle,
     onClose,
     onSet
   } = _ref;
-  const _refInput = (0, _uiApi.useRef)(),
-    _btStyle = {
-      ...S_BT,
-      ...btStyle
-    };
+  const _refInput = (0, _uiApi.useRef)();
   (0, _uiApi.useImperativeHandle)(ref, () => ({
     getValue: () => (0, _uiApi.getRefInputValue)(_refInput)
   }), []);
@@ -47,13 +39,11 @@ const CardApiKey = (0, _uiApi.forwardRef)((_ref, ref) => {
     }), (0, _jsxRuntime.jsxs)("div", {
       style: buttonsStyle,
       children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
-        rootStyle: _btStyle,
         clDiv: CL_DIV,
         caption: "Set & Close",
         title: "Set & Close Dialog",
         onClick: onSet
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-        rootStyle: _btStyle,
         clDiv: CL_DIV,
         caption: "Close",
         title: "Close Dialog",

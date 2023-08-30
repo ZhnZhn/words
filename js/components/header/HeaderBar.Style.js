@@ -1,27 +1,25 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var styleConfig = {
+exports.default = void 0;
+const styleConfig = {
   themeName: void 0,
   style: void 0,
-  createStyle: function createStyle(R) {
+  createStyle: R => {
     return {
       CL_QUERY_ITEM: R.CL_QUERY_ITEM,
-      HEADER: (0, _extends2["default"])({}, R.BG),
-      PANE: (0, _extends2["default"])({}, R.BG),
+      HEADER: {
+        ...R.BG
+      },
+      PANE: {
+        ...R.BG
+      },
       BT: {
-        FLAT_ROOT: (0, _extends2["default"])({}, R.BT_FLAT),
         CL_FLAT_DIV: R.CL_BT_FLAT_DIV
       }
     };
   }
 };
 var _default = styleConfig;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=HeaderBar.Style.js.map

@@ -231,6 +231,8 @@ button::-moz-focus-inner {
 
 
 .bt-flat {
+  color: #3270b4;
+  color: var(--bf-c, #3270b4);
   border: 10px;
   box-sizing: border-box;
   display: inline-block;

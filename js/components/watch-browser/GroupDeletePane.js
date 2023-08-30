@@ -15,7 +15,6 @@ const GroupDeletePane = _ref => {
   let {
     forActionType,
     inputStyle,
-    btStyle,
     msgOnNotSelect,
     onDelete,
     onClose
@@ -47,7 +46,6 @@ const GroupDeletePane = _ref => {
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
-      btStyle: btStyle,
       caption: "Delete",
       title: "Delete Group",
       onClick: _hDeleteGroup,

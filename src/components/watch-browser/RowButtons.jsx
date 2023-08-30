@@ -9,7 +9,6 @@ const S_DIV = {
 };
 
 const RowButtons = ({
-  btStyle,
   caption,
   title,
   onClick,
@@ -18,18 +17,15 @@ const RowButtons = ({
 }) => (
   <div style={S_DIV}>
      <Button.Primary
-       style={btStyle}
        caption={caption}
        title={title}
        onClick={onClick}
     />
     {onClear && <Button.Clear
-       style={btStyle}
        onClick={onClear}
      />
     }
-    <Button.Close
-       style={btStyle}
+    <Button.Close       
        onClick={onClose}
     />
   </div>

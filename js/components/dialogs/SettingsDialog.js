@@ -73,7 +73,6 @@ const SettingsDialog = _ref => {
           ref: _ref1,
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,
-          btStyle: TS.BT.FLAT_ROOT,
           isShow: isShow,
           onSet: _hSetAndClose,
           onClose: onClose
@@ -83,7 +82,6 @@ const SettingsDialog = _ref => {
         children: (0, _jsxRuntime.jsx)(_CardUi.default, {
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,
-          btStyle: TS.BT.FLAT_ROOT,
           chbStroke: TS.CHB_STROKE,
           onSetTheme: _selectTheme,
           onCheckAutoSave: _settingStore.enableAutoSave,

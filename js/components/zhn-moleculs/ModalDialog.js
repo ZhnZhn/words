@@ -11,9 +11,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_MD = 'modal-dialog',
   CL_MD_ACTIONS = CL_MD + "__actions",
   CL_BT_DIV = 'bt-flat__div',
-  S_BT = {
-    color: '#3270b4'
-  },
   CL = {
     SHOWING: 'dialog show-popup',
     HIDING: 'hide-popup'
@@ -111,7 +108,6 @@ const ModalDialog = _ref => {
       }), isWithButton && (0, _jsxRuntime.jsxs)("div", {
         className: CL_MD_ACTIONS,
         children: [commandButtons, !withoutClose && (0, _jsxRuntime.jsx)(_FlatButton.default, {
-          rootStyle: S_BT,
           clDiv: CL_BT_DIV,
           caption: "Close",
           isPrimary: true,

@@ -28,7 +28,6 @@ const S_SELECT = {
 const CardUi = ({
   style,
   buttonsStyle,
-  btStyle,
   chbStroke,
   onSetTheme,
   onCheckAutoSave,
@@ -53,8 +52,7 @@ const CardUi = ({
       <span style={S_TEXT}>AutoSave on Add to Watch List</span>
     </div>
     <div style={buttonsStyle}>
-      <FlatButton
-        rootStyle={btStyle}
+      <FlatButton        
         clDiv={CL_DIV}
         caption="Close"
         title="Close Dialog"

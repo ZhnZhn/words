@@ -73,7 +73,7 @@ const InputWord = forwardRef(({
            : (<A.FlatButton
                 caption="Load"
                 tabIndex={-1}
-                rootStyle={{...TS.BT.FLAT, ...S_BT_LOAD}}
+                rootStyle={S_BT_LOAD}
                 clDiv={TS.BT.CL_FLAT_DIV}
                 isPrimary={true}
                 onClick={onEnter}

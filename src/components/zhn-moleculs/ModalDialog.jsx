@@ -15,7 +15,6 @@ import FlatButton from '../zhn-atoms/FlatButton';
 const CL_MD = 'modal-dialog'
 , CL_MD_ACTIONS = `${CL_MD}__actions`
 , CL_BT_DIV = 'bt-flat__div'
-, S_BT = { color: '#3270b4' }
 
 , CL = {
   SHOWING: 'dialog show-popup',
@@ -125,7 +124,6 @@ const ModalDialog = ({
          {commandButtons}
          { !withoutClose &&
             <FlatButton
-              rootStyle={S_BT}
               clDiv={CL_BT_DIV}
               caption="Close"
               isPrimary={true}

@@ -103,7 +103,7 @@ const HeaderBar = ({
        <div className={CL_BTS}>
          <A.FlatButton
              className={CL_SETTINGS}
-             rootStyle={{ ...S.BT.FLAT_ROOT, ...S.BT_SETTINGS }}
+             rootStyle={S.BT_SETTINGS}
              clDiv={S.BT.CL_FLAT_DIV}
              divStyle={S_DIV}
              title="User Settings Dialog"
@@ -114,7 +114,6 @@ const HeaderBar = ({
           </A.FlatButton>
           <A.FlatButton
               className={CL_BT_ABOUT}
-              rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
               divStyle={S_DIV}
               title="About Words"

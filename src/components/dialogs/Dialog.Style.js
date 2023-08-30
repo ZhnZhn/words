@@ -38,10 +38,7 @@ const styleConfig = {
         RAISED_ROOT: {
           ...S_BT_RAISED_ROOT,
           ...R.BG_HEADER
-        },
-        FLAT_ROOT: {
-          ...R.BT_FLAT
-        },
+        }
       },
       SELECT: {
         CL_ITEM: R.CL_SELECT_ITEM,

@@ -40,7 +40,6 @@ const CardUi = _ref => {
   let {
     style,
     buttonsStyle,
-    btStyle,
     chbStroke,
     onSetTheme,
     onCheckAutoSave,
@@ -69,7 +68,6 @@ const CardUi = _ref => {
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_FlatButton.default, {
-        rootStyle: btStyle,
         clDiv: CL_DIV,
         caption: "Close",
         title: "Close Dialog",

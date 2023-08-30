@@ -97,10 +97,7 @@ const HeaderBar = _ref => {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
         className: CL_SETTINGS,
-        rootStyle: {
-          ...S.BT.FLAT_ROOT,
-          ...S.BT_SETTINGS
-        },
+        rootStyle: S.BT_SETTINGS,
         clDiv: S.BT.CL_FLAT_DIV,
         divStyle: S_DIV,
         title: "User Settings Dialog",
@@ -111,7 +108,6 @@ const HeaderBar = _ref => {
         })
       }), (0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
         className: CL_BT_ABOUT,
-        rootStyle: S.BT.FLAT_ROOT,
         clDiv: S.BT.CL_FLAT_DIV,
         divStyle: S_DIV,
         title: "About Words",

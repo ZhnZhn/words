@@ -2,21 +2,29 @@
 const _assign = Object.assign
 , _getObjectKeys = Object.keys;
 
+const DF_BF_C = "#3270b4"
+
 const P = {};
+const BG_HEADER_GREY = '#3270b4'
 const TH_GREY = {
   C_ICON: '#4d4d4d',
   BG_BODY: '#808080',
   BG: '#4d4d4d',
-  //BG_HEADER: '#3a6799',
-  BG_HEADER: '#3270b4',
+  BG_HEADER: BG_HEADER_GREY,
   BG_ITEM_HEADER: '#404040',
   BG_INPUT: '#e1e1cb',
-  C_M_SELECT_ITEM: 'white'
+  C_M_SELECT_ITEM: 'white',
+
+  'bf-c': BG_HEADER_GREY
 }
+
+const BG_HEADER_LIGHT = '#0096c8'
 const _TH_LIGHT = {
   BG_BODY: 'darkgrey',
-  BG_HEADER: '#0096c8',
-  C_M_SELECT_ITEM: '#303030'
+  BG_HEADER: BG_HEADER_LIGHT,
+  C_M_SELECT_ITEM: '#303030',
+
+  'bf-c': BG_HEADER_LIGHT
 }
 
 const TH_WHITE = {
@@ -50,8 +58,7 @@ const CSS_RULE = {
   R_DIALOG: {},
 
   INPUT: {},
-  M_SELECT_ITEM: {},
-  BT_FLAT: {}  
+  M_SELECT_ITEM: {}
 };
 
 export const THEME_NAME = {
@@ -107,14 +114,13 @@ const _crMSelectItem = conf => {
     color: P.C_M_SELECT_ITEM
   })
 };
-const _crBtFlat = conf => {
-  conf.BT_FLAT.color = P.BG_HEADER
-};
 const _crInput = conf => {
   conf.INPUT.backgroundColor = P.BG_INPUT
 };
 
-const CUSTOM_CSS_PROPERTY_CONFIGS = []
+const CUSTOM_CSS_PROPERTY_CONFIGS = [
+  ["bf-c", DF_BF_C]
+]
 
 const _setStyleProperties = (conf, P) => {
   const _style = document.body.style;
@@ -133,7 +139,7 @@ const FN_STYLES = [
   _crBgHeader, _crSvgResize, _crItemHeader,
   _crRDialog,
   _crMSelectItem,
-  _crBtFlat, _crInput,
+  _crInput,
   _setStyleProperties
 ];
 

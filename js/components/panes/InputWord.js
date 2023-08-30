@@ -2,13 +2,12 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _Comp = _interopRequireDefault(require("../Comp"));
-var _jsxRuntime = require("react/jsx-runtime");
-var S_TF_LABEL = {
+var _jsxRuntime = require("preact/jsx-runtime");
+const S_TF_LABEL = {
     top: 28
   },
   S_TF_INPUT = {
@@ -24,31 +23,28 @@ var S_TF_LABEL = {
     top: 22,
     marginLeft: 8
   };
-var DF_INITIAL_VALUE = 'example';
-var InputWord = (0, _uiApi.forwardRef)(function (_ref, ref) {
-  var _ref$initValue = _ref.initValue,
-    initValue = _ref$initValue === void 0 ? DF_INITIAL_VALUE : _ref$initValue,
-    TS = _ref.TS,
-    onEnter = _ref.onEnter;
-  var _refTextField = (0, _uiApi.useRef)(),
-    _hClear = (0, _uiApi.useCallback)(function () {
-      var _tfInst = (0, _uiApi.getRefValue)(_refTextField);
+const DF_INITIAL_VALUE = 'example';
+const InputWord = (0, _uiApi.forwardRef)((_ref, ref) => {
+  let {
+    initValue = DF_INITIAL_VALUE,
+    TS,
+    onEnter
+  } = _ref;
+  const _refTextField = (0, _uiApi.useRef)(),
+    _hClear = (0, _uiApi.useCallback)(() => {
+      const _tfInst = (0, _uiApi.getRefValue)(_refTextField);
       if (_tfInst) {
         _tfInst.setValue('');
       }
     }, []);
-  (0, _uiApi.useEffect)(function () {
+  (0, _uiApi.useEffect)(() => {
     (0, _uiApi.focusRefElement)(_refTextField);
   }, []);
-  (0, _uiApi.useImperativeHandle)(ref, function () {
-    return {
-      getValue: function getValue() {
-        return (0, _uiApi.getRefInputValue)(_refTextField);
-      }
-    };
-  }, []);
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+  (0, _uiApi.useImperativeHandle)(ref, () => ({
+    getValue: () => (0, _uiApi.getRefInputValue)(_refTextField)
+  }), []);
+  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [(0, _jsxRuntime.jsx)(_Comp.default.TextField, {
       ref: _refTextField,
       rootStyle: TS.INPUT_ROOT,
       labelStyle: S_TF_LABEL,
@@ -58,13 +54,13 @@ var InputWord = (0, _uiApi.forwardRef)(function (_ref, ref) {
       spellCheck: true,
       initialValue: initValue,
       onEnter: onEnter
-    }), _has.HAS_TOUCH_EVENTS ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ButtonClear, {
+    }), _has.HAS_TOUCH_EVENTS ? (0, _jsxRuntime.jsx)(_Comp.default.ButtonClear, {
       style: S_BT_CLEAR,
       onClick: _hClear
-    }) : /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+    }) : (0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
       caption: "Load",
       tabIndex: -1,
-      rootStyle: (0, _extends2["default"])({}, TS.BT.FLAT, S_BT_LOAD),
+      rootStyle: S_BT_LOAD,
       clDiv: TS.BT.CL_FLAT_DIV,
       isPrimary: true,
       onClick: onEnter
@@ -72,5 +68,5 @@ var InputWord = (0, _uiApi.forwardRef)(function (_ref, ref) {
   });
 });
 var _default = InputWord;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=InputWord.js.map

@@ -44,10 +44,7 @@ const styleConfig = {
           ...S_BT_RAISED_ROOT,
           ...R.BG_HEADER
         },
-        CL_FLAT_DIV: R.CL_BT_FLAT_DIV,
-        FLAT: {
-          color: R.BG_HEADER.backgroundColor
-        }
+        CL_FLAT_DIV: R.CL_BT_FLAT_DIV
       },
     };
   }

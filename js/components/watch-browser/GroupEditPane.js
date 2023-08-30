@@ -15,7 +15,6 @@ const GroupEditPane = _ref => {
   let {
     forActionType,
     inputStyle,
-    btStyle,
     msgOnNotSelect,
     msgOnIsEmptyName,
     onRename,
@@ -62,7 +61,6 @@ const GroupEditPane = _ref => {
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
-      btStyle: btStyle,
       caption: "Rename",
       title: "Rename Group Name",
       onClick: _hRename,

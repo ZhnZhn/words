@@ -25,9 +25,6 @@ const CL_BT_DIV = 'bt-flat__div',
   S_DIALOG = {
     left: 'calc(50vw - 142px)',
     width: 300
-  },
-  S_BT_ROOT = {
-    color: '#3270b4'
   };
 const AddToWatchDialog = (0, _memoIsShow.default)(props => {
   const {
@@ -91,7 +88,6 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
     _commandButtons = (0, _uiApi.useMemo)(() => [(0, _jsxRuntime.jsx)(_Atoms.default.Button.Flat, {
       caption: "Add",
       title: "Add Item To Watch List",
-      rootStyle: S_BT_ROOT,
       clDiv: CL_BT_DIV,
       onClick: _hAdd
     }, "_add")], [_hAdd]);

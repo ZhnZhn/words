@@ -12,9 +12,6 @@ const CL_DIV = 'bt-flat__div'
 , S_PF = {
   width: 320,
   marginLeft: 12
-}
-, S_BT = {
-  color: '#3270b4'
 };
 
 const CardApiKey = forwardRef(({
@@ -22,15 +19,10 @@ const CardApiKey = forwardRef(({
   isSelected,
   style,
   buttonsStyle,
-  btStyle,
   onClose,
   onSet
 }, ref) => {
-  const _refInput = useRef()
-  , _btStyle = {
-    ...S_BT,
-    ...btStyle
-  };
+  const _refInput = useRef();
 
   useImperativeHandle(ref, () => ({
     getValue: () => getRefInputValue(_refInput)
@@ -50,14 +42,12 @@ const CardApiKey = forwardRef(({
       </form>
       <div style={buttonsStyle}>
         <FlatButton
-          rootStyle={_btStyle}
           clDiv={CL_DIV}
           caption="Set & Close"
           title="Set & Close Dialog"
           onClick={onSet}
         />
         <FlatButton
-          rootStyle={_btStyle}
           clDiv={CL_DIV}
           caption="Close"
           title="Close Dialog"
