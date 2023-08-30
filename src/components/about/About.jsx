@@ -27,7 +27,7 @@ const About = ({
     } else {
       closeAbout()
     }
-  })  
+  })
 
   const TS = useTheme(styleConfig)
   , [
@@ -66,10 +66,7 @@ const About = ({
                  API Key can be set in Settings Dialog [s].
                </p>
            </div>
-           <IconLogoBar
-              iconStyle={TS.ICON}
-              iconGitHubStyle={TS.ICON_GITHUB}
-           />
+           <IconLogoBar />
            <p style={TS.BLACK}>
              *Logos Fair Use.
             </p>

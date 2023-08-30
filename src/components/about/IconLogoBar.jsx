@@ -7,22 +7,14 @@ const S_ROOT = {
   paddingTop: 20
 };
 
-const IconLogoBar = ({
-  iconStyle,
-  iconGitHubStyle
-}) => (
+const IconLogoBar = () => (
   <div style={S_ROOT}>
      <IconGitHub
-        style={iconGitHubStyle}
         ariaLabel="GitHub: Repository of web app Words"
         href="https://github.com/zhnzhn/words/"
      />
-     <IconWordsApi
-       style={iconStyle}
-     />
-     <IconPreact
-       style={iconStyle}
-     />
+     <IconWordsApi />
+     <IconPreact />
   </div>
 );
 

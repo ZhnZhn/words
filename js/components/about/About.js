@@ -14,11 +14,12 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SHOW = "show-popup";
 const About = _ref => {
   let {
-    useAbout
+    id,
+    usePane
   } = _ref;
   const [isShow, showAbout, closeAbout] = (0, _useBool.default)(true);
-  useAbout(about => {
-    if (about.is) {
+  usePane(pOption => {
+    if (pOption.id === id) {
       showAbout();
     } else {
       closeAbout();
@@ -57,10 +58,7 @@ const About = _ref => {
           }), (0, _jsxRuntime.jsx)("p", {
             children: "API Key can be set in Settings Dialog [s]."
           })]
-        }), (0, _jsxRuntime.jsx)(_IconLogoBar.default, {
-          iconStyle: TS.ICON,
-          iconGitHubStyle: TS.ICON_GITHUB
-        }), (0, _jsxRuntime.jsx)("p", {
+        }), (0, _jsxRuntime.jsx)(_IconLogoBar.default, {}), (0, _jsxRuntime.jsx)("p", {
           style: TS.BLACK,
           children: "*Logos Fair Use."
         })]

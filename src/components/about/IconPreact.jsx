@@ -1,10 +1,9 @@
 const PREACT = 'Preact'
 
-const IconPreact = ({ style }) => (
+const IconPreact = () => (
    <a
       arial-label={`Official ${PREACT} site`}
-      className="icon__preact"
-      style={style}
+      className="icon__preact"      
       href="https://preactjs.com"
       tabIndex="-1"
    >

@@ -1,13 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var S = {
+exports.default = void 0;
+const S = {
   SCROLL_DIV: {
     overflowY: 'auto',
     height: '92%',
@@ -42,21 +37,24 @@ var S = {
     color: '#009ae5'
   }
 };
-var styleConfig = {
+const styleConfig = {
   themeName: undefined,
   style: undefined,
-  createStyle: function createStyle(R) {
-    return (0, _extends2["default"])({
+  createStyle: R => {
+    return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
-      CL_GITHUB_ICON: R.CL_GITHUB_ICON,
-      CL_WORDS_ICON: R.CL_WORDS_ICON,
-      ROOT: (0, _extends2["default"])({}, R.BG),
-      BROWSER_CAPTION: (0, _extends2["default"])({}, R.BG_HEADER),
-      ICON: (0, _extends2["default"])({}, R.ICON),
-      ICON_GITHUB: (0, _extends2["default"])({}, R.ICON_GITHUB)
-    }, S);
+      //CL_GITHUB_ICON: R.CL_GITHUB_ICON,
+      //CL_WORDS_ICON: R.CL_WORDS_ICON,
+      ROOT: {
+        ...R.BG
+      },
+      BROWSER_CAPTION: {
+        ...R.BG_HEADER
+      },
+      ...S
+    };
   }
 };
 var _default = styleConfig;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=About.Style.js.map

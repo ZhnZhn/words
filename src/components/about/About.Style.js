@@ -23,7 +23,7 @@ const S = {
   },
   APP_TITLE: {
     color: '#80c040'
-  },  
+  },
   BLACK: {
     color: 'black'
   },
@@ -41,19 +41,13 @@ const styleConfig = {
   createStyle : (R) => {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
-      CL_GITHUB_ICON: R.CL_GITHUB_ICON,
-      CL_WORDS_ICON: R.CL_WORDS_ICON,
+      //CL_GITHUB_ICON: R.CL_GITHUB_ICON,
+      //CL_WORDS_ICON: R.CL_WORDS_ICON,
       ROOT : {
         ...R.BG
       },
       BROWSER_CAPTION: {
         ...R.BG_HEADER
-      },
-      ICON: {
-        ...R.ICON
-      },
-      ICON_GITHUB: {
-        ...R.ICON_GITHUB
       },
       ...S
     }

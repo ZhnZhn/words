@@ -1,13 +1,10 @@
 
 const WORDS_API = 'WordsApi';
 
-const IconWordsApi = ({
-  style
-}) => (
+const IconWordsApi = () => (
  <a
    aria-label={`Official ${WORDS_API} site`}
    className="icon__words"
-   style={style}
    href="https://www.wordsapi.com/"
  >
    <img

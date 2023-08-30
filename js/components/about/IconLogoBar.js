@@ -11,24 +11,13 @@ const S_ROOT = {
   textAlign: 'center',
   paddingTop: 20
 };
-const IconLogoBar = _ref => {
-  let {
-    iconStyle,
-    iconGitHubStyle
-  } = _ref;
-  return (0, _jsxRuntime.jsxs)("div", {
-    style: S_ROOT,
-    children: [(0, _jsxRuntime.jsx)(_IconGitHub.default, {
-      style: iconGitHubStyle,
-      ariaLabel: "GitHub: Repository of web app Words",
-      href: "https://github.com/zhnzhn/words/"
-    }), (0, _jsxRuntime.jsx)(_IconWordsApi.default, {
-      style: iconStyle
-    }), (0, _jsxRuntime.jsx)(_IconPreact.default, {
-      style: iconStyle
-    })]
-  });
-};
+const IconLogoBar = () => (0, _jsxRuntime.jsxs)("div", {
+  style: S_ROOT,
+  children: [(0, _jsxRuntime.jsx)(_IconGitHub.default, {
+    ariaLabel: "GitHub: Repository of web app Words",
+    href: "https://github.com/zhnzhn/words/"
+  }), (0, _jsxRuntime.jsx)(_IconWordsApi.default, {}), (0, _jsxRuntime.jsx)(_IconPreact.default, {})]
+});
 var _default = IconLogoBar;
 exports.default = _default;
 //# sourceMappingURL=IconLogoBar.js.map
