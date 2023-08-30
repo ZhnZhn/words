@@ -12,7 +12,6 @@ const TH_GREY = {
   BG: '#4d4d4d',
   BG_HEADER: BG_HEADER_GREY,
   BG_ITEM_HEADER: '#404040',
-  BG_INPUT: '#e1e1cb',
   C_M_SELECT_ITEM: 'white',
 
   'bf-c': BG_HEADER_GREY
@@ -31,15 +30,13 @@ const TH_WHITE = {
   ..._TH_LIGHT,
   C_ICON: 'grey',
   BG: '#ebf1f5',
-  BG_ITEM_HEADER: '#e6ecf0',
-  BG_INPUT: '#e1e1cb'
+  BG_ITEM_HEADER: '#e6ecf0'
 };
 const TH_SAND = {
   ..._TH_LIGHT,
   C_ICON: '#e8e0cb',
   BG: '#e8e0cb',
-  BG_ITEM_HEADER: '#d0c198',
-  BG_INPUT: 'white'
+  BG_ITEM_HEADER: '#d0c198'
 }
 
 const CSS_RULE = {
@@ -57,7 +54,6 @@ const CSS_RULE = {
   ITEM_HEADER: {},
   R_DIALOG: {},
 
-  INPUT: {},
   M_SELECT_ITEM: {}
 };
 
@@ -69,7 +65,7 @@ export const THEME_NAME = {
 };
 
 const CL_PROPS = {
-  CL_SCROLL_PANE: 'with-scroll'  
+  CL_SCROLL_PANE: 'with-scroll'
 };
 
 const _setClassNameTo = (suffix='') => {
@@ -77,7 +73,6 @@ const _setClassNameTo = (suffix='') => {
     CSS_RULE[key] = CL_PROPS[key] + suffix
   })
 }
-
 
 const _crIcon = conf => {
   conf.ICON.backgroundColor = P.C_ICON
@@ -113,9 +108,6 @@ const _crMSelectItem = conf => {
     color: P.C_M_SELECT_ITEM
   })
 };
-const _crInput = conf => {
-  conf.INPUT.backgroundColor = P.BG_INPUT
-};
 
 const CUSTOM_CSS_PROPERTY_CONFIGS = [
   ["bf-c", DF_BF_C]
@@ -138,7 +130,6 @@ const FN_STYLES = [
   _crBgHeader, _crSvgResize, _crItemHeader,
   _crRDialog,
   _crMSelectItem,
-  _crInput,
   _setStyleProperties
 ];
 

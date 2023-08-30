@@ -14,9 +14,7 @@ import useWatchList from './useWatchList';
 import A from './Atoms';
 
 const ListCreatePane = ({
-  forActionType,
-  inputStyle,
-  btStyle,
+  forActionType,  
   msgOnNotSelect,
   msgOnIsEmptyName,
   onCreate,
@@ -62,21 +60,18 @@ const ListCreatePane = ({
   return (
     <>
       <A.RowInputSelect
-         inputStyle={inputStyle}
          caption="In Group:"
          options={groupOptions}
          onSelect={_hSelectGroup}
       />
       <A.RowInputText
          ref={_refInputText}
-         inputStyle={inputStyle}
          caption="List:"
       />
       <A.ValidationMessages
         validationMessages={validationMessages}
       />
       <A.RowButtons
-         btStyle={btStyle}
          caption="Create"
          title="Create New List"
          onClick={_hCreate}

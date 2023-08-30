@@ -14,7 +14,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const GroupDeletePane = _ref => {
   let {
     forActionType,
-    inputStyle,
     msgOnNotSelect,
     onDelete,
     onClose
@@ -39,7 +38,6 @@ const GroupDeletePane = _ref => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
-      inputStyle: inputStyle,
       caption: "Group:",
       options: groupOptions,
       onSelect: _hSelectGroup

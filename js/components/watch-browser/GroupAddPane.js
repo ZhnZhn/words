@@ -11,7 +11,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const GroupAddPane = _ref => {
   let {
     forActionType,
-    inputStyle,
     msgOnIsEmptyName,
     onCreate,
     onClose
@@ -38,8 +37,7 @@ const GroupAddPane = _ref => {
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
       ref: _refInput,
-      caption: "Group:",
-      inputStyle: inputStyle
+      caption: "Group:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {

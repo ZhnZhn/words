@@ -7,7 +7,11 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_TF_LABEL = {
+const S_INPUT_ROOT = {
+    width: 250,
+    marginLeft: 8
+  },
+  S_TF_LABEL = {
     top: 28
   },
   S_TF_INPUT = {
@@ -46,7 +50,7 @@ const InputWord = (0, _uiApi.forwardRef)((_ref, ref) => {
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Comp.default.TextField, {
       ref: _refTextField,
-      rootStyle: TS.INPUT_ROOT,
+      rootStyle: S_INPUT_ROOT,
       labelStyle: S_TF_LABEL,
       inputStyle: S_TF_INPUT,
       caption: "Word",

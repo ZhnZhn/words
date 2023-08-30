@@ -13,7 +13,6 @@ const TH_GREY = {
   BG: '#4d4d4d',
   BG_HEADER: BG_HEADER_GREY,
   BG_ITEM_HEADER: '#404040',
-  BG_INPUT: '#e1e1cb',
   C_M_SELECT_ITEM: 'white',
   'bf-c': BG_HEADER_GREY
 };
@@ -28,15 +27,13 @@ const TH_WHITE = {
   ..._TH_LIGHT,
   C_ICON: 'grey',
   BG: '#ebf1f5',
-  BG_ITEM_HEADER: '#e6ecf0',
-  BG_INPUT: '#e1e1cb'
+  BG_ITEM_HEADER: '#e6ecf0'
 };
 const TH_SAND = {
   ..._TH_LIGHT,
   C_ICON: '#e8e0cb',
   BG: '#e8e0cb',
-  BG_ITEM_HEADER: '#d0c198',
-  BG_INPUT: 'white'
+  BG_ITEM_HEADER: '#d0c198'
 };
 const CSS_RULE = {
   CL_QUERY_ITEM: 'row__topic',
@@ -50,7 +47,6 @@ const CSS_RULE = {
   SVG_RESIZE: {},
   ITEM_HEADER: {},
   R_DIALOG: {},
-  INPUT: {},
   M_SELECT_ITEM: {}
 };
 const THEME_NAME = {
@@ -104,9 +100,6 @@ const _crMSelectItem = conf => {
     color: P.C_M_SELECT_ITEM
   });
 };
-const _crInput = conf => {
-  conf.INPUT.backgroundColor = P.BG_INPUT;
-};
 const CUSTOM_CSS_PROPERTY_CONFIGS = [["bf-c", DF_BF_C]];
 const _setStyleProperties = (conf, P) => {
   const _style = document.body.style;
@@ -116,7 +109,7 @@ const _setStyleProperties = (conf, P) => {
     _style.setProperty('--' + propName, P[propName] || dfValue);
   });
 };
-const FN_STYLES = [_crIcon, _crBg, _crBgHeader, _crSvgResize, _crItemHeader, _crRDialog, _crMSelectItem, _crInput, _setStyleProperties];
+const FN_STYLES = [_crIcon, _crBg, _crBgHeader, _crSvgResize, _crItemHeader, _crRDialog, _crMSelectItem, _setStyleProperties];
 const _setStyleTo = (conf, colorPallete) => {
   FN_STYLES.forEach(fn => fn(conf, colorPallete));
 };

@@ -15,8 +15,6 @@ import A from './Atoms';
 const ListEditPane = ({
   getWatchListsByGroup,
   forActionType,
-  inputStyle,
-  btStyle,
   msgOnIsEmptyName,
   msgOnNotSelect,
   onRename,
@@ -68,7 +66,6 @@ const ListEditPane = ({
     <>
        <A.SelectGroupList
          ref={_refGroupList}
-         inputStyle={inputStyle}
          getWatchListsByGroup={getWatchListsByGroup}
          groupCaption="In Group:"
          groupOptions={groupOptions}
@@ -76,14 +73,12 @@ const ListEditPane = ({
        />
        <A.RowInputText
           ref={_refInputText}
-          inputStyle={inputStyle}
           caption="List To:"
        />
        <A.ValidationMessages
           validationMessages={validationMessages}
        />
-       <A.RowButtons
-          btStyle={btStyle}
+       <A.RowButtons          
           caption="Rename"
           title="Rename List Name"
           onClick={_hRename}

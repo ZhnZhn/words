@@ -14,8 +14,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const ListCreatePane = _ref => {
   let {
     forActionType,
-    inputStyle,
-    btStyle,
     msgOnNotSelect,
     msgOnIsEmptyName,
     onCreate,
@@ -53,18 +51,15 @@ const ListCreatePane = _ref => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
-      inputStyle: inputStyle,
       caption: "In Group:",
       options: groupOptions,
       onSelect: _hSelectGroup
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
       ref: _refInputText,
-      inputStyle: inputStyle,
       caption: "List:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
-      btStyle: btStyle,
       caption: "Create",
       title: "Create New List",
       onClick: _hCreate,

@@ -1,8 +1,3 @@
-const S_INPUT_ROOT = {
-  width: 250,
-  marginLeft: 8
-};
-
 const _crBgColorStyle = color => ({
   backgroundColor: color
 });
@@ -31,9 +26,6 @@ const styleConfig = {
       },
       BG_COLOR: {
         ..._paneRoot
-      },
-      INPUT_ROOT: {
-        ...S_INPUT_ROOT
       },
       BT: {
         CL_FLAT_DIV: R.CL_BT_FLAT_DIV

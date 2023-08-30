@@ -15,8 +15,6 @@ const ListEditPane = _ref => {
   let {
     getWatchListsByGroup,
     forActionType,
-    inputStyle,
-    btStyle,
     msgOnIsEmptyName,
     msgOnNotSelect,
     onRename,
@@ -59,19 +57,16 @@ const ListEditPane = _ref => {
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
       ref: _refGroupList,
-      inputStyle: inputStyle,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group:",
       groupOptions: groupOptions,
       listCaption: "List From:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
       ref: _refInputText,
-      inputStyle: inputStyle,
       caption: "List To:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
-      btStyle: btStyle,
       caption: "Rename",
       title: "Rename List Name",
       onClick: _hRename,

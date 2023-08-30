@@ -15,7 +15,6 @@ import A from './Atoms';
 
 const GroupEditPane = ({
   forActionType,
-  inputStyle,
   msgOnNotSelect,
   msgOnIsEmptyName,
   onRename,
@@ -66,14 +65,12 @@ const GroupEditPane = ({
     <>
        <A.RowInputSelect
           caption="Group From:"
-          inputStyle={inputStyle}
           options={groupOptions}
           onSelect={_hSelectGroup}
        />
       <A.RowInputText
         ref={_refInputText}
         caption="Group To:"
-        inputStyle={inputStyle}
       />
       <A.ValidationMessages
         validationMessages={validationMessages}

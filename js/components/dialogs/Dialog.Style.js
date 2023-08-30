@@ -3,17 +3,13 @@
 exports.__esModule = true;
 exports.default = void 0;
 const S_BROWSER_CAPTION = {
-    color: '#303030',
-    paddingTop: 5,
-    backgroundColor: '#3f5178',
-    textAlign: 'center',
-    fontSize: '18px',
-    marginBottom: 0
-  },
-  S_INPUT_ROOT = {
-    display: 'block',
-    width: 280
-  };
+  color: '#303030',
+  paddingTop: 5,
+  backgroundColor: '#3f5178',
+  textAlign: 'center',
+  fontSize: '18px',
+  marginBottom: 0
+};
 const styleConfig = {
   themeName: void 0,
   style: void 0,
@@ -27,9 +23,6 @@ const styleConfig = {
       BROWSER_CAPTION: {
         ...S_BROWSER_CAPTION,
         ...R.BG_HEADER
-      },
-      INPUT_ROOT: {
-        ...S_INPUT_ROOT
       },
       SELECT: {
         CL_ITEM: R.CL_SELECT_ITEM,

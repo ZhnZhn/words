@@ -6,10 +6,6 @@ const S_BROWSER_CAPTION = {
   textAlign: 'center',
   fontSize: '18px',
   marginBottom: 0
-}
-, S_INPUT_ROOT = {
-  display: 'block',
-  width: 280
 };
 
 const styleConfig = {
@@ -25,9 +21,6 @@ const styleConfig = {
       BROWSER_CAPTION: {
         ...S_BROWSER_CAPTION,
         ...R.BG_HEADER
-      },
-      INPUT_ROOT: {
-        ...S_INPUT_ROOT
       },
       SELECT: {
         CL_ITEM: R.CL_SELECT_ITEM,

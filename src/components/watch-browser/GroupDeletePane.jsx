@@ -12,7 +12,6 @@ import A from './Atoms';
 
 const GroupDeletePane = ({
   forActionType,
-  inputStyle,
   msgOnNotSelect,
   onDelete,
   onClose
@@ -46,8 +45,7 @@ const GroupDeletePane = ({
 
   return (
     <>
-      <A.RowInputSelect
-        inputStyle={inputStyle}
+      <A.RowInputSelect        
         caption="Group:"
         options={groupOptions}
         onSelect={_hSelectGroup}

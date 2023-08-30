@@ -13,9 +13,7 @@ import A from './Atoms';
 
 const ListDeletePane = ({
   getWatchListsByGroup,
-  forActionType,
-  inputStyle,
-  btStyle,
+  forActionType,  
   msgOnNotSelect,
   onDelete,
   onClose
@@ -61,7 +59,6 @@ const ListDeletePane = ({
       <A.SelectGroupList
         ref={_refGroupList}
         getWatchListsByGroup={getWatchListsByGroup}
-        inputStyle={inputStyle}
         groupCaption="In Group:"
         groupOptions={groupOptions}
         listCaption="List:"
@@ -70,7 +67,6 @@ const ListDeletePane = ({
          validationMessages={validationMessages}
       />
       <A.RowButtons
-        btStyle={btStyle}
         caption="Delete"
         title="Delete List"
         onClick={_hDelete}

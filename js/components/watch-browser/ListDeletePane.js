@@ -15,8 +15,6 @@ const ListDeletePane = _ref => {
   let {
     getWatchListsByGroup,
     forActionType,
-    inputStyle,
-    btStyle,
     msgOnNotSelect,
     onDelete,
     onClose
@@ -53,14 +51,12 @@ const ListDeletePane = _ref => {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
       ref: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
-      inputStyle: inputStyle,
       groupCaption: "In Group:",
       groupOptions: groupOptions,
       listCaption: "List:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
-      btStyle: btStyle,
       caption: "Delete",
       title: "Delete List",
       onClick: _hDelete,

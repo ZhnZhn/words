@@ -14,7 +14,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const GroupEditPane = _ref => {
   let {
     forActionType,
-    inputStyle,
     msgOnNotSelect,
     msgOnIsEmptyName,
     onRename,
@@ -51,13 +50,11 @@ const GroupEditPane = _ref => {
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
       caption: "Group From:",
-      inputStyle: inputStyle,
       options: groupOptions,
       onSelect: _hSelectGroup
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
       ref: _refInputText,
-      caption: "Group To:",
-      inputStyle: inputStyle
+      caption: "Group To:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {

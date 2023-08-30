@@ -52,7 +52,6 @@ const EditListDialog = memoIsShow(({
          <Tab title="Create">
            <ListCreatePane
               forActionType={WAT_CREATE_LIST}
-              inputStyle={TS.INPUT}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
               onCreate={crList}
@@ -63,7 +62,6 @@ const EditListDialog = memoIsShow(({
            <ListEditPane
               getWatchListsByGroup={getWatchListsByGroup}
               forActionType={WAT_RENAME_LIST}
-              inputStyle={TS.INPUT}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
               onRename={renList}
@@ -74,7 +72,6 @@ const EditListDialog = memoIsShow(({
            <ListDeletePane
               getWatchListsByGroup={getWatchListsByGroup}
               forActionType={WAT_DELETE_LIST}
-              inputStyle={TS.INPUT}
               msgOnNotSelect={notSelected}
               onDelete={delList}
               onClose={onClose}

@@ -51,7 +51,6 @@ const EditGroupDialog = memoIsShow(({
          <Tab title="Create">
            <GroupAddPane
               forActionType={WAT_CREATE_GROUP}
-              inputStyle={TS.INPUT}
               msgOnIsEmptyName={emptyName}
               onCreate={crGroup}
               onClose={onClose}
@@ -60,7 +59,6 @@ const EditGroupDialog = memoIsShow(({
          <Tab title="Rename">
            <GroupEditPane
               forActionType={WAT_RENAME_GROUP}
-              inputStyle={TS.INPUT}
               msgOnNotSelect={notSelected}
               msgOnIsEmptyName={emptyName}
               onRename={renGroup}
@@ -70,7 +68,6 @@ const EditGroupDialog = memoIsShow(({
          <Tab title="Delete">
            <GroupDeletePane
               forActionType={WAT_DELETE_GROUP}
-              inputStyle={TS.INPUT}
               msgOnNotSelect={notSelected}
               onDelete={delGroup}
               onClose={onClose}

@@ -12,7 +12,6 @@ import A from './Atoms';
 
 const GroupAddPane = ({
   forActionType,
-  inputStyle,
   msgOnIsEmptyName,
   onCreate,
   onClose
@@ -49,8 +48,7 @@ const GroupAddPane = ({
     <>
       <A.RowInputText
          ref={_refInput}
-         caption="Group:"
-         inputStyle={inputStyle}
+         caption="Group:"        
       />
       <A.ValidationMessages
          validationMessages={validationMessages}

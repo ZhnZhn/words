@@ -42,7 +42,6 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
         title: "Create",
         children: (0, _jsxRuntime.jsx)(_ListCreatePane.default, {
           forActionType: _WatchActions.WAT_CREATE_LIST,
-          inputStyle: TS.INPUT,
           msgOnNotSelect: _MsgWatch.notSelected,
           msgOnIsEmptyName: _MsgWatch.emptyName,
           onCreate: _watchListStore.crList,
@@ -53,7 +52,6 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
         children: (0, _jsxRuntime.jsx)(_ListEditPane.default, {
           getWatchListsByGroup: _watchListStore.getWatchListsByGroup,
           forActionType: _WatchActions.WAT_RENAME_LIST,
-          inputStyle: TS.INPUT,
           msgOnNotSelect: _MsgWatch.notSelected,
           msgOnIsEmptyName: _MsgWatch.emptyName,
           onRename: _watchListStore.renList,
@@ -64,7 +62,6 @@ const EditListDialog = (0, _memoIsShow.default)(_ref => {
         children: (0, _jsxRuntime.jsx)(_ListDeletePane.default, {
           getWatchListsByGroup: _watchListStore.getWatchListsByGroup,
           forActionType: _WatchActions.WAT_DELETE_LIST,
-          inputStyle: TS.INPUT,
           msgOnNotSelect: _MsgWatch.notSelected,
           onDelete: _watchListStore.delList,
           onClose: onClose

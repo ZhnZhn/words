@@ -12,7 +12,11 @@ import {
 import { HAS_TOUCH_EVENTS } from '../has';
 import A from '../Comp';
 
-const S_TF_LABEL = {
+const S_INPUT_ROOT = {
+  width: 250,
+  marginLeft: 8
+}
+, S_TF_LABEL = {
   top: 28
 }
 , S_TF_INPUT = {
@@ -56,7 +60,7 @@ const InputWord = forwardRef(({
     <>
       <A.TextField
         ref={_refTextField}
-        rootStyle={TS.INPUT_ROOT}
+        rootStyle={S_INPUT_ROOT}
         labelStyle={S_TF_LABEL}
         inputStyle={S_TF_INPUT}
         caption="Word"
