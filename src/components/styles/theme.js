@@ -52,9 +52,7 @@ const CSS_RULE = {
   BG_HEADER: {},
   SVG_RESIZE: {},
   ITEM_HEADER: {},
-  R_DIALOG: {},
-
-  M_SELECT_ITEM: {}
+  R_DIALOG: {}
 };
 
 export const THEME_NAME = {
@@ -103,12 +101,6 @@ const _crRDialog = conf => {
   })
 };
 
-const _crMSelectItem = conf => {
-  _assign(conf.M_SELECT_ITEM, {
-    color: P.C_M_SELECT_ITEM
-  })
-};
-
 const CUSTOM_CSS_PROPERTY_CONFIGS = [
   ["bf-c", DF_BF_C]
 ]
@@ -127,9 +119,10 @@ const _setStyleProperties = (conf, P) => {
 const FN_STYLES = [
   _crIcon,
   _crBg,
-  _crBgHeader, _crSvgResize, _crItemHeader,
+  _crBgHeader,
+  _crSvgResize,
+  _crItemHeader,
   _crRDialog,
-  _crMSelectItem,
   _setStyleProperties
 ];
 

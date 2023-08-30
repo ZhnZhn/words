@@ -23,10 +23,7 @@ const styleConfig = {
         ...R.BG_HEADER
       },
       SELECT: {
-        CL_ITEM: R.CL_SELECT_ITEM,
-        ITEM: {
-          ...R.M_SELECT_ITEM
-        },
+        CL_ITEM: R.CL_SELECT_ITEM,        
         ROOT: {
           width: 280
         },
