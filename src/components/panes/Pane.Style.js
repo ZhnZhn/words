@@ -1,14 +1,11 @@
 const S_INPUT_ROOT = {
   width: 250,
   marginLeft: 8
-}
-, S_BT_RAISED_ROOT = {
-  position: 'relative',
-  top: 12,
-  marginLeft: 16
 };
 
-const _crBgColorStyle = color => ({ backgroundColor: color });
+const _crBgColorStyle = color => ({
+  backgroundColor: color
+});
 
 const styleConfig = {
   themeName: void 0,
@@ -39,11 +36,6 @@ const styleConfig = {
         ...S_INPUT_ROOT
       },
       BT: {
-        CL_RAISED_DIV: R.CL_BT_RAISED_DIV,
-        RAISED_ROOT: {
-          ...S_BT_RAISED_ROOT,
-          ...R.BG_HEADER
-        },
         CL_FLAT_DIV: R.CL_BT_FLAT_DIV
       },
     };

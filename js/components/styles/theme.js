@@ -61,8 +61,7 @@ const THEME_NAME = {
 };
 exports.THEME_NAME = THEME_NAME;
 const CL_PROPS = {
-  CL_SCROLL_PANE: 'with-scroll',
-  CL_BT_RAISED_DIV: 'bt-raise__div'
+  CL_SCROLL_PANE: 'with-scroll'
 };
 const _setClassNameTo = function (suffix) {
   if (suffix === void 0) {

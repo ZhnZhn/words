@@ -10,10 +10,6 @@ const S_BROWSER_CAPTION = {
     fontSize: '18px',
     marginBottom: 0
   },
-  S_BT_RAISED_ROOT = {
-    marginRight: 2,
-    marginLeft: 2
-  },
   S_INPUT_ROOT = {
     display: 'block',
     width: 280
@@ -34,13 +30,6 @@ const styleConfig = {
       },
       INPUT_ROOT: {
         ...S_INPUT_ROOT
-      },
-      BT: {
-        CL_RAISED_DIV: R.CL_BT_RAISED_DIV,
-        RAISED_ROOT: {
-          ...S_BT_RAISED_ROOT,
-          ...R.BG_HEADER
-        }
       },
       SELECT: {
         CL_ITEM: R.CL_SELECT_ITEM,
