@@ -8,8 +8,7 @@ const _S_CONTAINER = {
   borderRadius: 4
 };
 
-export const S_PANE_TYPE1 = {
-  ..._S_CONTAINER,
+export const S_PANE_TYPE1 = {  
   padding : '0 0 3px 0',
   overflow: 'hidden'
 }

@@ -1,7 +1,7 @@
 
 .dialog {
   background-color: #4d4d4d;
-  background-color: var(--bg-c, #4d4d4d);
+  background-color: var(--c-bgc, #4d4d4d);
   border: solid 2px #3270b4;
   border: solid 2px var(--bf-c, #3270b4);
 }

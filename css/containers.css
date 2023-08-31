@@ -12,6 +12,18 @@
   flex-shrink: 0;
 }
 
+.container {  
+  background-color: #4d4d4d;
+  background-color: var(--c-bgc, #4d4d4d);
+
+  position: relative;  
+  height: calc(100vh - 71px);
+  min-height: 500px;
+  margin-left: 8px;
+  border-radius: 4px;
+  box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6); 
+}
+
 .modal-root {
   z-index: 1050;
   display: block;
