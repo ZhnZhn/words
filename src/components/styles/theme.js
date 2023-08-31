@@ -11,7 +11,6 @@ const BG_HEADER_GREY = DF_BF_C
 const TH_GREY = {
   BG_BODY: '#808080',
   BG: '#4d4d4d',
-  BG_HEADER: BG_HEADER_GREY,
   BG_ITEM_HEADER: '#404040',
 
   'c-bgc': DF_C_BGC,
@@ -22,7 +21,6 @@ const TH_GREY = {
 const BG_HEADER_LIGHT = '#0096c8'
 const _TH_LIGHT = {
   BG_BODY: 'darkgrey',
-  BG_HEADER: BG_HEADER_LIGHT,
 
   'bf-c': BG_HEADER_LIGHT
 }
@@ -51,7 +49,6 @@ const CSS_RULE = {
   CL_BT_FLAT_DIV: 'bt-flat__div',
 
   BG: {},
-  BG_HEADER: {},
   ITEM_HEADER: {}
 };
 
@@ -75,12 +72,6 @@ const _setClassNameTo = (suffix='') => {
 
 const _crBg = conf => {
   conf.BG.backgroundColor = P.BG
-};
-const _crBgHeader = conf => {
-  _assign(conf.BG_HEADER, {
-    backgroundColor: P.BG_HEADER,
-    color: P.BG
-  })
 };
 
 const _crItemHeader = conf => {
@@ -106,7 +97,6 @@ const _setStyleProperties = (conf, P) => {
 
 const FN_STYLES = [
   _crBg,
-  _crBgHeader,
   _crItemHeader,
   _setStyleProperties
 ];

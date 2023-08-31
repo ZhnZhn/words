@@ -52,7 +52,6 @@ const MenuParts = ({
 }
 
 const DynamicMenuBrowser = ({
-  //store,
   url,
   browserId,
   useBrowser,
@@ -117,10 +116,9 @@ const DynamicMenuBrowser = ({
   return (
     <A.Browser
        isShow={isShow}
-       style={{...S_BROWSER, ...TS.BROWSER}}
+       style={S_BROWSER}
      >
       <A.BrowserCaption
-        rootStyle={TS.BROWSER_CAPTION}
         caption={caption}
         onClose={closeMenuBrowser}
       />

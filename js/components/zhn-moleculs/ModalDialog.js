@@ -15,6 +15,11 @@ const CL_MD = 'modal-dialog',
     SHOWING: 'dialog show-popup',
     HIDING: 'hide-popup'
   },
+  S_CAPTION = {
+    paddingTop: 5,
+    textAlign: 'center',
+    marginBottom: 0
+  },
   S = {
     INIT: {
       display: 'none'
@@ -100,7 +105,10 @@ const ModalDialog = _ref => {
       onClick: _hClickDialog,
       onKeyDown: _hKeyDown,
       children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
-        rootStyle: captionStyle,
+        rootStyle: {
+          ...S_CAPTION,
+          ...captionStyle
+        },
         caption: caption,
         onClose: onClose
       }), (0, _jsxRuntime.jsx)("div", {

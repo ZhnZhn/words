@@ -20,6 +20,11 @@ const CL_MD = 'modal-dialog'
   SHOWING: 'dialog show-popup',
   HIDING: 'hide-popup'
 }
+, S_CAPTION = {
+  paddingTop: 5,
+  textAlign: 'center',  
+  marginBottom: 0
+}
 , S = {
   INIT: {
     display: 'none'
@@ -113,7 +118,7 @@ const ModalDialog = ({
     >
     {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
        <BrowserCaption
-          rootStyle={captionStyle}
+          rootStyle={{...S_CAPTION, ...captionStyle}}
           caption={caption}
           onClose={onClose}
        />

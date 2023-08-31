@@ -41,7 +41,6 @@ const About = ({
       style={_style}
      >
        <A.BrowserCaption
-          rootStyle={TS.BROWSER_CAPTION}
           caption="About"
           onClose={closeAbout}
        />

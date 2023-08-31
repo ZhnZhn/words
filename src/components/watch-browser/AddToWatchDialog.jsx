@@ -8,8 +8,6 @@ import {
 } from '../uiApi';
 
 import memoIsShow from '../hoc/memoIsShow';
-import useTheme from '../hoc/useTheme';
-import styleConfig from '../dialogs/Dialog.Style';
 
 import useGroupOptions from './useGroupOptions';
 import useListOptions from './useListOptions';
@@ -155,12 +153,9 @@ const AddToWatchDialog = memoIsShow((
   // _refListCaption, _updateGroupOptions
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  const TS = useTheme(styleConfig);
-
   return (
     <ModalDialog
        style={S_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
        caption="Add To Watch List"
        isShow={isShow}
        commandButtons={_commandButtons}
@@ -174,7 +169,7 @@ const AddToWatchDialog = memoIsShow((
         />
       </div>
       <div>
-        <RowInputSelect        
+        <RowInputSelect
           caption="List:"
           onSelect={_hSelectList}
           options={listOptions}

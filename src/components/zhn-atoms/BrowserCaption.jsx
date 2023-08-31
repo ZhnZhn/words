@@ -2,20 +2,8 @@ import SvgMore from './SvgMore'
 import SvgClose from './SvgClose'
 
 const CL_NOT_SELECTED = "not-selected"
-, CL_GAP_RIGHT = "gap-right"
-, S_ROOT = {
-  position: 'relative',
-  backgroundColor: '#3f5178',
-  color: '#a487d4',
-  lineHeight: 1.8,
-  padding: '4px 42px 0 10px',
-  marginBottom: 10,
-  borderTopLeftRadius: 4,
-  borderTopRightRadius: 4,
-  overflow: 'hidden',
-  whiteSpace: 'nowrap',
-  textOverflow: 'clip'
-}
+, CL_B_CAPTION = "b-caption gap-right"
+
 , S_CAPTION = {
   fontSize: '18px',
   fontWeight: 'bold'
@@ -51,8 +39,8 @@ const BrowserCaption = ({
   onClose
 }) => (
   <div
-    className={CL_GAP_RIGHT}
-    style={{...S_ROOT, ...rootStyle}}
+    className={CL_B_CAPTION}
+    style={rootStyle}
   >
     {
        _isFn(onMore) &&

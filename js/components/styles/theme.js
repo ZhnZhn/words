@@ -12,7 +12,6 @@ const BG_HEADER_GREY = DF_BF_C;
 const TH_GREY = {
   BG_BODY: '#808080',
   BG: '#4d4d4d',
-  BG_HEADER: BG_HEADER_GREY,
   BG_ITEM_HEADER: '#404040',
   'c-bgc': DF_C_BGC,
   'bf-c': BG_HEADER_GREY,
@@ -21,7 +20,6 @@ const TH_GREY = {
 const BG_HEADER_LIGHT = '#0096c8';
 const _TH_LIGHT = {
   BG_BODY: 'darkgrey',
-  BG_HEADER: BG_HEADER_LIGHT,
   'bf-c': BG_HEADER_LIGHT
 };
 const TH_WHITE = {
@@ -44,7 +42,6 @@ const CSS_RULE = {
   CL_SELECT_ITEM: 'm-select__item',
   CL_BT_FLAT_DIV: 'bt-flat__div',
   BG: {},
-  BG_HEADER: {},
   ITEM_HEADER: {}
 };
 const THEME_NAME = {
@@ -68,12 +65,6 @@ const _setClassNameTo = function (suffix) {
 const _crBg = conf => {
   conf.BG.backgroundColor = P.BG;
 };
-const _crBgHeader = conf => {
-  _assign(conf.BG_HEADER, {
-    backgroundColor: P.BG_HEADER,
-    color: P.BG
-  });
-};
 const _crItemHeader = conf => {
   conf.ITEM_HEADER.backgroundColor = P.BG_ITEM_HEADER;
 };
@@ -86,7 +77,7 @@ const _setStyleProperties = (conf, P) => {
     _style.setProperty('--' + propName, P[propName] || dfValue);
   });
 };
-const FN_STYLES = [_crBg, _crBgHeader, _crItemHeader, _setStyleProperties];
+const FN_STYLES = [_crBg, _crItemHeader, _setStyleProperties];
 const _setStyleTo = (conf, colorPallete) => {
   FN_STYLES.forEach(fn => fn(conf, colorPallete));
 };

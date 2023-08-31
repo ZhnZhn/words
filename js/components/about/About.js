@@ -31,7 +31,6 @@ const About = _ref => {
     className: _className,
     style: _style,
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.BrowserCaption, {
-      rootStyle: TS.BROWSER_CAPTION,
       caption: "About",
       onClose: closeAbout
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ScrollPane, {

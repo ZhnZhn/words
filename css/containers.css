@@ -42,6 +42,29 @@
   overflow: hidden;
 }
 
+.b-caption {
+  color: #4d4d4d;
+  color: var(--c-bgc, #4d4d4d);
+
+  fill: #4d4d4d;
+  fill: var(--c-bgc, #4d4d4d);
+
+  stroke: #4d4d4d;
+  stroke: var(--c-bgc, #4d4d4d);    
+
+  background-color: #3270b4;
+  background-color: var(--bf-c, #3270b4);
+
+  position: relative;   
+  line-height: 1.8;
+  padding: 4px 42px 0 10px;
+  margin-bottom: 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
 
 .modal-root {
   z-index: 1050;

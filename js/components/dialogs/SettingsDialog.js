@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
-var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _storeAtoms = require("../../flux/storeAtoms");
 var _settingStore = require("../../flux/settingStore");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
@@ -47,7 +45,6 @@ const SettingsDialog = _ref => {
     _selectTheme = (0, _uiApi.useCallback)(item => {
       (0, _storeAtoms.setUiTheme)((item || {}).value);
     }, []),
-    TS = (0, _useTheme.default)(_Dialog.default),
     _hSetAndClose = (0, _uiApi.useCallback)(() => {
       (0, _uiApi.getRefValue)(_refSetKey1)((0, _uiApi.getRefValue)(_ref1).getValue());
       onClose();
@@ -56,7 +53,6 @@ const SettingsDialog = _ref => {
     className: "",
     style: S_MODAL,
     caption: "User Settings",
-    captionStyle: TS.BROWSER_CAPTION,
     isShow: isShow,
     isWithButton: false,
     onClose: onClose,

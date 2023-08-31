@@ -49,7 +49,6 @@ const MenuParts = _ref => {
 };
 const DynamicMenuBrowser = _ref2 => {
   let {
-    //store,
     url,
     browserId,
     useBrowser,
@@ -100,12 +99,8 @@ const DynamicMenuBrowser = _ref2 => {
 
   return (0, _jsxRuntime.jsxs)(_Atoms.default.Browser, {
     isShow: isShow,
-    style: {
-      ...S_BROWSER,
-      ...TS.BROWSER
-    },
+    style: S_BROWSER,
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.BrowserCaption, {
-      rootStyle: TS.BROWSER_CAPTION,
       caption: caption,
       onClose: closeMenuBrowser
     }), isLoading && (0, _jsxRuntime.jsx)(_Atoms.default.SpinnerLoading, {

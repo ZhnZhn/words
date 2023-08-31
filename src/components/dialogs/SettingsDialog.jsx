@@ -4,9 +4,6 @@ import {
   getRefValue
 } from '../uiApi';
 
-import useTheme from '../hoc/useTheme';
-import styleConfig from './Dialog.Style';
-
 import {
   setUiTheme
 } from '../../flux/storeAtoms';
@@ -55,7 +52,6 @@ const SettingsDialog = ({
   , _selectTheme = useCallback(item => {
     setUiTheme((item || {}).value)
   }, [])
-  , TS = useTheme(styleConfig)
   , _hSetAndClose = useCallback(() => {
      getRefValue(_refSetKey1)(getRefValue(_ref1).getValue())
      onClose()
@@ -66,7 +62,6 @@ const SettingsDialog = ({
        className=""
        style={S_MODAL}
        caption="User Settings"
-       captionStyle={TS.BROWSER_CAPTION}
        isShow={isShow}
        isWithButton={false}
        onClose={onClose}

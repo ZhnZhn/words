@@ -1,5 +1,3 @@
-
-
 const styleConfig = {
   themeName: undefined,
   style: undefined,
@@ -13,9 +11,6 @@ const styleConfig = {
       },
       OPEN_CLOSE: {
         ...R.BG
-      },
-      BROWSER_CAPTION: {
-        ...R.BG_HEADER
       },
       BADGE: {
         ...R.BG_HEADER

@@ -36,13 +36,17 @@
 }
 
 .bt-resize{
+  stroke: #4d4d4d;
+  stroke: var(--c-bgc, #4d4d4d);    
+  
+  border: 2px solid gray;
+  border: 2px solid var(--c-bgc, #4d4d4d);
+
+  display: inline-block;
   width: 26px;
   height: 26px;
-  padding: 2px;
-  display: inline-block;
-  border-radius: 50%;
-  border: 2px solid gray;
-  stroke : gray;
+  padding: 2px;  
+  border-radius: 50%;  
   cursor: pointer;
 }
 .bt-resize:hover,

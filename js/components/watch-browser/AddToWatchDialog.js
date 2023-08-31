@@ -5,8 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
-var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 var _useGroupOptions = _interopRequireDefault(require("./useGroupOptions"));
 var _useListOptions = _interopRequireDefault(require("./useListOptions"));
 var _useRefItemCaption = _interopRequireDefault(require("./useRefItemCaption"));
@@ -123,10 +121,8 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
   // _refListCaption, _updateGroupOptions
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  const TS = (0, _useTheme.default)(_Dialog.default);
   return (0, _jsxRuntime.jsxs)(_ModalDialog.default, {
     style: S_DIALOG,
-    captionStyle: TS.BROWSER_CAPTION,
     caption: "Add To Watch List",
     isShow: isShow,
     commandButtons: _commandButtons,

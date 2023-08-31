@@ -37,9 +37,6 @@ const styleConfig = {
   createStyle: R => {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
-      BROWSER_CAPTION: {
-        ...R.BG_HEADER
-      },
       ...S
     };
   }
