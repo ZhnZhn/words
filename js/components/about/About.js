@@ -11,7 +11,6 @@ var _Links = _interopRequireDefault(require("../links/Links"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 var _ContainerStyle = require("../styles/ContainerStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SHOW = "show-popup";
 const About = _ref => {
   let {
     id,
@@ -26,7 +25,7 @@ const About = _ref => {
     }
   });
   const TS = (0, _useTheme.default)(_About.default),
-    [_style, _className] = isShow ? [TS.BLOCK, CL_SHOW] : [TS.NONE];
+    [_style, _className] = (0, _ContainerStyle.crShowHideIf)(isShow);
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: {

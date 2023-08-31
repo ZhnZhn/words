@@ -7,9 +7,10 @@ import A from '../zhn-atoms/Atoms';
 import Link from '../links/Links';
 import IconLogoBar from './IconLogoBar';
 
-import { S_ABOUT } from '../styles/ContainerStyle';
-
-const CL_SHOW = "show-popup";
+import {
+  crShowHideIf,
+  S_ABOUT
+} from '../styles/ContainerStyle';
 
 const About = ({
   id,
@@ -33,9 +34,7 @@ const About = ({
   , [
     _style,
     _className,
-  ] = isShow
-    ? [TS.BLOCK, CL_SHOW]
-    : [TS.NONE];
+  ] = crShowHideIf(isShow);    
 
   return (
     <div

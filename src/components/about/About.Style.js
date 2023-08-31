@@ -14,13 +14,7 @@ const S = {
   },
   DIV_TEXT: {
     lineHeight: 1.8
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  },
+  },  
   APP_TITLE: {
     color: '#80c040'
   },

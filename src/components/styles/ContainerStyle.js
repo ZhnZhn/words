@@ -1,20 +1,11 @@
-const _S_CONTAINER = {
-  position: 'relative',
-  backgroundColor: '#4d4d4d',
-  height: 'calc(100vh - 71px)',
-  minHeight: 500,
-  marginLeft: 8,
-  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-  borderRadius: 4
-};
+const CL_CONTAINER_SHOW_POPUP = 'container show-popup'
 
-export const S_PANE_TYPE1 = {  
+export const S_PANE_TYPE1 = {
   padding : '0 0 3px 0',
   overflow: 'hidden'
 }
 
 export const S_BROWSER = {
-  ..._S_CONTAINER,
   flexShrink: 0,
   padding: '0px 3px 35px 0px',
   minWidth: 270,
@@ -22,9 +13,21 @@ export const S_BROWSER = {
 }
 
 export const S_ABOUT = {
-  ..._S_CONTAINER,
   padding: 0,
   paddingBottom: 35,
   width: 390,
   minWidth: 300
 }
+const S_BLOCK = { display: 'block' }
+, S_INLINE_BLOCK = { display: 'inline-block' }
+, S_NONE = { display: 'none' }
+
+export const crShowHideIf = (
+  isShow,
+  isInlineBlock
+) => isShow
+  ? [
+     isInlineBlock ? S_INLINE_BLOCK : S_BLOCK,
+     CL_CONTAINER_SHOW_POPUP
+    ]
+  : [S_NONE];

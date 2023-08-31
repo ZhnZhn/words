@@ -16,14 +16,16 @@ import useTheme from '../hoc/useTheme';
 import styleConfig from './Pane.Style';
 import crModelMore from './crModelMore';
 
-import { S_PANE_TYPE1 } from '../styles/ContainerStyle';
+import {
+  crShowHideIf,
+  S_PANE_TYPE1
+} from '../styles/ContainerStyle';
 import A from '../Comp';
 
 const RESIZE_INIT_WIDTH = 535
 , RESIZE_MIN_WIDTH = 375
 , RESIZE_MAX_WIDTH = 1200
 , RESIZE_DELTA = 10
-, CL_SHOW_POPUP = "show-popup"
 , CL_MENU_MORE = "popup-menu items__menu-more";
 
 const S_ROOT_DIV = {
@@ -45,13 +47,6 @@ const S_ROOT_DIV = {
   //height: '92%',
   height: 'calc(100% - 120px)'
 }
-, S_INLINE_BLOCK = {
-  display: 'inline-block'
-}
-, S_NONE = {
-  display: 'none'
-}
-
 , R_TITLE = "Click to remove all items";
 
 const FN_NOOP = () => {}
@@ -195,9 +190,7 @@ const PaneType1 = ({
   const [
     _showStyle,
     _showCl
-  ] = isShow
-    ? [S_INLINE_BLOCK, CL_SHOW_POPUP]
-    : [S_NONE];
+  ] = crShowHideIf(isShow, true);
 
   return (
     <div
@@ -205,7 +198,6 @@ const PaneType1 = ({
        className={_showCl}
        style={{
          ...S_ROOT_DIV,
-         ...TS.BG_COLOR,
          ..._showStyle
        }}
     >
@@ -229,7 +221,7 @@ const PaneType1 = ({
           onClick={onRemoveItems}
         />
         <SvgHrzResize
-          elementRef={_refRootEl}          
+          elementRef={_refRootEl}
           initWidth={RESIZE_INIT_WIDTH}
           minWidth={RESIZE_MIN_WIDTH}
           maxWidth={RESIZE_MAX_WIDTH}

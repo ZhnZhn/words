@@ -1,8 +1,7 @@
-import { S_BROWSER } from '../styles/ContainerStyle';
-
-const CL_SHOW_POPUP = 'show-popup'
-, S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' };
+import {
+  crShowHideIf,
+  S_BROWSER
+} from '../styles/ContainerStyle';
 
 const Browser = ({
   isShow,
@@ -12,9 +11,7 @@ const Browser = ({
   const [
     _style,
     _className
-  ] = isShow
-    ? [S_BLOCK, CL_SHOW_POPUP]
-    : [S_NONE];
+  ] = crShowHideIf(isShow);
 
   return (
      <div

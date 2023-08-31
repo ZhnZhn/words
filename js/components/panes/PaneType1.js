@@ -18,7 +18,6 @@ const RESIZE_INIT_WIDTH = 535,
   RESIZE_MIN_WIDTH = 375,
   RESIZE_MAX_WIDTH = 1200,
   RESIZE_DELTA = 10,
-  CL_SHOW_POPUP = "show-popup",
   CL_MENU_MORE = "popup-menu items__menu-more";
 const S_ROOT_DIV = {
     ..._ContainerStyle.S_PANE_TYPE1,
@@ -38,12 +37,6 @@ const S_ROOT_DIV = {
     overflowX: 'hidden',
     //height: '92%',
     height: 'calc(100% - 120px)'
-  },
-  S_INLINE_BLOCK = {
-    display: 'inline-block'
-  },
-  S_NONE = {
-    display: 'none'
   },
   R_TITLE = "Click to remove all items";
 const FN_NOOP = () => {},
@@ -158,13 +151,12 @@ const PaneType1 = _ref2 => {
       setWord(item.caption);
     }
   });
-  const [_showStyle, _showCl] = isShow ? [S_INLINE_BLOCK, CL_SHOW_POPUP] : [S_NONE];
+  const [_showStyle, _showCl] = (0, _ContainerStyle.crShowHideIf)(isShow, true);
   return (0, _jsxRuntime.jsxs)("div", {
     ref: _refRootEl,
     className: _showCl,
     style: {
       ...S_ROOT_DIV,
-      ...TS.BG_COLOR,
       ..._showStyle
     },
     children: [(0, _jsxRuntime.jsx)(_Comp.default.ModalSlider, {
