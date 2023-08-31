@@ -24,6 +24,25 @@
   box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6); 
 }
 
+.about {
+  width: 390px;
+  min-width: 300px;
+  padding: 0 0 35px 0;
+}
+
+.browser {
+  flex-shrink: 0;  
+  min-width: 270px;
+  max-width: 400px;
+  padding: 0 3px 35px 0;
+}
+
+.pane-t1 {
+  padding: 0 0 3px 0;
+  overflow: hidden;
+}
+
+
 .modal-root {
   z-index: 1050;
   display: block;

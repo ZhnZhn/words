@@ -1,7 +1,6 @@
-import {
-  crShowHideIf,
-  S_BROWSER
-} from '../styles/ContainerStyle';
+import { crShowHideIf } from '../styles/ContainerStyle';
+
+const CL_BROWSER = 'browser';
 
 const Browser = ({
   isShow,
@@ -11,12 +10,12 @@ const Browser = ({
   const [
     _style,
     _className
-  ] = crShowHideIf(isShow);
+  ] = crShowHideIf(isShow, CL_BROWSER);
 
   return (
      <div
         className={_className}
-        style={{...S_BROWSER, ...style, ..._style}}
+        style={{...style, ..._style}}
       >
         {children}
      </div>

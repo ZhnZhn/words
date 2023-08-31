@@ -7,10 +7,9 @@ import A from '../zhn-atoms/Atoms';
 import Link from '../links/Links';
 import IconLogoBar from './IconLogoBar';
 
-import {
-  crShowHideIf,
-  S_ABOUT
-} from '../styles/ContainerStyle';
+import { crShowHideIf } from '../styles/ContainerStyle';
+
+const CL_ABOUT = 'about';
 
 const About = ({
   id,
@@ -34,12 +33,12 @@ const About = ({
   , [
     _style,
     _className,
-  ] = crShowHideIf(isShow);    
+  ] = crShowHideIf(isShow, CL_ABOUT);
 
   return (
     <div
       className={_className}
-      style={{...S_ABOUT, ..._style, ...TS.ROOT}}
+      style={_style}
      >
        <A.BrowserCaption
           rootStyle={TS.BROWSER_CAPTION}

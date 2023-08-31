@@ -37,11 +37,6 @@ const styleConfig = {
   createStyle: R => {
     return {
       CL_SCROLL_PANE: R.CL_SCROLL_PANE,
-      //CL_GITHUB_ICON: R.CL_GITHUB_ICON,
-      //CL_WORDS_ICON: R.CL_WORDS_ICON,
-      ROOT: {
-        ...R.BG
-      },
       BROWSER_CAPTION: {
         ...R.BG_HEADER
       },

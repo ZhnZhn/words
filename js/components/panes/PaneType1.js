@@ -18,9 +18,9 @@ const RESIZE_INIT_WIDTH = 535,
   RESIZE_MIN_WIDTH = 375,
   RESIZE_MAX_WIDTH = 1200,
   RESIZE_DELTA = 10,
+  CL_PANE_T1 = 'pane-t1',
   CL_MENU_MORE = "popup-menu items__menu-more";
 const S_ROOT_DIV = {
-    ..._ContainerStyle.S_PANE_TYPE1,
     width: RESIZE_INIT_WIDTH
   },
   S_BR_CAPTION = {
@@ -151,7 +151,7 @@ const PaneType1 = _ref2 => {
       setWord(item.caption);
     }
   });
-  const [_showStyle, _showCl] = (0, _ContainerStyle.crShowHideIf)(isShow, true);
+  const [_showStyle, _showCl] = (0, _ContainerStyle.crShowHideInlineIf)(isShow, CL_PANE_T1);
   return (0, _jsxRuntime.jsxs)("div", {
     ref: _refRootEl,
     className: _showCl,

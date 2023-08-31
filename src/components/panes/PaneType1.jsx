@@ -16,20 +16,17 @@ import useTheme from '../hoc/useTheme';
 import styleConfig from './Pane.Style';
 import crModelMore from './crModelMore';
 
-import {
-  crShowHideIf,
-  S_PANE_TYPE1
-} from '../styles/ContainerStyle';
+import { crShowHideInlineIf } from '../styles/ContainerStyle';
 import A from '../Comp';
 
 const RESIZE_INIT_WIDTH = 535
 , RESIZE_MIN_WIDTH = 375
 , RESIZE_MAX_WIDTH = 1200
 , RESIZE_DELTA = 10
+, CL_PANE_T1 = 'pane-t1'
 , CL_MENU_MORE = "popup-menu items__menu-more";
 
 const S_ROOT_DIV = {
-  ...S_PANE_TYPE1,
   width: RESIZE_INIT_WIDTH
 }
 , S_BR_CAPTION = {
@@ -190,7 +187,7 @@ const PaneType1 = ({
   const [
     _showStyle,
     _showCl
-  ] = crShowHideIf(isShow, true);
+  ] = crShowHideInlineIf(isShow, CL_PANE_T1);
 
   return (
     <div

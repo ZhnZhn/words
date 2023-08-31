@@ -11,6 +11,7 @@ var _Links = _interopRequireDefault(require("../links/Links"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 var _ContainerStyle = require("../styles/ContainerStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
+const CL_ABOUT = 'about';
 const About = _ref => {
   let {
     id,
@@ -25,14 +26,10 @@ const About = _ref => {
     }
   });
   const TS = (0, _useTheme.default)(_About.default),
-    [_style, _className] = (0, _ContainerStyle.crShowHideIf)(isShow);
+    [_style, _className] = (0, _ContainerStyle.crShowHideIf)(isShow, CL_ABOUT);
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
-    style: {
-      ..._ContainerStyle.S_ABOUT,
-      ..._style,
-      ...TS.ROOT
-    },
+    style: _style,
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.BrowserCaption, {
       rootStyle: TS.BROWSER_CAPTION,
       caption: "About",
