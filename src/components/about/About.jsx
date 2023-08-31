@@ -1,15 +1,32 @@
 import useBool from '../hooks/useBool';
 
-import useTheme from '../hoc/useTheme';
-import styleConfig from './About.Style';
-
 import A from '../zhn-atoms/Atoms';
 import Link from '../links/Links';
 import IconLogoBar from './IconLogoBar';
 
 import { crShowHideIf } from '../styles/ContainerStyle';
 
-const CL_ABOUT = 'about';
+const CL_ABOUT = 'about'
+, S_SCROLL_DIV = {
+  overflowY: 'auto',
+  height: '92%',
+  paddingRight: 10
+}
+, S_DIV_WRAPPER = {
+  paddingLeft: 12,
+  paddingRight: 5,
+  lineHeight: 1.6,
+  fontWeight: 'bold'
+}
+, S_APP_TITLE = {
+  color: '#80c040'
+}
+, S_BLACK = {
+  color: 'black'
+}
+, S_PADDING_TOP = {
+  paddingTop: 8
+}
 
 const About = ({
   id,
@@ -29,8 +46,7 @@ const About = ({
     }
   })
 
-  const TS = useTheme(styleConfig)
-  , [
+  const [
     _style,
     _className,
   ] = crShowHideIf(isShow, CL_ABOUT);
@@ -45,25 +61,23 @@ const About = ({
           onClose={closeAbout}
        />
        <A.ScrollPane
-          style={TS.SCROLL_DIV}
+          style={S_SCROLL_DIV}
        >
-         <div style={TS.DIV_WRAPPER}>
-            <div style={TS.DIV_TEXT}>
-               <p>
-                 <span style={TS.APP_TITLE}>Words</span> is web app, RESTful client.
-               </p>
-               <p>
-                 Words data provider <Link.WordsApi/> via <Link.RapidApi/>
-               </p>
-               <p style={TS.PADDING_TOP}>
-                 Provider's API Key is required for using app.
-               </p>
-               <p>
-                 API Key can be set in Settings Dialog [s].
-               </p>
-           </div>
+         <div style={S_DIV_WRAPPER}>
+           <p>
+             <span style={S_APP_TITLE}>Words</span> is web app, RESTful client.
+           </p>
+           <p>
+             Words data provider <Link.WordsApi/> via <Link.RapidApi/>
+           </p>
+           <p style={S_PADDING_TOP}>
+             Provider's API Key is required for using app.
+           </p>
+           <p>
+             API Key can be set in Settings Dialog [s].
+           </p>
            <IconLogoBar />
-           <p style={TS.BLACK}>
+           <p style={S_BLACK}>
              *Logos Fair Use.
             </p>
          </div>
