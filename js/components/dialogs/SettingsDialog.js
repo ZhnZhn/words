@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _storeAtoms = require("../../flux/storeAtoms");
+var _theme = require("../styles/theme");
 var _settingStore = require("../../flux/settingStore");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
@@ -43,7 +43,7 @@ const SettingsDialog = _ref => {
   const _refSetKey1 = (0, _uiApi.useRef)(data.key1),
     _ref1 = (0, _uiApi.useRef)(),
     _selectTheme = (0, _uiApi.useCallback)(item => {
-      (0, _storeAtoms.setUiTheme)((item || {}).value);
+      (0, _theme.setUiTheme)((item || {}).value);
     }, []),
     _hSetAndClose = (0, _uiApi.useCallback)(() => {
       (0, _uiApi.getRefValue)(_refSetKey1)((0, _uiApi.getRefValue)(_ref1).getValue());

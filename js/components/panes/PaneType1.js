@@ -129,8 +129,6 @@ const PaneType1 = _ref2 => {
         word: (0, _uiApi.getRefInputValue)(_refWord)
       });
     }, [itemConf, onLoad]);
-  //, TS = useTheme(styleConfig);
-
   usePane(pOption => {
     if (pOption && pOption.id === id) {
       toggleIsShow(true);

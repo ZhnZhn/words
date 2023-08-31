@@ -74,11 +74,11 @@ const _setTheme = {
   }
 }
 
-const theme = {
+const uiTheme = {
   themeName: THEME_NAME.DF,
   _init(){
     _assign(P, TH_GREY)
-    _setStyleProperties('GREY')
+    _setStyleProperties(TH_GREY)
   },
   getThemeName(){
     return this.themeName;
@@ -86,16 +86,15 @@ const theme = {
   setThemeName(themeName){
     this.themeName = themeName || THEME_NAME.DF
     _setTheme[this.themeName]()
-  },
-  createStyle(config){
-     if (this.themeName !== config.themeName){
-       config.style = config.createStyle(this.themeName)
-       config.themeName = this.themeName
-     }
-     return config.style;
   }
 };
 
-theme._init()
+uiTheme._init()
 
-export default theme
+export const setUiTheme = (
+  themeName
+) => {
+  if (uiTheme.getThemeName() !== themeName) {
+    uiTheme.setThemeName(themeName)
+  }
+}

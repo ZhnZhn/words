@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.default = exports.THEME_NAME = void 0;
+exports.setUiTheme = exports.THEME_NAME = void 0;
 const _assign = Object.assign;
 const DF_BGC = "#808080";
 const DF_C_BGC = "#4d4d4d";
@@ -63,11 +63,11 @@ const _setTheme = {
     _setStyleProperties(TH_SAND);
   }
 };
-const theme = {
+const uiTheme = {
   themeName: THEME_NAME.DF,
   _init() {
     _assign(P, TH_GREY);
-    _setStyleProperties('GREY');
+    _setStyleProperties(TH_GREY);
   },
   getThemeName() {
     return this.themeName;
@@ -75,16 +75,13 @@ const theme = {
   setThemeName(themeName) {
     this.themeName = themeName || THEME_NAME.DF;
     _setTheme[this.themeName]();
-  },
-  createStyle(config) {
-    if (this.themeName !== config.themeName) {
-      config.style = config.createStyle(this.themeName);
-      config.themeName = this.themeName;
-    }
-    return config.style;
   }
 };
-theme._init();
-var _default = theme;
-exports.default = _default;
+uiTheme._init();
+const setUiTheme = themeName => {
+  if (uiTheme.getThemeName() !== themeName) {
+    uiTheme.setThemeName(themeName);
+  }
+};
+exports.setUiTheme = setUiTheme;
 //# sourceMappingURL=theme.js.map

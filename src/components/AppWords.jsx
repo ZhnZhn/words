@@ -1,6 +1,5 @@
 import { useEffect } from './uiApi';
 
-import { useUiTheme } from '../flux/storeAtoms';
 import {
   useBrowser,
   usePane
@@ -8,8 +7,6 @@ import {
 import {
   useWatchList
 } from '../flux/watch-list/watchListStore';
-
-import ThemeContext from './hoc/ThemeContext';
 
 import RouterModalDialog from './dialogs/RouterModalDialog';
 import HeaderBar from './header/HeaderBar';
@@ -25,8 +22,6 @@ const CL_COMP = "component-container"
 const AppWords = ({
   action
 }) => {
-  const uiTheme = useUiTheme();
-  
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     action.showAbout()
@@ -41,29 +36,26 @@ const AppWords = ({
   } = action;
 
   return (
-    //<ThemeContext.Provider value={uiThemeStore}>
-    <ThemeContext.Provider value={uiTheme}>
-      <div>
-        <HeaderBar
-          {...headerActions}
-        />
-        <div className={CL_COMP}>
-           <BrowserContainer
-              browserId={WORDS_BROWSER_ID}
-              useBrowser={useBrowser}
-              useWatchList={useWatchList}
-              {...browserActions}
-           />
-           <HrzContainer
-              className={CL_ITEMS}
-              usePane={usePane}
-           />
-        </div>
-        <ModalDialogContainer
-           router={RouterModalDialog}
-        />
+    <div>
+      <HeaderBar
+        {...headerActions}
+      />
+      <div className={CL_COMP}>
+         <BrowserContainer
+            browserId={WORDS_BROWSER_ID}
+            useBrowser={useBrowser}
+            useWatchList={useWatchList}
+            {...browserActions}
+         />
+         <HrzContainer
+            className={CL_ITEMS}
+            usePane={usePane}
+         />
       </div>
-    </ThemeContext.Provider>
+      <ModalDialogContainer
+         router={RouterModalDialog}
+      />
+    </div>
   );
 };
 

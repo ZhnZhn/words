@@ -6,7 +6,7 @@ import {
 
 import {
   setUiTheme
-} from '../../flux/storeAtoms';
+} from '../styles/theme';
 import {
   enableAutoSave,
   disableAutoSave
