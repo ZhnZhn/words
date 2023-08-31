@@ -3,9 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_DIALOG = {
@@ -37,14 +35,12 @@ const MsgDialog = (0, _memoIsShow.default)(_ref => {
     data,
     onClose
   } = _ref;
-  const TS = (0, _useTheme.default)(_Dialog.default),
-    {
-      caption,
-      descr
-    } = data;
+  const {
+    caption,
+    descr
+  } = data;
   return (0, _jsxRuntime.jsxs)(_ModalDialog.default, {
     style: S_DIALOG,
-    captionStyle: TS.BROWSER_CAPTION,
     caption: "Message",
     isShow: isShow,
     onClose: onClose,

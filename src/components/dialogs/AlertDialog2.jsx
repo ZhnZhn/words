@@ -1,7 +1,5 @@
 //import PropTypes from "prop-types";
 import memoIsShow from '../hoc/memoIsShow';
-import useTheme from '../hoc/useTheme';
-import styleConfig from './Dialog.Style';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog'
 
@@ -22,18 +20,18 @@ const CL_ELL = 'ellipsis'
   marginBottom: 5
 }
 , S_TITLE = {
-  display : 'inline-block',
-  color : '#f44336',
-  width : 360,
-  paddingLeft : 10,
-  lineHeight : 2,
+  display: 'inline-block',
+  color: '#f44336',
+  width: 360,
+  paddingLeft: 10,
+  lineHeight: 2,
   fontSize: '18px',
-  fontWeight : 'bold'
+  fontWeight: 'bold'
 }
 , S_ITEM_ID = {
   color: '#a487d4',
   width: 120,
-  fontWeight : 'bold',
+  fontWeight: 'bold',
   verticalAlign: 'bottom'
 }
 , S_DESCR = {
@@ -54,8 +52,7 @@ const AlertDialog2 = memoIsShow(({
   data=DF_DATA,
   onClose
 }) => {
-  const TS = useTheme(styleConfig)
-  , {
+  const {
     caption='Item',
     itemId='',
     descr
@@ -63,10 +60,10 @@ const AlertDialog2 = memoIsShow(({
   , _caption = caption + ': ';
 
   return (
-    <ModalDialog      
+    <ModalDialog
       style={S_DIALOG}
       caption="Exception"
-      captionStyle={{...TS.BROWSER_CAPTION, ...S_CAPTION}}
+      captionStyle={S_CAPTION}
       isShow={isShow}
       isClosePrimary={true}
       onClose={onClose}

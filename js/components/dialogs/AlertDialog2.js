@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
-var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
@@ -58,8 +56,7 @@ const AlertDialog2 = (0, _memoIsShow.default)(_ref => {
     data = DF_DATA,
     onClose
   } = _ref;
-  const TS = (0, _useTheme.default)(_Dialog.default),
-    {
+  const {
       caption = 'Item',
       itemId = '',
       descr
@@ -68,10 +65,7 @@ const AlertDialog2 = (0, _memoIsShow.default)(_ref => {
   return (0, _jsxRuntime.jsxs)(_ModalDialog.default, {
     style: S_DIALOG,
     caption: "Exception",
-    captionStyle: {
-      ...TS.BROWSER_CAPTION,
-      ...S_CAPTION
-    },
+    captionStyle: S_CAPTION,
     isShow: isShow,
     isClosePrimary: true,
     onClose: onClose,

@@ -1,6 +1,4 @@
-import styleConfig from './Dialog.Style';
 import memoIsShow from '../hoc/memoIsShow';
-import useTheme from '../hoc/useTheme';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 
@@ -33,15 +31,13 @@ const MsgDialog = memoIsShow(({
   data,
   onClose
 }) => {
-  const TS = useTheme(styleConfig)
-  , {
+  const {
     caption,
     descr
   } = data;
   return (
-    <ModalDialog      
+    <ModalDialog
       style={S_DIALOG}
-      captionStyle={TS.BROWSER_CAPTION}
       caption="Message"
       isShow={isShow}
       onClose={onClose}
