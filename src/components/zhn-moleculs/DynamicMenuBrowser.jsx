@@ -28,8 +28,7 @@ const S_BROWSER = {
 };
 
 const FN_NOOP = () => {}
-, DF_MENU_MODEL = {}
-, DF_STYLE_CONFIG = {};
+, DF_MENU_MODEL = {};
 
 const MenuParts = ({
   styleConfig,
@@ -55,7 +54,6 @@ const DynamicMenuBrowser = ({
   url,
   browserId,
   useBrowser,
-  styleConfig:TS=DF_STYLE_CONFIG,
   caption,
   children,
   onError=FN_NOOP,
@@ -135,11 +133,10 @@ const DynamicMenuBrowser = ({
            isFailed={true}
          />
        }
-      <A.ScrollPane         
+      <A.ScrollPane
          style={S_SCROLL_PANE}
       >
         <MenuParts
-          styleConfig={TS}
           menuModel={menuModel}
           restProps={restProps}
         />

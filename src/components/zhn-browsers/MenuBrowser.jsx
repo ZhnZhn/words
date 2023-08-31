@@ -1,19 +1,13 @@
-import useTheme from '../hoc/useTheme'
-import styleConfig from '../styles/MenuBrowserStyle'
-
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
 
-const MenuBrowser = (props) => {
-  const TS = useTheme(styleConfig);
-  return (
-    <DynamicMenuBrowser
-       {...props}
-       styleConfig={TS}
-       caption="Words Sources"
-       url="data/words-source-menu.json"
-    />
-  );
-}
+const MenuBrowser = (props) => (
+  <DynamicMenuBrowser
+     {...props}
+     caption="Words Sources"
+     url="data/words-source-menu.json"
+  />
+);
+
 
 /*
 MenuBrowser.propTypes = {

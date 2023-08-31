@@ -27,8 +27,7 @@ const S_BROWSER = {
     textAlign: 'middle'
   };
 const FN_NOOP = () => {},
-  DF_MENU_MODEL = {},
-  DF_STYLE_CONFIG = {};
+  DF_MENU_MODEL = {};
 const MenuParts = _ref => {
   let {
     styleConfig,
@@ -52,7 +51,6 @@ const DynamicMenuBrowser = _ref2 => {
     url,
     browserId,
     useBrowser,
-    styleConfig: TS = DF_STYLE_CONFIG,
     caption,
     children,
     onError = FN_NOOP,
@@ -111,7 +109,6 @@ const DynamicMenuBrowser = _ref2 => {
     }), (0, _jsxRuntime.jsxs)(_Atoms.default.ScrollPane, {
       style: S_SCROLL_PANE,
       children: [(0, _jsxRuntime.jsx)(MenuParts, {
-        styleConfig: TS,
         menuModel: menuModel,
         restProps: restProps
       }), children]

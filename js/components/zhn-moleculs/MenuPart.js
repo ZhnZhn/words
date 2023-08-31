@@ -9,7 +9,8 @@ var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-const CL_NOT_S = 'not-selected';
+//const CL_NOT_S = 'not-selected';
+const CL_ROW_ITEM = "row__item not-selected";
 const _assign = Object.assign,
   _isFn = fn => typeof fn === 'function';
 const _hKeyDown = (onClick, evt) => {
@@ -17,7 +18,7 @@ const _hKeyDown = (onClick, evt) => {
     onClick();
   }
 };
-const _renderMenuItems = function (TS, option) {
+const _renderMenuItems = function (option) {
   const {
     items = [],
     hmItems = {},
@@ -25,8 +26,8 @@ const _renderMenuItems = function (TS, option) {
     ...restOption
   } = option;
   return items.map((item, index) => {
-    const _className = (0, _uiApi.crCn)(TS.CL_ROW, CL_NOT_S),
-      _itemConf = hmItems[item.id],
+    //const _className = crCn(TS.CL_ROW, CL_NOT_S)
+    const _itemConf = hmItems[item.id],
       {
         menuTitle
       } = _itemConf;
@@ -35,7 +36,9 @@ const _renderMenuItems = function (TS, option) {
     return (0, _jsxRuntime.jsx)("div", {
       role: "menuitem",
       tabIndex: "0",
-      className: _className,
+      className: CL_ROW_ITEM
+      //className={_className}
+      ,
       onClick: _onClick,
       onKeyDown: (0, _uiApi.bindTo)(_hKeyDown, _onClick),
       children: menuTitle
@@ -44,7 +47,6 @@ const _renderMenuItems = function (TS, option) {
 };
 const MenuPart = _ref => {
   let {
-    styleConfig: TS,
     isInitClose,
     caption,
     ...restProps
@@ -52,7 +54,7 @@ const MenuPart = _ref => {
   return (0, _jsxRuntime.jsx)(_OpenClose.default, {
     caption: caption,
     isClose: isInitClose,
-    children: _renderMenuItems(TS, restProps)
+    children: _renderMenuItems(restProps)
   });
 };
 /*

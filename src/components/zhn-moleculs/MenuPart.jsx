@@ -1,13 +1,15 @@
 //import PropTypes from 'prop-types'
 import {
   bindTo,
-  crCn
+  //crCn
 } from '../uiApi';
 
 import isKeyEnter from '../zhn-atoms/isKeyEnter'
 import OpenClose from '../zhn-atoms/OpenClose'
 
-const CL_NOT_S = 'not-selected';
+//const CL_NOT_S = 'not-selected';
+
+const CL_ROW_ITEM = "row__item not-selected";
 
 const _assign = Object.assign
 , _isFn = fn => typeof fn === 'function';
@@ -18,7 +20,7 @@ const _hKeyDown = (onClick, evt) => {
   }
 };
 
-const _renderMenuItems = function(TS, option){
+const _renderMenuItems = function(option){
   const {
     items=[],
     hmItems={},
@@ -26,8 +28,8 @@ const _renderMenuItems = function(TS, option){
     ...restOption
   } = option;
   return items.map((item, index) => {
-    const _className = crCn(TS.CL_ROW, CL_NOT_S)
-    , _itemConf = hmItems[item.id]
+    //const _className = crCn(TS.CL_ROW, CL_NOT_S)
+    const _itemConf = hmItems[item.id]
     , { menuTitle} = _itemConf;
 
     _assign(_itemConf, restOption)
@@ -39,7 +41,8 @@ const _renderMenuItems = function(TS, option){
          key={index}
          role="menuitem"
          tabIndex="0"
-         className={_className}
+         className={CL_ROW_ITEM}
+         //className={_className}
          onClick={_onClick}
          onKeyDown={bindTo(_hKeyDown, _onClick)}
         >
@@ -50,7 +53,6 @@ const _renderMenuItems = function(TS, option){
 }
 
 const MenuPart = ({
-  styleConfig:TS,
   isInitClose,
   caption,
   ...restProps
@@ -59,7 +61,7 @@ const MenuPart = ({
      caption={caption}
      isClose={isInitClose}
   >
-     {_renderMenuItems(TS, restProps)}
+     {_renderMenuItems(restProps)}
   </OpenClose>
 )
 /*
