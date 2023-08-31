@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _Comp = _interopRequireDefault(require("../Comp"));
+var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_INPUT_ROOT = {
     width: 250,
@@ -31,7 +32,6 @@ const DF_INITIAL_VALUE = 'example';
 const InputWord = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
     initValue = DF_INITIAL_VALUE,
-    TS,
     onEnter
   } = _ref;
   const _refTextField = (0, _uiApi.useRef)(),
@@ -65,7 +65,7 @@ const InputWord = (0, _uiApi.forwardRef)((_ref, ref) => {
       caption: "Load",
       tabIndex: -1,
       rootStyle: S_BT_LOAD,
-      clDiv: TS.BT.CL_FLAT_DIV,
+      clDiv: _CL.CL_BT_FLAT_DIV,
       isPrimary: true,
       onClick: onEnter
     })]

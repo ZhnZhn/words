@@ -36,7 +36,7 @@ const TH_SAND = {
 }
 
 const CSS_RULE = {
-  CL_QUERY_ITEM: 'row__topic',  
+  CL_QUERY_ITEM: 'row__topic',
   CL_BT_FLAT_DIV: 'bt-flat__div'
 };
 

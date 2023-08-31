@@ -6,8 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
-var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
-var _Pane = _interopRequireDefault(require("./Pane.Style"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _ContainerStyle = require("../styles/ContainerStyle");
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -130,8 +128,9 @@ const PaneType1 = _ref2 => {
         itemConf,
         word: (0, _uiApi.getRefInputValue)(_refWord)
       });
-    }, [itemConf, onLoad]),
-    TS = (0, _useTheme.default)(_Pane.default);
+    }, [itemConf, onLoad]);
+  //, TS = useTheme(styleConfig);
+
   usePane(pOption => {
     if (pOption && pOption.id === id) {
       toggleIsShow(true);
@@ -182,11 +181,9 @@ const PaneType1 = _ref2 => {
       })]
     }), (0, _jsxRuntime.jsx)(Input, {
       ref: _refWord,
-      TS: TS,
       initValue: word,
       onEnter: _hLoadItem
     }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
-      //className={TS.CL_SCROLL_PANE}
       style: S_SCROLL_PANE,
       children: (0, _jsxRuntime.jsx)(ConfigsStack, {
         configs: configs,

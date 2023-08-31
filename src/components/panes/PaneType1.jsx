@@ -12,8 +12,6 @@ import {
 import useToggle from '../hooks/useToggle';
 
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
-import useTheme from '../hoc/useTheme';
-import styleConfig from './Pane.Style';
 import crModelMore from './crModelMore';
 
 import { crShowHideInlineIf } from '../styles/ContainerStyle';
@@ -164,7 +162,7 @@ const PaneType1 = ({
         word: getRefInputValue(_refWord)
       })
   }, [itemConf, onLoad])
-  , TS = useTheme(styleConfig);
+  //, TS = useTheme(styleConfig);
 
   usePane(pOption => {
     if (pOption && pOption.id === id) {
@@ -200,7 +198,7 @@ const PaneType1 = ({
     >
       <A.ModalSlider
         isShow={isMore}
-        className={CL_MENU_MORE}      
+        className={CL_MENU_MORE}
         model={_MODEL_MORE}
         onClose={toggleIsMore}
       />
@@ -225,12 +223,10 @@ const PaneType1 = ({
       </A.BrowserCaption>
       <Input
         ref={_refWord}
-        TS={TS}
         initValue={word}
         onEnter={_hLoadItem}
       />
       <A.ScrollPane
-        //className={TS.CL_SCROLL_PANE}
         style={S_SCROLL_PANE}
       >
         <ConfigsStack

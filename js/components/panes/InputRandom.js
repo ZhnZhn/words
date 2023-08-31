@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_DIV = {
     height: 60,
@@ -19,7 +20,6 @@ const S_DIV = {
   };
 const InputRandom = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
-    TS,
     onEnter
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
@@ -29,7 +29,7 @@ const InputRandom = (0, _uiApi.forwardRef)((_ref, ref) => {
       children: "Random Word"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
       rootStyle: S_BT,
-      clDiv: TS.BT.CL_FLAT_DIV,
+      clDiv: _CL.CL_BT_FLAT_DIV,
       caption: "Load",
       onClick: onEnter
     })]

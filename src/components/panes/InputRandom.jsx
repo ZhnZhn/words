@@ -1,6 +1,7 @@
 import { forwardRef } from '../uiApi';
 
 import A from '../zhn-atoms/Atoms';
+import { CL_BT_FLAT_DIV } from '../styles/CL';
 
 const S_DIV = {
   height: 60,
@@ -15,7 +16,6 @@ const S_DIV = {
 };
 
 const InputRandom = forwardRef(({
-  TS,
   onEnter
 }, ref) => (
   <div style={S_DIV}>
@@ -24,7 +24,7 @@ const InputRandom = forwardRef(({
     </span>
     <A.FlatButton
       rootStyle={S_BT}
-      clDiv={TS.BT.CL_FLAT_DIV}
+      clDiv={CL_BT_FLAT_DIV}
       caption="Load"
       onClick={onEnter}
     />

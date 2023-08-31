@@ -11,6 +11,7 @@ import {
 
 import { HAS_TOUCH_EVENTS } from '../has';
 import A from '../Comp';
+import { CL_BT_FLAT_DIV } from '../styles/CL';
 
 const S_INPUT_ROOT = {
   width: 250,
@@ -37,7 +38,6 @@ const DF_INITIAL_VALUE = 'example';
 
 const InputWord = forwardRef(({
   initValue=DF_INITIAL_VALUE,
-  TS,
   onEnter
 }, ref) => {
   const _refTextField = useRef()
@@ -78,7 +78,7 @@ const InputWord = forwardRef(({
                 caption="Load"
                 tabIndex={-1}
                 rootStyle={S_BT_LOAD}
-                clDiv={TS.BT.CL_FLAT_DIV}
+                clDiv={CL_BT_FLAT_DIV}
                 isPrimary={true}
                 onClick={onEnter}
               />)
