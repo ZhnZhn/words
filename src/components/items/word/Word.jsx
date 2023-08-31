@@ -7,8 +7,6 @@ import {
 } from '../../uiApi';
 
 import useToggle from '../../hooks/useToggle';
-import useTheme from '../../hoc/useTheme';
-import styleConfig from './Word.Style';
 
 import GestureSwipeX from '../../zhn-gesture/GestureSwipeX';
 import ItemHeader from '../ItemHeader';
@@ -16,7 +14,7 @@ import WordDef from './WordDef';
 
 const D_REMOVE_UNDER = 60;
 
-const CL_ITEM_HEADER = "article-header";
+const CL_ITEM_HEADER = "item-header";
 
 const S_ROOT = {
   position: 'relative',
@@ -25,9 +23,6 @@ const S_ROOT = {
   marginRight: 16,
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
   borderBottomRightRadius: 2
-}
-, S_HEADER = {
-  backgroundColor: '#404040'
 }
 , S_CAPTION = {
   display: 'inline-block',
@@ -95,7 +90,6 @@ const Word = ({
     title,
     caption
   } = config
-  , TS = useTheme(styleConfig)
   , _captionStyle = crStyle2(
       S_CAPTION,
       isShow && S_CAPTION_OPEN
@@ -109,7 +103,6 @@ const Word = ({
     >
       <ItemHeader
          className={CL_ITEM_HEADER}
-         style={{ ...S_HEADER, ...TS.HEADER }}
          captionStyle={_captionStyle}
          svgCloseStyle={S_SVG_CLOSE}
          title={title}

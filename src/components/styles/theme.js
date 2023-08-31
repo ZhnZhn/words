@@ -4,6 +4,7 @@ const _assign = Object.assign
 
 const DF_C_BGC = "#4d4d4d"
 const DF_BF_C = "#3270b4"
+const DF_IH_BGC = "#404040"
 const DF_L_C = "#4d4d4d"
 
 const P = {};
@@ -11,10 +12,10 @@ const BG_HEADER_GREY = DF_BF_C
 const TH_GREY = {
   BG_BODY: '#808080',
   BG: '#4d4d4d',
-  BG_ITEM_HEADER: '#404040',
 
   'c-bgc': DF_C_BGC,
   'bf-c': BG_HEADER_GREY,
+  'ih-bgc': DF_IH_BGC,
   'l-c': DF_L_C
 }
 
@@ -28,17 +29,17 @@ const _TH_LIGHT = {
 const TH_WHITE = {
   ..._TH_LIGHT,
   BG: '#ebf1f5',
-  BG_ITEM_HEADER: '#e6ecf0',
 
   'c-bgc': '#ebf1f5',
+  'ih-bgc': '#e6ecf0',
   'l-c': 'grey'
 };
 const TH_SAND = {
   ..._TH_LIGHT,
   BG: '#e8e0cb',
-  BG_ITEM_HEADER: '#d0c198',
 
   'c-bgc': '#e8e0cb',
+  'ih-bgc': '#d0c198',
   'l-c': '#e8e0cb'
 }
 
@@ -48,8 +49,7 @@ const CSS_RULE = {
   CL_SELECT_ITEM: 'm-select__item',
   CL_BT_FLAT_DIV: 'bt-flat__div',
 
-  BG: {},
-  ITEM_HEADER: {}
+  BG: {}
 };
 
 export const THEME_NAME = {
@@ -74,13 +74,10 @@ const _crBg = conf => {
   conf.BG.backgroundColor = P.BG
 };
 
-const _crItemHeader = conf => {
-  conf.ITEM_HEADER.backgroundColor = P.BG_ITEM_HEADER
-};
-
 const CUSTOM_CSS_PROPERTY_CONFIGS = [
   ["c-bgc", DF_C_BGC],
   ["bf-c", DF_BF_C],
+  ["ih-bgc", DF_IH_BGC],
   ["l-c", DF_L_C]
 ]
 
@@ -97,7 +94,6 @@ const _setStyleProperties = (conf, P) => {
 
 const FN_STYLES = [
   _crBg,
-  _crItemHeader,
   _setStyleProperties
 ];
 

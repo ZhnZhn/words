@@ -5,14 +5,12 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../../uiApi");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
-var _useTheme = _interopRequireDefault(require("../../hoc/useTheme"));
-var _Word = _interopRequireDefault(require("./Word.Style"));
 var _GestureSwipeX = _interopRequireDefault(require("../../zhn-gesture/GestureSwipeX"));
 var _ItemHeader = _interopRequireDefault(require("../ItemHeader"));
 var _WordDef = _interopRequireDefault(require("./WordDef"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const D_REMOVE_UNDER = 60;
-const CL_ITEM_HEADER = "article-header";
+const CL_ITEM_HEADER = "item-header";
 const S_ROOT = {
     position: 'relative',
     lineHeight: 1.5,
@@ -20,9 +18,6 @@ const S_ROOT = {
     marginRight: 16,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     borderBottomRightRadius: 2
-  },
-  S_HEADER = {
-    backgroundColor: '#404040'
   },
   S_CAPTION = {
     display: 'inline-block',
@@ -88,7 +83,6 @@ const Word = _ref => {
       title,
       caption
     } = config,
-    TS = (0, _useTheme.default)(_Word.default),
     _captionStyle = (0, _uiApi.crStyle2)(S_CAPTION, isShow && S_CAPTION_OPEN);
   return (0, _jsxRuntime.jsxs)(_GestureSwipeX.default, {
     style: S_ROOT,
@@ -96,10 +90,6 @@ const Word = _ref => {
     onGesture: _onGestureSwipeX,
     children: [(0, _jsxRuntime.jsx)(_ItemHeader.default, {
       className: CL_ITEM_HEADER,
-      style: {
-        ...S_HEADER,
-        ...TS.HEADER
-      },
       captionStyle: _captionStyle,
       svgCloseStyle: S_SVG_CLOSE,
       title: title,
