@@ -64,12 +64,8 @@ const WatchBrowser = _ref => {
     } = watchList || {};
   return (0, _jsxRuntime.jsxs)(_Comp.default.Browser, {
     isShow: isShow,
-    style: {
-      ...S_BROWSER,
-      ...TS.BROWSER
-    },
+    style: S_BROWSER,
     children: [(0, _jsxRuntime.jsxs)(_Comp.default.BrowserCaption, {
-      rootStyle: TS.BROWSER_CAPTION,
       caption: caption,
       onClose: _hHide,
       children: [(0, _jsxRuntime.jsx)(_Comp.default.CircleButton, {
@@ -88,7 +84,6 @@ const WatchBrowser = _ref => {
       onClickGroup: _Handlers.showDialogEditGroups,
       onClickList: _Handlers.showDialogEditLists
     }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
       style: _spStyle,
       children: (0, _jsxRuntime.jsx)(_WatchGroups.default, {
         isModeEdit: isModeEdit,

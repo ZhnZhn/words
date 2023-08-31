@@ -135,8 +135,7 @@ const DynamicMenuBrowser = ({
            isFailed={true}
          />
        }
-      <A.ScrollPane
-         className={TS.CL_SCROLL_PANE}
+      <A.ScrollPane         
          style={S_SCROLL_PANE}
       >
         <MenuParts

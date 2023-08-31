@@ -20,10 +20,6 @@ const styleConfig = {
       default:
     }
     return {
-      CL_SCROLL_PANE: R.CL_SCROLL_PANE,
-      PANE_CAPTION: {
-        ...R.BG_HEADER
-      },
       BG_COLOR: {
         ..._paneRoot
       },

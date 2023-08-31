@@ -109,7 +109,6 @@ const DynamicMenuBrowser = _ref2 => {
       style: S_SPINNER_LOADING,
       isFailed: true
     }), (0, _jsxRuntime.jsxs)(_Atoms.default.ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
       style: S_SCROLL_PANE,
       children: [(0, _jsxRuntime.jsx)(MenuParts, {
         styleConfig: TS,

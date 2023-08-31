@@ -84,10 +84,9 @@ const WatchBrowser = ({
   return (
     <A.Browser
        isShow={isShow}
-       style={{...S_BROWSER, ...TS.BROWSER}}
+       style={S_BROWSER}
     >
        <A.BrowserCaption
-         rootStyle={TS.BROWSER_CAPTION}
          caption={caption}
          onClose={_hHide}
        >
@@ -110,7 +109,6 @@ const WatchBrowser = ({
          onClickList={showDialogEditLists}
       />
       <A.ScrollPane
-        className={TS.CL_SCROLL_PANE}
         style={_spStyle}
       >
         <WatchGroups

@@ -206,7 +206,8 @@ const PaneType1 = ({
         onClose={toggleIsMore}
       />
       <A.BrowserCaption
-         rootStyle={{...S_BR_CAPTION, ...TS.PANE_CAPTION}}
+         //rootStyle={{...S_BR_CAPTION, ...TS.PANE_CAPTION}}
+         rootStyle={S_BR_CAPTION}
          caption={paneCaption}
          onMore={_showMore}
          onClose={_hHide}
@@ -231,7 +232,7 @@ const PaneType1 = ({
         onEnter={_hLoadItem}
       />
       <A.ScrollPane
-        className={TS.CL_SCROLL_PANE}
+        //className={TS.CL_SCROLL_PANE}
         style={S_SCROLL_PANE}
       >
         <ConfigsStack

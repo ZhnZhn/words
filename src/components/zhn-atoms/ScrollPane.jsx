@@ -1,18 +1,18 @@
+import { crCn } from '../uiApi';
+
 const CL_SCROLL = 'with-scroll';
 
 const ScrollPane = ({
   style,
-  className="",
+  className,
   children
-}) => {
-   const _className = className && className !== CL_SCROLL
-     ? className
-     : CL_SCROLL;
-   return (
-     <div className={_className} style={style}>
-        {children}
-     </div>
-   );
-};
+}) => (
+   <div
+     className={crCn(className, CL_SCROLL)}
+     style={style}
+   >
+     {children}
+   </div>
+);
 
 export default ScrollPane

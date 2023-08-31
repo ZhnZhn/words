@@ -45,7 +45,6 @@ const About = ({
           onClose={closeAbout}
        />
        <A.ScrollPane
-          className={TS.CL_SCROLL_PANE}
           style={TS.SCROLL_DIV}
        >
          <div style={TS.DIV_WRAPPER}>

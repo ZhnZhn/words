@@ -33,8 +33,7 @@ const styleConfig = {
   themeName : undefined,
   style : undefined,
   createStyle : (R) => {
-    return {
-      CL_SCROLL_PANE: R.CL_SCROLL_PANE,      
+    return {      
       ...S
     }
   }

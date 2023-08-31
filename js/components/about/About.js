@@ -34,7 +34,6 @@ const About = _ref => {
       caption: "About",
       onClose: closeAbout
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
       style: TS.SCROLL_DIV,
       children: (0, _jsxRuntime.jsxs)("div", {
         style: TS.DIV_WRAPPER,

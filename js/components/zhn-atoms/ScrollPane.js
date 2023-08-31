@@ -1,27 +1,22 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_SCROLL = 'with-scroll';
-
-var ScrollPane = function ScrollPane(_ref) {
-  var style = _ref.style,
-      _ref$className = _ref.className,
-      className = _ref$className === void 0 ? "" : _ref$className,
-      children = _ref.children;
-
-  var _className = className && className !== CL_SCROLL ? className : CL_SCROLL;
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    className: _className,
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_SCROLL = 'with-scroll';
+const ScrollPane = _ref => {
+  let {
+    style,
+    className,
+    children
+  } = _ref;
+  return (0, _jsxRuntime.jsx)("div", {
+    className: (0, _uiApi.crCn)(className, CL_SCROLL),
     style: style,
     children: children
   });
 };
-
 var _default = ScrollPane;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=ScrollPane.js.map

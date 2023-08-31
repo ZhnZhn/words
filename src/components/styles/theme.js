@@ -1,6 +1,5 @@
 
-const _assign = Object.assign
-, _getObjectKeys = Object.keys;
+const _assign = Object.assign;
 
 const DF_BGC = "#808080"
 const DF_C_BGC = "#4d4d4d"
@@ -58,16 +57,6 @@ export const THEME_NAME = {
   SAND: 'SAND'
 };
 
-const CL_PROPS = {
-  CL_SCROLL_PANE: 'with-scroll'
-};
-
-const _setClassNameTo = (suffix='') => {
-  _getObjectKeys(CL_PROPS).forEach(key => {
-    CSS_RULE[key] = CL_PROPS[key] + suffix
-  })
-}
-
 const _crBg = conf => {
   conf.BG.backgroundColor = P.BG
 };
@@ -105,17 +94,14 @@ const _setStyleTo = (
 const _setTheme = {
   [THEME_NAME.GREY]: () => {
     _assign(P, TH_GREY)
-    _setClassNameTo()
     _setStyleTo(CSS_RULE, TH_GREY)
   },
   [THEME_NAME.WHITE]: () => {
     _assign(P, TH_WHITE)
-    _setClassNameTo('--white')
     _setStyleTo(CSS_RULE, TH_WHITE)
   },
   [THEME_NAME.SAND]: () => {
     _assign(P, TH_SAND)
-    _setClassNameTo('--white')
     _setStyleTo(CSS_RULE, TH_SAND)
   }
 }
@@ -124,7 +110,6 @@ const theme = {
   themeName: THEME_NAME.DF,
   _init(){
     _assign(P, TH_GREY)
-    _setClassNameTo()
     _setStyleTo(CSS_RULE, 'GREY')
   },
   getThemeName(){
