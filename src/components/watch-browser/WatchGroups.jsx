@@ -20,14 +20,13 @@ const { OpenClose2 } = Comp
 
 const WatchGroups = ({
   isModeEdit,
-  TS,
   groups,
   onClickItem
 }) => _isArr(groups) ? groups
   .map(({caption, lists}) => (
       <OpenClose2
          key={caption}
-         style={{...S_GROUP_DIV, ...TS.OPEN_CLOSE}}
+         style={S_GROUP_DIV}
          styleCaption={S_CAPTION}
          caption={caption}
          isDraggable={isModeEdit}
@@ -40,7 +39,6 @@ const WatchGroups = ({
        >
          <WatchLists
            isModeEdit={isModeEdit}
-           TS={TS}
            groupCaption={caption}
            lists={lists}
            onClickItem={onClickItem}

@@ -82,9 +82,10 @@
 }
 
 .popup-menu {
+  background-color: #4d4d4d;
+  background-color: var(--c-bgc, #4d4d4d); 
+
   position: absolute;
-  background-color: rgba(77, 77, 77, 1);
-  /*background-color: inherit;*/
   border-bottom: 4px solid #80c040;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 5px;

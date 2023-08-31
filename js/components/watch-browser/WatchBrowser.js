@@ -6,8 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
-var _MenuBrowserStyle = _interopRequireDefault(require("../styles/MenuBrowserStyle"));
 var _Handlers = require("./Handlers");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _EditBar = _interopRequireDefault(require("./EditBar"));
@@ -56,8 +54,7 @@ const WatchBrowser = _ref => {
       setWatchList(watchList);
     }
   });
-  const TS = (0, _useTheme.default)(_MenuBrowserStyle.default),
-    _spStyle = (0, _uiApi.crStyle2)(S_SP, isModeEdit && S_SP_SHORT),
+  const _spStyle = (0, _uiApi.crStyle2)(S_SP, isModeEdit && S_SP_SHORT),
     _captionEV = isModeEdit ? 'V' : 'E',
     {
       groups
@@ -87,7 +84,6 @@ const WatchBrowser = _ref => {
       style: _spStyle,
       children: (0, _jsxRuntime.jsx)(_WatchGroups.default, {
         isModeEdit: isModeEdit,
-        TS: TS,
         groups: groups,
         onClickItem: onClickItem
       })

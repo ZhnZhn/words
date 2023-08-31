@@ -28,7 +28,6 @@ const {
 const WatchLists = _ref => {
   let {
     isModeEdit,
-    TS,
     groupCaption,
     lists,
     onClickItem
@@ -40,10 +39,7 @@ const WatchLists = _ref => {
     } = _ref2;
     return (0, _jsxRuntime.jsx)(OpenClose2, {
       fillOpen: C_FILL_OPEN,
-      style: {
-        ...S_LIST_DIV,
-        ...TS.OPEN_CLOSE
-      },
+      style: S_LIST_DIV,
       styleCaption: S_CAPTION,
       styleNotSelected: S_ITEM_NOT_SELECTED,
       caption: caption,

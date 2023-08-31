@@ -3,14 +3,8 @@ const styleConfig = {
   style: void 0,
   createStyle: (R) => {
     return {
-      CL_QUERY_ITEM: R.CL_QUERY_ITEM,
-      HEADER: {
-        ...R.BG
-      },
-      PANE: {
-        ...R.BG
-      },
-      BT: {        
+      CL_QUERY_ITEM: R.CL_QUERY_ITEM,            
+      BT: {
         CL_FLAT_DIV: R.CL_BT_FLAT_DIV
       }
     }

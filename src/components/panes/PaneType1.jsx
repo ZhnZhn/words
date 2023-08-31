@@ -200,13 +200,11 @@ const PaneType1 = ({
     >
       <A.ModalSlider
         isShow={isMore}
-        className={CL_MENU_MORE}
-        style={TS.BG_COLOR}
+        className={CL_MENU_MORE}      
         model={_MODEL_MORE}
         onClose={toggleIsMore}
       />
       <A.BrowserCaption
-         //rootStyle={{...S_BR_CAPTION, ...TS.PANE_CAPTION}}
          rootStyle={S_BR_CAPTION}
          caption={paneCaption}
          onMore={_showMore}

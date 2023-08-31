@@ -56,7 +56,6 @@ const MenuPart = ({
   ...restProps
 }) => (
   <OpenClose
-     style={TS.OPEN_CLOSE}
      caption={caption}
      isClose={isInitClose}
   >

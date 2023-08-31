@@ -7,9 +7,6 @@ import {
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 
-import useTheme from '../hoc/useTheme';
-import styleConfig from '../styles/MenuBrowserStyle';
-
 import {
   getWatchList,
   saveWatchList,
@@ -19,7 +16,7 @@ import {
 
 import A from '../Comp';
 import EditBar from './EditBar';
-import WatchGroups from './WatchGroups'
+import WatchGroups from './WatchGroups';
 
 const S_BROWSER = {
   paddingRight: 0
@@ -76,8 +73,10 @@ const WatchBrowser = ({
     }
   })
 
-  const TS = useTheme(styleConfig)
-  , _spStyle = crStyle2(S_SP, isModeEdit && S_SP_SHORT)
+  const _spStyle = crStyle2(
+    S_SP,
+    isModeEdit && S_SP_SHORT
+  )
   , _captionEV = isModeEdit ? 'V' : 'E'
   , { groups } = watchList || {};
 
@@ -113,7 +112,6 @@ const WatchBrowser = ({
       >
         <WatchGroups
           isModeEdit={isModeEdit}
-          TS={TS}
           groups={groups}
           onClickItem={onClickItem}
        />

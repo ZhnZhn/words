@@ -6,7 +6,6 @@ import isKeyEnter from './isKeyEnter';
 
 const CL_MENU_ITEM = 'oc-item not-selected'
 , S_ROOT = {
-  backgroundColor: '#4d4d4d',
   lineHeight: 1.5
 }
 , S_DIV_SVG = {

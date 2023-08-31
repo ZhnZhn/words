@@ -3,17 +3,7 @@ const styleConfig = {
   style: undefined,
   createStyle: (R) => {
     return {
-      CL_ROW: R.CL_ROW_ITEM,
-
-      BROWSER: {
-        ...R.BG
-      },
-      OPEN_CLOSE: {
-        ...R.BG
-      },
-      BADGE: {
-        ...R.BG_HEADER
-      }
+      CL_ROW: R.CL_ROW_ITEM
     };
   }
 }

@@ -62,14 +62,12 @@ const HeaderBar = _ref => {
         toggleTopics(false);
       }
     }, [toggleTopics]),
-    S = (0, _useTheme.default)(_HeaderBar.default);
+    TS = (0, _useTheme.default)(_HeaderBar.default);
   return (0, _jsxRuntime.jsxs)("header", {
     className: CL_HEADER,
-    style: S.HEADER,
     children: [(0, _jsxRuntime.jsx)(_PaneTopics.default, {
-      paneStyle: S.PANE,
       className: CL_PANEL_BROWSER,
-      clItem: S.CL_QUERY_ITEM,
+      clItem: TS.CL_QUERY_ITEM,
       isShow: isTopics,
       items: _topicItems,
       onClose: _hCloseTopics
@@ -82,8 +80,8 @@ const HeaderBar = _ref => {
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
       children: (0, _jsxRuntime.jsx)(_Atoms.default.ModalButton, {
-        style: S.BT.FLAT_ROOT,
-        clDiv: S.BT.CL_FLAT_DIV,
+        style: TS.BT.FLAT_ROOT,
+        clDiv: TS.BT.CL_FLAT_DIV,
         caption: "Topics",
         title: "Topics",
         accessKey: "t",
@@ -97,8 +95,8 @@ const HeaderBar = _ref => {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
         className: CL_SETTINGS,
-        rootStyle: S.BT_SETTINGS,
-        clDiv: S.BT.CL_FLAT_DIV,
+        rootStyle: TS.BT_SETTINGS,
+        clDiv: TS.BT.CL_FLAT_DIV,
         divStyle: S_DIV,
         title: "User Settings Dialog",
         accessKey: "s",
@@ -108,7 +106,7 @@ const HeaderBar = _ref => {
         })
       }), (0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
         className: CL_BT_ABOUT,
-        clDiv: S.BT.CL_FLAT_DIV,
+        clDiv: TS.BT.CL_FLAT_DIV,
         divStyle: S_DIV,
         title: "About Words",
         accessKey: "a",
@@ -118,7 +116,7 @@ const HeaderBar = _ref => {
         })
       })]
     }), (0, _jsxRuntime.jsx)(_LimitLabel.default, {
-      style: S.LIMIT
+      style: TS.LIMIT
     })]
   });
 };

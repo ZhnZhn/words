@@ -1,6 +1,6 @@
  :root {
    --bgc: #808080;    /*Html tag body background-color*/
-   --c-bgc: #4d4d4d;  /*Container, Dialog background-color*/         
+   --c-bgc: #4d4d4d;  /*Css class name .header, Container, Dialog background-color*/         
    --bf-c: #3270b4;   /*FlatButton color, Header background-color, -webkit-srollbar-track-piace background-color*/
    --ih-bgc: #404040; /*Item header background-color*/
    --l-c: #4d4d4d;    /*Logo color*/

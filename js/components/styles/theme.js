@@ -11,7 +11,6 @@ const DF_L_C = "#4d4d4d";
 const P = {};
 const BG_HEADER_GREY = DF_BF_C;
 const TH_GREY = {
-  BG: '#4d4d4d',
   'bgc': DF_BGC,
   'c-bgc': DF_C_BGC,
   'bf-c': BG_HEADER_GREY,
@@ -25,14 +24,12 @@ const _TH_LIGHT = {
 };
 const TH_WHITE = {
   ..._TH_LIGHT,
-  BG: '#ebf1f5',
   'c-bgc': '#ebf1f5',
   'ih-bgc': '#e6ecf0',
   'l-c': 'grey'
 };
 const TH_SAND = {
   ..._TH_LIGHT,
-  BG: '#e8e0cb',
   'c-bgc': '#e8e0cb',
   'ih-bgc': '#d0c198',
   'l-c': '#e8e0cb'
@@ -41,8 +38,7 @@ const CSS_RULE = {
   CL_QUERY_ITEM: 'row__topic',
   CL_ROW_ITEM: "row__item",
   CL_SELECT_ITEM: 'm-select__item',
-  CL_BT_FLAT_DIV: 'bt-flat__div',
-  BG: {}
+  CL_BT_FLAT_DIV: 'bt-flat__div'
 };
 const THEME_NAME = {
   DF: 'GREY',
@@ -51,9 +47,6 @@ const THEME_NAME = {
   SAND: 'SAND'
 };
 exports.THEME_NAME = THEME_NAME;
-const _crBg = conf => {
-  conf.BG.backgroundColor = P.BG;
-};
 const CUSTOM_CSS_PROPERTY_CONFIGS = [["bgc", DF_BGC], ["c-bgc", DF_C_BGC], ["bf-c", DF_BF_C], ["ih-bgc", DF_IH_BGC], ["l-c", DF_L_C]];
 const _setStyleProperties = (conf, P) => {
   const _style = document.body.style;
@@ -62,29 +55,25 @@ const _setStyleProperties = (conf, P) => {
     _style.setProperty('--' + propName, P[propName] || dfValue);
   });
 };
-const FN_STYLES = [_crBg, _setStyleProperties];
-const _setStyleTo = (conf, colorPallete) => {
-  FN_STYLES.forEach(fn => fn(conf, colorPallete));
-};
 const _setTheme = {
   [THEME_NAME.GREY]: () => {
     _assign(P, TH_GREY);
-    _setStyleTo(CSS_RULE, TH_GREY);
+    _setStyleProperties(CSS_RULE, TH_GREY);
   },
   [THEME_NAME.WHITE]: () => {
     _assign(P, TH_WHITE);
-    _setStyleTo(CSS_RULE, TH_WHITE);
+    _setStyleProperties(CSS_RULE, TH_WHITE);
   },
   [THEME_NAME.SAND]: () => {
     _assign(P, TH_SAND);
-    _setStyleTo(CSS_RULE, TH_SAND);
+    _setStyleProperties(CSS_RULE, TH_SAND);
   }
 };
 const theme = {
   themeName: THEME_NAME.DF,
   _init() {
     _assign(P, TH_GREY);
-    _setStyleTo(CSS_RULE, 'GREY');
+    _setStyleProperties(CSS_RULE, 'GREY');
   },
   getThemeName() {
     return this.themeName;

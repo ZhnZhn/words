@@ -32,7 +32,6 @@ const ItemsStack = ({
 const PaneTopics = ({
   isShow,
   className,
-  paneStyle,
   clItem,
   items,
   onClose
@@ -55,9 +54,8 @@ const PaneTopics = ({
       onClose={onClose}
     >
       <A.ShowHide
-        className={className}
-        style={paneStyle}
         isShow={isShow}
+        className={className}
       >
         <ItemsStack
           refItem={_refItem}

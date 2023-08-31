@@ -66,14 +66,13 @@ const HeaderBar = ({
       toggleTopics(false)
     }
   }, [toggleTopics])
-  , S = useTheme(styleConfig);
+  , TS = useTheme(styleConfig);
 
   return (
-    <header className={CL_HEADER} style={S.HEADER}>
-      <PaneTopics
-        paneStyle={S.PANE}
+    <header className={CL_HEADER}>
+      <PaneTopics        
         className={CL_PANEL_BROWSER}
-        clItem={S.CL_QUERY_ITEM}
+        clItem={TS.CL_QUERY_ITEM}
         isShow={isTopics}
         items={_topicItems}
         onClose={_hCloseTopics}
@@ -89,8 +88,8 @@ const HeaderBar = ({
        />
        <span className={CL_BROWSER_BTS}>
          <A.ModalButton
-            style={S.BT.FLAT_ROOT}
-            clDiv={S.BT.CL_FLAT_DIV}
+            style={TS.BT.FLAT_ROOT}
+            clDiv={TS.BT.CL_FLAT_DIV}
             caption="Topics"
             title="Topics"
             accessKey="t"
@@ -103,8 +102,8 @@ const HeaderBar = ({
        <div className={CL_BTS}>
          <A.FlatButton
              className={CL_SETTINGS}
-             rootStyle={S.BT_SETTINGS}
-             clDiv={S.BT.CL_FLAT_DIV}
+             rootStyle={TS.BT_SETTINGS}
+             clDiv={TS.BT.CL_FLAT_DIV}
              divStyle={S_DIV}
              title="User Settings Dialog"
              accessKey="s"
@@ -114,7 +113,7 @@ const HeaderBar = ({
           </A.FlatButton>
           <A.FlatButton
               className={CL_BT_ABOUT}
-              clDiv={S.BT.CL_FLAT_DIV}
+              clDiv={TS.BT.CL_FLAT_DIV}
               divStyle={S_DIV}
               title="About Words"
               accessKey="a"
@@ -124,7 +123,7 @@ const HeaderBar = ({
           </A.FlatButton>
        </div>
        <LimitLabel
-         style={S.LIMIT}
+         style={TS.LIMIT}
        />
     </header>
   );

@@ -27,8 +27,7 @@ const { OpenClose2 } = Comp
 };
 
 const WatchLists = ({
-  isModeEdit,
-  TS,
+  isModeEdit,  
   groupCaption,
   lists,
   onClickItem
@@ -37,7 +36,7 @@ const WatchLists = ({
     <OpenClose2
        key={caption}
        fillOpen={C_FILL_OPEN}
-       style={{...S_LIST_DIV, ...TS.OPEN_CLOSE}}
+       style={S_LIST_DIV}
        styleCaption={S_CAPTION}
        styleNotSelected={S_ITEM_NOT_SELECTED}
        caption={caption}

@@ -50,7 +50,6 @@ const MenuPart = _ref => {
     ...restProps
   } = _ref;
   return (0, _jsxRuntime.jsx)(_OpenClose.default, {
-    style: TS.OPEN_CLOSE,
     caption: caption,
     isClose: isInitClose,
     children: _renderMenuItems(TS, restProps)

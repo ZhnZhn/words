@@ -162,14 +162,10 @@ const PaneType1 = _ref2 => {
     children: [(0, _jsxRuntime.jsx)(_Comp.default.ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
-      style: TS.BG_COLOR,
       model: _MODEL_MORE,
       onClose: toggleIsMore
     }), (0, _jsxRuntime.jsxs)(_Comp.default.BrowserCaption, {
-      rootStyle: {
-        ...S_BR_CAPTION,
-        ...TS.PANE_CAPTION
-      },
+      rootStyle: S_BR_CAPTION,
       caption: paneCaption,
       onMore: _showMore,
       onClose: _hHide,
@@ -190,7 +186,7 @@ const PaneType1 = _ref2 => {
       initValue: word,
       onEnter: _hLoadItem
     }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
+      //className={TS.CL_SCROLL_PANE}
       style: S_SCROLL_PANE,
       children: (0, _jsxRuntime.jsx)(ConfigsStack, {
         configs: configs,
