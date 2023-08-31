@@ -1,4 +1,5 @@
  :root {
+   --bgc: #808080;    /*Html tag body background-color*/
    --c-bgc: #4d4d4d;  /*Container, Dialog background-color*/      
    --bf-c: #3270b4;   /*FlatButton color, Header background-color*/
    --ih-bgc: #404040; /*Item header background-color*/

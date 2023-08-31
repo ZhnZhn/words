@@ -12,9 +12,11 @@ html {
 
 
 body {
-    font-family: "Roboto", "Arial", "Lato", sans-serif;
-    font-weight: 300;
-    background-color: #808080;
+  background-color: #808080;
+  background-color: var(--bgc, #808080);
+
+  font-family: "Roboto", "Arial", "Lato", sans-serif;
+  font-weight: 300;  
 }
 
 a {

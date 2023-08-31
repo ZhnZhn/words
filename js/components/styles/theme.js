@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.default = exports.THEME_NAME = void 0;
 const _assign = Object.assign,
   _getObjectKeys = Object.keys;
+const DF_BGC = "#808080";
 const DF_C_BGC = "#4d4d4d";
 const DF_BF_C = "#3270b4";
 const DF_IH_BGC = "#404040";
@@ -11,17 +12,17 @@ const DF_L_C = "#4d4d4d";
 const P = {};
 const BG_HEADER_GREY = DF_BF_C;
 const TH_GREY = {
-  BG_BODY: '#808080',
   BG: '#4d4d4d',
+  'bgc': DF_BGC,
   'c-bgc': DF_C_BGC,
   'bf-c': BG_HEADER_GREY,
   'ih-bgc': DF_IH_BGC,
   'l-c': DF_L_C
 };
-const BG_HEADER_LIGHT = '#0096c8';
 const _TH_LIGHT = {
-  BG_BODY: 'darkgrey',
-  'bf-c': BG_HEADER_LIGHT
+  'bgc': '#a9a9a9',
+  //'darkgrey'
+  'bf-c': '#0096c8'
 };
 const TH_WHITE = {
   ..._TH_LIGHT,
@@ -65,10 +66,9 @@ const _setClassNameTo = function (suffix) {
 const _crBg = conf => {
   conf.BG.backgroundColor = P.BG;
 };
-const CUSTOM_CSS_PROPERTY_CONFIGS = [["c-bgc", DF_C_BGC], ["bf-c", DF_BF_C], ["ih-bgc", DF_IH_BGC], ["l-c", DF_L_C]];
+const CUSTOM_CSS_PROPERTY_CONFIGS = [["bgc", DF_BGC], ["c-bgc", DF_C_BGC], ["bf-c", DF_BF_C], ["ih-bgc", DF_IH_BGC], ["l-c", DF_L_C]];
 const _setStyleProperties = (conf, P) => {
   const _style = document.body.style;
-  _style.backgroundColor = P.BG_BODY;
   CUSTOM_CSS_PROPERTY_CONFIGS.forEach(_ref => {
     let [propName, dfValue] = _ref;
     _style.setProperty('--' + propName, P[propName] || dfValue);
