@@ -6,8 +6,6 @@ import {
   setRefValue
 } from '../uiApi';
 
-import styleConfig from './HeaderBar.Style';
-import useTheme from '../hoc/useTheme';
 import useToggle from '../hooks/useToggle'
 
 import A from '../zhn-atoms/Atoms';
@@ -16,11 +14,11 @@ import ProgressLoading from './ProgressLoading';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
 import LimitLabel from './LimitLabel';
-import {
-  APP_TITLE
-} from '../titles';
+import { APP_TITLE } from '../titles';
+import { CL_BT_FLAT_DIV } from '../styles/CL';
 
-const CL_HEADER = "header"
+const CL_QUERY_ITEM = "row__topic"
+, CL_HEADER = "header"
 , CL_PANEL_BROWSER = `${CL_HEADER}__panel-browser`
 , CL_ICON_APP = `${CL_HEADER}__icon-app`
 , CL_LABEL_APP = `${CL_HEADER}__label-app`
@@ -65,14 +63,13 @@ const HeaderBar = ({
     if (_el && !_el.contains(evt.target)) {
       toggleTopics(false)
     }
-  }, [toggleTopics])
-  , TS = useTheme(styleConfig);
+  }, [toggleTopics]);
 
   return (
     <header className={CL_HEADER}>
-      <PaneTopics        
+      <PaneTopics
         className={CL_PANEL_BROWSER}
-        clItem={TS.CL_QUERY_ITEM}
+        clItem={CL_QUERY_ITEM}
         isShow={isTopics}
         items={_topicItems}
         onClose={_hCloseTopics}
@@ -88,8 +85,7 @@ const HeaderBar = ({
        />
        <span className={CL_BROWSER_BTS}>
          <A.ModalButton
-            style={TS.BT.FLAT_ROOT}
-            clDiv={TS.BT.CL_FLAT_DIV}
+            clDiv={CL_BT_FLAT_DIV}
             caption="Topics"
             title="Topics"
             accessKey="t"
@@ -102,8 +98,7 @@ const HeaderBar = ({
        <div className={CL_BTS}>
          <A.FlatButton
              className={CL_SETTINGS}
-             rootStyle={TS.BT_SETTINGS}
-             clDiv={TS.BT.CL_FLAT_DIV}
+             clDiv={CL_BT_FLAT_DIV}
              divStyle={S_DIV}
              title="User Settings Dialog"
              accessKey="s"
@@ -113,7 +108,7 @@ const HeaderBar = ({
           </A.FlatButton>
           <A.FlatButton
               className={CL_BT_ABOUT}
-              clDiv={TS.BT.CL_FLAT_DIV}
+              clDiv={CL_BT_FLAT_DIV}
               divStyle={S_DIV}
               title="About Words"
               accessKey="a"
@@ -122,9 +117,7 @@ const HeaderBar = ({
             <A.SvgInfo style={S_SETTINGS}/>
           </A.FlatButton>
        </div>
-       <LimitLabel
-         style={TS.LIMIT}
-       />
+       <LimitLabel />
     </header>
   );
 }

@@ -1,11 +1,11 @@
 
 const _assign = Object.assign;
 
-const DF_BGC = "#808080"
-const DF_C_BGC = "#4d4d4d"
-const DF_BF_C = "#3270b4"
-const DF_IH_BGC = "#404040"
-const DF_L_C = "#4d4d4d"
+const DF_BGC = "#808080";
+const DF_C_BGC = "#4d4d4d";
+const DF_BF_C = "#3270b4";
+const DF_IH_BGC = "#404040";
+const DF_L_C = "#4d4d4d";
 
 const P = {};
 const BG_HEADER_GREY = DF_BF_C
@@ -15,13 +15,12 @@ const TH_GREY = {
   'bf-c': BG_HEADER_GREY,
   'ih-bgc': DF_IH_BGC,
   'l-c': DF_L_C
-}
+};
 
 const _TH_LIGHT = {
   'bgc': '#a9a9a9', //'darkgrey'
   'bf-c': '#0096c8'
-}
-
+};
 const TH_WHITE = {
   ..._TH_LIGHT,
   'c-bgc': '#ebf1f5',
@@ -33,11 +32,6 @@ const TH_SAND = {
   'c-bgc': '#e8e0cb',
   'ih-bgc': '#d0c198',
   'l-c': '#e8e0cb'
-}
-
-const CSS_RULE = {
-  CL_QUERY_ITEM: 'row__topic',
-  CL_BT_FLAT_DIV: 'bt-flat__div'
 };
 
 export const THEME_NAME = {
@@ -55,7 +49,7 @@ const CUSTOM_CSS_PROPERTY_CONFIGS = [
   ["l-c", DF_L_C]
 ]
 
-const _setStyleProperties = (conf, P) => {
+const _setStyleProperties = (P) => {
   const _style = document.body.style;
   CUSTOM_CSS_PROPERTY_CONFIGS.forEach(([propName, dfValue]) => {
     _style.setProperty(
@@ -68,15 +62,15 @@ const _setStyleProperties = (conf, P) => {
 const _setTheme = {
   [THEME_NAME.GREY]: () => {
     _assign(P, TH_GREY)
-    _setStyleProperties(CSS_RULE, TH_GREY)
+    _setStyleProperties(TH_GREY)
   },
   [THEME_NAME.WHITE]: () => {
     _assign(P, TH_WHITE)
-    _setStyleProperties(CSS_RULE, TH_WHITE)
+    _setStyleProperties(TH_WHITE)
   },
   [THEME_NAME.SAND]: () => {
     _assign(P, TH_SAND)
-    _setStyleProperties(CSS_RULE, TH_SAND)
+    _setStyleProperties(TH_SAND)
   }
 }
 
@@ -84,7 +78,7 @@ const theme = {
   themeName: THEME_NAME.DF,
   _init(){
     _assign(P, TH_GREY)
-    _setStyleProperties(CSS_RULE, 'GREY')
+    _setStyleProperties('GREY')
   },
   getThemeName(){
     return this.themeName;
@@ -95,7 +89,7 @@ const theme = {
   },
   createStyle(config){
      if (this.themeName !== config.themeName){
-       config.style = config.createStyle(CSS_RULE, this.themeName)
+       config.style = config.createStyle(this.themeName)
        config.themeName = this.themeName
      }
      return config.style;

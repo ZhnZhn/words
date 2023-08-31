@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Style"));
-var _useTheme = _interopRequireDefault(require("../hoc/useTheme"));
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 var _PaneTopics = _interopRequireDefault(require("./PaneTopics"));
@@ -14,8 +12,10 @@ var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _LimitLabel = _interopRequireDefault(require("./LimitLabel"));
 var _titles = require("../titles");
+var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_HEADER = "header",
+const CL_QUERY_ITEM = "row__topic",
+  CL_HEADER = "header",
   CL_PANEL_BROWSER = CL_HEADER + "__panel-browser",
   CL_ICON_APP = CL_HEADER + "__icon-app",
   CL_LABEL_APP = CL_HEADER + "__label-app",
@@ -61,13 +61,12 @@ const HeaderBar = _ref => {
       if (_el && !_el.contains(evt.target)) {
         toggleTopics(false);
       }
-    }, [toggleTopics]),
-    TS = (0, _useTheme.default)(_HeaderBar.default);
+    }, [toggleTopics]);
   return (0, _jsxRuntime.jsxs)("header", {
     className: CL_HEADER,
     children: [(0, _jsxRuntime.jsx)(_PaneTopics.default, {
       className: CL_PANEL_BROWSER,
-      clItem: TS.CL_QUERY_ITEM,
+      clItem: CL_QUERY_ITEM,
       isShow: isTopics,
       items: _topicItems,
       onClose: _hCloseTopics
@@ -80,8 +79,7 @@ const HeaderBar = _ref => {
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
       children: (0, _jsxRuntime.jsx)(_Atoms.default.ModalButton, {
-        style: TS.BT.FLAT_ROOT,
-        clDiv: TS.BT.CL_FLAT_DIV,
+        clDiv: _CL.CL_BT_FLAT_DIV,
         caption: "Topics",
         title: "Topics",
         accessKey: "t",
@@ -95,8 +93,7 @@ const HeaderBar = _ref => {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
         className: CL_SETTINGS,
-        rootStyle: TS.BT_SETTINGS,
-        clDiv: TS.BT.CL_FLAT_DIV,
+        clDiv: _CL.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
         title: "User Settings Dialog",
         accessKey: "s",
@@ -106,7 +103,7 @@ const HeaderBar = _ref => {
         })
       }), (0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
         className: CL_BT_ABOUT,
-        clDiv: TS.BT.CL_FLAT_DIV,
+        clDiv: _CL.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
         title: "About Words",
         accessKey: "a",
@@ -115,9 +112,7 @@ const HeaderBar = _ref => {
           style: S_SETTINGS
         })
       })]
-    }), (0, _jsxRuntime.jsx)(_LimitLabel.default, {
-      style: TS.LIMIT
-    })]
+    }), (0, _jsxRuntime.jsx)(_LimitLabel.default, {})]
   });
 };
 var _default = HeaderBar;
