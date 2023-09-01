@@ -4,10 +4,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _Button = _interopRequireDefault(require("./Button"));
-var _GeneralStyles = require("../styles/GeneralStyles");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_DIV = {
-  ..._GeneralStyles.S_FLEX_ROW_END,
+  display: 'flex',
+  justifyContent: 'flex-end',
+  flexWrap: 'wrap',
   margin: '8px 4px 6px 0'
 };
 const RowButtons = _ref => {

@@ -1,10 +1,9 @@
 import Button from './Button';
-import {
-  S_FLEX_ROW_END
-} from '../styles/GeneralStyles';
 
 const S_DIV = {
-  ...S_FLEX_ROW_END,
+  display: 'flex',
+  justifyContent: 'flex-end',
+  flexWrap: 'wrap',
   margin: '8px 4px 6px 0'
 };
 
@@ -25,7 +24,7 @@ const RowButtons = ({
        onClick={onClear}
      />
     }
-    <Button.Close       
+    <Button.Close
        onClick={onClose}
     />
   </div>
