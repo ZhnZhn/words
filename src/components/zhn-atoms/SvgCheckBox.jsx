@@ -1,17 +1,27 @@
 import { useState } from '../uiApi';
 
-import C from '../styles/Color';
 import isKeyEnter from './isKeyEnter';
 import Svg100 from './svg/Svg100';
 
-const DF_COLOR_IS = "#2f7ed8"
+const COLOR_BLANK = 'rgba(0, 0, 0, 0)'
+, COLOR_GREY = "#777777"
+, DF_COLOR_IS = "#2f7ed8"
 , S_DIV = {
   display: 'inline-block',
   width: 16,
   height: 16,
   cursor: 'pointer'
 }
-, S_SVG = { display: 'inline-block' };
+, S_SVG = {
+  display: 'inline-block'
+}
+, _crRestProps = (
+  stroke,
+  fill=stroke
+) => ({
+  stroke,
+  fill
+});
 
 const SvgChecked = ({
   stroke
@@ -21,7 +31,7 @@ const SvgChecked = ({
      strokeWidth="2"
      strokeLinecap="round"
      stroke={stroke}
-     fill={C.BLANK}
+     fill={COLOR_BLANK}
   />
 );
 
@@ -53,9 +63,16 @@ const SvgCheckBox = ({
         _hClick()
       }
   }
-  , _restProps = isChecked
-      ? { stroke: DF_COLOR_IS, fill: DF_COLOR_IS}
-      : { stroke: C.GREY, fill: C.BLANK };
+  , [
+    _restStroke,
+    _restFill
+  ] = isChecked
+    ? [DF_COLOR_IS]
+    : [COLOR_GREY, COLOR_BLANK]
+  , _restProps = _crRestProps(
+     _restStroke,
+     _restFill
+  );
 
   return (
     <div

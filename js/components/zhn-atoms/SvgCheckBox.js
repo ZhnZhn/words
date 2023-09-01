@@ -4,11 +4,12 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _Color = _interopRequireDefault(require("../styles/Color"));
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 var _Svg = _interopRequireDefault(require("./svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const DF_COLOR_IS = "#2f7ed8",
+const COLOR_BLANK = 'rgba(0, 0, 0, 0)',
+  COLOR_GREY = "#777777",
+  DF_COLOR_IS = "#2f7ed8",
   S_DIV = {
     display: 'inline-block',
     width: 16,
@@ -17,6 +18,15 @@ const DF_COLOR_IS = "#2f7ed8",
   },
   S_SVG = {
     display: 'inline-block'
+  },
+  _crRestProps = function (stroke, fill) {
+    if (fill === void 0) {
+      fill = stroke;
+    }
+    return {
+      stroke,
+      fill
+    };
   };
 const SvgChecked = _ref => {
   let {
@@ -27,7 +37,7 @@ const SvgChecked = _ref => {
     strokeWidth: "2",
     strokeLinecap: "round",
     stroke: stroke,
-    fill: _Color.default.BLANK
+    fill: COLOR_BLANK
   });
 };
 const _isFn = fn => typeof fn === 'function';
@@ -55,13 +65,8 @@ const SvgCheckBox = _ref2 => {
         _hClick();
       }
     },
-    _restProps = isChecked ? {
-      stroke: DF_COLOR_IS,
-      fill: DF_COLOR_IS
-    } : {
-      stroke: _Color.default.GREY,
-      fill: _Color.default.BLANK
-    };
+    [_restStroke, _restFill] = isChecked ? [DF_COLOR_IS] : [COLOR_GREY, COLOR_BLANK],
+    _restProps = _crRestProps(_restStroke, _restFill);
   return (0, _jsxRuntime.jsx)("div", {
     role: "checkbox",
     tabIndex: "0",
