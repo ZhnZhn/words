@@ -1,11 +1,14 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _DialogStyles = _interopRequireDefault(require("../styles/DialogStyles"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_ROOT_DIV = {
+const S_ROW_DIV = {
+    display: 'flex',
+    alignItems: 'center',
+    margin: 5
+  },
+  S_ROOT_DIV = {
     margin: 5,
     lineHeight: 2,
     fontWeight: 'bold'
@@ -24,7 +27,7 @@ const Plain = _ref => {
   } = _ref;
   return (0, _jsxRuntime.jsx)("div", {
     style: {
-      ..._DialogStyles.default.rowDiv,
+      ...S_ROW_DIV,
       ...style
     },
     children: children

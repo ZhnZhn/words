@@ -1,6 +1,9 @@
-import STYLE from '../styles/DialogStyles';
-
-const S_ROOT_DIV = {
+const S_ROW_DIV = {
+  display: 'flex',
+  alignItems: 'center',
+  margin: 5
+}
+, S_ROOT_DIV = {
   margin: 5,
   lineHeight: 2,
   fontWeight: 'bold'
@@ -13,11 +16,11 @@ const S_ROOT_DIV = {
   fontSize: '16px'
 };
 
-const Plain = ({ 
+const Plain = ({
   style,
   children
 }) => (
-  <div style={{...STYLE.rowDiv, ...style}}>
+  <div style={{...S_ROW_DIV, ...style}}>
     {children}
   </div>
 );
