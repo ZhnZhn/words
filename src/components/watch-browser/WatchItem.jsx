@@ -1,4 +1,5 @@
 import useDnDHandlers from '../hooks/useDnDHandlers';
+import isKeyEnter from '../zhn-atoms/isKeyEnter';
 import SvgClose from '../zhn-atoms/SvgClose';
 
 const S_ITEM_DIV = {
@@ -22,10 +23,6 @@ const S_ITEM_DIV = {
   right: 0
 };
 
-const _isKeyEnter = ({
-  keyCode
-}) => keyCode === 13;
-
 const WatchItem = (props) => {
   const {
     item,
@@ -46,17 +43,12 @@ const WatchItem = (props) => {
   , { caption } = item
   , _onClick = () => onClick(item)
   , _onKeyDown = evt => {
-      if (_isKeyEnter(evt)) {
+      if (isKeyEnter(evt)) {
         _onClick()
       }
-    }
-  , _btClose = isDraggable
-      ? (<SvgClose
-           style={S_SVG_CLOSE}
-           onClose={(evt) => onClose(option, evt)}
-         />)
-      : null;
-return (
+  };
+
+  return (
      <div
        tabIndex={0}
        role="menuitem"
@@ -69,7 +61,14 @@ return (
        <span style={S_ITEM_SPAN}>
          {caption}
        </span>
-       {_btClose}
+       {
+         isDraggable
+           ? <SvgClose
+                style={S_SVG_CLOSE}
+                onClose={evt => onClose(option, evt)}
+             />
+           : null
+       }
     </div>
   );
 };

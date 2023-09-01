@@ -1,3 +1,3 @@
 
-const isKeyEnter = ({ keyCode }) => keyCode === 13 || keyCode === 32;
+const isKeyEnter = ({ keyCode }) => keyCode === 13
 export default isKeyEnter
