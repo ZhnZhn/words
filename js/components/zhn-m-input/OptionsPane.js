@@ -7,21 +7,11 @@ var _uiApi = require("../uiApi");
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_BT = {
+const CL_SELECT_OPTIONS = "m-select__options",
+  S_BT = {
     display: 'block',
     width: '100%',
     textAlign: 'left'
-  },
-  S_PANE = {
-    position: 'absolute',
-    top: 12,
-    zIndex: '20',
-    width: '100%',
-    paddingTop: 12,
-    paddingBottom: 12,
-    backgroundColor: 'rgb(77, 77, 77)',
-    borderRadius: 2,
-    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
   },
   S_ITEM = {
     color: '#80c040'
@@ -74,10 +64,8 @@ const OptionsPane = _ref2 => {
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
       isShow: isShow,
-      style: {
-        ...S_PANE,
-        ...rootStyle
-      },
+      className: CL_SELECT_OPTIONS,
+      style: rootStyle,
       children: (0, _jsxRuntime.jsx)(OptionsStack, {
         options: options,
         currentCaption: caption,

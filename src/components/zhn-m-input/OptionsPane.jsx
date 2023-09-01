@@ -3,21 +3,11 @@ import { bindTo } from '../uiApi';
 import ModalPane from '../zhn-moleculs/ModalPane';
 import ShowHide from '../zhn-atoms/ShowHide';
 
-const S_BT = {
+const CL_SELECT_OPTIONS = "m-select__options"
+, S_BT = {
   display: 'block',
   width: '100%',
   textAlign: 'left'
-}
-, S_PANE = {
-  position: 'absolute',
-  top: 12,
-  zIndex: '20',
-  width: '100%',
-  paddingTop: 12,
-  paddingBottom: 12,
-  backgroundColor: 'rgb(77, 77, 77)',
-  borderRadius: 2,
-  boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
 }
 , S_ITEM = {
   color: '#80c040'
@@ -72,7 +62,8 @@ const OptionsPane = ({
   >
     <ShowHide
        isShow={isShow}
-       style={{...S_PANE, ...rootStyle}}
+       className={CL_SELECT_OPTIONS}
+       style={rootStyle}
     >
       <OptionsStack
         options={options}
