@@ -33,40 +33,20 @@
   100% { background-color: rgba(0,0,0, 0);}
 }
 
-
 [data-loader='circle'] {
-    width: 2.5em;
-    height: 2.5em;
-   -webkit-animation: circle infinite 1.25s linear;
-      -moz-animation: circle infinite 0.75s linear;
-        -o-animation: circle infinite 1.25s linear;
-           animation: circle infinite 1.25s linear;
+   width: 2.5em;
+   height: 2.5em;      
    border: 3px solid rgba(164, 135, 212, 1);
    border-top-color: transparent;
    border-radius: 100%;
+   animation: circle infinite 1.25s linear;
 }
-@keyframes circle{
-  100% {transform: rotate(360deg);}
-}
-@-webkit-keyframes circle{
-   100% {
-     -webkit-transform: rotate(360deg);
-             transform: rotate(360deg);
-   }
-}
-@-moz-keyframes circle{
-  100% { transform: rotate(360deg);}
-}
-@-o-keyframes circle{
-  100% {
-  -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+@keyframes circle {
+  100% { transform: rotate(360deg); }
 }
 [data-loader='circle-failed']{
   width: 2.5em;
   height: 2.5em;
   border: 3px solid #f44336;
-  /*border-top-color: transparent;*/
   border-radius: 100%;
 }
