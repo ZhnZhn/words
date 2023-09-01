@@ -26,6 +26,7 @@ import {
 } from '../../constants/MsgWatch';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
+import FlatButton from '../zhn-atoms/FlatButton';
 import RowInputSelect from './RowInputSelect'
 import Row from '../dialogs/Row';
 import A from './Atoms';
@@ -114,7 +115,7 @@ const AddToWatchDialog = memoIsShow((
   /*eslint-enable react-hooks/exhaustive-deps */
 
   , _commandButtons = useMemo(() => [
-      <A.Button.Flat
+      <FlatButton
         key="_add"
         caption="Add"
         title="Add Item To Watch List"

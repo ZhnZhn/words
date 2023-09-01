@@ -13,6 +13,7 @@ var _WatchActions = require("../../flux/actions/WatchActions");
 var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _MsgWatch = require("../../constants/MsgWatch");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
+var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 var _Row = _interopRequireDefault(require("../dialogs/Row"));
 var _Atoms = _interopRequireDefault(require("./Atoms"));
@@ -83,7 +84,7 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
     }, [data])
     // _refListCaption, setValidationMessages
     /*eslint-enable react-hooks/exhaustive-deps */,
-    _commandButtons = (0, _uiApi.useMemo)(() => [(0, _jsxRuntime.jsx)(_Atoms.default.Button.Flat, {
+    _commandButtons = (0, _uiApi.useMemo)(() => [(0, _jsxRuntime.jsx)(_FlatButton.default, {
       caption: "Add",
       title: "Add Item To Watch List",
       clDiv: CL_BT_DIV,

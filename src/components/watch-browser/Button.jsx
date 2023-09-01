@@ -2,7 +2,7 @@ import FlatButton from '../zhn-atoms/FlatButton';
 
 const CL_DIV = 'bt-flat__div'
 
-const Clear = ({
+export const ButtonClear = ({
   style,
   onClick
 }) => (
@@ -15,7 +15,7 @@ const Clear = ({
   />
 );
 
-const Close = ({
+export const ButtonClose = ({
   style,
   onClick
 }) => (
@@ -26,26 +26,19 @@ const Close = ({
     title="Close Dialog"
     onClick={onClick}
   />
-);
+)
 
-const Primary = ({
+export const ButtonPrimary = ({
   style,
   caption,
   title,
   onClick
 }) => (
-    <FlatButton
-      rootStyle={style}
-      clDiv={CL_DIV}
-      caption={caption}
-      title={title}
-      onClick={onClick}
-    />
-);
-
-export default {
-  Primary,
-  Clear,
-  Close,
-  Flat: FlatButton
-}
+  <FlatButton
+    rootStyle={style}
+    clDiv={CL_DIV}
+    caption={caption}
+    title={title}
+    onClick={onClick}
+  />
+)

@@ -1,4 +1,8 @@
-import Button from './Button';
+import {
+  ButtonClear,
+  ButtonClose,
+  ButtonPrimary
+} from './Button';
 
 const S_DIV = {
   display: 'flex',
@@ -15,16 +19,16 @@ const RowButtons = ({
   onClose
 }) => (
   <div style={S_DIV}>
-     <Button.Primary
+     <ButtonPrimary
        caption={caption}
        title={title}
        onClick={onClick}
     />
-    {onClear && <Button.Clear
+    {onClear && <ButtonClear
        onClick={onClear}
      />
     }
-    <Button.Close
+    <ButtonClose
        onClick={onClose}
     />
   </div>
