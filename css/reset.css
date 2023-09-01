@@ -40,7 +40,10 @@ button {
   font-size: inherit;
   -webkit-appearance: none;
   -moz-aapearance: none;
+  user-select: none;
+  cursor: pointer;
 }
-button:focus {
+button:focus,
+button:hover {
   outline: 0;
 }
