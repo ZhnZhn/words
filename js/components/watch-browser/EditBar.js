@@ -1,54 +1,41 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_BT = "bt__watch__bar";
-var S = {
-  ROOT: {
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_BT = "bt__watch__bar",
+  S_MB_10 = {
     marginBottom: 10
   },
-  BT_LIST: {
+  S_ML_20 = {
     marginLeft: 20
-  }
-};
-var T = {
-  G: "Click to open groups edit dialog",
-  L: "Click to open lists edit dialog"
-};
-
-var EditBar = function EditBar(_ref) {
-  var isShow = _ref.isShow,
-      onClickGroup = _ref.onClickGroup,
-      onClickList = _ref.onClickList;
-
-  if (!isShow) {
-    return null;
-  }
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: S.ROOT,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button, {
+  },
+  BT_GROUP_TITLE = "Click to open groups edit dialog",
+  BT_LIST_TITLE = "Click to open lists edit dialog";
+const EditBar = _ref => {
+  let {
+    isShow,
+    onClickGroup,
+    onClickList
+  } = _ref;
+  return isShow ? (0, _jsxRuntime.jsxs)("div", {
+    style: S_MB_10,
+    children: [(0, _jsxRuntime.jsx)(_Atoms.default.Button, {
       caption: "GROUP",
-      title: T.G,
+      title: BT_GROUP_TITLE,
       className: CL_BT,
       onClick: onClickGroup
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].Button, {
+    }), (0, _jsxRuntime.jsx)(_Atoms.default.Button, {
       caption: "LIST",
-      title: T.L,
+      title: BT_LIST_TITLE,
       className: CL_BT,
-      style: S.BT_LIST,
+      style: S_ML_20,
       onClick: onClickList
     })]
-  });
+  }) : null;
 };
-
 var _default = EditBar;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=EditBar.js.map
