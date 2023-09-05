@@ -164,6 +164,7 @@ const AddToWatchDialog = memoIsShow((
     >
       <div>
         <RowInputSelect
+          id="awd-g"
           caption="Group:"
           options={groupOptions}
           onSelect={_hSelectGroup}
@@ -171,6 +172,7 @@ const AddToWatchDialog = memoIsShow((
       </div>
       <div>
         <RowInputSelect
+          id="awd-l"
           caption="List:"
           onSelect={_hSelectList}
           options={listOptions}

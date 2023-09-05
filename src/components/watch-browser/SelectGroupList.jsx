@@ -18,6 +18,7 @@ const SelectGroupList = forwardRef((
   ref
 ) => {
   const {
+    id,
     inputStyle,
     getWatchListsByGroup,
     groupOptions,
@@ -79,12 +80,14 @@ const SelectGroupList = forwardRef((
   return (
     <>
        <RowInputSelect
+         id={`${id}-g`}
          inputStyle={inputStyle}
          caption={groupCaption}
          options={groupOptions}
          onSelect={_hSelectGroup}
        />
        <RowInputSelect
+         id={`${id}-l`}
          inputStyle={inputStyle}
          caption={listCaption}
          options={listOptions}

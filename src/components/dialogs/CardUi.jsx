@@ -36,6 +36,7 @@ const CardUi = ({
 }) => (
   <div style={style}>
     <InputSelect
+      id="ui-th"
       styleConfig={S_SELECT}
       caption="Theme (Default: Grey)"
       initItem={DF_THEME}

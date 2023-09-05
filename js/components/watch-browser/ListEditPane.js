@@ -56,6 +56,7 @@ const ListEditPane = _ref => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
+      id: "le",
       ref: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group:",

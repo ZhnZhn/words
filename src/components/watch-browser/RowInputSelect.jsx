@@ -1,6 +1,4 @@
-//import PropTypes from "prop-types";
-
-import InputSelect from '../zhn-m-input/InputSelect'
+import InputSelect from '../zhn-m-input/InputSelect';
 
 const STYLE_CONFIG = {
   ROOT: {
@@ -15,13 +13,5 @@ const RowInputSelect = (props) => (
    />
 );
 
-/*
-RowInputSelect.propTypes = {
-  caption : PropTypes.string,
-  options : PropTypes.array,
-  isUpdateOptions : PropTypes.bool,
-  onSelect : PropTypes.func
-}
-*/
 
 export default RowInputSelect

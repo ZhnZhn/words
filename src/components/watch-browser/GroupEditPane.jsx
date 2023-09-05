@@ -64,6 +64,7 @@ const GroupEditPane = ({
   return (
     <>
        <A.RowInputSelect
+          id="ge-g"
           caption="Group From:"
           options={groupOptions}
           onSelect={_hSelectGroup}

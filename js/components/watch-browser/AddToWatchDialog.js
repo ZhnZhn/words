@@ -130,12 +130,14 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
     onClose: _hClose,
     children: [(0, _jsxRuntime.jsx)("div", {
       children: (0, _jsxRuntime.jsx)(_RowInputSelect.default, {
+        id: "awd-g",
         caption: "Group:",
         options: groupOptions,
         onSelect: _hSelectGroup
       })
     }), (0, _jsxRuntime.jsx)("div", {
       children: (0, _jsxRuntime.jsx)(_RowInputSelect.default, {
+        id: "awd-l",
         caption: "List:",
         onSelect: _hSelectList,
         options: listOptions

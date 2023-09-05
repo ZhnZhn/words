@@ -45,7 +45,8 @@ const GroupDeletePane = ({
 
   return (
     <>
-      <A.RowInputSelect        
+      <A.RowInputSelect
+        id="gd-g"
         caption="Group:"
         options={groupOptions}
         onSelect={_hSelectGroup}

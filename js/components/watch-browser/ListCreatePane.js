@@ -51,6 +51,7 @@ const ListCreatePane = _ref => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
+      id: "ld-g",
       caption: "In Group:",
       options: groupOptions,
       onSelect: _hSelectGroup

@@ -38,6 +38,7 @@ const GroupDeletePane = _ref => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
+      id: "gd-g",
       caption: "Group:",
       options: groupOptions,
       onSelect: _hSelectGroup

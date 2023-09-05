@@ -14,7 +14,7 @@ import useWatchList from './useWatchList';
 import A from './Atoms';
 
 const ListCreatePane = ({
-  forActionType,  
+  forActionType,
   msgOnNotSelect,
   msgOnIsEmptyName,
   onCreate,
@@ -60,6 +60,7 @@ const ListCreatePane = ({
   return (
     <>
       <A.RowInputSelect
+         id="ld-g"
          caption="In Group:"
          options={groupOptions}
          onSelect={_hSelectGroup}

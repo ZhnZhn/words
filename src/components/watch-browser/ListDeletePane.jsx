@@ -13,7 +13,7 @@ import A from './Atoms';
 
 const ListDeletePane = ({
   getWatchListsByGroup,
-  forActionType,  
+  forActionType,
   msgOnNotSelect,
   onDelete,
   onClose
@@ -57,6 +57,7 @@ const ListDeletePane = ({
   return (
     <>
       <A.SelectGroupList
+        id="ld"
         ref={_refGroupList}
         getWatchListsByGroup={getWatchListsByGroup}
         groupCaption="In Group:"

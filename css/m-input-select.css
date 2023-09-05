@@ -119,3 +119,21 @@
   width: 100%;
   border-bottom: 2px solid black;
 }
+
+.m-select__item {
+  color: #f8f8ff;
+  color: var(--si-c, #f8f8ff);
+
+  line-height: 2;
+  padding-left: 16px;
+  cursor: pointer; 
+}
+
+.m-select__item[aria-selected=true] {
+  color: #80c040;
+}
+.m-select__item:hover, 
+.m-select__item:focus {
+  background-color: rgba(0, 0, 0, 0.25); 
+  /*background-color: var(--msi-fh, rgba(48, 48, 48, 0.4));*/
+}

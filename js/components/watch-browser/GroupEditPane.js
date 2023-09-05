@@ -49,6 +49,7 @@ const GroupEditPane = _ref => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
+      id: "ge-g",
       caption: "Group From:",
       options: groupOptions,
       onSelect: _hSelectGroup

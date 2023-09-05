@@ -12,6 +12,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 
 const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
   const {
+      id,
       inputStyle,
       getWatchListsByGroup,
       groupOptions,
@@ -62,11 +63,13 @@ const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
+      id: id + "-g",
       inputStyle: inputStyle,
       caption: groupCaption,
       options: groupOptions,
       onSelect: _hSelectGroup
     }), (0, _jsxRuntime.jsx)(_RowInputSelect.default, {
+      id: id + "-l",
       inputStyle: inputStyle,
       caption: listCaption,
       options: listOptions,

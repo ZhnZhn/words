@@ -1,13 +1,19 @@
 import {
+  useRef,
   useState,
-  useCallback,
-  useEffect
+  useMemo,
+  KEY_ARROW_DOWN,
+  focusRefElement,
+  stopDefaultFor
 } from '../uiApi';
 
 import useBool from '../hooks/useBool';
 
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
+import {
+  getItemCaption
+} from './OptionFn';
 
 const CL_SELECT = 'm-select'
 , CL_LABEL = `${CL_SELECT}__label`
@@ -15,44 +21,59 @@ const CL_SELECT = 'm-select'
 , CL_DIV_VALUE = `${CL_DIV}__value`
 , CL_DIV_BT = `${CL_DIV}__bt`
 , CL_INPUT_LINE = `${CL_SELECT}__line`
+, CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`
 , CL_ITEM = `${CL_SELECT}__item`;
 
-const FN_NOOP = () => {}
-, DF_STYLE_CONFIG = {}
-, DF_INITIAL_ITEM = {
-  caption: '',
-  value: ''
+const DF_INIT_ITEM = {
+  caption: void 0,
+  value: void 0
 };
 
 const InputSelect = ({
+  id,
+  initItem,
   caption,
-  initItem=DF_INITIAL_ITEM,
   options,
-  styleConfig:TS=DF_STYLE_CONFIG,
-  onSelect=FN_NOOP
+  styleConfig:TS,
+  onSelect
 }) => {
-  const [item, setItem] = useState(initItem)
+  const _refBtArrow = useRef()
   , [
-    isShow,
-    _hOpen,
-    _hClose
+    item,
+    setItem
+  ] = useState(initItem || DF_INIT_ITEM)
+  , [
+    isShowOptions,
+    showOptions,
+    hideOptions
   ] = useBool()
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hSelect = useCallback((item, event) => {
-    event.stopPropagation()
-    onSelect(item)
-    _hClose()
-    setItem(item)
-  }, [onSelect])
-  // _hClose
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    _hClose()
-    setItem(initItem)
-  }, [options])
-  // _hClose, initItem
+  , _hCloseOptions = useMemo(() => () => {
+    hideOptions()
+    focusRefElement(_refBtArrow)
+  }, [])
+  // hideOptions, _refBtArrow
+  , [
+    _hSelect,
+    _hKeyDown
+  ] = useMemo(() => [
+    (item, evt) => {
+        stopDefaultFor(evt)
+        onSelect(item, id)
+        _hCloseOptions()
+        setItem(item)
+    },
+    // id, onSelect, _closeOptions
+    (evt) => {
+      if (evt.key === KEY_ARROW_DOWN) {
+        stopDefaultFor(evt)
+        showOptions()
+      }
+    }
+    // showOptions
+  ]
+  , [])
+  // hideOptions, _refBtArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
@@ -60,34 +81,36 @@ const InputSelect = ({
       role="presentation"
       className={CL_SELECT}
       style={TS.ROOT}
-      onClick={_hOpen}
+      onClick={showOptions}
+      onKeyDown={_hKeyDown}
     >
-      <OptionsPane
-         rootStyle={TS.MODAL_PANE}
-         isShow={isShow}
-         item={item}
-         options={options}
-         clItem={TS.CL_ITEM || CL_ITEM}
-         itemStyle={TS.ITEM}
-         onSelect={_hSelect}
-         onClose={_hClose}
-       />
       <label className={CL_LABEL}>
         {caption}
       </label>
+      <OptionsPane
+         isShow={isShowOptions}
+         className={CL_SELECT_OPTIONS}
+         item={item}
+         options={options}
+         clItem={TS.CL_ITEM || CL_ITEM}
+         onSelect={_hSelect}
+         onClose={_hCloseOptions}
+       />
       <div className={CL_DIV}>
         <div className={CL_DIV_VALUE}>
-           {item.caption}
+           {getItemCaption(item)}
         </div>
-        <button className={CL_DIV_BT} tabIndex="0">
-          <div>
-            <ArrowCell />
-          </div>
+        <button
+          ref={_refBtArrow}
+          type="button"
+          className={CL_DIV_BT}
+        >
+           <ArrowCell />
         </button>
         <div className={CL_INPUT_LINE} />
       </div>
     </div>
   );
-};
+}
 
 export default InputSelect

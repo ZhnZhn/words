@@ -65,6 +65,7 @@ const ListEditPane = ({
   return (
     <>
        <A.SelectGroupList
+         id="le"
          ref={_refGroupList}
          getWatchListsByGroup={getWatchListsByGroup}
          groupCaption="In Group:"
@@ -78,7 +79,7 @@ const ListEditPane = ({
        <A.ValidationMessages
           validationMessages={validationMessages}
        />
-       <A.RowButtons          
+       <A.RowButtons
           caption="Rename"
           title="Rename List Name"
           onClick={_hRename}

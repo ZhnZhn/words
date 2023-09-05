@@ -49,6 +49,7 @@ const ListDeletePane = _ref => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
+      id: "ld",
       ref: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group:",
