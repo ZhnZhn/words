@@ -6,9 +6,11 @@ const CL_SHOW_POPUP = 'show-popup'
 
 const ShowHide = ({
   isShow,
+  isScrollable,
   className,
   style,
-  children
+  children,
+  onKeyDown
 }) => {
     const _style = isShow
       ? S_SHOW : S_HIDE
@@ -18,8 +20,11 @@ const ShowHide = ({
 
     return (
       <div
+        role="presentation"
         className={_className}
         style={{...style, ..._style}}
+        data-scrollable={isScrollable ? "true" : void 0}
+        onKeyDown={onKeyDown}
       >
         {children}
       </div>
