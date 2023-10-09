@@ -17,8 +17,7 @@ module.exports = {
     lib: [
        "preact",
        "preact/compat",                   
-       "dompurify",       
-       "zustand"             
+       "dompurify"       
     ],
   },
   output: {
