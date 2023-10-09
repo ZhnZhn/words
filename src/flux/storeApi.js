@@ -1,8 +1,11 @@
-export { createStore } from 'zustand';
+export { createStore } from './zustand-lite';
 export { bindTo } from '../utils/bindTo';
 
-import { createStore } from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware';
+import {
+  createStore,
+  subscribeWithSelector
+} from './zustand-lite';
+
 import { bindTo } from '../utils/bindTo';
 
 import useSubscribe from '../components/hooks/useSubscribe';
