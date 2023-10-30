@@ -8,10 +8,9 @@ const [_crIsAutoSaveEnabled, _selectIsAutoSaveEnables] = (0, _storeApi.fCrStoreS
     ..._crIsAutoSaveEnabled(true)
   })),
   [_set, _get] = (0, _storeApi.getStoreApi)(_settingStore);
-const enableAutoSave = () => _set(_crIsAutoSaveEnabled(true));
-exports.enableAutoSave = enableAutoSave;
-const disableAutoSave = () => _set(_crIsAutoSaveEnabled(false));
-exports.disableAutoSave = disableAutoSave;
+const _setIsAutoSaveEnables = (0, _storeApi.fCrSetSlice)(_set, _crIsAutoSaveEnabled);
+const enableAutoSave = exports.enableAutoSave = (0, _storeApi.bindTo)(_setIsAutoSaveEnables, true);
+const disableAutoSave = exports.disableAutoSave = (0, _storeApi.bindTo)(_setIsAutoSaveEnables, false);
 const getIsAutoSave = () => _selectIsAutoSaveEnables(_get());
 exports.getIsAutoSave = getIsAutoSave;
 //# sourceMappingURL=settingStore.js.map

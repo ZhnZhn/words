@@ -31,15 +31,11 @@ const _crStore = () => ({
 const useBrowser = exports.useBrowser = (0, _storeApi.fCrUse)(compStore, _selectBrowser);
 const usePane = exports.usePane = (0, _storeApi.fCrUse)(compStore, _selectPane);
 const useMdOption = exports.useMdOption = (0, _storeApi.fCrUse)(compStore, _selectMdOption);
-const showMd = (mdType, option) => _set(_crMdOptionType(mdType, option));
-exports.showMd = showMd;
-const showBrowser = id => _set(_crBrowser(id));
-exports.showBrowser = showBrowser;
-const showPane = itemConf => _set(_crPaneOption(itemConf));
-exports.showPane = showPane;
+const showMd = exports.showMd = (0, _storeApi.fCrSetSlice)(_set, _crMdOptionType);
+const showBrowser = exports.showBrowser = (0, _storeApi.fCrSetSlice)(_set, _crBrowser);
+const showPane = exports.showPane = (0, _storeApi.fCrSetSlice)(_set, _crPaneOption);
 const showAbout = exports.showAbout = (0, _storeApi.bindTo)(showPane, {
   paneId: _paneFn.ABOUT_PANE_ID
 });
-const clickWatchItem = item => _set(_crWatchItem(item));
-exports.clickWatchItem = clickWatchItem;
+const clickWatchItem = exports.clickWatchItem = (0, _storeApi.fCrSetSlice)(_set, _crWatchItem);
 //# sourceMappingURL=compStore.js.map

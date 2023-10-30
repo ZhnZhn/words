@@ -4,7 +4,8 @@ import {
   fCrStoreSlice,
   fCrMsFromFn,
   getStoreApi,
-  fCrUse
+  fCrUse,
+  fCrSetSlice
 } from './storeApi';
 
 import {
@@ -63,19 +64,11 @@ export const useBrowser = fCrUse(compStore, _selectBrowser)
 export const usePane = fCrUse(compStore, _selectPane)
 export const useMdOption = fCrUse(compStore, _selectMdOption)
 
-export const showMd = (mdType, option) => _set(
-  _crMdOptionType(mdType, option)
-)
-export const showBrowser = (id) => _set(_crBrowser(id))
-export const showPane = (itemConf) => _set(
-  _crPaneOption(itemConf)
-)
-
+export const showMd = fCrSetSlice(_set, _crMdOptionType)
+export const showBrowser = fCrSetSlice(_set, _crBrowser)
+export const showPane = fCrSetSlice(_set, _crPaneOption)
 export const showAbout = bindTo(
   showPane,
   { paneId: ABOUT_PANE_ID }
 )
-
-export const clickWatchItem = (item) => _set(
-  _crWatchItem(item)
-)
+export const clickWatchItem = fCrSetSlice(_set, _crWatchItem)

@@ -19,7 +19,8 @@ import {
   createStoreWithSelector,
   getStoreApi,
   fCrStoreSlice,
-  fCrUse
+  fCrUse,
+  fCrSetSlice
 } from './storeApi';
 import {
   showMd,
@@ -53,7 +54,8 @@ const _crStore = () => ({
   ..._crItems({})
 })
 , itemStore = createStoreWithSelector(_crStore)
-, [_set, _get] = getStoreApi(itemStore);
+, [_set, _get] = getStoreApi(itemStore)
+, _setMsItem = fCrSetSlice(_set, _crMsItem);
 
 export const useLoading = fCrUse(itemStore, _selectLoading)
 export const useLimitRemaining = fCrUse(itemStore, _selectLimitRemaining)
@@ -117,7 +119,7 @@ export const removeItem = (config) => {
     config
   )
   if (_options) {
-    _set(_crMsItem(_options))
+   _setMsItem(_options)
   }
 }
 
@@ -127,10 +129,10 @@ export const removeItems = (paneId) => {
     paneId
   )
 
-  _set(_crMsItem({
+  _setMsItem({
     configs: [],
     id: paneId
-  }))
+  })
 }
 
 export const removeItemsUnder = (config) => {
@@ -139,6 +141,6 @@ export const removeItemsUnder = (config) => {
     config
   )
   if (_option){
-    _set(_crMsItem(_option))
+    _setMsItem(_option)
   }
 }

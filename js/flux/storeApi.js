@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.getStoreApi = exports.fCrUse = exports.fCrStoreSlice = exports.fCrMsFromFn = exports.createStoreWithSelector = void 0;
+exports.getStoreApi = exports.fCrUse = exports.fCrStoreSlice = exports.fCrSetSlice = exports.fCrMsFromFn = exports.createStoreWithSelector = void 0;
 var _zustandLite = require("./zustand-lite");
 exports.createStore = _zustandLite.createStore;
 var _bindTo = require("../utils/bindTo");
@@ -22,6 +22,10 @@ const fCrMsFromFn = (crMs, fn) => function () {
   return crMs(fn(...arguments));
 };
 exports.fCrMsFromFn = fCrMsFromFn;
+const fCrSetSlice = (set, crSlice) => function () {
+  return set(crSlice(...arguments));
+};
+exports.fCrSetSlice = fCrSetSlice;
 const fCrUse = (store, select) => (0, _bindTo.bindTo)(_useSubscribe.default, store, select);
 exports.fCrUse = fCrUse;
 //# sourceMappingURL=storeApi.js.map

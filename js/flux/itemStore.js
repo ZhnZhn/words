@@ -22,7 +22,8 @@ const _crStore = () => ({
     ..._crItems({})
   }),
   itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
-  [_set, _get] = (0, _storeApi.getStoreApi)(itemStore);
+  [_set, _get] = (0, _storeApi.getStoreApi)(itemStore),
+  _setMsItem = (0, _storeApi.fCrSetSlice)(_set, _crMsItem);
 const useLoading = exports.useLoading = (0, _storeApi.fCrUse)(itemStore, _selectLoading);
 const useLimitRemaining = exports.useLimitRemaining = (0, _storeApi.fCrUse)(itemStore, _selectLimitRemaining);
 const useMsItem = exports.useMsItem = (0, _storeApi.fCrUse)(itemStore, _selectMsItem);
@@ -86,22 +87,22 @@ exports.loadItem = loadItem;
 const removeItem = config => {
   const _options = (0, _itemFn.removeItemImpl)(_selectItems(_get()), config);
   if (_options) {
-    _set(_crMsItem(_options));
+    _setMsItem(_options);
   }
 };
 exports.removeItem = removeItem;
 const removeItems = paneId => {
   (0, _itemFn.removeItemsImpl)(_selectItems(_get()), paneId);
-  _set(_crMsItem({
+  _setMsItem({
     configs: [],
     id: paneId
-  }));
+  });
 };
 exports.removeItems = removeItems;
 const removeItemsUnder = config => {
   const _option = (0, _itemFn.removeItemsUnderImpl)(_selectItems(_get()), config);
   if (_option) {
-    _set(_crMsItem(_option));
+    _setMsItem(_option);
   }
 };
 exports.removeItemsUnder = removeItemsUnder;

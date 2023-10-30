@@ -38,6 +38,10 @@ export const fCrMsFromFn = (
   fn
 ) => (...args) => crMs(fn(...args))
 
+export const fCrSetSlice = (set, crSlice) => (
+  ...args
+) => set(crSlice(...args))
+
 export const fCrUse = (
   store,
   select
