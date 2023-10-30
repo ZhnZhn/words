@@ -20,7 +20,8 @@ import {
   getStoreApi,
   fCrStoreSlice,
   fCrUse,
-  fCrSetSlice
+  fCrSetSlice,
+  fCrGetSlice,
 } from './storeApi';
 import {
   showMd,
@@ -55,7 +56,8 @@ const _crStore = () => ({
 })
 , itemStore = createStoreWithSelector(_crStore)
 , [_set, _get] = getStoreApi(itemStore)
-, _setMsItem = fCrSetSlice(_set, _crMsItem);
+, _setMsItem = fCrSetSlice(_set, _crMsItem)
+, _getItems = fCrGetSlice(_get, _selectItems);
 
 export const useLoading = fCrUse(itemStore, _selectLoading)
 export const useLimitRemaining = fCrUse(itemStore, _selectLimitRemaining)
@@ -90,7 +92,7 @@ export const loadItem = (option={}) => {
     word=''
   } = option
   , { paneId } = itemConf;
-  if (isItemImpl(paneId, word)){
+  if (isItemImpl(_getItems(), paneId, word)){
     _loadItemFailed({ msg: _crDbLoadMsg(word) })
     return;
   }
@@ -125,7 +127,7 @@ export const removeItem = (config) => {
 
 export const removeItems = (paneId) => {
   removeItemsImpl(
-    _selectItems(_get()),
+    _getItems(),
     paneId
   )
 
@@ -137,7 +139,7 @@ export const removeItems = (paneId) => {
 
 export const removeItemsUnder = (config) => {
   const _option = removeItemsUnderImpl(
-    _selectItems(_get()),
+    _getItems(),
     config
   )
   if (_option){

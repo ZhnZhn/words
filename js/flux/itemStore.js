@@ -23,7 +23,8 @@ const _crStore = () => ({
   }),
   itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   [_set, _get] = (0, _storeApi.getStoreApi)(itemStore),
-  _setMsItem = (0, _storeApi.fCrSetSlice)(_set, _crMsItem);
+  _setMsItem = (0, _storeApi.fCrSetSlice)(_set, _crMsItem),
+  _getItems = (0, _storeApi.fCrGetSlice)(_get, _selectItems);
 const useLoading = exports.useLoading = (0, _storeApi.fCrUse)(itemStore, _selectLoading);
 const useLimitRemaining = exports.useLimitRemaining = (0, _storeApi.fCrUse)(itemStore, _selectLimitRemaining);
 const useMsItem = exports.useMsItem = (0, _storeApi.fCrUse)(itemStore, _selectMsItem);
@@ -53,7 +54,7 @@ const loadItem = function (option) {
     {
       paneId
     } = itemConf;
-  if ((0, _itemFn.isItemImpl)(paneId, word)) {
+  if ((0, _itemFn.isItemImpl)(_getItems(), paneId, word)) {
     _loadItemFailed({
       msg: _crDbLoadMsg(word)
     });
@@ -92,7 +93,7 @@ const removeItem = config => {
 };
 exports.removeItem = removeItem;
 const removeItems = paneId => {
-  (0, _itemFn.removeItemsImpl)(_selectItems(_get()), paneId);
+  (0, _itemFn.removeItemsImpl)(_getItems(), paneId);
   _setMsItem({
     configs: [],
     id: paneId
@@ -100,7 +101,7 @@ const removeItems = paneId => {
 };
 exports.removeItems = removeItems;
 const removeItemsUnder = config => {
-  const _option = (0, _itemFn.removeItemsUnderImpl)(_selectItems(_get()), config);
+  const _option = (0, _itemFn.removeItemsUnderImpl)(_getItems(), config);
   if (_option) {
     _setMsItem(_option);
   }
