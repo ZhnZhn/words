@@ -10,47 +10,36 @@ var _itemFn = require("./itemFn");
 var _storeApi = require("./storeApi");
 var _compStore = require("./compStore");
 const _assign = Object.assign,
-  _crDbLoadMsg = word => "Item '" + word + "' has been already loaded.";
+  _crDbLoadMsg = word => `Item '${word}' has been already loaded.`;
+const [_crLoading, _selectLoading] = (0, _storeApi.fCrStoreSlice)("loading"),
+  [_crLimitRemaining, _selectLimitRemaining] = (0, _storeApi.fCrStoreSlice)("limitRemaining"),
+  [_crMsItem, _selectMsItem] = (0, _storeApi.fCrStoreSlice)("msItem"),
+  [_crItems, _selectItems] = (0, _storeApi.fCrStoreSlice)("items");
 const _crStore = () => ({
-    loading: void 0,
-    limitRemaining: void 0,
-    items: {},
-    msItem: void 0
+    ..._crLoading(),
+    ..._crLimitRemaining(),
+    ..._crMsItem(),
+    ..._crItems({})
   }),
   itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
-  _selectItems = state => state.items,
-  _selectLoading = state => state.loading,
-  _selectLimitRemaining = state => state.limitRemaining,
-  _selectMsItem = state => state.msItem,
   [_set, _get] = (0, _storeApi.getStoreApi)(itemStore);
-const useLoading = (0, _storeApi.fCrUse)(itemStore, _selectLoading);
-exports.useLoading = useLoading;
-const useLimitRemaining = (0, _storeApi.fCrUse)(itemStore, _selectLimitRemaining);
-exports.useLimitRemaining = useLimitRemaining;
-const useMsItem = (0, _storeApi.fCrUse)(itemStore, _selectMsItem);
-exports.useMsItem = useMsItem;
+const useLoading = exports.useLoading = (0, _storeApi.fCrUse)(itemStore, _selectLoading);
+const useLimitRemaining = exports.useLimitRemaining = (0, _storeApi.fCrUse)(itemStore, _selectLimitRemaining);
+const useMsItem = exports.useMsItem = (0, _storeApi.fCrUse)(itemStore, _selectMsItem);
 const _loadItemFailed = option => {
     (0, _compStore.showMd)('ALERT_DIALOG', option);
-    _set({
-      loading: _ItemActions.IAT_LOAD_ITEM_FAILED
-    });
+    _set(_crLoading(_ItemActions.IAT_LOAD_ITEM_FAILED));
   },
   _loadItemCompleted = (result, option) => {
     const {
-        config,
-        itemConf
-      } = result,
-      {
-        limitRemaining
-      } = option,
-      _nextState = {
-        loading: _ItemActions.IAT_LOAD_ITEM_COMPLETED,
-        limitRemaining
-      };
-    if (config) {
-      _nextState.msItem = (0, _itemFn.addItemImpl)(_selectItems(_get()), config, itemConf);
-    }
-    _set(_nextState);
+      config,
+      itemConf
+    } = result;
+    _set({
+      ...(config ? _crMsItem((0, _itemFn.addItemImpl)(_selectItems(_get()), config, itemConf)) : void 0),
+      ..._crLoading(_ItemActions.IAT_LOAD_ITEM_COMPLETED),
+      ..._crLimitRemaining(option.limitRemaining)
+    });
   };
 const loadItem = function (option) {
   if (option === void 0) {
@@ -85,9 +74,7 @@ const loadItem = function (option) {
       api
     });
     (0, _compStore.showPane)(option.itemConf);
-    _set({
-      loading: _ItemActions.IAT_LOAD_ITEM_LOADING
-    });
+    _set(_crLoading(_ItemActions.IAT_LOAD_ITEM_LOADING));
     (0, _loadItem.default)(option, _loadItemCompleted, _loadItemFailed);
   } else {
     _loadItemFailed({
@@ -99,28 +86,22 @@ exports.loadItem = loadItem;
 const removeItem = config => {
   const _options = (0, _itemFn.removeItemImpl)(_selectItems(_get()), config);
   if (_options) {
-    _set({
-      msItem: _options
-    });
+    _set(_crMsItem(_options));
   }
 };
 exports.removeItem = removeItem;
 const removeItems = paneId => {
   (0, _itemFn.removeItemsImpl)(_selectItems(_get()), paneId);
-  _set({
-    msItem: {
-      configs: [],
-      id: paneId
-    }
-  });
+  _set(_crMsItem({
+    configs: [],
+    id: paneId
+  }));
 };
 exports.removeItems = removeItems;
 const removeItemsUnder = config => {
   const _option = (0, _itemFn.removeItemsUnderImpl)(_selectItems(_get()), config);
   if (_option) {
-    _set({
-      msItem: _option
-    });
+    _set(_crMsItem(_option));
   }
 };
 exports.removeItemsUnder = removeItemsUnder;

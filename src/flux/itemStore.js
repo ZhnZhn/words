@@ -18,6 +18,7 @@ import {
 import {
   createStoreWithSelector,
   getStoreApi,
+  fCrStoreSlice,
   fCrUse
 } from './storeApi';
 import {
@@ -28,17 +29,30 @@ import {
 const _assign = Object.assign
 , _crDbLoadMsg = word => `Item '${word}' has been already loaded.`;
 
+const [
+  _crLoading,
+  _selectLoading
+] = fCrStoreSlice("loading")
+, [
+  _crLimitRemaining,
+  _selectLimitRemaining
+] = fCrStoreSlice("limitRemaining")
+, [
+  _crMsItem,
+  _selectMsItem
+] = fCrStoreSlice("msItem")
+, [
+  _crItems,
+  _selectItems
+] = fCrStoreSlice("items")
+
 const _crStore = () => ({
-  loading: void 0,
-  limitRemaining: void 0,
-  items: {},
-  msItem: void 0
+  ..._crLoading(),
+  ..._crLimitRemaining(),
+  ..._crMsItem(),
+  ..._crItems({})
 })
 , itemStore = createStoreWithSelector(_crStore)
-, _selectItems = state => state.items
-, _selectLoading = state => state.loading
-, _selectLimitRemaining = state => state.limitRemaining
-, _selectMsItem = state => state.msItem
 , [_set, _get] = getStoreApi(itemStore);
 
 export const useLoading = fCrUse(itemStore, _selectLoading)
@@ -47,27 +61,25 @@ export const useMsItem = fCrUse(itemStore, _selectMsItem)
 
 const _loadItemFailed = (option) => {
   showMd('ALERT_DIALOG', option)
-  _set({ loading: IAT_LOAD_ITEM_FAILED })
+  _set(_crLoading(IAT_LOAD_ITEM_FAILED))
 }
 , _loadItemCompleted = (result, option) => {
   const {
     config,
     itemConf
-  } = result
-  , { limitRemaining } = option
-  , _nextState = {
-    loading: IAT_LOAD_ITEM_COMPLETED,
-    limitRemaining,
-  };
+  } = result;
 
-  if (config) {
-    _nextState.msItem = addItemImpl(
-       _selectItems(_get()),
-       config,
-       itemConf
-     )
-  }
-  _set(_nextState)
+  _set({
+    ...(config
+      ? _crMsItem(addItemImpl(
+          _selectItems(_get()),
+          config,
+          itemConf
+      ))
+      : void 0),
+    ..._crLoading(IAT_LOAD_ITEM_COMPLETED),
+    ..._crLimitRemaining(option.limitRemaining)
+  })
 }
 
 export const loadItem = (option={}) => {
@@ -92,7 +104,7 @@ export const loadItem = (option={}) => {
   if (apiKey){
     _assign(option, { apiKey, adapter, api })
     showPane(option.itemConf)
-    _set({ loading: IAT_LOAD_ITEM_LOADING })
+    _set(_crLoading(IAT_LOAD_ITEM_LOADING))
     loadItemImpl(option, _loadItemCompleted, _loadItemFailed)
   } else {
     _loadItemFailed({ msg: msgErr })
@@ -105,27 +117,28 @@ export const removeItem = (config) => {
     config
   )
   if (_options) {
-    _set({ msItem: _options })
+    _set(_crMsItem(_options))
   }
 }
+
 export const removeItems = (paneId) => {
   removeItemsImpl(
     _selectItems(_get()),
     paneId
   )
-  _set({
-    msItem: {
-      configs: [],
-      id: paneId
-    }
-  })
+
+  _set(_crMsItem({
+    configs: [],
+    id: paneId
+  }))
 }
+
 export const removeItemsUnder = (config) => {
   const _option = removeItemsUnderImpl(
     _selectItems(_get()),
     config
   )
   if (_option){
-    _set({ msItem: _option })
+    _set(_crMsItem(_option))
   }
 }
