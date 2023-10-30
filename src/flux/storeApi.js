@@ -33,6 +33,11 @@ export const fCrStoreSlice = (
   state => state[slicePn]
 ];
 
+export const fCrMsFromFn = (
+  crMs,
+  fn
+) => (...args) => crMs(fn(...args))
+
 export const fCrUse = (
   store,
   select
