@@ -5,26 +5,21 @@ exports.usePane = exports.useMdOption = exports.useBrowser = exports.showPane = 
 var _storeApi = require("./storeApi");
 var _paneFn = require("./paneFn");
 const DF_WATCH_PANE_ID = 'P_WD_W';
+const [_crBrowser, _selectBrowser] = (0, _storeApi.fCrStoreSlice)("browser", "id");
 const _crStore = () => ({
     mdOption: void 0,
-    browser: {
-      id: void 0
-    },
+    ..._crBrowser(),
     pOption: void 0,
     watch: void 0
   }),
   compStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectMdOption = state => state.mdOption,
   _selectPane = state => state.pOption,
-  _selectBrowser = state => state.browser,
   _selectWatch = state => state.watch,
   _set = (0, _storeApi.getStoreApi)(compStore)[0];
-const useBrowser = (0, _storeApi.fCrUse)(compStore, _selectBrowser);
-exports.useBrowser = useBrowser;
-const usePane = (0, _storeApi.fCrUse)(compStore, _selectPane);
-exports.usePane = usePane;
-const useMdOption = (0, _storeApi.fCrUse)(compStore, _selectMdOption);
-exports.useMdOption = useMdOption;
+const useBrowser = exports.useBrowser = (0, _storeApi.fCrUse)(compStore, _selectBrowser);
+const usePane = exports.usePane = (0, _storeApi.fCrUse)(compStore, _selectPane);
+const useMdOption = exports.useMdOption = (0, _storeApi.fCrUse)(compStore, _selectMdOption);
 const showMd = (mdType, option) => _set({
   mdOption: {
     ...option,
@@ -32,20 +27,15 @@ const showMd = (mdType, option) => _set({
   }
 });
 exports.showMd = showMd;
-const showBrowser = id => _set({
-  browser: {
-    id
-  }
-});
+const showBrowser = id => _set(_crBrowser(id));
 exports.showBrowser = showBrowser;
 const showPane = itemConf => _set({
   pOption: (0, _paneFn.crPaneOption)(itemConf, compStore, _selectPane, _selectWatch)
 });
 exports.showPane = showPane;
-const showAbout = (0, _storeApi.bindTo)(showPane, {
+const showAbout = exports.showAbout = (0, _storeApi.bindTo)(showPane, {
   paneId: _paneFn.ABOUT_PANE_ID
 });
-exports.showAbout = showAbout;
 const clickWatchItem = item => _set(() => {
   item.id = item.id || DF_WATCH_PANE_ID;
   return {

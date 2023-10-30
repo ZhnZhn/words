@@ -1,6 +1,7 @@
 import {
   bindTo,
   createStoreWithSelector,
+  fCrStoreSlice,
   getStoreApi,
   fCrUse
 } from './storeApi';
@@ -12,16 +13,20 @@ import {
 
 const DF_WATCH_PANE_ID = 'P_WD_W';
 
+const [
+  _crBrowser,
+  _selectBrowser
+] = fCrStoreSlice("browser", "id")
+
 const _crStore = () => ({
   mdOption: void 0,
-  browser: { id: void 0},
+  ..._crBrowser(),
   pOption: void 0,
   watch: void 0,
 })
 , compStore = createStoreWithSelector(_crStore)
 , _selectMdOption = state => state.mdOption
 , _selectPane = state => state.pOption
-, _selectBrowser = state => state.browser
 , _selectWatch = state => state.watch
 , _set = getStoreApi(compStore)[0];
 
@@ -35,9 +40,7 @@ export const showMd = (mdType, option) => _set({
     modalDialogType: mdType
   }
 })
-export const showBrowser = (id) => _set({
-  browser: { id }
-})
+export const showBrowser = (id) => _set(_crBrowser(id))
 
 export const showPane = (itemConf) => _set({
   pOption: crPaneOption(
