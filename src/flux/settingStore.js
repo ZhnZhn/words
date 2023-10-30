@@ -1,20 +1,18 @@
 import {
+  fCrStoreSlice,
   createStore,
   getStoreApi
 } from './storeApi';
 
-const _IS_AUTO_SAVE_ENABLED = 'is'
-, _crIsAutoSaveEnabled = is => ({
-  [_IS_AUTO_SAVE_ENABLED]: is
-})
+const [
+  _crIsAutoSaveEnabled,
+  _selectIsAutoSaveEnables
+] = fCrStoreSlice("is")
+
 , _settingStore = createStore(() => ({
   ..._crIsAutoSaveEnabled(true)
-}));
-
-const [
-  _set,
-  _get
-] = getStoreApi(_settingStore);
+}))
+, [_set, _get] = getStoreApi(_settingStore);
 
 export const enableAutoSave = () => _set(
   _crIsAutoSaveEnabled(true)
@@ -22,4 +20,4 @@ export const enableAutoSave = () => _set(
 export const disableAutoSave = () => _set(
   _crIsAutoSaveEnabled(false)
 )
-export const getIsAutoSave = () => _get()[_IS_AUTO_SAVE_ENABLED]
+export const getIsAutoSave = () => _selectIsAutoSaveEnables(_get())
