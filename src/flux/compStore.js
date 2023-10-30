@@ -2,6 +2,7 @@ import {
   bindTo,
   createStoreWithSelector,
   fCrStoreSlice,
+  fCrMsFromFn,
   getStoreApi,
   fCrUse
 } from './storeApi';
@@ -18,44 +19,63 @@ const [
   _selectBrowser
 ] = fCrStoreSlice("browser", "id")
 
+, [
+  _crMdOption,
+  _selectMdOption
+] = fCrStoreSlice("mdOption")
+, _crMdOptionType = fCrMsFromFn(_crMdOption, (mdType, option) => ({
+  ...option,
+  modalDialogType: mdType
+}))
+
+, [
+  _crWatch,
+  _selectWatch
+] = fCrStoreSlice("watch")
+, _crWatchItem = fCrMsFromFn(_crWatch, (item) => {
+  item.id = item.id || DF_WATCH_PANE_ID
+  return { item };
+})
+
+, [
+  _crPane,
+  _selectPane
+] = fCrStoreSlice("pOption")
+
 const _crStore = () => ({
-  mdOption: void 0,
+  ..._crMdOption(),
   ..._crBrowser(),
-  pOption: void 0,
-  watch: void 0,
+  ..._crPane(),
+  ..._crWatch()
 })
 , compStore = createStoreWithSelector(_crStore)
-, _selectMdOption = state => state.mdOption
-, _selectPane = state => state.pOption
-, _selectWatch = state => state.watch
+
+, _crPaneOption = fCrMsFromFn(_crPane, (itemConf) => crPaneOption(
+   itemConf,
+   compStore,
+   _selectPane,
+   _selectWatch
+))
+
 , _set = getStoreApi(compStore)[0];
 
 export const useBrowser = fCrUse(compStore, _selectBrowser)
 export const usePane = fCrUse(compStore, _selectPane)
 export const useMdOption = fCrUse(compStore, _selectMdOption)
 
-export const showMd = (mdType, option) => _set({
-  mdOption: {
-    ...option,
-    modalDialogType: mdType
-  }
-})
+export const showMd = (mdType, option) => _set(
+  _crMdOptionType(mdType, option)
+)
 export const showBrowser = (id) => _set(_crBrowser(id))
+export const showPane = (itemConf) => _set(
+  _crPaneOption(itemConf)
+)
 
-export const showPane = (itemConf) => _set({
-  pOption: crPaneOption(
-     itemConf,
-     compStore,
-     _selectPane,
-     _selectWatch
-  )
-})
 export const showAbout = bindTo(
   showPane,
   { paneId: ABOUT_PANE_ID }
 )
 
-export const clickWatchItem = (item) => _set(() => {
-  item.id = item.id || DF_WATCH_PANE_ID
-  return { watch: { item }};
-})
+export const clickWatchItem = (item) => _set(
+  _crWatchItem(item)
+)
