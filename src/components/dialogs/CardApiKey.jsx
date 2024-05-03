@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useImperativeHandle,
   getRefInputValue
@@ -14,17 +13,18 @@ const CL_DIV = 'bt-flat__div'
   marginLeft: 12
 };
 
-const CardApiKey = forwardRef(({
+const CardApiKey = ({
+  refEl,
   isShow,
   isSelected,
   style,
   buttonsStyle,
   onClose,
   onSet
-}, ref) => {
+}) => {
   const _refInput = useRef();
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getValue: () => getRefInputValue(_refInput)
   }), [])
 
@@ -32,7 +32,7 @@ const CardApiKey = forwardRef(({
     <div style={style}>
       <form>
         <PasswordField
-          ref={_refInput}
+          refEl={_refInput}
           rootStyle={S_PF}
           caption="Words API Key"
           name="wordsapi"
@@ -56,6 +56,6 @@ const CardApiKey = forwardRef(({
       </div>
     </div>
   ) : null;
-});
+};
 
 export default CardApiKey

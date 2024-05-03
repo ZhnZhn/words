@@ -57,13 +57,13 @@ const ListEditPane = _ref => {
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
       id: "le",
-      ref: _refGroupList,
+      refEl: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group:",
       groupOptions: groupOptions,
       listCaption: "List From:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
-      ref: _refInputText,
+      refEl: _refInputText,
       caption: "List To:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
@@ -93,6 +93,5 @@ ListEditPane.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = ListEditPane;
-exports.default = _default;
+var _default = exports.default = ListEditPane;
 //# sourceMappingURL=ListEditPane.js.map

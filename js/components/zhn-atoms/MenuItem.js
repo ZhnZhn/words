@@ -5,8 +5,9 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _jsxRuntime = require("preact/jsx-runtime");
 const FN_NOOP = () => {};
-const MenuItem = (0, _uiApi.forwardRef)((_ref, ref) => {
+const MenuItem = _ref => {
   let {
+    refEl,
     className,
     caption,
     onClick = FN_NOOP,
@@ -25,7 +26,7 @@ const MenuItem = (0, _uiApi.forwardRef)((_ref, ref) => {
         });
       }
     }, [onClick, onClose]);
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     focus: () => {
       (0, _uiApi.focusRefElement)(_refDiv);
     }
@@ -39,7 +40,6 @@ const MenuItem = (0, _uiApi.forwardRef)((_ref, ref) => {
     onKeyDown: _hKeyDown,
     children: caption
   });
-});
-var _default = MenuItem;
-exports.default = _default;
+};
+var _default = exports.default = MenuItem;
 //# sourceMappingURL=MenuItem.js.map

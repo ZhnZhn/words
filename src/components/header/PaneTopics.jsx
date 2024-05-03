@@ -21,7 +21,7 @@ const ItemsStack = ({
     return (
       <A.MenuItem
         key={item.caption}
-        ref={_ref}
+        refEl={_ref}
         className={clItem}
         {...item}
         onClose={onClose}

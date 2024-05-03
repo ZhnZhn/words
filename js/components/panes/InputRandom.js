@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -18,7 +17,7 @@ const S_DIV = {
   S_BT = {
     marginLeft: 8
   };
-const InputRandom = (0, _uiApi.forwardRef)((_ref, ref) => {
+const InputRandom = _ref => {
   let {
     onEnter
   } = _ref;
@@ -34,7 +33,6 @@ const InputRandom = (0, _uiApi.forwardRef)((_ref, ref) => {
       onClick: onEnter
     })]
   });
-});
-var _default = InputRandom;
-exports.default = _default;
+};
+var _default = exports.default = InputRandom;
 //# sourceMappingURL=InputRandom.js.map

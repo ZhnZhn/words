@@ -1,6 +1,5 @@
 //import PropTypes from "prop-types";
 import {
-  forwardRef,
   useRef,
   useCallback,
   useEffect,
@@ -13,11 +12,11 @@ import useRefItemCaption from './useRefItemCaption';
 import useListOptions from './useListOptions';
 import RowInputSelect from './RowInputSelect';
 
-const SelectGroupList = forwardRef((
-  props,
-  ref
+const SelectGroupList = (
+  props
 ) => {
   const {
+    refEl,
     id,
     inputStyle,
     getWatchListsByGroup,
@@ -68,7 +67,7 @@ const SelectGroupList = forwardRef((
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getValue: () => [
       getRefValue(_refCaptionGroup),
       getRefValue(_refCaptionList)
@@ -95,7 +94,7 @@ const SelectGroupList = forwardRef((
        />
     </>
   );
-});
+};
 
 /*
 SelectGroupList.propTypes = {

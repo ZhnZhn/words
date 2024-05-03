@@ -178,7 +178,7 @@ const PaneType1 = _ref2 => {
         maxWidth: RESIZE_MAX_WIDTH
       })]
     }), (0, _jsxRuntime.jsx)(Input, {
-      ref: _refWord,
+      refEl: _refWord,
       initValue: word,
       onEnter: _hLoadItem
     }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
@@ -215,6 +215,5 @@ PaneType1.propTypes = {
   onAddToWatch: PropTypes.func
 }
 */
-var _default = PaneType1;
-exports.default = _default;
+var _default = exports.default = PaneType1;
 //# sourceMappingURL=PaneType1.js.map

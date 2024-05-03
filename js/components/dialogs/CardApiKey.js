@@ -12,8 +12,9 @@ const CL_DIV = 'bt-flat__div',
     width: 320,
     marginLeft: 12
   };
-const CardApiKey = (0, _uiApi.forwardRef)((_ref, ref) => {
+const CardApiKey = _ref => {
   let {
+    refEl,
     isShow,
     isSelected,
     style,
@@ -22,14 +23,14 @@ const CardApiKey = (0, _uiApi.forwardRef)((_ref, ref) => {
     onSet
   } = _ref;
   const _refInput = (0, _uiApi.useRef)();
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => (0, _uiApi.getRefInputValue)(_refInput)
   }), []);
   return isShow && isSelected ? (0, _jsxRuntime.jsxs)("div", {
     style: style,
     children: [(0, _jsxRuntime.jsx)("form", {
       children: (0, _jsxRuntime.jsx)(_PasswordField.default, {
-        ref: _refInput,
+        refEl: _refInput,
         rootStyle: S_PF,
         caption: "Words API Key",
         name: "wordsapi",
@@ -51,7 +52,6 @@ const CardApiKey = (0, _uiApi.forwardRef)((_ref, ref) => {
       })]
     })]
   }) : null;
-});
-var _default = CardApiKey;
-exports.default = _default;
+};
+var _default = exports.default = CardApiKey;
 //# sourceMappingURL=CardApiKey.js.map

@@ -47,8 +47,8 @@ const GroupAddPane = ({
   return (
     <>
       <A.RowInputText
-         ref={_refInput}
-         caption="Group:"        
+         refEl={_refInput}
+         caption="Group:"
       />
       <A.ValidationMessages
          validationMessages={validationMessages}

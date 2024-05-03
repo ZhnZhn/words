@@ -62,7 +62,7 @@ const SettingsDialog = _ref => {
       children: [(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "API Key",
         children: (0, _jsxRuntime.jsx)(_CardApiKey.default, {
-          ref: _ref1,
+          refEl: _ref1,
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,
           isShow: isShow,
@@ -83,6 +83,5 @@ const SettingsDialog = _ref => {
     })
   });
 };
-var _default = SettingsDialog;
-exports.default = _default;
+var _default = exports.default = SettingsDialog;
 //# sourceMappingURL=SettingsDialog.js.map

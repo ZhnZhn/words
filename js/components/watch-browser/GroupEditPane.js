@@ -54,7 +54,7 @@ const GroupEditPane = _ref => {
       options: groupOptions,
       onSelect: _hSelectGroup
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
-      ref: _refInputText,
+      refEl: _refInputText,
       caption: "Group To:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
@@ -87,6 +87,5 @@ GroupEditPane.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = GroupEditPane;
-exports.default = _default;
+var _default = exports.default = GroupEditPane;
 //# sourceMappingURL=GroupEditPane.js.map

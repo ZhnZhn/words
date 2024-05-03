@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useCallback,
   useEffect,
@@ -36,10 +35,11 @@ const S_INPUT_ROOT = {
 
 const DF_INITIAL_VALUE = 'example';
 
-const InputWord = forwardRef(({
+const InputWord = ({
+  refEl,
   initValue=DF_INITIAL_VALUE,
   onEnter
-}, ref) => {
+}) => {
   const _refTextField = useRef()
   , _hClear = useCallback(() => {
      const _tfInst = getRefValue(_refTextField);
@@ -52,14 +52,14 @@ const InputWord = forwardRef(({
     focusRefElement(_refTextField)
   }, [])
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getValue: () => getRefInputValue(_refTextField)
   }), [])
 
   return (
     <>
       <A.TextField
-        ref={_refTextField}
+        refEl={_refTextField}
         rootStyle={S_INPUT_ROOT}
         labelStyle={S_TF_LABEL}
         inputStyle={S_TF_INPUT}
@@ -85,6 +85,6 @@ const InputWord = forwardRef(({
         }
     </>
   );
-})
+}
 
 export default InputWord

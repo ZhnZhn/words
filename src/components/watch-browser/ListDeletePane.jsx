@@ -58,7 +58,7 @@ const ListDeletePane = ({
     <>
       <A.SelectGroupList
         id="ld"
-        ref={_refGroupList}
+        refEl={_refGroupList}
         getWatchListsByGroup={getWatchListsByGroup}
         groupCaption="In Group:"
         groupOptions={groupOptions}

@@ -1,9 +1,7 @@
 import {
-  forwardRef,
   useRef,
   useCallback,
   useEffect,
-  useImperativeHandle,
   getRefValue,
   focusRefElement
 } from '../uiApi'
@@ -19,7 +17,7 @@ const _setPrevFocused = element => {
 
 const FN_NOOP = () => {};
 
-const ItemHeader = forwardRef(({
+const ItemHeader = ({
   isShow,
   className,
   style,
@@ -30,7 +28,7 @@ const ItemHeader = forwardRef(({
   onAddToWatch=FN_NOOP,
   onClose=FN_NOOP,
   onClick=FN_NOOP
-}, ref) => {
+}) => {
   const _refRootNode = useRef()
   , _refBtAdd = useRef()
   , _hAddToWatch = useCallback(evt => {
@@ -64,12 +62,6 @@ const ItemHeader = forwardRef(({
   }, [])
   // focus
 
-  useImperativeHandle(ref, () => ({
-    focus
-  }), [])
-  // focus
-  /*eslint-enable react-hooks/exhaustive-deps */
-
   return (
     <div
       tabIndex="0"
@@ -87,7 +79,7 @@ const ItemHeader = forwardRef(({
          {title}
       </span>
       <A.CircleButton
-        ref={_refBtAdd}
+        refEl={_refBtAdd}
         caption="A"
         title={TITLE}
         onClick={_hAddToWatch}
@@ -99,6 +91,6 @@ const ItemHeader = forwardRef(({
       />
     </div>
   );
-});
+};
 
 export default ItemHeader

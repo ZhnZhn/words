@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useState,
   useCallback,
@@ -56,7 +55,8 @@ const _crCaption = (
 const DF_ON_TEST = () => true
 , FN_NOOP = () => {};
 
-const TextField = forwardRef(({
+const TextField = ({
+  refEl,
   caption='',
   accessKey='',
   spellCheck=false,
@@ -69,7 +69,7 @@ const TextField = forwardRef(({
   onTest=DF_ON_TEST,
   onEnter=FN_NOOP,
   ...restProps
-}, ref) => {
+}) => {
   const _refInput = useRef()
   , [
     isFocus,
@@ -96,7 +96,7 @@ const TextField = forwardRef(({
     setValue(initialValue)
   }, [initialValue])
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getValue: () => {
       const _elInput = getRefValue(_refInput)
       , { value } = _elInput || {};
@@ -161,6 +161,6 @@ const TextField = forwardRef(({
       </div>
     </div>
   );
-})
+}
 
 export default TextField

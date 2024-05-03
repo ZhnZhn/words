@@ -161,7 +161,7 @@ const PaneType1 = ({
         itemConf,
         word: getRefInputValue(_refWord)
       })
-  }, [itemConf, onLoad]);  
+  }, [itemConf, onLoad]);
 
   usePane(pOption => {
     if (pOption && pOption.id === id) {
@@ -221,7 +221,7 @@ const PaneType1 = ({
         />
       </A.BrowserCaption>
       <Input
-        ref={_refWord}
+        refEl={_refWord}
         initValue={word}
         onEnter={_hLoadItem}
       />

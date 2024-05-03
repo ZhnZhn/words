@@ -1,17 +1,16 @@
-import { forwardRef } from '../../uiApi';
-
 const CL = 'bt-circle';
 
-const CircleButton = forwardRef(({
+const CircleButton = ({
+  refEl,
   style,
   tabIndex='-1',
   caption='',
   title,
   onClick
-}, ref) => (
+}) => (
   <button
      type="button"
-     ref={ref}
+     ref={refEl}
      className={CL}
      style={style}
      tabIndex={tabIndex}
@@ -20,6 +19,6 @@ const CircleButton = forwardRef(({
   >
      {caption}
   </button>
-));
+);
 
 export default CircleButton

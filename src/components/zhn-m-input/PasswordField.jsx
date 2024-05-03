@@ -1,5 +1,4 @@
-import {
-  forwardRef,
+import {  
   useRef,
   useState,
   useCallback,
@@ -48,14 +47,14 @@ const _isValue = (
 const FN_TRUE = () => true
 , FN_NOOP = () => {}
 
-const PasswordField = forwardRef((
-  props,
-  ref
+const PasswordField = (
+  props
 ) => {
   const _refInput = useRef()
   , _refWasEnter = useRef(false)
   , _id = useState(() => _crId(props))[0]
   , {
+    refEl,
     rootStyle,
     caption,
     name,
@@ -92,7 +91,7 @@ const PasswordField = forwardRef((
   // onEnter, rerender
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useImperativeHandle(ref, ()=>({
+  useImperativeHandle(refEl, ()=>({
     getValue: () => {
       const _elInput = getRefValue(_refInput);
       return _elInput && _elInput.value;
@@ -168,6 +167,6 @@ const PasswordField = forwardRef((
       </div>
     </div>
   );
-});
+};
 
 export default PasswordField

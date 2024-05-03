@@ -50,7 +50,7 @@ const ListDeletePane = _ref => {
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
       id: "ld",
-      ref: _refGroupList,
+      refEl: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group:",
       groupOptions: groupOptions,
@@ -83,6 +83,5 @@ ListDeletePane.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = ListDeletePane;
-exports.default = _default;
+var _default = exports.default = ListDeletePane;
 //# sourceMappingURL=ListDeletePane.js.map

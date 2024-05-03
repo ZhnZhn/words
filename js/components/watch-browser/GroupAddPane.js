@@ -36,7 +36,7 @@ const GroupAddPane = _ref => {
   (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
-      ref: _refInput,
+      refEl: _refInput,
       caption: "Group:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
@@ -64,6 +64,5 @@ GroupAddPane.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = GroupAddPane;
-exports.default = _default;
+var _default = exports.default = GroupAddPane;
 //# sourceMappingURL=GroupAddPane.js.map

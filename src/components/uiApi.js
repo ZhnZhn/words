@@ -8,7 +8,6 @@ export {
 
   cloneElement,
   createElement,
-  forwardRef,
   memo,
   createContext,
 

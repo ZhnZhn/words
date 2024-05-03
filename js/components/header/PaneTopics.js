@@ -17,7 +17,7 @@ const ItemsStack = _ref2 => {
   return items.map((item, index) => {
     const _ref = index === 0 ? refItem : void 0;
     return (0, _jsxRuntime.jsx)(_Atoms.default.MenuItem, {
-      ref: _ref,
+      refEl: _ref,
       className: clItem,
       ...item,
       onClose: onClose
@@ -57,6 +57,5 @@ const PaneTopics = _ref3 => {
     })
   });
 };
-var _default = PaneTopics;
-exports.default = _default;
+var _default = exports.default = PaneTopics;
 //# sourceMappingURL=PaneTopics.js.map

@@ -1,4 +1,3 @@
-import { forwardRef } from '../uiApi';
 import useResizeElement from './useResizeElement';
 
 import BtResize from './BtResize';
@@ -14,17 +13,20 @@ const S_ROOT_DIV = {
   transform: 'rotate(180deg)'
 };
 
-const SvgHrzResize = forwardRef((
-  props,
-  ref
+const SvgHrzResize = (
+  props
 ) => {
-  const [
+  const {
+    refEl,
+    ...restProps
+  } = props
+  , [
     hStartResizeLeft,
     hStartResizeRight,
     hStopResize,
     hKdLeft,
     hKdRight
-  ] = useResizeElement(props, ref);
+  ] = useResizeElement(restProps, refEl);
   return (
     <div style={{...S_ROOT_DIV, ...props.style}}>
       <BtResize
@@ -43,7 +45,7 @@ const SvgHrzResize = forwardRef((
       />
    </div>
   );
-});
+};
 
 /*
 SvgHrzResize.propTypes = {

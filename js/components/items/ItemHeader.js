@@ -2,46 +2,47 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _Comp = _interopRequireDefault(require("../Comp"));
-var _jsxRuntime = require("react/jsx-runtime");
-var CL_NOT_SELECTED = "not-selected",
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_NOT_SELECTED = "not-selected",
   TITLE = "Click to open add to watch list dialog";
-var _setPrevFocused = function _setPrevFocused(element) {
+const _setPrevFocused = element => {
   document._prevFocusedZhn = element;
 };
-var FN_NOOP = function FN_NOOP() {};
-var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
-  var isShow = _ref.isShow,
-    className = _ref.className,
-    style = _ref.style,
-    captionStyle = _ref.captionStyle,
-    svgCloseStyle = _ref.svgCloseStyle,
-    title = _ref.title,
-    caption = _ref.caption,
-    _ref$onAddToWatch = _ref.onAddToWatch,
-    onAddToWatch = _ref$onAddToWatch === void 0 ? FN_NOOP : _ref$onAddToWatch,
-    _ref$onClose = _ref.onClose,
-    onClose = _ref$onClose === void 0 ? FN_NOOP : _ref$onClose,
-    _ref$onClick = _ref.onClick,
-    onClick = _ref$onClick === void 0 ? FN_NOOP : _ref$onClick;
-  var _refRootNode = (0, _uiApi.useRef)(),
+const FN_NOOP = () => {};
+const ItemHeader = _ref => {
+  let {
+    isShow,
+    className,
+    style,
+    captionStyle,
+    svgCloseStyle,
+    title,
+    caption,
+    onAddToWatch = FN_NOOP,
+    onClose = FN_NOOP,
+    onClick = FN_NOOP
+  } = _ref;
+  const _refRootNode = (0, _uiApi.useRef)(),
     _refBtAdd = (0, _uiApi.useRef)(),
-    _hAddToWatch = (0, _uiApi.useCallback)(function (evt) {
+    _hAddToWatch = (0, _uiApi.useCallback)(evt => {
       evt.stopPropagation();
       _setPrevFocused((0, _uiApi.getRefValue)(_refBtAdd));
       onAddToWatch({
-        caption: caption
+        caption
       });
     }, [caption, onAddToWatch]),
-    _hClose = (0, _uiApi.useCallback)(function (evt) {
+    _hClose = (0, _uiApi.useCallback)(evt => {
       evt.stopPropagation();
       onClose();
     }, [onClose]),
-    _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
-      var target = evt.target,
-        keyCode = evt.keyCode;
+    _hKeyDown = (0, _uiApi.useCallback)(evt => {
+      const {
+        target,
+        keyCode
+      } = evt;
       if (target === (0, _uiApi.getRefValue)(_refRootNode)) {
         if (keyCode === 13) {
           onClick(evt);
@@ -52,25 +53,17 @@ var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
         }
       }
     }, [_hAddToWatch, onClick, onClose]),
-    focus = (0, _uiApi.useCallback)(function () {
+    focus = (0, _uiApi.useCallback)(() => {
       (0, _uiApi.focusRefElement)(_refRootNode);
     }, []);
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  (0, _uiApi.useEffect)(function () {
+  (0, _uiApi.useEffect)(() => {
     focus();
   }, []);
   // focus
 
-  (0, _uiApi.useImperativeHandle)(ref, function () {
-    return {
-      focus: focus
-    };
-  }, []);
-  // focus
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     tabIndex: "0",
     role: "button",
     ref: _refRootNode,
@@ -78,22 +71,21 @@ var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
     style: style,
     onClick: onClick,
     onKeyDown: _hKeyDown,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    children: [(0, _jsxRuntime.jsx)("span", {
       className: CL_NOT_SELECTED,
       style: captionStyle,
       children: title
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
-      ref: _refBtAdd,
+    }), (0, _jsxRuntime.jsx)(_Comp.default.CircleButton, {
+      refEl: _refBtAdd,
       caption: "A",
       title: TITLE,
       onClick: _hAddToWatch
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgClose, {
+    }), (0, _jsxRuntime.jsx)(_Comp.default.SvgClose, {
       tabIndex: "-1",
       style: svgCloseStyle,
       onClose: _hClose
     })]
   });
-});
-var _default = ItemHeader;
-exports["default"] = _default;
+};
+var _default = exports.default = ItemHeader;
 //# sourceMappingURL=ItemHeader.js.map

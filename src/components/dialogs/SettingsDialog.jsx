@@ -69,7 +69,7 @@ const SettingsDialog = ({
       <TabPane id="sd" style={S_TAB_PANE} >
         <Tab title="API Key">
            <CardApiKey
-             ref={_ref1}
+             refEl={_ref1}
              style={S_CARD_ROOT}
              buttonsStyle={S_CARD_BUTTONS}
              isShow={isShow}

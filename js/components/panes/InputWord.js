@@ -29,8 +29,9 @@ const S_INPUT_ROOT = {
     marginLeft: 8
   };
 const DF_INITIAL_VALUE = 'example';
-const InputWord = (0, _uiApi.forwardRef)((_ref, ref) => {
+const InputWord = _ref => {
   let {
+    refEl,
     initValue = DF_INITIAL_VALUE,
     onEnter
   } = _ref;
@@ -44,12 +45,12 @@ const InputWord = (0, _uiApi.forwardRef)((_ref, ref) => {
   (0, _uiApi.useEffect)(() => {
     (0, _uiApi.focusRefElement)(_refTextField);
   }, []);
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => (0, _uiApi.getRefInputValue)(_refTextField)
   }), []);
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_Comp.default.TextField, {
-      ref: _refTextField,
+      refEl: _refTextField,
       rootStyle: S_INPUT_ROOT,
       labelStyle: S_TF_LABEL,
       inputStyle: S_TF_INPUT,
@@ -70,7 +71,6 @@ const InputWord = (0, _uiApi.forwardRef)((_ref, ref) => {
       onClick: onEnter
     })]
   });
-});
-var _default = InputWord;
-exports.default = _default;
+};
+var _default = exports.default = InputWord;
 //# sourceMappingURL=InputWord.js.map

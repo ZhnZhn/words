@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useCallback,
   useImperativeHandle,
@@ -9,12 +8,13 @@ import {
 
 const FN_NOOP = () => {};
 
-const MenuItem = forwardRef(({
+const MenuItem = ({
+  refEl,
   className,
   caption,
   onClick=FN_NOOP,
   onClose=FN_NOOP
-}, ref) => {
+}) => {
   const _refDiv = useRef()
   , _hKeyDown = useCallback(evt => {
     const { keyCode } = evt;
@@ -25,7 +25,7 @@ const MenuItem = forwardRef(({
     }
   }, [onClick, onClose]);
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     focus: () => {
       focusRefElement(_refDiv)
     }
@@ -43,6 +43,6 @@ const MenuItem = forwardRef(({
       {caption}
     </div>
   );
-});
+};
 
 export default MenuItem

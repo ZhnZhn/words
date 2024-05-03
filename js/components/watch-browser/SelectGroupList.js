@@ -10,8 +10,9 @@ var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 
-const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
+const SelectGroupList = props => {
   const {
+      refEl,
       id,
       inputStyle,
       getWatchListsByGroup,
@@ -55,7 +56,7 @@ const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => [(0, _uiApi.getRefValue)(_refCaptionGroup), (0, _uiApi.getRefValue)(_refCaptionList)]
   }), []);
   // _refCaptionList
@@ -76,7 +77,7 @@ const SelectGroupList = (0, _uiApi.forwardRef)((props, ref) => {
       onSelect: _hSelectList
     })]
   });
-});
+};
 
 /*
 SelectGroupList.propTypes = {
@@ -89,6 +90,5 @@ SelectGroupList.propTypes = {
   listCaption: PropTypes.string
 }
 */
-var _default = SelectGroupList;
-exports.default = _default;
+var _default = exports.default = SelectGroupList;
 //# sourceMappingURL=SelectGroupList.js.map

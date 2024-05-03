@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.crStyle2 = exports.crCn = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.crStyle2 = exports.crCn = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _crCn = require("./zhn-utils/crCn");
@@ -12,7 +12,6 @@ var _compat = require("preact/compat");
 exports.render = _compat.render;
 exports.cloneElement = _compat.cloneElement;
 exports.createElement = _compat.createElement;
-exports.forwardRef = _compat.forwardRef;
 exports.memo = _compat.memo;
 exports.createContext = _compat.createContext;
 exports.useContext = _compat.useContext;
@@ -24,16 +23,11 @@ exports.useMemo = _compat.useMemo;
 exports.useLayoutEffect = _compat.useLayoutEffect;
 exports.useEffect = _compat.useEffect;
 exports.useImperativeHandle = _compat.useImperativeHandle;
-const KEY_ARROW_DOWN = "ArrowDown";
-exports.KEY_ARROW_DOWN = KEY_ARROW_DOWN;
-const KEY_ARROW_UP = "ArrowUp";
-exports.KEY_ARROW_UP = KEY_ARROW_UP;
-const KEY_ENTER = "Enter";
-exports.KEY_ENTER = KEY_ENTER;
-const KEY_ESCAPE = "Escape";
-exports.KEY_ESCAPE = KEY_ESCAPE;
-const KEY_TAB = "Tab";
-exports.KEY_TAB = KEY_TAB;
+const KEY_ARROW_DOWN = exports.KEY_ARROW_DOWN = "ArrowDown";
+const KEY_ARROW_UP = exports.KEY_ARROW_UP = "ArrowUp";
+const KEY_ENTER = exports.KEY_ENTER = "Enter";
+const KEY_ESCAPE = exports.KEY_ESCAPE = "Escape";
+const KEY_TAB = exports.KEY_TAB = "Tab";
 const getRefValue = ref => (ref || {}).current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
@@ -85,8 +79,6 @@ const _getFirstTouches = touches => touches && touches[0] || {},
   _getTouchClientX = _fGetTouch(CLIENT_X),
   _getTouchClientY = _fGetTouch(CLIENT_Y),
   _fGetEvt = (propName, getTouch) => evt => evt[propName] || getTouch(evt.targetTouches) || getTouch(evt.changedTouches) || 0;
-const getClientX = _fGetEvt(CLIENT_X, _getTouchClientX);
-exports.getClientX = getClientX;
-const getClientY = _fGetEvt(CLIENT_Y, _getTouchClientY);
-exports.getClientY = getClientY;
+const getClientX = exports.getClientX = _fGetEvt(CLIENT_X, _getTouchClientX);
+const getClientY = exports.getClientY = _fGetEvt(CLIENT_Y, _getTouchClientY);
 //# sourceMappingURL=uiApi.js.map

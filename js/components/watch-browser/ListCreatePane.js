@@ -56,7 +56,7 @@ const ListCreatePane = _ref => {
       options: groupOptions,
       onSelect: _hSelectGroup
     }), (0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
-      ref: _refInputText,
+      refEl: _refInputText,
       caption: "List:"
     }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
       validationMessages: validationMessages
@@ -89,6 +89,5 @@ ListCreatePane.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = ListCreatePane;
-exports.default = _default;
+var _default = exports.default = ListCreatePane;
 //# sourceMappingURL=ListCreatePane.js.map
