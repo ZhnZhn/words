@@ -1,0 +1,12 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/wordConfig.js"
+ ],
+ "file": "../../../src/components/panes/wordConfig.js",
+ "names": [
+  "INITIAL_WORD",
+  "exports"
+ ],
+ "mappings": ";;;;AAAO,MAAMA,YAAY,GAAAC,OAAA,CAAAD,YAAA,GAAG,MAAM"
+}

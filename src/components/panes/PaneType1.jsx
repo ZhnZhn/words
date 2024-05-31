@@ -16,6 +16,7 @@ import crModelMore from './crModelMore';
 
 import { crShowHideInlineIf } from '../styles/ContainerStyle';
 import A from '../Comp';
+import { INITIAL_WORD } from './wordConfig';
 
 const RESIZE_INIT_WIDTH = 535
 , RESIZE_MIN_WIDTH = 375
@@ -97,8 +98,6 @@ const _crModelMoreHandlers = (
   };
 };
 
-const DF_WORD = 'example'
-
 const PaneType1 = ({
   id,
   usePane,
@@ -124,7 +123,7 @@ const PaneType1 = ({
   , [
     word,
     setWord
-  ] = useState(DF_WORD)
+  ] = useState(INITIAL_WORD)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _MODEL_MORE = useMemo(

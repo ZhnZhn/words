@@ -7,6 +7,7 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _CL = require("../styles/CL");
+var _wordConfig = require("./wordConfig");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_INPUT_ROOT = {
     width: 250,
@@ -28,11 +29,10 @@ const S_INPUT_ROOT = {
     top: 22,
     marginLeft: 8
   };
-const DF_INITIAL_VALUE = 'example';
 const InputWord = _ref => {
   let {
     refEl,
-    initValue = DF_INITIAL_VALUE,
+    initValue = _wordConfig.INITIAL_WORD,
     onEnter
   } = _ref;
   const _refTextField = (0, _uiApi.useRef)(),

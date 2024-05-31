@@ -11,6 +11,7 @@ import {
 import { HAS_TOUCH_EVENTS } from '../has';
 import A from '../Comp';
 import { CL_BT_FLAT_DIV } from '../styles/CL';
+import { INITIAL_WORD } from './wordConfig'
 
 const S_INPUT_ROOT = {
   width: 250,
@@ -33,11 +34,9 @@ const S_INPUT_ROOT = {
   marginLeft: 8
 };
 
-const DF_INITIAL_VALUE = 'example';
-
 const InputWord = ({
   refEl,
-  initValue=DF_INITIAL_VALUE,
+  initValue=INITIAL_WORD,
   onEnter
 }) => {
   const _refTextField = useRef()

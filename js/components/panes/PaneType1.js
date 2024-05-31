@@ -9,6 +9,7 @@ var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize")
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _ContainerStyle = require("../styles/ContainerStyle");
 var _Comp = _interopRequireDefault(require("../Comp"));
+var _wordConfig = require("./wordConfig");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
@@ -81,7 +82,6 @@ const _crModelMoreHandlers = (ref, onRemoveItems) => {
     onRemoveItems: onRemoveItems
   };
 };
-const DF_WORD = 'example';
 const PaneType1 = _ref2 => {
   let {
     id,
@@ -102,7 +102,7 @@ const PaneType1 = _ref2 => {
   const _refRootEl = (0, _uiApi.useRef)(),
     _refWord = (0, _uiApi.useRef)(),
     [configs, setConfigs] = (0, _uiApi.useState)([]),
-    [word, setWord] = (0, _uiApi.useState)(DF_WORD)
+    [word, setWord] = (0, _uiApi.useState)(_wordConfig.INITIAL_WORD)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _MODEL_MORE = (0, _uiApi.useMemo)(() => (0, _crModelMore.default)(_crModelMoreHandlers(_refRootEl, onRemoveItems)), [])
