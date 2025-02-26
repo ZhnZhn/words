@@ -5,8 +5,9 @@ import {
   focusRefElement
 } from '../uiApi';
 
+import MenuItem from '../zhn-atoms/MenuItem';
+import ShowHide from '../zhn-atoms/ShowHide';
 import ModalPane from '../zhn-moleculs/ModalPane';
-import A from '../zhn-atoms/Atoms';
 
 const ItemsStack = ({
   refItem,
@@ -19,7 +20,7 @@ const ItemsStack = ({
       ? refItem
       : void 0;
     return (
-      <A.MenuItem
+      <MenuItem
         key={item.caption}
         refEl={_ref}
         className={clItem}
@@ -53,7 +54,7 @@ const PaneTopics = ({
       isShow={isShow}
       onClose={onClose}
     >
-      <A.ShowHide
+      <ShowHide
         isShow={isShow}
         className={className}
       >
@@ -63,7 +64,7 @@ const PaneTopics = ({
           clItem={clItem}
           onClose={onClose}
         />
-      </A.ShowHide>
+      </ShowHide>
    </ModalPane>
   );
 };

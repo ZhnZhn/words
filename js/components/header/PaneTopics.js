@@ -4,8 +4,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
+var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const ItemsStack = _ref2 => {
   let {
@@ -16,7 +17,7 @@ const ItemsStack = _ref2 => {
   } = _ref2;
   return items.map((item, index) => {
     const _ref = index === 0 ? refItem : void 0;
-    return (0, _jsxRuntime.jsx)(_Atoms.default.MenuItem, {
+    return (0, _jsxRuntime.jsx)(_MenuItem.default, {
       refEl: _ref,
       className: clItem,
       ...item,
@@ -45,7 +46,7 @@ const PaneTopics = _ref3 => {
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
     onClose: onClose,
-    children: (0, _jsxRuntime.jsx)(_Atoms.default.ShowHide, {
+    children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
       isShow: isShow,
       className: className,
       children: (0, _jsxRuntime.jsx)(ItemsStack, {
