@@ -1,4 +1,4 @@
-import A from '../zhn-atoms/Atoms';
+import FlatButton from '../zhn-atoms/FlatButton';
 import { CL_BT_FLAT_DIV } from '../styles/CL';
 
 const S_DIV = {
@@ -20,7 +20,7 @@ const InputRandom = ({
     <span style={S_SPAN}>
       Random Word
     </span>
-    <A.FlatButton
+    <FlatButton
       rootStyle={S_BT}
       clDiv={CL_BT_FLAT_DIV}
       caption="Load"

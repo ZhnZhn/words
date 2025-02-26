@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_DIV = {
@@ -26,7 +26,7 @@ const InputRandom = _ref => {
     children: [(0, _jsxRuntime.jsx)("span", {
       style: S_SPAN,
       children: "Random Word"
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
+    }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
       rootStyle: S_BT,
       clDiv: _CL.CL_BT_FLAT_DIV,
       caption: "Load",
