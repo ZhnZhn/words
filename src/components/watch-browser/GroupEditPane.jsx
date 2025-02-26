@@ -11,7 +11,10 @@ import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
 
-import A from './Atoms';
+import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import RowInputText from './RowInputText';
+import RowInputSelect from './RowInputSelect';
+import RowButtons from './RowButtons';
 
 const GroupEditPane = ({
   forActionType,
@@ -63,20 +66,20 @@ const GroupEditPane = ({
 
   return (
     <>
-       <A.RowInputSelect
+       <RowInputSelect
           id="ge-g"
           caption="Group From:"
           options={groupOptions}
           onSelect={_hSelectGroup}
        />
-      <A.RowInputText
+      <RowInputText
         refEl={_refInputText}
         caption="Group To:"
       />
-      <A.ValidationMessages
+      <ValidationMessages
         validationMessages={validationMessages}
       />
-      <A.RowButtons
+      <RowButtons
          caption="Rename"
          title="Rename Group Name"
          onClick={_hRename}

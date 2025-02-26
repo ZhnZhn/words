@@ -10,7 +10,10 @@ import useRerender from '../hooks/useRerender';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
 
-import A from './Atoms';
+import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import SelectGroupList from './SelectGroupList';
+import RowInputText from './RowInputText';
+import RowButtons from './RowButtons';
 
 const ListEditPane = ({
   getWatchListsByGroup,
@@ -64,7 +67,7 @@ const ListEditPane = ({
 
   return (
     <>
-       <A.SelectGroupList
+       <SelectGroupList
          id="le"
          refEl={_refGroupList}
          getWatchListsByGroup={getWatchListsByGroup}
@@ -72,14 +75,14 @@ const ListEditPane = ({
          groupOptions={groupOptions}
          listCaption="List From:"
        />
-       <A.RowInputText
+       <RowInputText
           refEl={_refInputText}
           caption="List To:"
        />
-       <A.ValidationMessages
+       <ValidationMessages
           validationMessages={validationMessages}
        />
-       <A.RowButtons
+       <RowButtons
           caption="Rename"
           title="Rename List Name"
           onClick={_hRename}

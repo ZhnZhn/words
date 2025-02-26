@@ -12,11 +12,11 @@ var _useValidationMessages = _interopRequireDefault(require("./useValidationMess
 var _WatchActions = require("../../flux/actions/WatchActions");
 var _watchListStore = require("../../flux/watch-list/watchListStore");
 var _MsgWatch = require("../../constants/MsgWatch");
-var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
+var _ValidationMessages = _interopRequireDefault(require("../zhn-atoms/ValidationMessages"));
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
 var _Row = _interopRequireDefault(require("../dialogs/Row"));
-var _Atoms = _interopRequireDefault(require("./Atoms"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 
@@ -145,7 +145,7 @@ const AddToWatchDialog = (0, _memoIsShow.default)(props => {
     }), (0, _jsxRuntime.jsx)(_Row.default.Text, {
       caption: "Word:",
       text: caption
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
+    }), (0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
     })]
   });
@@ -158,6 +158,5 @@ AddToWatchDialog.propTypes = {
   onClose : PropTypes.func
 }
 */
-var _default = AddToWatchDialog;
-exports.default = _default;
+var _default = exports.default = AddToWatchDialog;
 //# sourceMappingURL=AddToWatchDialog.js.map

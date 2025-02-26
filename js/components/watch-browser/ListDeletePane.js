@@ -7,7 +7,9 @@ var _uiApi = require("../uiApi");
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 var _useWatchList = _interopRequireDefault(require("./useWatchList"));
-var _Atoms = _interopRequireDefault(require("./Atoms"));
+var _ValidationMessages = _interopRequireDefault(require("../zhn-atoms/ValidationMessages"));
+var _SelectGroupList = _interopRequireDefault(require("./SelectGroupList"));
+var _RowButtons = _interopRequireDefault(require("./RowButtons"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 
@@ -48,16 +50,16 @@ const ListDeletePane = _ref => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [(0, _jsxRuntime.jsx)(_Atoms.default.SelectGroupList, {
+    children: [(0, _jsxRuntime.jsx)(_SelectGroupList.default, {
       id: "ld",
       refEl: _refGroupList,
       getWatchListsByGroup: getWatchListsByGroup,
       groupCaption: "In Group:",
       groupOptions: groupOptions,
       listCaption: "List:"
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
+    }), (0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
+    }), (0, _jsxRuntime.jsx)(_RowButtons.default, {
       caption: "Delete",
       title: "Delete List",
       onClick: _hDelete,

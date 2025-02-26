@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _Button = _interopRequireDefault(require("../zhn-atoms/button/Button"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT = "bt__watch__bar",
   S_MB_10 = {
@@ -22,12 +22,12 @@ const EditBar = _ref => {
   } = _ref;
   return isShow ? (0, _jsxRuntime.jsxs)("div", {
     style: S_MB_10,
-    children: [(0, _jsxRuntime.jsx)(_Atoms.default.Button, {
+    children: [(0, _jsxRuntime.jsx)(_Button.default, {
       caption: "GROUP",
       title: BT_GROUP_TITLE,
       className: CL_BT,
       onClick: onClickGroup
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.Button, {
+    }), (0, _jsxRuntime.jsx)(_Button.default, {
       caption: "LIST",
       title: BT_LIST_TITLE,
       className: CL_BT,
@@ -36,6 +36,5 @@ const EditBar = _ref => {
     })]
   }) : null;
 };
-var _default = EditBar;
-exports.default = _default;
+var _default = exports.default = EditBar;
 //# sourceMappingURL=EditBar.js.map

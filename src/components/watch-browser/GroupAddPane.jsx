@@ -8,7 +8,9 @@ import {
 import useValidationMessages from './useValidationMessages';
 import useWatchListMsEdit from './useWatchListMsEdit';
 
-import A from './Atoms';
+import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import RowInputText from './RowInputText';
+import RowButtons from './RowButtons'
 
 const GroupAddPane = ({
   forActionType,
@@ -46,19 +48,19 @@ const GroupAddPane = ({
 
   return (
     <>
-      <A.RowInputText
+      <RowInputText
          refEl={_refInput}
          caption="Group:"
       />
-      <A.ValidationMessages
+      <ValidationMessages
          validationMessages={validationMessages}
        />
-       <A.RowButtons
-          caption="Create"
-          title="Create New Group"
-          onClick={_hCreate}
-          onClear={_hClear}
-          onClose={onClose}
+       <RowButtons
+         caption="Create"
+         title="Create New Group"
+         onClick={_hCreate}
+         onClear={_hClear}
+         onClose={onClose}
        />
     </>
   );

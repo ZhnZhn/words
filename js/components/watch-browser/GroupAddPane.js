@@ -6,7 +6,9 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 var _useWatchListMsEdit = _interopRequireDefault(require("./useWatchListMsEdit"));
-var _Atoms = _interopRequireDefault(require("./Atoms"));
+var _ValidationMessages = _interopRequireDefault(require("../zhn-atoms/ValidationMessages"));
+var _RowInputText = _interopRequireDefault(require("./RowInputText"));
+var _RowButtons = _interopRequireDefault(require("./RowButtons"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const GroupAddPane = _ref => {
   let {
@@ -35,12 +37,12 @@ const GroupAddPane = _ref => {
 
   (0, _useWatchListMsEdit.default)(forActionType, setValidationMessages, _hClear);
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputText, {
+    children: [(0, _jsxRuntime.jsx)(_RowInputText.default, {
       refEl: _refInput,
       caption: "Group:"
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
+    }), (0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
+    }), (0, _jsxRuntime.jsx)(_RowButtons.default, {
       caption: "Create",
       title: "Create New Group",
       onClick: _hCreate,

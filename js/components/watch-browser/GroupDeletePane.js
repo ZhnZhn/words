@@ -7,7 +7,9 @@ var _uiApi = require("../uiApi");
 var _useRefItemCaption = _interopRequireDefault(require("./useRefItemCaption"));
 var _useValidationMessages = _interopRequireDefault(require("./useValidationMessages"));
 var _useWatchList = _interopRequireDefault(require("./useWatchList"));
-var _Atoms = _interopRequireDefault(require("./Atoms"));
+var _ValidationMessages = _interopRequireDefault(require("../zhn-atoms/ValidationMessages"));
+var _RowInputSelect = _interopRequireDefault(require("./RowInputSelect"));
+var _RowButtons = _interopRequireDefault(require("./RowButtons"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 
@@ -37,14 +39,14 @@ const GroupDeletePane = _ref => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [(0, _jsxRuntime.jsx)(_Atoms.default.RowInputSelect, {
+    children: [(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
       id: "gd-g",
       caption: "Group:",
       options: groupOptions,
       onSelect: _hSelectGroup
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.ValidationMessages, {
+    }), (0, _jsxRuntime.jsx)(_ValidationMessages.default, {
       validationMessages: validationMessages
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.RowButtons, {
+    }), (0, _jsxRuntime.jsx)(_RowButtons.default, {
       caption: "Delete",
       title: "Delete Group",
       onClick: _hDeleteGroup,
@@ -66,6 +68,5 @@ GroupDeletePane.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = GroupDeletePane;
-exports.default = _default;
+var _default = exports.default = GroupDeletePane;
 //# sourceMappingURL=GroupDeletePane.js.map

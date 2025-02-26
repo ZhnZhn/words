@@ -9,7 +9,9 @@ import useRerender from '../hooks/useRerender';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
 
-import A from './Atoms';
+import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import SelectGroupList from './SelectGroupList';
+import RowButtons from './RowButtons';
 
 const ListDeletePane = ({
   getWatchListsByGroup,
@@ -56,7 +58,7 @@ const ListDeletePane = ({
 
   return (
     <>
-      <A.SelectGroupList
+      <SelectGroupList
         id="ld"
         refEl={_refGroupList}
         getWatchListsByGroup={getWatchListsByGroup}
@@ -64,10 +66,10 @@ const ListDeletePane = ({
         groupOptions={groupOptions}
         listCaption="List:"
       />
-      <A.ValidationMessages
-         validationMessages={validationMessages}
+      <ValidationMessages
+        validationMessages={validationMessages}
       />
-      <A.RowButtons
+      <RowButtons
         caption="Delete"
         title="Delete List"
         onClick={_hDelete}

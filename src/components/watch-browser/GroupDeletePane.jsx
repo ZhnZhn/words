@@ -8,7 +8,9 @@ import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
 
-import A from './Atoms';
+import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import RowInputSelect from './RowInputSelect';
+import RowButtons from './RowButtons';
 
 const GroupDeletePane = ({
   forActionType,
@@ -45,16 +47,16 @@ const GroupDeletePane = ({
 
   return (
     <>
-      <A.RowInputSelect
+      <RowInputSelect
         id="gd-g"
         caption="Group:"
         options={groupOptions}
         onSelect={_hSelectGroup}
       />
-      <A.ValidationMessages
+      <ValidationMessages
         validationMessages={validationMessages}
       />
-      <A.RowButtons
+      <RowButtons
         caption="Delete"
         title="Delete Group"
         onClick={_hDeleteGroup}

@@ -11,7 +11,10 @@ import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
 
-import A from './Atoms';
+import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import RowInputText from './RowInputText';
+import RowInputSelect from './RowInputSelect';
+import RowButtons from './RowButtons';
 
 const ListCreatePane = ({
   forActionType,
@@ -59,20 +62,20 @@ const ListCreatePane = ({
 
   return (
     <>
-      <A.RowInputSelect
+      <RowInputSelect
          id="ld-g"
          caption="In Group:"
          options={groupOptions}
          onSelect={_hSelectGroup}
       />
-      <A.RowInputText
+      <RowInputText
          refEl={_refInputText}
          caption="List:"
       />
-      <A.ValidationMessages
-        validationMessages={validationMessages}
+      <ValidationMessages
+         validationMessages={validationMessages}
       />
-      <A.RowButtons
+      <RowButtons
          caption="Create"
          title="Create New List"
          onClick={_hCreate}

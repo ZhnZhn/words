@@ -25,11 +25,11 @@ import {
   notSelected
 } from '../../constants/MsgWatch';
 
-import ModalDialog from '../zhn-moleculs/ModalDialog';
 import FlatButton from '../zhn-atoms/FlatButton';
+import ValidationMessages from '../zhn-atoms/ValidationMessages'
+import ModalDialog from '../zhn-moleculs/ModalDialog';
 import RowInputSelect from './RowInputSelect'
 import Row from '../dialogs/Row';
-import A from './Atoms';
 
 const CL_BT_DIV = 'bt-flat__div'
 , S_DIALOG = {
@@ -182,7 +182,7 @@ const AddToWatchDialog = memoIsShow((
         caption="Word:"
         text={caption}
       />
-      <A.ValidationMessages
+      <ValidationMessages
          validationMessages={validationMessages}
        />
     </ModalDialog>
