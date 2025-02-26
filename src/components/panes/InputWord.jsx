@@ -9,8 +9,12 @@ import {
 } from '../uiApi';
 
 import { HAS_TOUCH_EVENTS } from '../has';
-import A from '../Comp';
 import { CL_BT_FLAT_DIV } from '../styles/CL';
+
+import TextField from '../zhn-m-input/TextField';
+import ButtonClear from '../zhn-atoms/ButtonClear';
+import FlatButton from '../zhn-atoms/FlatButton';
+
 import { INITIAL_WORD } from './wordConfig'
 
 const S_INPUT_ROOT = {
@@ -57,7 +61,7 @@ const InputWord = ({
 
   return (
     <>
-      <A.TextField
+      <TextField
         refEl={_refTextField}
         rootStyle={S_INPUT_ROOT}
         labelStyle={S_TF_LABEL}
@@ -69,11 +73,11 @@ const InputWord = ({
         onEnter={onEnter}
       />
       { HAS_TOUCH_EVENTS
-           ? (<A.ButtonClear
+           ? (<ButtonClear
                style={S_BT_CLEAR}
                onClick={_hClear}
              />)
-           : (<A.FlatButton
+           : (<FlatButton
                 caption="Load"
                 tabIndex={-1}
                 rootStyle={S_BT_LOAD}

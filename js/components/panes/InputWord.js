@@ -5,8 +5,10 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
-var _Comp = _interopRequireDefault(require("../Comp"));
 var _CL = require("../styles/CL");
+var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
+var _ButtonClear = _interopRequireDefault(require("../zhn-atoms/ButtonClear"));
+var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 var _wordConfig = require("./wordConfig");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_INPUT_ROOT = {
@@ -49,7 +51,7 @@ const InputWord = _ref => {
     getValue: () => (0, _uiApi.getRefInputValue)(_refTextField)
   }), []);
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [(0, _jsxRuntime.jsx)(_Comp.default.TextField, {
+    children: [(0, _jsxRuntime.jsx)(_TextField.default, {
       refEl: _refTextField,
       rootStyle: S_INPUT_ROOT,
       labelStyle: S_TF_LABEL,
@@ -59,10 +61,10 @@ const InputWord = _ref => {
       spellCheck: true,
       initialValue: initValue,
       onEnter: onEnter
-    }), _has.HAS_TOUCH_EVENTS ? (0, _jsxRuntime.jsx)(_Comp.default.ButtonClear, {
+    }), _has.HAS_TOUCH_EVENTS ? (0, _jsxRuntime.jsx)(_ButtonClear.default, {
       style: S_BT_CLEAR,
       onClick: _hClear
-    }) : (0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+    }) : (0, _jsxRuntime.jsx)(_FlatButton.default, {
       caption: "Load",
       tabIndex: -1,
       rootStyle: S_BT_LOAD,
