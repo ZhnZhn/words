@@ -5,7 +5,10 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
+var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
+var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
+var _SpinnerLoading = _interopRequireDefault(require("../zhn-atoms/SpinnerLoading"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 var _preact = require("preact");
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -95,18 +98,18 @@ const DynamicMenuBrowser = _ref2 => {
   // setNotLoading, setLoadingFailed
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  return (0, _jsxRuntime.jsxs)(_Atoms.default.Browser, {
+  return (0, _jsxRuntime.jsxs)(_Browser.default, {
     isShow: isShow,
     style: S_BROWSER,
-    children: [(0, _jsxRuntime.jsx)(_Atoms.default.BrowserCaption, {
+    children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
       caption: caption,
       onClose: closeMenuBrowser
-    }), isLoading && (0, _jsxRuntime.jsx)(_Atoms.default.SpinnerLoading, {
+    }), isLoading && (0, _jsxRuntime.jsx)(_SpinnerLoading.default, {
       style: S_SPINNER_LOADING
-    }), isLoadingFailed && (0, _jsxRuntime.jsx)(_Atoms.default.SpinnerLoading, {
+    }), isLoadingFailed && (0, _jsxRuntime.jsx)(_SpinnerLoading.default, {
       style: S_SPINNER_LOADING,
       isFailed: true
-    }), (0, _jsxRuntime.jsxs)(_Atoms.default.ScrollPane, {
+    }), (0, _jsxRuntime.jsxs)(_ScrollPane.default, {
       style: S_SCROLL_PANE,
       children: [(0, _jsxRuntime.jsx)(MenuParts, {
         menuModel: menuModel,
@@ -115,6 +118,5 @@ const DynamicMenuBrowser = _ref2 => {
     })]
   });
 };
-var _default = DynamicMenuBrowser;
-exports.default = _default;
+var _default = exports.default = DynamicMenuBrowser;
 //# sourceMappingURL=DynamicMenuBrowser.js.map

@@ -5,7 +5,11 @@ import {
 
 import useBool from '../hooks/useBool';
 
-import A from '../zhn-atoms/Atoms';
+import Browser from '../zhn-atoms/Browser';
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import ScrollPane from '../zhn-atoms/ScrollPane';
+import SpinnerLoading from '../zhn-atoms/SpinnerLoading';
+
 import MenuPart from './MenuPart';
 
 const S_BROWSER = {
@@ -112,37 +116,35 @@ const DynamicMenuBrowser = ({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <A.Browser
+    <Browser
        isShow={isShow}
        style={S_BROWSER}
      >
-      <A.BrowserCaption
+      <BrowserCaption
         caption={caption}
         onClose={closeMenuBrowser}
       />
       {
-        isLoading &&
-        <A.SpinnerLoading
-             style={S_SPINNER_LOADING}
+        isLoading && <SpinnerLoading
+          style={S_SPINNER_LOADING}
         />
       }
       {
-        isLoadingFailed &&
-        <A.SpinnerLoading
-           style={S_SPINNER_LOADING}
-           isFailed={true}
-         />
+        isLoadingFailed && <SpinnerLoading
+          style={S_SPINNER_LOADING}
+          isFailed={true}
+        />
        }
-      <A.ScrollPane
-         style={S_SCROLL_PANE}
+      <ScrollPane
+        style={S_SCROLL_PANE}
       >
         <MenuParts
           menuModel={menuModel}
           restProps={restProps}
         />
         {children}
-      </A.ScrollPane>
-    </A.Browser>
+      </ScrollPane>
+    </Browser>
   );
 };
 
