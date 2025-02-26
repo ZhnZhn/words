@@ -6,11 +6,10 @@ import {
   hDropList
 } from './dnd-handlers/DnDListHandlers';
 
-import Comp from '../Comp';
+import OpenClose2 from '../zhn-atoms/OpenClose2';
 import WatchItems from './WatchItems';
 
-const { OpenClose2 } = Comp
-, _isArr = Array.isArray
+const _isArr = Array.isArray
 , C_FILL_OPEN = '#80c040'
 , COLOR_CAPTION = '#9e9e9e'
 , S_CAPTION = {
@@ -27,7 +26,7 @@ const { OpenClose2 } = Comp
 };
 
 const WatchLists = ({
-  isModeEdit,  
+  isModeEdit,
   groupCaption,
   lists,
   onClickItem

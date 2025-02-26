@@ -4,13 +4,10 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _DnDListHandlers = require("./dnd-handlers/DnDListHandlers");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 var _WatchItems = _interopRequireDefault(require("./WatchItems"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const {
-    OpenClose2
-  } = _Comp.default,
-  _isArr = Array.isArray,
+const _isArr = Array.isArray,
   C_FILL_OPEN = '#80c040',
   COLOR_CAPTION = '#9e9e9e',
   S_CAPTION = {
@@ -19,7 +16,7 @@ const {
   S_LIST_DIV = {
     marginLeft: 8,
     paddingLeft: 12,
-    borderLeft: "3px solid " + COLOR_CAPTION,
+    borderLeft: `3px solid ${COLOR_CAPTION}`,
     lineHeight: 2.5
   },
   S_ITEM_NOT_SELECTED = {
@@ -37,7 +34,7 @@ const WatchLists = _ref => {
       caption,
       items
     } = _ref2;
-    return (0, _jsxRuntime.jsx)(OpenClose2, {
+    return (0, _jsxRuntime.jsx)(_OpenClose.default, {
       fillOpen: C_FILL_OPEN,
       style: S_LIST_DIV,
       styleCaption: S_CAPTION,
@@ -63,6 +60,5 @@ const WatchLists = _ref => {
     }, caption);
   }) : null;
 };
-var _default = WatchLists;
-exports.default = _default;
+var _default = exports.default = WatchLists;
 //# sourceMappingURL=WatchLists.js.map
