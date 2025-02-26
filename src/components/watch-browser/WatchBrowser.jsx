@@ -14,7 +14,11 @@ import {
   showDialogEditLists
 } from './Handlers';
 
-import A from '../Comp';
+import Browser from '../zhn-atoms/Browser';
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import ScrollPane from '../zhn-atoms/ScrollPane';
+import CircleButton from '../zhn-atoms/button/CircleButton';
+
 import EditBar from './EditBar';
 import WatchGroups from './WatchGroups';
 
@@ -81,33 +85,33 @@ const WatchBrowser = ({
   , { groups } = watchList || {};
 
   return (
-    <A.Browser
+    <Browser
        isShow={isShow}
        style={S_BROWSER}
     >
-       <A.BrowserCaption
+       <BrowserCaption
          caption={caption}
          onClose={_hHide}
        >
-        <A.CircleButton
+        <CircleButton
           caption="S"
           title={T_S}
           style={S_BT_CIRCLE}
           onClick={saveWatchList}
         />
-        <A.CircleButton
-           caption={_captionEV}
-           title={T_E_V}
-           style={S_BT_CIRCLE}
-           onClick={_toggleEditMode}
+        <CircleButton
+          caption={_captionEV}
+          title={T_E_V}
+          style={S_BT_CIRCLE}
+          onClick={_toggleEditMode}
         />
-      </A.BrowserCaption>
+      </BrowserCaption>
       <EditBar
          isShow={isModeEdit}
          onClickGroup={showDialogEditGroups}
          onClickList={showDialogEditLists}
       />
-      <A.ScrollPane
+      <ScrollPane
         style={_spStyle}
       >
         <WatchGroups
@@ -115,8 +119,8 @@ const WatchBrowser = ({
           groups={groups}
           onClickItem={onClickItem}
        />
-      </A.ScrollPane>
-   </A.Browser>
+      </ScrollPane>
+   </Browser>
   );
 }
 

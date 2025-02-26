@@ -7,7 +7,10 @@ var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _Handlers = require("./Handlers");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
+var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
+var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
+var _CircleButton = _interopRequireDefault(require("../zhn-atoms/button/CircleButton"));
 var _EditBar = _interopRequireDefault(require("./EditBar"));
 var _WatchGroups = _interopRequireDefault(require("./WatchGroups"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -59,18 +62,18 @@ const WatchBrowser = _ref => {
     {
       groups
     } = watchList || {};
-  return (0, _jsxRuntime.jsxs)(_Comp.default.Browser, {
+  return (0, _jsxRuntime.jsxs)(_Browser.default, {
     isShow: isShow,
     style: S_BROWSER,
-    children: [(0, _jsxRuntime.jsxs)(_Comp.default.BrowserCaption, {
+    children: [(0, _jsxRuntime.jsxs)(_BrowserCaption.default, {
       caption: caption,
       onClose: _hHide,
-      children: [(0, _jsxRuntime.jsx)(_Comp.default.CircleButton, {
+      children: [(0, _jsxRuntime.jsx)(_CircleButton.default, {
         caption: "S",
         title: T_S,
         style: S_BT_CIRCLE,
         onClick: _Handlers.saveWatchList
-      }), (0, _jsxRuntime.jsx)(_Comp.default.CircleButton, {
+      }), (0, _jsxRuntime.jsx)(_CircleButton.default, {
         caption: _captionEV,
         title: T_E_V,
         style: S_BT_CIRCLE,
@@ -80,7 +83,7 @@ const WatchBrowser = _ref => {
       isShow: isModeEdit,
       onClickGroup: _Handlers.showDialogEditGroups,
       onClickList: _Handlers.showDialogEditLists
-    }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
+    }), (0, _jsxRuntime.jsx)(_ScrollPane.default, {
       style: _spStyle,
       children: (0, _jsxRuntime.jsx)(_WatchGroups.default, {
         isModeEdit: isModeEdit,
@@ -102,6 +105,5 @@ WatchBrowser.propTypes = {
   onClickItem: PropTypes.func
 }
 */
-var _default = WatchBrowser;
-exports.default = _default;
+var _default = exports.default = WatchBrowser;
 //# sourceMappingURL=WatchBrowser.js.map
