@@ -6,11 +6,10 @@ import {
   hDropGroup
 } from './dnd-handlers/DnDGroupHandlers';
 
-import Comp from '../Comp';
+import OpenClose2 from '../zhn-atoms/OpenClose2';
 import WatchLists from './WatchLists';
 
-const { OpenClose2 } = Comp
-, _isArr = Array.isArray
+const _isArr = Array.isArray
 , S_GROUP_DIV = {
   lineHeight: 2.5
 }

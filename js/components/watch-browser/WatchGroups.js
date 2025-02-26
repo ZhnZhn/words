@@ -4,13 +4,10 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _DnDGroupHandlers = require("./dnd-handlers/DnDGroupHandlers");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose2"));
 var _WatchLists = _interopRequireDefault(require("./WatchLists"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const {
-    OpenClose2
-  } = _Comp.default,
-  _isArr = Array.isArray,
+const _isArr = Array.isArray,
   S_GROUP_DIV = {
     lineHeight: 2.5
   },
@@ -28,7 +25,7 @@ const WatchGroups = _ref => {
       caption,
       lists
     } = _ref2;
-    return (0, _jsxRuntime.jsx)(OpenClose2, {
+    return (0, _jsxRuntime.jsx)(_OpenClose.default, {
       style: S_GROUP_DIV,
       styleCaption: S_CAPTION,
       caption: caption,
@@ -50,6 +47,5 @@ const WatchGroups = _ref => {
     }, caption);
   }) : null;
 };
-var _default = WatchGroups;
-exports.default = _default;
+var _default = exports.default = WatchGroups;
 //# sourceMappingURL=WatchGroups.js.map
