@@ -1,6 +1,7 @@
 import useBool from '../hooks/useBool';
 
-import A from '../zhn-atoms/Atoms';
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import ScrollPane from '../zhn-atoms/ScrollPane';
 import Link from '../links/Links';
 import IconLogoBar from './IconLogoBar';
 
@@ -56,11 +57,11 @@ const About = ({
       className={_className}
       style={_style}
      >
-       <A.BrowserCaption
+       <BrowserCaption
           caption="About"
           onClose={closeAbout}
        />
-       <A.ScrollPane
+       <ScrollPane
           style={S_SCROLL_DIV}
        >
          <div style={S_DIV_WRAPPER}>
@@ -81,7 +82,7 @@ const About = ({
              *Logos Fair Use.
             </p>
          </div>
-      </A.ScrollPane>
+      </ScrollPane>
     </div>
   );
 }

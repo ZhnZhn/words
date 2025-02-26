@@ -4,7 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
+var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 var _Links = _interopRequireDefault(require("../links/Links"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
 var _ContainerStyle = require("../styles/ContainerStyle");
@@ -47,10 +48,10 @@ const About = _ref => {
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: _style,
-    children: [(0, _jsxRuntime.jsx)(_Atoms.default.BrowserCaption, {
+    children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
       caption: "About",
       onClose: closeAbout
-    }), (0, _jsxRuntime.jsx)(_Atoms.default.ScrollPane, {
+    }), (0, _jsxRuntime.jsx)(_ScrollPane.default, {
       style: S_SCROLL_DIV,
       children: (0, _jsxRuntime.jsxs)("div", {
         style: S_DIV_WRAPPER,
@@ -74,6 +75,5 @@ const About = _ref => {
     })]
   });
 };
-var _default = About;
-exports.default = _default;
+var _default = exports.default = About;
 //# sourceMappingURL=About.js.map
