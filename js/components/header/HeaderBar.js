@@ -5,7 +5,10 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _ModalButton = _interopRequireDefault(require("../zhn-atoms/ModalButton"));
+var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
+var _SvgSettings = _interopRequireDefault(require("../zhn-atoms/svg/SvgSettings"));
+var _SvgInfo = _interopRequireDefault(require("../zhn-atoms/svg/SvgInfo"));
 var _PaneTopics = _interopRequireDefault(require("./PaneTopics"));
 var _ProgressLoading = _interopRequireDefault(require("./ProgressLoading"));
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
@@ -16,14 +19,14 @@ var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_QUERY_ITEM = "row__topic",
   CL_HEADER = "header",
-  CL_PANEL_BROWSER = CL_HEADER + "__panel-browser",
-  CL_ICON_APP = CL_HEADER + "__icon-app",
-  CL_LABEL_APP = CL_HEADER + "__label-app",
-  CL_BROWSER_BTS = CL_HEADER + "__browser-bts",
-  CL_BTS = CL_HEADER + "__bts",
+  CL_PANEL_BROWSER = `${CL_HEADER}__panel-browser`,
+  CL_ICON_APP = `${CL_HEADER}__icon-app`,
+  CL_LABEL_APP = `${CL_HEADER}__label-app`,
+  CL_BROWSER_BTS = `${CL_HEADER}__browser-bts`,
+  CL_BTS = `${CL_HEADER}__bts`,
   CL_ARROW_DOWN = "arrow-down",
-  CL_SETTINGS = CL_HEADER + "__bt-settins",
-  CL_BT_ABOUT = CL_HEADER + "__bt-about",
+  CL_SETTINGS = `${CL_HEADER}__bt-settins`,
+  CL_BT_ABOUT = `${CL_HEADER}__bt-about`,
   S_DIV = {
     paddingLeft: 6,
     paddingRight: 6
@@ -78,7 +81,7 @@ const HeaderBar = _ref => {
       caption: _titles.APP_TITLE
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
-      children: (0, _jsxRuntime.jsx)(_Atoms.default.ModalButton, {
+      children: (0, _jsxRuntime.jsx)(_ModalButton.default, {
         clDiv: _CL.CL_BT_FLAT_DIV,
         caption: "Topics",
         title: "Topics",
@@ -91,30 +94,29 @@ const HeaderBar = _ref => {
       })
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
-      children: [(0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
+      children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
         className: CL_SETTINGS,
         clDiv: _CL.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
         title: "User Settings Dialog",
         accessKey: "s",
         onClick: onSettings,
-        children: (0, _jsxRuntime.jsx)(_Atoms.default.SvgSettings, {
+        children: (0, _jsxRuntime.jsx)(_SvgSettings.default, {
           style: S_SETTINGS
         })
-      }), (0, _jsxRuntime.jsx)(_Atoms.default.FlatButton, {
+      }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
         className: CL_BT_ABOUT,
         clDiv: _CL.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
         title: "About Words",
         accessKey: "a",
         onClick: onAbout,
-        children: (0, _jsxRuntime.jsx)(_Atoms.default.SvgInfo, {
+        children: (0, _jsxRuntime.jsx)(_SvgInfo.default, {
           style: S_SETTINGS
         })
       })]
     }), (0, _jsxRuntime.jsx)(_LimitLabel.default, {})]
   });
 };
-var _default = HeaderBar;
-exports.default = _default;
+var _default = exports.default = HeaderBar;
 //# sourceMappingURL=HeaderBar.js.map

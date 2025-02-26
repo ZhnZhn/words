@@ -8,7 +8,11 @@ import {
 
 import useToggle from '../hooks/useToggle'
 
-import A from '../zhn-atoms/Atoms';
+import ModalButton from '../zhn-atoms/ModalButton';
+import FlatButton from '../zhn-atoms/FlatButton';
+import SvgSettings from '../zhn-atoms/svg/SvgSettings';
+import SvgInfo from '../zhn-atoms/svg/SvgInfo';
+
 import PaneTopics from './PaneTopics';
 import ProgressLoading from './ProgressLoading';
 import IconAppLogo from './IconAppLogo';
@@ -84,7 +88,7 @@ const HeaderBar = ({
          caption={APP_TITLE}
        />
        <span className={CL_BROWSER_BTS}>
-         <A.ModalButton
+         <ModalButton
             clDiv={CL_BT_FLAT_DIV}
             caption="Topics"
             title="Topics"
@@ -93,10 +97,10 @@ const HeaderBar = ({
             onReg={_onRegTopics}
          >
           <span className={CL_ARROW_DOWN} />
-        </A.ModalButton>
+        </ModalButton>
        </span>
        <div className={CL_BTS}>
-         <A.FlatButton
+         <FlatButton
              className={CL_SETTINGS}
              clDiv={CL_BT_FLAT_DIV}
              divStyle={S_DIV}
@@ -104,9 +108,9 @@ const HeaderBar = ({
              accessKey="s"
              onClick={onSettings}
           >
-            <A.SvgSettings style={S_SETTINGS} />
-          </A.FlatButton>
-          <A.FlatButton
+            <SvgSettings style={S_SETTINGS} />
+          </FlatButton>
+          <FlatButton
               className={CL_BT_ABOUT}
               clDiv={CL_BT_FLAT_DIV}
               divStyle={S_DIV}
@@ -114,8 +118,8 @@ const HeaderBar = ({
               accessKey="a"
               onClick={onAbout}
           >
-            <A.SvgInfo style={S_SETTINGS}/>
-          </A.FlatButton>
+            <SvgInfo style={S_SETTINGS}/>
+          </FlatButton>
        </div>
        <LimitLabel />
     </header>
