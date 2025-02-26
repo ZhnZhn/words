@@ -5,10 +5,13 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _CircleButton = _interopRequireDefault(require("../zhn-atoms/button/CircleButton"));
+var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
+var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
+var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _ContainerStyle = require("../styles/ContainerStyle");
-var _Comp = _interopRequireDefault(require("../Comp"));
 var _wordConfig = require("./wordConfig");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
@@ -156,17 +159,17 @@ const PaneType1 = _ref2 => {
       ...S_ROOT_DIV,
       ..._showStyle
     },
-    children: [(0, _jsxRuntime.jsx)(_Comp.default.ModalSlider, {
+    children: [(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: isMore,
       className: CL_MENU_MORE,
       model: _MODEL_MORE,
       onClose: toggleIsMore
-    }), (0, _jsxRuntime.jsxs)(_Comp.default.BrowserCaption, {
+    }), (0, _jsxRuntime.jsxs)(_BrowserCaption.default, {
       rootStyle: S_BR_CAPTION,
       caption: paneCaption,
       onMore: _showMore,
       onClose: _hHide,
-      children: [(0, _jsxRuntime.jsx)(_Comp.default.CircleButton, {
+      children: [(0, _jsxRuntime.jsx)(_CircleButton.default, {
         caption: "R",
         title: R_TITLE,
         style: S_BT_CIRCLE,
@@ -181,7 +184,7 @@ const PaneType1 = _ref2 => {
       refEl: _refWord,
       initValue: word,
       onEnter: _hLoadItem
-    }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
+    }), (0, _jsxRuntime.jsx)(_ScrollPane.default, {
       style: S_SCROLL_PANE,
       children: (0, _jsxRuntime.jsx)(ConfigsStack, {
         configs: configs,

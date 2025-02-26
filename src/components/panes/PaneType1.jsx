@@ -11,11 +11,14 @@ import {
 
 import useToggle from '../hooks/useToggle';
 
+import CircleButton from '../zhn-atoms/button/CircleButton';
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import ScrollPane from '../zhn-atoms/ScrollPane';
+import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 import crModelMore from './crModelMore';
 
 import { crShowHideInlineIf } from '../styles/ContainerStyle';
-import A from '../Comp';
 import { INITIAL_WORD } from './wordConfig';
 
 const RESIZE_INIT_WIDTH = 535
@@ -194,19 +197,19 @@ const PaneType1 = ({
          ..._showStyle
        }}
     >
-      <A.ModalSlider
+      <ModalSlider
         isShow={isMore}
         className={CL_MENU_MORE}
         model={_MODEL_MORE}
         onClose={toggleIsMore}
       />
-      <A.BrowserCaption
+      <BrowserCaption
          rootStyle={S_BR_CAPTION}
          caption={paneCaption}
          onMore={_showMore}
          onClose={_hHide}
       >
-        <A.CircleButton
+        <CircleButton
           caption="R"
           title={R_TITLE}
           style={S_BT_CIRCLE}
@@ -218,13 +221,13 @@ const PaneType1 = ({
           minWidth={RESIZE_MIN_WIDTH}
           maxWidth={RESIZE_MAX_WIDTH}
         />
-      </A.BrowserCaption>
+      </BrowserCaption>
       <Input
         refEl={_refWord}
         initValue={word}
         onEnter={_hLoadItem}
       />
-      <A.ScrollPane
+      <ScrollPane
         style={S_SCROLL_PANE}
       >
         <ConfigsStack
@@ -234,7 +237,7 @@ const PaneType1 = ({
            onRemoveUnder={onRemoveUnder}
            onAddToWatch={onAddToWatch}
         />
-      </A.ScrollPane>
+      </ScrollPane>
     </div>
   );
 };
