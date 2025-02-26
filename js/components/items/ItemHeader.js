@@ -4,7 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _CircleButton = _interopRequireDefault(require("../zhn-atoms/button/CircleButton"));
+var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_NOT_SELECTED = "not-selected",
   TITLE = "Click to open add to watch list dialog";
@@ -75,12 +76,12 @@ const ItemHeader = _ref => {
       className: CL_NOT_SELECTED,
       style: captionStyle,
       children: title
-    }), (0, _jsxRuntime.jsx)(_Comp.default.CircleButton, {
+    }), (0, _jsxRuntime.jsx)(_CircleButton.default, {
       refEl: _refBtAdd,
       caption: "A",
       title: TITLE,
       onClick: _hAddToWatch
-    }), (0, _jsxRuntime.jsx)(_Comp.default.SvgClose, {
+    }), (0, _jsxRuntime.jsx)(_SvgClose.default, {
       tabIndex: "-1",
       style: svgCloseStyle,
       onClose: _hClose

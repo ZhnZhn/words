@@ -4,9 +4,10 @@ import {
   useEffect,
   getRefValue,
   focusRefElement
-} from '../uiApi'
+} from '../uiApi';
 
-import A from '../Comp';
+import CircleButton from '../zhn-atoms/button/CircleButton';
+import SvgClose from '../zhn-atoms/SvgClose';
 
 const CL_NOT_SELECTED = "not-selected"
 , TITLE = "Click to open add to watch list dialog";
@@ -78,16 +79,16 @@ const ItemHeader = ({
       >
          {title}
       </span>
-      <A.CircleButton
+      <CircleButton
         refEl={_refBtAdd}
         caption="A"
         title={TITLE}
         onClick={_hAddToWatch}
       />
-      <A.SvgClose
-          tabIndex="-1"
-          style={svgCloseStyle}
-          onClose={_hClose}
+      <SvgClose
+         tabIndex="-1"
+         style={svgCloseStyle}
+         onClose={_hClose}
       />
     </div>
   );
