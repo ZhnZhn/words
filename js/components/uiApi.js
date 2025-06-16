@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.crStyle2 = exports.crCn = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.crStyle2 = exports.crCn = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _crCn = require("./zhn-utils/crCn");
@@ -14,6 +14,7 @@ exports.cloneElement = _compat.cloneElement;
 exports.createElement = _compat.createElement;
 exports.memo = _compat.memo;
 exports.createContext = _compat.createContext;
+exports.useId = _compat.useId;
 exports.useContext = _compat.useContext;
 exports.useRef = _compat.useRef;
 exports.useState = _compat.useState;
