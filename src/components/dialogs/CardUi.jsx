@@ -1,23 +1,15 @@
 //import PropTypes from "prop-types";
 import InputSelect from '../zhn-m-input/InputSelect';
-import SvgCheckBox from '../zhn-atoms/SvgCheckBox';
+import InputSwitch from '../zhn-atoms/InputSwitch';
 import FlatButton from '../zhn-atoms/FlatButton';
 
 const CL_DIV = 'bt-flat__div'
-, CL_D_CHB = "d-chb";
-
-const S_SELECT = {
+, S_SELECT = {
   ROOT: { width: 280 }
 }
 , S_CHB_ROW = {
   paddingTop: 28,
   paddingLeft: 22
-}
-, S_TEXT = {
-  display: 'inline-block',
-  paddingLeft: 8,
-  fontWeight: 'bold',
-  userSelect: 'none'
 }
 , THEME_OPTIONS = [
   { caption: 'Grey', value: 'GREY' },
@@ -43,15 +35,13 @@ const CardUi = ({
       options={THEME_OPTIONS}
       onSelect={onSetTheme}
     />
-    <div style={S_CHB_ROW}>
-      <SvgCheckBox
-        initialValue={true}
-        className={CL_D_CHB}
-        onCheck={onCheckAutoSave}
-        onUnCheck={onUncheckAutoSave}
-      />
-      <span style={S_TEXT}>AutoSave on Add to Watch List</span>
-    </div>
+    <InputSwitch
+      initialValue={true}
+      style={S_CHB_ROW}
+      onCheck={onCheckAutoSave}
+      onUnCheck={onUncheckAutoSave}
+      label="AutoSave on Add to Watch List"
+    />
     <div style={buttonsStyle}>
       <FlatButton
         clDiv={CL_DIV}

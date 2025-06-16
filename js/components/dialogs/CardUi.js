@@ -4,14 +4,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
-var _SvgCheckBox = _interopRequireDefault(require("../zhn-atoms/SvgCheckBox"));
+var _InputSwitch = _interopRequireDefault(require("../zhn-atoms/InputSwitch"));
 var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 
 const CL_DIV = 'bt-flat__div',
-  CL_D_CHB = "d-chb";
-const S_SELECT = {
+  S_SELECT = {
     ROOT: {
       width: 280
     }
@@ -19,12 +18,6 @@ const S_SELECT = {
   S_CHB_ROW = {
     paddingTop: 28,
     paddingLeft: 22
-  },
-  S_TEXT = {
-    display: 'inline-block',
-    paddingLeft: 8,
-    fontWeight: 'bold',
-    userSelect: 'none'
   },
   THEME_OPTIONS = [{
     caption: 'Grey',
@@ -55,17 +48,12 @@ const CardUi = _ref => {
       initItem: DF_THEME,
       options: THEME_OPTIONS,
       onSelect: onSetTheme
-    }), (0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
+      initialValue: true,
       style: S_CHB_ROW,
-      children: [(0, _jsxRuntime.jsx)(_SvgCheckBox.default, {
-        initialValue: true,
-        className: CL_D_CHB,
-        onCheck: onCheckAutoSave,
-        onUnCheck: onUncheckAutoSave
-      }), (0, _jsxRuntime.jsx)("span", {
-        style: S_TEXT,
-        children: "AutoSave on Add to Watch List"
-      })]
+      onCheck: onCheckAutoSave,
+      onUnCheck: onUncheckAutoSave,
+      label: "AutoSave on Add to Watch List"
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_FlatButton.default, {
@@ -88,6 +76,5 @@ CardUi.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = CardUi;
-exports.default = _default;
+var _default = exports.default = CardUi;
 //# sourceMappingURL=CardUi.js.map
