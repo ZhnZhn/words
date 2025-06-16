@@ -53,7 +53,7 @@ const CardUi = _ref => {
       style: S_CHB_ROW,
       onCheck: onCheckAutoSave,
       onUnCheck: onUncheckAutoSave,
-      label: "AutoSave on Add to Watch List"
+      caption: "AutoSave on Add to Watch List"
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_FlatButton.default, {

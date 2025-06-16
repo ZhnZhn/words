@@ -33,12 +33,13 @@ const InputSwitch = _ref => {
   let {
     initialValue,
     style,
-    label,
+    caption,
     onCheck = FN_NOOP,
     onUnCheck = FN_NOOP
   } = _ref;
   const _inputId = (0, _uiApi.useId)(),
     [_isChecked, _setIsChecked] = (0, _uiApi.useState)(initialValue),
+    _hMouseDown = evt => evt.preventDefault(),
     _hChange = evt => {
       const _nextValue = !_isChecked,
         _onChange = _nextValue ? onCheck : onUnCheck;
@@ -46,10 +47,11 @@ const InputSwitch = _ref => {
       _setIsChecked(_nextValue);
     },
     [_trackStyle, _thumbStyle, _labelStyle] = _crSwicthStyle(_isChecked);
-  return (0, _jsxRuntime.jsxs)("label", {
+  return /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("label", {
     className: CL_LABEL_SWITCH,
     style: style,
     htmlFor: _inputId,
+    onMouseDown: _hMouseDown,
     children: [(0, _jsxRuntime.jsx)("input", {
       id: _inputId,
       type: "checkbox",
@@ -69,7 +71,7 @@ const InputSwitch = _ref => {
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_SWITCH_LABEL,
       style: _labelStyle,
-      children: label
+      children: caption
     })]
   });
 };

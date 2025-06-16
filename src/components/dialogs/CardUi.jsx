@@ -40,7 +40,7 @@ const CardUi = ({
       style={S_CHB_ROW}
       onCheck={onCheckAutoSave}
       onUnCheck={onUncheckAutoSave}
-      label="AutoSave on Add to Watch List"
+      caption="AutoSave on Add to Watch List"
     />
     <div style={buttonsStyle}>
       <FlatButton

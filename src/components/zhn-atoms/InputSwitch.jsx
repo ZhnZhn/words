@@ -43,7 +43,7 @@ const FN_NOOP = () => {}
 const InputSwitch = ({
   initialValue,
   style,
-  label,
+  caption,
   onCheck = FN_NOOP,
   onUnCheck = FN_NOOP,
 }) => {
@@ -52,6 +52,7 @@ const InputSwitch = ({
     _isChecked,
     _setIsChecked
   ] = useState(initialValue)
+  , _hMouseDown = evt => evt.preventDefault()
   , _hChange = (evt) => {
       const _nextValue = !_isChecked
       , _onChange = _nextValue
@@ -67,11 +68,14 @@ const InputSwitch = ({
   ] = _crSwicthStyle(_isChecked);
 
   return (
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
     <label
       className={CL_LABEL_SWITCH}
       style={style}
       htmlFor={_inputId}
+      onMouseDown={_hMouseDown}
     >
+    {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
       <input
         id={_inputId}
         type="checkbox"
@@ -95,7 +99,7 @@ const InputSwitch = ({
         className={CL_SWITCH_LABEL}
         style={_labelStyle}
       >
-       {label}
+       {caption}
       </span>
     </label>
   );

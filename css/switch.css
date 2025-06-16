@@ -46,4 +46,5 @@
   display: inline-block;
   vertical-align: bottom;
   font-weight: bold;
+  user-select: none;
 }
