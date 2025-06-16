@@ -10,11 +10,6 @@
   outline: greenyellow auto 2px;
 }
 
-.d-chb {
-  stroke: #4d4d4d;
-  stroke: var(--c-bgc, #4d4d4d);
-}
-
 .modal-dialog {
   position: absolute;
   top: 20%;
