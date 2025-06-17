@@ -1,7 +1,7 @@
 
 .show-popup{
   transform-origin: 50% 0;
-  animation: showing-popup 400ms ease-out;
+  animation: showing-popup 300ms ease-in;
 }
 @keyframes showing-popup{
   0% {

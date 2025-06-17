@@ -6,9 +6,11 @@
   border: solid 2px var(--bf-c, #3270b4);
 }
 
+/*
 .dialog:focus {  
   outline: greenyellow auto 2px;
 }
+*/
 
 .modal-dialog {
   position: absolute;
