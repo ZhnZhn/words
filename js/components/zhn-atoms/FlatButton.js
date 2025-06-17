@@ -10,6 +10,7 @@ const CL_BT = 'bt-flat',
   CL_BT_SPAN = 'bt-flat__span';
 const FlatButton = _ref => {
   let {
+    refBt,
     className,
     rootStyle,
     clDiv,
@@ -21,6 +22,7 @@ const FlatButton = _ref => {
     onClick
   } = _ref;
   return (0, _jsxRuntime.jsx)("button", {
+    ref: refBt,
     type: "button",
     className: (0, _uiApi.crCn)(CL_BT, className),
     style: rootStyle,
@@ -39,6 +41,5 @@ const FlatButton = _ref => {
     })
   });
 };
-var _default = FlatButton;
-exports.default = _default;
+var _default = exports.default = FlatButton;
 //# sourceMappingURL=FlatButton.js.map

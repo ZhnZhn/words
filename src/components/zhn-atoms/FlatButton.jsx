@@ -5,6 +5,7 @@ const CL_BT = 'bt-flat'
 , CL_BT_SPAN = 'bt-flat__span';
 
 const FlatButton = ({
+  refBt,
   className,
   rootStyle,
   clDiv,
@@ -16,6 +17,7 @@ const FlatButton = ({
   onClick
 }) => (
   <button
+    ref={refBt}
     type="button"
     className={crCn(CL_BT, className)}
     style={rootStyle}
