@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/isTypeFn.js"
+ ],
+ "file": "../../src/utils/isTypeFn.js",
+ "names": [
+  "_fIsTypeof",
+  "strType",
+  "v",
+  "isFn",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,MAAMA,UAAU,GAAGC,OAAO,IAAIC,CAAC,IAAI,OAAOA,CAAC,KAAKD,OAAO;AAEhD,MAAME,IAAI,GAAAC,OAAA,CAAAD,IAAA,GAAGH,UAAU,CAAC,UAAU,CAAC"
+}

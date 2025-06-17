@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -26,7 +27,6 @@ const CL_NOT_SELECTED = "not-selected",
     width: 24,
     height: 24
   };
-const _isFn = fn => typeof fn === "function";
 const _extractColorToSvgStyle = function (_temp, DF_STYLE) {
   let {
     color
@@ -47,7 +47,7 @@ const BrowserCaption = _ref => {
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_B_CAPTION,
     style: rootStyle,
-    children: [_isFn(onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
+    children: [(0, _isTypeFn.isFn)(onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
       style: S_BT_MORE,
       svgStyle: _extractColorToSvgStyle(rootStyle, S_SVG_MORE),
       onClick: onMore
@@ -57,10 +57,10 @@ const BrowserCaption = _ref => {
       children: caption
     }), children, (0, _jsxRuntime.jsx)(_SvgClose.default, {
       style: S_SVG_CLOSE,
+      tabIndex: "-1",
       onClose: onClose
     })]
   });
 };
-var _default = BrowserCaption;
-exports.default = _default;
+var _default = exports.default = BrowserCaption;
 //# sourceMappingURL=BrowserCaption.js.map

@@ -1,3 +1,5 @@
+import { isFn } from '../../utils/isTypeFn';
+
 import SvgMore from './SvgMore'
 import SvgClose from './SvgClose'
 
@@ -21,9 +23,6 @@ const CL_NOT_SELECTED = "not-selected"
   height: 24
 };
 
-
-const _isFn = fn => typeof fn === "function";
-
 const _extractColorToSvgStyle = (
   {color}={},
   DF_STYLE
@@ -43,8 +42,7 @@ const BrowserCaption = ({
     style={rootStyle}
   >
     {
-       _isFn(onMore) &&
-       <SvgMore
+       isFn(onMore) && <SvgMore
           style={S_BT_MORE}
           svgStyle={_extractColorToSvgStyle(rootStyle, S_SVG_MORE)}
           onClick={onMore}
@@ -59,6 +57,7 @@ const BrowserCaption = ({
     {children}
     <SvgClose
       style={S_SVG_CLOSE}
+      tabIndex="-1"
       onClose={onClose}
     />
   </div>
