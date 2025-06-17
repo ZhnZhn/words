@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _useFocus = require("../hooks/useFocus");
 var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
 var _PasswordField = _interopRequireDefault(require("../zhn-m-input/PasswordField"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -19,10 +20,12 @@ const CardApiKey = _ref => {
     isSelected,
     style,
     buttonsStyle,
+    setRefFocusLast,
     onClose,
     onSet
   } = _ref;
-  const _refInput = (0, _uiApi.useRef)();
+  const _refInput = (0, _uiApi.useRef)(),
+    _refBtClose = (0, _useFocus.useEffectSyncRef)(isSelected, setRefFocusLast);
   (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => (0, _uiApi.getRefInputValue)(_refInput)
   }), []);
@@ -45,6 +48,7 @@ const CardApiKey = _ref => {
         title: "Set & Close Dialog",
         onClick: onSet
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
+        refBt: _refBtClose,
         clDiv: CL_DIV,
         caption: "Close",
         title: "Close Dialog",

@@ -4,6 +4,8 @@ import {
   getRefInputValue
 } from '../uiApi';
 
+import { useEffectSyncRef } from '../hooks/useFocus';
+
 import FlatButton from '../zhn-atoms/FlatButton';
 import PasswordField from '../zhn-m-input/PasswordField';
 
@@ -19,10 +21,15 @@ const CardApiKey = ({
   isSelected,
   style,
   buttonsStyle,
+  setRefFocusLast,
   onClose,
   onSet
 }) => {
-  const _refInput = useRef();
+  const _refInput = useRef()
+  , _refBtClose = useEffectSyncRef(
+    isSelected,
+    setRefFocusLast
+  );
 
   useImperativeHandle(refEl, () => ({
     getValue: () => getRefInputValue(_refInput)
@@ -48,6 +55,7 @@ const CardApiKey = ({
           onClick={onSet}
         />
         <FlatButton
+          refBt={_refBtClose}
           clDiv={CL_DIV}
           caption="Close"
           title="Close Dialog"

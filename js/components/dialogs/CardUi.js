@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _useFocus = require("../hooks/useFocus");
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _InputSwitch = _interopRequireDefault(require("../zhn-atoms/InputSwitch"));
 var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
@@ -32,13 +33,16 @@ const CL_DIV = 'bt-flat__div',
   DF_THEME = THEME_OPTIONS[0];
 const CardUi = _ref => {
   let {
+    isSelected,
     style,
     buttonsStyle,
+    setRefFocusLast,
     onSetTheme,
     onCheckAutoSave,
     onUncheckAutoSave,
     onClose
   } = _ref;
+  const _refBtClose = (0, _useFocus.useEffectSyncRef)(isSelected, setRefFocusLast);
   return (0, _jsxRuntime.jsxs)("div", {
     style: style,
     children: [(0, _jsxRuntime.jsx)(_InputSelect.default, {
@@ -57,6 +61,7 @@ const CardUi = _ref => {
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_FlatButton.default, {
+        refBt: _refBtClose,
         clDiv: CL_DIV,
         caption: "Close",
         title: "Close Dialog",

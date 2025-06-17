@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _theme = require("../styles/theme");
 var _settingStore = require("../../flux/settingStore");
+var _useFocus = require("../hooks/useFocus");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
 var _Tab = _interopRequireDefault(require("../zhn-tabpane/Tab"));
@@ -20,9 +21,6 @@ const S_MODAL = {
     margin: '70px auto 0px',
     borderRadius: 5,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
-  },
-  S_TAB_PANE = {
-    width: "100%"
   },
   S_CARD_ROOT = {
     position: 'relative',
@@ -40,7 +38,8 @@ const SettingsDialog = _ref => {
     data,
     onClose
   } = _ref;
-  const _refSetKey1 = (0, _uiApi.useRef)(data.key1),
+  const [refFocusLast, setRefFocusLast] = (0, _useFocus.useRefFocusElement)(),
+    _refSetKey1 = (0, _uiApi.useRef)(data.key1),
     _ref1 = (0, _uiApi.useRef)(),
     _selectTheme = (0, _uiApi.useCallback)(item => {
       (0, _theme.setUiTheme)((item || {}).value);
@@ -50,34 +49,31 @@ const SettingsDialog = _ref => {
       onClose();
     }, [onClose]);
   return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
-    className: "",
+    refFocusLast: refFocusLast,
     style: S_MODAL,
     caption: "User Settings",
     isShow: isShow,
-    isWithButton: false,
+    isWithButton: !1,
     onClose: onClose,
     children: (0, _jsxRuntime.jsxs)(_TabPane.default, {
       id: "sd",
-      style: S_TAB_PANE,
+      style: S_CARD_ROOT,
+      buttonsStyle: S_CARD_BUTTONS,
+      setRefFocusLast: setRefFocusLast,
+      onClose: onClose,
       children: [(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "API Key",
         children: (0, _jsxRuntime.jsx)(_CardApiKey.default, {
           refEl: _ref1,
-          style: S_CARD_ROOT,
-          buttonsStyle: S_CARD_BUTTONS,
           isShow: isShow,
-          onSet: _hSetAndClose,
-          onClose: onClose
+          onSet: _hSetAndClose
         })
       }), (0, _jsxRuntime.jsx)(_Tab.default, {
         title: "UI Theme",
         children: (0, _jsxRuntime.jsx)(_CardUi.default, {
-          style: S_CARD_ROOT,
-          buttonsStyle: S_CARD_BUTTONS,
           onSetTheme: _selectTheme,
           onCheckAutoSave: _settingStore.enableAutoSave,
-          onUncheckAutoSave: _settingStore.disableAutoSave,
-          onClose: onClose
+          onUncheckAutoSave: _settingStore.disableAutoSave
         })
       })]
     })

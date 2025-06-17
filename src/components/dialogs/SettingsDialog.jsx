@@ -12,6 +12,8 @@ import {
   disableAutoSave
 } from '../../flux/settingStore';
 
+import { useRefFocusElement } from '../hooks/useFocus';
+
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-tabpane/TabPane';
 import Tab from '../zhn-tabpane/Tab';
@@ -27,9 +29,6 @@ const S_MODAL = {
   margin: '70px auto 0px',
   borderRadius: 5,
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px'
-}
-, S_TAB_PANE = {
-   width: "100%"
 }
 , S_CARD_ROOT = {
   position: 'relative',
@@ -47,7 +46,11 @@ const SettingsDialog = ({
   data,
   onClose
 }) => {
-  const _refSetKey1 = useRef(data.key1)
+  const [
+    refFocusLast,
+    setRefFocusLast
+  ] = useRefFocusElement()
+  , _refSetKey1 = useRef(data.key1)
   , _ref1 = useRef()
   , _selectTheme = useCallback(item => {
     setUiTheme((item || {}).value)
@@ -59,32 +62,32 @@ const SettingsDialog = ({
 
   return (
     <ModalDialog
-       className=""
+       refFocusLast={refFocusLast}
        style={S_MODAL}
        caption="User Settings"
        isShow={isShow}
-       isWithButton={false}
+       isWithButton={!1}
        onClose={onClose}
     >
-      <TabPane id="sd" style={S_TAB_PANE} >
+      <TabPane
+        id="sd"
+        style={S_CARD_ROOT}
+        buttonsStyle={S_CARD_BUTTONS}
+        setRefFocusLast={setRefFocusLast}
+        onClose={onClose}
+      >
         <Tab title="API Key">
            <CardApiKey
              refEl={_ref1}
-             style={S_CARD_ROOT}
-             buttonsStyle={S_CARD_BUTTONS}
              isShow={isShow}
              onSet={_hSetAndClose}
-             onClose={onClose}
            />
         </Tab>
         <Tab title="UI Theme">
            <CardUi
-             style={S_CARD_ROOT}
-             buttonsStyle={S_CARD_BUTTONS}
              onSetTheme={_selectTheme}
              onCheckAutoSave={enableAutoSave}
              onUncheckAutoSave={disableAutoSave}
-             onClose={onClose}
            />
         </Tab>
       </TabPane>

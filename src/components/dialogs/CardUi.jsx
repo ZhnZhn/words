@@ -1,4 +1,6 @@
 //import PropTypes from "prop-types";
+import { useEffectSyncRef } from '../hooks/useFocus';
+
 import InputSelect from '../zhn-m-input/InputSelect';
 import InputSwitch from '../zhn-atoms/InputSwitch';
 import FlatButton from '../zhn-atoms/FlatButton';
@@ -19,39 +21,48 @@ const CL_DIV = 'bt-flat__div'
 , DF_THEME = THEME_OPTIONS[0];
 
 const CardUi = ({
+  isSelected,
   style,
   buttonsStyle,
+  setRefFocusLast,
   onSetTheme,
   onCheckAutoSave,
   onUncheckAutoSave,
   onClose
-}) => (
-  <div style={style}>
-    <InputSelect
-      id="ui-th"
-      styleConfig={S_SELECT}
-      caption="Theme (Default: Grey)"
-      initItem={DF_THEME}
-      options={THEME_OPTIONS}
-      onSelect={onSetTheme}
-    />
-    <InputSwitch
-      initialValue={true}
-      style={S_CHB_ROW}
-      onCheck={onCheckAutoSave}
-      onUnCheck={onUncheckAutoSave}
-      caption="AutoSave on Add to Watch List"
-    />
-    <div style={buttonsStyle}>
-      <FlatButton
-        clDiv={CL_DIV}
-        caption="Close"
-        title="Close Dialog"
-        onClick={onClose}
+}) => {
+  const _refBtClose = useEffectSyncRef(
+    isSelected,
+    setRefFocusLast
+  );
+  return (
+    <div style={style}>
+      <InputSelect
+        id="ui-th"
+        styleConfig={S_SELECT}
+        caption="Theme (Default: Grey)"
+        initItem={DF_THEME}
+        options={THEME_OPTIONS}
+        onSelect={onSetTheme}
       />
+      <InputSwitch
+        initialValue={true}
+        style={S_CHB_ROW}
+        onCheck={onCheckAutoSave}
+        onUnCheck={onUncheckAutoSave}
+        caption="AutoSave on Add to Watch List"
+      />
+      <div style={buttonsStyle}>
+        <FlatButton
+          refBt={_refBtClose}
+          clDiv={CL_DIV}
+          caption="Close"
+          title="Close Dialog"
+          onClick={onClose}
+        />
+      </div>
     </div>
-  </div>
-)
+  );
+}
 
 /*
 CardUi.propTypes = {
