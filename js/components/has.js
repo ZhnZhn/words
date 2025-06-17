@@ -1,12 +1,18 @@
 "use strict";
 
 exports.__esModule = true;
-exports.hasAccessKey = exports.HAS_TOUCH_EVENTS = void 0;
-var HAS_TOUCH_EVENTS = document && 'ontouchstart' in document.documentElement;
-exports.HAS_TOUCH_EVENTS = HAS_TOUCH_EVENTS;
-var _HAS_ACCESS_KEY = !HAS_TOUCH_EVENTS;
-var hasAccessKey = function hasAccessKey(accessKey) {
-  return _HAS_ACCESS_KEY && accessKey;
+exports.hasAccessKey = exports.HAS_TOUCH_EVENTS = exports.HAS_KEYBOARD_FOCUS = void 0;
+const HAS_TOUCH_EVENTS = exports.HAS_TOUCH_EVENTS = document && 'ontouchstart' in document.documentElement;
+const _getWindowInnerWidth = () => window && window.innerWidth;
+const _DF_WIDE_WIDTH = 700;
+const _isWideWidth = function (wideWidth) {
+  if (wideWidth === void 0) {
+    wideWidth = _DF_WIDE_WIDTH;
+  }
+  return (_getWindowInnerWidth() || wideWidth + 1) > wideWidth;
 };
+const _HAS_WIDE_SCREEN = _isWideWidth();
+const HAS_KEYBOARD_FOCUS = exports.HAS_KEYBOARD_FOCUS = !HAS_TOUCH_EVENTS || _HAS_WIDE_SCREEN;
+const hasAccessKey = accessKey => HAS_KEYBOARD_FOCUS && accessKey;
 exports.hasAccessKey = hasAccessKey;
 //# sourceMappingURL=has.js.map
