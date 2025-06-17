@@ -41,7 +41,8 @@ const TabPane = memo(({
   id,
   width,
   height,
-  children
+  children,
+  ...restTabPanelProps
 }) => {
   const [
     selectedTabIndex,
@@ -99,7 +100,8 @@ const TabPane = memo(({
                   aria-labelledby={crTabId(id, index)}
                 >
                    {cloneElement(tab.props.children, {
-                     isSelected
+                     ...restTabPanelProps,
+                     isSelected                     
                    })}
                 </div>
              );

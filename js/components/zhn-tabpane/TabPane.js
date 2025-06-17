@@ -26,7 +26,8 @@ const TabPane = (0, _uiApi.memo)(_ref => {
     id,
     width,
     height,
-    children
+    children,
+    ...restTabPanelProps
   } = _ref;
   const [selectedTabIndex, setSelectedTabIndex] = (0, _uiApi.useState)(0),
     _isSelectedTabIndex = index => index === selectedTabIndex,
@@ -77,6 +78,7 @@ const TabPane = (0, _uiApi.memo)(_ref => {
           id: (0, _tabPaneFn.crTabPanelId)(id, index),
           "aria-labelledby": (0, _tabPaneFn.crTabId)(id, index),
           children: (0, _uiApi.cloneElement)(tab.props.children, {
+            ...restTabPanelProps,
             isSelected
           })
         }, index);
@@ -84,6 +86,5 @@ const TabPane = (0, _uiApi.memo)(_ref => {
     })]
   });
 });
-var _default = TabPane;
-exports.default = _default;
+var _default = exports.default = TabPane;
 //# sourceMappingURL=TabPane.js.map
