@@ -1,12 +1,11 @@
 import {
   useRef,
-  useCallback,
   useEffect,
-  getRefValue,
   setRefValue,
   focusRefElement
 } from '../uiApi';
 
+import { useKeyEscape } from '../hooks/fUseKey';
 import useClassAnimation from '../hooks/useClassAnimation';
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
@@ -22,7 +21,7 @@ const CL_MD = 'modal-dialog'
 }
 , S_CAPTION = {
   paddingTop: 5,
-  textAlign: 'center',  
+  textAlign: 'center',
   marginBottom: 0
 }
 , S = {
@@ -64,16 +63,7 @@ const ModalDialog = ({
 }) => {
   const _refRootDiv = useRef()
   , _refPrevFocused = useRef()
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback(evt => {
-       if ( evt.target === getRefValue(_refRootDiv)
-         && evt.keyCode === 27
-       ) {
-           onClose(evt)
-       }
-     }, [])
-  // onClose
-  /*eslint-enable react-hooks/exhaustive-deps */
+  , _hKeyDown = useKeyEscape(onClose)
   , {
     className:_className,
     style:_style
@@ -81,22 +71,19 @@ const ModalDialog = ({
     isShow,
     CL,
     S,
-    initialWasClosed: false
+    initialWasClosed: !1
   })
   , _className2 = _className
       ? `${className} ${_className}`
       : className;
 
   useEffect(() => {
-    if(isShow) {
-      setRefValue(_refPrevFocused, _getPrevFocusedElement())
-    }
-  }, [isShow])
-  useEffect(() => {
     if (isShow) {
+      setRefValue(_refPrevFocused, _getPrevFocusedElement())
       focusRefElement(_refRootDiv)
     }
   }, [isShow])
+
   useEffect(() => {
     if (_style === S.HIDING) {
       focusRefElement(_refPrevFocused)
