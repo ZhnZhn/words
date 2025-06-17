@@ -1,52 +1,25 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _useClassAnimation = _interopRequireDefault(require("../hooks/useClassAnimation"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_INIT = 'modal-root',
-    CL = {
-  INIT: CL_INIT,
-  SHOWING: CL_INIT + " show-modal",
-  HIDING: CL_INIT + " hide-modal"
-},
-    S = {
-  INIT: {
-    display: 'none'
-  },
-  SHOWING: {
-    display: 'block'
-  },
-  HIDING: {
-    backgroundColor: 'rgba(0,0,0, 0)'
-  }
-};
-
-var ModalContainer = function ModalContainer(_ref) {
-  var isShow = _ref.isShow,
-      timeout = _ref.timeout,
-      children = _ref.children,
-      onClose = _ref.onClose;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
-    role: "presentation"
-  }, (0, _useClassAnimation["default"])({
-    isShow: isShow,
-    CL: CL,
-    S: S,
-    timeout: timeout
-  }), {
+exports.default = void 0;
+var _styleFn = require("../styleFn");
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_MODAL_ROOT = 'modal-root',
+  CL_MODAL_ROOT_SHOWING = `${CL_MODAL_ROOT} show-modal`;
+const ModalContainer = _ref => {
+  let {
+    isShow,
+    children,
+    onClose
+  } = _ref;
+  const [_className, _style] = isShow ? [CL_MODAL_ROOT_SHOWING, _styleFn.S_BLOCK] : [CL_MODAL_ROOT, _styleFn.S_NONE];
+  return (0, _jsxRuntime.jsx)("div", {
+    role: "presentation",
+    className: _className,
+    style: _style,
     onClick: onClose,
     children: children
-  }));
+  });
 };
-
-var _default = ModalContainer;
-exports["default"] = _default;
+var _default = exports.default = ModalContainer;
 //# sourceMappingURL=ModalContainer.js.map

@@ -1,31 +1,32 @@
-import useClassAnimation from '../hooks/useClassAnimation';
+import {
+  S_BLOCK,
+  S_NONE
+} from '../styleFn';
 
-const CL_INIT = 'modal-root'
-, CL = {
-  INIT: CL_INIT,
-  SHOWING: `${CL_INIT} show-modal`,
-  HIDING: `${CL_INIT} hide-modal`
-}
-, S = {
-  INIT: { display: 'none' },
-  SHOWING: { display: 'block' },
-  HIDING: { backgroundColor: 'rgba(0,0,0, 0)' }
-};
+const CL_MODAL_ROOT = 'modal-root'
+, CL_MODAL_ROOT_SHOWING = `${CL_MODAL_ROOT} show-modal`;
 
 const ModalContainer = ({
   isShow,
-  timeout,
   children,
   onClose
-}) => (
+}) => {
+  const [
+    _className,
+    _style
+  ] = isShow
+    ? [CL_MODAL_ROOT_SHOWING, S_BLOCK]
+    : [CL_MODAL_ROOT, S_NONE];
+  return (
    <div
      role="presentation"
-     {...useClassAnimation({ isShow, CL, S, timeout })}
+     className={_className}
+     style={_style}
      onClick={onClose}
    >
      {children}
    </div>
-);
-
+ );
+}
 
 export default ModalContainer
