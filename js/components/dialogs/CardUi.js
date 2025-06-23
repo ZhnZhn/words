@@ -13,12 +13,11 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_DIV = 'bt-flat__div',
   S_SELECT = {
     ROOT: {
-      width: 280
+      width: 288
     }
   },
-  S_CHB_ROW = {
-    paddingTop: 28,
-    paddingLeft: 22
+  S_SWITCH = {
+    padding: '28px 20px 0 23px'
   },
   THEME_OPTIONS = [{
     caption: 'Grey',
@@ -54,7 +53,7 @@ const CardUi = _ref => {
       onSelect: onSetTheme
     }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
       initialValue: true,
-      style: S_CHB_ROW,
+      style: S_SWITCH,
       onCheck: onCheckAutoSave,
       onUnCheck: onUncheckAutoSave,
       caption: "AutoSave on Add to Watch List"

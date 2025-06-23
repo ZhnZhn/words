@@ -7,11 +7,10 @@ import FlatButton from '../zhn-atoms/FlatButton';
 
 const CL_DIV = 'bt-flat__div'
 , S_SELECT = {
-  ROOT: { width: 280 }
+  ROOT: { width: 288 }
 }
-, S_CHB_ROW = {
-  paddingTop: 28,
-  paddingLeft: 22
+, S_SWITCH = {
+  padding: '28px 20px 0 23px'
 }
 , THEME_OPTIONS = [
   { caption: 'Grey', value: 'GREY' },
@@ -46,7 +45,7 @@ const CardUi = ({
       />
       <InputSwitch
         initialValue={true}
-        style={S_CHB_ROW}
+        style={S_SWITCH}
         onCheck={onCheckAutoSave}
         onUnCheck={onUncheckAutoSave}
         caption="AutoSave on Add to Watch List"
