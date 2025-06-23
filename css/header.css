@@ -21,10 +21,8 @@
   top: 45px;
   left: 180px;
 
-  padding-top : 5px;
-  padding-bottom : 5px;
-
-  border-bottom: 4px solid #80c040;
+  padding: 8px 0;  
+  
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 5px;
 }
@@ -81,16 +79,15 @@
 .row__topic {
   color: black;
   line-height: 2;  
-  padding-left: 16px;
-  padding-right: 16px;
-  border-bottom: 2px solid transparent;
+  padding: 0 16px 0 8px;
+  border-left: 4px solid transparent;
   font-size: 16px;
   font-weight: bold;
   user-select: none;
   cursor: pointer;
 }
 .row__topic:focus {
-  border-bottom: 2px solid #1b75bb;
+  border-left: 4px solid #1b75bb;
 }
 .row__topic:hover {
   background-color: rgba(0, 0, 0, 0.15);

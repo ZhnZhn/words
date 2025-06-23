@@ -1,8 +1,7 @@
-.label-switch {
-  display: block;
-  width: fit-content;
-  padding-bottom: 6px;
-  userSelect: none;
+.label-switch { 
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;  
 }
 
 .switch {
