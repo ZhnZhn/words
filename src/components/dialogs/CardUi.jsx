@@ -10,7 +10,7 @@ const CL_DIV = 'bt-flat__div'
   ROOT: { width: 288 }
 }
 , S_SWITCH = {
-  padding: '28px 20px 0 23px'
+  padding: '28px 34px 0 23px'
 }
 , THEME_OPTIONS = [
   { caption: 'Grey', value: 'GREY' },
