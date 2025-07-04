@@ -35,12 +35,14 @@ div:focus {
 
 button {
   appearance: none;
+  -webkit-appearance: none;
   border: none;
   background-color: transparent;
   font-size: inherit;
-  -webkit-appearance: none;
-  -moz-aapearance: none;
+  font-family: inherit;
+  text-decoration: none;
   user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
 }
 button:focus,
