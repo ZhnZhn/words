@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _Handlers = require("./Handlers");
@@ -57,7 +58,7 @@ const WatchBrowser = _ref => {
       setWatchList(watchList);
     }
   });
-  const _spStyle = (0, _uiApi.crStyle2)(S_SP, isModeEdit && S_SP_SHORT),
+  const _spStyle = (0, _styleFn.crStyle2)(S_SP, isModeEdit && S_SP_SHORT),
     _captionEV = isModeEdit ? 'V' : 'E',
     {
       groups

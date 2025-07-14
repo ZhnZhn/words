@@ -1,6 +1,3 @@
-
-const _assign = Object.assign;
-
 const DF_BGC = "#808080";
 const DF_C_BGC = "#4d4d4d";
 const DF_BF_C = "#3270b4";
@@ -9,7 +6,6 @@ const DF_SO_BGC = "#404040";
 const DF_SI_C = "#f8f8ff";
 const DF_L_C = "#4d4d4d";
 
-const P = {};
 const BG_HEADER_GREY = DF_BF_C
 const TH_GREY = {
   'bgc': DF_BGC,
@@ -72,15 +68,12 @@ const _setStyleProperties = (P) => {
 
 const _setTheme = {
   [THEME_NAME.GREY]: () => {
-    _assign(P, TH_GREY)
     _setStyleProperties(TH_GREY)
   },
   [THEME_NAME.WHITE]: () => {
-    _assign(P, TH_WHITE)
     _setStyleProperties(TH_WHITE)
   },
   [THEME_NAME.SAND]: () => {
-    _assign(P, TH_SAND)
     _setStyleProperties(TH_SAND)
   }
 }
@@ -88,7 +81,6 @@ const _setTheme = {
 const uiTheme = {
   themeName: THEME_NAME.DF,
   _init(){
-    _assign(P, TH_GREY)
     _setStyleProperties(TH_GREY)
   },
   getThemeName(){

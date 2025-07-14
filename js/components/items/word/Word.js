@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../../uiApi");
+var _styleFn = require("../../styleFn");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
 var _GestureSwipeX = _interopRequireDefault(require("../../zhn-gesture/GestureSwipeX"));
 var _ItemHeader = _interopRequireDefault(require("../ItemHeader"));
@@ -83,7 +84,7 @@ const Word = _ref => {
       title,
       caption
     } = config,
-    _captionStyle = (0, _uiApi.crStyle2)(S_CAPTION, isShow && S_CAPTION_OPEN);
+    _captionStyle = (0, _styleFn.crStyle2)(S_CAPTION, isShow && S_CAPTION_OPEN);
   return (0, _jsxRuntime.jsxs)(_GestureSwipeX.default, {
     style: S_ROOT,
     setTimeStamp: _setTimeStamp,
@@ -105,6 +106,5 @@ const Word = _ref => {
     })]
   });
 };
-var _default = Word;
-exports.default = _default;
+var _default = exports.default = Word;
 //# sourceMappingURL=Word.js.map

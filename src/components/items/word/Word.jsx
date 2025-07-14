@@ -1,10 +1,13 @@
 import {
-  crStyle2,
   useRef,
   useCallback,
   getRefValue,
   setRefValue
 } from '../../uiApi';
+
+import {
+  crStyle2
+} from '../../styleFn';
 
 import useToggle from '../../hooks/useToggle';
 

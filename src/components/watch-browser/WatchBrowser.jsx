@@ -1,8 +1,6 @@
 //import PropTypes from 'prop-types'
-import {
-  crStyle2,
-  useState
-} from '../uiApi';
+import { useState } from '../uiApi';
+import { crStyle2 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';

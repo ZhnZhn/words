@@ -17,6 +17,13 @@ export const crCn = (
     : _cl2 || void 0 ;
 }
 
+export const crStyle2 = (
+  style1,
+  style2
+) => style2
+ ? {...style1, ...style2}
+ : style1;
+
 export const CL_BT_FLAT_DIV = "bt-flat__div"
 export const CL_SHOW_POPUP = "show-popup"
 
