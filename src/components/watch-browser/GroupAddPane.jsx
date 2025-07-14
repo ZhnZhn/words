@@ -8,7 +8,7 @@ import {
 import useValidationMessages from './useValidationMessages';
 import useWatchListMsEdit from './useWatchListMsEdit';
 
-import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import ValidationMessages from '../zhn/ValidationMessages';
 import RowInputText from './RowInputText';
 import RowButtons from './RowButtons'
 

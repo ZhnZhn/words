@@ -9,7 +9,7 @@ import useRerender from '../hooks/useRerender';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
 
-import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import ValidationMessages from '../zhn/ValidationMessages';
 import SelectGroupList from './SelectGroupList';
 import RowButtons from './RowButtons';
 

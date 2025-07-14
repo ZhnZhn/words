@@ -6,7 +6,7 @@ import {
 
 import { useEffectSyncRef } from '../hooks/useFocus';
 
-import FlatButton from '../zhn-atoms/FlatButton';
+import FlatButton from '../zhn/FlatButton';
 import PasswordField from '../zhn-m-input/PasswordField';
 
 const CL_DIV = 'bt-flat__div'

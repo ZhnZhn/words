@@ -1,5 +1,5 @@
-import ListSpan from '../../zhn-atoms/ListSpan';
-import ListDiv from '../../zhn-atoms/ListDiv';
+import ListSpan from '../../zhn/ListSpan';
+import ListDiv from '../../zhn/ListDiv';
 
 const _S_CAPTION = {
   paddingRight: 8,

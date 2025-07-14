@@ -6,8 +6,8 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import CircleButton from '../zhn-atoms/button/CircleButton';
-import SvgClose from '../zhn-atoms/SvgClose';
+import CircleButton from '../zhn/button/CircleButton';
+import SvgClose from '../zhn/SvgClose';
 
 const CL_NOT_SELECTED = "not-selected"
 , TITLE = "Click to open add to watch list dialog";

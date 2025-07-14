@@ -1,4 +1,4 @@
-import Button from '../zhn-atoms/button/Button';
+import Button from '../zhn/button/Button';
 
 const CL_BT = "bt__watch__bar"
 , S_MB_10 = {

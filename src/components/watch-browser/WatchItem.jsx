@@ -1,6 +1,6 @@
 import useDnDHandlers from '../hooks/useDnDHandlers';
-import isKeyEnter from '../zhn-atoms/isKeyEnter';
-import SvgClose from '../zhn-atoms/SvgClose';
+import isKeyEnter from '../zhn/isKeyEnter';
+import SvgClose from '../zhn/SvgClose';
 
 const S_ITEM_DIV = {
   position: 'relative',

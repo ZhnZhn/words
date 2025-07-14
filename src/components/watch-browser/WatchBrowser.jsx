@@ -14,10 +14,10 @@ import {
   showDialogEditLists
 } from './Handlers';
 
-import Browser from '../zhn-atoms/Browser';
-import BrowserCaption from '../zhn-atoms/BrowserCaption';
-import ScrollPane from '../zhn-atoms/ScrollPane';
-import CircleButton from '../zhn-atoms/button/CircleButton';
+import Browser from '../zhn/Browser';
+import BrowserCaption from '../zhn/BrowserCaption';
+import ScrollPane from '../zhn/ScrollPane';
+import CircleButton from '../zhn/button/CircleButton';
 
 import EditBar from './EditBar';
 import WatchGroups from './WatchGroups';

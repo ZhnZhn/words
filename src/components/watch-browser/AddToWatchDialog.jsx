@@ -25,8 +25,8 @@ import {
   notSelected
 } from '../../constants/MsgWatch';
 
-import FlatButton from '../zhn-atoms/FlatButton';
-import ValidationMessages from '../zhn-atoms/ValidationMessages'
+import FlatButton from '../zhn/FlatButton';
+import ValidationMessages from '../zhn/ValidationMessages'
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import RowInputSelect from './RowInputSelect'
 import Row from '../dialogs/Row';

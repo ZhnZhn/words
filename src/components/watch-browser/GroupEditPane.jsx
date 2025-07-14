@@ -11,7 +11,7 @@ import useRefItemCaption from './useRefItemCaption';
 import useValidationMessages from './useValidationMessages';
 import useWatchList from './useWatchList';
 
-import ValidationMessages from '../zhn-atoms/ValidationMessages';
+import ValidationMessages from '../zhn/ValidationMessages';
 import RowInputText from './RowInputText';
 import RowInputSelect from './RowInputSelect';
 import RowButtons from './RowButtons';

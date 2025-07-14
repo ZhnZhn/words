@@ -11,9 +11,9 @@ import {
 
 import useToggle from '../hooks/useToggle';
 
-import CircleButton from '../zhn-atoms/button/CircleButton';
-import BrowserCaption from '../zhn-atoms/BrowserCaption';
-import ScrollPane from '../zhn-atoms/ScrollPane';
+import CircleButton from '../zhn/button/CircleButton';
+import BrowserCaption from '../zhn/BrowserCaption';
+import ScrollPane from '../zhn/ScrollPane';
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 import crModelMore from './crModelMore';

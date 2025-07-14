@@ -1,4 +1,4 @@
-import FlatButton from '../zhn-atoms/FlatButton';
+import FlatButton from '../zhn/FlatButton';
 import { CL_BT_FLAT_DIV } from '../styles/CL';
 
 const S_DIV = {

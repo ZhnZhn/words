@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useFocus = require("../hooks/useFocus");
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
-var _InputSwitch = _interopRequireDefault(require("../zhn-atoms/InputSwitch"));
-var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
+var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
+var _FlatButton = _interopRequireDefault(require("../zhn/FlatButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 

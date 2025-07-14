@@ -6,7 +6,7 @@ import {
   hDropList
 } from './dnd-handlers/DnDListHandlers';
 
-import OpenClose2 from '../zhn-atoms/OpenClose2';
+import OpenClose2 from '../zhn/OpenClose2';
 import WatchItems from './WatchItems';
 
 const _isArr = Array.isArray

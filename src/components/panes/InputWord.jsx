@@ -12,8 +12,8 @@ import { HAS_TOUCH_EVENTS } from '../has';
 import { CL_BT_FLAT_DIV } from '../styles/CL';
 
 import TextField from '../zhn-m-input/TextField';
-import ButtonClear from '../zhn-atoms/ButtonClear';
-import FlatButton from '../zhn-atoms/FlatButton';
+import ButtonClear from '../zhn/ButtonClear';
+import FlatButton from '../zhn/FlatButton';
 
 import { INITIAL_WORD } from './wordConfig'
 

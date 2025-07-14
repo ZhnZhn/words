@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
+var _FlatButton = _interopRequireDefault(require("../zhn/FlatButton"));
 var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_DIV = {

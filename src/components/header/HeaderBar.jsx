@@ -8,10 +8,10 @@ import {
 
 import useToggle from '../hooks/useToggle'
 
-import ModalButton from '../zhn-atoms/ModalButton';
-import FlatButton from '../zhn-atoms/FlatButton';
-import SvgSettings from '../zhn-atoms/svg/SvgSettings';
-import SvgInfo from '../zhn-atoms/svg/SvgInfo';
+import ModalButton from '../zhn/ModalButton';
+import FlatButton from '../zhn/FlatButton';
+import SvgSettings from '../zhn/svg/SvgSettings';
+import SvgInfo from '../zhn/svg/SvgInfo';
 
 import PaneTopics from './PaneTopics';
 import ProgressLoading from './ProgressLoading';

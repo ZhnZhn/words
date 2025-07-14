@@ -1,7 +1,7 @@
 import useBool from '../hooks/useBool';
 
-import BrowserCaption from '../zhn-atoms/BrowserCaption';
-import ScrollPane from '../zhn-atoms/ScrollPane';
+import BrowserCaption from '../zhn/BrowserCaption';
+import ScrollPane from '../zhn/ScrollPane';
 import Link from '../links/Links';
 import IconLogoBar from './IconLogoBar';
 

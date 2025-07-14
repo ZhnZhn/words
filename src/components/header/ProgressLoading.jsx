@@ -12,7 +12,7 @@ import {
   useLoading
 } from '../../flux/itemStore';
 
-import ProgressLine from '../zhn-atoms/ProgressLine';
+import ProgressLine from '../zhn/ProgressLine';
 
 const COLOR_LOADING = '#2f7ed8'
 , COLOR_FAILED = '#ed5813';

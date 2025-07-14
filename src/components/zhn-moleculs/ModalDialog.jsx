@@ -5,8 +5,8 @@ import { useKeyEscape } from '../hooks/fUseKey';
 import useDialogFocus from './useDialogFocus';
 
 import FocusTrap from './FocusTrap';
-import BrowserCaption from '../zhn-atoms/BrowserCaption';
-import FlatButton from '../zhn-atoms/FlatButton';
+import BrowserCaption from '../zhn/BrowserCaption';
+import FlatButton from '../zhn/FlatButton';
 
 const CL_MD = 'modal-dialog'
 , CL_MODAL_DIALOG = `${CL_MD} dialog`

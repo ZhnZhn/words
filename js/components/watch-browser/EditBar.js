@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _Button = _interopRequireDefault(require("../zhn-atoms/button/Button"));
+var _Button = _interopRequireDefault(require("../zhn/button/Button"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT = "bt__watch__bar",
   S_MB_10 = {

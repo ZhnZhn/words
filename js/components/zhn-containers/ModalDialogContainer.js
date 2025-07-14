@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _compStore = require("../../flux/compStore");
-var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
+var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const _crDialogItem = (_ref, index, _ref2) => {
@@ -80,6 +80,5 @@ const ModalDialogContainer = _ref3 => {
     })
   });
 };
-var _default = ModalDialogContainer;
-exports.default = _default;
+var _default = exports.default = ModalDialogContainer;
 //# sourceMappingURL=ModalDialogContainer.js.map

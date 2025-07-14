@@ -2,11 +2,11 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.default = void 0;
-var _FlatButton = _interopRequireDefault(require("../zhn-atoms/FlatButton"));
+exports.ButtonPrimary = exports.ButtonClose = exports.ButtonClear = void 0;
+var _FlatButton = _interopRequireDefault(require("../zhn/FlatButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_DIV = 'bt-flat__div';
-const Clear = _ref => {
+const ButtonClear = _ref => {
   let {
     style,
     onClick
@@ -19,7 +19,8 @@ const Clear = _ref => {
     onClick: onClick
   });
 };
-const Close = _ref2 => {
+exports.ButtonClear = ButtonClear;
+const ButtonClose = _ref2 => {
   let {
     style,
     onClick
@@ -32,7 +33,8 @@ const Close = _ref2 => {
     onClick: onClick
   });
 };
-const Primary = _ref3 => {
+exports.ButtonClose = ButtonClose;
+const ButtonPrimary = _ref3 => {
   let {
     style,
     caption,
@@ -47,11 +49,5 @@ const Primary = _ref3 => {
     onClick: onClick
   });
 };
-var _default = {
-  Primary,
-  Clear,
-  Close,
-  Flat: _FlatButton.default
-};
-exports.default = _default;
+exports.ButtonPrimary = ButtonPrimary;
 //# sourceMappingURL=Button.js.map

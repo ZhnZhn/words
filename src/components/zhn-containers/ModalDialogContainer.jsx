@@ -7,7 +7,7 @@ import {
   useMdOption
 } from '../../flux/compStore';
 
-import ItemStack from '../zhn-atoms/ItemStack';
+import ItemStack from '../zhn/ItemStack';
 import ModalContainer from './ModalContainer';
 
 const _crDialogItem = (

@@ -1,5 +1,5 @@
-import OpenClose from '../../zhn-atoms/OpenClose';
-import ListSpan from '../../zhn-atoms/ListSpan';
+import OpenClose from '../../zhn/OpenClose';
+import ListSpan from '../../zhn/ListSpan';
 
 const COLOR_FILL_OPEN = "#80c040"
 , S_OPEN_CLOSE = {

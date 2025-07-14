@@ -1,5 +1,5 @@
-import OpenClose from '../../zhn-atoms/OpenClose';
-import SafeToken from '../../zhn-atoms/SafeToken';
+import OpenClose from '../../zhn/OpenClose';
+import SafeToken from '../../zhn/SafeToken';
 import WordSyn from './WordSyn';
 import WordNyms from './WordNyms';
 

@@ -1,6 +1,6 @@
 import { bindTo } from '../uiApi';
 
-import isKeyEnter from '../zhn-atoms/isKeyEnter';
+import isKeyEnter from '../zhn/isKeyEnter';
 
 const _isFn = fn => typeof fn === 'function'
 , _isNaN = Number.isNaN

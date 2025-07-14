@@ -1,4 +1,4 @@
-import ShowHide from '../../zhn-atoms/ShowHide';
+import ShowHide from '../../zhn/ShowHide';
 import DefinitionList from './DefinitionList';
 
 const WordDef = ({

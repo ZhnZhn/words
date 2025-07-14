@@ -4,8 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
-var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
+var _MenuItem = _interopRequireDefault(require("../zhn/MenuItem"));
+var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const ItemsStack = _ref2 => {

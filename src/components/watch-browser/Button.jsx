@@ -1,4 +1,4 @@
-import FlatButton from '../zhn-atoms/FlatButton';
+import FlatButton from '../zhn/FlatButton';
 
 const CL_DIV = 'bt-flat__div'
 

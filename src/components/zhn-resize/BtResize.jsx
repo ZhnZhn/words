@@ -1,4 +1,4 @@
-import Svg100 from '../zhn-atoms/svg/Svg100';
+import Svg100 from '../zhn/svg/Svg100';
 
 const CL_BT_RESIZE = "bt-resize select-none";
 

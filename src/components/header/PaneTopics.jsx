@@ -5,8 +5,8 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import MenuItem from '../zhn-atoms/MenuItem';
-import ShowHide from '../zhn-atoms/ShowHide';
+import MenuItem from '../zhn/MenuItem';
+import ShowHide from '../zhn/ShowHide';
 import ModalPane from '../zhn-moleculs/ModalPane';
 
 const ItemsStack = ({

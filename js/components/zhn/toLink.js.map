@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn/toLink.js"
+ ],
+ "file": "../../../src/components/zhn/toLink.js",
+ "names": [
+  "toLink",
+  "href",
+  "isHttp",
+  "protocol",
+  "split",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AACA,MAAMA,MAAM,GAAGA,CAACC,IAAI,EAAEC,MAAM,KAAK;EAC/B,MAAMC,QAAQ,GAAG,CAACF,IAAI,IAAI,EAAE,EAC1BG,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC;EACjB,OAAOD,QAAQ,KAAK,OAAO,IACnBD,MAAM,IAAIC,QAAQ,KAAK,MAAO,GACnCF,IAAI,GACJ,KAAK,CAAC;AACX,CAAC;AAAC,IAAAI,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaP,MAAM"
+}

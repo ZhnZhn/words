@@ -2,8 +2,8 @@
 import { useEffectSyncRef } from '../hooks/useFocus';
 
 import InputSelect from '../zhn-m-input/InputSelect';
-import InputSwitch from '../zhn-atoms/InputSwitch';
-import FlatButton from '../zhn-atoms/FlatButton';
+import InputSwitch from '../zhn/InputSwitch';
+import FlatButton from '../zhn/FlatButton';
 
 const CL_DIV = 'bt-flat__div'
 , S_SELECT = {

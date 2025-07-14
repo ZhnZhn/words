@@ -5,10 +5,10 @@ import {
 
 import useBool from '../hooks/useBool';
 
-import Browser from '../zhn-atoms/Browser';
-import BrowserCaption from '../zhn-atoms/BrowserCaption';
-import ScrollPane from '../zhn-atoms/ScrollPane';
-import SpinnerLoading from '../zhn-atoms/SpinnerLoading';
+import Browser from '../zhn/Browser';
+import BrowserCaption from '../zhn/BrowserCaption';
+import ScrollPane from '../zhn/ScrollPane';
+import SpinnerLoading from '../zhn/SpinnerLoading';
 
 import MenuPart from './MenuPart';
 

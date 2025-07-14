@@ -1,6 +1,6 @@
-import withProps from '../hoc/withProps'
+import withProps from '../hoc/withProps';
 
-import BaseComp from '../zhn-atoms/Link'
+import BaseComp from '../zhn/Link'
 
 const WordsApi = withProps({
   title: "WordsApi",
