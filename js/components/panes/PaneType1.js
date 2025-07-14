@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _CircleButton = _interopRequireDefault(require("../zhn/button/CircleButton"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
@@ -11,7 +12,6 @@ var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
 var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
-var _ContainerStyle = require("../styles/ContainerStyle");
 var _wordConfig = require("./wordConfig");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
@@ -151,7 +151,7 @@ const PaneType1 = _ref2 => {
       setWord(item.caption);
     }
   });
-  const [_showStyle, _showCl] = (0, _ContainerStyle.crShowHideInlineIf)(isShow, CL_PANE_T1);
+  const [_showStyle, _showCl] = (0, _styleFn.crShowHideInlineIf)(isShow, CL_PANE_T1);
   return (0, _jsxRuntime.jsxs)("div", {
     ref: _refRootEl,
     className: _showCl,

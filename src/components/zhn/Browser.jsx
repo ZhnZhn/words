@@ -1,4 +1,4 @@
-import { crShowHideIf } from '../styles/ContainerStyle';
+import { crShowHideIf } from '../styleFn';
 
 const CL_BROWSER = 'browser';
 

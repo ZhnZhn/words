@@ -43,3 +43,19 @@ export const crShowHide = (
       className,
       S_NONE
     ]
+
+const CL_CONTAINER_SHOW_POPUP = `container ${CL_SHOW_POPUP}`
+, S_INLINE_BLOCK = _crDisplayStyle("inline-block")
+
+const _fCrShowHideIf = (showStyle) => (
+  isShow,
+  CL
+) => isShow
+? [
+   showStyle,
+   `${CL_CONTAINER_SHOW_POPUP} ${CL}`
+  ]
+: [S_NONE];
+
+export const crShowHideIf = _fCrShowHideIf(S_BLOCK)
+export const crShowHideInlineIf = _fCrShowHideIf(S_INLINE_BLOCK)

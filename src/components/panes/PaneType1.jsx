@@ -9,6 +9,10 @@ import {
   getRefElementStyle
 } from '../uiApi';
 
+import {
+  crShowHideInlineIf
+} from '../styleFn';
+
 import useToggle from '../hooks/useToggle';
 
 import CircleButton from '../zhn/button/CircleButton';
@@ -16,9 +20,8 @@ import BrowserCaption from '../zhn/BrowserCaption';
 import ScrollPane from '../zhn/ScrollPane';
 import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
-import crModelMore from './crModelMore';
 
-import { crShowHideInlineIf } from '../styles/ContainerStyle';
+import crModelMore from './crModelMore';
 import { INITIAL_WORD } from './wordConfig';
 
 const RESIZE_INIT_WIDTH = 535

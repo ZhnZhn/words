@@ -3,12 +3,12 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
 var _Links = _interopRequireDefault(require("../links/Links"));
 var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
-var _ContainerStyle = require("../styles/ContainerStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_ABOUT = 'about',
   S_SCROLL_DIV = {
@@ -44,7 +44,7 @@ const About = _ref => {
       closeAbout();
     }
   });
-  const [_style, _className] = (0, _ContainerStyle.crShowHideIf)(isShow, CL_ABOUT);
+  const [_style, _className] = (0, _styleFn.crShowHideIf)(isShow, CL_ABOUT);
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: _style,

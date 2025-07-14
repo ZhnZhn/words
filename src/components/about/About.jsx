@@ -1,11 +1,10 @@
+import { crShowHideIf } from '../styleFn';
 import useBool from '../hooks/useBool';
 
 import BrowserCaption from '../zhn/BrowserCaption';
 import ScrollPane from '../zhn/ScrollPane';
 import Link from '../links/Links';
 import IconLogoBar from './IconLogoBar';
-
-import { crShowHideIf } from '../styles/ContainerStyle';
 
 const CL_ABOUT = 'about'
 , S_SCROLL_DIV = {
