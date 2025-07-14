@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.S_NONE = exports.S_BLOCK = exports.CL_SHOW_POPUP = void 0;
+exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.S_NONE = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_BT_FLAT_DIV = void 0;
 const isArr = Array.isArray;
 const _getCn = arrOrStr => isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (arrOrStr1, arrOrStr2) => {
@@ -10,6 +10,7 @@ const crCn = (arrOrStr1, arrOrStr2) => {
   return _cl1 ? _cl2 ? `${_cl1} ${_cl2}` : _cl1 : _cl2 || void 0;
 };
 exports.crCn = crCn;
+const CL_BT_FLAT_DIV = exports.CL_BT_FLAT_DIV = "bt-flat__div";
 const CL_SHOW_POPUP = exports.CL_SHOW_POPUP = "show-popup";
 const _fCrStyle = propName => value => ({
     [propName]: value

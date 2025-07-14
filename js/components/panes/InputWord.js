@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
-var _CL = require("../styles/CL");
+var _styleFn = require("../styleFn");
 var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 var _ButtonClear = _interopRequireDefault(require("../zhn/ButtonClear"));
 var _FlatButton = _interopRequireDefault(require("../zhn/FlatButton"));
@@ -68,7 +68,7 @@ const InputWord = _ref => {
       caption: "Load",
       tabIndex: -1,
       rootStyle: S_BT_LOAD,
-      clDiv: _CL.CL_BT_FLAT_DIV,
+      clDiv: _styleFn.CL_BT_FLAT_DIV,
       isPrimary: true,
       onClick: onEnter
     })]

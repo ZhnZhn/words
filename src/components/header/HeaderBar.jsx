@@ -6,7 +6,9 @@ import {
   setRefValue
 } from '../uiApi';
 
-import useToggle from '../hooks/useToggle'
+import { CL_BT_FLAT_DIV } from '../styleFn';
+
+import useToggle from '../hooks/useToggle';
 
 import ModalButton from '../zhn/ModalButton';
 import FlatButton from '../zhn/FlatButton';
@@ -19,7 +21,6 @@ import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
 import LimitLabel from './LimitLabel';
 import { APP_TITLE } from '../titles';
-import { CL_BT_FLAT_DIV } from '../styles/CL';
 
 const CL_QUERY_ITEM = "row__topic"
 , CL_HEADER = "header"

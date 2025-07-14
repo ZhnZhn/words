@@ -17,6 +17,7 @@ export const crCn = (
     : _cl2 || void 0 ;
 }
 
+export const CL_BT_FLAT_DIV = "bt-flat__div"
 export const CL_SHOW_POPUP = "show-popup"
 
 const _fCrStyle = propName => value => ({

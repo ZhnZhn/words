@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _ModalButton = _interopRequireDefault(require("../zhn/ModalButton"));
 var _FlatButton = _interopRequireDefault(require("../zhn/FlatButton"));
@@ -15,7 +16,6 @@ var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _LimitLabel = _interopRequireDefault(require("./LimitLabel"));
 var _titles = require("../titles");
-var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_QUERY_ITEM = "row__topic",
   CL_HEADER = "header",
@@ -82,7 +82,7 @@ const HeaderBar = _ref => {
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
       children: (0, _jsxRuntime.jsx)(_ModalButton.default, {
-        clDiv: _CL.CL_BT_FLAT_DIV,
+        clDiv: _styleFn.CL_BT_FLAT_DIV,
         caption: "Topics",
         title: "Topics",
         accessKey: "t",
@@ -96,7 +96,7 @@ const HeaderBar = _ref => {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
         className: CL_SETTINGS,
-        clDiv: _CL.CL_BT_FLAT_DIV,
+        clDiv: _styleFn.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
         title: "User Settings Dialog",
         accessKey: "s",
@@ -106,7 +106,7 @@ const HeaderBar = _ref => {
         })
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
         className: CL_BT_ABOUT,
-        clDiv: _CL.CL_BT_FLAT_DIV,
+        clDiv: _styleFn.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
         title: "About Words",
         accessKey: "a",

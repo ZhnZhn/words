@@ -9,7 +9,7 @@ import {
 } from '../uiApi';
 
 import { HAS_TOUCH_EVENTS } from '../has';
-import { CL_BT_FLAT_DIV } from '../styles/CL';
+import { CL_BT_FLAT_DIV } from '../styleFn';
 
 import TextField from '../zhn-m-input/TextField';
 import ButtonClear from '../zhn/ButtonClear';
