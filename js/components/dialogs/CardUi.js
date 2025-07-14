@@ -9,30 +9,19 @@ var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"))
 var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
 var _FlatButton = _interopRequireDefault(require("../zhn/FlatButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
-//import PropTypes from "prop-types";
-
 const S_INPUT_SELECT = {
     width: 288
   },
   S_SWITCH = {
     padding: '28px 34px 0 23px'
-  },
-  THEME_OPTIONS = [{
-    caption: 'Grey',
-    value: 'GREY'
-  }, {
-    caption: 'Sand',
-    value: 'SAND'
-  }, {
-    caption: 'White',
-    value: 'WHITE'
-  }],
-  DF_THEME = THEME_OPTIONS[0];
+  };
 const CardUi = _ref => {
   let {
     isSelected,
     style,
     buttonsStyle,
+    uiThemeOptions,
+    dfUiThemeItem,
     setRefFocusLast,
     onSetTheme,
     onCheckAutoSave,
@@ -46,8 +35,8 @@ const CardUi = _ref => {
       id: "ui-th",
       style: S_INPUT_SELECT,
       caption: "Theme (Default: Grey)",
-      initItem: DF_THEME,
-      options: THEME_OPTIONS,
+      initItem: dfUiThemeItem,
+      options: uiThemeOptions,
       onSelect: onSetTheme
     }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
       initialValue: true,
@@ -67,16 +56,5 @@ const CardUi = _ref => {
     })]
   });
 };
-
-/*
-CardUi.propTypes = {
-  style: PropTypes.object,
-  buttonsStyle: PropTypes.object,
-  onSetTheme: PropTypes.func,
-  onCheckAutoSave: PropTypes.func,
-  onUncheckAutoSave: PropTypes.func,
-  onClose: PropTypes.func
-}
-*/
 var _default = exports.default = CardUi;
 //# sourceMappingURL=CardUi.js.map

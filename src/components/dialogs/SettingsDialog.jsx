@@ -5,8 +5,11 @@ import {
 } from '../uiApi';
 
 import {
+  UI_THEME_OPTIONS,
+  DF_UI_THEME_ITEM,
   setUiTheme
-} from '../styles/theme';
+} from '../uiTheme';
+
 import {
   enableAutoSave,
   disableAutoSave
@@ -85,6 +88,8 @@ const SettingsDialog = ({
         </Tab>
         <Tab title="UI Theme">
            <CardUi
+             uiThemeOptions={UI_THEME_OPTIONS}
+             dfUiThemeItem={DF_UI_THEME_ITEM}
              onSetTheme={_selectTheme}
              onCheckAutoSave={enableAutoSave}
              onUncheckAutoSave={disableAutoSave}

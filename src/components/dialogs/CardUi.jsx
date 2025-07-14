@@ -1,4 +1,3 @@
-//import PropTypes from "prop-types";
 import { CL_BT_FLAT_DIV } from '../styleFn';
 import { useEffectSyncRef } from '../hooks/useFocus';
 
@@ -11,18 +10,14 @@ const S_INPUT_SELECT = {
 }
 , S_SWITCH = {
   padding: '28px 34px 0 23px'
-}
-, THEME_OPTIONS = [
-  { caption: 'Grey', value: 'GREY' },
-  { caption: 'Sand', value: 'SAND' },
-  { caption: 'White', value: 'WHITE' }
-]
-, DF_THEME = THEME_OPTIONS[0];
+};
 
 const CardUi = ({
   isSelected,
   style,
   buttonsStyle,
+  uiThemeOptions,
+  dfUiThemeItem,
   setRefFocusLast,
   onSetTheme,
   onCheckAutoSave,
@@ -39,8 +34,8 @@ const CardUi = ({
         id="ui-th"
         style={S_INPUT_SELECT}
         caption="Theme (Default: Grey)"
-        initItem={DF_THEME}
-        options={THEME_OPTIONS}
+        initItem={dfUiThemeItem}
+        options={uiThemeOptions}
         onSelect={onSetTheme}
       />
       <InputSwitch
@@ -62,16 +57,5 @@ const CardUi = ({
     </div>
   );
 }
-
-/*
-CardUi.propTypes = {
-  style: PropTypes.object,
-  buttonsStyle: PropTypes.object,
-  onSetTheme: PropTypes.func,
-  onCheckAutoSave: PropTypes.func,
-  onUncheckAutoSave: PropTypes.func,
-  onClose: PropTypes.func
-}
-*/
 
 export default CardUi

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _theme = require("../styles/theme");
+var _uiTheme = require("../uiTheme");
 var _settingStore = require("../../flux/settingStore");
 var _useFocus = require("../hooks/useFocus");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
@@ -42,7 +42,7 @@ const SettingsDialog = _ref => {
     _refSetKey1 = (0, _uiApi.useRef)(data.key1),
     _ref1 = (0, _uiApi.useRef)(),
     _selectTheme = (0, _uiApi.useCallback)(item => {
-      (0, _theme.setUiTheme)((item || {}).value);
+      (0, _uiTheme.setUiTheme)((item || {}).value);
     }, []),
     _hSetAndClose = (0, _uiApi.useCallback)(() => {
       (0, _uiApi.getRefValue)(_refSetKey1)((0, _uiApi.getRefValue)(_ref1).getValue());
@@ -71,6 +71,8 @@ const SettingsDialog = _ref => {
       }), (0, _jsxRuntime.jsx)(_Tab.default, {
         title: "UI Theme",
         children: (0, _jsxRuntime.jsx)(_CardUi.default, {
+          uiThemeOptions: _uiTheme.UI_THEME_OPTIONS,
+          dfUiThemeItem: _uiTheme.DF_UI_THEME_ITEM,
           onSetTheme: _selectTheme,
           onCheckAutoSave: _settingStore.enableAutoSave,
           onUncheckAutoSave: _settingStore.disableAutoSave
