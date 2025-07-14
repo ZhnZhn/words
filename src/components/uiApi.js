@@ -1,7 +1,5 @@
 export { bindTo } from '../utils/bindTo';
 
-export { crCn } from './zhn-utils/crCn';
-
 export {
   render,
 

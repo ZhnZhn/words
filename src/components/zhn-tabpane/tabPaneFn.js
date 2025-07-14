@@ -1,4 +1,4 @@
-import { crCn } from '../uiApi';
+import { crCn } from '../styleFn';
 
 export const CL_TAB = 'tab'
 , CL_TAB_SELECTED = `${CL_TAB}--selected`

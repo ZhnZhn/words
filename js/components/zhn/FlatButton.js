@@ -3,11 +3,11 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_BT = 'bt-flat',
-  CL_BT_SPAN = 'bt-flat__span';
+const CL_BT_FLAT = "bt-flat",
+  CL_BT_SPAN = `${CL_BT_FLAT}__span`;
 const FlatButton = _ref => {
   let {
     refBt,
@@ -24,7 +24,7 @@ const FlatButton = _ref => {
   return (0, _jsxRuntime.jsx)("button", {
     ref: refBt,
     type: "button",
-    className: (0, _uiApi.crCn)(CL_BT, className),
+    className: (0, _styleFn.crCn)(CL_BT_FLAT, className),
     style: rootStyle,
     tabIndex: 0,
     title: title,

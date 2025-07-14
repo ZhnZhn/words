@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_DIV = "hrz-container";
 const _isInCont = (arrComps, comp) => {
@@ -13,10 +14,10 @@ const _isInCont = (arrComps, comp) => {
   let i = 0;
   for (i; i < _max; i++) {
     if (arrComps[i].key === key) {
-      return true;
+      return !0;
     }
   }
-  return false;
+  return !1;
 };
 const HrzContainer = _ref => {
   let {
@@ -34,10 +35,9 @@ const HrzContainer = _ref => {
     }
   });
   return (0, _jsxRuntime.jsx)("div", {
-    className: (0, _uiApi.crCn)(CL_DIV, className),
+    className: (0, _styleFn.crCn)(CL_DIV, className),
     children: comps
   });
 };
-var _default = HrzContainer;
-exports.default = _default;
+var _default = exports.default = HrzContainer;
 //# sourceMappingURL=HrzContainer.js.map

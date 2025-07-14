@@ -1,4 +1,4 @@
-import { crCn } from '../uiApi';
+import { crCn } from '../styleFn';
 
 const CL_SCROLL = 'with-scroll';
 

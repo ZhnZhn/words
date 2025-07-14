@@ -2,15 +2,8 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SHOW_POPUP = 'show-popup',
-  S_SHOW = {
-    display: 'block'
-  },
-  S_HIDE = {
-    display: 'none'
-  };
 const ShowHide = _ref => {
   let {
     isShow,
@@ -20,8 +13,8 @@ const ShowHide = _ref => {
     children,
     onKeyDown
   } = _ref;
-  const _style = isShow ? S_SHOW : S_HIDE,
-    _className = (0, _uiApi.crCn)(className, [isShow, CL_SHOW_POPUP]);
+  const _style = isShow ? _styleFn.S_BLOCK : _styleFn.S_NONE,
+    _className = (0, _styleFn.crCn)(className, [isShow, _styleFn.CL_SHOW_POPUP]);
   return (0, _jsxRuntime.jsx)("div", {
     role: "presentation",
     className: _className,

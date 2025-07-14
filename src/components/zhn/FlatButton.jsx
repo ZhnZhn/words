@@ -1,8 +1,8 @@
-import { crCn } from '../uiApi';
+import { crCn } from '../styleFn';
 import CaptionInput from './CaptionInput';
 
-const CL_BT = 'bt-flat'
-, CL_BT_SPAN = 'bt-flat__span';
+const CL_BT_FLAT = "bt-flat"
+, CL_BT_SPAN = `${CL_BT_FLAT}__span`;
 
 const FlatButton = ({
   refBt,
@@ -19,7 +19,7 @@ const FlatButton = ({
   <button
     ref={refBt}
     type="button"
-    className={crCn(CL_BT, className)}
+    className={crCn(CL_BT_FLAT, className)}
     style={rootStyle}
     tabIndex={0}
     title={title}

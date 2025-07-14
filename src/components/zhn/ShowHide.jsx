@@ -1,8 +1,9 @@
-import { crCn } from '../uiApi';
-
-const CL_SHOW_POPUP = 'show-popup'
-, S_SHOW = { display: 'block' }
-, S_HIDE = { display: 'none' };
+import {
+  crCn,
+  CL_SHOW_POPUP,
+  S_BLOCK,
+  S_NONE
+ } from '../styleFn';
 
 const ShowHide = ({
   isShow,
@@ -13,7 +14,7 @@ const ShowHide = ({
   onKeyDown
 }) => {
     const _style = isShow
-      ? S_SHOW : S_HIDE
+      ? S_BLOCK : S_NONE
     , _className = crCn(className,
       [isShow, CL_SHOW_POPUP]
     );

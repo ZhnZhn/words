@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SCROLL = 'with-scroll';
 const ScrollPane = _ref => {
@@ -12,7 +12,7 @@ const ScrollPane = _ref => {
     children
   } = _ref;
   return (0, _jsxRuntime.jsx)("div", {
-    className: (0, _uiApi.crCn)(className, CL_SCROLL),
+    className: (0, _styleFn.crCn)(className, CL_SCROLL),
     style: style,
     children: children
   });
