@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _useFocus = require("../hooks/useFocus");
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
@@ -10,11 +11,8 @@ var _FlatButton = _interopRequireDefault(require("../zhn/FlatButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from "prop-types";
 
-const CL_DIV = 'bt-flat__div',
-  S_SELECT = {
-    ROOT: {
-      width: 288
-    }
+const S_INPUT_SELECT = {
+    width: 288
   },
   S_SWITCH = {
     padding: '28px 34px 0 23px'
@@ -46,7 +44,7 @@ const CardUi = _ref => {
     style: style,
     children: [(0, _jsxRuntime.jsx)(_InputSelect.default, {
       id: "ui-th",
-      styleConfig: S_SELECT,
+      style: S_INPUT_SELECT,
       caption: "Theme (Default: Grey)",
       initItem: DF_THEME,
       options: THEME_OPTIONS,
@@ -61,7 +59,7 @@ const CardUi = _ref => {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_FlatButton.default, {
         refBt: _refBtClose,
-        clDiv: CL_DIV,
+        clDiv: _styleFn.CL_BT_FLAT_DIV,
         caption: "Close",
         title: "Close Dialog",
         onClick: onClose

@@ -14,7 +14,6 @@ const SelectGroupList = props => {
   const {
       refEl,
       id,
-      inputStyle,
       getWatchListsByGroup,
       groupOptions,
       groupCaption,
@@ -64,14 +63,12 @@ const SelectGroupList = props => {
 
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(_RowInputSelect.default, {
-      id: id + "-g",
-      inputStyle: inputStyle,
+      id: `${id}-g`,
       caption: groupCaption,
       options: groupOptions,
       onSelect: _hSelectGroup
     }), (0, _jsxRuntime.jsx)(_RowInputSelect.default, {
-      id: id + "-l",
-      inputStyle: inputStyle,
+      id: `${id}-l`,
       caption: listCaption,
       options: listOptions,
       onSelect: _hSelectList

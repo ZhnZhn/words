@@ -1,17 +1,14 @@
 import InputSelect from '../zhn-m-input/InputSelect';
 
-const STYLE_CONFIG = {
-  ROOT: {
-    width: 250
-  }
+const S_INPUT_SELECT = {
+  width: 250
 };
 
 const RowInputSelect = (props) => (
    <InputSelect
-      styleConfig={STYLE_CONFIG}
+      style={S_INPUT_SELECT}
       {...props}
    />
 );
-
 
 export default RowInputSelect

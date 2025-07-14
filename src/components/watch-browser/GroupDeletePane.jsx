@@ -72,7 +72,6 @@ GroupDeletePane.propTypes = {
   forActionType: PropTypes.string,
   msgOnNotSelect: PropTypes.func,
 
-  inputStyle: PropTypes.object,
   btStyle: PropTypes.object,
 
   onDelete: PropTypes.func,

@@ -18,7 +18,6 @@ const SelectGroupList = (
   const {
     refEl,
     id,
-    inputStyle,
     getWatchListsByGroup,
     groupOptions,
     groupCaption,
@@ -80,14 +79,12 @@ const SelectGroupList = (
     <>
        <RowInputSelect
          id={`${id}-g`}
-         inputStyle={inputStyle}
          caption={groupCaption}
          options={groupOptions}
          onSelect={_hSelectGroup}
        />
        <RowInputSelect
-         id={`${id}-l`}
-         inputStyle={inputStyle}
+         id={`${id}-l`}         
          caption={listCaption}
          options={listOptions}
          onSelect={_hSelectList}

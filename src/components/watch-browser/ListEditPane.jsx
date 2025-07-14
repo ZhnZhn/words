@@ -102,7 +102,6 @@ ListEditPane.propTypes = {
   actionCompleted: PropTypes.string,
   forActionType: PropTypes.string,
 
-  inputStyle: PropTypes.object,
   btStyle: PropTypes.object,
 
   onRename: PropTypes.func,

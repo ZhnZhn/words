@@ -34,7 +34,7 @@ const InputSelect = ({
   initItem,
   caption,
   options,
-  styleConfig:TS,
+  style,
   onSelect
 }) => {
   const _refBtArrow = useRef()
@@ -80,7 +80,7 @@ const InputSelect = ({
     <div
       role="presentation"
       className={CL_SELECT}
-      style={TS.ROOT}
+      style={style}
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
@@ -92,7 +92,7 @@ const InputSelect = ({
          className={CL_SELECT_OPTIONS}
          item={item}
          options={options}
-         clItem={TS.CL_ITEM || CL_ITEM}
+         clItem={CL_ITEM}
          onSelect={_hSelect}
          onClose={_hCloseOptions}
        />

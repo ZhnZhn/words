@@ -10,13 +10,13 @@ var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SELECT = 'm-select',
-  CL_LABEL = CL_SELECT + "__label",
-  CL_DIV = CL_SELECT + "__div",
-  CL_DIV_VALUE = CL_DIV + "__value",
-  CL_DIV_BT = CL_DIV + "__bt",
-  CL_INPUT_LINE = CL_SELECT + "__line",
-  CL_SELECT_OPTIONS = CL_SELECT + "__options with-scroll",
-  CL_ITEM = CL_SELECT + "__item";
+  CL_LABEL = `${CL_SELECT}__label`,
+  CL_DIV = `${CL_SELECT}__div`,
+  CL_DIV_VALUE = `${CL_DIV}__value`,
+  CL_DIV_BT = `${CL_DIV}__bt`,
+  CL_INPUT_LINE = `${CL_SELECT}__line`,
+  CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`,
+  CL_ITEM = `${CL_SELECT}__item`;
 const DF_INIT_ITEM = {
   caption: void 0,
   value: void 0
@@ -27,7 +27,7 @@ const InputSelect = _ref => {
     initItem,
     caption,
     options,
-    styleConfig: TS,
+    style,
     onSelect
   } = _ref;
   const _refBtArrow = (0, _uiApi.useRef)(),
@@ -61,7 +61,7 @@ const InputSelect = _ref => {
   return (0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
     className: CL_SELECT,
-    style: TS.ROOT,
+    style: style,
     onClick: showOptions,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {
@@ -72,7 +72,7 @@ const InputSelect = _ref => {
       className: CL_SELECT_OPTIONS,
       item: item,
       options: options,
-      clItem: TS.CL_ITEM || CL_ITEM,
+      clItem: CL_ITEM,
       onSelect: _hSelect,
       onClose: _hCloseOptions
     }), (0, _jsxRuntime.jsxs)("div", {
@@ -91,6 +91,5 @@ const InputSelect = _ref => {
     })]
   });
 };
-var _default = InputSelect;
-exports.default = _default;
+var _default = exports.default = InputSelect;
 //# sourceMappingURL=InputSelect.js.map

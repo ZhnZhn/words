@@ -1,13 +1,13 @@
 //import PropTypes from "prop-types";
+import { CL_BT_FLAT_DIV } from '../styleFn';
 import { useEffectSyncRef } from '../hooks/useFocus';
 
 import InputSelect from '../zhn-m-input/InputSelect';
 import InputSwitch from '../zhn/InputSwitch';
 import FlatButton from '../zhn/FlatButton';
 
-const CL_DIV = 'bt-flat__div'
-, S_SELECT = {
-  ROOT: { width: 288 }
+const S_INPUT_SELECT = {
+  width: 288
 }
 , S_SWITCH = {
   padding: '28px 34px 0 23px'
@@ -37,7 +37,7 @@ const CardUi = ({
     <div style={style}>
       <InputSelect
         id="ui-th"
-        styleConfig={S_SELECT}
+        style={S_INPUT_SELECT}
         caption="Theme (Default: Grey)"
         initItem={DF_THEME}
         options={THEME_OPTIONS}
@@ -53,7 +53,7 @@ const CardUi = ({
       <div style={buttonsStyle}>
         <FlatButton
           refBt={_refBtClose}
-          clDiv={CL_DIV}
+          clDiv={CL_BT_FLAT_DIV}
           caption="Close"
           title="Close Dialog"
           onClick={onClose}

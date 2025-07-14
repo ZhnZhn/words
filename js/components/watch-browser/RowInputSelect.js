@@ -5,15 +5,12 @@ exports.__esModule = true;
 exports.default = void 0;
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const STYLE_CONFIG = {
-  ROOT: {
-    width: 250
-  }
+const S_INPUT_SELECT = {
+  width: 250
 };
 const RowInputSelect = props => (0, _jsxRuntime.jsx)(_InputSelect.default, {
-  styleConfig: STYLE_CONFIG,
+  style: S_INPUT_SELECT,
   ...props
 });
-var _default = RowInputSelect;
-exports.default = _default;
+var _default = exports.default = RowInputSelect;
 //# sourceMappingURL=RowInputSelect.js.map
