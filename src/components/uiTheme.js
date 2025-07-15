@@ -1,9 +1,15 @@
+const _crRgba = (
+  v,
+  a
+) => `rgba(${v}, ${v}, ${v}, ${a})`;
+
 const DF_BGC = "#808080";
 const DF_C_BGC = "#4d4d4d";
 const DF_BF_C = "#3270b4";
 const DF_IH_BGC = "#404040";
 const DF_SO_BGC = "#404040";
 const DF_SI_C = "#f8f8ff";
+const DF_SI_HF = _crRgba(255, 0.1)
 const DF_L_C = "#4d4d4d";
 
 const BG_HEADER_GREY = DF_BF_C
@@ -14,13 +20,15 @@ const PALLETE_GREY = {
   'ih-bgc': DF_IH_BGC,
   'so-bgc': DF_SO_BGC,
   'si-c': DF_SI_C,
+  'si-hf': DF_SI_HF,
   'l-c': DF_L_C
 };
 
 const _PALLETE_LIGHT = {
   'bgc': '#a9a9a9', //'darkgrey'
   'bf-c': '#0096c8',
-  'si-c': '#303030'
+  'si-c': '#303030',
+  'si-hf': _crRgba(255, 0.4)
 };
 const PALLETE_WHITE = {
   ..._PALLETE_LIGHT,
@@ -62,16 +70,17 @@ const CUSTOM_CSS_PROPERTY_CONFIGS = [
 
   ["so-bgc", DF_SO_BGC],
   ["si-c", DF_SI_C],
+  ["si-hf", DF_SI_HF],
 
   ["l-c", DF_L_C]
 ]
 
-const _setStyleProperties = (P) => {
+const _setStyleProperties = (uiThemePallete) => {
   const _style = document.body.style;
   CUSTOM_CSS_PROPERTY_CONFIGS.forEach(([propName, dfValue]) => {
     _style.setProperty(
        '--' + propName,
-       P[propName] || dfValue
+       uiThemePallete[propName] || dfValue
     )
   })
 };
