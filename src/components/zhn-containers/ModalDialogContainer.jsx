@@ -1,11 +1,11 @@
+import { isStr } from '../../utils/isTypeFn';
+
+import { useMdOption } from '../../flux/compStore';
+
 import {
   useState,
   useCallback
 } from '../uiApi';
-
-import {
-  useMdOption
-} from '../../flux/compStore';
 
 import ItemStack from '../zhn/ItemStack';
 import ModalContainer from './ModalContainer';
@@ -25,7 +25,6 @@ const _crDialogItem = (
   />
 );
 
-const _isStr = str => typeof str === 'string';
 const _getModalDialogType = option =>
  (option || {}).modalDialogType;
 
@@ -36,7 +35,7 @@ const ModalDialogContainer = ({
     state,
     setState
   ] = useState({
-     isShow: false,
+     isShow: !1,
      currentDialog: null,
      data: {},
      dialogs: []
@@ -49,14 +48,14 @@ const ModalDialogContainer = ({
   } = state
   , _hClose = useCallback(() => setState(prevState => ({
      ...prevState,
-     isShow: false,
+     isShow: !1,
      currentDialog: null
   })), []);
 
   useMdOption(option => {
     if (option){
       const type = _getModalDialogType(option);
-      if (_isStr(type)) {
+      if (isStr(type)) {
         setState(prevState => {
           if (!prevState.data[type]) {
             prevState.dialogs.push({
@@ -67,7 +66,7 @@ const ModalDialogContainer = ({
           prevState.data[type] = option;
           return {
             ...prevState,
-            isShow: true,
+            isShow: !0,
             currentDialog: type
           };
         })

@@ -3,8 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _compStore = require("../../flux/compStore");
+var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -24,14 +25,13 @@ const _crDialogItem = (_ref, index, _ref2) => {
     onClose: onClose
   }, type);
 };
-const _isStr = str => typeof str === 'string';
 const _getModalDialogType = option => (option || {}).modalDialogType;
 const ModalDialogContainer = _ref3 => {
   let {
     router
   } = _ref3;
   const [state, setState] = (0, _uiApi.useState)({
-      isShow: false,
+      isShow: !1,
       currentDialog: null,
       data: {},
       dialogs: []
@@ -44,13 +44,13 @@ const ModalDialogContainer = _ref3 => {
     } = state,
     _hClose = (0, _uiApi.useCallback)(() => setState(prevState => ({
       ...prevState,
-      isShow: false,
+      isShow: !1,
       currentDialog: null
     })), []);
   (0, _compStore.useMdOption)(option => {
     if (option) {
       const type = _getModalDialogType(option);
-      if (_isStr(type)) {
+      if ((0, _isTypeFn.isStr)(type)) {
         setState(prevState => {
           if (!prevState.data[type]) {
             prevState.dialogs.push({
@@ -61,7 +61,7 @@ const ModalDialogContainer = _ref3 => {
           prevState.data[type] = option;
           return {
             ...prevState,
-            isShow: true,
+            isShow: !0,
             currentDialog: type
           };
         });

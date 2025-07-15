@@ -1,7 +1,5 @@
+import { isStrNotBlank } from '../../utils/isTypeFn';
 import domSanitize from '../../utils/domSanitize';
-
-const _isNotEmptyStr = v => typeof v === 'string'
-  && v !== '';
 
 const SafeToken = ({
   as="span",
@@ -10,7 +8,7 @@ const SafeToken = ({
 }) => {
   const Comp = as
   , _token = domSanitize(token);
-  return _isNotEmptyStr(_token)
+  return isStrNotBlank(_token)
     ? (<Comp style={style}>{_token}</Comp>)
     : null;
 }
