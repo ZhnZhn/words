@@ -35,7 +35,11 @@ const CL_QUERY_ITEM = "row__topic",
     verticalAlign: 'middle',
     position: 'relative',
     top: -1
-  };
+  },
+  _crTopicItem = (caption, onClick) => ({
+    caption,
+    onClick
+  });
 const HeaderBar = _ref => {
   let {
     onSettings,
@@ -44,25 +48,13 @@ const HeaderBar = _ref => {
     onSources,
     onWatch
   } = _ref;
-  const [isTopics, toggleTopics] = (0, _useToggle.default)(),
-    _topicItems = (0, _uiApi.useMemo)(() => [{
-      caption: 'Words Definition',
-      onClick: onDefinition
-    }, {
-      caption: 'Words Sources',
-      onClick: onSources
-    }, {
-      caption: 'Watch Lists',
-      onClick: onWatch
-    }], [onDefinition, onSources, onWatch]),
+  const _topicItems = (0, _uiApi.useMemo)(() => [_crTopicItem('Words Definition', onDefinition), _crTopicItem('Words Sources', onSources), _crTopicItem('Watch Lists', onWatch)], [onDefinition, onSources, onWatch]),
+    [isTopics, toggleTopics] = (0, _useToggle.default)(),
     _refTopicsEl = (0, _uiApi.useRef)(),
-    _onRegTopics = (0, _uiApi.useCallback)(node => {
-      (0, _uiApi.setRefValue)(_refTopicsEl, node);
-    }, []),
     _hCloseTopics = (0, _uiApi.useCallback)(evt => {
       const _el = (0, _uiApi.getRefValue)(_refTopicsEl);
       if (_el && !_el.contains(evt.target)) {
-        toggleTopics(false);
+        toggleTopics(!1);
       }
     }, [toggleTopics]);
   return (0, _jsxRuntime.jsxs)("header", {
@@ -82,12 +74,11 @@ const HeaderBar = _ref => {
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
       children: (0, _jsxRuntime.jsx)(_ModalButton.default, {
-        clDiv: _styleFn.CL_BT_FLAT_DIV,
+        refEl: _refTopicsEl,
         caption: "Topics",
         title: "Topics",
         accessKey: "t",
         onClick: toggleTopics,
-        onReg: _onRegTopics,
         children: (0, _jsxRuntime.jsx)("span", {
           className: CL_ARROW_DOWN
         })

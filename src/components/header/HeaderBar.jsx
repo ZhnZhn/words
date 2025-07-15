@@ -3,7 +3,7 @@ import {
   useCallback,
   useMemo,
   getRefValue,
-  setRefValue
+  //setRefValue
 } from '../uiApi';
 
 import { CL_BT_FLAT_DIV } from '../styleFn';
@@ -41,7 +41,14 @@ const CL_QUERY_ITEM = "row__topic"
   verticalAlign: 'middle',
   position: 'relative',
   top: -1
-};
+}
+, _crTopicItem = (
+  caption,
+  onClick
+) => ({
+  caption,
+  onClick
+});
 
 const HeaderBar = ({
   onSettings,
@@ -50,23 +57,20 @@ const HeaderBar = ({
   onSources,
   onWatch
 }) => {
-  const [
+  const _topicItems = useMemo(() => [
+    _crTopicItem('Words Definition', onDefinition),
+    _crTopicItem('Words Sources', onSources),
+    _crTopicItem('Watch Lists', onWatch)
+  ], [onDefinition, onSources, onWatch])
+  , [
     isTopics,
     toggleTopics
   ] = useToggle()
-  , _topicItems = useMemo(() => [
-    { caption: 'Words Definition', onClick: onDefinition },
-    { caption: 'Words Sources', onClick: onSources },
-    { caption: 'Watch Lists', onClick: onWatch }
-  ], [onDefinition, onSources, onWatch])
   , _refTopicsEl = useRef()
-  , _onRegTopics = useCallback(node => {
-    setRefValue(_refTopicsEl, node)
-  }, [])
   , _hCloseTopics = useCallback(evt => {
     const _el = getRefValue(_refTopicsEl);
     if (_el && !_el.contains(evt.target)) {
-      toggleTopics(false)
+      toggleTopics(!1)
     }
   }, [toggleTopics]);
 
@@ -90,12 +94,11 @@ const HeaderBar = ({
        />
        <span className={CL_BROWSER_BTS}>
          <ModalButton
-            clDiv={CL_BT_FLAT_DIV}
+            refEl={_refTopicsEl}
             caption="Topics"
             title="Topics"
             accessKey="t"
             onClick={toggleTopics}
-            onReg={_onRegTopics}
          >
           <span className={CL_ARROW_DOWN} />
         </ModalButton>
