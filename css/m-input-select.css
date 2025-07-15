@@ -126,14 +126,16 @@
 
   line-height: 2;
   padding-left: 16px;
-  cursor: pointer; 
+  outline: 0;
 }
 
 .m-select__item[aria-selected=true] {
   color: #80c040;
 }
-.m-select__item:hover, 
-.m-select__item:focus {
-  background-color: rgba(0, 0, 0, 0.25); 
-  /*background-color: var(--msi-fh, rgba(48, 48, 48, 0.4));*/
+
+.m-select__item:focus-visible,
+.m-select__item:focus,
+.m-select__item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--si-hf, rgba(48, 48, 48, 0.4));
 }

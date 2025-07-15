@@ -4,8 +4,9 @@
    --bf-c: #3270b4;   /*FlatButton color, Header background-color, -webkit-srollbar-track-piace background-color*/
    --ih-bgc: #404040; /*Item header background-color*/
 
-   --so-bgc: #404040; /*Select options background-color*/
-   --si-c: #f8f8ff;   /*Select item color*/
+   --so-bgc: #404040;                  /*Select options background-color*/
+   --si-c: #f8f8ff;                    /*Select item color*/
+   --si-hf: rgba(255, 255, 255, 0.1);  /*Select item hover focus background-color*/
 
    --l-c: #4d4d4d;    /*Logo color*/
  }
