@@ -1,5 +1,5 @@
 import { isFn } from '../../utils/isTypeFn';
-import { bindTo } from '../uiApi';
+import { bindTo } from '../../utils/bindTo';
 
 import isKeyEnter from '../zhn/isKeyEnter';
 

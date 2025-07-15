@@ -1,7 +1,5 @@
 import { isFn } from '../utils/isTypeFn';
 
-export { bindTo } from '../utils/bindTo';
-
 export {
   render,
 

@@ -1,4 +1,4 @@
-import { bindTo } from '../uiApi';
+import { bindTo } from '../../utils/bindTo';
 
 const useDnDHandlers = ({
   isDraggable,
@@ -10,7 +10,7 @@ const useDnDHandlers = ({
   onDragLeave
 }) => isDraggable
   ? {
-      draggable: true,
+      draggable: !0,
       onDragStart: bindTo(onDragStart, option),
       onDrop: bindTo(onDrop, option),
       onDragEnter,

@@ -1,6 +1,6 @@
 //import PropTypes from 'prop-types'
 import { isFn } from '../../utils/isTypeFn';
-import { bindTo } from '../uiApi';
+import { bindTo } from '../../utils/bindTo';
 
 import isKeyEnter from '../zhn/isKeyEnter'
 import OpenClose from '../zhn/OpenClose'
@@ -21,8 +21,7 @@ const _renderMenuItems = function(option){
     onClickItem,
     ...restOption
   } = option;
-  return items.map((item, index) => {
-    //const _className = crCn(TS.CL_ROW, CL_NOT_S)
+  return items.map((item, index) => {    
     const _itemConf = hmItems[item.id]
     , { menuTitle} = _itemConf;
 
@@ -35,7 +34,7 @@ const _renderMenuItems = function(option){
          key={index}
          role="menuitem"
          tabIndex="0"
-         className={CL_ROW_ITEM}        
+         className={CL_ROW_ITEM}
          onClick={_onClick}
          onKeyDown={bindTo(_hKeyDown, _onClick)}
         >

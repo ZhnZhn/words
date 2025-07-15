@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
-var _uiApi = require("../uiApi");
+var _bindTo = require("../../utils/bindTo");
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const SUB_MENU = 'sub',
@@ -52,7 +52,7 @@ const MenuItemList = _ref2 => {
           isClose,
           onClick
         } = item,
-        _onClick = type === SUB_MENU ? (0, _uiApi.bindTo)(onNextPage, id, name, pageNumber) : _fClick(isClose, onClick, onClose),
+        _onClick = type === SUB_MENU ? (0, _bindTo.bindTo)(onNextPage, id, name, pageNumber) : _fClick(isClose, onClick, onClose),
         _onReg = index === 0 ? onReg : void 0;
       return (0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
         className: cn || itemCl,

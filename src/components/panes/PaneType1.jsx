@@ -1,6 +1,7 @@
 //import PropTypes from 'prop-types'
+import { bindTo } from '../../utils/bindTo';
+
 import {
-  bindTo,
   useRef,
   useState,
   useMemo,

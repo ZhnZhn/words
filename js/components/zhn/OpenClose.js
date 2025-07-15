@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _Svg = _interopRequireDefault(require("./svg/Svg"));
@@ -73,8 +74,8 @@ const OpenClose = _ref => {
     /*eslint-disable react-hooks/exhaustive-deps */,
     _dndOption = (0, _uiApi.useMemo)(() => isDraggable ? {
       draggable: true,
-      onDragStart: (0, _uiApi.bindTo)(onDragStart, option),
-      onDrop: (0, _uiApi.bindTo)(onDrop, option),
+      onDragStart: (0, _bindTo.bindTo)(onDragStart, option),
+      onDrop: (0, _bindTo.bindTo)(onDrop, option),
       onDragEnter,
       onDragOver,
       onDragLeave

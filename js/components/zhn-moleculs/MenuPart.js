@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
-var _uiApi = require("../uiApi");
+var _bindTo = require("../../utils/bindTo");
 var _isKeyEnter = _interopRequireDefault(require("../zhn/isKeyEnter"));
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -25,19 +25,18 @@ const _renderMenuItems = function (option) {
     ...restOption
   } = option;
   return items.map((item, index) => {
-    //const _className = crCn(TS.CL_ROW, CL_NOT_S)
     const _itemConf = hmItems[item.id],
       {
         menuTitle
       } = _itemConf;
     _assign(_itemConf, restOption);
-    const _onClick = (0, _isTypeFn.isFn)(onClickItem) ? (0, _uiApi.bindTo)(onClickItem, _itemConf) : void 0;
+    const _onClick = (0, _isTypeFn.isFn)(onClickItem) ? (0, _bindTo.bindTo)(onClickItem, _itemConf) : void 0;
     return (0, _jsxRuntime.jsx)("div", {
       role: "menuitem",
       tabIndex: "0",
       className: CL_ROW_ITEM,
       onClick: _onClick,
-      onKeyDown: (0, _uiApi.bindTo)(_hKeyDown, _onClick),
+      onKeyDown: (0, _bindTo.bindTo)(_hKeyDown, _onClick),
       children: menuTitle
     }, index);
   });

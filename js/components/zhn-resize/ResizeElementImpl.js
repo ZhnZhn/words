@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
-var _uiApi = require("../uiApi");
+var _bindTo = require("../../utils/bindTo");
 var _isKeyEnter = _interopRequireDefault(require("../zhn/isKeyEnter"));
 const _isNaN = Number.isNaN,
   _assign = Object.assign,
@@ -35,8 +35,8 @@ class ResizeElementImpl {
     this.maxDelta = maxWidth - initWidth;
     this.delta = 0;
     _initResizeProperties(this);
-    this.hStartResizeLeft = (0, _uiApi.bindTo)(this._startResize, this._resizeLeft);
-    this.hStartResizeRight = (0, _uiApi.bindTo)(this._startResize, this._resizeRight);
+    this.hStartResizeLeft = (0, _bindTo.bindTo)(this._startResize, this._resizeLeft);
+    this.hStartResizeRight = (0, _bindTo.bindTo)(this._startResize, this._resizeRight);
   }
   _increaseDeltaStep = () => {
     this.countStep += 1;

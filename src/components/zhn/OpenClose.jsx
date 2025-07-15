@@ -1,12 +1,9 @@
 //import PropTypes from 'prop-types';
-import {
-  bindTo,
-  useMemo
-} from '../uiApi';
+import { bindTo } from '../../utils/bindTo';
+import { useMemo } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
-
-import Svg from './svg/Svg'
+import Svg from './svg/Svg';
 
 const CL_CAPTION = 'open-close not-selected'
 , S_BT = {
