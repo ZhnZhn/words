@@ -3,10 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _isKeyEnter = _interopRequireDefault(require("../zhn/isKeyEnter"));
-const _isFn = fn => typeof fn === 'function',
-  _isNaN = Number.isNaN,
+const _isNaN = Number.isNaN,
   _assign = Object.assign,
   _initResizeProperties = inst => {
     _assign(inst, {
@@ -68,7 +68,7 @@ class ResizeElementImpl {
     const {
       onResizeAfter
     } = this;
-    if (_isFn(onResizeAfter)) {
+    if ((0, _isTypeFn.isFn)(onResizeAfter)) {
       onResizeAfter(this._getElementWidth());
     }
   };

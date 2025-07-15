@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -15,11 +16,11 @@ const SUB_MENU = 'sub',
     position: 'absolute',
     top: 0,
     right: 4,
-    color: 'inherit',
     padding: '1px 16px 1px 0px',
+    color: 'inherit',
     fontWeight: 'bold'
   };
-const _fClick = (isClose, onClick, onClose) => typeof onClick === 'function' ? isClose ? () => {
+const _fClick = (isClose, onClick, onClose) => (0, _isTypeFn.isFn)(onClick) ? isClose ? () => {
   onClick();
   onClose();
 } : onClick : void 0;
@@ -67,6 +68,5 @@ const MenuItemList = _ref2 => {
     })
   });
 };
-var _default = MenuItemList;
-exports.default = _default;
+var _default = exports.default = MenuItemList;
 //# sourceMappingURL=MenuItemList.js.map

@@ -1,16 +1,15 @@
 //import PropTypes from 'prop-types'
+import { isFn } from '../../utils/isTypeFn';
 import { bindTo } from '../uiApi';
 
 import isKeyEnter from '../zhn/isKeyEnter'
 import OpenClose from '../zhn/OpenClose'
 
 const CL_ROW_ITEM = "row__item not-selected";
-
-const _assign = Object.assign
-, _isFn = fn => typeof fn === 'function';
+const _assign = Object.assign;
 
 const _hKeyDown = (onClick, evt) => {
-  if (_isFn(onClick) && isKeyEnter(evt)) {
+  if (isFn(onClick) && isKeyEnter(evt)) {
     onClick()
   }
 };
@@ -28,7 +27,7 @@ const _renderMenuItems = function(option){
     , { menuTitle} = _itemConf;
 
     _assign(_itemConf, restOption)
-    const _onClick = _isFn(onClickItem)
+    const _onClick = isFn(onClickItem)
        ? bindTo(onClickItem, _itemConf)
        : void 0;
     return (
@@ -36,8 +35,7 @@ const _renderMenuItems = function(option){
          key={index}
          role="menuitem"
          tabIndex="0"
-         className={CL_ROW_ITEM}
-         //className={_className}
+         className={CL_ROW_ITEM}        
          onClick={_onClick}
          onKeyDown={bindTo(_hKeyDown, _onClick)}
         >

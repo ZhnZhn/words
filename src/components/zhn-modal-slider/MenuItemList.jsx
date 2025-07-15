@@ -1,35 +1,39 @@
+import { isFn } from '../../utils/isTypeFn';
 import { bindTo } from '../uiApi';
 
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub'
-, S_ITEM = { position: 'relative' }
+, S_ITEM = {
+  position: 'relative'
+}
 , S_NEXT_PAGE = {
-   display: 'inline-block',
-   position: 'absolute',
-   top: 0,
-   right: 4,
-   color: 'inherit',
-   padding: '1px 16px 1px 0px',
-   fontWeight: 'bold'
+  display: 'inline-block',
+  position: 'absolute',
+  top: 0,
+  right: 4,
+  padding: '1px 16px 1px 0px',
+  color: 'inherit',
+  fontWeight: 'bold'
 };
 
 const _fClick = (
   isClose,
   onClick,
   onClose
-) => typeof onClick === 'function'
+) => isFn(onClick)
   ? isClose
      ? () => { onClick(); onClose(); }
      : onClick
   : void 0;
 
-const NextPageArrow = ({ type }) =>
-  type !== SUB_MENU ? null : (
-    <span style={S_NEXT_PAGE}>
-       >
-    </span>
-  );
+const NextPageArrow = ({
+  type
+}) => type !== SUB_MENU ? null : (
+  <span style={S_NEXT_PAGE}>
+    >
+  </span>
+);
 
 const MenuItemList = ({
   items,

@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _isKeyEnter = _interopRequireDefault(require("../zhn/isKeyEnter"));
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
@@ -10,10 +11,9 @@ var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
 const CL_ROW_ITEM = "row__item not-selected";
-const _assign = Object.assign,
-  _isFn = fn => typeof fn === 'function';
+const _assign = Object.assign;
 const _hKeyDown = (onClick, evt) => {
-  if (_isFn(onClick) && (0, _isKeyEnter.default)(evt)) {
+  if ((0, _isTypeFn.isFn)(onClick) && (0, _isKeyEnter.default)(evt)) {
     onClick();
   }
 };
@@ -31,13 +31,11 @@ const _renderMenuItems = function (option) {
         menuTitle
       } = _itemConf;
     _assign(_itemConf, restOption);
-    const _onClick = _isFn(onClickItem) ? (0, _uiApi.bindTo)(onClickItem, _itemConf) : void 0;
+    const _onClick = (0, _isTypeFn.isFn)(onClickItem) ? (0, _uiApi.bindTo)(onClickItem, _itemConf) : void 0;
     return (0, _jsxRuntime.jsx)("div", {
       role: "menuitem",
       tabIndex: "0",
-      className: CL_ROW_ITEM
-      //className={_className}
-      ,
+      className: CL_ROW_ITEM,
       onClick: _onClick,
       onKeyDown: (0, _uiApi.bindTo)(_hKeyDown, _onClick),
       children: menuTitle

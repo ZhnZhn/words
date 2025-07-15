@@ -1,3 +1,5 @@
+import { isFn } from '../utils/isTypeFn';
+
 export { bindTo } from '../utils/bindTo';
 
 export {
@@ -37,12 +39,10 @@ export const setRefValue = (
   }
 }
 
-const _isFn = fn => typeof fn === 'function';
-
 const _focusHtmlElement = (
   element
 ) => {
-  if (element && _isFn(element.focus)) {
+  if (element && isFn(element.focus)) {
     element.focus()
   }
 }
@@ -70,7 +70,7 @@ export const stopDefaultFor = (
 
 export const getRefInputValue = ref => {
   const _el = getRefValue(ref);
-  return _el && _isFn(_el.getValue)
+  return _el && isFn(_el.getValue)
    ? _el.getValue()
    : void 0
 }
@@ -80,7 +80,7 @@ export const setRefInputValue = (
   value
 ) => {
   const _el = getRefValue(ref);
-  if (_el && _isFn(_el.setValue)) {
+  if (_el && isFn(_el.setValue)) {
     _el.setValue(value)
   }
 }

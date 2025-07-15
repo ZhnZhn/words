@@ -1,7 +1,10 @@
+import { isFn } from '../../utils/isTypeFn';
+
 import {
   useRef,
-  useCallback,  
-  useEffect
+  useCallback,
+  useEffect,
+  getRefValue
 } from '../uiApi';
 
 const MenuAriaItem = ({
@@ -12,9 +15,9 @@ const MenuAriaItem = ({
   children
 }) => {
   const _ref = useRef()
-  , _hKeyDown = useCallback(event => {
-      event.preventDefault()
-      const { keyCode } = event
+  , _hKeyDown = useCallback(evt => {
+      evt.preventDefault()
+      const { keyCode } = evt;
       if (keyCode === 13 || keyCode === 32) {
         onClick()
       }
@@ -22,12 +25,12 @@ const MenuAriaItem = ({
 
  /* eslint-disable react-hooks/exhaustive-deps */
  useEffect(() => {
-   const _el = (_ref || {}).current;
-   if (_el && typeof onReg === 'function') {
+   const _el = getRefValue(_ref);
+   if (_el && isFn(onReg)) {
      onReg(_el)
    }
  }, [])
- // ref, onReg
+ // onReg
  /* eslint-enable react-hooks/exhaustive-deps */
 
   return (

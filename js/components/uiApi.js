@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
+var _isTypeFn = require("../utils/isTypeFn");
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _compat = require("preact/compat");
@@ -33,9 +34,8 @@ const setRefValue = (ref, value) => {
   }
 };
 exports.setRefValue = setRefValue;
-const _isFn = fn => typeof fn === 'function';
 const _focusHtmlElement = element => {
-  if (element && _isFn(element.focus)) {
+  if (element && (0, _isTypeFn.isFn)(element.focus)) {
     element.focus();
   }
 };
@@ -54,12 +54,12 @@ const stopDefaultFor = evt => {
 exports.stopDefaultFor = stopDefaultFor;
 const getRefInputValue = ref => {
   const _el = getRefValue(ref);
-  return _el && _isFn(_el.getValue) ? _el.getValue() : void 0;
+  return _el && (0, _isTypeFn.isFn)(_el.getValue) ? _el.getValue() : void 0;
 };
 exports.getRefInputValue = getRefInputValue;
 const setRefInputValue = (ref, value) => {
   const _el = getRefValue(ref);
-  if (_el && _isFn(_el.setValue)) {
+  if (_el && (0, _isTypeFn.isFn)(_el.setValue)) {
     _el.setValue(value);
   }
 };

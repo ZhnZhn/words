@@ -1,1 +1,40 @@
-{"version":3,"sources":["../../../src/components/zhn-modal-slider/MenuAriaItem.jsx"],"names":["_fKeyPressed","onClick","evt","preventDefault","which","MenuAriaItem","_ref","n","_node","componentDidMount","onReg","props","render","children","rest","Component"],"mappings":";;;;;;;;;;;;;AAAA;;;;AAEA,IAAMA,YAAY,GAAG,SAAfA,YAAe,CAACC,OAAD;AAAA,SAAa,UAACC,GAAD,EAAS;AACzCA,IAAAA,GAAG,CAACC,cAAJ;AADyC,QAEjCC,KAFiC,GAEvBF,GAFuB,CAEjCE,KAFiC;;AAGzC,QAAIA,KAAK,KAAK,EAAV,IAAgBA,KAAK,KAAK,EAA9B,EAAkC;AAChCH,MAAAA,OAAO;AACR;AACF,GANoB;AAAA,CAArB;;IAQMI,Y;;;;;;;;;;;;UAgBJC,I,GAAO,UAAAC,CAAC;AAAA,aAAI,MAAKC,KAAL,GAAaD,CAAjB;AAAA,K;;;;;;;AAdR;AACF;AACA;AACA;AACA;AACA;SAEEE,iB,GAAA,6BAAmB;AAAA,QACTC,KADS,GACC,KAAKC,KADN,CACTD,KADS;;AAEjB,QAAI,KAAKF,KAAL,IAAc,OAAOE,KAAP,KAAiB,UAAnC,EAA+C;AAC7CA,MAAAA,KAAK,CAAC,KAAKF,KAAN,CAAL;AACD;AACF,G;;SAIDI,M,GAAA,kBAAQ;AAAA,sBACwC,KAAKD,KAD7C;AAAA,QACEE,QADF,eACEA,QADF;AAAA,QACYZ,OADZ,eACYA,OADZ;AAAA,QACqBS,KADrB,eACqBA,KADrB;AAAA,QAC+BI,IAD/B;AAEN,wBACE,0DACMA,IADN;AAEE,MAAA,GAAG,EAAEJ,KAAK,GAAG,KAAKJ,IAAR,GAAc,KAAK,CAF/B;AAGE,MAAA,IAAI,EAAC,UAHP;AAIE,MAAA,QAAQ,EAAC,GAJX;AAKE,MAAA,OAAO,EAAEL,OALX;AAME,MAAA,UAAU,EAAED,YAAY,CAACC,OAAD,CAN1B;AAAA,gBAQGY;AARH,OADF;AAYD,G;;;EAhCwBE,gB;;eAmCZV,Y","sourcesContent":["import { Component } from 'react'\r\n\r\nconst _fKeyPressed = (onClick) => (evt) => {\r\n  evt.preventDefault()\r\n  const { which } = evt;\r\n  if (which === 13 || which === 32) {\r\n    onClick()\r\n  }\r\n}\r\n\r\nclass MenuAriaItem extends Component {\r\n\r\n  /*\r\n  static propTypes = {\r\n    onClick: PropTypes.func,\r\n    onReg: PropTypes.func\r\n  }\r\n  */\r\n\r\n  componentDidMount(){\r\n    const { onReg } = this.props\r\n    if (this._node && typeof onReg === 'function') {\r\n      onReg(this._node)\r\n    }\r\n  }\r\n\r\n  _ref = n => this._node = n\r\n\r\n  render(){\r\n    const { children, onClick, onReg, ...rest } = this.props\r\n    return (\r\n      <div\r\n        {...rest}\r\n        ref={onReg ? this._ref: void 0}\r\n        role=\"menuitem\"\r\n        tabIndex=\"0\"\r\n        onClick={onClick}\r\n        onKeyPress={_fKeyPressed(onClick)}\r\n      >\r\n        {children}\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default MenuAriaItem\r\n"],"file":"MenuAriaItem.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-modal-slider/MenuAriaItem.js"
+ ],
+ "file": "../../../src/components/zhn-modal-slider/MenuAriaItem.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "_uiApi",
+  "_jsxRuntime",
+  "MenuAriaItem",
+  "_ref2",
+  "className",
+  "style",
+  "onClick",
+  "onReg",
+  "children",
+  "_ref",
+  "useRef",
+  "_hKeyDown",
+  "useCallback",
+  "evt",
+  "preventDefault",
+  "keyCode",
+  "useEffect",
+  "_el",
+  "getRefValue",
+  "isFn",
+  "jsx",
+  "ref",
+  "role",
+  "tabIndex",
+  "onKeyDown",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEA,IAAAC,MAAA,GAAAD,OAAA;AAKkB,IAAAE,WAAA,GAAAF,OAAA;AAElB,MAAMG,YAAY,GAAGC,KAAA,IAMf;EAAA,IANgB;IACpBC,SAAS;IACTC,KAAK;IACLC,OAAO;IACPC,KAAK;IACLC;EACF,CAAC,GAAAL,KAAA;EACC,MAAMM,IAAI,GAAG,IAAAC,aAAM,EAAC,CAAC;IACnBC,SAAS,GAAG,IAAAC,kBAAW,EAACC,GAAG,IAAI;MAC7BA,GAAG,CAACC,cAAc,CAAC,CAAC;MACpB,MAAM;QAAEC;MAAQ,CAAC,GAAGF,GAAG;MACvB,IAAIE,OAAO,KAAK,EAAE,IAAIA,OAAO,KAAK,EAAE,EAAE;QACpCT,OAAO,CAAC,CAAC;MACX;IACJ,CAAC,EAAE,CAACA,OAAO,CAAC,CAAC;;EAEd;EACA,IAAAU,gBAAS,EAAC,MAAM;IACd,MAAMC,GAAG,GAAG,IAAAC,kBAAW,EAACT,IAAI,CAAC;IAC7B,IAAIQ,GAAG,IAAI,IAAAE,cAAI,EAACZ,KAAK,CAAC,EAAE;MACtBA,KAAK,CAACU,GAAG,CAAC;IACZ;EACF,CAAC,EAAE,EAAE,CAAC;EACN;EACA;;EAEC,OACE,IAAAhB,WAAA,CAAAmB,GAAA;IACEhB,SAAS,EAAEA,SAAU;IACrBC,KAAK,EAAEA,KAAM;IACbgB,GAAG,EAAEd,KAAK,GAAGE,IAAI,GAAG,KAAK,CAAE;IAC3Ba,IAAI,EAAC,UAAU;IACfC,QAAQ,EAAC,GAAG;IACZjB,OAAO,EAAEA,OAAQ;IACjBkB,SAAS,EAAEb,SAAU;IAAAH,QAAA,EAEpBA;EAAQ,CACN,CAAC;AAEV,CAAC;AAAC,IAAAiB,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEazB,YAAY"
+}

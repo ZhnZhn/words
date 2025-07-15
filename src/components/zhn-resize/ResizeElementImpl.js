@@ -1,9 +1,9 @@
+import { isFn } from '../../utils/isTypeFn';
 import { bindTo } from '../uiApi';
 
 import isKeyEnter from '../zhn/isKeyEnter';
 
-const _isFn = fn => typeof fn === 'function'
-, _isNaN = Number.isNaN
+const _isNaN = Number.isNaN
 , _assign = Object.assign
 , _initResizeProperties = inst => {
   _assign(inst, {
@@ -69,7 +69,7 @@ class ResizeElementImpl {
 
   _onResizeAfter = () => {
     const { onResizeAfter } = this;
-    if (_isFn(onResizeAfter)) {
+    if (isFn(onResizeAfter)) {
       onResizeAfter(this._getElementWidth());
     }
   }
