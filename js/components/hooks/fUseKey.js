@@ -1,10 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useKeyEscape = void 0;
+exports.useKeyEscape = exports.isKeyEnter = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 const FN_NOOP = () => {};
+const isKeyEnter = _ref => {
+  let {
+    keyCode
+  } = _ref;
+  return keyCode === 13;
+};
+exports.isKeyEnter = isKeyEnter;
 const _isKeyEscape = evt => evt.keyCode === 27 || evt.key === 'Escape';
 const _onKeyFnEvt = (isKey, fn, evt) => {
   if (isKey(evt)) {

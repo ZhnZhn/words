@@ -2,7 +2,7 @@ import { useCallback } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
 import useDnDHandlers from '../hooks/useDnDHandlers';
-import isKeyEnter from './isKeyEnter';
+import { isKeyEnter } from '../hooks/fUseKey';
 
 const CL_MENU_ITEM = 'oc-item not-selected'
 , S_ROOT = {

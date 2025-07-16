@@ -2,8 +2,8 @@
 import { isFn } from '../../utils/isTypeFn';
 import { bindTo } from '../../utils/bindTo';
 
-import isKeyEnter from '../zhn/isKeyEnter'
-import OpenClose from '../zhn/OpenClose'
+import { isKeyEnter } from '../hooks/fUseKey';
+import OpenClose from '../zhn/OpenClose';
 
 const CL_ROW_ITEM = "row__item not-selected";
 const _assign = Object.assign;
@@ -21,7 +21,7 @@ const _renderMenuItems = function(option){
     onClickItem,
     ...restOption
   } = option;
-  return items.map((item, index) => {    
+  return items.map((item, index) => {
     const _itemConf = hmItems[item.id]
     , { menuTitle} = _itemConf;
 

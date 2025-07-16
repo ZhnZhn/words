@@ -1,7 +1,7 @@
 import { isFn } from '../../utils/isTypeFn';
 import { bindTo } from '../../utils/bindTo';
 
-import isKeyEnter from '../zhn/isKeyEnter';
+import { isKeyEnter } from '../hooks/fUseKey';
 
 const _isNaN = Number.isNaN
 , _assign = Object.assign

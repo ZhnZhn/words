@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _bindTo = require("../../utils/bindTo");
-var _isKeyEnter = _interopRequireDefault(require("../zhn/isKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
@@ -13,7 +13,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_ROW_ITEM = "row__item not-selected";
 const _assign = Object.assign;
 const _hKeyDown = (onClick, evt) => {
-  if ((0, _isTypeFn.isFn)(onClick) && (0, _isKeyEnter.default)(evt)) {
+  if ((0, _isTypeFn.isFn)(onClick) && (0, _fUseKey.isKeyEnter)(evt)) {
     onClick();
   }
 };

@@ -3,8 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _fUseKey = require("../hooks/fUseKey");
 var _useDnDHandlers = _interopRequireDefault(require("../hooks/useDnDHandlers"));
-var _isKeyEnter = _interopRequireDefault(require("../zhn/isKeyEnter"));
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ITEM_DIV = {
@@ -49,7 +49,7 @@ const WatchItem = props => {
     } = item,
     _onClick = () => onClick(item),
     _onKeyDown = evt => {
-      if ((0, _isKeyEnter.default)(evt)) {
+      if ((0, _fUseKey.isKeyEnter)(evt)) {
         _onClick();
       }
     };

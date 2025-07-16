@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useDnDHandlers = _interopRequireDefault(require("../hooks/useDnDHandlers"));
-var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_MENU_ITEM = 'oc-item not-selected',
   S_ROOT = {
@@ -71,7 +71,7 @@ const OpenClose2 = props => {
     } = props,
     [isOpen, toggleIsOpen] = (0, _useToggle.default)(isInitialOpen),
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
-      if ((0, _isKeyEnter.default)(evt)) {
+      if ((0, _fUseKey.isKeyEnter)(evt)) {
         toggleIsOpen();
       }
     }, [toggleIsOpen]),

@@ -8,6 +8,10 @@ import {
 
 const FN_NOOP = () => {};
 
+export const isKeyEnter = ({
+  keyCode
+}) => keyCode === 13
+
 const _isKeyEscape = (
   evt
 ) => evt.keyCode === 27 || evt.key === 'Escape';

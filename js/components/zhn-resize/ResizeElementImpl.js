@@ -1,11 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _bindTo = require("../../utils/bindTo");
-var _isKeyEnter = _interopRequireDefault(require("../zhn/isKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 const _isNaN = Number.isNaN,
   _assign = Object.assign,
   _initResizeProperties = inst => {
@@ -98,7 +97,7 @@ class ResizeElementImpl {
     }
   };
   hKdLeft = event => {
-    if ((0, _isKeyEnter.default)(event)) {
+    if ((0, _fUseKey.isKeyEnter)(event)) {
       event.stopPropagation();
       this.resizeBy(-this.step);
     }
@@ -108,7 +107,7 @@ class ResizeElementImpl {
     this._increaseDeltaStep();
   };
   hKdRight = event => {
-    if ((0, _isKeyEnter.default)(event)) {
+    if ((0, _fUseKey.isKeyEnter)(event)) {
       event.stopPropagation();
       this.resizeBy(this.step);
     }
