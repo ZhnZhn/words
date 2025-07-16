@@ -19,7 +19,7 @@ import useToggle from '../hooks/useToggle';
 import CircleButton from '../zhn/button/CircleButton';
 import BrowserCaption from '../zhn/BrowserCaption';
 import ScrollPane from '../zhn/ScrollPane';
-import ModalSlider from '../zhn-modal-slider/ModalSlider';
+import { ModalSliderMemoIsShow } from '../zhn-modal-slider/ModalSlider';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 
 import crModelMore from './crModelMore';
@@ -201,7 +201,7 @@ const PaneType1 = ({
          ..._showStyle
        }}
     >
-      <ModalSlider
+      <ModalSliderMemoIsShow
         isShow={isMore}
         className={CL_MENU_MORE}
         model={_MODEL_MORE}

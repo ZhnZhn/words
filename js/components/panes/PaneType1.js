@@ -10,7 +10,7 @@ var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _CircleButton = _interopRequireDefault(require("../zhn/button/CircleButton"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
-var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
+var _ModalSlider = require("../zhn-modal-slider/ModalSlider");
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _wordConfig = require("./wordConfig");
@@ -160,7 +160,7 @@ const PaneType1 = _ref2 => {
       ...S_ROOT_DIV,
       ..._showStyle
     },
-    children: [(0, _jsxRuntime.jsx)(_ModalSlider.default, {
+    children: [(0, _jsxRuntime.jsx)(_ModalSlider.ModalSliderMemoIsShow, {
       isShow: isMore,
       className: CL_MENU_MORE,
       model: _MODEL_MORE,

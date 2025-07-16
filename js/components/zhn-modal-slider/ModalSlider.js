@@ -2,65 +2,50 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.default = void 0;
-var _uiApi = require("../uiApi");
+exports.ModalSliderMemoIsShow = exports.ModalSlider = void 0;
+var _bindTo = require("../../utils/bindTo");
+var _styleFn = require("../styleFn");
+var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
+var _useInitStateFromProps = _interopRequireDefault(require("../hooks/useInitStateFromProps"));
 var _useThrottleCallback = _interopRequireDefault(require("../hooks/useThrottleCallback"));
-var _useHasMounted = _interopRequireDefault(require("../hooks/useHasMounted"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _MenuPage = _interopRequireDefault(require("./MenuPage"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_SHOW_HIDE = {
+const CL_SLIDER_PAGES = 'slider-pages',
+  S_SHOW_HIDE = {
     position: 'absolute',
     overflow: 'hidden'
   },
-  S_PAGES = {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'flex-start',
-    overflowX: 'hidden',
-    transition: 'all 750ms ease-out'
+  DF_INIT_ID = 'p0',
+  DF_MODEL = {
+    pageWidth: 100,
+    maxPages: 2,
+    initId: DF_INIT_ID,
+    p0: []
   };
-const DF_INIT_ID = 'p0';
-const DF_MODEL = {
-  pageWidth: 100,
-  maxPages: 2,
-  initId: DF_INIT_ID,
-  p0: []
+const _crWidthStyle = v => ({
+  width: v
+});
+const _crMenuPage = (id, model, title) => (0, _jsxRuntime.jsx)(_MenuPage.default, {
+  items: model[id],
+  titleCl: model.titleCl,
+  itemCl: model.itemCl || model.titleCl,
+  title: title
+}, id);
+const _addPage = (model, pages, id, title) => {
+  pages.push(_crMenuPage(id, model, title));
 };
 const _initState = model => {
   const _pW = model.pageWidth,
-    _maxP = model.maxPages,
     _initId = model.initId || DF_INIT_ID;
   return {
+    addPage: (0, _bindTo.bindTo)(_addPage, model),
     pageWidth: _pW,
-    pagesStyle: {
-      width: `${_maxP * _pW}px`
-    },
-    pageStyle: {
-      width: `${_pW}px`
-    },
+    pageStyle: _crWidthStyle(_pW),
     pageCurrent: 1,
-    pages: [(0, _jsxRuntime.jsx)(_MenuPage.default, {
-      items: model[_initId],
-      titleCl: model.titleCl,
-      itemCl: model.itemCl
-    }, _initId)]
-  };
-};
-const _addPage = (pages, id, title, model) => {
-  pages.push((0, _jsxRuntime.jsx)(_MenuPage.default, {
-    title: title,
-    items: model[id],
-    titleCl: model.titleCl,
-    itemCl: model.itemCl
-  }, id));
-};
-const _crTransform = (pageWidth, pageCurrent) => {
-  const _dX = -1 * pageWidth * (pageCurrent - 1) + 0;
-  return {
-    transform: `translateX(${_dX}px)`
+    pages: [_crMenuPage(_initId, model)]
   };
 };
 const ModalSlider = _ref => {
@@ -72,10 +57,9 @@ const ModalSlider = _ref => {
     style,
     onClose
   } = _ref;
-  const [state, setState] = (0, _uiApi.useState)(() => _initState(model)),
+  const [state, setState] = (0, _useInitStateFromProps.default)(_initState, model),
     {
       pageWidth,
-      pagesStyle,
       pageStyle,
       pageCurrent,
       pages
@@ -91,6 +75,7 @@ const ModalSlider = _ref => {
     hNextPage = (0, _useThrottleCallback.default)((id, title, pageNumber) => {
       setState(prevState => {
         const {
+            addPage,
             pages
           } = prevState,
           _max = pages.length - 1;
@@ -101,47 +86,33 @@ const ModalSlider = _ref => {
             } else {
               prevState.pages = [];
             }
-            _addPage(prevState.pages, id, title, model);
+            addPage(prevState.pages, id, title);
           }
         } else {
-          _addPage(pages, id, title, model);
+          addPage(pages, id, title);
         }
         prevState.pageCurrent = pageNumber + 1;
         return {
           ...prevState
         };
       });
-    }, [model]),
-    _hasMounted = (0, _useHasMounted.default)();
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  (0, _uiApi.useEffect)(() => {
-    if (!_hasMounted) {
-      setState(_initState(model));
-    }
-  }, [model]);
-  // _hasMounted
-  /*eslint-enable react-hooks/exhaustive-deps */
-
+    });
   const _showHideStyle = {
       ...style,
       ...S_SHOW_HIDE,
       ...pageStyle
     },
-    _divStyle = {
-      ...S_PAGES,
-      ...pagesStyle,
-      ..._crTransform(pageWidth, pageCurrent)
-    };
+    _divStyle = (0, _styleFn.crSliderTransformStyle)(pageWidth, pageCurrent);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
     style: rootStyle,
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
-      className: className,
+      className: (0, _styleFn.crCn)(_styleFn.CL_POPUP_MENU, className),
       style: _showHideStyle,
       isShow: isShow,
       children: (0, _jsxRuntime.jsx)("div", {
+        className: CL_SLIDER_PAGES,
         style: _divStyle,
         children: (0, _jsxRuntime.jsx)(_MenuPages.default, {
           isShow: isShow,
@@ -156,19 +127,6 @@ const ModalSlider = _ref => {
     })
   });
 };
-
-/*
-ModalSlider.propTypes = {
-  rootStyle: PropTypes.object,
-  className: PropTypes.string,
-  style: PropTypes.object,
-
-  pageWidth: PropTypes.number,
-  maxPages: PropTypes.number,
-  model: PropTypes.object,
-
-  onClose: PropTypes.func
-}
-*/
-var _default = exports.default = ModalSlider;
+exports.ModalSlider = ModalSlider;
+const ModalSliderMemoIsShow = exports.ModalSliderMemoIsShow = (0, _memoIsShow.default)(ModalSlider);
 //# sourceMappingURL=ModalSlider.js.map

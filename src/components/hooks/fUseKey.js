@@ -27,6 +27,12 @@ const _onKeyFnEvt = (
   }
 };
 
+const _fOnKey = isKey => fn => evt => {
+  _onKeyFnEvt(isKey, fn, evt)
+};
+
+export const fOnKeyEnter = _fOnKey(isKeyEnter)
+
 /*eslint-disable react-hooks/exhaustive-deps */
 const _fUseKey = isKey => (
   fn,

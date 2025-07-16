@@ -1,43 +1,29 @@
-import {
-  useCallback
-} from '../uiApi';
-
-import MenuAriaItem from './MenuAriaItem';
+import { crMenuItemRole } from '../a11yFn';
+import { crAbsoluteTopLeftStyle } from '../styleFn';
 
 const S_ITEM = { position: 'relative' }
-, S_PREV_PAGE = {
-  position: 'absolute',
-  top: 0,
-  left: 16
-}
-, S_TITLE = { paddingLeft: 16 };
+, S_PREV_PAGE = crAbsoluteTopLeftStyle(0, 16)
+, S_TITLE = { paddingLeft: 22 };
 
 const MenuTitle = ({
+  refEl,
   titleCl,
   title,
-  pageNumber,
-  onPrevPage,
-  onReg
-}) => {
-  const _hClick = useCallback(() => {
-    onPrevPage(pageNumber)
-  }, [onPrevPage, pageNumber]);
-
-  return !title ? null : (
-    <MenuAriaItem
-      className={titleCl}
-      style={S_ITEM}
-      onClick={_hClick}
-      onReg={onReg}
-    >
-      <span style={S_PREV_PAGE}>
-        {'<'}
-      </span>
-      <span style={S_TITLE}>
-        {title}
-      </span>
-    </MenuAriaItem>
-  );
-};
+  onClick
+}) => title ? (
+  <div
+    ref={refEl}
+    className={titleCl}
+    style={S_ITEM}
+    {...crMenuItemRole(onClick, "0")}
+  >
+    <span style={S_PREV_PAGE}>
+      {"<"}
+    </span>
+    <span style={S_TITLE}>
+      {title}
+    </span>
+  </div>
+) : null;
 
 export default MenuTitle

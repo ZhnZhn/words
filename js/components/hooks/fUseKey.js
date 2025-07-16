@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useKeyEscape = exports.isKeyEnter = void 0;
+exports.useKeyEscape = exports.isKeyEnter = exports.fOnKeyEnter = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 const FN_NOOP = () => {};
@@ -19,6 +19,10 @@ const _onKeyFnEvt = (isKey, fn, evt) => {
     fn(evt);
   }
 };
+const _fOnKey = isKey => fn => evt => {
+  _onKeyFnEvt(isKey, fn, evt);
+};
+const fOnKeyEnter = exports.fOnKeyEnter = _fOnKey(isKeyEnter);
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const _fUseKey = isKey => (fn, deps) => (0, _uiApi.useCallback)(evt => {

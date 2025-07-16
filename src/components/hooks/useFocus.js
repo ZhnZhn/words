@@ -4,7 +4,11 @@ import {
   useEffect,
   getRefValue,
   setRefValue,
+  focusRefElement
 } from '../uiApi';
+import { HAS_KEYBOARD_FOCUS } from '../has';
+
+import useEffectTimeout from './useEffectTimeout';
 
 export const useRefFocusElement = () => {
   const refFocusElement = useRef()
@@ -28,4 +32,18 @@ export const useEffectSyncRef = (
     }
   }, [isSync, setRefFocusLast])
   return _ref;
+}
+
+export const useAsyncFocusFirstItemIf = (
+  isVisible,
+  getFirstElement,
+  mls = 350
+) => {
+  const _isFocus = HAS_KEYBOARD_FOCUS && isVisible;
+  useEffectTimeout(
+    () => focusRefElement(getFirstElement),
+    mls,
+    [_isFocus],
+    _isFocus
+  )
 }

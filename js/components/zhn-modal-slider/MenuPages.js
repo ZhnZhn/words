@@ -1,31 +1,31 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
-
-var MenuPages = function MenuPages(_ref) {
-  var isShow = _ref.isShow,
-      style = _ref.style,
-      pages = _ref.pages,
-      pageCurrent = _ref.pageCurrent,
-      onNextPage = _ref.onNextPage,
-      onPrevPage = _ref.onPrevPage,
-      onClose = _ref.onClose;
-  return pages.map(function (Page, index) {
-    return (0, _uiApi.cloneElement)(Page, {
-      isShow: isShow,
-      pageCurrent: pageCurrent,
-      style: style,
-      pageNumber: index + 1,
-      onNextPage: index === 0 ? onNextPage : void 0,
-      onPrevPage: index !== 0 ? onPrevPage : void 0,
-      onClose: onClose
+const MenuPages = _ref => {
+  let {
+    isShow,
+    style,
+    pages,
+    pageCurrent,
+    onNextPage,
+    onPrevPage,
+    onClose
+  } = _ref;
+  return (0, _uiApi.safeMap)(pages, (Page, index) => {
+    const _pageNumber = index + 1,
+      _isFirstPage = index === 0;
+    return (0, _uiApi.cloneUiElement)(Page, {
+      style,
+      isVisible: isShow && _pageNumber === pageCurrent,
+      pageNumber: _pageNumber,
+      onNextPage: _isFirstPage ? onNextPage : void 0,
+      onPrevPage: _isFirstPage ? void 0 : (0, _bindTo.bindTo)(onPrevPage, _pageNumber),
+      onClose
     });
   });
 };
-
-var _default = MenuPages;
-exports["default"] = _default;
+var _default = exports.default = MenuPages;
 //# sourceMappingURL=MenuPages.js.map

@@ -1,96 +1,74 @@
-import {
-  useRef,
-  useCallback,
-  useEffect,
-  getRefValue
-} from '../uiApi';
+import { useRef } from '../uiApi';
 
+import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
+import useGetRefValue2 from '../hooks/useGetRefValue2';
+import { useAsyncFocusFirstItemIf } from '../hooks/useFocus';
+
+import FocusTrap from '../zhn-moleculs/FocusTrap';
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
-const DF_ITEMS = []
-, MLS_FOCUS_TIMEOUT = 1000;
-
-const useRegRef = () => {
-  const ref = useRef()
-  , onReg = useCallback(el => {
-    ref.current = el;
-  }, []);
-  return [ref, onReg];
-};
-
-const MenuPage = ({
-  style,
-  title,
-  items=DF_ITEMS,
-  titleCl,
-  itemCl,
-  pageCurrent,
-  pageNumber,
-  onNextPage,
-  onPrevPage,
-  onClose,
-  children
-}) => {
-  const [
-    _refTitle,
-    _onRegTitle
-  ] = useRegRef()
+const MenuPage = (props) => {
+  const _refTitle = useRef()
   , [
-    _refFirstItem,
-    _onRegFirstItem
-  ] = useRegRef();
+    _getRefFocus,
+    _refLastItem,
+    _refFirstItem
+  ] = useItemsFocusTrap(props.items)
+  , _getFocusFirstItem = useGetRefValue2(
+    _refTitle,
+    _refFirstItem
+  );
 
-  useEffect(() => {
-    if (pageCurrent === pageNumber){
-      const _elTitle = getRefValue(_refTitle)
-      , _elFirstItem = getRefValue(_refFirstItem);
-      if (_elTitle) {
-         setTimeout(() => _elTitle.focus(), MLS_FOCUS_TIMEOUT)
-      } else if (_elFirstItem) {
-         setTimeout(() => _elFirstItem.focus(), MLS_FOCUS_TIMEOUT)
-      }
-    }
-  })
+  useAsyncFocusFirstItemIf(
+    props.isVisible,
+    _getFocusFirstItem
+  );
 
   return (
-    <div style={style}>
-      <MenuTitle
-        titleCl={titleCl}
-        title={title}
-        pageNumber={pageNumber}
-        onPrevPage={onPrevPage}
-        onReg={_onRegTitle}
-      />
-      <MenuItemList
-        items={items}
-        itemCl={itemCl || titleCl}
-        pageNumber={pageNumber}
-        onNextPage={onNextPage}
-        onReg={_onRegFirstItem}
-        onClose={onClose}
-      />
-      {children}
+    <div style={props.style}>
+      <FocusTrap
+        refFirst={_getFocusFirstItem}
+        refLast={_refLastItem}
+      >
+        <MenuTitle
+          refEl={_refTitle}
+          titleCl={props.titleCl}
+          title={props.title}
+          onClick={props.onPrevPage}
+        />
+        <MenuItemList
+          getRefFocus={_getRefFocus}
+          items={props.items}
+          itemCl={props.itemCl}
+          pageNumber={props.pageNumber}
+          onNextPage={props.onNextPage}
+          onClose={props.onClose}
+        />
+        {props.children}
+      </FocusTrap>
     </div>
   );
-};
+}
 
 /*
 MenuPage.propTypes = {
+  isVisible: PropTypes.bool,
   style: PropTypes.object,
   title: PropTypes.string,
-  pageCurrent: PropTypes.number,
+  titleCl: PropTypes.string,
+  itemCl: PropTypes.string,
   pageNumber: PropTypes.number,
   items: PropTypes.arrayOf(
      PropTypes.shapeOf({
+        cn: PropTypes.string,
         name: PropTypes.string,
         type: PropTypes.string,
         id: PropTypes.string,
+        isClose: PropTypes.bool,
         onClick: PropTypes.func
      })
   ),
-  titleCl: PropTypes.string,
-  itemCl: PropTypes.string,
   onNextPage: PropTypes.func,
   onPrevPage: PropTypes.func,
   onClose: PropTypes.func

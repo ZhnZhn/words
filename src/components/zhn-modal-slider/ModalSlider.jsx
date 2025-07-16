@@ -1,90 +1,73 @@
+import { bindTo } from '../../utils/bindTo';
 import {
-  useState,
-  useEffect
-} from '../uiApi';
+  CL_POPUP_MENU,
+  crCn,
+  crSliderTransformStyle
+} from '../styleFn';
 
+import memoIsShow from '../hoc/memoIsShow';
+
+import useInitStateFromProps from '../hooks/useInitStateFromProps';
 import useThrottleCallback from '../hooks/useThrottleCallback';
-import useHasMounted from '../hooks/useHasMounted';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
 import ShowHide from '../zhn/ShowHide';
+
 import MenuPage from './MenuPage';
 import MenuPages from './MenuPages';
 
-const S_SHOW_HIDE = {
+const CL_SLIDER_PAGES = 'slider-pages'
+, S_SHOW_HIDE = {
   position: 'absolute',
   overflow: 'hidden'
 }
-, S_PAGES = {
-  display: 'flex',
-  flexFlow: 'row nowrap',
-  alignItems: 'flex-start',
-  overflowX: 'hidden',
-  transition: 'all 750ms ease-out'
-};
-
-const DF_INIT_ID = 'p0'
-const DF_MODEL = {
+, DF_INIT_ID = 'p0'
+, DF_MODEL = {
   pageWidth: 100,
   maxPages: 2,
   initId: DF_INIT_ID,
   p0: []
 };
 
+const _crWidthStyle = (v) => ({
+  width: v
+})
+
+const _crMenuPage = (
+  id,
+  model,
+  title
+) => (<MenuPage
+  key={id}
+  items={model[id]}
+  titleCl={model.titleCl}
+  itemCl={model.itemCl || model.titleCl}
+  title={title}
+/>);
+
+const _addPage = (
+  model,
+  pages,
+  id,
+  title
+) => {
+  pages.push(_crMenuPage(id, model, title))
+};
+
 const _initState = model => {
   const _pW = model.pageWidth
-  , _maxP = model.maxPages
   , _initId = model.initId || DF_INIT_ID;
 
   return {
+    addPage: bindTo(_addPage, model),
     pageWidth: _pW,
-    pagesStyle: {
-      width: `${_maxP*_pW}px`
-    },
-    pageStyle: {
-      width: `${_pW}px`
-    },
+    pageStyle: _crWidthStyle(_pW),
     pageCurrent: 1,
-    pages: [
-      <MenuPage
-        key={_initId}
-        items={model[_initId]}
-        titleCl={model.titleCl}
-        itemCl={model.itemCl}
-      />
-    ]
-  };
-}
-
-
-const _addPage = (
-  pages,
-  id,
-  title,
-  model
-) => {
-  pages.push((
-    <MenuPage
-      key={id}
-      title={title}
-      items={model[id]}
-      titleCl={model.titleCl}
-      itemCl={model.itemCl}
-    />
-  ))
-};
-
-const _crTransform = (
-  pageWidth,
-  pageCurrent
-) => {
-  const _dX = -1*pageWidth*(pageCurrent - 1)+0;
-  return {
-    transform: `translateX(${_dX}px)`
+    pages: [_crMenuPage(_initId, model)]
   };
 };
 
-const ModalSlider = ({
+export const ModalSlider = ({
   model=DF_MODEL,
   isShow,
   className,
@@ -95,15 +78,17 @@ const ModalSlider = ({
   const [
     state,
     setState
-  ] = useState(() => _initState(model))
+  ] = useInitStateFromProps(
+    _initState,
+    model
+  )
   , {
      pageWidth,
-     pagesStyle,
      pageStyle,
      pageCurrent,
      pages
    } = state
-   , hPrevPage = useThrottleCallback(pageNumber => {
+  , hPrevPage = useThrottleCallback(pageNumber => {
      setState(prevState => {
        prevState.pageCurrent = pageNumber - 1
        return {...prevState};
@@ -115,86 +100,64 @@ const ModalSlider = ({
       pageNumber
     ) => {
      setState(prevState => {
-       const { pages } = prevState
+       const {
+         addPage,
+         pages
+       } = prevState
        , _max = pages.length-1;
 
-       if ( (_max+1) > pageNumber) {
+       if ((_max+1) > pageNumber) {
          if (pages[pageNumber] && pages[pageNumber].key !== id) {
            if (pageNumber>0) {
              prevState.pages.splice(pageNumber)
            } else {
              prevState.pages = []
            }
-           _addPage(prevState.pages, id, title, model)
+           addPage(prevState.pages, id, title)
          }
        } else {
-         _addPage(pages, id, title, model)
+         addPage(pages, id, title)
        }
 
        prevState.pageCurrent = pageNumber + 1
        return {...prevState};
      })
-  }, [model])
-  , _hasMounted = useHasMounted();
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    if (!_hasMounted) {
-      setState(_initState(model))
-    }
-  }, [model])
-  // _hasMounted
-  /*eslint-enable react-hooks/exhaustive-deps */
+  });
 
   const _showHideStyle = {
     ...style,
     ...S_SHOW_HIDE,
     ...pageStyle
-  }, _divStyle = {
-    ...S_PAGES,
-    ...pagesStyle,
-    ..._crTransform(pageWidth, pageCurrent)
-  };
-
-  return (
-    <ModalPane
-      isShow={isShow}
-      style={rootStyle}
-      onClose={onClose}
-    >
-      <ShowHide
-        className={className}
-        style={_showHideStyle}
-        isShow={isShow}
-      >
-        <div style={_divStyle}>
-          <MenuPages
-            isShow={isShow}
-            style={pageStyle}
-            pages={pages}
-            pageCurrent={pageCurrent}
-            onNextPage={hNextPage}
-            onPrevPage={hPrevPage}
-            onClose={onClose}
-          />
-        </div>
-      </ShowHide>
-    </ModalPane>
+  }
+  , _divStyle = crSliderTransformStyle(
+     pageWidth,
+     pageCurrent
   );
-};
-
-/*
-ModalSlider.propTypes = {
-  rootStyle: PropTypes.object,
-  className: PropTypes.string,
-  style: PropTypes.object,
-
-  pageWidth: PropTypes.number,
-  maxPages: PropTypes.number,
-  model: PropTypes.object,
-
-  onClose: PropTypes.func
+  return (
+      <ModalPane
+        isShow={isShow}
+        style={rootStyle}
+        onClose={onClose}
+      >
+        <ShowHide
+          className={crCn(CL_POPUP_MENU, className)}
+          style={_showHideStyle}
+          isShow={isShow}
+        >
+          <div className={CL_SLIDER_PAGES} style={_divStyle}>
+            <MenuPages
+              isShow={isShow}
+              style={pageStyle}
+              pages={pages}
+              pageCurrent={pageCurrent}
+              onNextPage={hNextPage}
+              onPrevPage={hPrevPage}
+              onClose={onClose}
+            />
+          </div>
+        </ShowHide>
+      </ModalPane>
+  );
 }
-*/
 
-export default ModalSlider
+export const ModalSliderMemoIsShow = memoIsShow(ModalSlider)
