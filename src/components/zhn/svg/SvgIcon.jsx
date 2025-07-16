@@ -1,4 +1,4 @@
-import Svg from './Svg';
+import { Svg } from './Svg';
 
 const SvgIcon = ({
   color='currentColor',

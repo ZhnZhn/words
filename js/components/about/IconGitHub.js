@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _Svg = require("../zhn/svg/Svg");
 var _jsxRuntime = require("preact/jsx-runtime");
 const IconGitHub = _ref => {
   let {
@@ -15,12 +16,9 @@ const IconGitHub = _ref => {
     className: "icon__github",
     style: style,
     href: href,
-    tabIndex: "-1",
     children: (0, _jsxRuntime.jsxs)("svg", {
+      xmlns: _Svg.XMLNS_SVG,
       viewBox: "0 0 16 16",
-      xmlns: "http://www.w3.org/2000/svg",
-      fillRule: "evenodd",
-      clipRule: "evenodd",
       strokeLinejoin: "round",
       strokeMiterlimit: "1.414",
       children: [(0, _jsxRuntime.jsx)("title", {
@@ -31,6 +29,5 @@ const IconGitHub = _ref => {
     })
   });
 };
-var _default = IconGitHub;
-exports.default = _default;
+var _default = exports.default = IconGitHub;
 //# sourceMappingURL=IconGitHub.js.map

@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _Svg = _interopRequireDefault(require("./svg/Svg"));
+var _Svg = require("./svg/Svg");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_FOCUSABLE = 'focusable',
   S_BT = {
@@ -32,7 +31,7 @@ const SvgMore = _ref => {
     },
     title: title,
     onClick: onClick,
-    children: (0, _jsxRuntime.jsxs)(_Svg.default, {
+    children: (0, _jsxRuntime.jsxs)(_Svg.Svg, {
       style: {
         ...S_SVG,
         ...svgStyle

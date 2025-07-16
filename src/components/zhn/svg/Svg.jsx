@@ -1,5 +1,7 @@
 
-const Svg = ({
+export const XMLNS_SVG = "http://www.w3.org/2000/svg"
+
+export const Svg = ({
   w,
   h=w,
   children,
@@ -13,11 +15,9 @@ const Svg = ({
     width={`${w}px`}
     height={`${h}px`}
     {...restProps}
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns={XMLNS_SVG}
     viewBox={`0 0 ${w} ${h}`}
   >
     {children}
   </svg>
-);
-
-export default Svg
+)

@@ -6,7 +6,7 @@ exports.default = void 0;
 var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _Svg = _interopRequireDefault(require("./svg/Svg"));
+var _Svg = require("./svg/Svg");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types';
 
@@ -96,7 +96,7 @@ const OpenClose = _ref => {
       onClick: toggleIsOpen,
       onKeyDown: _hKeyDown,
       ..._dndOption,
-      children: [(0, _jsxRuntime.jsx)(_Svg.default, {
+      children: [(0, _jsxRuntime.jsx)(_Svg.Svg, {
         style: S_SVG,
         w: "16",
         children: (0, _jsxRuntime.jsx)("path", {

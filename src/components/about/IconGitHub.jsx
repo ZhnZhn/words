@@ -1,3 +1,5 @@
+import { XMLNS_SVG } from '../zhn/svg/Svg';
+
 const IconGitHub = ({
   className,
   style,
@@ -9,13 +11,10 @@ const IconGitHub = ({
     className="icon__github"
     style={style}
     href={href}
-    tabIndex="-1"
   >
     <svg
+      xmlns={XMLNS_SVG}
       viewBox="0 0 16 16"
-      xmlns="http://www.w3.org/2000/svg"
-      fillRule="evenodd"
-      clipRule="evenodd"
       strokeLinejoin="round"
       strokeMiterlimit="1.414"
     >

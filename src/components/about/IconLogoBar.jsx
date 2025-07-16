@@ -1,14 +1,9 @@
-import IconGitHub from './IconGitHub'
-import IconWordsApi from './IconWordsApi'
-import IconPreact from './IconPreact'
-
-const S_ROOT = {
-  textAlign: 'center',
-  paddingTop: 20
-};
+import IconGitHub from './IconGitHub';
+import IconWordsApi from './IconWordsApi';
+import IconPreact from './IconPreact';
 
 const IconLogoBar = () => (
-  <div style={S_ROOT}>
+  <div className="logos">
      <IconGitHub
         ariaLabel="GitHub: Repository of web app Words"
         href="https://github.com/zhnzhn/words/"

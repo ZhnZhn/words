@@ -1,4 +1,4 @@
-import Svg from './Svg';
+import { Svg } from './Svg';
 
 const Svg100 = ({
   children,

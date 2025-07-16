@@ -1,17 +1,16 @@
-const PREACT = 'Preact'
+import { XMLNS_SVG } from '../zhn/svg/Svg';
+
+const PREACT = 'Preact';
 
 const IconPreact = () => (
    <a
       arial-label={`Official ${PREACT} site`}
-      className="icon__preact"      
+      className="icon__preact"
       href="https://preactjs.com"
-      tabIndex="-1"
    >
     <svg
+      xmlns={XMLNS_SVG}
       viewBox="-256 -256 512 512"
-      xmlns="http://www.w3.org/2000/svg"
-      fillRule="evenodd"
-      clipRule="evenodd"
       strokeLinejoin="round"
     >
       <title>{`${PREACT} Logo`}</title>
