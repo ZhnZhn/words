@@ -1,4 +1,8 @@
-import { isFn } from '../utils/isTypeFn';
+import {
+  isArr,
+  isFn,
+  isObj
+} from '../utils/isTypeFn';
 
 export {
   render,
@@ -26,6 +30,27 @@ export const KEY_ENTER = "Enter"
 export const KEY_ESCAPE = "Escape"
 export const KEY_TAB = "Tab"
 
+export const safeMap = (
+  itemsOrItem,
+  crElement
+) => isArr(itemsOrItem)
+  ? itemsOrItem.length > 0
+      ? itemsOrItem.map(crElement)
+      : null
+  : isObj(itemsOrItem)
+  ? crElement(itemsOrItem, 0)
+  : null
+
+export const cloneUiElement = (
+  Element,
+  overrideProps,
+  key=Element.key
+) => (<Element.type
+  key={key}
+  {...Element.props}
+  {...overrideProps}
+/>)
+
 export const getRefValue = ref => (ref || {}).current
 
 export const setRefValue = (
@@ -45,11 +70,22 @@ const _focusHtmlElement = (
   }
 }
 
-export const focusRefElement = ref => {
+const _getValueFromFnOrRef = (
+  refOrFn
+) => isFn(refOrFn)
+  ? refOrFn()
+  : getRefValue(refOrFn);
+
+export const focusRefElement = (
+  fnOrRef1,
+  fnOrRef2
+) => {
   _focusHtmlElement(
-    getRefValue(ref)
+     _getValueFromFnOrRef(fnOrRef1)
+     || _getValueFromFnOrRef(fnOrRef2)
   )
 }
+
 
 export const focusElementById = (
   id
