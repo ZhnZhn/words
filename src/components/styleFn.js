@@ -26,6 +26,7 @@ export const crStyle2 = (
 
 export const CL_BT_FLAT_DIV = "bt-flat__div"
 export const CL_SHOW_POPUP = "show-popup"
+export const CL_POPUP_MENU = `popup-menu`
 
 const _fCrStyle = propName => value => ({
   [propName]: value
@@ -33,6 +34,7 @@ const _fCrStyle = propName => value => ({
 , _crDisplayStyle = _fCrStyle("display")
 export const S_BLOCK = _crDisplayStyle("block")
 export const S_NONE = _crDisplayStyle("none")
+export const S_INLINE_BLOCK = _crDisplayStyle("inline-block")
 
 export const crShowHide = (
   is,
@@ -53,8 +55,6 @@ export const crShowHide = (
     ]
 
 const CL_CONTAINER_SHOW_POPUP = `container ${CL_SHOW_POPUP}`
-, S_INLINE_BLOCK = _crDisplayStyle("inline-block")
-
 const _fCrShowHideIf = (showStyle) => (
   isShow,
   CL
@@ -67,3 +67,22 @@ const _fCrShowHideIf = (showStyle) => (
 
 export const crShowHideIf = _fCrShowHideIf(S_BLOCK)
 export const crShowHideInlineIf = _fCrShowHideIf(S_INLINE_BLOCK)
+
+export const crAbsoluteTopLeftStyle = (
+  top,
+  left,
+  isRight,
+  isBottom
+) => ({
+  position: 'absolute',
+  [isBottom ? 'bottom' : 'top']: top,
+  [isRight ? 'right': 'left']: left
+})
+
+const _crTransformTranslateX = (x) => ({
+  transform: `matrix(1, 0, 0, 1, ${x}, 0)`
+});
+export const crSliderTransformStyle = (
+  pageWidth,
+  pageCurrent
+) => _crTransformTranslateX(-1*pageWidth*(pageCurrent - 1) + 0)
