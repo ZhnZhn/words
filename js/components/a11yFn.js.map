@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/a11yFn.js"
+ ],
+ "file": "../../src/components/a11yFn.js",
+ "names": [
+  "_fUseKey",
+  "require",
+  "crPresentationRole",
+  "isShow",
+  "role",
+  "hidden",
+  "exports",
+  "crMenuItemRole",
+  "onClick",
+  "tabIndex",
+  "isKeyUp",
+  "fOnKeyEnter"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AAEO,MAAMC,kBAAkB,GAC7BC,MAAM,KACF;EACJC,IAAI,EAAE,cAAc;EACpBC,MAAM,EAAE,CAACF;AACX,CAAC,CAAC;AAAAG,OAAA,CAAAJ,kBAAA,GAAAA,kBAAA;AAEK,MAAMK,cAAc,GAAGA,CAC5BC,OAAO,EACPC,QAAQ,EACRC,OAAO,MACH;EACJN,IAAI,EAAE,UAAU;EAChBK,QAAQ;EACRD,OAAO;EACP,CAACE,OAAO,GAAG,SAAS,GAAG,WAAW,GAAGF,OAAO,GACxC,IAAAG,oBAAW,EAACH,OAAO,CAAC,GACpB,KAAK;AACX,CAAC,CAAC;AAAAF,OAAA,CAAAC,cAAA,GAAAA,cAAA"
+}
