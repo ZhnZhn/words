@@ -17,6 +17,7 @@ const MenuPages = ({
   , _isFirstPage = index === 0;
   return cloneUiElement(Page, {
     style,
+    canBeHidden: _pageNumber > pageCurrent,
     isVisible: isShow && (_pageNumber === pageCurrent),
     pageNumber: _pageNumber,
     onNextPage: _isFirstPage
