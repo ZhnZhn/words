@@ -38,7 +38,7 @@ const NextPageArrow = ({
  : null;
 
 const MenuItemList = ({
-  getRefFocus,
+  getRefItem,
   items,
   itemCl,
   pageNumber,
@@ -60,7 +60,7 @@ const MenuItemList = ({
         : _fClick({ isClose, onClick, onClose });
      return (<div
         key={name}
-        ref={getRefFocus(index)}
+        ref={getRefItem(index)}
         className={cn || itemCl}
         style={S_ITEM}
         {...crMenuItemRole(_onClick, "0")}

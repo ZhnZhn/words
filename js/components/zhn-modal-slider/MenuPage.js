@@ -3,31 +3,30 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
-var _useItemsFocusTrap = _interopRequireDefault(require("../hooks/useItemsFocusTrap"));
-var _useGetRefValue = _interopRequireDefault(require("../hooks/useGetRefValue2"));
-var _useFocus = require("../hooks/useFocus");
+var _useFocusTrap = _interopRequireDefault(require("./useFocusTrap"));
+var _useCanBeHidden = _interopRequireDefault(require("./useCanBeHidden"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const MenuPage = props => {
-  const _refTitle = (0, _uiApi.useRef)(),
-    [_getRefFocus, _refLastItem, _refFirstItem] = (0, _useItemsFocusTrap.default)(props.items),
-    _getFocusFirstItem = (0, _useGetRefValue.default)(_refTitle, _refFirstItem);
-  (0, _useFocus.useAsyncFocusFirstItemIf)(props.isVisible, _getFocusFirstItem);
+  const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocusTrap.default)(props),
+    _style = (0, _useCanBeHidden.default)(props);
   return (0, _jsxRuntime.jsx)("div", {
-    style: props.style,
+    style: {
+      ...props.style,
+      ..._style
+    },
     children: (0, _jsxRuntime.jsxs)(_FocusTrap.default, {
-      refFirst: _getFocusFirstItem,
+      refFirst: _refFirstItem,
       refLast: _refLastItem,
       children: [(0, _jsxRuntime.jsx)(_MenuTitle.default, {
-        refEl: _refTitle,
+        refEl: _refFirstItem,
         titleCl: props.titleCl,
         title: props.title,
         onClick: props.onPrevPage
       }), (0, _jsxRuntime.jsx)(_MenuItemList.default, {
-        getRefFocus: _getRefFocus,
+        getRefItem: _getRefItem,
         items: props.items,
         itemCl: props.itemCl,
         pageNumber: props.pageNumber,
@@ -40,6 +39,7 @@ const MenuPage = props => {
 
 /*
 MenuPage.propTypes = {
+  canBeHidden: PropTypes.bool,
   isVisible: PropTypes.bool,
   style: PropTypes.object,
   title: PropTypes.string,

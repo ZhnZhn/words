@@ -41,7 +41,7 @@ const NextPageArrow = _ref2 => {
 };
 const MenuItemList = _ref3 => {
   let {
-    getRefFocus,
+    getRefItem,
     items,
     itemCl,
     pageNumber,
@@ -64,7 +64,7 @@ const MenuItemList = _ref3 => {
           onClose
         });
       return (0, _jsxRuntime.jsxs)("div", {
-        ref: getRefFocus(index),
+        ref: getRefItem(index),
         className: cn || itemCl,
         style: S_ITEM,
         ...(0, _a11yFn.crMenuItemRole)(_onClick, "0"),

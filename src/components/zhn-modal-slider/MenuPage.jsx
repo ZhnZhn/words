@@ -1,44 +1,32 @@
-import { useRef } from '../uiApi';
-
-import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
-import useGetRefValue2 from '../hooks/useGetRefValue2';
-import { useAsyncFocusFirstItemIf } from '../hooks/useFocus';
+import useFocusTrap from './useFocusTrap';
+import useCanBeHidden from './useCanBeHidden';
 
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
 const MenuPage = (props) => {
-  const _refTitle = useRef()
-  , [
-    _getRefFocus,
+  const [
+    _refFirstItem,
     _refLastItem,
-    _refFirstItem
-  ] = useItemsFocusTrap(props.items)
-  , _getFocusFirstItem = useGetRefValue2(
-    _refTitle,
-    _refFirstItem
-  );
-
-  useAsyncFocusFirstItemIf(
-    props.isVisible,
-    _getFocusFirstItem
-  );
+    _getRefItem
+  ] = useFocusTrap(props)
+  , _style = useCanBeHidden(props);
 
   return (
-    <div style={props.style}>
+    <div style={{...props.style, ..._style}}>
       <FocusTrap
-        refFirst={_getFocusFirstItem}
+        refFirst={_refFirstItem}
         refLast={_refLastItem}
       >
         <MenuTitle
-          refEl={_refTitle}
+          refEl={_refFirstItem}
           titleCl={props.titleCl}
           title={props.title}
           onClick={props.onPrevPage}
         />
         <MenuItemList
-          getRefFocus={_getRefFocus}
+          getRefItem={_getRefItem}
           items={props.items}
           itemCl={props.itemCl}
           pageNumber={props.pageNumber}
@@ -53,6 +41,7 @@ const MenuPage = (props) => {
 
 /*
 MenuPage.propTypes = {
+  canBeHidden: PropTypes.bool,
   isVisible: PropTypes.bool,
   style: PropTypes.object,
   title: PropTypes.string,
