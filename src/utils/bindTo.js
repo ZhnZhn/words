@@ -2,9 +2,12 @@ import { isFn } from './isTypeFn';
 
 export const bindTo = (
   fn,
-  ...args
-) => fn.bind(null, ...args)
+  ...bindArgs
+) => (...args) => fn(...bindArgs, ...args)
 
-export const safeBindTo = (fn, ...args) => isFn(fn)
-  ? bindTo(fn, ...args)
-  : void 0
+export const safeBindTo = (
+  fn,
+  ...bindArgs
+) => isFn(fn)
+ ? (...args) => fn(...bindArgs, ...args)
+ : void 0
