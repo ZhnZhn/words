@@ -1,9 +1,7 @@
 import {
   useRef,
   useCallback,
-  useMemo,
-  getRefValue,
-  //setRefValue
+  useMemo
 } from '../uiApi';
 
 import { CL_BT_FLAT_DIV } from '../styleFn';
@@ -67,11 +65,8 @@ const HeaderBar = ({
     toggleTopics
   ] = useToggle()
   , _refTopicsEl = useRef()
-  , _hCloseTopics = useCallback(evt => {
-    const _el = getRefValue(_refTopicsEl);
-    if (_el && !_el.contains(evt.target)) {
+  , _hCloseTopics = useCallback(() => {
       toggleTopics(!1)
-    }
   }, [toggleTopics]);
 
   return (

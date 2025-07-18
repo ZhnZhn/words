@@ -51,11 +51,8 @@ const HeaderBar = _ref => {
   const _topicItems = (0, _uiApi.useMemo)(() => [_crTopicItem('Words Definition', onDefinition), _crTopicItem('Words Sources', onSources), _crTopicItem('Watch Lists', onWatch)], [onDefinition, onSources, onWatch]),
     [isTopics, toggleTopics] = (0, _useToggle.default)(),
     _refTopicsEl = (0, _uiApi.useRef)(),
-    _hCloseTopics = (0, _uiApi.useCallback)(evt => {
-      const _el = (0, _uiApi.getRefValue)(_refTopicsEl);
-      if (_el && !_el.contains(evt.target)) {
-        toggleTopics(!1);
-      }
+    _hCloseTopics = (0, _uiApi.useCallback)(() => {
+      toggleTopics(!1);
     }, [toggleTopics]);
   return (0, _jsxRuntime.jsxs)("header", {
     className: CL_HEADER,

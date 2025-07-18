@@ -1,11 +1,14 @@
 import {
   useRef,
   useEffect,
+  safeMap,
+  crOnClick,
   setRefValue,
   focusRefElement
 } from '../uiApi';
 
-import MenuItem from '../zhn/MenuItem';
+import { crMenuItemRole } from '../a11yFn';
+
 import ShowHide from '../zhn/ShowHide';
 import ModalPane from '../zhn-moleculs/ModalPane';
 
@@ -14,21 +17,16 @@ const ItemsStack = ({
   items,
   clItem,
   onClose
-}) => items
- .map((item, index) => {
-    const _ref = index === 0
-      ? refItem
-      : void 0;
-    return (
-      <MenuItem
-        key={item.caption}
-        refEl={_ref}
-        className={clItem}
-        {...item}
-        onClose={onClose}
-      />
-    );
- })
+}) => safeMap(items, (item, index) => (
+  <div
+    key={item.caption}
+    {...crMenuItemRole(crOnClick(item.onClick, onClose, !0), "0")}
+    ref={index === 0 ? refItem : void 0}
+    className={clItem}
+  >
+    {item.caption}
+  </div>
+))
 
 const PaneTopics = ({
   isShow,
