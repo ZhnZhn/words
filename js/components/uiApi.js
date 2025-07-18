@@ -1,9 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.cloneUiElement = exports.cloneElement = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useLayoutEffect = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.getRefValue = exports.getRefInputValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefElement = exports.focusElementById = exports.createElement = exports.createContext = exports.crOnClick = exports.cloneElement = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
-var _jsxRuntime = require("preact/jsx-runtime");
 var _compat = require("preact/compat");
 exports.render = _compat.render;
 exports.cloneElement = _compat.cloneElement;
@@ -27,16 +26,11 @@ const KEY_ESCAPE = exports.KEY_ESCAPE = "Escape";
 const KEY_TAB = exports.KEY_TAB = "Tab";
 const safeMap = (itemsOrItem, crElement) => (0, _isTypeFn.isArr)(itemsOrItem) ? itemsOrItem.length > 0 ? itemsOrItem.map(crElement) : null : (0, _isTypeFn.isObj)(itemsOrItem) ? crElement(itemsOrItem, 0) : null;
 exports.safeMap = safeMap;
-const cloneUiElement = function (Element, overrideProps, key) {
-  if (key === void 0) {
-    key = Element.key;
-  }
-  return (0, _jsxRuntime.jsx)(Element.type, {
-    ...Element.props,
-    ...overrideProps
-  }, key);
-};
-exports.cloneUiElement = cloneUiElement;
+const crOnClick = (onClick, onClose, isClose) => (0, _isTypeFn.isFn)(onClick) ? isClose ? () => {
+  onClick();
+  onClose();
+} : onClick : void 0;
+exports.crOnClick = crOnClick;
 const getRefValue = ref => (ref || {}).current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {

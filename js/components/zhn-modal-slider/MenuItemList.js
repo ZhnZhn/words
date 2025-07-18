@@ -3,7 +3,6 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _bindTo = require("../../utils/bindTo");
-var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _a11yFn = require("../a11yFn");
 var _styleFn = require("../styleFn");
@@ -19,27 +18,16 @@ const SUB_MENU = 'sub',
     padding: '1px 16px 1px 0px',
     fontWeight: 'bold'
   };
-const _fClick = _ref => {
-  let {
-    isClose,
-    onClick,
-    onClose
-  } = _ref;
-  return (0, _isTypeFn.isFn)(onClick) ? isClose ? () => {
-    onClick();
-    onClose();
-  } : onClick : void 0;
-};
-const NextPageArrow = _ref2 => {
+const NextPageArrow = _ref => {
   let {
     type
-  } = _ref2;
+  } = _ref;
   return type === SUB_MENU ? (0, _jsxRuntime.jsx)("span", {
     style: S_NEXT_PAGE,
     children: ">"
   }) : null;
 };
-const MenuItemList = _ref3 => {
+const MenuItemList = _ref2 => {
   let {
     getRefItem,
     items,
@@ -47,25 +35,17 @@ const MenuItemList = _ref3 => {
     pageNumber,
     onNextPage,
     onClose
-  } = _ref3;
+  } = _ref2;
   return (0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
     children: (0, _uiApi.safeMap)(items, (item, index) => {
       const {
-          cn,
           name,
-          type,
-          id,
-          isClose,
-          onClick
+          type
         } = item,
-        _onClick = type === SUB_MENU ? (0, _bindTo.bindTo)(onNextPage, id, name, pageNumber) : _fClick({
-          isClose,
-          onClick,
-          onClose
-        });
+        _onClick = type === SUB_MENU ? (0, _bindTo.bindTo)(onNextPage, item.id, name, pageNumber) : (0, _uiApi.crOnClick)(item.onClick, onClose, item.isClose);
       return (0, _jsxRuntime.jsxs)("div", {
         ref: getRefItem(index),
-        className: cn || itemCl,
+        className: item.cn || itemCl,
         style: S_ITEM,
         ...(0, _a11yFn.crMenuItemRole)(_onClick, "0"),
         children: [(0, _jsxRuntime.jsx)("span", {

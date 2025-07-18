@@ -1,7 +1,6 @@
 import { bindTo } from '../../utils/bindTo';
-import { isFn } from '../../utils/isTypeFn';
 
-import { safeMap } from '../uiApi';
+import { safeMap, crOnClick } from '../uiApi';
 import { crMenuItemRole } from '../a11yFn';
 
 import {
@@ -21,16 +20,6 @@ const SUB_MENU = 'sub'
   fontWeight: 'bold'
 };
 
-const _fClick = ({
-  isClose,
-  onClick,
-  onClose
-}) => isFn(onClick)
-  ? isClose
-      ? () => { onClick(); onClose(); }
-      : onClick
-  : void 0;
-
 const NextPageArrow = ({
   type
 }) => type === SUB_MENU
@@ -48,20 +37,16 @@ const MenuItemList = ({
   <>
    {safeMap(items, (item, index) => {
      const {
-       cn,
        name,
-       type,
-       id,
-       isClose,
-       onClick
+       type
      } = item
      , _onClick = type === SUB_MENU
-        ? bindTo(onNextPage, id, name, pageNumber)
-        : _fClick({ isClose, onClick, onClose });
+        ? bindTo(onNextPage, item.id, name, pageNumber)
+        : crOnClick(item.onClick, onClose, item.isClose);
      return (<div
         key={name}
         ref={getRefItem(index)}
-        className={cn || itemCl}
+        className={item.cn || itemCl}
         style={S_ITEM}
         {...crMenuItemRole(_onClick, "0")}
       >

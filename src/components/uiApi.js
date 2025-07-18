@@ -41,15 +41,15 @@ export const safeMap = (
   ? crElement(itemsOrItem, 0)
   : null
 
-export const cloneUiElement = (
-  Element,
-  overrideProps,
-  key=Element.key
-) => (<Element.type
-  key={key}
-  {...Element.props}
-  {...overrideProps}
-/>)
+export const crOnClick = (
+  onClick,
+  onClose,
+  isClose
+) => isFn(onClick)
+  ? isClose
+      ? () => { onClick(); onClose(); }
+      : onClick
+  : void 0;
 
 export const getRefValue = ref => (ref || {}).current
 
