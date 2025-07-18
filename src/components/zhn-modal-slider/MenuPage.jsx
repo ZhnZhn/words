@@ -1,4 +1,4 @@
-import useFocusTrap from './useFocusTrap';
+import { useItemsFocusTrap } from '../hooks/useFocus';
 import useCanBeHidden from './useCanBeHidden';
 
 import FocusTrap from '../zhn-moleculs/FocusTrap';
@@ -10,7 +10,11 @@ const MenuPage = (props) => {
     _refFirstItem,
     _refLastItem,
     _getRefItem
-  ] = useFocusTrap(props)
+  ] = useItemsFocusTrap(
+    props.items,
+    props.isVisible,
+    !props.title
+  )
   , _style = useCanBeHidden(props);
 
   return (

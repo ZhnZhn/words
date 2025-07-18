@@ -3,14 +3,14 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _useFocusTrap = _interopRequireDefault(require("./useFocusTrap"));
+var _useFocus = require("../hooks/useFocus");
 var _useCanBeHidden = _interopRequireDefault(require("./useCanBeHidden"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const MenuPage = props => {
-  const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocusTrap.default)(props),
+  const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocus.useItemsFocusTrap)(props.items, props.isVisible, !props.title),
     _style = (0, _useCanBeHidden.default)(props);
   return (0, _jsxRuntime.jsx)("div", {
     style: {

@@ -47,3 +47,28 @@ export const useAsyncFocusFirstItemIf = (
     _isFocus
   )
 }
+
+export const useItemsFocusTrap = (
+  items,
+  isVisible,
+  isFirstItem = !0
+) => {
+  const _refFirstItem = useRef()
+  , _refLastItem = useRef()
+  , _getRefItem = index => isFirstItem && index === 0
+    ? _refFirstItem
+    : index === items.length - 1
+    ? _refLastItem
+    : void 0;
+
+  useAsyncFocusFirstItemIf(
+    isVisible,
+    _refFirstItem
+  )
+
+  return [
+    _refFirstItem,
+    _refLastItem,
+    _getRefItem
+  ];
+}
