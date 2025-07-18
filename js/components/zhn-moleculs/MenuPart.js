@@ -3,62 +3,39 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _isTypeFn = require("../../utils/isTypeFn");
 var _bindTo = require("../../utils/bindTo");
-var _fUseKey = require("../hooks/fUseKey");
+var _uiApi = require("../uiApi");
+var _a11yFn = require("../a11yFn");
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
-//import PropTypes from 'prop-types'
-
 const CL_ROW_ITEM = "row__item not-selected";
-const _assign = Object.assign;
-const _hKeyDown = (onClick, evt) => {
-  if ((0, _isTypeFn.isFn)(onClick) && (0, _fUseKey.isKeyEnter)(evt)) {
-    onClick();
-  }
-};
-const _renderMenuItems = function (option) {
-  const {
-    items = [],
-    hmItems = {},
-    onClickItem,
-    ...restOption
-  } = option;
-  return items.map((item, index) => {
-    const _itemConf = hmItems[item.id],
-      {
-        menuTitle
-      } = _itemConf;
-    _assign(_itemConf, restOption);
-    const _onClick = (0, _isTypeFn.isFn)(onClickItem) ? (0, _bindTo.bindTo)(onClickItem, _itemConf) : void 0;
-    return (0, _jsxRuntime.jsx)("div", {
-      role: "menuitem",
-      tabIndex: "0",
-      className: CL_ROW_ITEM,
-      onClick: _onClick,
-      onKeyDown: (0, _bindTo.bindTo)(_hKeyDown, _onClick),
-      children: menuTitle
-    }, index);
-  });
-};
 const MenuPart = _ref => {
   let {
     isInitClose,
     caption,
+    items,
+    hmItems,
+    onClickItem,
     ...restProps
   } = _ref;
   return (0, _jsxRuntime.jsx)(_OpenClose.default, {
     caption: caption,
     isClose: isInitClose,
-    children: _renderMenuItems(restProps)
+    children: (0, _uiApi.safeMap)(items, item => {
+      const _itemConf = hmItems[item.id],
+        {
+          menuTitle
+        } = _itemConf || {};
+      return menuTitle ? (0, _jsxRuntime.jsx)("div", {
+        ...(0, _a11yFn.crMenuItemRole)((0, _bindTo.safeBindTo)(onClickItem, {
+          ..._itemConf,
+          ...restProps
+        }), "0"),
+        className: CL_ROW_ITEM,
+        children: menuTitle
+      }, item.id) : null;
+    })
   });
 };
-/*
-MenuPart.propTypes = {
-  caption: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.object),
-  isInitClose: PropTypes.bool
-}
-*/
 var _default = exports.default = MenuPart;
 //# sourceMappingURL=MenuPart.js.map
