@@ -1,19 +1,18 @@
 import {
-  useRef,
-  useEffect,
   safeMap,
-  crOnClick,
-  setRefValue,
-  focusRefElement
+  crOnClick
 } from '../uiApi';
 
 import { crMenuItemRole } from '../a11yFn';
 
+import { useItemsFocusTrap } from '../hooks/useFocus';
+
 import ShowHide from '../zhn/ShowHide';
 import ModalPane from '../zhn-moleculs/ModalPane';
+import FocusTrap from '../zhn-moleculs/FocusTrap';
 
 const ItemsStack = ({
-  refItem,
+  getRefItem,
   items,
   clItem,
   onClose
@@ -21,7 +20,7 @@ const ItemsStack = ({
   <div
     key={item.caption}
     {...crMenuItemRole(crOnClick(item.onClick, onClose, !0), "0")}
-    ref={index === 0 ? refItem : void 0}
+    ref={getRefItem(index)}
     className={clItem}
   >
     {item.caption}
@@ -35,17 +34,14 @@ const PaneTopics = ({
   items,
   onClose
 }) => {
-  const _refItem = useRef()
-  , _refPrevEl = useRef();
-
-  useEffect(() => {
-    if (isShow) {
-      setRefValue(_refPrevEl, document.activeElement)
-      focusRefElement(_refItem)
-    } else {
-      focusRefElement(_refPrevEl)
-    }
-  }, [isShow])
+  const [
+    _refFirstItem,
+    _refLastItem,
+    _getRefItem
+  ] = useItemsFocusTrap(
+    items,
+    isShow
+  );
 
   return (
     <ModalPane
@@ -56,12 +52,17 @@ const PaneTopics = ({
         isShow={isShow}
         className={className}
       >
-        <ItemsStack
-          refItem={_refItem}
-          items={items}
-          clItem={clItem}
-          onClose={onClose}
-        />
+        <FocusTrap
+          refFirst={_refFirstItem}
+          refLast={_refLastItem}
+        >
+          <ItemsStack
+            getRefItem={_getRefItem}
+            items={items}
+            clItem={clItem}
+            onClose={onClose}
+          />
+        </FocusTrap>
       </ShowHide>
    </ModalPane>
   );
