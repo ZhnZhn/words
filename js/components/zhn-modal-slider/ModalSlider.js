@@ -10,7 +10,6 @@ var _useInitStateFromProps = _interopRequireDefault(require("../hooks/useInitSta
 var _useThrottleCallback = _interopRequireDefault(require("../hooks/useThrottleCallback"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
-var _MenuPage = _interopRequireDefault(require("./MenuPage"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SLIDER_PAGES = 'slider-pages',
@@ -28,14 +27,15 @@ const CL_SLIDER_PAGES = 'slider-pages',
 const _crWidthStyle = v => ({
   width: v
 });
-const _crMenuPage = (id, model, title) => (0, _jsxRuntime.jsx)(_MenuPage.default, {
+const _crMenuPageProps = (id, model, title) => ({
+  key: id,
   items: model[id],
   titleCl: model.titleCl,
   itemCl: model.itemCl || model.titleCl,
-  title: title
-}, id);
+  title
+});
 const _addPage = (model, pages, id, title) => {
-  pages.push(_crMenuPage(id, model, title));
+  pages.push(_crMenuPageProps(id, model, title));
 };
 const _initState = model => {
   const _pW = model.pageWidth,
@@ -45,7 +45,7 @@ const _initState = model => {
     pageWidth: _pW,
     pageStyle: _crWidthStyle(_pW),
     pageCurrent: 1,
-    pages: [_crMenuPage(_initId, model)]
+    pages: [_crMenuPageProps(_initId, model)]
   };
 };
 const ModalSlider = _ref => {

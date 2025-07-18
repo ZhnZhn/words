@@ -12,8 +12,6 @@ import useThrottleCallback from '../hooks/useThrottleCallback';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
 import ShowHide from '../zhn/ShowHide';
-
-import MenuPage from './MenuPage';
 import MenuPages from './MenuPages';
 
 const CL_SLIDER_PAGES = 'slider-pages'
@@ -33,17 +31,17 @@ const _crWidthStyle = (v) => ({
   width: v
 })
 
-const _crMenuPage = (
+const _crMenuPageProps = (
   id,
   model,
   title
-) => (<MenuPage
-  key={id}
-  items={model[id]}
-  titleCl={model.titleCl}
-  itemCl={model.itemCl || model.titleCl}
-  title={title}
-/>);
+) => ({
+  key: id,
+  items: model[id],
+  titleCl: model.titleCl,
+  itemCl: model.itemCl || model.titleCl,
+  title
+});
 
 const _addPage = (
   model,
@@ -51,7 +49,7 @@ const _addPage = (
   id,
   title
 ) => {
-  pages.push(_crMenuPage(id, model, title))
+  pages.push(_crMenuPageProps(id, model, title))
 };
 
 const _initState = model => {
@@ -63,7 +61,7 @@ const _initState = model => {
     pageWidth: _pW,
     pageStyle: _crWidthStyle(_pW),
     pageCurrent: 1,
-    pages: [_crMenuPage(_initId, model)]
+    pages: [_crMenuPageProps(_initId, model)]
   };
 };
 
