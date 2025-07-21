@@ -10,6 +10,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const ModalPane = _ref => {
   let {
     isShow,
+    className,
     style,
     children,
     onClose
@@ -20,6 +21,7 @@ const ModalPane = _ref => {
   return (0, _jsxRuntime.jsx)("div", {
     ...(0, _a11yFn.crPresentationRole)(isShow),
     ref: _refEl,
+    className: className,
     style: style,
     onKeyDown: isShow ? _hKeyEscape : void 0,
     children: children

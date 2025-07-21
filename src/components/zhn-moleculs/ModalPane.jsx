@@ -5,6 +5,7 @@ import { useKeyEscape } from '../hooks/fUseKey';
 
 const ModalPane = ({
   isShow,
+  className,
   style,
   children,
   onClose
@@ -16,6 +17,7 @@ const ModalPane = ({
     <div
       {...crPresentationRole(isShow)}
       ref={_refEl}
+      className={className}
       style={style}
       onKeyDown={isShow ? _hKeyEscape : void 0}
     >
