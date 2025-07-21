@@ -11,8 +11,9 @@ var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const MenuPage = props => {
   const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocus.useItemsFocusTrap)(props.items, props.isVisible, !props.title),
-    _style = (0, _useCanBeHidden.default)(props);
+    _style = (0, _useCanBeHidden.default)(props.canBeHidden);
   return (0, _jsxRuntime.jsx)("div", {
+    "aria-hidden": props.isVisible ? void 0 : "true",
     style: {
       ...props.style,
       ..._style

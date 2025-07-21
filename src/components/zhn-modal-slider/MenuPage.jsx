@@ -15,10 +15,15 @@ const MenuPage = (props) => {
     props.isVisible,
     !props.title
   )
-  , _style = useCanBeHidden(props);
+  , _style = useCanBeHidden(
+    props.canBeHidden
+  );
 
   return (
-    <div style={{...props.style, ..._style}}>
+    <div
+      aria-hidden={props.isVisible ? void 0: "true"}
+      style={{...props.style, ..._style}}
+    >
       <FocusTrap
         refFirst={_refFirstItem}
         refLast={_refLastItem}
