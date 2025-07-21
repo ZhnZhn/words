@@ -5,22 +5,23 @@ import {
   S_NONE
 } from '../styleFn';
 
-import useEffectTimeout from '../hooks/useEffectTimeout';
+import useEffectTimeoutIf from '../hooks/useEffectTimeoutIf';
 
-const useCanBeHidden = (props) => {
+const useCanBeHidden = (
+  canBeHidden
+) => {
   const [
     hasBeenHidden,
     setHasBeenHidden
   ] = useState(!1);
 
-  useEffectTimeout(
+  useEffectTimeoutIf(
+    canBeHidden,
     () => setHasBeenHidden(!0),
     500,
-    [props.canBeHidden],
-    props.canBeHidden
   )
 
-  if (!props.canBeHidden) {
+  if (!canBeHidden) {
     setHasBeenHidden(!1)
   }
 

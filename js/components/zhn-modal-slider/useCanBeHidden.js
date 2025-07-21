@@ -5,11 +5,11 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
-var _useEffectTimeout = _interopRequireDefault(require("../hooks/useEffectTimeout"));
-const useCanBeHidden = props => {
+var _useEffectTimeoutIf = _interopRequireDefault(require("../hooks/useEffectTimeoutIf"));
+const useCanBeHidden = canBeHidden => {
   const [hasBeenHidden, setHasBeenHidden] = (0, _uiApi.useState)(!1);
-  (0, _useEffectTimeout.default)(() => setHasBeenHidden(!0), 500, [props.canBeHidden], props.canBeHidden);
-  if (!props.canBeHidden) {
+  (0, _useEffectTimeoutIf.default)(canBeHidden, () => setHasBeenHidden(!0), 500);
+  if (!canBeHidden) {
     setHasBeenHidden(!1);
   }
   return hasBeenHidden ? _styleFn.S_NONE : _styleFn.S_BLOCK;
