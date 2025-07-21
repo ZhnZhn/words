@@ -11,11 +11,10 @@ import useInitStateFromProps from '../hooks/useInitStateFromProps';
 import useThrottleCallback from '../hooks/useThrottleCallback';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
-import ShowHide from '../zhn/ShowHide';
 import MenuPages from './MenuPages';
 
 const CL_SLIDER_PAGES = 'slider-pages'
-, S_SHOW_HIDE = {
+, S_MODAL_PANE = {
   position: 'absolute',
   overflow: 'hidden'
 }
@@ -69,8 +68,6 @@ export const ModalSlider = ({
   model=DF_MODEL,
   isShow,
   className,
-  rootStyle,
-  style,
   onClose
 }) => {
   const [
@@ -122,39 +119,31 @@ export const ModalSlider = ({
      })
   });
 
-  const _showHideStyle = {
-    ...style,
-    ...S_SHOW_HIDE,
-    ...pageStyle
-  }
-  , _divStyle = crSliderTransformStyle(
-     pageWidth,
-     pageCurrent
-  );
   return (
-      <ModalPane
-        isShow={isShow}
-        style={rootStyle}
-        onClose={onClose}
+    <ModalPane
+      isShow={isShow}
+      className={crCn(CL_POPUP_MENU, className)}
+      style={{...S_MODAL_PANE, ...pageStyle}}
+      onClose={onClose}
+    >
+      <div
+        className={CL_SLIDER_PAGES}
+        style={crSliderTransformStyle(
+          pageWidth,
+          pageCurrent
+        )}
       >
-        <ShowHide
-          className={crCn(CL_POPUP_MENU, className)}
-          style={_showHideStyle}
+        <MenuPages
           isShow={isShow}
-        >
-          <div className={CL_SLIDER_PAGES} style={_divStyle}>
-            <MenuPages
-              isShow={isShow}
-              style={pageStyle}
-              pages={pages}
-              pageCurrent={pageCurrent}
-              onNextPage={hNextPage}
-              onPrevPage={hPrevPage}
-              onClose={onClose}
-            />
-          </div>
-        </ShowHide>
-      </ModalPane>
+          style={pageStyle}
+          pages={pages}
+          pageCurrent={pageCurrent}
+          onNextPage={hNextPage}
+          onPrevPage={hPrevPage}
+          onClose={onClose}
+        />
+      </div>
+    </ModalPane>
   );
 }
 

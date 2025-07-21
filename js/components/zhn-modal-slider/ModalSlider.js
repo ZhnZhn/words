@@ -9,11 +9,10 @@ var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
 var _useInitStateFromProps = _interopRequireDefault(require("../hooks/useInitStateFromProps"));
 var _useThrottleCallback = _interopRequireDefault(require("../hooks/useThrottleCallback"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
-var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SLIDER_PAGES = 'slider-pages',
-  S_SHOW_HIDE = {
+  S_MODAL_PANE = {
     position: 'absolute',
     overflow: 'hidden'
   },
@@ -53,8 +52,6 @@ const ModalSlider = _ref => {
     model = DF_MODEL,
     isShow,
     className,
-    rootStyle,
-    style,
     onClose
   } = _ref;
   const [state, setState] = (0, _useInitStateFromProps.default)(_initState, model),
@@ -97,32 +94,25 @@ const ModalSlider = _ref => {
         };
       });
     });
-  const _showHideStyle = {
-      ...style,
-      ...S_SHOW_HIDE,
-      ...pageStyle
-    },
-    _divStyle = (0, _styleFn.crSliderTransformStyle)(pageWidth, pageCurrent);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
-    style: rootStyle,
+    className: (0, _styleFn.crCn)(_styleFn.CL_POPUP_MENU, className),
+    style: {
+      ...S_MODAL_PANE,
+      ...pageStyle
+    },
     onClose: onClose,
-    children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
-      className: (0, _styleFn.crCn)(_styleFn.CL_POPUP_MENU, className),
-      style: _showHideStyle,
-      isShow: isShow,
-      children: (0, _jsxRuntime.jsx)("div", {
-        className: CL_SLIDER_PAGES,
-        style: _divStyle,
-        children: (0, _jsxRuntime.jsx)(_MenuPages.default, {
-          isShow: isShow,
-          style: pageStyle,
-          pages: pages,
-          pageCurrent: pageCurrent,
-          onNextPage: hNextPage,
-          onPrevPage: hPrevPage,
-          onClose: onClose
-        })
+    children: (0, _jsxRuntime.jsx)("div", {
+      className: CL_SLIDER_PAGES,
+      style: (0, _styleFn.crSliderTransformStyle)(pageWidth, pageCurrent),
+      children: (0, _jsxRuntime.jsx)(_MenuPages.default, {
+        isShow: isShow,
+        style: pageStyle,
+        pages: pages,
+        pageCurrent: pageCurrent,
+        onNextPage: hNextPage,
+        onPrevPage: hPrevPage,
+        onClose: onClose
       })
     })
   });
