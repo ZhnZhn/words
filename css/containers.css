@@ -57,7 +57,7 @@
 
   position: relative;   
   line-height: 1.8;
-  padding: 4px 42px 0 10px;
+  padding: 4px 42px 0 8px;
   margin-bottom: 10px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -92,7 +92,7 @@
 
 .items__menu-more {
   top: 36px;
-  left: 8px;
+  left: 2px;
   z-index: 2000;
 }
 
