@@ -1,3 +1,5 @@
+import { crVisibilityHidden } from '../styleFn';
+
 import { useItemsFocusTrap } from '../hooks/useFocus';
 import useCanBeHidden from './useCanBeHidden';
 
@@ -21,8 +23,11 @@ const MenuPage = (props) => {
 
   return (
     <div
-      aria-hidden={props.isVisible ? void 0: "true"}
-      style={{...props.style, ..._style}}
+      style={{
+        ...props.style,
+        ...crVisibilityHidden(props.isVisible),
+        ..._style
+      }}
     >
       <FocusTrap
         refFirst={_refFirstItem}

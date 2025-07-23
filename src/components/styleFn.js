@@ -68,6 +68,12 @@ const _fCrShowHideIf = (showStyle) => (
 export const crShowHideIf = _fCrShowHideIf(S_BLOCK)
 export const crShowHideInlineIf = _fCrShowHideIf(S_INLINE_BLOCK)
 
+export const crVisibilityHidden = (
+  isVisible
+) => isVisible
+  ? void 0
+  : { visibility: 'hidden' }
+
 export const crAbsoluteTopLeftStyle = (
   top,
   left,

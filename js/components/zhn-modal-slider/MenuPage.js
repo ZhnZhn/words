@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _useFocus = require("../hooks/useFocus");
 var _useCanBeHidden = _interopRequireDefault(require("./useCanBeHidden"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
@@ -13,9 +14,9 @@ const MenuPage = props => {
   const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocus.useItemsFocusTrap)(props.items, props.isVisible, !props.title),
     _style = (0, _useCanBeHidden.default)(props.canBeHidden);
   return (0, _jsxRuntime.jsx)("div", {
-    "aria-hidden": props.isVisible ? void 0 : "true",
     style: {
       ...props.style,
+      ...(0, _styleFn.crVisibilityHidden)(props.isVisible),
       ..._style
     },
     children: (0, _jsxRuntime.jsxs)(_FocusTrap.default, {

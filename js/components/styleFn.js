@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_BT_FLAT_DIV = void 0;
+exports.crVisibilityHidden = exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_BT_FLAT_DIV = void 0;
 const isArr = Array.isArray;
 const _getCn = arrOrStr => isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (arrOrStr1, arrOrStr2) => {
@@ -31,6 +31,10 @@ const CL_CONTAINER_SHOW_POPUP = `container ${CL_SHOW_POPUP}`;
 const _fCrShowHideIf = showStyle => (isShow, CL) => isShow ? [showStyle, `${CL_CONTAINER_SHOW_POPUP} ${CL}`] : [S_NONE];
 const crShowHideIf = exports.crShowHideIf = _fCrShowHideIf(S_BLOCK);
 const crShowHideInlineIf = exports.crShowHideInlineIf = _fCrShowHideIf(S_INLINE_BLOCK);
+const crVisibilityHidden = isVisible => isVisible ? void 0 : {
+  visibility: 'hidden'
+};
+exports.crVisibilityHidden = crVisibilityHidden;
 const crAbsoluteTopLeftStyle = (top, left, isRight, isBottom) => ({
   position: 'absolute',
   [isBottom ? 'bottom' : 'top']: top,
