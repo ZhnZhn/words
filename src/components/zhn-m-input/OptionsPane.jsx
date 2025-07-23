@@ -82,6 +82,7 @@ const _crItem = (
 };
 
 const OptionsPane = ({
+  id,
   isShow,
   className,
   options,
@@ -123,10 +124,11 @@ const OptionsPane = ({
      onClose={onClose}
    >
       <ShowHide
+         id={id}
+         role="listbox"
          isShow={isShow}
          isScrollable={true}
          className={className}
-         role="presentation"
          onKeyDown={_hKeyDown}
       >
          <ItemStack

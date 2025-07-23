@@ -1,4 +1,5 @@
 import {
+  useId,
   useRef,
   useState,
   useMemo,
@@ -37,7 +38,8 @@ const InputSelect = ({
   style,
   onSelect
 }) => {
-  const _refBtArrow = useRef()
+  const _listboxId = useId()
+  , _refBtArrow = useRef()
   , [
     item,
     setItem
@@ -78,7 +80,10 @@ const InputSelect = ({
 
   return (
     <div
-      role="presentation"
+      role="combobox"
+      aria-expanded={isShowOptions}
+      aria-controls={_listboxId}
+      tabIndex="-1"
       className={CL_SELECT}
       style={style}
       onClick={showOptions}
@@ -88,6 +93,7 @@ const InputSelect = ({
         {caption}
       </label>
       <OptionsPane
+         id={_listboxId}
          isShow={isShowOptions}
          className={CL_SELECT_OPTIONS}
          item={item}

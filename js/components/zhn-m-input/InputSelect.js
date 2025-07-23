@@ -30,7 +30,8 @@ const InputSelect = _ref => {
     style,
     onSelect
   } = _ref;
-  const _refBtArrow = (0, _uiApi.useRef)(),
+  const _listboxId = (0, _uiApi.useId)(),
+    _refBtArrow = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)()
     /*eslint-disable react-hooks/exhaustive-deps */,
@@ -59,7 +60,10 @@ const InputSelect = _ref => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsxs)("div", {
-    role: "presentation",
+    role: "combobox",
+    "aria-expanded": isShowOptions,
+    "aria-controls": _listboxId,
+    tabIndex: "-1",
     className: CL_SELECT,
     style: style,
     onClick: showOptions,
@@ -68,6 +72,7 @@ const InputSelect = _ref => {
       className: CL_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
+      id: _listboxId,
       isShow: isShowOptions,
       className: CL_SELECT_OPTIONS,
       item: item,

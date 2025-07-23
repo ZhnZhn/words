@@ -52,6 +52,7 @@ const _crItem = (item, index, _ref2) => {
 };
 const OptionsPane = _ref3 => {
   let {
+    id,
     isShow,
     className,
     options,
@@ -91,10 +92,11 @@ const OptionsPane = _ref3 => {
     isShow: isShow,
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
+      id: id,
+      role: "listbox",
       isShow: isShow,
       isScrollable: true,
       className: className,
-      role: "presentation",
       onKeyDown: _hKeyDown,
       children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
         items: options,
