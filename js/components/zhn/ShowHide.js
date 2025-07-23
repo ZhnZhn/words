@@ -11,12 +11,15 @@ const ShowHide = _ref => {
     className,
     style,
     children,
-    onKeyDown
+    onKeyDown,
+    ...restProps
   } = _ref;
   const _style = isShow ? _styleFn.S_BLOCK : _styleFn.S_NONE,
     _className = (0, _styleFn.crCn)(className, [isShow, _styleFn.CL_SHOW_POPUP]);
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (0, _jsxRuntime.jsx)("div", {
-    role: "presentation",
+    ...restProps,
+    tabIndex: "-1",
     className: _className,
     style: {
       ...style,
@@ -26,6 +29,7 @@ const ShowHide = _ref => {
     onKeyDown: onKeyDown,
     children: children
   });
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
 };
 var _default = exports.default = ShowHide;
 //# sourceMappingURL=ShowHide.js.map

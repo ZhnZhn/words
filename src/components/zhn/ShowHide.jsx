@@ -11,17 +11,19 @@ const ShowHide = ({
   className,
   style,
   children,
-  onKeyDown
+  onKeyDown,
+  ...restProps
 }) => {
     const _style = isShow
       ? S_BLOCK : S_NONE
     , _className = crCn(className,
       [isShow, CL_SHOW_POPUP]
     );
-
+    /*eslint-disable jsx-a11y/no-static-element-interactions*/
     return (
       <div
-        role="presentation"
+        {...restProps}    
+        tabIndex="-1"
         className={_className}
         style={{...style, ..._style}}
         data-scrollable={isScrollable ? "true" : void 0}
@@ -30,6 +32,7 @@ const ShowHide = ({
         {children}
       </div>
     );
+    /*eslint-enable jsx-a11y/no-static-element-interactions*/
 };
 
 export default ShowHide

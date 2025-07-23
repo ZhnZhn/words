@@ -121,8 +121,7 @@ const GestureSwipeX = ({
   }));
 
   return (
-    <div
-      role="presentation"
+    <div    
       style={style}
       {..._handlers}
     >

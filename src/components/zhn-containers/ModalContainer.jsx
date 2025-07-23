@@ -17,9 +17,11 @@ const ModalContainer = ({
   ] = isShow
     ? [CL_MODAL_ROOT_SHOWING, S_BLOCK]
     : [CL_MODAL_ROOT, S_NONE];
+
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
+  /*eslint-disable jsx-a11y/click-events-have-key-events*/
   return (
    <div
-     role="presentation"
      className={_className}
      style={_style}
      onClick={onClose}
@@ -27,6 +29,8 @@ const ModalContainer = ({
      {children}
    </div>
  );
+ /*eslint-enable jsx-a11y/click-events-have-key-events*/  
+ /*eslint-enable jsx-a11y/no-static-element-interactions*/
 }
 
 export default ModalContainer

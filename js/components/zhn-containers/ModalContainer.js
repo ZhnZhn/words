@@ -13,13 +13,17 @@ const ModalContainer = _ref => {
     onClose
   } = _ref;
   const [_className, _style] = isShow ? [CL_MODAL_ROOT_SHOWING, _styleFn.S_BLOCK] : [CL_MODAL_ROOT, _styleFn.S_NONE];
+
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
+  /*eslint-disable jsx-a11y/click-events-have-key-events*/
   return (0, _jsxRuntime.jsx)("div", {
-    role: "presentation",
     className: _className,
     style: _style,
     onClick: onClose,
     children: children
   });
+  /*eslint-enable jsx-a11y/click-events-have-key-events*/
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
 };
 var _default = exports.default = ModalContainer;
 //# sourceMappingURL=ModalContainer.js.map

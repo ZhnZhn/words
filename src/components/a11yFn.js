@@ -1,12 +1,5 @@
 import { fOnKeyEnter } from './hooks/fUseKey';
 
-export const crPresentationRole = (
-  isShow
-) => ({
-  role: "presentation",
-  hidden: !isShow
-})
-
 export const crMenuItemRole = (
   onClick,
   tabIndex,
