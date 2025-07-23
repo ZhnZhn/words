@@ -1,32 +1,26 @@
 import { Svg } from './svg/Svg';
 
-const CL_FOCUSABLE = 'focusable'
-, S_BT = {
-  verticalAlign: 'middle',
-  padding: '0 6px',
-  cursor: 'pointer'
-}
-, S_SVG = {
-  fill: 'black',
-  stroke: 'black'
-}
-, DF_TITLE = "Click to open menu More";
+const CL_BT_SVG_MORE = 'bt-svg-more'
+, DF_TITLE = "Click to open menu More"
+, DF_ARIA_LABEL = "Menu more";
 
-const SvgMore = ({
+const BtSvgMore = ({
   style,
   svgStyle,
   title=DF_TITLE,
+  ariaLabel=DF_ARIA_LABEL,
   onClick
 }) => (
   <button
     type="button"
-    className={CL_FOCUSABLE}
-    style={{...S_BT, ...style}}
+    className={CL_BT_SVG_MORE}
+    style={style}
     title={title}
+    aria-label={ariaLabel}
     onClick={onClick}
   >
     <Svg
-      style={{...S_SVG, ...svgStyle}}
+      style={svgStyle}
       w="6"
       h="22"
     >
@@ -37,4 +31,4 @@ const SvgMore = ({
   </button>
 );
 
-export default SvgMore
+export default BtSvgMore

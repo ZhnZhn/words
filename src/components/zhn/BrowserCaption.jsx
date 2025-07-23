@@ -1,16 +1,19 @@
 import { isFn } from '../../utils/isTypeFn';
 
-import SvgMore from './SvgMore'
+import BtSvgMore from './BtSvgMore'
 import SvgClose from './SvgClose'
 
 const CL_NOT_SELECTED = "not-selected"
 , CL_B_CAPTION = "b-caption gap-right"
-
 , S_CAPTION = {
   fontSize: '18px',
   fontWeight: 'bold'
 }
-, S_BT_MORE = { marginRight: 6 }
+, S_BT_MORE = {
+   verticalAlign: 'middle',
+   marginRight: 6,
+   marginLeft: -6
+ }
 , S_SVG_MORE = {
   fill: 'inherit',
   stroke: 'inherit'
@@ -42,7 +45,7 @@ const BrowserCaption = ({
     style={rootStyle}
   >
     {
-       isFn(onMore) && <SvgMore
+       isFn(onMore) && <BtSvgMore
           style={S_BT_MORE}
           svgStyle={_extractColorToSvgStyle(rootStyle, S_SVG_MORE)}
           onClick={onMore}

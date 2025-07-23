@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
-var _SvgMore = _interopRequireDefault(require("./SvgMore"));
+var _BtSvgMore = _interopRequireDefault(require("./BtSvgMore"));
 var _SvgClose = _interopRequireDefault(require("./SvgClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_NOT_SELECTED = "not-selected",
@@ -14,7 +14,9 @@ const CL_NOT_SELECTED = "not-selected",
     fontWeight: 'bold'
   },
   S_BT_MORE = {
-    marginRight: 6
+    verticalAlign: 'middle',
+    marginRight: 6,
+    marginLeft: -6
   },
   S_SVG_MORE = {
     fill: 'inherit',
@@ -47,7 +49,7 @@ const BrowserCaption = _ref => {
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_B_CAPTION,
     style: rootStyle,
-    children: [(0, _isTypeFn.isFn)(onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
+    children: [(0, _isTypeFn.isFn)(onMore) && (0, _jsxRuntime.jsx)(_BtSvgMore.default, {
       style: S_BT_MORE,
       svgStyle: _extractColorToSvgStyle(rootStyle, S_SVG_MORE),
       onClick: onMore

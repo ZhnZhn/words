@@ -4,38 +4,26 @@ exports.__esModule = true;
 exports.default = void 0;
 var _Svg = require("./svg/Svg");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_FOCUSABLE = 'focusable',
-  S_BT = {
-    verticalAlign: 'middle',
-    padding: '0 6px',
-    cursor: 'pointer'
-  },
-  S_SVG = {
-    fill: 'black',
-    stroke: 'black'
-  },
-  DF_TITLE = "Click to open menu More";
-const SvgMore = _ref => {
+const CL_BT_SVG_MORE = 'bt-svg-more',
+  DF_TITLE = "Click to open menu More",
+  DF_ARIA_LABEL = "Menu more";
+const BtSvgMore = _ref => {
   let {
     style,
     svgStyle,
     title = DF_TITLE,
+    ariaLabel = DF_ARIA_LABEL,
     onClick
   } = _ref;
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
-    className: CL_FOCUSABLE,
-    style: {
-      ...S_BT,
-      ...style
-    },
+    className: CL_BT_SVG_MORE,
+    style: style,
     title: title,
+    "aria-label": ariaLabel,
     onClick: onClick,
     children: (0, _jsxRuntime.jsxs)(_Svg.Svg, {
-      style: {
-        ...S_SVG,
-        ...svgStyle
-      },
+      style: svgStyle,
       w: "6",
       h: "22",
       children: [(0, _jsxRuntime.jsx)("circle", {
@@ -54,5 +42,5 @@ const SvgMore = _ref => {
     })
   });
 };
-var _default = exports.default = SvgMore;
-//# sourceMappingURL=SvgMore.js.map
+var _default = exports.default = BtSvgMore;
+//# sourceMappingURL=BtSvgMore.js.map
