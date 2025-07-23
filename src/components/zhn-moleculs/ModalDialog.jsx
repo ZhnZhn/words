@@ -60,7 +60,6 @@ const ModalDialog = ({
          role="dialog"
          tabIndex="-1"
          aria-label={caption}
-         aria-hidden={!isShow}
          className={_className}
          style={{...style, ..._showHideStyle}}
          onClick={_hClickDialog}
