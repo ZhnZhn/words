@@ -4,7 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _OptionFn = require("./OptionFn");
@@ -89,23 +88,20 @@ const OptionsPane = _ref3 => {
     }
   }, [isShow]);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
+    id: id,
+    role: "listbox",
+    "data-scrollable": "true",
     isShow: isShow,
+    className: className,
     onClose: onClose,
-    children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
-      id: id,
-      role: "listbox",
-      isShow: isShow,
-      isScrollable: true,
-      className: className,
-      onKeyDown: _hKeyDown,
-      children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
-        items: options,
-        crItem: _crItem,
-        refItem: _refItem,
-        currentItem: item,
-        clItem: clItem,
-        onSelect: onSelect
-      })
+    onKeyDown: _hKeyDown,
+    children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
+      items: options,
+      crItem: _crItem,
+      refItem: _refItem,
+      currentItem: item,
+      clItem: clItem,
+      onSelect: onSelect
     })
   });
 };

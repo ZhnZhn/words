@@ -14,7 +14,6 @@ import {
   stopDefaultFor
 } from '../uiApi';
 
-import ShowHide from '../zhn/ShowHide';
 import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
 import {
@@ -120,26 +119,22 @@ const OptionsPane = ({
   }, [isShow])
   return (
    <ModalPane
+     id={id}
+     role="listbox"
+     data-scrollable="true"
      isShow={isShow}
+     className={className}
      onClose={onClose}
+     onKeyDown={_hKeyDown}
    >
-      <ShowHide
-         id={id}
-         role="listbox"
-         isShow={isShow}
-         isScrollable={true}
-         className={className}
-         onKeyDown={_hKeyDown}
-      >
-         <ItemStack
-           items={options}
-           crItem={_crItem}
-           refItem={_refItem}
-           currentItem={item}
-           clItem={clItem}
-           onSelect={onSelect}
-         />
-     </ShowHide>
+     <ItemStack
+       items={options}
+       crItem={_crItem}
+       refItem={_refItem}
+       currentItem={item}
+       clItem={clItem}
+       onSelect={onSelect}
+     />
    </ModalPane>
  );
 };
