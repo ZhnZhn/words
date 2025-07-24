@@ -11,11 +11,15 @@
   vertical-align: top;
   font-family: Roboto, sans-serif;
   font-size: 16px;
-  cursor: pointer;
+  text-align: start;
   transition: height 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 
-.m-select__label {
+.m-select:focus {
+  fill: #80c040;
+}
+
+.m-select__caption {
   position: absolute;
   top: 32px;
   z-index: 1;
@@ -31,9 +35,7 @@
   transform-origin: left top 0px;
 }
 
-.m-select__div {
-  display: block;
-  box-sizing: border-box;
+.m-select__div { 
   position: relative;
   background-color: rgba(0, 0, 0, 0);
   color: rgb(255, 255, 255);
@@ -41,16 +43,7 @@
   height: 100%;
   padding: 0px;
   margin-top: 14px;
-  border: none;
-  outline: none;
-  cursor: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  font-style: inherit;
-  font-variant: inherit;
-  font-weight: inherit;
-  font-stretch: inherit;
-  line-height: inherit;
+  cursor: inherit;  
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
@@ -70,32 +63,21 @@
   user-select: none;
 }
 
+
 .m-select__div__bt {
-  display: inline-block;
-  box-sizing: border-box;
+  display: inline-block; 
   position: absolute;
   right: 0;
   top: 0;
   z-index: 1;
-  background: none;
-  fill: black;
+  fill: inherit;
   width: 48px;
   height: 48px;
   padding: 12px;
   margin: 0;
   border: 10px;
-  outline: none;
-  text-decoration: none;
-  font-family: Roboto, sans-serif;
-  font-size: 0px;
-  font-weight: inherit;
-  overflow: visible;
-  cursor: pointer;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-.m-select__div__bt:focus {
-  fill: #80c040;
 }
 
 

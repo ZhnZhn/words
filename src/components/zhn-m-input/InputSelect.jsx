@@ -17,15 +17,15 @@ import {
 } from './OptionFn';
 
 const CL_SELECT = 'm-select'
-, CL_LABEL = `${CL_SELECT}__label`
+, CL_CAPTION = `${CL_SELECT}__caption`
 , CL_DIV = `${CL_SELECT}__div`
 , CL_DIV_VALUE = `${CL_DIV}__value`
 , CL_DIV_BT = `${CL_DIV}__bt`
 , CL_INPUT_LINE = `${CL_SELECT}__line`
 , CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`
-, CL_ITEM = `${CL_SELECT}__item`;
-
-const DF_INIT_ITEM = {
+, CL_ITEM = `${CL_SELECT}__item`
+, DF_CAPTION = 'Item'
+, DF_INIT_ITEM = {
   caption: void 0,
   value: void 0
 };
@@ -39,8 +39,7 @@ const InputSelect = ({
   onSelect
 }) => {
   const _listboxId = useId()
-  , _labelId = useId()
-  , _refBtArrow = useRef()
+  , _refBtCombobox = useRef()
   , [
     item,
     setItem
@@ -53,9 +52,9 @@ const InputSelect = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCloseOptions = useMemo(() => () => {
     hideOptions()
-    focusRefElement(_refBtArrow)
+    focusRefElement(_refBtCombobox)
   }, [])
-  // hideOptions, _refBtArrow
+  // hideOptions, _refBtCombobox
   , [
     _hSelect,
     _hKeyDown
@@ -76,24 +75,24 @@ const InputSelect = ({
     // showOptions
   ]
   , [])
-  // hideOptions, _refBtArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <div
+    <button
+      ref={_refBtCombobox}
+      type="button"
       role="combobox"
       aria-expanded={isShowOptions}
       aria-controls={_listboxId}
-      aria-labelledby={_labelId}
-      tabIndex="-1"
+      aria-label={`Select ${caption || DF_CAPTION}`}
       className={CL_SELECT}
       style={style}
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
-      <label id={_labelId} className={CL_LABEL}>
+      <div className={CL_CAPTION}>
         {caption}
-      </label>
+      </div>
       <OptionsPane
          id={_listboxId}
          isShow={isShowOptions}
@@ -108,16 +107,12 @@ const InputSelect = ({
         <div className={CL_DIV_VALUE}>
            {getItemCaption(item)}
         </div>
-        <button
-          ref={_refBtArrow}
-          type="button"
-          className={CL_DIV_BT}
-        >
-           <ArrowCell />
-        </button>
+        <div className={CL_DIV_BT}>
+          <ArrowCell />
+        </div>
         <div className={CL_INPUT_LINE} />
       </div>
-    </div>
+    </button>
   );
 }
 

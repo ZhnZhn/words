@@ -10,17 +10,18 @@ var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SELECT = 'm-select',
-  CL_LABEL = `${CL_SELECT}__label`,
+  CL_CAPTION = `${CL_SELECT}__caption`,
   CL_DIV = `${CL_SELECT}__div`,
   CL_DIV_VALUE = `${CL_DIV}__value`,
   CL_DIV_BT = `${CL_DIV}__bt`,
   CL_INPUT_LINE = `${CL_SELECT}__line`,
   CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`,
-  CL_ITEM = `${CL_SELECT}__item`;
-const DF_INIT_ITEM = {
-  caption: void 0,
-  value: void 0
-};
+  CL_ITEM = `${CL_SELECT}__item`,
+  DF_CAPTION = 'Item',
+  DF_INIT_ITEM = {
+    caption: void 0,
+    value: void 0
+  };
 const InputSelect = _ref => {
   let {
     id,
@@ -31,16 +32,15 @@ const InputSelect = _ref => {
     onSelect
   } = _ref;
   const _listboxId = (0, _uiApi.useId)(),
-    _labelId = (0, _uiApi.useId)(),
-    _refBtArrow = (0, _uiApi.useRef)(),
+    _refBtCombobox = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)()
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hCloseOptions = (0, _uiApi.useMemo)(() => () => {
       hideOptions();
-      (0, _uiApi.focusRefElement)(_refBtArrow);
+      (0, _uiApi.focusRefElement)(_refBtCombobox);
     }, [])
-    // hideOptions, _refBtArrow
+    // hideOptions, _refBtCombobox
     ,
     [_hSelect, _hKeyDown] = (0, _uiApi.useMemo)(() => [(item, evt) => {
       (0, _uiApi.stopDefaultFor)(evt);
@@ -57,22 +57,21 @@ const InputSelect = _ref => {
     }
     // showOptions
     ], []);
-  // hideOptions, _refBtArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  return (0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("button", {
+    ref: _refBtCombobox,
+    type: "button",
     role: "combobox",
     "aria-expanded": isShowOptions,
     "aria-controls": _listboxId,
-    "aria-labelledby": _labelId,
-    tabIndex: "-1",
+    "aria-label": `Select ${caption || DF_CAPTION}`,
     className: CL_SELECT,
     style: style,
     onClick: showOptions,
     onKeyDown: _hKeyDown,
-    children: [(0, _jsxRuntime.jsx)("label", {
-      id: _labelId,
-      className: CL_LABEL,
+    children: [(0, _jsxRuntime.jsx)("div", {
+      className: CL_CAPTION,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
       id: _listboxId,
@@ -88,9 +87,7 @@ const InputSelect = _ref => {
       children: [(0, _jsxRuntime.jsx)("div", {
         className: CL_DIV_VALUE,
         children: (0, _OptionFn.getItemCaption)(item)
-      }), (0, _jsxRuntime.jsx)("button", {
-        ref: _refBtArrow,
-        type: "button",
+      }), (0, _jsxRuntime.jsx)("div", {
         className: CL_DIV_BT,
         children: (0, _jsxRuntime.jsx)(_ArrowCell.default, {})
       }), (0, _jsxRuntime.jsx)("div", {
