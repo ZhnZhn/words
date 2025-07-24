@@ -1,3 +1,8 @@
+import {
+  crStyle2,
+  S_NONE
+} from '../styleFn';
+
 import useClickOutside from '../hooks/useClickOutside';
 import { useKeyEscape } from '../hooks/fUseKey';
 
@@ -9,14 +14,13 @@ const ModalPane = ({
   onClose
 }) => {
   const _refEl = useClickOutside(isShow, onClose)
-  , _hKeyEscape = useKeyEscape(onClose);
+  , _hKeyEscape = useKeyEscape(onClose)
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
-    <div      
+    <div
       ref={_refEl}
       className={className}
-      style={style}
-      hidden={!isShow}
+      style={crStyle2(style, isShow ? void 0 : S_NONE)}
       onKeyDown={isShow ? _hKeyEscape : void 0}
     >
       {children}

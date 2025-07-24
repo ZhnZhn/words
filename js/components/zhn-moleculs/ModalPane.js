@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _useClickOutside = _interopRequireDefault(require("../hooks/useClickOutside"));
 var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -20,8 +21,7 @@ const ModalPane = _ref => {
   return (0, _jsxRuntime.jsx)("div", {
     ref: _refEl,
     className: className,
-    style: style,
-    hidden: !isShow,
+    style: (0, _styleFn.crStyle2)(style, isShow ? void 0 : _styleFn.S_NONE),
     onKeyDown: isShow ? _hKeyEscape : void 0,
     children: children
   });
