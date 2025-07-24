@@ -7,7 +7,6 @@ import { crMenuItemRole } from '../a11yFn';
 
 import { useItemsFocusTrap } from '../hooks/useFocus';
 
-import ShowHide from '../zhn/ShowHide';
 import ModalPane from '../zhn-moleculs/ModalPane';
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 
@@ -46,24 +45,20 @@ const PaneTopics = ({
   return (
     <ModalPane
       isShow={isShow}
+      className={className}
       onClose={onClose}
     >
-      <ShowHide
-        isShow={isShow}
-        className={className}
+      <FocusTrap
+        refFirst={_refFirstItem}
+        refLast={_refLastItem}
       >
-        <FocusTrap
-          refFirst={_refFirstItem}
-          refLast={_refLastItem}
-        >
-          <ItemsStack
-            getRefItem={_getRefItem}
-            items={items}
-            clItem={clItem}
-            onClose={onClose}
-          />
-        </FocusTrap>
-      </ShowHide>
+        <ItemsStack
+          getRefItem={_getRefItem}
+          items={items}
+          clItem={clItem}
+          onClose={onClose}
+        />
+      </FocusTrap>
    </ModalPane>
   );
 };

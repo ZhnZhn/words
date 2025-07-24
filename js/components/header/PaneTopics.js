@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _a11yFn = require("../a11yFn");
 var _useFocus = require("../hooks/useFocus");
-var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -35,19 +34,16 @@ const PaneTopics = _ref2 => {
   const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocus.useItemsFocusTrap)(items, isShow);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
+    className: className,
     onClose: onClose,
-    children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
-      isShow: isShow,
-      className: className,
-      children: (0, _jsxRuntime.jsx)(_FocusTrap.default, {
-        refFirst: _refFirstItem,
-        refLast: _refLastItem,
-        children: (0, _jsxRuntime.jsx)(ItemsStack, {
-          getRefItem: _getRefItem,
-          items: items,
-          clItem: clItem,
-          onClose: onClose
-        })
+    children: (0, _jsxRuntime.jsx)(_FocusTrap.default, {
+      refFirst: _refFirstItem,
+      refLast: _refLastItem,
+      children: (0, _jsxRuntime.jsx)(ItemsStack, {
+        getRefItem: _getRefItem,
+        items: items,
+        clItem: clItem,
+        onClose: onClose
       })
     })
   });
