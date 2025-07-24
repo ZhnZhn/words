@@ -39,6 +39,7 @@ const InputSelect = ({
   onSelect
 }) => {
   const _listboxId = useId()
+  , _labelId = useId()
   , _refBtArrow = useRef()
   , [
     item,
@@ -83,13 +84,14 @@ const InputSelect = ({
       role="combobox"
       aria-expanded={isShowOptions}
       aria-controls={_listboxId}
+      aria-labelledby={_labelId}
       tabIndex="-1"
       className={CL_SELECT}
       style={style}
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
-      <label className={CL_LABEL}>
+      <label id={_labelId} className={CL_LABEL}>
         {caption}
       </label>
       <OptionsPane

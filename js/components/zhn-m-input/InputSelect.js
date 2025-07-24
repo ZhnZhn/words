@@ -31,6 +31,7 @@ const InputSelect = _ref => {
     onSelect
   } = _ref;
   const _listboxId = (0, _uiApi.useId)(),
+    _labelId = (0, _uiApi.useId)(),
     _refBtArrow = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)()
@@ -63,12 +64,14 @@ const InputSelect = _ref => {
     role: "combobox",
     "aria-expanded": isShowOptions,
     "aria-controls": _listboxId,
+    "aria-labelledby": _labelId,
     tabIndex: "-1",
     className: CL_SELECT,
     style: style,
     onClick: showOptions,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {
+      id: _labelId,
       className: CL_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
