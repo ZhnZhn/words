@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crVisibilityHidden = exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_BT_FLAT_DIV = void 0;
+exports.crVisibilityHidden = exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowPopup = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_BT_FLAT_DIV = void 0;
 const isArr = Array.isArray;
 const _getCn = arrOrStr => isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (arrOrStr1, arrOrStr2) => {
@@ -25,8 +25,8 @@ const _fCrStyle = propName => value => ({
 const S_BLOCK = exports.S_BLOCK = _crDisplayStyle("block");
 const S_NONE = exports.S_NONE = _crDisplayStyle("none");
 const S_INLINE_BLOCK = exports.S_INLINE_BLOCK = _crDisplayStyle("inline-block");
-const crShowHide = (is, className, withoutAnimation, animationClassName) => is ? [crCn(className, [!withoutAnimation, animationClassName || CL_SHOW_POPUP]), S_BLOCK] : [className, S_NONE];
-exports.crShowHide = crShowHide;
+const crShowPopup = (is, className) => is ? [crCn(className, CL_SHOW_POPUP), S_BLOCK] : [className, S_NONE];
+exports.crShowPopup = crShowPopup;
 const CL_CONTAINER_SHOW_POPUP = `container ${CL_SHOW_POPUP}`;
 const _fCrShowHideIf = showStyle => (isShow, CL) => isShow ? [showStyle, `${CL_CONTAINER_SHOW_POPUP} ${CL}`] : [S_NONE];
 const crShowHideIf = exports.crShowHideIf = _fCrShowHideIf(S_BLOCK);

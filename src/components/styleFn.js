@@ -36,23 +36,12 @@ export const S_BLOCK = _crDisplayStyle("block")
 export const S_NONE = _crDisplayStyle("none")
 export const S_INLINE_BLOCK = _crDisplayStyle("inline-block")
 
-export const crShowHide = (
+export const crShowPopup = (
   is,
-  className,
-  withoutAnimation,
-  animationClassName
+  className
 ) => is
-  ? [
-      crCn(
-        className,
-        [!withoutAnimation, animationClassName || CL_SHOW_POPUP]
-      ),
-      S_BLOCK
-    ]
-  : [
-      className,
-      S_NONE
-    ]
+  ? [crCn(className, CL_SHOW_POPUP), S_BLOCK]
+  : [className, S_NONE]
 
 const CL_CONTAINER_SHOW_POPUP = `container ${CL_SHOW_POPUP}`
 const _fCrShowHideIf = (showStyle) => (

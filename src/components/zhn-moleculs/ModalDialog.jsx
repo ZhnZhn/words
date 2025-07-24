@@ -1,5 +1,5 @@
 import { useRef } from '../uiApi';
-import { crShowHide } from '../styleFn';
+import { crShowPopup } from '../styleFn';
 
 import { useKeyEscape } from '../hooks/fUseKey';
 import useDialogFocus from './useDialogFocus';
@@ -40,7 +40,7 @@ const ModalDialog = ({
   , [
     _className,
     _showHideStyle
-  ] = crShowHide(
+  ] = crShowPopup(
     isShow,
     CL_MODAL_DIALOG
   );
