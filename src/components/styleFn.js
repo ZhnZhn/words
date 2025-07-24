@@ -36,6 +36,13 @@ export const S_BLOCK = _crDisplayStyle("block")
 export const S_NONE = _crDisplayStyle("none")
 export const S_INLINE_BLOCK = _crDisplayStyle("inline-block")
 
+export const crShowHide = (
+  isShow,
+  style
+) => isShow
+  ? style ? style : S_BLOCK
+  : S_NONE
+
 export const crShowPopup = (
   is,
   className

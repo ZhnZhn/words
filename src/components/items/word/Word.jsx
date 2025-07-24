@@ -6,20 +6,19 @@ import {
 } from '../../uiApi';
 
 import {
-  crStyle2
+  crStyle2,
+  crShowHide
 } from '../../styleFn';
 
 import useToggle from '../../hooks/useToggle';
 
 import GestureSwipeX from '../../zhn-gesture/GestureSwipeX';
 import ItemHeader from '../ItemHeader';
-import WordDef from './WordDef';
+import DefinitionList from './DefinitionList';
 
-const D_REMOVE_UNDER = 60;
-
-const CL_ITEM_HEADER = "item-header";
-
-const S_ROOT = {
+const D_REMOVE_UNDER = 60
+, CL_ITEM_HEADER = "item-header"
+, S_ROOT = {
   position: 'relative',
   lineHeight: 1.5,
   marginBottom: 5,
@@ -84,15 +83,11 @@ const Word = ({
   }, [])
   // onCloseItem, config
   , _onGestureSwipeX = useCallback(dX => dX > D_REMOVE_UNDER
-      ? (_hClose(), false)
-      : true
+      ? (_hClose(), !1)
+      : !0
   , [])
   // _hClose
   /*eslint-enable react-hooks/exhaustive-deps */
-  , {
-    title,
-    caption
-  } = config
   , _captionStyle = crStyle2(
       S_CAPTION,
       isShow && S_CAPTION_OPEN
@@ -108,17 +103,16 @@ const Word = ({
          className={CL_ITEM_HEADER}
          captionStyle={_captionStyle}
          svgCloseStyle={S_SVG_CLOSE}
-         title={title}
-         caption={caption}
+         title={config.title}
+         caption={config.caption}
          isShow={isShow}
          onClick={_hToggle}
          onClose={_hClose}
          onAddToWatch={onAddToWatch}
       />
-      <WordDef
-        style={S_WORD_DEF}
-        isShow={isShow}
-        config={config}
+      <DefinitionList
+        style={crShowHide(isShow, S_WORD_DEF)}
+        defItems={config.results}
       />
     </GestureSwipeX>
   );

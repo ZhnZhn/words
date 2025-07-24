@@ -8,11 +8,11 @@ var _styleFn = require("../../styleFn");
 var _useToggle = _interopRequireDefault(require("../../hooks/useToggle"));
 var _GestureSwipeX = _interopRequireDefault(require("../../zhn-gesture/GestureSwipeX"));
 var _ItemHeader = _interopRequireDefault(require("../ItemHeader"));
-var _WordDef = _interopRequireDefault(require("./WordDef"));
+var _DefinitionList = _interopRequireDefault(require("./DefinitionList"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const D_REMOVE_UNDER = 60;
-const CL_ITEM_HEADER = "item-header";
-const S_ROOT = {
+const D_REMOVE_UNDER = 60,
+  CL_ITEM_HEADER = "item-header",
+  S_ROOT = {
     position: 'relative',
     lineHeight: 1.5,
     marginBottom: 5,
@@ -77,13 +77,9 @@ const Word = _ref => {
     }, [])
     // onCloseItem, config
     ,
-    _onGestureSwipeX = (0, _uiApi.useCallback)(dX => dX > D_REMOVE_UNDER ? (_hClose(), false) : true, [])
+    _onGestureSwipeX = (0, _uiApi.useCallback)(dX => dX > D_REMOVE_UNDER ? (_hClose(), !1) : !0, [])
     // _hClose
     /*eslint-enable react-hooks/exhaustive-deps */,
-    {
-      title,
-      caption
-    } = config,
     _captionStyle = (0, _styleFn.crStyle2)(S_CAPTION, isShow && S_CAPTION_OPEN);
   return (0, _jsxRuntime.jsxs)(_GestureSwipeX.default, {
     style: S_ROOT,
@@ -93,16 +89,15 @@ const Word = _ref => {
       className: CL_ITEM_HEADER,
       captionStyle: _captionStyle,
       svgCloseStyle: S_SVG_CLOSE,
-      title: title,
-      caption: caption,
+      title: config.title,
+      caption: config.caption,
       isShow: isShow,
       onClick: _hToggle,
       onClose: _hClose,
       onAddToWatch: onAddToWatch
-    }), (0, _jsxRuntime.jsx)(_WordDef.default, {
-      style: S_WORD_DEF,
-      isShow: isShow,
-      config: config
+    }), (0, _jsxRuntime.jsx)(_DefinitionList.default, {
+      style: (0, _styleFn.crShowHide)(isShow, S_WORD_DEF),
+      defItems: config.results
     })]
   });
 };
