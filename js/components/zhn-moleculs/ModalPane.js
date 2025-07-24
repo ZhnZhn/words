@@ -13,16 +13,19 @@ const ModalPane = _ref => {
     className,
     style,
     children,
-    onClose
+    onClose,
+    onKeyDown,
+    ...restProps
   } = _ref;
   const _refEl = (0, _useClickOutside.default)(isShow, onClose),
     _hKeyEscape = (0, _fUseKey.useKeyEscape)(onClose);
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (0, _jsxRuntime.jsx)("div", {
+    ...restProps,
     ref: _refEl,
     className: className,
     style: (0, _styleFn.crStyle2)(style, isShow ? void 0 : _styleFn.S_NONE),
-    onKeyDown: isShow ? _hKeyEscape : void 0,
+    onKeyDown: isShow ? onKeyDown || _hKeyEscape : void 0,
     children: children
   });
   /*eslint-enable jsx-a11y/no-static-element-interactions*/

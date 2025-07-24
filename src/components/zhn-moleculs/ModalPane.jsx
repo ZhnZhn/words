@@ -11,17 +11,20 @@ const ModalPane = ({
   className,
   style,
   children,
-  onClose
+  onClose,
+  onKeyDown,
+  ...restProps
 }) => {
   const _refEl = useClickOutside(isShow, onClose)
-  , _hKeyEscape = useKeyEscape(onClose)
+  , _hKeyEscape = useKeyEscape(onClose);  
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
     <div
+      {...restProps}
       ref={_refEl}
       className={className}
       style={crStyle2(style, isShow ? void 0 : S_NONE)}
-      onKeyDown={isShow ? _hKeyEscape : void 0}
+      onKeyDown={isShow ? onKeyDown || _hKeyEscape : void 0}
     >
       {children}
     </div>
