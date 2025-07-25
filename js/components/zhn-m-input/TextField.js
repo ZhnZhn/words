@@ -5,15 +5,17 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
+var _styleFn = require("../styleFn");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SELECT = 'm-select',
-  CL_LABEL = CL_SELECT + "__label",
+  CL_LABEL = `${CL_SELECT}__label`,
   CL_INPUT = 'm-textfield-input',
-  CL_INPUT_DIV = CL_INPUT + "__div",
+  CL_INPUT_DIV = `${CL_INPUT}__div`,
   M_INPUT = 'm-input',
-  CL_INPUT_LINE = M_INPUT + "__line",
-  CL_INPUT_MSG_ERR = M_INPUT + "__msg-err",
+  CL_INPUT_LINE = `${M_INPUT}__line`,
+  CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`,
+  CL_UNDERLINE = (0, _styleFn.crUnderline)("bt-4-after"),
   S_LABEL_TO_INPUT = {
     transform: 'scale(1) translate(0px, -6px)'
   },
@@ -22,9 +24,6 @@ const CL_SELECT = 'm-select',
   },
   S_LINE_ERROR = {
     borderBottom: '2px solid #F44336'
-  },
-  S_KEY = {
-    textDecoration: 'underline'
   };
 const _crCaption = (caption, accessKey) => {
   if (!(0, _has.hasAccessKey)(accessKey)) {
@@ -56,6 +55,7 @@ const TextField = _ref => {
     rootStyle,
     labelStyle,
     inputStyle,
+    lineStyle,
     errorMsg = '',
     maxLength = 24,
     onTest = DF_ON_TEST,
@@ -111,7 +111,7 @@ const TextField = _ref => {
         ..._labelErrStyle
       },
       children: [cPrefix, (0, _jsxRuntime.jsx)("span", {
-        style: S_KEY,
+        className: CL_UNDERLINE,
         children: cKey
       }), cTail]
     }), (0, _jsxRuntime.jsxs)("div", {
@@ -135,7 +135,10 @@ const TextField = _ref => {
         onKeyDown: _hKeyDown
       }), (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_LINE,
-        style: _lineStyle
+        style: {
+          ...lineStyle,
+          ..._lineStyle
+        }
       }), _lineStyle && (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_MSG_ERR,
         children: errorMsg

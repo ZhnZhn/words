@@ -1,8 +1,7 @@
 import { hasAccessKey } from '../has';
+import { crUnderline } from '../styleFn';
 
-const S_KEY = {
-  textDecoration: 'underline'
-};
+const CL_UNDERLINE = crUnderline();
 
 const _crCaptionEl = (
   caption,
@@ -18,7 +17,7 @@ const _crCaptionEl = (
     ? captionIn
     : (<>
         <span>{captionIn.slice(0, _index)}</span>
-        <span style={S_KEY}>{captionIn.slice(_index, _index+1)}</span>
+        <span className={CL_UNDERLINE}>{captionIn.slice(_index, _index+1)}</span>
         <span>{captionIn.slice(_index+1)}</span>
        </>
     );

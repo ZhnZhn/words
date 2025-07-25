@@ -28,6 +28,10 @@ export const CL_BT_FLAT_DIV = "bt-flat__div"
 export const CL_SHOW_POPUP = "show-popup"
 export const CL_POPUP_MENU = `popup-menu`
 
+export const crUnderline = (
+  className
+) => crCn("underline", className)
+
 const _fCrStyle = propName => value => ({
   [propName]: value
 })

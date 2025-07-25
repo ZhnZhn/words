@@ -9,6 +9,7 @@ import {
 } from '../uiApi';
 
 import { hasAccessKey } from '../has';
+import { crUnderline } from '../styleFn';
 
 import useBool from '../hooks/useBool';
 
@@ -19,6 +20,7 @@ const CL_SELECT = 'm-select'
 , M_INPUT = 'm-input'
 , CL_INPUT_LINE = `${M_INPUT}__line`
 , CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
+, CL_UNDERLINE = crUnderline("bt-4-after")
 
 , S_LABEL_TO_INPUT = {
   transform: 'scale(1) translate(0px, -6px)'
@@ -28,9 +30,6 @@ const CL_SELECT = 'm-select'
 }
 , S_LINE_ERROR = {
   borderBottom: '2px solid #F44336'
-}
-, S_KEY = {
-  textDecoration: 'underline'
 };
 
 const _crCaption = (
@@ -64,6 +63,7 @@ const TextField = ({
   rootStyle,
   labelStyle,
   inputStyle,
+  lineStyle,
   errorMsg='',
   maxLength=24,
   onTest=DF_ON_TEST,
@@ -134,7 +134,7 @@ const TextField = ({
         style={{...labelStyle, ..._labelStyle, ..._labelErrStyle}}
        >
         {cPrefix}
-        <span style={S_KEY}>{cKey}</span>
+        <span className={CL_UNDERLINE}>{cKey}</span>
         {cTail}
       </label>
       <div className={CL_INPUT_DIV}>
@@ -156,7 +156,7 @@ const TextField = ({
           onChange={_hInputChange}
           onKeyDown={_hKeyDown}
         />
-        <div className={CL_INPUT_LINE} style={_lineStyle} />
+        <div className={CL_INPUT_LINE} style={{...lineStyle, ..._lineStyle}} />
         { _lineStyle && <div className={CL_INPUT_MSG_ERR}>{errorMsg}</div>}
       </div>
     </div>

@@ -3,10 +3,9 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _has = require("../has");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_KEY = {
-  textDecoration: 'underline'
-};
+const CL_UNDERLINE = (0, _styleFn.crUnderline)();
 const _crCaptionEl = (caption, accessKey) => {
   const captionIn = caption || '',
     _index = (0, _has.hasAccessKey)(accessKey) ? captionIn.toLowerCase().indexOf(accessKey) : -1;
@@ -14,7 +13,7 @@ const _crCaptionEl = (caption, accessKey) => {
     children: [(0, _jsxRuntime.jsx)("span", {
       children: captionIn.slice(0, _index)
     }), (0, _jsxRuntime.jsx)("span", {
-      style: S_KEY,
+      className: CL_UNDERLINE,
       children: captionIn.slice(_index, _index + 1)
     }), (0, _jsxRuntime.jsx)("span", {
       children: captionIn.slice(_index + 1)
