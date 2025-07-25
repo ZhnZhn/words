@@ -33,7 +33,7 @@ const CardUi = ({
       <InputSelect
         id="ui-th"
         style={S_INPUT_SELECT}
-        caption="Theme (Default: Grey)"
+        caption="UI Theme"
         initItem={dfUiThemeItem}
         options={uiThemeOptions}
         onSelect={onSetTheme}

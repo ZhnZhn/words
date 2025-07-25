@@ -86,7 +86,7 @@ const SettingsDialog = ({
              onSet={_hSetAndClose}
            />
         </Tab>
-        <Tab title="UI Theme">
+        <Tab title="Appearance">
            <CardUi
              uiThemeOptions={UI_THEME_OPTIONS}
              dfUiThemeItem={DF_UI_THEME_ITEM}

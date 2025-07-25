@@ -34,7 +34,7 @@ const CardUi = _ref => {
     children: [(0, _jsxRuntime.jsx)(_InputSelect.default, {
       id: "ui-th",
       style: S_INPUT_SELECT,
-      caption: "Theme (Default: Grey)",
+      caption: "UI Theme",
       initItem: dfUiThemeItem,
       options: uiThemeOptions,
       onSelect: onSetTheme

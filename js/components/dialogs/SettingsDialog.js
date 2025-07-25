@@ -69,7 +69,7 @@ const SettingsDialog = _ref => {
           onSet: _hSetAndClose
         })
       }), (0, _jsxRuntime.jsx)(_Tab.default, {
-        title: "UI Theme",
+        title: "Appearance",
         children: (0, _jsxRuntime.jsx)(_CardUi.default, {
           uiThemeOptions: _uiTheme.UI_THEME_OPTIONS,
           dfUiThemeItem: _uiTheme.DF_UI_THEME_ITEM,
