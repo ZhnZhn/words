@@ -10,6 +10,8 @@ const CL_BT_FLAT = "bt-flat",
   CL_BT_SPAN = `${CL_BT_FLAT}__span`;
 const FlatButton = _ref => {
   let {
+    ariaLabel,
+    ariaHaspopup,
     refBt,
     className,
     rootStyle,
@@ -22,11 +24,12 @@ const FlatButton = _ref => {
     onClick
   } = _ref;
   return (0, _jsxRuntime.jsx)("button", {
+    "aria-label": ariaLabel,
+    "aria-haspopup": ariaHaspopup,
     ref: refBt,
     type: "button",
     className: (0, _styleFn.crCn)(CL_BT_FLAT, className),
     style: rootStyle,
-    tabIndex: 0,
     title: title,
     accessKey: accessKey,
     onClick: onClick,

@@ -83,6 +83,8 @@ const HeaderBar = _ref => {
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
+        ariaLabel: "Settings",
+        ariaHaspopup: "dialog",
         className: CL_SETTINGS,
         clDiv: _styleFn.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
@@ -93,6 +95,7 @@ const HeaderBar = _ref => {
           style: S_SETTINGS
         })
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
+        ariaLabel: "About",
         className: CL_BT_ABOUT,
         clDiv: _styleFn.CL_BT_FLAT_DIV,
         divStyle: S_DIV,

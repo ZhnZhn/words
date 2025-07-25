@@ -100,6 +100,8 @@ const HeaderBar = ({
        </span>
        <div className={CL_BTS}>
          <FlatButton
+             ariaLabel="Settings"
+             ariaHaspopup="dialog"
              className={CL_SETTINGS}
              clDiv={CL_BT_FLAT_DIV}
              divStyle={S_DIV}
@@ -110,6 +112,7 @@ const HeaderBar = ({
             <SvgSettings style={S_SETTINGS} />
           </FlatButton>
           <FlatButton
+              ariaLabel="About"
               className={CL_BT_ABOUT}
               clDiv={CL_BT_FLAT_DIV}
               divStyle={S_DIV}
