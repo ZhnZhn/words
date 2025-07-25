@@ -13,6 +13,7 @@ var _wordConfig = require("./wordConfig");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_INPUT_ROOT = {
     width: 250,
+    height: 38,
     marginLeft: 8
   },
   S_TF_LABEL = {
@@ -21,9 +22,12 @@ const S_INPUT_ROOT = {
   S_TF_INPUT = {
     fontSize: '24px'
   },
+  S_TF_LINE = {
+    bottom: 4
+  },
   S_BT_CLEAR = {
     position: 'relative',
-    top: 18,
+    top: 24,
     left: 6
   },
   S_BT_LOAD = {
@@ -56,6 +60,7 @@ const InputWord = _ref => {
       rootStyle: S_INPUT_ROOT,
       labelStyle: S_TF_LABEL,
       inputStyle: S_TF_INPUT,
+      lineStyle: S_TF_LINE,
       caption: "Word",
       accessKey: "W",
       spellCheck: true,

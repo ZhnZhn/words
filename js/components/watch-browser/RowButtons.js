@@ -8,7 +8,7 @@ const S_DIV = {
   display: 'flex',
   justifyContent: 'flex-end',
   flexWrap: 'wrap',
-  margin: '8px 4px 6px 0'
+  margin: '30px 4px 6px 0'
 };
 const RowButtons = _ref => {
   let {
@@ -31,6 +31,5 @@ const RowButtons = _ref => {
     })]
   });
 };
-var _default = RowButtons;
-exports.default = _default;
+var _default = exports.default = RowButtons;
 //# sourceMappingURL=RowButtons.js.map

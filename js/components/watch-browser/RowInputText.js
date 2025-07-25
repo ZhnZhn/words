@@ -7,7 +7,12 @@ var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const MAX_LENGTH = 24,
   S_INPUT_TEXT = {
-    width: 250
+    width: 250,
+    height: 38,
+    marginBottom: 30
+  },
+  S_TF_LINE = {
+    bottom: 4
   };
 const RowInputText = _ref => {
   let {
@@ -18,6 +23,7 @@ const RowInputText = _ref => {
     refEl: refEl,
     caption: caption,
     rootStyle: S_INPUT_TEXT,
+    lineStyle: S_TF_LINE,
     maxLength: MAX_LENGTH
   });
 };
