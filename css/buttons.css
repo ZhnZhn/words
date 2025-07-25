@@ -1,3 +1,22 @@
+
+.underline {
+  position: relative;
+  display: inline-block;
+}
+.underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.bt-4-after::after {
+  bottom: 4px;
+}
+
 .arrow-down{
   display: inline-block;
   position: relative;
@@ -160,13 +179,13 @@ button::-moz-focus-inner {
 
 .bt-clear {
   display: inline-block;
-  color: #f44336;
+  color: #1b75bb;
   width: 32px;
   height: 32px;
   text-align: center;
   font-size: 24px;
   border-radius: 50%;
-  border: 2px solid #f44336;
+  border: 2px solid #1b75bb;
   background-color: transparent;
   transition: background-color 200ms ease-out;
 }
