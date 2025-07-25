@@ -4,23 +4,24 @@ import {
   useState,
   useMemo,
   KEY_ARROW_DOWN,
+  KEY_ARROW_UP,
   focusRefElement,
   stopDefaultFor
 } from '../uiApi';
 
-import useBool from '../hooks/useBool';
-
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 import {
+  FOCUS_NEXT_OPTION,
+  FOCUS_PREV_OPTION,
   getItemCaption
 } from './OptionFn';
 
 const CL_SELECT = 'm-select'
 , CL_CAPTION = `${CL_SELECT}__caption`
+, CL_VALUE = `${CL_SELECT}__value`
 , CL_DIV = `${CL_SELECT}__div`
-, CL_DIV_VALUE = `${CL_DIV}__value`
-, CL_DIV_BT = `${CL_DIV}__bt`
+, CL_INPUT_SVG = `${CL_SELECT}__svg`
 , CL_INPUT_LINE = `${CL_SELECT}__line`
 , CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`
 , CL_ITEM = `${CL_SELECT}__item`
@@ -39,24 +40,36 @@ const InputSelect = ({
   onSelect
 }) => {
   const _listboxId = useId()
+  , _captionId = useId()
   , _refBtCombobox = useRef()
   , [
     item,
     setItem
   ] = useState(initItem || DF_INIT_ITEM)
   , [
-    isShowOptions,
+    isShowTuple,
+    setIsShowTuple
+  ] = useState([!1])
+  , [
     showOptions,
     hideOptions
-  ] = useBool()
+  ] = useMemo(() => [
+    (focusOption) => setIsShowTuple([!0, focusOption]),
+    () => setIsShowTuple([!1])
+  ], [])
+  , [
+    isShowOptions,
+    focusOption
+  ] = isShowTuple
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCloseOptions = useMemo(() => () => {
     hideOptions()
     focusRefElement(_refBtCombobox)
   }, [])
-  // hideOptions, _refBtCombobox
+  // hideOptions
   , [
     _hSelect,
+    _hTabSelect,
     _hKeyDown
   ] = useMemo(() => [
     (item, evt) => {
@@ -66,15 +79,23 @@ const InputSelect = ({
         setItem(item)
     },
     // id, onSelect, _closeOptions
+    (item) => {
+        onSelect(item, id)
+        setItem(item)
+    },
+    // id, onSelect
     (evt) => {
       if (evt.key === KEY_ARROW_DOWN) {
         stopDefaultFor(evt)
-        showOptions()
+        showOptions(FOCUS_NEXT_OPTION)
+      } else if (evt.key === KEY_ARROW_UP) {
+        stopDefaultFor(evt)
+        showOptions(FOCUS_PREV_OPTION)
       }
     }
     // showOptions
   ]
-  , [])
+  , []);
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
@@ -84,30 +105,32 @@ const InputSelect = ({
       role="combobox"
       aria-expanded={isShowOptions}
       aria-controls={_listboxId}
-      aria-label={`Select ${caption || DF_CAPTION}`}
+      aria-labelledby={_captionId}
       className={CL_SELECT}
       style={style}
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
-      <div className={CL_CAPTION}>
-        {caption}
+      <div id={_captionId} className={CL_CAPTION}>
+        {caption || DF_CAPTION}
+      </div>
+      <div className={CL_VALUE}>
+        {getItemCaption(item)}
       </div>
       <OptionsPane
-         id={_listboxId}
-         isShow={isShowOptions}
-         className={CL_SELECT_OPTIONS}
-         item={item}
-         options={options}
-         clItem={CL_ITEM}
-         onSelect={_hSelect}
-         onClose={_hCloseOptions}
-       />
-      <div className={CL_DIV}>
-        <div className={CL_DIV_VALUE}>
-           {getItemCaption(item)}
-        </div>
-        <div className={CL_DIV_BT}>
+        id={_listboxId}
+        isShow={isShowOptions}
+        focusOption={focusOption}
+        className={CL_SELECT_OPTIONS}
+        item={item}
+        options={options}
+        clItem={CL_ITEM}
+        onSelect={_hSelect}
+        onTabSelect={_hTabSelect}
+        onClose={_hCloseOptions}
+      />
+      <div aria-hidden="true" className={CL_DIV}>
+        <div className={CL_INPUT_SVG}>
           <ArrowCell />
         </div>
         <div className={CL_INPUT_LINE} />
