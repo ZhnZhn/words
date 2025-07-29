@@ -15,12 +15,13 @@ import TextField from '../zhn-m-input/TextField';
 import ButtonClear from '../zhn/ButtonClear';
 import FlatButton from '../zhn/FlatButton';
 
-import { INITIAL_WORD } from './wordConfig'
+import { INITIAL_WORD } from './wordConfig';
 
 const S_INPUT_ROOT = {
   width: 250,
   height: 38,
-  marginLeft: 8
+  marginLeft: 8,
+  marginBottom: 30
 }
 , S_TF_LABEL = {
   top: 28

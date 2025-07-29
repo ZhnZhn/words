@@ -14,7 +14,8 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const S_INPUT_ROOT = {
     width: 250,
     height: 38,
-    marginLeft: 8
+    marginLeft: 8,
+    marginBottom: 30
   },
   S_TF_LABEL = {
     top: 28
