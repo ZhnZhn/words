@@ -7,8 +7,6 @@ import {
   KEY_ARROW_UP,
   KEY_HOME,
   KEY_END,
-  KEY_ENTER,
-  KEY_SPACE,
   KEY_ESCAPE,
   KEY_TAB,
 
@@ -16,6 +14,8 @@ import {
   setRefValue,
   stopDefaultFor
 } from '../uiApi';
+
+import { isKeyEnterOrSpace } from '../hooks/fUseKey';
 
 import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
@@ -80,7 +80,7 @@ const _crItem = (
          ? ["0", refItem]
          : ["-1"]
   , _hKeyDown = evt => {
-    if (evt.key === KEY_ENTER || evt.key === KEY_SPACE) {
+    if (isKeyEnterOrSpace(evt.key)) {
       onSelect(item, evt)
     } if (evt.key === KEY_TAB) {
       onTabSelect(item)
@@ -148,7 +148,7 @@ const OptionsPane = ({
       if (!getRefValue(_refItemFocused) && focusOption) {
         setRefValue(_refItemFocused, _elItem)
       }
-      
+
       const _hasBeenItemFocused = focusOption === FOCUS_NEXT_OPTION
         ? _focusNextItem(_refItemFocused)
         : focusOption === FOCUS_PREV_OPTION

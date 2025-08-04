@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _fUseKey = require("../hooks/fUseKey");
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _OptionFn = require("./OptionFn");
@@ -38,7 +39,7 @@ const _crItem = (item, index, _ref2) => {
     currentItemCaption = (0, _OptionFn.getItemCaption)(currentItem),
     [_tabIndex, _ref, _ariaSelected] = currentItemCaption !== void 0 && caption === currentItemCaption ? ["0", refItem, "true"] : currentItemCaption === void 0 && index === 0 ? ["0", refItem] : ["-1"],
     _hKeyDown = evt => {
-      if (evt.key === _uiApi.KEY_ENTER || evt.key === _uiApi.KEY_SPACE) {
+      if ((0, _fUseKey.isKeyEnterOrSpace)(evt.key)) {
         onSelect(item, evt);
       }
       if (evt.key === _uiApi.KEY_TAB) {
