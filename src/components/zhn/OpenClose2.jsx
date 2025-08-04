@@ -1,8 +1,6 @@
-import { useCallback } from '../uiApi';
-
 import useToggle from '../hooks/useToggle';
 import useDnDHandlers from '../hooks/useDnDHandlers';
-import { isKeyEnter } from '../hooks/fUseKey';
+import { useKeyEnter } from '../hooks/fUseKey';
 
 const CL_MENU_ITEM = 'oc-item not-selected'
 , S_ROOT = {
@@ -77,11 +75,10 @@ const OpenClose2 = (props) => {
     isOpen,
     toggleIsOpen
   ] = useToggle(isInitialOpen)
-  , _hKeyDown = useCallback(evt => {
-     if (isKeyEnter(evt)) {
-       toggleIsOpen()
-     }
-  }, [toggleIsOpen])
+  , _hKeyDown = useKeyEnter(
+     toggleIsOpen,
+     [toggleIsOpen]
+   )
   , _draggableOption = useDnDHandlers(props)
   , [
      _d,

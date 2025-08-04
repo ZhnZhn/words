@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useDnDHandlers = _interopRequireDefault(require("../hooks/useDnDHandlers"));
 var _fUseKey = require("../hooks/fUseKey");
@@ -70,11 +69,7 @@ const OpenClose2 = props => {
       children
     } = props,
     [isOpen, toggleIsOpen] = (0, _useToggle.default)(isInitialOpen),
-    _hKeyDown = (0, _uiApi.useCallback)(evt => {
-      if ((0, _fUseKey.isKeyEnter)(evt)) {
-        toggleIsOpen();
-      }
-    }, [toggleIsOpen]),
+    _hKeyDown = (0, _fUseKey.useKeyEnter)(toggleIsOpen, [toggleIsOpen]),
     _draggableOption = (0, _useDnDHandlers.default)(props),
     [_d, _fill, _divStyle, _classShow, _styleNotSelected] = _crStyleConf({
       isOpen,
