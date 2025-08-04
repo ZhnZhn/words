@@ -1,4 +1,4 @@
-import { fOnKeyEnterEvt } from './hooks/fUseKey';
+import { fOnKeyEnter } from './hooks/fUseKey';
 
 export const crMenuItemRole = (
   onClick,
@@ -9,6 +9,6 @@ export const crMenuItemRole = (
   tabIndex,
   onClick,
   [isKeyUp ? "onKeyUp" : "onKeyDown"]: onClick
-    ? fOnKeyEnterEvt(onClick)
+    ? fOnKeyEnter(onClick)
     : void 0
 })

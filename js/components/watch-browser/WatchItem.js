@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _fUseKey = require("../hooks/fUseKey");
+var _a11yFn = require("../a11yFn");
 var _useDnDHandlers = _interopRequireDefault(require("../hooks/useDnDHandlers"));
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -29,12 +29,7 @@ const S_ITEM_DIV = {
   };
 const WatchItem = props => {
   const {
-      item,
-      className,
-      isDraggable,
-      option,
-      onClick,
-      onClose
+      item
       /*
       onDragStart,
       onDragEnter,
@@ -44,29 +39,18 @@ const WatchItem = props => {
       */
     } = props,
     _draggableOptions = (0, _useDnDHandlers.default)(props),
-    {
-      caption
-    } = item,
-    _onClick = () => onClick(item),
-    _onKeyDown = evt => {
-      if ((0, _fUseKey.isKeyEnter)(evt)) {
-        _onClick();
-      }
-    };
+    _onClick = () => props.onClick(item);
   return (0, _jsxRuntime.jsxs)("div", {
-    tabIndex: 0,
-    role: "menuitem",
-    className: className,
+    ...(0, _a11yFn.crMenuItemRole)(_onClick, "0"),
+    className: props.className,
     style: S_ITEM_DIV,
-    onClick: _onClick,
-    onKeyDown: _onKeyDown,
     ..._draggableOptions,
     children: [(0, _jsxRuntime.jsx)("span", {
       style: S_ITEM_SPAN,
-      children: caption
-    }), isDraggable ? (0, _jsxRuntime.jsx)(_SvgClose.default, {
+      children: (item || {}).caption
+    }), props.isDraggable ? (0, _jsxRuntime.jsx)(_SvgClose.default, {
       style: S_SVG_CLOSE,
-      onClose: evt => onClose(option, evt)
+      onClose: evt => props.onClose(props.option, evt)
     }) : null]
   });
 };

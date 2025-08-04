@@ -1,4 +1,4 @@
-import { isKeyEnter } from '../hooks/fUseKey';
+import { crMenuItemRole } from '../a11yFn';
 import useDnDHandlers from '../hooks/useDnDHandlers';
 
 import SvgClose from '../zhn/SvgClose';
@@ -27,11 +27,6 @@ const S_ITEM_DIV = {
 const WatchItem = (props) => {
   const {
     item,
-    className,
-    isDraggable,
-    option,
-    onClick,
-    onClose,
     /*
     onDragStart,
     onDragEnter,
@@ -41,32 +36,23 @@ const WatchItem = (props) => {
     */
   } = props
   , _draggableOptions = useDnDHandlers(props)
-  , { caption } = item
-  , _onClick = () => onClick(item)
-  , _onKeyDown = evt => {
-      if (isKeyEnter(evt)) {
-        _onClick()
-      }
-  };
+  , _onClick = () => props.onClick(item);
 
   return (
      <div
-       tabIndex={0}
-       role="menuitem"
-       className={className}
+       {...crMenuItemRole(_onClick, "0")}
+       className={props.className}
        style={S_ITEM_DIV}
-       onClick={_onClick}
-       onKeyDown={_onKeyDown}
        {..._draggableOptions}
      >
        <span style={S_ITEM_SPAN}>
-         {caption}
+         {(item || {}).caption}
        </span>
        {
-         isDraggable
+         props.isDraggable
            ? <SvgClose
                 style={S_SVG_CLOSE}
-                onClose={evt => onClose(option, evt)}
+                onClose={evt => props.onClose(props.option, evt)}
              />
            : null
        }
