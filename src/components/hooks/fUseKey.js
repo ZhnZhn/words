@@ -1,20 +1,23 @@
 import {
   useCallback,
+  KEY_ENTER,
+  KEY_SPACE,
+  KEY_ESCAPE,
   stopDefaultFor
 } from '../uiApi';
+
 import {
   HAS_KEYBOARD_FOCUS
 } from '../has';
 
 const FN_NOOP = () => {};
 
-export const isKeyEnter = ({
-  keyCode
-}) => keyCode === 13
+const _fIsKey = value => evt => evt.key === value;
 
-const _isKeyEscape = (
-  evt
-) => evt.keyCode === 27 || evt.key === 'Escape';
+export const isKeyEnter = _fIsKey(KEY_ENTER)
+export const isKeyEnterOrSpace = (
+  evtKey
+) => evtKey === KEY_ENTER || evtKey === KEY_SPACE
 
 const _onKeyFnEvt = (
   isKey,
@@ -42,6 +45,7 @@ const _fUseKey = isKey => (
 }, deps || []);
 /*eslint-enable react-hooks/exhaustive-deps */
 
+const _isKeyEscape = _fIsKey(KEY_ESCAPE);
 export const useKeyEscape = HAS_KEYBOARD_FOCUS
   ? _fUseKey(_isKeyEscape)
   : FN_NOOP
