@@ -55,9 +55,10 @@
   background-color: #3270b4;
   background-color: var(--bf-c, #3270b4);
 
-  position: relative;   
+  position: relative;  
+  height: 38px; 
   line-height: 1.8;
-  padding: 4px 42px 0 8px;
+  padding: 2px 42px 2px 8px;
   margin-bottom: 10px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;

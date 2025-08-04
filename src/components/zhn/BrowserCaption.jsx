@@ -10,11 +10,12 @@ const CL_NOT_SELECTED = "not-selected"
   fontWeight: 'bold'
 }
 , S_BT_MORE = {
-   verticalAlign: 'middle',
    marginRight: 6,
    marginLeft: -6
  }
 , S_SVG_MORE = {
+  position: 'relative',
+  top: 2,
   fill: 'inherit',
   stroke: 'inherit'
 }
@@ -45,11 +46,11 @@ const BrowserCaption = ({
     style={rootStyle}
   >
     {
-       isFn(onMore) && <BtSvgMore
-          style={S_BT_MORE}
-          svgStyle={_extractColorToSvgStyle(rootStyle, S_SVG_MORE)}
-          onClick={onMore}
-       />
+      isFn(onMore) && <BtSvgMore
+        style={S_BT_MORE}
+        svgStyle={_extractColorToSvgStyle(rootStyle, S_SVG_MORE)}
+        onClick={onMore}
+      />
      }
     <span
        className={CL_NOT_SELECTED}

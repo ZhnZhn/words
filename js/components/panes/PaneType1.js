@@ -27,13 +27,16 @@ const S_ROOT_DIV = {
     width: RESIZE_INIT_WIDTH
   },
   S_BR_CAPTION = {
-    marginRight: -2
+    display: 'flex'
   },
   S_BT_CIRCLE = {
     position: 'relative',
-    top: -3,
+    top: 3,
     marginLeft: 16,
     marginRight: 6
+  },
+  S_SVG_RESIZE = {
+    paddingTop: 3
   },
   S_SCROLL_PANE = {
     overflowY: 'auto',
@@ -177,6 +180,7 @@ const PaneType1 = _ref2 => {
         onClick: onRemoveItems
       }), (0, _jsxRuntime.jsx)(_SvgHrzResize.default, {
         elementRef: _refRootEl,
+        style: S_SVG_RESIZE,
         initWidth: RESIZE_INIT_WIDTH,
         minWidth: RESIZE_MIN_WIDTH,
         maxWidth: RESIZE_MAX_WIDTH

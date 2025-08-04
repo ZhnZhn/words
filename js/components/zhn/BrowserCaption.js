@@ -14,11 +14,12 @@ const CL_NOT_SELECTED = "not-selected",
     fontWeight: 'bold'
   },
   S_BT_MORE = {
-    verticalAlign: 'middle',
     marginRight: 6,
     marginLeft: -6
   },
   S_SVG_MORE = {
+    position: 'relative',
+    top: 2,
     fill: 'inherit',
     stroke: 'inherit'
   },
