@@ -3,9 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
+var _a11yFn = require("../a11yFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useDnDHandlers = _interopRequireDefault(require("../hooks/useDnDHandlers"));
-var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_MENU_ITEM = 'oc-item not-selected',
   S_ROOT = {
@@ -28,12 +29,6 @@ const CL_MENU_ITEM = 'oc-item not-selected',
     fontWeight: 'bold',
     fontSize: '16px',
     cursor: 'pointer'
-  },
-  S_BLOCK = {
-    display: 'block'
-  },
-  S_NONE = {
-    display: 'none'
   };
 const DF_FILL_OPEN = '#9e9e9e',
   DF_FILL_CLOSE = 'transparent',
@@ -46,7 +41,7 @@ const _crStyleConf = _ref => {
     fillClose,
     styleNotSelected
   } = _ref;
-  return isOpen ? [D_OPEN, fillOpen, S_BLOCK, 'show-popup', null] : [D_CLOSE, fillClose, S_NONE, null, styleNotSelected];
+  return isOpen ? [D_OPEN, fillOpen, _styleFn.S_BLOCK, 'show-popup', null] : [D_CLOSE, fillClose, _styleFn.S_NONE, null, styleNotSelected];
 };
 const OpenClose2 = props => {
   const {
@@ -69,7 +64,6 @@ const OpenClose2 = props => {
       children
     } = props,
     [isOpen, toggleIsOpen] = (0, _useToggle.default)(isInitialOpen),
-    _hKeyDown = (0, _fUseKey.useKeyEnter)(toggleIsOpen, [toggleIsOpen]),
     _draggableOption = (0, _useDnDHandlers.default)(props),
     [_d, _fill, _divStyle, _classShow, _styleNotSelected] = _crStyleConf({
       isOpen,
@@ -83,12 +77,14 @@ const OpenClose2 = props => {
       ...style
     },
     children: [(0, _jsxRuntime.jsxs)("div", {
-      role: "menuitem",
-      tabIndex: "0",
+      ...(0, _a11yFn.crMenuItemRole)(toggleIsOpen, "0"),
+      //role="menuitem"
+      //tabIndex="0"
       className: CL_MENU_ITEM,
-      style: _styleNotSelected,
-      onClick: toggleIsOpen,
-      onKeyDown: _hKeyDown,
+      style: _styleNotSelected
+      //onClick={toggleIsOpen}
+      //onKeyDown={_hKeyDown}
+      ,
       ..._draggableOption,
       children: [(0, _jsxRuntime.jsx)("div", {
         style: S_DIV_SVG,

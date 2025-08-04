@@ -1,6 +1,8 @@
+import { S_NONE, S_BLOCK } from '../styleFn';
+import { crMenuItemRole } from '../a11yFn';
+
 import useToggle from '../hooks/useToggle';
 import useDnDHandlers from '../hooks/useDnDHandlers';
-import { useKeyEnter } from '../hooks/fUseKey';
 
 const CL_MENU_ITEM = 'oc-item not-selected'
 , S_ROOT = {
@@ -21,9 +23,7 @@ const CL_MENU_ITEM = 'oc-item not-selected'
   fontWeight: 'bold',
   fontSize: '16px',
   cursor: 'pointer'
-}
-, S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' };
+};
 
 const DF_FILL_OPEN = '#9e9e9e'
 , DF_FILL_CLOSE = 'transparent'
@@ -75,10 +75,6 @@ const OpenClose2 = (props) => {
     isOpen,
     toggleIsOpen
   ] = useToggle(isInitialOpen)
-  , _hKeyDown = useKeyEnter(
-     toggleIsOpen,
-     [toggleIsOpen]
-   )
   , _draggableOption = useDnDHandlers(props)
   , [
      _d,
@@ -96,12 +92,13 @@ const OpenClose2 = (props) => {
   return (
     <div style={{...S_ROOT, ...style}}>
       <div
-         role="menuitem"
-         tabIndex="0"
+         {...crMenuItemRole(toggleIsOpen, "0")}
+         //role="menuitem"
+         //tabIndex="0"
          className={CL_MENU_ITEM}
          style={_styleNotSelected}
-         onClick={toggleIsOpen}
-         onKeyDown={_hKeyDown}
+         //onClick={toggleIsOpen}
+         //onKeyDown={_hKeyDown}
          {..._draggableOption}
        >
         <div style={S_DIV_SVG}>
