@@ -21,31 +21,35 @@ export const isKeyEnterOrSpace = (
 
 const _onKeyFnEvt = (
   isKey,
+  isEvt,
   fn,
   evt
 ) => {
   if (isKey(evt)) {
     stopDefaultFor(evt)
-    fn(evt)
+    fn(isEvt ? evt : void 0)
   }
 };
 
-const _fOnKey = isKey => fn => evt => {
-  _onKeyFnEvt(isKey, fn, evt)
+const _fOnKey = (
+  isKey,
+  isEvt
+) => fn => evt => {
+  _onKeyFnEvt(isKey, isEvt, fn, evt)
 };
 
-export const fOnKeyEnter = _fOnKey(isKeyEnter)
+export const fOnKeyEnterEvt = _fOnKey(isKeyEnter, !0)
 
 /*eslint-disable react-hooks/exhaustive-deps */
-const _fUseKey = isKey => (
+const _fUseKey = (isKey, isEvt) => (
   fn,
   deps
 ) => useCallback(evt => {
-  _onKeyFnEvt(isKey, fn, evt)
+  _onKeyFnEvt(isKey, isEvt, fn, evt)
 }, deps || []);
 /*eslint-enable react-hooks/exhaustive-deps */
 
 const _isKeyEscape = _fIsKey(KEY_ESCAPE);
 export const useKeyEscape = HAS_KEYBOARD_FOCUS
-  ? _fUseKey(_isKeyEscape)
+  ? _fUseKey(_isKeyEscape, !1)
   : FN_NOOP

@@ -7,7 +7,7 @@ const crMenuItemRole = (onClick, tabIndex, isKeyUp) => ({
   role: "menuitem",
   tabIndex,
   onClick,
-  [isKeyUp ? "onKeyUp" : "onKeyDown"]: onClick ? (0, _fUseKey.fOnKeyEnter)(onClick) : void 0
+  [isKeyUp ? "onKeyUp" : "onKeyDown"]: onClick ? (0, _fUseKey.fOnKeyEnterEvt)(onClick) : void 0
 });
 exports.crMenuItemRole = crMenuItemRole;
 //# sourceMappingURL=a11yFn.js.map
