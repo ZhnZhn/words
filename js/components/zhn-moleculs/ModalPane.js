@@ -3,9 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _styleFn = require("../styleFn");
 var _useClickOutside = _interopRequireDefault(require("../hooks/useClickOutside"));
 var _fUseKey = require("../hooks/fUseKey");
+var _useFocus = require("../hooks/useFocus");
 var _jsxRuntime = require("preact/jsx-runtime");
 const ModalPane = _ref => {
   let {
@@ -19,12 +19,14 @@ const ModalPane = _ref => {
   } = _ref;
   const _refEl = (0, _useClickOutside.default)(isShow, onClose),
     _hKeyEscape = (0, _fUseKey.useKeyEscape)(onClose);
+  (0, _useFocus.useFocusPrevElement)(isShow);
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (0, _jsxRuntime.jsx)("div", {
     ...restProps,
     ref: _refEl,
     className: className,
-    style: (0, _styleFn.crStyle2)(style, isShow ? void 0 : _styleFn.S_NONE),
+    style: style,
+    hidden: !isShow,
     onKeyDown: isShow ? onKeyDown || _hKeyEscape : void 0,
     children: children
   });
