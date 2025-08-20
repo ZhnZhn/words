@@ -21,8 +21,6 @@ const S_BROWSER = {
     paddingRight: 0
   },
   S_BT_CIRCLE = {
-    position: 'relative',
-    top: -2,
     marginLeft: 20
   },
   S_SP = {
@@ -58,8 +56,7 @@ const WatchBrowser = _ref => {
       setWatchList(watchList);
     }
   });
-  const _spStyle = (0, _styleFn.crStyle2)(S_SP, isModeEdit && S_SP_SHORT),
-    _captionEV = isModeEdit ? 'V' : 'E',
+  const _captionEV = isModeEdit ? 'V' : 'E',
     {
       groups
     } = watchList || {};
@@ -85,7 +82,7 @@ const WatchBrowser = _ref => {
       onClickGroup: _Handlers.showDialogEditGroups,
       onClickList: _Handlers.showDialogEditLists
     }), (0, _jsxRuntime.jsx)(_ScrollPane.default, {
-      style: _spStyle,
+      style: (0, _styleFn.crStyle2)(S_SP, isModeEdit && S_SP_SHORT),
       children: (0, _jsxRuntime.jsx)(_WatchGroups.default, {
         isModeEdit: isModeEdit,
         groups: groups,

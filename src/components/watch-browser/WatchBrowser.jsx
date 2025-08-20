@@ -24,8 +24,6 @@ const S_BROWSER = {
   paddingRight: 0
 }
 , S_BT_CIRCLE = {
-  position: 'relative',
-  top: -2,
   marginLeft: 20
 }
 , S_SP = {
@@ -75,22 +73,18 @@ const WatchBrowser = ({
     }
   })
 
-  const _spStyle = crStyle2(
-    S_SP,
-    isModeEdit && S_SP_SHORT
-  )
-  , _captionEV = isModeEdit ? 'V' : 'E'
+  const _captionEV = isModeEdit ? 'V' : 'E'
   , { groups } = watchList || {};
 
   return (
     <Browser
-       isShow={isShow}
-       style={S_BROWSER}
+      isShow={isShow}
+      style={S_BROWSER}
     >
-       <BrowserCaption
-         caption={caption}
-         onClose={_hHide}
-       >
+      <BrowserCaption
+        caption={caption}
+        onClose={_hHide}
+      >
         <CircleButton
           caption="S"
           title={T_S}
@@ -105,12 +99,12 @@ const WatchBrowser = ({
         />
       </BrowserCaption>
       <EditBar
-         isShow={isModeEdit}
-         onClickGroup={showDialogEditGroups}
-         onClickList={showDialogEditLists}
+        isShow={isModeEdit}
+        onClickGroup={showDialogEditGroups}
+        onClickList={showDialogEditLists}
       />
       <ScrollPane
-        style={_spStyle}
+        style={crStyle2(S_SP, isModeEdit && S_SP_SHORT)}
       >
         <WatchGroups
           isModeEdit={isModeEdit}
