@@ -7,15 +7,17 @@ var _Svg = _interopRequireDefault(require("./svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SVG_CLOSE = "svg-close",
   S_SVG = {
-    padding: 3
+    padding: 2
   };
 const SvgClose = _ref => {
   let {
+    ariaLabel = "Close",
     style,
     tabIndex,
     onClose
   } = _ref;
   return (0, _jsxRuntime.jsx)("button", {
+    "aria-label": ariaLabel,
     type: "button",
     tabIndex: tabIndex,
     className: CL_SVG_CLOSE,
