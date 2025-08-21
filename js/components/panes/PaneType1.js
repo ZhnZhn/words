@@ -23,8 +23,7 @@ const RESIZE_INIT_WIDTH = 535,
   RESIZE_MAX_WIDTH = 1200,
   RESIZE_DELTA = 10,
   CL_PANE_T1 = 'pane-t1',
-  CL_MENU_MORE = "popup-menu items__menu-more";
-const S_ROOT_DIV = {
+  S_ROOT_DIV = {
     width: RESIZE_INIT_WIDTH
   },
   S_BR_CAPTION = {
@@ -159,7 +158,7 @@ const PaneType1 = _ref2 => {
     },
     children: [(0, _jsxRuntime.jsx)(_ModalSlider.ModalSliderMemoIsShow, {
       isShow: isMenuMore,
-      className: CL_MENU_MORE,
+      className: _styleFn.CL_MENU_MORE,
       model: _MODEL_MORE,
       onClose: closeMenuMore
     }), (0, _jsxRuntime.jsxs)(_BrowserCaption.default, {

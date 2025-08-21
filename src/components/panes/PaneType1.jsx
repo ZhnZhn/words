@@ -11,6 +11,7 @@ import {
 } from '../uiApi';
 
 import {
+  CL_MENU_MORE,
   crShowHideInlineIf
 } from '../styleFn';
 
@@ -31,9 +32,8 @@ const RESIZE_INIT_WIDTH = 535
 , RESIZE_MAX_WIDTH = 1200
 , RESIZE_DELTA = 10
 , CL_PANE_T1 = 'pane-t1'
-, CL_MENU_MORE = "popup-menu items__menu-more";
 
-const S_ROOT_DIV = {
+, S_ROOT_DIV = {
   width: RESIZE_INIT_WIDTH
 }
 , S_BR_CAPTION = {

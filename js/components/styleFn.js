@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crVisibilityHidden = exports.crUnderline = exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowPopup = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_BT_FLAT_DIV = void 0;
+exports.crVisibilityHidden = exports.crUnderline = exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowPopup = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_MENU_MORE = exports.CL_BT_FLAT_DIV = void 0;
 const isArr = Array.isArray;
 const _getCn = arrOrStr => isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (arrOrStr1, arrOrStr2) => {
@@ -18,6 +18,7 @@ exports.crStyle2 = crStyle2;
 const CL_BT_FLAT_DIV = exports.CL_BT_FLAT_DIV = "bt-flat__div";
 const CL_SHOW_POPUP = exports.CL_SHOW_POPUP = "show-popup";
 const CL_POPUP_MENU = exports.CL_POPUP_MENU = `popup-menu`;
+const CL_MENU_MORE = exports.CL_MENU_MORE = `${CL_POPUP_MENU} items__menu-more`;
 const crUnderline = className => crCn("underline", className);
 exports.crUnderline = crUnderline;
 const _fCrStyle = propName => value => ({
