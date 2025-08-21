@@ -1,5 +1,8 @@
-
-const CL_ROW = 'menu-more__item not-selected';
+import {
+  crMenuModelProps,
+  crMenuSubItem,
+  crMenuItem
+} from '../zhn-modal-slider/menuModelFn';
 
 const crModelMore = ({
   onMinWidth,
@@ -8,40 +11,16 @@ const crModelMore = ({
   onMinusWidth,
   onRemoveItems
 }) => ({
-    titleCl: CL_ROW,
-    pageWidth: 180,
-    maxPages: 2,
+    ...crMenuModelProps(180, 2),
     p0: [
-      {
-        id: 'p1',
-        type: 'sub',
-        cn: CL_ROW,
-        name: 'Resize'
-      },{
-        cn: CL_ROW,
-        name: 'Remove All Items',
-        onClick: onRemoveItems,
-        isClose: true
-      }
+      crMenuSubItem('p1', 'Resize'),
+      crMenuItem('Remove All Items', onRemoveItems)
     ],
     p1: [
-      {
-        cn: CL_ROW,
-        name: 'to MinWidth',
-        onClick: onMinWidth
-      },{
-        cn: CL_ROW,
-        name: 'to InitWidth',
-        onClick: onInitWidth
-      },{
-        cn: CL_ROW,
-        name: '+10px to Width',
-        onClick: onPlusWidth
-      },{
-        cn: CL_ROW,
-        name: '-10px to Width',
-        onClick: onMinusWidth
-      }
+      crMenuItem('to MinWidth', onMinWidth, !1),
+      crMenuItem('to InitWidth', onInitWidth, !1),
+      crMenuItem('+10px to Width', onPlusWidth, !1),
+      crMenuItem('-10px to Width', onMinusWidth, !1)
     ]
 })
 

@@ -1,50 +1,21 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var CL_ROW = 'menu-more__item not-selected';
-
-var crModelMore = function crModelMore(_ref) {
-  var onMinWidth = _ref.onMinWidth,
-      onInitWidth = _ref.onInitWidth,
-      onPlusWidth = _ref.onPlusWidth,
-      onMinusWidth = _ref.onMinusWidth,
-      onRemoveItems = _ref.onRemoveItems;
+exports.default = void 0;
+var _menuModelFn = require("../zhn-modal-slider/menuModelFn");
+const crModelMore = _ref => {
+  let {
+    onMinWidth,
+    onInitWidth,
+    onPlusWidth,
+    onMinusWidth,
+    onRemoveItems
+  } = _ref;
   return {
-    titleCl: CL_ROW,
-    pageWidth: 180,
-    maxPages: 2,
-    p0: [{
-      id: 'p1',
-      type: 'sub',
-      cn: CL_ROW,
-      name: 'Resize'
-    }, {
-      cn: CL_ROW,
-      name: 'Remove All Items',
-      onClick: onRemoveItems,
-      isClose: true
-    }],
-    p1: [{
-      cn: CL_ROW,
-      name: 'to MinWidth',
-      onClick: onMinWidth
-    }, {
-      cn: CL_ROW,
-      name: 'to InitWidth',
-      onClick: onInitWidth
-    }, {
-      cn: CL_ROW,
-      name: '+10px to Width',
-      onClick: onPlusWidth
-    }, {
-      cn: CL_ROW,
-      name: '-10px to Width',
-      onClick: onMinusWidth
-    }]
+    ...(0, _menuModelFn.crMenuModelProps)(180, 2),
+    p0: [(0, _menuModelFn.crMenuSubItem)('p1', 'Resize'), (0, _menuModelFn.crMenuItem)('Remove All Items', onRemoveItems)],
+    p1: [(0, _menuModelFn.crMenuItem)('to MinWidth', onMinWidth, !1), (0, _menuModelFn.crMenuItem)('to InitWidth', onInitWidth, !1), (0, _menuModelFn.crMenuItem)('+10px to Width', onPlusWidth, !1), (0, _menuModelFn.crMenuItem)('-10px to Width', onMinusWidth, !1)]
   };
 };
-
-var _default = crModelMore;
-exports["default"] = _default;
+var _default = exports.default = crModelMore;
 //# sourceMappingURL=crModelMore.js.map
