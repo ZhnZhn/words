@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;  
+  align-items: end; 
   column-gap: 12px;
+  line-height: initial;
 }
 
 .switch {
