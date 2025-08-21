@@ -15,6 +15,7 @@ import {
 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
+import useBool from '../hooks/useBool';
 
 import CircleButton from '../zhn/button/CircleButton';
 import BrowserCaption from '../zhn/BrowserCaption';
@@ -134,7 +135,6 @@ const PaneType1 = ({
     word,
     setWord
   ] = useState(INITIAL_WORD)
-
   /*eslint-disable react-hooks/exhaustive-deps */
   , _MODEL_MORE = useMemo(
       () => crModelMore(_crModelMoreHandlers(_refRootEl, onRemoveItems)),
@@ -143,24 +143,18 @@ const PaneType1 = ({
    // onRemoveItems
    /*eslint-enable react-hooks/exhaustive-deps */
    , [
-     isMore,
-     toggleIsMore
-   ] = useToggle()
-   /*eslint-disable react-hooks/exhaustive-deps */
-   , _showMore = useCallback(() => {
-     toggleIsMore(true)
-   }, [])
-   // toggleIsMore
-   /*eslint-enable react-hooks/exhaustive-deps */
-
+     isMenuMore,
+     showMenuMore,
+     closeMenuMore
+   ] = useBool()
    , [
     isShow,
     toggleIsShow
-  ] = useToggle(true)
+  ] = useToggle(!0)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
      onClose()
-     toggleIsShow(false)
+     toggleIsShow(!1)
   }, [onClose])
   // toggleIsShow
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -174,12 +168,12 @@ const PaneType1 = ({
 
   usePane(pOption => {
     if (pOption && pOption.id === id) {
-      toggleIsShow(true)
+      toggleIsShow(!0)
     }
   })
   useMsItem(option => {
     if (option && option.id === id) {
-      toggleIsShow(true)
+      toggleIsShow(!0)
       setConfigs([...option.configs])
     }
   })
@@ -205,15 +199,15 @@ const PaneType1 = ({
        }}
     >
       <ModalSliderMemoIsShow
-        isShow={isMore}
+        isShow={isMenuMore}
         className={CL_MENU_MORE}
         model={_MODEL_MORE}
-        onClose={toggleIsMore}
+        onClose={closeMenuMore}
       />
       <BrowserCaption
          rootStyle={S_BR_CAPTION}
          caption={paneCaption}
-         onMore={_showMore}
+         onMore={showMenuMore}
          onClose={_hHide}
       >
         <CircleButton

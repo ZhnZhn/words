@@ -7,6 +7,7 @@ var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _CircleButton = _interopRequireDefault(require("../zhn/button/CircleButton"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
@@ -110,23 +111,16 @@ const PaneType1 = _ref2 => {
     _refWord = (0, _uiApi.useRef)(),
     [configs, setConfigs] = (0, _uiApi.useState)([]),
     [word, setWord] = (0, _uiApi.useState)(_wordConfig.INITIAL_WORD)
-
     /*eslint-disable react-hooks/exhaustive-deps */,
     _MODEL_MORE = (0, _uiApi.useMemo)(() => (0, _crModelMore.default)(_crModelMoreHandlers(_refRootEl, onRemoveItems)), [])
     // onRemoveItems
     /*eslint-enable react-hooks/exhaustive-deps */,
-    [isMore, toggleIsMore] = (0, _useToggle.default)()
-    /*eslint-disable react-hooks/exhaustive-deps */,
-    _showMore = (0, _uiApi.useCallback)(() => {
-      toggleIsMore(true);
-    }, [])
-    // toggleIsMore
-    /*eslint-enable react-hooks/exhaustive-deps */,
-    [isShow, toggleIsShow] = (0, _useToggle.default)(true)
+    [isMenuMore, showMenuMore, closeMenuMore] = (0, _useBool.default)(),
+    [isShow, toggleIsShow] = (0, _useToggle.default)(!0)
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hHide = (0, _uiApi.useCallback)(() => {
       onClose();
-      toggleIsShow(false);
+      toggleIsShow(!1);
     }, [onClose])
     // toggleIsShow
     /*eslint-enable react-hooks/exhaustive-deps */,
@@ -138,12 +132,12 @@ const PaneType1 = _ref2 => {
     }, [itemConf, onLoad]);
   usePane(pOption => {
     if (pOption && pOption.id === id) {
-      toggleIsShow(true);
+      toggleIsShow(!0);
     }
   });
   useMsItem(option => {
     if (option && option.id === id) {
-      toggleIsShow(true);
+      toggleIsShow(!0);
       setConfigs([...option.configs]);
     }
   });
@@ -164,14 +158,14 @@ const PaneType1 = _ref2 => {
       ..._showStyle
     },
     children: [(0, _jsxRuntime.jsx)(_ModalSlider.ModalSliderMemoIsShow, {
-      isShow: isMore,
+      isShow: isMenuMore,
       className: CL_MENU_MORE,
       model: _MODEL_MORE,
-      onClose: toggleIsMore
+      onClose: closeMenuMore
     }), (0, _jsxRuntime.jsxs)(_BrowserCaption.default, {
       rootStyle: S_BR_CAPTION,
       caption: paneCaption,
-      onMore: _showMore,
+      onMore: showMenuMore,
       onClose: _hHide,
       children: [(0, _jsxRuntime.jsx)(_CircleButton.default, {
         caption: "R",
