@@ -1,6 +1,12 @@
 //import PropTypes from 'prop-types'
-import { useState } from '../uiApi';
-import { crStyle2 } from '../styleFn';
+import {
+  useState,
+  useMemo,
+} from '../uiApi';
+import {
+  CL_MENU_MORE,
+  crStyle2
+} from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
@@ -15,7 +21,11 @@ import {
 import Browser from '../zhn/Browser';
 import BrowserCaption from '../zhn/BrowserCaption';
 import ScrollPane from '../zhn/ScrollPane';
-import CircleButton from '../zhn/button/CircleButton';
+import { ModalSliderMemoIsShow } from '../zhn-modal-slider/ModalSlider';
+import {
+  crMenuModelProps,
+  crMenuItem
+} from '../zhn-modal-slider/menuModelFn';
 
 import EditBar from './EditBar';
 import WatchGroups from './WatchGroups';
@@ -23,8 +33,8 @@ import WatchGroups from './WatchGroups';
 const S_BROWSER = {
   paddingRight: 0
 }
-, S_BT_CIRCLE = {
-  marginLeft: 20
+, S_BR_CAPTION = {
+  display: 'flex'
 }
 , S_SP = {
   height: '92%',
@@ -35,10 +45,19 @@ const S_BROWSER = {
   height: 'calc(100% - 70px)'
 }
 
-const T_S = "Click to save to LocalStorage"
-, T_E_V = "Click to toggle edit mode E/V";
-
 const FN_NOOP = () => {};
+
+const _saveWatchList = () => setTimeout(saveWatchList, 250)
+
+const _crModelMore = (
+  toggleEditMode
+) => ({
+  ...crMenuModelProps(180),
+  p0: [
+    crMenuItem('Edit mode', toggleEditMode, !0, !1),
+    crMenuItem('Save watch words', _saveWatchList)
+  ]
+});
 
 const WatchBrowser = ({
   isInitShow,
@@ -49,6 +68,11 @@ const WatchBrowser = ({
   onClickItem=FN_NOOP
 }) => {
   const [
+    isMenuMore,
+    showMenuMore,
+    closeMenuMore
+  ] = useBool()
+  , [
     isModeEdit,
     _toggleEditMode
   ] = useToggle()
@@ -60,7 +84,14 @@ const WatchBrowser = ({
   , [
     watchList,
     setWatchList
-  ] = useState(getWatchList);
+  ] = useState(getWatchList)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _MODEL_MORE = useMemo(
+    () => _crModelMore(_toggleEditMode),
+    []
+  );
+  //_toggleEditMode
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   useBrowser(browser => {
     if (browser && browserId === browser.id) {
@@ -73,31 +104,25 @@ const WatchBrowser = ({
     }
   })
 
-  const _captionEV = isModeEdit ? 'V' : 'E'
-  , { groups } = watchList || {};
+  const { groups } = watchList || {};
 
   return (
     <Browser
       isShow={isShow}
       style={S_BROWSER}
     >
+      <ModalSliderMemoIsShow
+        isShow={isMenuMore}
+        className={CL_MENU_MORE}
+        model={_MODEL_MORE}
+        onClose={closeMenuMore}
+      />
       <BrowserCaption
+        rootStyle={S_BR_CAPTION}
         caption={caption}
+        onMore={showMenuMore}
         onClose={_hHide}
-      >
-        <CircleButton
-          caption="S"
-          title={T_S}
-          style={S_BT_CIRCLE}
-          onClick={saveWatchList}
-        />
-        <CircleButton
-          caption={_captionEV}
-          title={T_E_V}
-          style={S_BT_CIRCLE}
-          onClick={_toggleEditMode}
-        />
-      </BrowserCaption>
+      />
       <EditBar
         isShow={isModeEdit}
         onClickGroup={showDialogEditGroups}

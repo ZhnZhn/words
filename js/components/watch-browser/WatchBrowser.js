@@ -11,7 +11,8 @@ var _Handlers = require("./Handlers");
 var _Browser = _interopRequireDefault(require("../zhn/Browser"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
-var _CircleButton = _interopRequireDefault(require("../zhn/button/CircleButton"));
+var _ModalSlider = require("../zhn-modal-slider/ModalSlider");
+var _menuModelFn = require("../zhn-modal-slider/menuModelFn");
 var _EditBar = _interopRequireDefault(require("./EditBar"));
 var _WatchGroups = _interopRequireDefault(require("./WatchGroups"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -20,8 +21,8 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const S_BROWSER = {
     paddingRight: 0
   },
-  S_BT_CIRCLE = {
-    marginLeft: 20
+  S_BR_CAPTION = {
+    display: 'flex'
   },
   S_SP = {
     height: '92%',
@@ -31,9 +32,12 @@ const S_BROWSER = {
   S_SP_SHORT = {
     height: 'calc(100% - 70px)'
   };
-const T_S = "Click to save to LocalStorage",
-  T_E_V = "Click to toggle edit mode E/V";
 const FN_NOOP = () => {};
+const _saveWatchList = () => setTimeout(_Handlers.saveWatchList, 250);
+const _crModelMore = toggleEditMode => ({
+  ...(0, _menuModelFn.crMenuModelProps)(180),
+  p0: [(0, _menuModelFn.crMenuItem)('Edit mode', toggleEditMode, !0, !1), (0, _menuModelFn.crMenuItem)('Save watch words', _saveWatchList)]
+});
 const WatchBrowser = _ref => {
   let {
     isInitShow,
@@ -43,9 +47,15 @@ const WatchBrowser = _ref => {
     useWatchList,
     onClickItem = FN_NOOP
   } = _ref;
-  const [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(),
+  const [isMenuMore, showMenuMore, closeMenuMore] = (0, _useBool.default)(),
+    [isModeEdit, _toggleEditMode] = (0, _useToggle.default)(),
     [isShow, _hShow, _hHide] = (0, _useBool.default)(isInitShow),
-    [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList);
+    [watchList, setWatchList] = (0, _uiApi.useState)(_Handlers.getWatchList)
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _MODEL_MORE = (0, _uiApi.useMemo)(() => _crModelMore(_toggleEditMode), []);
+  //_toggleEditMode
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   useBrowser(browser => {
     if (browser && browserId === browser.id) {
       _hShow();
@@ -56,27 +66,22 @@ const WatchBrowser = _ref => {
       setWatchList(watchList);
     }
   });
-  const _captionEV = isModeEdit ? 'V' : 'E',
-    {
-      groups
-    } = watchList || {};
+  const {
+    groups
+  } = watchList || {};
   return (0, _jsxRuntime.jsxs)(_Browser.default, {
     isShow: isShow,
     style: S_BROWSER,
-    children: [(0, _jsxRuntime.jsxs)(_BrowserCaption.default, {
+    children: [(0, _jsxRuntime.jsx)(_ModalSlider.ModalSliderMemoIsShow, {
+      isShow: isMenuMore,
+      className: _styleFn.CL_MENU_MORE,
+      model: _MODEL_MORE,
+      onClose: closeMenuMore
+    }), (0, _jsxRuntime.jsx)(_BrowserCaption.default, {
+      rootStyle: S_BR_CAPTION,
       caption: caption,
-      onClose: _hHide,
-      children: [(0, _jsxRuntime.jsx)(_CircleButton.default, {
-        caption: "S",
-        title: T_S,
-        style: S_BT_CIRCLE,
-        onClick: _Handlers.saveWatchList
-      }), (0, _jsxRuntime.jsx)(_CircleButton.default, {
-        caption: _captionEV,
-        title: T_E_V,
-        style: S_BT_CIRCLE,
-        onClick: _toggleEditMode
-      })]
+      onMore: showMenuMore,
+      onClose: _hHide
     }), (0, _jsxRuntime.jsx)(_EditBar.default, {
       isShow: isModeEdit,
       onClickGroup: _Handlers.showDialogEditGroups,
