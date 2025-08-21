@@ -1,4 +1,5 @@
 import { bindTo } from '../../utils/bindTo';
+import { isBool } from '../../utils/isTypeFn';
 
 import { safeMap, crOnClick } from '../uiApi';
 import { crMenuItemRole } from '../a11yFn';
@@ -8,15 +9,20 @@ import {
   crAbsoluteTopLeftStyle
 } from '../styleFn';
 
+import InputSwitch from '../zhn/InputSwitch';
+
 const SUB_MENU = 'sub'
 , S_ITEM = {
   position: 'relative'
+}
+, S_INPUT_SWITCH = {
+  padding: '10px 0'
 }
 , S_NEXT_PAGE = {
   ...S_INLINE_BLOCK,
   ...crAbsoluteTopLeftStyle(0, 4, !0),
   color: 'inherit',
-  padding: '1px 16px 1px 0px',
+  paddingRight: 16,
   fontWeight: 'bold'
 };
 
@@ -38,12 +44,27 @@ const MenuItemList = ({
    {safeMap(items, (item, index) => {
      const {
        name,
-       type
+       type,
+       isInitial
      } = item
      , _onClick = type === SUB_MENU
         ? bindTo(onNextPage, item.id, name, pageNumber)
         : crOnClick(item.onClick, onClose, item.isClose);
-     return (<div
+     return isBool(isInitial) ? (
+       <div
+         key={name}
+         {...crMenuItemRole()}
+         className={item.cn || itemCl}
+       >
+         <InputSwitch
+           refEl={getRefItem(index)}
+           style={S_INPUT_SWITCH}
+           initialValue={isInitial}
+           caption={name}
+           onToggle={_onClick}
+         />
+      </div>
+     ) : (<div
         key={name}
         ref={getRefItem(index)}
         className={item.cn || itemCl}
