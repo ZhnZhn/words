@@ -1,12 +1,14 @@
 import { useEffect } from '../uiApi';
 
 /*eslint-disable react-hooks/exhaustive-deps */
-const useSubscribe = (store, selector, onChange) => {
-  useEffect(() => {
-    return store.subscribe(selector, onChange);
-  }, [])
-  //onChange
+const useSubscribe = (
+  store,
+  selector,
+  onChange
+) => {
+  useEffect(() => store.subscribe(selector, onChange), [])
+  //store, selector, onChange
 }
-/*eslint-disable react-hooks/exhaustive-deps */
+/*eslint-enable react-hooks/exhaustive-deps */
 
 export default useSubscribe

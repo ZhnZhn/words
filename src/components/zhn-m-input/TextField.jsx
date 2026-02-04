@@ -84,11 +84,11 @@ const TextField = ({
     setValue(evt.target.value)
   }, [])
   , _hKeyDown = useCallback(evt => {
-     const { keyCode } = event;
+     const { keyCode } = evt;
      if (keyCode === 46){
        setValue('')
      } else if (keyCode === 13) {
-       onEnter(event.target.value)
+       onEnter(evt.target.value)
      }
   }, [onEnter])
 

@@ -1,4 +1,4 @@
-import {  
+import {
   useRef,
   useState,
   useCallback,
@@ -83,7 +83,7 @@ const PasswordField = (
       setValue('')
     } else if (keyCode === 13) {
       evt.preventDefault()
-      onEnter(event.target.value)
+      onEnter(evt.target.value)
       setRefValue(_refWasEnter, true)
       rerender()
     }

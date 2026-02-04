@@ -11,13 +11,9 @@ const useGroupOptions = () => {
     groupOpions,
     setGroupOptions
   ] = useState(getWatchGroups)
-
-  /*eslint-disable react-hooks/exhaustive-deps */
   , _updateGroupOptions = useCallback(() => {
     setGroupOptions(getWatchGroups())
-  }, [])
-  // getWatchGroups
-  /*eslint-enable react-hooks/exhaustive-deps */
+  }, []);
 
   return [
     groupOpions,

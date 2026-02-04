@@ -71,11 +71,11 @@ const TextField = _ref => {
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
       const {
         keyCode
-      } = event;
+      } = evt;
       if (keyCode === 46) {
         setValue('');
       } else if (keyCode === 13) {
-        onEnter(event.target.value);
+        onEnter(evt.target.value);
       }
     }, [onEnter]);
   (0, _uiApi.useEffect)(() => {

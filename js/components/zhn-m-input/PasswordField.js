@@ -8,12 +8,12 @@ var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SELECT = 'm-select',
-  CL_LABEL = CL_SELECT + "__label",
+  CL_LABEL = `${CL_SELECT}__label`,
   CL_INPUT = 'm-textfield-input',
-  CL_INPUT_DIV = CL_INPUT + "__div",
+  CL_INPUT_DIV = `${CL_INPUT}__div`,
   M_INPUT = 'm-input',
-  CL_INPUT_LINE = M_INPUT + "__line",
-  CL_INPUT_MSG_ERR = M_INPUT + "__msg-err";
+  CL_INPUT_LINE = `${M_INPUT}__line`,
+  CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`;
 const S_LABEL_TO_INPUT = {
     transform: 'scale(1) translate(0px, -6px)'
   },
@@ -64,7 +64,7 @@ const PasswordField = props => {
         setValue('');
       } else if (keyCode === 13) {
         evt.preventDefault();
-        onEnter(event.target.value);
+        onEnter(evt.target.value);
         (0, _uiApi.setRefValue)(_refWasEnter, true);
         rerender();
       }
