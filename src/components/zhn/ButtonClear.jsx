@@ -1,14 +1,11 @@
 const CL = 'bt-clear';
 
-const ButtonClear = ({
-  style,
-  onClick
-}) => (
+const ButtonClear = (props) => (
   <button
     type="button"
     className={CL}
-    style={style}
-    onClick={onClick}
+    style={props.style}
+    onClick={props.onClick}
   >x</button>
 );
 

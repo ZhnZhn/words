@@ -6,15 +6,14 @@
  "file": "../../../src/components/zhn/SpinnerLoading.js",
  "names": [
   "SpinnerLoading",
-  "_ref",
-  "style",
-  "isFailed",
-  "_dataLoader",
+  "props",
   "_jsxRuntime",
   "jsx",
+  "style",
+  "isFailed",
   "_default",
   "exports",
   "default"
  ],
- "mappings": ";;;;;AAEA,MAAMA,cAAc,GAAGC,IAAA,IAAyB;EAAA,IAAxB;IAAEC,KAAK;IAAEC;EAAS,CAAC,GAAAF,IAAA;EACzC,MAAMG,WAAW,GAAGD,QAAQ,GACxB,eAAe,GACf,QAAQ;EACZ,OACE,IAAAE,WAAA,CAAAC,GAAA;IAAMJ,KAAK,EAAEA,KAAM;IAAC,eAAaE;EAAY,CAAE,CAAC;AAEpD,CAAC;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAGaT,cAAc"
+ "mappings": ";;;;;AAAA,MAAMA,cAAc,GAAIC,KAAK,IAC3B,IAAAC,WAAA,CAAAC,GAAA;EACEC,KAAK,EAAEH,KAAK,CAACG,KAAM;EACnB,eAAaH,KAAK,CAACI,QAAQ,GACvB,eAAe,GACf;AAAS,CACd,CACF;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaR,cAAc"
 }

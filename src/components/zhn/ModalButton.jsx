@@ -3,30 +3,22 @@ import CaptionInput from './CaptionInput';
 const CL_BT_FLAT = 'bt-flat'
 , CL_BT_SPAN = `${CL_BT_FLAT}__span`;
 
-const ModalButton = ({
-  refEl,
-  style,
-  title,
-  caption,
-  accessKey,
-  onClick,
-  children
-}) => (
+const ModalButton = (props) => (
   <button
-    ref={refEl}
+    ref={props.refEl}
     type="button"
     className={CL_BT_FLAT}
-    style={style}
-    title={title}
-    accessKey={accessKey}
-    onClick={onClick}
+    style={props.style}
+    title={props.title}
+    accessKey={props.accessKey}
+    onClick={props.onClick}
   >
     <CaptionInput
       className={CL_BT_SPAN}
-      caption={caption}
-      accessKey={accessKey}
+      caption={props.caption}
+      accessKey={props.accessKey}
     >
-       {children}
+       {props.children}
     </CaptionInput>
   </button>
 );

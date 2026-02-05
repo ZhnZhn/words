@@ -16,12 +16,10 @@ const S_DIV = {
   fontWeight: 'bold'
 };
 
-const ValidationMessages = ({
-  validationMessages
-}) => (
+const ValidationMessages = (props) => (
   <div style={S_DIV}>
     {
-      (validationMessages || []).map((msg, index)=>(
+      (props.validationMessages || []).map((msg, index)=>(
         <div key={index}>
           <div style={S_MSG_NUMBER}>{index+1}</div>
           <span style={S_MSG_SPAN}>{msg}</span>

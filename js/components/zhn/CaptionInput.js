@@ -20,19 +20,12 @@ const _crCaptionEl = (caption, accessKey) => {
     })]
   });
 };
-const CaptionInput = _ref => {
-  let {
-    className,
-    style,
-    caption,
-    accessKey,
-    children
-  } = _ref;
-  const _captionEl = _crCaptionEl(caption, accessKey);
+const CaptionInput = props => {
+  const _captionEl = _crCaptionEl(props.caption, props.accessKey);
   return (0, _jsxRuntime.jsxs)("span", {
-    className: className,
-    style: style,
-    children: [_captionEl, children]
+    className: props.className,
+    style: props.style,
+    children: [_captionEl, props.children]
   });
 };
 var _default = exports.default = CaptionInput;

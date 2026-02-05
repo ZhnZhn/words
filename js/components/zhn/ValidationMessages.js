@@ -20,22 +20,17 @@ const S_DIV = {
   S_MSG_SPAN = {
     fontWeight: 'bold'
   };
-const ValidationMessages = _ref => {
-  let {
-    validationMessages
-  } = _ref;
-  return (0, _jsxRuntime.jsx)("div", {
-    style: S_DIV,
-    children: (validationMessages || []).map((msg, index) => (0, _jsxRuntime.jsxs)("div", {
-      children: [(0, _jsxRuntime.jsx)("div", {
-        style: S_MSG_NUMBER,
-        children: index + 1
-      }), (0, _jsxRuntime.jsx)("span", {
-        style: S_MSG_SPAN,
-        children: msg
-      })]
-    }, index))
-  });
-};
+const ValidationMessages = props => (0, _jsxRuntime.jsx)("div", {
+  style: S_DIV,
+  children: (props.validationMessages || []).map((msg, index) => (0, _jsxRuntime.jsxs)("div", {
+    children: [(0, _jsxRuntime.jsx)("div", {
+      style: S_MSG_NUMBER,
+      children: index + 1
+    }), (0, _jsxRuntime.jsx)("span", {
+      style: S_MSG_SPAN,
+      children: msg
+    })]
+  }, index))
+});
 var _default = exports.default = ValidationMessages;
 //# sourceMappingURL=ValidationMessages.js.map

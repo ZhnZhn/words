@@ -2,16 +2,12 @@ import { crCn } from '../styleFn';
 
 const CL_SCROLL = 'with-scroll';
 
-const ScrollPane = ({
-  style,
-  className,
-  children
-}) => (
+const ScrollPane = (props) => (
    <div
-     className={crCn(className, CL_SCROLL)}
-     style={style}
+     className={crCn(props.className, CL_SCROLL)}
+     style={props.style}
    >
-     {children}
+     {props.children}
    </div>
 );
 

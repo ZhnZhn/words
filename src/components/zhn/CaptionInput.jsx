@@ -23,22 +23,16 @@ const _crCaptionEl = (
     );
 };
 
-const CaptionInput = ({
-  className,
-  style,
-  caption,
-  accessKey,
-  children
-}) => {
+const CaptionInput = (props) => {
   const _captionEl = _crCaptionEl(
-    caption,
-    accessKey
+    props.caption,
+    props.accessKey
   );
 
   return (
-    <span className={className} style={style}>
+    <span className={props.className} style={props.style}>
        {_captionEl}
-       {children}
+       {props.children}
     </span>
   );
 };
