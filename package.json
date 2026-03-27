@@ -8,6 +8,7 @@
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "lint:one": "eslint -c eslint.config.js",
+    "lint:biome": "npx @biomejs/biome lint ./src > _lint.txt 2>&1",
     "css:min": "node min-css.js",
     "build:dll": "webpack --color --progress --config webpack.dll.js",
     "build:dll-jsx": "webpack --color --progress --config webpack.dll-jsx.js",
@@ -34,11 +35,11 @@
     "@babel/plugin-transform-runtime": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
     "@babel/preset-react": "^7.28.5",
+    "@biomejs/biome": "2.4.9",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
     "babel-loader": "^10.1.1",
     "clean-css": "^5.3.3",
     "eslint": "^9.39.4",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "html-webpack-plugin": "^5.6.6",
@@ -52,7 +53,8 @@
   "overrides": {
     "js-yaml": "~4.1.1",
     "glob": "~11.1.0",
-    "serialize-javascript": "~7.0.3"
+    "serialize-javascript": "~7.0.3",
+    "brace-expansion": "~5.0.5"
   },
   "jest": {
     "roots": [
