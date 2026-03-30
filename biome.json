@@ -14,14 +14,17 @@
 	},
 	"linter": {
 		"enabled": true,
+                "domains": {
+                  "project": "recommended",
+                  "react": "recommended"
+                },
 		"rules": {
 			"recommended": true,
                         "a11y": {
-                           "noAccessKey": "off"
+                        	"noAccessKey": "off"
                         },
                         "complexity": {
-                           "noCommaOperator": "off",
-                           "useOptionalChain": "off"
+                        	"noCommaOperator": "off"                           
                         }                          
 		}
 	},
@@ -34,7 +37,7 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on"
+				"organizeImports": "off"
 			}
 		}
 	}
