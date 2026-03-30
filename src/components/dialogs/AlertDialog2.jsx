@@ -57,7 +57,7 @@ const AlertDialog2 = memoIsShow(({
     itemId='',
     descr
   } = data
-  , _caption = caption + ': ';
+  , _caption = `${caption}: `;
 
   return (
     <ModalDialog

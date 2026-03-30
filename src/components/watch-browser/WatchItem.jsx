@@ -46,7 +46,7 @@ const WatchItem = (props) => {
        {..._draggableOptions}
      >
        <span style={S_ITEM_SPAN}>
-         {(item || {}).caption}
+         {item?.caption}
        </span>
        {
          props.isDraggable

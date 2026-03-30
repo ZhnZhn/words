@@ -16,7 +16,7 @@ const _assign = Object.assign;
 
 const _setMoveStyle = (el, dX) => {
   _assign(el.style, {
-    right: dX + 'px',
+    right: `${dX}px`,
     opacity: (1 - (0.5*Math.abs(dX))/60)
   })
 };

@@ -94,14 +94,14 @@ const PasswordField = (
   useImperativeHandle(refEl, ()=>({
     getValue: () => {
       const _elInput = getRefValue(_refInput);
-      return _elInput && _elInput.value;
+      return _elInput?.value;
     },
   }))
 
   useEffect(() => {
     const _clearId = setTimeout(()=>{
       const _input = getRefValue(_refInput);
-      if (_input && _input.hasAttribute('value')) {
+      if (_input?.hasAttribute('value')) {
         _input.removeAttribute('value')
       }
     })

@@ -57,11 +57,12 @@ const TabPane = (0, _uiApi.memo)(_ref => {
     children: [(0, _jsxRuntime.jsx)("div", {
       style: S_TABS,
       children: children.map((tab, index) => {
-        const isSelected = _isSelectedTabIndex(index);
+        const isSelected = _isSelectedTabIndex(index),
+          tabId = (0, _tabPaneFn.crTabId)(id, index);
         return (0, _uiApi.cloneElement)(tab, {
-          key: index,
+          key: tabId,
           isSelected,
-          tabId: (0, _tabPaneFn.crTabId)(id, index),
+          tabId,
           tabPanelId: (0, _tabPaneFn.crTabPanelId)(id, index),
           className: (0, _tabPaneFn.crTabCn)(isSelected),
           onClick: () => setSelectedTabIndex(index),
@@ -71,17 +72,18 @@ const TabPane = (0, _uiApi.memo)(_ref => {
     }), (0, _jsxRuntime.jsx)("div", {
       style: S_COMPONENTS,
       children: children.map((tab, index) => {
-        const isSelected = _isSelectedTabIndex(index);
+        const isSelected = _isSelectedTabIndex(index),
+          tabPanelId = (0, _tabPaneFn.crTabPanelId)(id, index);
         return (0, _jsxRuntime.jsx)("div", {
           style: isSelected ? S_BLOCK : S_NONE,
           role: "tabpanel",
-          id: (0, _tabPaneFn.crTabPanelId)(id, index),
+          id: tabPanelId,
           "aria-labelledby": (0, _tabPaneFn.crTabId)(id, index),
           children: (0, _uiApi.cloneElement)(tab.props.children, {
             ...restTabPanelProps,
             isSelected
           })
-        }, index);
+        }, tabPanelId);
       })
     })]
   });

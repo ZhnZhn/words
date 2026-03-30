@@ -56,7 +56,7 @@ const SettingsDialog = ({
   , _refSetKey1 = useRef(data.key1)
   , _ref1 = useRef()
   , _selectTheme = useCallback(item => {
-    setUiTheme((item || {}).value)
+    setUiTheme(item?.value)
   }, [])
   , _hSetAndClose = useCallback(() => {
      getRefValue(_refSetKey1)(getRefValue(_ref1).getValue())

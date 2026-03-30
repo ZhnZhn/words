@@ -100,8 +100,9 @@ const OpenClose = ({
          {..._dndOption}
       >
          <Svg
+            aria-hidden="true"
             style={S_SVG}
-            w="16"
+            w="16"            
          >
            <path
              d={_pathV}

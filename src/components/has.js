@@ -1,8 +1,7 @@
 export const HAS_TOUCH_EVENTS = document
   && 'ontouchstart' in document.documentElement;
 
-const _getWindowInnerWidth = () => window
-  && window.innerWidth
+const _getWindowInnerWidth = () => window?.innerWidth;
 
 const _DF_WIDE_WIDTH = 700;
 const _isWideWidth = (

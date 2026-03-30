@@ -1,4 +1,5 @@
 import {
+  useId,
   useRef,
   useState,
   useCallback,
@@ -70,7 +71,8 @@ const TextField = ({
   onEnter=FN_NOOP,
   ...restProps
 }) => {
-  const _refInput = useRef()
+  const _inputId = useId()
+  , _refInput = useRef()
   , [
     isFocus,
     setFocused,
@@ -130,6 +132,7 @@ const TextField = ({
       style={rootStyle}
     >
       <label
+        htmlFor={_inputId}
         className={CL_LABEL}
         style={{...labelStyle, ..._labelStyle, ..._labelErrStyle}}
        >
@@ -139,6 +142,7 @@ const TextField = ({
       </label>
       <div className={CL_INPUT_DIV}>
         <input
+          id={_inputId}
           ref={_refInput}
           type="text"
           className={CL_INPUT}

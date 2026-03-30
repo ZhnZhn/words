@@ -43,10 +43,10 @@ const MenuParts = ({
     menu,
     items={}
   } = menuModel;
-  return (menu || []).map((menuPart, index) => (
+  return (menu || []).map(menuPart => (
     <MenuPart
-      {...menuPart}
-      key={index}
+      key={menuPart.caption}
+      {...menuPart}     
       hmItems={items}
       styleConfig={styleConfig}
       {...restProps}
@@ -75,7 +75,7 @@ const DynamicMenuBrowser = ({
   , [
     isLoading,
     /*eslint-disable no-unused-vars */
-    setLoading,
+    _setLoading,
     /*eslint-enable no-unused-vars */
     setNotLoading
   ] = useBool(true)

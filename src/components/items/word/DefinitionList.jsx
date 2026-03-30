@@ -22,14 +22,14 @@ const DefinitionList = ({
   style,
   defItems
 }) => (defItems || [])
- .map((defItem, index) => {
+ .map(defItem => {
   const {
     definition,
     partOfSpeech,
   } = defItem || {};
   return (
     <OpenClose
-      key={index}
+      key={definition}
       isClose={true}
       style={style}
       caption={definition}

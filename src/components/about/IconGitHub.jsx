@@ -1,7 +1,6 @@
 import { XMLNS_SVG } from '../zhn/svg/Svg';
 
-const IconGitHub = ({
-  className,
+const IconGitHub = ({ 
   style,
   ariaLabel,
   href

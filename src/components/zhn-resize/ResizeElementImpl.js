@@ -60,7 +60,7 @@ class ResizeElementImpl {
   }
 
   _setElementWidth = (width) => {
-    this._getElementStyle().width = width + 'px';
+    this._getElementStyle().width = `${width}px`;
   }
 
   _getElementWidth = () => {

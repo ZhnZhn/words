@@ -59,7 +59,7 @@ const RESIZE_INIT_WIDTH = 535
 const FN_NOOP = () => {}
 , _getWidth = style => parseInt(style.width, 10)
    || RESIZE_INIT_WIDTH
-, _toStyleWidth = width => width + 'px';
+, _toStyleWidth = width => `${width}px`;
 
 const ConfigsStack = ({
   configs,

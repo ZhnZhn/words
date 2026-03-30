@@ -9,10 +9,10 @@ const ListDiv = ({
   <>
     {
       _isArr(items)
-        ? items.map((str, index) => (
+        ? items.map(str => (
             <SafeToken
-               as="div"
-               key={index}
+               key={str}
+               as="div"              
                style={itemStyle}
                token={str}
             />

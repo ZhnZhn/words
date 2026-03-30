@@ -27,9 +27,7 @@ const useClickOutside = (
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClickOutside = useCallback(event => {
       const _el = getRefValue(_ref);
-      if ( _el && _el.contains
-        && !_el.contains(event.target)
-      ){
+      if (_el?.contains && !_el.contains(event.target)){
         event.stopPropagation()
         onClickOutside(event)
       }

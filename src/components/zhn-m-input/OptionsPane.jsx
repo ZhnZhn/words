@@ -43,7 +43,7 @@ const _setItemFocus = (
 ) : !1;
 
 const _fFocusItem = propName => ref => {
-  const _elItem = (getRefValue(ref) || {})[propName];
+  const _elItem = getRefValue(ref)?.[propName];
   return _setItemFocus(_elItem, ref);
 };
 
@@ -51,7 +51,7 @@ const _focusNextItem = _fFocusItem('nextSibling');
 const _focusPrevItem = _fFocusItem('previousSibling');
 
 const _fFocusParentItem = propName => ref => {
-  const _elItem = ((getRefValue(ref) || {}).parentNode || {})[propName];
+  const _elItem = getRefValue(ref)?.parentNode?.[propName];
   _setItemFocus(_elItem, ref)
 }
 

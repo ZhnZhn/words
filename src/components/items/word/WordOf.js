@@ -37,10 +37,7 @@ const _crCaption = (
 const WordOf = ({
   caption,
   items,
-  isCount=false,
-  fillOpen,
-  captionStyle,
-  childrenStyle
+  isCount=false
 }) => _isItems(items) ? (
   <OpenClose
     isClose={true}

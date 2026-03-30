@@ -8,6 +8,7 @@ const Link = ({
  <a
    {...rest}
    target="_blank"
+   rel="noopener"
    className="link"
    href={toLink(href)}
   >

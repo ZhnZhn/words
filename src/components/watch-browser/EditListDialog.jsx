@@ -32,8 +32,7 @@ import {
 } from './Dialog.Style';
 
 const EditListDialog = memoIsShow(({
-  isShow,
-  store,
+  isShow,  
   onClose
 }) => (
   <ModalDialog

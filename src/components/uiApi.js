@@ -54,7 +54,7 @@ export const crOnClick = (
       : onClick
   : void 0;
 
-export const getRefValue = ref => (ref || {}).current
+export const getRefValue = ref => ref?.current
 
 export const setRefValue = (
   ref,
@@ -124,12 +124,12 @@ export const setRefInputValue = (
 
 export const getRefElementStyle = ref => {
   const element = getRefValue(ref);
-  return (element || {}).style;
+  return element?.style;
 }
 
 const _getFirstTouches = (
   touches
-) => (touches && touches[0]) || {}
+) => touches?.[0] || {}
 , CLIENT_X = 'clientX'
 , CLIENT_Y = 'clientY'
 , _fGetTouch = (propName) => (

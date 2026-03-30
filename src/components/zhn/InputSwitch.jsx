@@ -54,7 +54,7 @@ const InputSwitch = ({
     _isChecked,
     _setIsChecked
   ] = useState(() => !!initialValue)
-  , _hChange = (evt) => {
+  , _hChange = () => {
       const _nextValue = !_isChecked
       , _onChange = onToggle || (_nextValue
          ? onCheck

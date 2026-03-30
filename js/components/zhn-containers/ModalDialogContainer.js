@@ -9,7 +9,7 @@ var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const _crDialogItem = (_ref, index, _ref2) => {
+const _crDialogItem = (_ref, _index, _ref2) => {
   let {
     Comp,
     type
@@ -25,7 +25,7 @@ const _crDialogItem = (_ref, index, _ref2) => {
     onClose: onClose
   }, type);
 };
-const _getModalDialogType = option => (option || {}).modalDialogType;
+const _getModalDialogType = option => option?.modalDialogType;
 const ModalDialogContainer = _ref3 => {
   let {
     router

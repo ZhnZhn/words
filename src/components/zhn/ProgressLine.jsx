@@ -18,7 +18,7 @@ const _crLineStyle = (
   transition
 ) => ({
    backgroundColor,
-   width: width + '%',
+   width: `${width}%`,
    transition,
    opacity: 1
 });

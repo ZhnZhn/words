@@ -79,7 +79,7 @@ const _setStyleProperties = (uiThemePallete) => {
   const _style = document.body.style;
   CUSTOM_CSS_PROPERTY_CONFIGS.forEach(([propName, dfValue]) => {
     _style.setProperty(
-       '--' + propName,
+       `--${propName}`,
        uiThemePallete[propName] || dfValue
     )
   })

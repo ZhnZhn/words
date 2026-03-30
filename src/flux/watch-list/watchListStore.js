@@ -78,7 +78,7 @@ export const getWatchList = () => _selectWatchList(_get())
 export const useWatchList = fCrUse(_watchListStore, _selectWatchList)
 export const useMsEdit = fCrUse(_watchListStore, _selectMsEdit)
 
-export const getWatchGroups = () => (getWatchList() || {}).groups
+export const getWatchGroups = () => getWatchList()?.groups
 export const getWatchListsByGroup = (groupCaption) => {
   const group = findGroup(getWatchList(), groupCaption);
   return group

@@ -20,8 +20,7 @@ const _isInCont = (
 
 const HrzContainer = ({
   className,
-  usePane,
-  addAction
+  usePane
 }) => {
   const [
     comps,
@@ -29,7 +28,7 @@ const HrzContainer = ({
   ] = useState([]);
 
   usePane(option => {
-    if (option && option.Comp){
+    if (option?.Comp){
       setComps(prevComps => {
         const comp = option.Comp;
         return _isInCont(prevComps, comp)

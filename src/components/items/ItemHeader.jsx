@@ -18,8 +18,7 @@ const _setPrevFocused = element => {
 
 const FN_NOOP = () => {};
 
-const ItemHeader = ({
-  isShow,
+const ItemHeader = ({  
   className,
   style,
   captionStyle,

@@ -20,7 +20,7 @@ const ValidationMessages = (props) => (
   <div style={S_DIV}>
     {
       (props.validationMessages || []).map((msg, index)=>(
-        <div key={index}>
+        <div key={msg}>
           <div style={S_MSG_NUMBER}>{index+1}</div>
           <span style={S_MSG_SPAN}>{msg}</span>
         </div>
