@@ -6,5 +6,6 @@ out.txt
 dev
 index-dev.ejs
 webpack.dev.js
+rspack.dev.js
 min-css.js
 
