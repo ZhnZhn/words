@@ -42,7 +42,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
     "@rspack/cli": "^1.7.11",
     "@rspack/core": "^1.7.11",
-    "@swc/helpers": "^0.5.20",
+    "@swc/helpers": "^0.5.21",
     "babel-loader": "^10.1.1",
     "clean-css": "^5.3.3",
     "eslint": "^9.39.4",
