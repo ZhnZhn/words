@@ -8,8 +8,8 @@ var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _CircleButton = _interopRequireDefault(require("../zhn/button/CircleButton"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
+var _IconButton = require("../zhn/IconButton");
 var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
 var _ModalSlider = require("../zhn-modal-slider/ModalSlider");
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
@@ -29,11 +29,9 @@ const RESIZE_INIT_WIDTH = 535,
   S_BR_CAPTION = {
     display: 'flex'
   },
-  S_BT_CIRCLE = {
-    position: 'relative',
-    top: 3,
-    marginLeft: 16,
-    marginRight: 6
+  S_BT_CLOSE_ALL = {
+    color: 'inherit',
+    marginLeft: 10
   },
   S_SVG_RESIZE = {
     paddingTop: 3
@@ -43,11 +41,10 @@ const RESIZE_INIT_WIDTH = 535,
     overflowX: 'hidden',
     //height: '92%',
     height: 'calc(100% - 120px)'
-  },
-  R_TITLE = "Click to remove all items";
+  };
 const FN_NOOP = () => {},
   _getWidth = style => parseInt(style.width, 10) || RESIZE_INIT_WIDTH,
-  _toStyleWidth = width => width + 'px';
+  _toStyleWidth = width => `${width}px`;
 const ConfigsStack = _ref => {
   let {
     configs,
@@ -166,10 +163,9 @@ const PaneType1 = _ref2 => {
       caption: paneCaption,
       onMore: showMenuMore,
       onClose: _hHide,
-      children: [(0, _jsxRuntime.jsx)(_CircleButton.default, {
-        caption: "R",
-        title: R_TITLE,
-        style: S_BT_CIRCLE,
+      children: [(0, _jsxRuntime.jsx)(_IconButton.BtCloseAll, {
+        className: _styleFn.CL_BT_HF,
+        style: S_BT_CLOSE_ALL,
         onClick: onRemoveItems
       }), (0, _jsxRuntime.jsx)(_SvgHrzResize.default, {
         elementRef: _refRootEl,

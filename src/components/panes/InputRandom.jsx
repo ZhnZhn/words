@@ -21,7 +21,7 @@ const InputRandom = ({
       Random Word
     </span>
     <FlatButton
-      rootStyle={S_BT}
+      style={S_BT}
       clDiv={CL_BT_FLAT_DIV}
       caption="Load"
       onClick={onEnter}

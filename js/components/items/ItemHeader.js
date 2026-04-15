@@ -4,18 +4,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _CircleButton = _interopRequireDefault(require("../zhn/button/CircleButton"));
+var _IconButton = require("../zhn/IconButton");
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_NOT_SELECTED = "not-selected",
-  TITLE = "Click to open add to watch list dialog";
-const _setPrevFocused = element => {
-  document._prevFocusedZhn = element;
-};
+  TITLE = "Open add to watch list dialog";
 const FN_NOOP = () => {};
 const ItemHeader = _ref => {
   let {
-    isShow,
     className,
     style,
     captionStyle,
@@ -27,10 +23,8 @@ const ItemHeader = _ref => {
     onClick = FN_NOOP
   } = _ref;
   const _refRootNode = (0, _uiApi.useRef)(),
-    _refBtAdd = (0, _uiApi.useRef)(),
     _hAddToWatch = (0, _uiApi.useCallback)(evt => {
       evt.stopPropagation();
-      _setPrevFocused((0, _uiApi.getRefValue)(_refBtAdd));
       onAddToWatch({
         caption
       });
@@ -76,9 +70,7 @@ const ItemHeader = _ref => {
       className: CL_NOT_SELECTED,
       style: captionStyle,
       children: title
-    }), (0, _jsxRuntime.jsx)(_CircleButton.default, {
-      refEl: _refBtAdd,
-      caption: "A",
+    }), (0, _jsxRuntime.jsx)(_IconButton.BtAddBookmark, {
       title: TITLE,
       onClick: _hAddToWatch
     }), (0, _jsxRuntime.jsx)(_SvgClose.default, {

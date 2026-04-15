@@ -12,7 +12,7 @@ const ButtonClear = _ref => {
     onClick
   } = _ref;
   return (0, _jsxRuntime.jsx)(_FlatButton.default, {
-    rootStyle: style,
+    style: style,
     clDiv: CL_DIV,
     caption: "Clear",
     title: "Clear Input",
@@ -26,7 +26,7 @@ const ButtonClose = _ref2 => {
     onClick
   } = _ref2;
   return (0, _jsxRuntime.jsx)(_FlatButton.default, {
-    rootStyle: style,
+    style: style,
     clDiv: CL_DIV,
     caption: "Close",
     title: "Close Dialog",
@@ -42,7 +42,7 @@ const ButtonPrimary = _ref3 => {
     onClick
   } = _ref3;
   return (0, _jsxRuntime.jsx)(_FlatButton.default, {
-    rootStyle: style,
+    style: style,
     clDiv: CL_DIV,
     caption: caption,
     title: title,

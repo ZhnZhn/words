@@ -20,7 +20,9 @@ import AppLabel from './AppLabel';
 import LimitLabel from './LimitLabel';
 import { APP_TITLE } from '../titles';
 
-const CL_QUERY_ITEM = "row__topic"
+const TITLE_SETTINGS = "Open settings dialog"
+, TITLE_ABOUT = "Open about pane"
+, CL_QUERY_ITEM = "row__topic"
 , CL_HEADER = "header"
 , CL_PANEL_BROWSER = `${CL_HEADER}__panel-browser`
 , CL_ICON_APP = `${CL_HEADER}__icon-app`
@@ -100,23 +102,23 @@ const HeaderBar = ({
        </span>
        <div className={CL_BTS}>
          <FlatButton
-             ariaLabel="Settings"
+             ariaLabel={TITLE_SETTINGS}
              ariaHaspopup="dialog"
+             title={TITLE_SETTINGS}
              className={CL_SETTINGS}
              clDiv={CL_BT_FLAT_DIV}
              divStyle={S_DIV}
-             title="User Settings Dialog"
              accessKey="s"
              onClick={onSettings}
           >
             <SvgSettings style={S_SETTINGS} />
           </FlatButton>
           <FlatButton
-              ariaLabel="About"
+              ariaLabel={TITLE_ABOUT}
+              title={TITLE_ABOUT}
               className={CL_BT_ABOUT}
               clDiv={CL_BT_FLAT_DIV}
               divStyle={S_DIV}
-              title="About Words"
               accessKey="a"
               onClick={onAbout}
           >

@@ -12,14 +12,15 @@ import {
 
 import {
   CL_MENU_MORE,
+  CL_BT_HF,
   crShowHideInlineIf
 } from '../styleFn';
 
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 
-import CircleButton from '../zhn/button/CircleButton';
 import BrowserCaption from '../zhn/BrowserCaption';
+import { BtCloseAll } from '../zhn/IconButton';
 import ScrollPane from '../zhn/ScrollPane';
 import { ModalSliderMemoIsShow } from '../zhn-modal-slider/ModalSlider';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
@@ -39,11 +40,9 @@ const RESIZE_INIT_WIDTH = 535
 , S_BR_CAPTION = {
   display: 'flex'
 }
-, S_BT_CIRCLE = {
-  position: 'relative',
-  top: 3,
-  marginLeft: 16,
-  marginRight: 6
+, S_BT_CLOSE_ALL = {
+  color: 'inherit',
+  marginLeft: 10
 }
 , S_SVG_RESIZE = {
   paddingTop: 3
@@ -53,8 +52,7 @@ const RESIZE_INIT_WIDTH = 535
   overflowX: 'hidden',
   //height: '92%',
   height: 'calc(100% - 120px)'
-}
-, R_TITLE = "Click to remove all items";
+};
 
 const FN_NOOP = () => {}
 , _getWidth = style => parseInt(style.width, 10)
@@ -210,10 +208,9 @@ const PaneType1 = ({
          onMore={showMenuMore}
          onClose={_hHide}
       >
-        <CircleButton
-          caption="R"
-          title={R_TITLE}
-          style={S_BT_CIRCLE}
+        <BtCloseAll
+          className={CL_BT_HF}
+          style={S_BT_CLOSE_ALL}
           onClick={onRemoveItems}
         />
         <SvgHrzResize

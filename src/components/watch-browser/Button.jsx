@@ -7,7 +7,7 @@ export const ButtonClear = ({
   onClick
 }) => (
   <FlatButton
-    rootStyle={style}
+    style={style}
     clDiv={CL_DIV}
     caption="Clear"
     title="Clear Input"
@@ -20,7 +20,7 @@ export const ButtonClose = ({
   onClick
 }) => (
   <FlatButton
-    rootStyle={style}
+    style={style}
     clDiv={CL_DIV}
     caption="Close"
     title="Close Dialog"
@@ -35,7 +35,7 @@ export const ButtonPrimary = ({
   onClick
 }) => (
   <FlatButton
-    rootStyle={style}
+    style={style}
     clDiv={CL_DIV}
     caption={caption}
     title={title}

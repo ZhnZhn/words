@@ -27,7 +27,7 @@ const InputRandom = _ref => {
       style: S_SPAN,
       children: "Random Word"
     }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-      rootStyle: S_BT,
+      style: S_BT,
       clDiv: _styleFn.CL_BT_FLAT_DIV,
       caption: "Load",
       onClick: onEnter

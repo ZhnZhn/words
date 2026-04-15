@@ -73,7 +73,7 @@ const InputWord = _ref => {
     }) : (0, _jsxRuntime.jsx)(_FlatButton.default, {
       caption: "Load",
       tabIndex: -1,
-      rootStyle: S_BT_LOAD,
+      style: S_BT_LOAD,
       clDiv: _styleFn.CL_BT_FLAT_DIV,
       isPrimary: true,
       onClick: onEnter

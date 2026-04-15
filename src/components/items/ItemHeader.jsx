@@ -6,19 +6,15 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import CircleButton from '../zhn/button/CircleButton';
+import { BtAddBookmark } from '../zhn/IconButton';
 import SvgClose from '../zhn/SvgClose';
 
 const CL_NOT_SELECTED = "not-selected"
-, TITLE = "Click to open add to watch list dialog";
-
-const _setPrevFocused = element => {
-  document._prevFocusedZhn = element
-};
+, TITLE = "Open add to watch list dialog";
 
 const FN_NOOP = () => {};
 
-const ItemHeader = ({  
+const ItemHeader = ({
   className,
   style,
   captionStyle,
@@ -30,10 +26,9 @@ const ItemHeader = ({
   onClick=FN_NOOP
 }) => {
   const _refRootNode = useRef()
-  , _refBtAdd = useRef()
+
   , _hAddToWatch = useCallback(evt => {
      evt.stopPropagation()
-     _setPrevFocused(getRefValue(_refBtAdd))
      onAddToWatch({ caption })
   }, [caption, onAddToWatch])
   , _hClose = useCallback(evt => {
@@ -78,9 +73,7 @@ const ItemHeader = ({
       >
          {title}
       </span>
-      <CircleButton
-        refEl={_refBtAdd}
-        caption="A"
+      <BtAddBookmark
         title={TITLE}
         onClick={_hAddToWatch}
       />

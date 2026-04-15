@@ -25,6 +25,7 @@ export const crStyle2 = (
  : style1;
 
 export const CL_BT_FLAT_DIV = "bt-flat__div"
+export const CL_BT_HF = "bt-hf"
 export const CL_SHOW_POPUP = "show-popup"
 export const CL_POPUP_MENU = `popup-menu`
 export const CL_MENU_MORE = `${CL_POPUP_MENU} items__menu-more`
