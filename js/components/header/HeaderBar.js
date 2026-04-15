@@ -17,7 +17,9 @@ var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _LimitLabel = _interopRequireDefault(require("./LimitLabel"));
 var _titles = require("../titles");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_QUERY_ITEM = "row__topic",
+const TITLE_SETTINGS = "Open settings dialog [a]",
+  TITLE_ABOUT = "Open about pane [i]",
+  CL_QUERY_ITEM = "row__topic",
   CL_HEADER = "header",
   CL_PANEL_BROWSER = `${CL_HEADER}__panel-browser`,
   CL_ICON_APP = `${CL_HEADER}__icon-app`,
@@ -83,24 +85,24 @@ const HeaderBar = _ref => {
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
-        ariaLabel: "Settings",
+        ariaLabel: TITLE_SETTINGS,
         ariaHaspopup: "dialog",
+        title: TITLE_SETTINGS,
         className: CL_SETTINGS,
         clDiv: _styleFn.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
-        title: "User Settings Dialog",
-        accessKey: "s",
+        accessKey: "a",
         onClick: onSettings,
         children: (0, _jsxRuntime.jsx)(_SvgSettings.default, {
           style: S_SETTINGS
         })
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-        ariaLabel: "About",
+        ariaLabel: TITLE_ABOUT,
+        title: TITLE_ABOUT,
         className: CL_BT_ABOUT,
         clDiv: _styleFn.CL_BT_FLAT_DIV,
         divStyle: S_DIV,
-        title: "About Words",
-        accessKey: "a",
+        accessKey: "i",
         onClick: onAbout,
         children: (0, _jsxRuntime.jsx)(_SvgInfo.default, {
           style: S_SETTINGS

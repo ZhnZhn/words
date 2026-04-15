@@ -20,8 +20,8 @@ import AppLabel from './AppLabel';
 import LimitLabel from './LimitLabel';
 import { APP_TITLE } from '../titles';
 
-const TITLE_SETTINGS = "Open settings dialog"
-, TITLE_ABOUT = "Open about pane"
+const TITLE_SETTINGS = "Open settings dialog [a]"
+, TITLE_ABOUT = "Open about pane [i]"
 , CL_QUERY_ITEM = "row__topic"
 , CL_HEADER = "header"
 , CL_PANEL_BROWSER = `${CL_HEADER}__panel-browser`
@@ -108,7 +108,7 @@ const HeaderBar = ({
              className={CL_SETTINGS}
              clDiv={CL_BT_FLAT_DIV}
              divStyle={S_DIV}
-             accessKey="s"
+             accessKey="a"
              onClick={onSettings}
           >
             <SvgSettings style={S_SETTINGS} />
@@ -119,7 +119,7 @@ const HeaderBar = ({
               className={CL_BT_ABOUT}
               clDiv={CL_BT_FLAT_DIV}
               divStyle={S_DIV}
-              accessKey="a"
+              accessKey="i"
               onClick={onAbout}
           >
             <SvgInfo style={S_SETTINGS}/>
