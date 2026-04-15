@@ -193,3 +193,9 @@ button::-moz-focus-inner {
 .bt-clear:focus {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+
+.bt-hf:hover,
+.bt-hf:focus {
+  background: rgba(0,0,0,.15);
+}
