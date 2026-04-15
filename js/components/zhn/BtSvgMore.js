@@ -2,9 +2,10 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _Svg = require("./svg/Svg");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_BT_SVG_MORE = 'bt-svg-more',
+const CL_BT_SVG_MORE = `bt-svg-more ${_styleFn.CL_BT_HF}`,
   DF_TITLE = "Click to open menu More",
   DF_ARIA_LABEL = "Menu more";
 const BtSvgMore = _ref => {

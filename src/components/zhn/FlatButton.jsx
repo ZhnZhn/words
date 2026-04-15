@@ -9,7 +9,7 @@ const FlatButton = ({
   ariaHaspopup,
   refBt,
   className,
-  rootStyle,
+  style,
   clDiv,
   divStyle,
   title,
@@ -24,7 +24,7 @@ const FlatButton = ({
     ref={refBt}
     type="button"
     className={crCn(CL_BT_FLAT, className)}
-    style={rootStyle}
+    style={style}
     title={title}
     accessKey={accessKey}
     onClick={onClick}

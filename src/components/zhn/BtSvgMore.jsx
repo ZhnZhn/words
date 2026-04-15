@@ -1,6 +1,7 @@
+import { CL_BT_HF } from '../styleFn';
 import { Svg } from './svg/Svg';
 
-const CL_BT_SVG_MORE = 'bt-svg-more'
+const CL_BT_SVG_MORE = `bt-svg-more ${CL_BT_HF}`
 , DF_TITLE = "Click to open menu More"
 , DF_ARIA_LABEL = "Menu more";
 
