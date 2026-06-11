@@ -1,3 +1,7 @@
+import {
+  joinByBlank,
+  joinByColon
+} from '../../utils/fnArr';
 import domSanitize from '../../utils/domSanitize';
 
 const _assign = Object.assign
@@ -20,7 +24,7 @@ const _crConfig = (json) => {
   return _assign(json || {}, {
     caption: _caption,
     id: _caption || 'id',
-    title: `${_caption}: ${domSanitize(frequency)} ${_pron}`
+    title: joinByColon(_caption, joinByBlank(domSanitize(frequency), _pron))
   });
 }
 

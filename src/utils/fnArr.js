@@ -1,3 +1,4 @@
+import { bindTo } from './bindTo';
 
 const _isArr = Array.isArray;
 
@@ -21,4 +22,14 @@ export const fIsArrSameItemByPropName = (
   ? arr.findIndex(
         item => item[propName] === propValue
     ) !== -1
-  : false;        
+  : false;
+
+  const _joinBy = (
+    delimeter,
+    ...restItems
+  ) => restItems
+    .filter(Boolean)
+    .join(delimeter)
+
+export const joinByBlank = bindTo(_joinBy, ' ')
+export const joinByColon = bindTo(_joinBy, ': ')
