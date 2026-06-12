@@ -33,3 +33,4 @@ export const fIsArrSameItemByPropName = (
 
 export const joinByBlank = bindTo(_joinBy, ' ')
 export const joinByColon = bindTo(_joinBy, ': ')
+export const joinByComma = bindTo(_joinBy, ', ')

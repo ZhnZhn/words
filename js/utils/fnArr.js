@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.joinByColon = exports.joinByBlank = exports.fIsArrSameItemByPropName = exports.fFindArrIndexByPropName = void 0;
+exports.joinByComma = exports.joinByColon = exports.joinByBlank = exports.fIsArrSameItemByPropName = exports.fFindArrIndexByPropName = void 0;
 var _bindTo = require("./bindTo");
 const _isArr = Array.isArray;
 const fFindArrIndexByPropName = propName => (arr, propValue) => _isArr(arr) ? arr.findIndex(item => item[propName] === propValue) : -1;
@@ -16,4 +16,5 @@ const _joinBy = function (delimeter) {
 };
 const joinByBlank = exports.joinByBlank = (0, _bindTo.bindTo)(_joinBy, ' ');
 const joinByColon = exports.joinByColon = (0, _bindTo.bindTo)(_joinBy, ': ');
+const joinByComma = exports.joinByComma = (0, _bindTo.bindTo)(_joinBy, ', ');
 //# sourceMappingURL=fnArr.js.map
