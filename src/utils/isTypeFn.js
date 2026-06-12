@@ -10,3 +10,5 @@ export const isObj = v => typeof v === "object"
   && v !== null
 
 export const isArr = Array.isArray
+export const isArrNotEmpty = arr => isArr(arr)
+  && arr.length > 0
