@@ -1,28 +1,26 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _fnArr = require("../../utils/fnArr");
-var _domSanitize = _interopRequireDefault(require("../../utils/domSanitize"));
-const _assign = Object.assign,
-  EMPTY = '';
+const BLANK = '';
 const _crConfig = json => {
   const {
       word,
-      frequency = EMPTY,
+      frequency = BLANK,
       pronunciation
     } = json || {},
     {
-      all = EMPTY
+      all = BLANK
     } = pronunciation || {},
-    _pron = all ? `[${(0, _domSanitize.default)(all)}]` : EMPTY,
-    _caption = (0, _domSanitize.default)(word);
-  return _assign(json || {}, {
+    _pron = all ? `[${all}]` : BLANK,
+    _caption = word;
+  return {
+    ...json,
     caption: _caption,
     id: _caption || 'id',
-    title: (0, _fnArr.joinByColon)(_caption, (0, _fnArr.joinByBlank)((0, _domSanitize.default)(frequency), _pron))
-  });
+    title: (0, _fnArr.joinByColon)(_caption, (0, _fnArr.joinByBlank)(frequency, _pron))
+  };
 };
 const WordsAdapter = {
   toConfig(json) {

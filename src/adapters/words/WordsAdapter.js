@@ -2,31 +2,30 @@ import {
   joinByBlank,
   joinByColon
 } from '../../utils/fnArr';
-import domSanitize from '../../utils/domSanitize';
 
-const _assign = Object.assign
-, EMPTY = '';
+const BLANK = '';
 
 const _crConfig = (json) => {
   const {
     word,
-    frequency=EMPTY,
+    frequency=BLANK,
     pronunciation
   } = json || {}
   , {
-    all=EMPTY
+    all=BLANK
   } = pronunciation || {}
   , _pron = all
-      ? `[${domSanitize(all)}]`
-      : EMPTY
-  , _caption = domSanitize(word);
+      ? `[${all}]`
+      : BLANK
+  , _caption = word;
 
-  return _assign(json || {}, {
+  return {
+    ...json,
     caption: _caption,
     id: _caption || 'id',
-    title: joinByColon(_caption, joinByBlank(domSanitize(frequency), _pron))
-  });
-}
+    title: joinByColon(_caption, joinByBlank(frequency, _pron))
+  };
+};
 
 const WordsAdapter = {
   toConfig(json){
