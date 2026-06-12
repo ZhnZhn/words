@@ -1,8 +1,7 @@
-import SafeToken from './SafeToken';
+import { isArrNotEmpty } from '../../utils/isTypeFn';
+import { joinByComma } from '../../utils/fnArr';
 
 const S_ITEM = { fontWeight: 400 };
-
-const _isArr = Array.isArray;
 
 const ListSpan = ({
   style,
@@ -10,18 +9,16 @@ const ListSpan = ({
   captionStyle,
   items,
   itemStyle
-}) => (!_isArr(items) || items.length === 0)
-  ? null
-  : (<div style={style}>
-        <SafeToken
-          style={captionStyle}
-          token={caption}
-        />
-        <SafeToken
-          style={{...S_ITEM, ...itemStyle}}
-          token={items.join(', ')}
-        />
-     </div>
-    );
+}) => isArrNotEmpty(items)
+  ? (
+    <div style={style}>
+       <span style={captionStyle}>
+          {caption}
+       </span>
+       <span style={{...S_ITEM, ...itemStyle}}>
+          {joinByComma(items)}
+       </span>
+    </div>
+  ) : null;
 
 export default ListSpan

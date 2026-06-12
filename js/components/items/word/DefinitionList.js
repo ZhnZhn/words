@@ -3,8 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../../utils/isTypeFn");
+var _uiApi = require("../../uiApi");
 var _OpenClose = _interopRequireDefault(require("../../zhn/OpenClose"));
-var _SafeToken = _interopRequireDefault(require("../../zhn/SafeToken"));
 var _WordSyn = _interopRequireDefault(require("./WordSyn"));
 var _WordNyms = _interopRequireDefault(require("./WordNyms"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -29,7 +30,7 @@ const DefinitionList = _ref => {
     style,
     defItems
   } = _ref;
-  return (defItems || []).map((defItem, index) => {
+  return (0, _uiApi.safeMap)(defItems, defItem => {
     const {
       definition,
       partOfSpeech
@@ -40,10 +41,10 @@ const DefinitionList = _ref => {
       caption: definition,
       fillOpen: S_FILL_OPEN,
       captionStyle: S_OC_CAPTION,
-      afterCaptionComp: (0, _jsxRuntime.jsx)(_SafeToken.default, {
+      afterCaptionComp: (0, _isTypeFn.isStrNotBlank)(partOfSpeech) ? (0, _jsxRuntime.jsx)("span", {
         style: S_OC_AFTER,
-        token: partOfSpeech
-      }),
+        children: partOfSpeech
+      }) : null,
       childrenStyle: S_OC_CHILDREN,
       children: [(0, _jsxRuntime.jsx)(_WordSyn.default, {
         style: S_W_SYN,
@@ -51,7 +52,7 @@ const DefinitionList = _ref => {
       }), (0, _jsxRuntime.jsx)(_WordNyms.default, {
         result: defItem
       })]
-    }, index);
+    }, definition);
   });
 };
 var _default = exports.default = DefinitionList;

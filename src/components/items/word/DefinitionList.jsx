@@ -1,5 +1,7 @@
+import { isStrNotBlank } from '../../../utils/isTypeFn';
+import { safeMap } from '../../uiApi';
+
 import OpenClose from '../../zhn/OpenClose';
-import SafeToken from '../../zhn/SafeToken';
 import WordSyn from './WordSyn';
 import WordNyms from './WordNyms';
 
@@ -12,7 +14,9 @@ const S_FILL_OPEN = "black"
   marginLeft: 6,
   fontWeight: 800
 }
-, S_OC_CHILDREN = { padding: '0 16px' }
+, S_OC_CHILDREN = {
+  padding: '0 16px'
+}
 , S_W_SYN = {
   lineHeight: 1.7,
   marginLeft: -6
@@ -21,8 +25,7 @@ const S_FILL_OPEN = "black"
 const DefinitionList = ({
   style,
   defItems
-}) => (defItems || [])
- .map(defItem => {
+}) => safeMap(defItems, defItem => {
   const {
     definition,
     partOfSpeech,
@@ -36,10 +39,9 @@ const DefinitionList = ({
       fillOpen={S_FILL_OPEN}
       captionStyle={S_OC_CAPTION}
       afterCaptionComp={(
-         <SafeToken
-            style={S_OC_AFTER}
-            token={partOfSpeech}
-          />
+        isStrNotBlank(partOfSpeech)
+          ? <span style={S_OC_AFTER}>{partOfSpeech}</span>
+          : null
       )}
       childrenStyle={S_OC_CHILDREN}
     >
