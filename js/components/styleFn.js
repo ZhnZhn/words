@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crVisibilityHidden = exports.crUnderline = exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowPopup = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_MENU_MORE = exports.CL_BT_HF = exports.CL_BT_FLAT_DIV = void 0;
+exports.crVisibilityHidden = exports.crUnderline = exports.crStyle2 = exports.crSliderTransformStyle = exports.crShowPopup = exports.crShowHideInlineIf = exports.crShowHideIf = exports.crShowHide = exports.crCn = exports.crAbsoluteTopLeftStyle = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.COLOR_BF_C = exports.CL_SHOW_POPUP = exports.CL_POPUP_MENU = exports.CL_MENU_MORE = exports.CL_BT_HF = exports.CL_BT_FLAT_DIV = void 0;
 const isArr = Array.isArray;
 const _getCn = arrOrStr => isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (arrOrStr1, arrOrStr2) => {
@@ -31,6 +31,7 @@ const S_NONE = exports.S_NONE = _crDisplayStyle("none");
 const S_INLINE_BLOCK = exports.S_INLINE_BLOCK = _crDisplayStyle("inline-block");
 const crShowHide = (isShow, style) => isShow ? style ? style : S_BLOCK : S_NONE;
 exports.crShowHide = crShowHide;
+const COLOR_BF_C = exports.COLOR_BF_C = 'var(--bf-c,#3270b4)';
 const crShowPopup = (is, className) => is ? [crCn(className, CL_SHOW_POPUP), S_BLOCK] : [className, S_NONE];
 exports.crShowPopup = crShowPopup;
 const CL_CONTAINER_SHOW_POPUP = `container ${CL_SHOW_POPUP}`;

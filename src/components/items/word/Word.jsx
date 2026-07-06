@@ -7,7 +7,8 @@ import {
 
 import {
   crStyle2,
-  crShowHide
+  crShowHide,
+  COLOR_BF_C
 } from '../../styleFn';
 
 import useToggle from '../../hooks/useToggle';
@@ -41,7 +42,8 @@ const D_REMOVE_UNDER = 60
 , S_SVG_CLOSE = {
   position: 'absolute',
   top: 8,
-  right: 0
+  right: 0,
+  stroke: COLOR_BF_C
 }
 , S_WORD_DEF = {
   paddingTop: 6,

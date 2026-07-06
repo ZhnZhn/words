@@ -49,6 +49,8 @@ export const crShowHide = (
   ? style ? style : S_BLOCK
   : S_NONE
 
+export const COLOR_BF_C = 'var(--bf-c,#3270b4)'
+
 export const crShowPopup = (
   is,
   className

@@ -35,7 +35,8 @@ const D_REMOVE_UNDER = 60,
   S_SVG_CLOSE = {
     position: 'absolute',
     top: 8,
-    right: 0
+    right: 0,
+    stroke: _styleFn.COLOR_BF_C
   },
   S_WORD_DEF = {
     paddingTop: 6,
