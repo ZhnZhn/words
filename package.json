@@ -12,9 +12,7 @@
     "lint:biome": "npx @biomejs/biome lint ./src --colors=off",
     "lint:only": "npx @biomejs/biome lint ./src --only=useSemanticElements --colors=off",
     "assist": "npx @biomejs/biome check ./src --formatter-enabled=false --linter-enabled=false --colors=off",
-    "css:min": "node min-css.js",
-    "build:dll": "webpack --color --progress --config webpack.dll.js",
-    "build:dll-jsx": "webpack --color --progress --config webpack.dll-jsx.js",
+    "css:min": "node min-css.js",    
     "build:prod": "webpack --color --progress --config webpack.prod.js",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -52,7 +50,7 @@
     "jest": "^30.5.1",
     "react-refresh": "^0.18.0",
     "terser-webpack-plugin": "^5.6.1",
-    "webpack": "^5.109.2",
+    "webpack": "^5.110.3",
     "webpack-cli": "^7.2.3"
   },
   "overrides": {
