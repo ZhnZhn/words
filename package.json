@@ -14,6 +14,7 @@
     "assist": "npx @biomejs/biome check ./src --formatter-enabled=false --linter-enabled=false --colors=off",
     "css:min": "node min-css.js",    
     "build:prod": "webpack --color --progress --config webpack.prod.js",
+    "build:rspack:prod": "rspack build --config rspack.prod.js",   
     "test": "jest",
     "test:watch": "jest --watch"
   },
