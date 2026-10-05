@@ -29,14 +29,13 @@
     "preact": "^11.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.29.7",
     "@babel/core": "^7.29.7",
     "@babel/eslint-parser": "^7.29.9",
     "@babel/plugin-transform-react-jsx": "^7.29.7",
     "@babel/plugin-transform-runtime": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
-    "@biomejs/biome": "^2.5.14",
+    "@biomejs/biome": "^2.5.15",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.3",
     "@rspack/cli": "^2.2.8",
     "@rspack/core": "^2.2.8",
