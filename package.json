@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.29.10",
-    "preact": "^11.0.1"
+    "preact": "^11.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
@@ -55,9 +55,7 @@
   },
   "overrides": {
     "glob": "~13.0.6",
-    "uuid": "~14.0.0",
-    "js-yaml": "~4.3.0",
-    "brace-expansion": "~5.0.7"
+    "uuid": "~14.0.0"
   },
   "jest": {
     "roots": [
