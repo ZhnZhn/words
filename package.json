@@ -15,8 +15,8 @@
     "css:min": "node min-css.js",
     "build:prod": "webpack --color --progress --config webpack.prod.js",
     "build:rspack:prod": "rspack build --config rspack.prod.js",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "rstest --config rstest.config.mjs",
+    "test:watch": "rstest --watch --config rstest.config.mjs"
   },
   "author": "Yevhenii Molodyi",
   "license": "BSD-3-Clause",
@@ -40,6 +40,7 @@
     "@rspack/cli": "^2.2.9",
     "@rspack/core": "^2.2.9",
     "@rspack/dev-server": "^2.2.2",
+    "@rstest/core": "^0.12.5",
     "@swc/helpers": "^0.5.23",
     "babel-loader": "^10.1.1",
     "clean-css": "^5.3.3",
@@ -47,7 +48,6 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "html-webpack-plugin": "^5.6.8",
-    "jest": "^30.5.2",
     "react-refresh": "^0.18.0",
     "terser-webpack-plugin": "^5.6.1",
     "webpack": "^5.112.2",
@@ -56,15 +56,5 @@
   "overrides": {
     "glob": "~13.0.6",
     "uuid": "~14.0.0"
-  },
-  "jest": {
-    "roots": [
-      "<rootDir>/js/flux/stores/",
-      "<rootDir>/js/utils/"
-    ],
-    "transformIgnorePatterns": [
-      "<rootDir>/js/flux/stores/",
-      "<rootDir>/js/utils/"
-    ]
-  }
+  }  
 }
