@@ -5,6 +5,6 @@ export default defineConfig({
   globals: true,
 
   roots: [      
-      "<rootDir>/js/utils/"
+      "<rootDir>/src/utils/"
     ]
 });
